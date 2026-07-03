@@ -1,0 +1,35 @@
+{
+  "hook": "Your incessant noise is the prison. Silence is the key you refuse to turn.",
+  "concept": "The path to tranquility lies in discerning what is truly within your *prohairesis* – your moral will and faculty of choice – and diligently cultivating that inner domain above all external clamor.",
+  "stoics": [
+    "Marcus Aurelius — Emperor of Rome who wrote a personal journal, Meditations, primarily for himself.",
+    "Epictetus — A former slave who taught that true freedom comes from controlling one's internal judgments, not external circumstances.",
+    "Seneca — A prominent statesman and playwright known for his essays on ethics, often written from exile."
+  ],
+  "passos": [
+    {
+      "titulo": "Step one. Mute the external world.",
+      "foco": "Consciously reduce exposure to news, social media, and unsolicited opinions for defined periods."
+    },
+    {
+      "titulo": "Step two. Retreat into your mind's fortress.",
+      "foco": "Dedicate daily time to reflective journaling, mapping your thoughts and biases."
+    },
+    {
+      "titulo": "Step three. Master the pause before impulse.",
+      "foco": "When faced with provocation, observe your initial emotional response without acting on it."
+    },
+    {
+      "titulo": "Step four. See things as they truly are.",
+      "foco": "Practice objective description, stripping events of emotional interpretation or personal judgment."
+    },
+    {
+      "titulo": "Step five. Define your unshakeable principles.",
+      "foco": "Articulate and regularly review the core values that truly guide your decisions and actions."
+    },
+    {
+      "titulo": "Step six. Embrace the crucible of solitude.",
+      "foco": "Allocate uninterrupted time each day for deep work, study, or focused contemplation without distraction."
+    }
+  ]
+}

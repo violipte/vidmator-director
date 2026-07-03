@@ -1,0 +1,134 @@
+[
+  {
+    "nome": "click_sharp",
+    "cat": "TRANSIÇÃO",
+    "uso": "click seco/tátil",
+    "rel": "sfx/click_sharp.mp3"
+  },
+  {
+    "nome": "click_soft",
+    "cat": "TRANSIÇÃO",
+    "uso": "click suave",
+    "rel": "sfx/click_soft.mp3"
+  },
+  {
+    "nome": "click_camera",
+    "cat": "TRANSIÇÃO",
+    "uso": "obturador",
+    "rel": "sfx/click_camera.mp3"
+  },
+  {
+    "nome": "click_mech",
+    "cat": "TRANSIÇÃO",
+    "uso": "tecla mecânica",
+    "rel": "sfx/click_mech.mp3"
+  },
+  {
+    "nome": "click_wood",
+    "cat": "TRANSIÇÃO",
+    "uso": "knock de madeira",
+    "rel": "sfx/click_wood.mp3"
+  },
+  {
+    "nome": "ding_bright",
+    "cat": "SINO",
+    "uso": "notificação",
+    "rel": "sfx/ding_bright.mp3"
+  },
+  {
+    "nome": "bell_glass",
+    "cat": "SINO",
+    "uso": "sino de vidro",
+    "rel": "sfx/bell_glass.mp3"
+  },
+  {
+    "nome": "bell_bowl",
+    "cat": "SINO",
+    "uso": "tigela tibetana",
+    "rel": "sfx/bell_bowl.mp3"
+  },
+  {
+    "nome": "chime_sparkle",
+    "cat": "SINO",
+    "uso": "brilho/sparkle",
+    "rel": "sfx/chime_sparkle.mp3"
+  },
+  {
+    "nome": "whoosh_fast",
+    "cat": "WHOOSH",
+    "uso": "transição rápida",
+    "rel": "sfx/whoosh_fast.mp3"
+  },
+  {
+    "nome": "whoosh_deep",
+    "cat": "WHOOSH",
+    "uso": "whoosh grave",
+    "rel": "sfx/whoosh_deep.mp3"
+  },
+  {
+    "nome": "whoosh_air",
+    "cat": "WHOOSH",
+    "uso": "ar suave",
+    "rel": "sfx/whoosh_air.mp3"
+  },
+  {
+    "nome": "whoosh_reverse",
+    "cat": "WHOOSH",
+    "uso": "reverse swell",
+    "rel": "sfx/whoosh_reverse.mp3"
+  },
+  {
+    "nome": "swish_quick",
+    "cat": "SWISH",
+    "uso": "swish curto",
+    "rel": "sfx/swish_quick.mp3"
+  },
+  {
+    "nome": "swish_paper",
+    "cat": "SWISH",
+    "uso": "página",
+    "rel": "sfx/swish_paper.mp3"
+  },
+  {
+    "nome": "swish_fabric",
+    "cat": "SWISH",
+    "uso": "tecido",
+    "rel": "sfx/swish_fabric.mp3"
+  },
+  {
+    "nome": "glitch_digital",
+    "cat": "GLITCH",
+    "uso": "glitch digital",
+    "rel": "sfx/glitch_digital.mp3"
+  },
+  {
+    "nome": "glitch_vhs",
+    "cat": "GLITCH",
+    "uso": "VHS",
+    "rel": "sfx/glitch_vhs.mp3"
+  },
+  {
+    "nome": "glitch_data",
+    "cat": "GLITCH",
+    "uso": "data corruption",
+    "rel": "sfx/glitch_data.mp3"
+  },
+  {
+    "nome": "noise_vinyl",
+    "cat": "NOISE",
+    "uso": "crackle de vinil",
+    "rel": "sfx/noise_vinyl.mp3"
+  },
+  {
+    "nome": "noise_static",
+    "cat": "NOISE",
+    "uso": "estática TV",
+    "rel": "sfx/noise_static.mp3"
+  },
+  {
+    "nome": "noise_riser",
+    "cat": "NOISE",
+    "uso": "riser de ruído",
+    "rel": "sfx/noise_riser.mp3"
+  }
+]

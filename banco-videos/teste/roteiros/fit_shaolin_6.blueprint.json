@@ -1,0 +1,38 @@
+[
+  {
+    "nome": "Deep Squat",
+    "fixes": "Improves lower body strength, hip mobility, and balance for daily movement.",
+    "reps": "x 15",
+    "angle": "Find your center by touching the earth; your foundation dictates your strength."
+  },
+  {
+    "nome": "Push-Up",
+    "fixes": "Builds upper body and core strength, essential for pushing and supporting the body.",
+    "reps": "x 12",
+    "angle": "Meet resistance head-on, for true power emerges from steadfast effort."
+  },
+  {
+    "nome": "Plank",
+    "fixes": "Strengthens core muscles, improves posture, and prevents back pain.",
+    "reps": "45s",
+    "angle": "Stillness holds immense power; cultivate an unyielding core to withstand all storms."
+  },
+  {
+    "nome": "Leg Raise",
+    "fixes": "Develops lower abdominal strength and hip flexor control, vital for dynamic movement.",
+    "reps": "x 15",
+    "angle": "Lift from your depths; controlled movement begins with a powerful, stable root."
+  },
+  {
+    "nome": "Forward Lunge",
+    "fixes": "Enhances leg strength, balance, and unilateral lower body power.",
+    "reps": "x 10 per leg",
+    "angle": "Step with purpose, each stride a commitment to progress and balanced mastery."
+  },
+  {
+    "nome": "Horse Stance (Mǎbù)",
+    "fixes": "Builds immense leg endurance, inner thigh strength, and mental fortitude.",
+    "reps": "60s hold",
+    "angle": "Stand firm as a mountain, unmoving yet adaptable; cultivate unwavering resolve from within."
+  }
+]

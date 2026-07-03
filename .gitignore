@@ -1,0 +1,39 @@
+# repos próprios (não versionar aqui)
+video-automator/
+automator-dev/
+
+# dependências e build
+**/node_modules/
+remotion/_tmp/
+remotion/_bundle/
+remotion/_bundlecheck_out/
+remotion/out/
+
+# caches e artefatos de run (regeneráveis)
+banco-videos/_cache_stock/
+banco-videos/_epoca_tmp/
+banco-videos/teste/__pycache__/
+**/__pycache__/
+banco-videos/teste/.vidmator_lock/
+banco-videos/teste/*.log
+banco-videos/teste/words.json
+banco-videos/teste/timeline.json
+banco-videos/teste/coldopen.json
+remotion/timeline_render.json
+
+# mídia pesada de run (narrações/vídeos) — assets curados têm exceção abaixo
+banco-videos/teste/*.mp3
+banco-videos/teste/*.wav
+banco-videos/teste/*.mp4
+remotion/public/test/
+remotion/public/trilhas/
+remotion/public/*.mp4
+
+# assets CURADOS que fazem parte da inteligência (exceções)
+!remotion/public/sfx/
+!remotion/public/cta/
+
+# segredos (nunca)
+credentials*.json
+config.json
+*.bak

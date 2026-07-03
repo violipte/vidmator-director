@@ -1,0 +1,193 @@
+{
+  "default": {
+    "descricao": "receita genérica (fallback)",
+    "vintage": false,
+    "efeito_intensidade": 0.4,
+    "moods_pool": [
+      "tenso",
+      "frio",
+      "nostalgia",
+      "revelacao",
+      "misterioso"
+    ],
+    "apresentacao_freq": 0.33,
+    "apresentacao_pool": [
+      "lupa",
+      "spotlight",
+      "polaroid",
+      "film",
+      "parallax",
+      "reveal"
+    ],
+    "fonte_hint": null,
+    "ritmo_seg": null,
+    "sfx": {
+      "transicao": [
+        "sfx/click_camera.mp3",
+        "sfx/click_mech.mp3"
+      ],
+      "entrada": [
+        "sfx/ding_bright.mp3",
+        "sfx/chime_sparkle.mp3"
+      ],
+      "glitch": [
+        "sfx/glitch_digital.mp3",
+        "sfx/glitch_data.mp3",
+        "sfx/noise_static.mp3"
+      ]
+    }
+  },
+  "estoicismo": {
+    "descricao": "filosofia/estoicismo — calmo, limpo, contemplativo (proposta do memento mori)",
+    "vintage": false,
+    "efeito_intensidade": 0.18,
+    "moods_pool": [
+      "frio",
+      "revelacao",
+      "nostalgia"
+    ],
+    "apresentacao_freq": 0.22,
+    "apresentacao_pool": [
+      "kenburns",
+      "parallax",
+      "reveal",
+      "spotlight"
+    ],
+    "fonte_hint": "serif",
+    "ritmo_seg": 8.0,
+    "hook_ate": 240,
+    "glitch_topico": false,
+    "sfx": {
+      "transicao": [
+        "sfx/click_camera.mp3",
+        "sfx/click_mech.mp3"
+      ],
+      "entrada": [
+        "sfx/ding_bright.mp3",
+        "sfx/chime_sparkle.mp3"
+      ],
+      "glitch": []
+    },
+    "cold_open": true
+  },
+  "documentario": {
+    "descricao": "WWII/história/guerra/biografia — vintage, época, cronologia (precisa do banco de época)",
+    "vintage": true,
+    "efeito_intensidade": 0.35,
+    "moods_pool": [
+      "frio",
+      "nostalgia",
+      "tenso",
+      "revelacao"
+    ],
+    "apresentacao_freq": 0.45,
+    "apresentacao_pool": [
+      "film",
+      "polaroid",
+      "lupa",
+      "reveal",
+      "spotlight",
+      "parallax"
+    ],
+    "fonte_hint": "serif",
+    "ritmo_seg": 6.0,
+    "banco_epoca": true,
+    "glitch_topico": false,
+    "sfx": {
+      "transicao": [
+        "sfx/click_camera.mp3",
+        "sfx/click_mech.mp3"
+      ],
+      "entrada": [
+        "sfx/ding_bright.mp3",
+        "sfx/chime_sparkle.mp3"
+      ],
+      "glitch": []
+    },
+    "cold_open": true,
+    "video_frac": 0.6,
+    "vet_relevancia": true
+  },
+  "true_crime": {
+    "descricao": "true crime/mistério — tenso, suspense, evidências",
+    "vintage": true,
+    "efeito_intensidade": 0.55,
+    "moods_pool": [
+      "tenso",
+      "misterioso",
+      "frio",
+      "revelacao"
+    ],
+    "apresentacao_freq": 0.5,
+    "apresentacao_pool": [
+      "lupa",
+      "spotlight",
+      "polaroid",
+      "film",
+      "reveal",
+      "split"
+    ],
+    "fonte_hint": "typewriter",
+    "ritmo_seg": 5.5
+  },
+  "saude": {
+    "descricao": "saúde/espiritualidade — limpo, claro, suave, ambiente",
+    "vintage": false,
+    "efeito_intensidade": 0.08,
+    "moods_pool": [
+      "frio",
+      "revelacao"
+    ],
+    "apresentacao_freq": 0.18,
+    "apresentacao_pool": [
+      "kenburns",
+      "parallax",
+      "reveal"
+    ],
+    "fonte_hint": "clean",
+    "ritmo_seg": 8.5
+  },
+  "ttm": {
+    "descricao": "TTM — espiritualidade + saúde/somático (calmo, cinematográfico)",
+    "vintage": false,
+    "efeito_intensidade": 0.16,
+    "moods_pool": [
+      "frio",
+      "revelacao",
+      "nostalgia"
+    ],
+    "apresentacao_freq": 0.22,
+    "apresentacao_pool": [
+      "kenburns",
+      "parallax",
+      "reveal",
+      "spotlight"
+    ],
+    "fonte_hint": "clean",
+    "ritmo_seg": 8.0,
+    "hook_ate": 240,
+    "glitch_topico": false,
+    "sfx": {
+      "transicao": [
+        "sfx/click_camera.mp3",
+        "sfx/click_mech.mp3"
+      ],
+      "entrada": [
+        "sfx/ding_bright.mp3",
+        "sfx/chime_sparkle.mp3"
+      ],
+      "glitch": []
+    },
+    "video_frac": 0.5,
+    "vet_relevancia": true,
+    "produto_cta": {
+      "ativo": true,
+      "img": "cta/produto.png",
+      "qr": "cta/qr.png",
+      "headline": "THE FULL HEALING IN MOTION GUIDE",
+      "offer": "LINK IN THE FIRST PINNED COMMENT"
+    },
+    "fonte_imagens": "hibrido",
+    "cold_open": true
+  }
+}
