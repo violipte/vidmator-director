@@ -21,7 +21,7 @@ WORDS = TESTE / "words.json"
 TIMELINE = TESTE / "timeline.json"
 PESSOAS_DIR = TESTE / "pessoas"
 CREDS = Path(r"F:/Canal Dark/Aplicativo de Edição/video-automator/credentials.json")
-UA = {"User-Agent": "CanalDark/1.0 (research; contact pitermoreiraviolim@gmail.com)"}
+UA = {"User-Agent": "CanalDark/1.0 (research; github.com/violipte)"}
 
 DUR_PESSOA = 3.6      # duração do card de pessoa (s)
 FUNDO = "escuro"      # "escuro" (nicho dark) ou "claro"
