@@ -19,7 +19,7 @@ TMP = Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos/_epoca_tmp")
 BANCO = Path(r"D:/Meu Drive/canal_dark_footage_epoca")
 CATALOGO = BANCO / "catalogo.json"
 CREDS = Path(r"F:/Canal Dark/Aplicativo de Edição/video-automator/credentials.json")
-UA = {"User-Agent": "CanalDark/1.0 (research; pitermoreiraviolim@gmail.com)"}
+UA = {"User-Agent": "CanalDark/1.0 (research; github.com/violipte)"}
 GKEYS = [c["api_key"] for c in json.load(open(CREDS, encoding="utf-8")) if c.get("provedor") == "gemini" and c.get("api_key")]
 import itertools
 _ROT = itertools.count()

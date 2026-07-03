@@ -38,7 +38,7 @@ from pexels_api import search as _pex_search, KEYS as PEX_KEYS  # rotação de N
 GKEYS = [c["api_key"] for c in json.load(open(CREDS, encoding="utf-8"))
          if c.get("provedor") == "gemini" and c.get("api_key")]
 UA = {"User-Agent": "Mozilla/5.0"}
-COMMONS_UA = {"User-Agent": "CanalDark/1.0 (research; pitermoreiraviolim@gmail.com)"}
+COMMONS_UA = {"User-Agent": "CanalDark/1.0 (research; github.com/violipte)"}
 TARGET_W = 1920
 USE_IA = False          # nível 6 plugável (Together/Gemini) — ligar quando houver provedor
 USE_COMMONS_L2 = True   # L2 imagem PD do assunto (Commons) — com gate Vision de IDENTIDADE

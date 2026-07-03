@@ -19,7 +19,7 @@ WORDS = TESTE / "words.json"
 TIMELINE = TESTE / "timeline.json"
 IMG_DIR = TESTE / "imagens"
 CREDS = Path(r"F:/Canal Dark/Aplicativo de Edição/video-automator/credentials.json")
-UA = {"User-Agent": "CanalDark/1.0 (research; pitermoreiraviolim@gmail.com)"}
+UA = {"User-Agent": "CanalDark/1.0 (research; github.com/violipte)"}
 DUR_IMG = 4.0
 
 
