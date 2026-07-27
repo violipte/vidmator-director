@@ -1,0 +1,9 @@
+=== bundle ===
+bundle ok
+.............................................[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+.........
+OK 54/54
+=== GALLERY DONE ===

@@ -16,6 +16,7 @@ import {
 import { MapAnimation } from "./MapAnimation";
 import { SatelliteZoom } from "./SatelliteZoom";
 import { Illustration, IlustracaoSpec, Safe } from "./Illustration";
+import { Mascot } from "./Mascot";
 import { YtCta } from "./YtCta";
 import { Presentacao, PresentacaoSpec } from "./Presentacao";
 import { KaraokeCaption } from "./KaraokeCaption";
@@ -65,6 +66,8 @@ type Cena = {
   entrada_texto?: string | null;
   intro?: boolean;
   ilustracao?: IlustracaoSpec | null;
+  mascote?: { img_rel?: string; lado?: "left" | "right"; pose?: string } | null;
+  personagens?: { img_rel: string; lado: "left" | "right" }[] | null;
   fonte?: string | null;            // "archive" => footage de arquivo
   arquivo_modo?: "fundir" | "enquadrar" | null;
   era?: string | null;
@@ -94,7 +97,9 @@ type Timeline = {
   cta_ding_rel?: string | null;   // SFX ding do sino no CTA
   ctas?: { inicio: number; dur: number; headline?: string }[] | null; // CTAs de YouTube (like/sub/bell)
   sfx_roles?: { transicao?: string[]; entrada?: string[]; first?: string; glitch?: string[] } | null; // SFX por papel (preset do nicho)
-  glitch_topico?: boolean;   // false (documentário) => sem TVStatic+som de glitch na fronteira de tópico
+  glitch_topico?: boolean;
+  ambiencias?: { inicio: number; fim: number; file_rel: string; gain_db?: number }[];
+  foleys?: { t: number; file_rel: string; gain_db?: number }[];   // false (documentário) => sem TVStatic+som de glitch na fronteira de tópico
   produto_cta?: { inicio: number; fim: number; img?: string; qr?: string; headline?: string; offer?: string } | null;  // CTA de produto (takeover)
   legendas_hook?: { word: string; start: number; end: number }[] | null; // legenda hipnótica (palavras do whisper)
   hook_ate?: number | null;  // segundos de zona de hook (legenda dinâmica até aqui)
@@ -679,6 +684,56 @@ export const BrollTest: React.FC<{ timeline: Timeline | null }> = ({ timeline })
             <Sequence from={delay} durationInFrames={ovFrames}>
               <Illustration spec={c.ilustracao} sceneFrames={ovFrames} />
             </Sequence>
+          </Sequence>
+        );
+      })}
+
+      {/* CAMADA 3b — MASCOTE (personagem do canal, pass mascote.py): pop de mola a cada 2-3 cenas */}
+      {timeline.cenas.map((c, i) => {
+        if (!c.mascote || !c.mascote.img_rel) return null;
+        const start = Math.floor(c.inicio * fps);
+        const sceneFrames = Math.ceil((c.fim - c.inicio) * fps);
+        return (
+          <Sequence key={`masc-${i}`} from={start} durationInFrames={sceneFrames}>
+            <Mascot imgRel={c.mascote.img_rel} lado={c.mascote.lado === "left" ? "left" : "right"} sceneFrames={sceneFrames} />
+          </Sequence>
+        );
+      })}
+
+      {/* CAMADA 3c — PERSONAGENS DA HISTÓRIA (story engine): elenco recortado nas laterais, por presença na cena */}
+      {timeline.cenas.map((c, i) => {
+        if (!c.personagens || !c.personagens.length) return null;
+        const start = Math.floor(c.inicio * fps);
+        const sceneFrames = Math.ceil((c.fim - c.inicio) * fps);
+        return (
+          <Sequence key={`pers-${i}`} from={start} durationInFrames={sceneFrames}>
+            {c.personagens.map((p, k) => (
+              <Mascot key={k} imgRel={p.img_rel} lado={p.lado} sceneFrames={sceneFrames} alturaFrac={0.5} />
+            ))}
+          </Sequence>
+        );
+      })}
+
+      {/* CAMADA SOM-A — AMBIÊNCIAS ASMR (story engine): loops por janela de cena, fade nas bordas */}
+      {(timeline.ambiencias || []).map((a, i) => {
+        const from = Math.floor(a.inicio * fps);
+        const dur = Math.max(fps, Math.round((a.fim - a.inicio) * fps));
+        const vol = Math.pow(10, (a.gain_db ?? -6) / 20);
+        return (
+          <Sequence key={`amb-${i}`} from={from} durationInFrames={dur}>
+            <Audio src={staticFile(a.file_rel)} loop volume={(f) =>
+              vol * Math.min(1, f / (fps * 1.2), Math.max(0.0001, (dur - f) / (fps * 1.2)))} />
+          </Sequence>
+        );
+      })}
+
+      {/* CAMADA SOM-B — FOLEY (story engine): one-shots ancorados na palavra falada */}
+      {(timeline.foleys || []).map((fl, i) => {
+        const from = Math.floor(fl.t * fps);
+        const vol = Math.pow(10, (fl.gain_db ?? -6) / 20);
+        return (
+          <Sequence key={`fol-${i}`} from={from} durationInFrames={fps * 5}>
+            <Audio src={staticFile(fl.file_rel)} volume={vol} />
           </Sequence>
         );
       })}

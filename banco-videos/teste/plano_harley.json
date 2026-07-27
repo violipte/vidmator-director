@@ -1,0 +1,3187 @@
+{
+  "secoes": [
+    {
+      "i": 0,
+      "titulo": "The Eagle Soars Alone",
+      "t_ini": 0.0,
+      "t_fim": 34.0,
+      "wash": "none",
+      "title_card": false
+    },
+    {
+      "i": 1,
+      "titulo": "The Shed: A Sound is Born",
+      "t_ini": 34.0,
+      "t_fim": 87.0,
+      "wash": "dourado",
+      "title_card": true
+    },
+    {
+      "i": 2,
+      "titulo": "The Depression: Refusal to Leave",
+      "t_ini": 87.0,
+      "t_fim": 140.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 3,
+      "titulo": "The War: The Liberator",
+      "t_ini": 140.0,
+      "t_fim": 191.0,
+      "wash": "vermelho",
+      "title_card": true
+    },
+    {
+      "i": 4,
+      "titulo": "The Corporate Years: A Cautionary Tale",
+      "t_ini": 191.0,
+      "t_fim": 259.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 5,
+      "titulo": "The Rescue: Rebirth",
+      "t_ini": 259.0,
+      "t_fim": 323.0,
+      "wash": "amarelo",
+      "title_card": true
+    },
+    {
+      "i": 6,
+      "titulo": "The Enduring Spirit",
+      "t_ini": 323.0,
+      "t_fim": 436.0,
+      "wash": "dourado",
+      "title_card": false
+    }
+  ],
+  "beats": [
+    {
+      "t_ini": 0.0,
+      "t_fim": 2.0,
+      "dur": 2.0,
+      "texto": "In nineteen eighty one, thirteen executives signed their names",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "1981 business executives signing deal archival photo, vintage corporate signing ceremony",
+      "strict": false,
+      "entidades": {
+        "data": "nineteen eighty one",
+        "numeros": [
+          "thirteen executives"
+        ]
+      },
+      "fallback": [
+        "animacao:DateLocationOverlay",
+        "abstrato"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 0
+    },
+    {
+      "t_ini": 2.0,
+      "t_fim": 5.0,
+      "dur": 3.0,
+      "texto": "to a deal most",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand signing contract close up vintage style, pen on document 1980s",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato",
+        "footage_imagem"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 1
+    },
+    {
+      "t_ini": 5.0,
+      "t_fim": 7.0,
+      "dur": 2.0,
+      "texto": "analysts called \"financial suicide.\"",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "financial suicide.",
+        "author": "analysts"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 2
+    },
+    {
+      "t_ini": 7.0,
+      "t_fim": 9.5,
+      "dur": 2.5,
+      "texto": "They were buying back a dying motorcycle company",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "old neglected vintage motorcycle, abandoned motorcycle factory interior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 3
+    },
+    {
+      "t_ini": 9.5,
+      "t_fim": 12.0,
+      "dur": 2.5,
+      "texto": "from a corporation that no longer wanted it.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "corporate divestiture diagram, business separation blueprint, company ownership transfer graphic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TwoImageComparison"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 4
+    },
+    {
+      "t_ini": 12.0,
+      "t_fim": 15.0,
+      "dur": 3.0,
+      "texto": "Their advertising slogan that year was three words long:",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "1980s Harley Davidson advertisement photo blank slogan, vintage motorcycle ad concept",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "abstrato",
+        "animacao:TextReveal"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 5
+    },
+    {
+      "t_ini": 15.0,
+      "t_fim": 18.0,
+      "dur": 3.0,
+      "texto": "\"The Eagle soars alone.\"",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "The Eagle soars alone."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 6
+    },
+    {
+      "t_ini": 18.0,
+      "t_fim": 20.5,
+      "dur": 2.5,
+      "texto": "This is the story of how many times Harley Davidson should have died",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SubjectTitleCard",
+      "dados": {
+        "title": "Harley-Davidson"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": "Harley Davidson"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 7
+    },
+    {
+      "t_ini": 20.5,
+      "t_fim": 23.0,
+      "dur": 2.5,
+      "texto": "should have died",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "old run down factory, abandoned workshop motorcycle parts, vintage struggling motorcycle shop",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato",
+        "ilustracao"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 8
+    },
+    {
+      "t_ini": 23.0,
+      "t_fim": 25.0,
+      "dur": 2.0,
+      "texto": "and why it never did.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "resilience growth diagram, overcoming challenges graphic, strength curve diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 9
+    },
+    {
+      "t_ini": 25.0,
+      "t_fim": 28.0,
+      "dur": 3.0,
+      "texto": "five collapses, five escapes,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Collapses",
+          "Escapes"
+        ],
+        "values": [
+          5,
+          5
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numeros": [
+          "five collapses",
+          "five escapes"
+        ]
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 10
+    },
+    {
+      "t_ini": 28.0,
+      "t_fim": 31.0,
+      "dur": 3.0,
+      "texto": "and at the center of it all, a",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "spotlight on object, center stage concept, build up suspense",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "stock"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 11
+    },
+    {
+      "t_ini": 31.0,
+      "t_fim": 34.0,
+      "dur": 3.0,
+      "texto": "machine that sounds like no other machine on earth.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson engine close up running, Harley engine sound, motorcycle engine unique sound",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 12
+    },
+    {
+      "t_ini": 34.0,
+      "t_fim": 37.0,
+      "dur": 3.0,
+      "texto": "The Shed: A Sound is Born",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Shed: A Sound is Born",
+        "number": 1
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 13
+    },
+    {
+      "t_ini": 34.0,
+      "t_fim": 37.0,
+      "dur": 3.0,
+      "texto": "One, the shed.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson original 1903 shed exterior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 14
+    },
+    {
+      "t_ini": 37.0,
+      "t_fim": 40.0,
+      "dur": 3.0,
+      "texto": "In nineteen o three, in Milwaukee, Wisconsin, William S.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Milwaukee, Wisconsin",
+        "year": 1903
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Milwaukee, Wisconsin",
+        "numero": 1903
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 15
+    },
+    {
+      "t_ini": 40.0,
+      "t_fim": 44.0,
+      "dur": 4.0,
+      "texto": "Harley and Arthur Davidson built their first motorcycle in a wooden shed that",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "William S. Harley Arthur Davidson building first motorcycle shed 1903",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 16
+    },
+    {
+      "t_ini": 44.0,
+      "t_fim": 46.0,
+      "dur": 2.0,
+      "texto": "measured ten feet by fifteen.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "wooden shed dimensions 10 feet by 15 feet diagram",
+      "strict": false,
+      "entidades": {
+        "numero": "ten feet by fifteen"
+      },
+      "fallback": [
+        "animacao:NumberCountOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 17
+    },
+    {
+      "t_ini": 46.0,
+      "t_fim": 50.0,
+      "dur": 4.0,
+      "texto": "A friend scrawled the words \"Harley Davidson Motor Company\" on the door.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson Motor Company handwritten on shed door",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 18
+    },
+    {
+      "t_ini": 50.0,
+      "t_fim": 52.0,
+      "dur": 2.0,
+      "texto": "On the door.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "close up of old wooden shed door",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 19
+    },
+    {
+      "t_ini": 52.0,
+      "t_fim": 54.0,
+      "dur": 2.0,
+      "texto": "The first engine they built couldn't climb a hill without pedal",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "early motorcycle struggling uphill without pedal assistance",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 20
+    },
+    {
+      "t_ini": 54.0,
+      "t_fim": 56.0,
+      "dur": 2.0,
+      "texto": "assistance.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person pedaling early motorcycle uphill",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 21
+    },
+    {
+      "t_ini": 56.0,
+      "t_fim": 58.0,
+      "dur": 2.0,
+      "texto": "Most companies born in sheds die in sheds.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abandoned old workshop shed interior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 22
+    },
+    {
+      "t_ini": 58.0,
+      "t_fim": 59.0,
+      "dur": 1.0,
+      "texto": "This one didn't.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "sunlight through a shed window hopeful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 23
+    },
+    {
+      "t_ini": 59.0,
+      "t_fim": 63.0,
+      "dur": 4.0,
+      "texto": "By nineteen twenty, seventeen years after that first struggling",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number1": 1920,
+        "label1": "Year",
+        "number2": 17,
+        "label2": "Years Later"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 17
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 24
+    },
+    {
+      "t_ini": 63.0,
+      "t_fim": 68.0,
+      "dur": 5.0,
+      "texto": "engine, Harley Davidson had become the largest motorcycle manufacturer in the world,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Harley Davidson motorcycles 1920s parade",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 25
+    },
+    {
+      "t_ini": 68.0,
+      "t_fim": 72.0,
+      "dur": 4.0,
+      "texto": "selling machines through dealers in sixty seven countries.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "highlight_count": 67,
+        "label": "Countries with Harley-Davidson Dealers"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 67
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 26
+    },
+    {
+      "t_ini": 72.0,
+      "t_fim": 76.0,
+      "dur": 4.0,
+      "texto": "The forty five degree V twin they settled on in nineteen o nine became more than an",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson 45 degree V twin engine diagram 1909",
+      "strict": false,
+      "entidades": {
+        "numero": 1909
+      },
+      "fallback": [
+        "footage_imagem",
+        "animacao:NumberCountOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 27
+    },
+    {
+      "t_ini": 76.0,
+      "t_fim": 79.0,
+      "dur": 3.0,
+      "texto": "engine layout; it became a sound, a slow, uneven thunder that riders could identify",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson V twin exhaust sound close up slow motion",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 28
+    },
+    {
+      "t_ini": 79.0,
+      "t_fim": 82.0,
+      "dur": 3.0,
+      "texto": "with their eyes closed from a block away",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person with eyes closed listening to distant motorcycle sound",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "abstrato"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 29
+    },
+    {
+      "t_ini": 82.0,
+      "t_fim": 88.0,
+      "dur": 6.0,
+      "texto": "before the machine ever came into view.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson motorcycle approaching from distance on road",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 30
+    },
+    {
+      "t_ini": 87.0,
+      "t_fim": 90.0,
+      "dur": 3.0,
+      "texto": "The Depression: Refusal to Leave",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Depression: Refusal to Leave",
+        "number": 2
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 31
+    },
+    {
+      "t_ini": 88.0,
+      "t_fim": 91.0,
+      "dur": 3.0,
+      "texto": "Two, the Depression:",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Two, the Depression"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 32
+    },
+    {
+      "t_ini": 91.0,
+      "t_fim": 94.0,
+      "dur": 3.0,
+      "texto": "In nineteen twenty nine, the American economy collapsed, and",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "1929 stock market crash archival photo",
+      "strict": false,
+      "entidades": {
+        "lugar": "United States",
+        "data": "1929"
+      },
+      "fallback": [
+        "animacao:DateLocationOverlay",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 33
+    },
+    {
+      "t_ini": 94.0,
+      "t_fim": 96.0,
+      "dur": 2.0,
+      "texto": "the motorcycle industry collapsed with it.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage motorcycle factory closure 1930s",
+      "strict": false,
+      "entidades": {
+        "industria": "motorcycle industry"
+      },
+      "fallback": [
+        "stock:abandoned factory interior",
+        "ilustracao"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 34
+    },
+    {
+      "t_ini": 96.0,
+      "t_fim": 101.0,
+      "dur": 5.0,
+      "texto": "At the start of that decade, hundreds of motorcycle manufacturers had existed in the",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "montage of vintage motorcycle manufacturer logos 1920s",
+      "strict": false,
+      "entidades": {
+        "lugar": "United States"
+      },
+      "fallback": [
+        "animacao:NumberCountOverlay",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 35
+    },
+    {
+      "t_ini": 101.0,
+      "t_fim": 107.0,
+      "dur": 6.0,
+      "texto": "United States. By the time the dust settled, exactly two remained standing:",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "technical diagram showing many entities reducing to two survivors, motorcycle industry context",
+      "strict": false,
+      "entidades": {
+        "numero": "two"
+      },
+      "fallback": [
+        "animacao:BarChartComparison",
+        "footage_imagem"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 36
+    },
+    {
+      "t_ini": 107.0,
+      "t_fim": 109.0,
+      "dur": 2.0,
+      "texto": "Indian and Harley-Davidson.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Indian motorcycle and vintage Harley-Davidson motorcycle side by side",
+      "strict": true,
+      "entidades": {
+        "org": [
+          "Indian",
+          "Harley-Davidson"
+        ]
+      },
+      "fallback": [
+        "animacao:LogoFlagGrid",
+        "ilustracao:motorcycle diagram"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 37
+    },
+    {
+      "t_ini": 109.0,
+      "t_fim": 114.0,
+      "dur": 5.0,
+      "texto": "Annual production fell from over twenty thousand machines to barely three thousand.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Pre-Depression",
+          "Post-Depression"
+        ],
+        "values": [
+          20000,
+          3000
+        ],
+        "title": "Annual Motorcycle Production"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": [
+          "twenty thousand",
+          "three thousand"
+        ]
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 38
+    },
+    {
+      "t_ini": 114.0,
+      "t_fim": 117.0,
+      "dur": 3.0,
+      "texto": "The company survived on police contracts, exports,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Harley Davidson police motorcycle 1930s, vintage motorcycle shipping cargo",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:police motorcycle diagram",
+        "animacao:MapRoute"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 39
+    },
+    {
+      "t_ini": 117.0,
+      "t_fim": 119.0,
+      "dur": 2.0,
+      "texto": "and stubbornness.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "resilience perseverance determination abstract visual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:vintage workshop busy",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 40
+    },
+    {
+      "t_ini": 119.0,
+      "t_fim": 124.0,
+      "dur": 5.0,
+      "texto": "Their competitor, Indian, would eventually stumble and disappear in nineteen fifty three,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "abandoned vintage Indian motorcycle decaying 1950s",
+      "strict": true,
+      "entidades": {
+        "org": "Indian",
+        "data": "1953"
+      },
+      "fallback": [
+        "animacao:CharacterCard",
+        "footage_imagem"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 41
+    },
+    {
+      "t_ini": 124.0,
+      "t_fim": 128.0,
+      "dur": 4.0,
+      "texto": "leaving Harley Davidson as the only continuously operating American",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SubjectTitleCard",
+      "dados": {
+        "subject": "Harley-Davidson",
+        "subtitle": "The Only American Manufacturer Remaining"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": "Harley Davidson",
+        "lugar": "American"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 42
+    },
+    {
+      "t_ini": 128.0,
+      "t_fim": 131.0,
+      "dur": 3.0,
+      "texto": "motorcycle manufacturer.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Harley Davidson motorcycle driving 1950s rural road",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:vintage Harley Davidson motorcycle",
+        "stock:Harley Davidson factory"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 43
+    },
+    {
+      "t_ini": 131.0,
+      "t_fim": 136.0,
+      "dur": 5.0,
+      "texto": "The lesson the company learned in those years would define it for a century: you",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "enduring legacy business philosophy vintage, old wisdom document",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "stock:old book wisdom"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 44
+    },
+    {
+      "t_ini": 136.0,
+      "t_fim": 141.0,
+      "dur": 5.0,
+      "texto": "don't need to be the biggest, you need to be the one that refuses to leave.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "You don't need to be the biggest, you need to be the one that refuses to leave."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 45
+    },
+    {
+      "t_ini": 140.0,
+      "t_fim": 143.0,
+      "dur": 3.0,
+      "texto": "The War: The Liberator",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The War: The Liberator",
+        "number": 3
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 46
+    },
+    {
+      "t_ini": 141.0,
+      "t_fim": 147.0,
+      "dur": 6.0,
+      "texto": "Three, The War: When the United States entered the Second World War, Harley Davidson",
+      "estrategia": "entidade",
+      "tipo": "stock",
+      "componente": "TitleDescription",
+      "dados": {
+        "title": "The War",
+        "description": "United States enters WWII, Harley Davidson"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "United States",
+        "org": "Harley Davidson"
+      },
+      "fallback": [
+        "animacao:DisplayText",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 47
+    },
+    {
+      "t_ini": 147.0,
+      "t_fim": 152.0,
+      "dur": 5.0,
+      "texto": "stopped building motorcycles for civilians and started building them for soldiers.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "WW2 Harley Davidson factory civilian to military production transition archival footage",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracion"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 48
+    },
+    {
+      "t_ini": 152.0,
+      "t_fim": 157.0,
+      "dur": 5.0,
+      "texto": "The w l a, a rugged forty five - cubic inch workhorse, was shipped to every theater",
+      "estrategia": "peca",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson WLA motorcycle engine cross-section diagram 45 cubic inch, global shipping routes map overlay",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacion:MapRoute"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 49
+    },
+    {
+      "t_ini": 157.0,
+      "t_fim": 162.0,
+      "dur": 5.0,
+      "texto": "of the war; around ninety thousand military Harleys were produced, so many that",
+      "estrategia": "dado",
+      "tipo": "stock",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 90000,
+        "label": "Military Harleys Produced"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 90000
+      },
+      "fallback": [
+        "animacao:DisplayText",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 50
+    },
+    {
+      "t_ini": 162.0,
+      "t_fim": 166.0,
+      "dur": 4.0,
+      "texto": "soldiers nicknamed the model \"The Liberator\" because it kept arriving in towns as",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "WW2 Allied soldiers riding Harley WLA into liberated European town archival footage",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "animacion:SingleSentenceTextSlide",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 51
+    },
+    {
+      "t_ini": 166.0,
+      "t_fim": 168.0,
+      "dur": 2.0,
+      "texto": "they were freed.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "WW2 liberation celebration short archival clip",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 52
+    },
+    {
+      "t_ini": 168.0,
+      "t_fim": 171.0,
+      "dur": 3.0,
+      "texto": "Thousands more went to the Soviet Army under lend-lease.",
+      "estrategia": "entidade",
+      "tipo": "stock",
+      "componente": "MapRoute",
+      "dados": {
+        "start_country": "United States",
+        "end_country": "Soviet Union",
+        "label": "Lend-Lease Shipments"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": "Soviet Army"
+      },
+      "fallback": [
+        "animacao:DisplayText",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 53
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 177.0,
+      "dur": 6.0,
+      "texto": "The war did something no advertising budget could buy: it put an entire generation",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract concept war social impact generation change cultural shift",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacion:TitleDescription",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 54
+    },
+    {
+      "t_ini": 177.0,
+      "t_fim": 182.0,
+      "dur": 5.0,
+      "texto": "of young American men on a Harley-Davidson in the mud under fire, and sent them home",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "WW2 American soldiers Harley Davidson combat and return home archival montage",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracion"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 55
+    },
+    {
+      "t_ini": 182.0,
+      "t_fim": 187.0,
+      "dur": 5.0,
+      "texto": "with the sound of that V-twin permanently wired into their memory.",
+      "estrategia": "peca",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson V-twin engine cutaway diagram with abstract soundwave visual, memory concept",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 56
+    },
+    {
+      "t_ini": 187.0,
+      "t_fim": 192.0,
+      "dur": 5.0,
+      "texto": "The postwar boom in motorcycle culture wasn't invented, it was demobilized.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "post war demobilization social change motorcycle culture emergence 1950s",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacion:TitleDescription"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 57
+    },
+    {
+      "t_ini": 191.0,
+      "t_fim": 194.0,
+      "dur": 3.0,
+      "texto": "The Corporate Years: A Cautionary Tale",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Corporate Years: A Cautionary Tale",
+        "number": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 58
+    },
+    {
+      "t_ini": 192.0,
+      "t_fim": 196.0,
+      "dur": 4.0,
+      "texto": "4. The corporate years: Here is where the story nearly ends.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "somber factory interior empty",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:ChapterTitle",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 59
+    },
+    {
+      "t_ini": 196.0,
+      "t_fim": 202.0,
+      "dur": 6.0,
+      "texto": "In 1969, the American Machine and Foundry Company AMF bought Harley-Davidson.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "AMF Harley Davidson acquisition 1969 photo",
+      "strict": false,
+      "entidades": {
+        "orgs": [
+          "American Machine and Foundry Company (AMF)",
+          "Harley-Davidson"
+        ],
+        "date": "1969"
+      },
+      "fallback": [
+        "animacao:LogoFlagGrid",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 60
+    },
+    {
+      "t_ini": 202.0,
+      "t_fim": 207.0,
+      "dur": 5.0,
+      "texto": "What followed became a cautionary tale taught in business schools: production quotas",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "business school lecture hall textbook",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 61
+    },
+    {
+      "t_ini": 207.0,
+      "t_fim": 210.0,
+      "dur": 3.0,
+      "texto": "production quotas went up, quality control went down",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Production quotas went UP",
+        "sentence2": "Quality control went DOWN"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 62
+    },
+    {
+      "t_ini": 210.0,
+      "t_fim": 213.0,
+      "dur": 3.0,
+      "texto": "bikes left the factory leaking oil, with parts",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "motorcycle engine oil leak factory",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 63
+    },
+    {
+      "t_ini": 213.0,
+      "t_fim": 216.0,
+      "dur": 3.0,
+      "texto": "that failed in the first thousand miles.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "motorcycle engine component failure diagram",
+      "strict": false,
+      "entidades": {
+        "numero": "thousand miles"
+      },
+      "fallback": [
+        "animacao:NumberCountOverlay",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 64
+    },
+    {
+      "t_ini": 216.0,
+      "t_fim": 220.0,
+      "dur": 4.0,
+      "texto": "Riders joked that the new The name stood for hardly ableson, and the joke stuck",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Harley-Davidson: Hardly-Ableson",
+        "author": "Riders' joke",
+        "description": "A popular nickname for Harley-Davidson motorcycles"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 65
+    },
+    {
+      "t_ini": 220.0,
+      "t_fim": 222.0,
+      "dur": 2.0,
+      "texto": "because it was earned.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "disappointed motorcycle rider",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 66
+    },
+    {
+      "t_ini": 222.0,
+      "t_fim": 226.0,
+      "dur": 4.0,
+      "texto": "Meanwhile, Japanese manufacturers were shipping motorcycles that were faster,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Japanese motorcycle accelerating",
+      "strict": false,
+      "entidades": {
+        "orgs": [
+          "Japanese manufacturers"
+        ]
+      },
+      "fallback": [
+        "animacao:MultiCountryOutline",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 67
+    },
+    {
+      "t_ini": 226.0,
+      "t_fim": 229.0,
+      "dur": 3.0,
+      "texto": "cheaper, and simply worked.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "reliable vintage Japanese motorcycle smooth ride",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 68
+    },
+    {
+      "t_ini": 229.0,
+      "t_fim": 233.0,
+      "dur": 4.0,
+      "texto": "By the late seventies, Harley's share of its own home market was evaporating, and",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "fading corporate logo animation",
+      "strict": false,
+      "entidades": {
+        "date": "late seventies"
+      },
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 69
+    },
+    {
+      "t_ini": 233.0,
+      "t_fim": 236.0,
+      "dur": 3.0,
+      "texto": "AMF wanted out.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "corporate exit strategy boardroom decision",
+      "strict": false,
+      "entidades": {
+        "orgs": [
+          "AMF"
+        ]
+      },
+      "fallback": [
+        "animacao:TitleDescription",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 70
+    },
+    {
+      "t_ini": 236.0,
+      "t_fim": 239.0,
+      "dur": 3.0,
+      "texto": "In nineteen eighty one, thirteen Harley-Davidson executives, led by Vaughn Beals",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Vaughn Beals",
+        "role": "Leader of Harley-Davidson Executives",
+        "context": "1981 Buyout",
+        "description": "Led thirteen executives"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Vaughn Beals",
+        "orgs": [
+          "Harley-Davidson"
+        ],
+        "date": "1981",
+        "numero": "thirteen executives"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 71
+    },
+    {
+      "t_ini": 239.0,
+      "t_fim": 243.0,
+      "dur": 4.0,
+      "texto": "including Willie g. Davidson, grandson of a founder",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SubjectTitleCard",
+      "dados": {
+        "title": "Willie G. Davidson",
+        "subtitle": "Grandson of a founder",
+        "description": "Part of the executive buyout team"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Willie G. Davidson"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 72
+    },
+    {
+      "t_ini": 243.0,
+      "t_fim": 246.0,
+      "dur": 3.0,
+      "texto": "raised roughly eighty million dollars",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 80000000,
+        "label": "Raised in buyout",
+        "title": "Roughly Eighty Million",
+        "unit": "$"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "eighty million dollars"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 73
+    },
+    {
+      "t_ini": 246.0,
+      "t_fim": 250.0,
+      "dur": 4.0,
+      "texto": "in a leveraged buyout and took the company back.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "business deal handshake signing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 74
+    },
+    {
+      "t_ini": 250.0,
+      "t_fim": 254.0,
+      "dur": 4.0,
+      "texto": "They had the brand, the debt, and almost nothing else.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "title": "Harley-Davidson Post-Buyout",
+        "points": [
+          "The Brand",
+          "The Debt",
+          "Almost Nothing Else"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 75
+    },
+    {
+      "t_ini": 254.0,
+      "t_fim": 258.0,
+      "dur": 4.0,
+      "texto": "Within a year, the company was hours from bankruptcy while bankers argued over",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "empty factory floor distressed business",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 76
+    },
+    {
+      "t_ini": 258.0,
+      "t_fim": 260.0,
+      "dur": 2.0,
+      "texto": "whether Whether to shut it down.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "tense boardroom decision corporate failure",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 77
+    },
+    {
+      "t_ini": 259.0,
+      "t_fim": 262.0,
+      "dur": 3.0,
+      "texto": "The Rescue: Rebirth",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Rescue: Rebirth",
+        "number": 5
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 78
+    },
+    {
+      "t_ini": 260.0,
+      "t_fim": 263.0,
+      "dur": 3.0,
+      "texto": "Five, The Rescue:",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "chapter_number": "Five",
+        "chapter_title": "The Rescue"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 79
+    },
+    {
+      "t_ini": 263.0,
+      "t_fim": 265.0,
+      "dur": 2.0,
+      "texto": "Two things saved Harley Davidson, the first came from",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "conceptual business salvation, brand revival metaphor",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 80
+    },
+    {
+      "t_ini": 265.0,
+      "t_fim": 267.0,
+      "dur": 2.0,
+      "texto": "Washington. In nineteen eighty three,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date": "1983",
+        "location": "Washington D.C., USA"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Washington"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 81
+    },
+    {
+      "t_ini": 267.0,
+      "t_fim": 270.0,
+      "dur": 3.0,
+      "texto": "the United States government imposed a tariff",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "government economic policy, tariff announcement",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_imagem"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 82
+    },
+    {
+      "t_ini": 270.0,
+      "t_fim": 275.0,
+      "dur": 5.0,
+      "texto": "of forty five percent on imported Japanese motorcycles over seven hundred cubic",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PercentageBarChart",
+      "dados": {
+        "percentage": 45,
+        "label": "Tariff on Imported Japanese Motorcycles",
+        "unit": "%"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 45
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 83
+    },
+    {
+      "t_ini": 275.0,
+      "t_fim": 280.0,
+      "dur": 5.0,
+      "texto": "centimeters, a temporary wall that gave the company room to breathe.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "business protection strategy, company breathing room, market shield",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 84
+    },
+    {
+      "t_ini": 280.0,
+      "t_fim": 284.0,
+      "dur": 4.0,
+      "texto": "And Harley did something almost no protected company does: it asked for the tariff",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "company strategic decision, bold business move",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 85
+    },
+    {
+      "t_ini": 284.0,
+      "t_fim": 289.0,
+      "dur": 5.0,
+      "texto": "to be removed early in nineteen eighty-seven because it no longer needed it.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date": "1987",
+        "event": "Tariff removed"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 1987
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 86
+    },
+    {
+      "t_ini": 289.0,
+      "t_fim": 292.0,
+      "dur": 3.0,
+      "texto": "The second rescue came from the engineers.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "engineering team working, innovation lab, design process",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 87
+    },
+    {
+      "t_ini": 292.0,
+      "t_fim": 296.0,
+      "dur": 4.0,
+      "texto": "In nineteen eighty-four, the company introduced the Evolution engine, a redesign",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson Evolution engine diagram, cutaway view Evolution engine",
+      "strict": true,
+      "entidades": {
+        "numero": 1984
+      },
+      "fallback": [
+        "animacao:CharacterCard",
+        "footage_imagem"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 88
+    },
+    {
+      "t_ini": 296.0,
+      "t_fim": 300.0,
+      "dur": 4.0,
+      "texto": "that finally married the old Thunder to modern reliability.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson Evolution engine running smoothly, modern Harley motorcycle ride",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 89
+    },
+    {
+      "t_ini": 300.0,
+      "t_fim": 302.0,
+      "dur": 2.0,
+      "texto": "The bikes stopped leaking, the jokes stopped landing,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "clean Harley Davidson engine close up, Harley motorcycle no oil leaks",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 90
+    },
+    {
+      "t_ini": 302.0,
+      "t_fim": 305.0,
+      "dur": 3.0,
+      "texto": "sales curved upward through",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "LineChart",
+      "dados": {
+        "title": "Harley Davidson Sales Trend",
+        "labels": [
+          "Late 80s",
+          "90s",
+          "Early 2000s"
+        ],
+        "values": [
+          50,
+          70,
+          90
+        ],
+        "trend_description": "Curved upward"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 91
+    },
+    {
+      "t_ini": 305.0,
+      "t_fim": 309.0,
+      "dur": 4.0,
+      "texto": "the late eighties and nineties like a company being reborn, because that is exactly",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "business transformation success, company rebirth, growth metaphor",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 92
+    },
+    {
+      "t_ini": 309.0,
+      "t_fim": 311.0,
+      "dur": 2.0,
+      "texto": "what it was. What it was.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "triumphant motorcycle ride, scenic road success, Harley Davidson celebration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 93
+    },
+    {
+      "t_ini": 311.0,
+      "t_fim": 314.0,
+      "dur": 3.0,
+      "texto": "By two thousand three, when the company turned one hundred,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date": "2003",
+        "event": "100th Anniversary"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 2003
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 94
+    },
+    {
+      "t_ini": 314.0,
+      "t_fim": 316.0,
+      "dur": 2.0,
+      "texto": "a quarter of a million",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 250000,
+        "label": "Riders",
+        "unit": ""
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 250000
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 95
+    },
+    {
+      "t_ini": 316.0,
+      "t_fim": 318.0,
+      "dur": 2.0,
+      "texto": "riders made the pilgrimage to Milwaukee for the anniversary,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson 100th anniversary Milwaukee event, thousands of motorcycles rally",
+      "strict": false,
+      "entidades": {
+        "lugar": "Milwaukee"
+      },
+      "fallback": [
+        "animacao:MapRoute",
+        "footage_imagem"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 96
+    },
+    {
+      "t_ini": 318.0,
+      "t_fim": 320.0,
+      "dur": 2.0,
+      "texto": "and nearly half of all",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "CirclePercent",
+      "dados": {
+        "percentage": 50,
+        "label": "Heavyweight Motorcycles Sold in America",
+        "unit": "%"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 50
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 97
+    },
+    {
+      "t_ini": 320.0,
+      "t_fim": 324.0,
+      "dur": 4.0,
+      "texto": "heavyweight motorcycles sold in America wore the bar and shield.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson motorcycles on American roads, Harley bar and shield logo on bike",
+      "strict": true,
+      "entidades": {
+        "lugar": "America"
+      },
+      "fallback": [
+        "animacao:LogoFlagGrid",
+        "footage_imagem"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 98
+    },
+    {
+      "t_ini": 324.0,
+      "t_fim": 329.0,
+      "dur": 5.0,
+      "texto": "Now for the honest part, because this story has a counterargument and it is riding",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "motorcycle road ahead cloudy",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 99
+    },
+    {
+      "t_ini": 329.0,
+      "t_fim": 332.0,
+      "dur": 3.0,
+      "texto": "toward the company right now.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "approaching storm clouds",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 100
+    },
+    {
+      "t_ini": 332.0,
+      "t_fim": 335.0,
+      "dur": 3.0,
+      "texto": "The average Harley rider is aging,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "older Harley Davidson riders",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:CharacterCard"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 101
+    },
+    {
+      "t_ini": 335.0,
+      "t_fim": 337.0,
+      "dur": 2.0,
+      "texto": "the young buyers who once saved the brand are now",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage young Harley Davidson riders",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:CharacterCard"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 102
+    },
+    {
+      "t_ini": 337.0,
+      "t_fim": 342.0,
+      "dur": 5.0,
+      "texto": "the retirees leaving it, and the next generation grew up wanting different machines",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "young people on modern electric motorcycles",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 103
+    },
+    {
+      "t_ini": 342.0,
+      "t_fim": 344.0,
+      "dur": 2.0,
+      "texto": "or no machine at all.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "urban alternative transportation diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:IconGrid"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 104
+    },
+    {
+      "t_ini": 344.0,
+      "t_fim": 349.0,
+      "dur": 5.0,
+      "texto": "The company has bet part of its future on Livewire, an electric motorcycle that",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson Livewire electric motorcycle in motion",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:ObjectTitle"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 105
+    },
+    {
+      "t_ini": 349.0,
+      "t_fim": 354.0,
+      "dur": 5.0,
+      "texto": "makes almost no sound at all, which for a brand built on thunder is either brilliant",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson Livewire silent ride",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 106
+    },
+    {
+      "t_ini": 354.0,
+      "t_fim": 358.0,
+      "dur": 4.0,
+      "texto": "Or heresy, depending on which rider you ask.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Brilliant",
+        "sentence2": "Heresy",
+        "connector": "OR",
+        "color1": "#28a745",
+        "color2": "#dc3545"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 107
+    },
+    {
+      "t_ini": 358.0,
+      "t_fim": 361.0,
+      "dur": 3.0,
+      "texto": "Sales have declined from their two thousand six peak.",
+      "estrategia": "dado",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "declining sales graph conceptual",
+      "strict": false,
+      "entidades": {
+        "numero": "two thousand six"
+      },
+      "fallback": [
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 108
+    },
+    {
+      "t_ini": 361.0,
+      "t_fim": 363.0,
+      "dur": 2.0,
+      "texto": "None of this is hidden.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "transparent facts visible",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 109
+    },
+    {
+      "t_ini": 363.0,
+      "t_fim": 367.0,
+      "dur": 4.0,
+      "texto": "The company that survived five deaths is openly planning for a sixth attempt.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "business resilience planning",
+      "strict": false,
+      "entidades": {
+        "numero": "five",
+        "numero_2": "sixth"
+      },
+      "fallback": [
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 110
+    },
+    {
+      "t_ini": 367.0,
+      "t_fim": 371.0,
+      "dur": 4.0,
+      "texto": "But here is what the skeptics keep missing, and what this whole century of evidence",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "skepticism missing point",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 111
+    },
+    {
+      "t_ini": 371.0,
+      "t_fim": 376.0,
+      "dur": 5.0,
+      "texto": "actually proves: Harley Davidson has never really been in the transportation",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson not just transport",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 112
+    },
+    {
+      "t_ini": 376.0,
+      "t_fim": 382.0,
+      "dur": 6.0,
+      "texto": "business. A Japanese motorcycle can beat it on price, on speed, on specification",
+      "estrategia": "dado",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "motorcycle performance comparison chart diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:BarChartComparison"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 113
+    },
+    {
+      "t_ini": 382.0,
+      "t_fim": 387.0,
+      "dur": 5.0,
+      "texto": "sheets, and Japanese motorcycle- Had been beating it on paper since nineteen sixty",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date": "1969",
+        "location": "On paper"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "nineteen sixty nine"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 114
+    },
+    {
+      "t_ini": 387.0,
+      "t_fim": 393.0,
+      "dur": 6.0,
+      "texto": "nine. It doesn't matter because nobody tattoos a specification sheet on their arm.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson tattoo on arm",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:QuoteCard"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 115
+    },
+    {
+      "t_ini": 393.0,
+      "t_fim": 396.0,
+      "dur": 3.0,
+      "texto": "The product was never just the machine.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "product essence beyond mechanics",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 116
+    },
+    {
+      "t_ini": 396.0,
+      "t_fim": 398.0,
+      "dur": 2.0,
+      "texto": "It is the sound, the weight,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "motorcycle engine diagram sound waves",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 117
+    },
+    {
+      "t_ini": 398.0,
+      "t_fim": 400.0,
+      "dur": 2.0,
+      "texto": "the mythology,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson culture symbolism",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:IconLabels"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 118
+    },
+    {
+      "t_ini": 400.0,
+      "t_fim": 401.0,
+      "dur": 1.0,
+      "texto": "the shed in Milwaukee,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location_name": "Milwaukee, Wisconsin",
+        "coordinates": [
+          43.0389,
+          -87.9065
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Milwaukee"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 119
+    },
+    {
+      "t_ini": 401.0,
+      "t_fim": 404.0,
+      "dur": 3.0,
+      "texto": "the newsreels, the eagle that soared alone.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage Harley Davidson newsreel",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:QuoteCard"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 120
+    },
+    {
+      "t_ini": 404.0,
+      "t_fim": 408.0,
+      "dur": 4.0,
+      "texto": "That isn't something a competitor can manufacture because it can't be engineered, it",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "intangible brand value diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 121
+    },
+    {
+      "t_ini": 408.0,
+      "t_fim": 411.0,
+      "dur": 3.0,
+      "texto": "can only be survived into existence.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "evolution survival diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 122
+    },
+    {
+      "t_ini": 411.0,
+      "t_fim": 414.0,
+      "dur": 3.0,
+      "texto": "Five collapses, five escapes.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number1": 5,
+        "label1": "Collapses",
+        "number2": 5,
+        "label2": "Escapes",
+        "title": "Harley-Davidson's Journey"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "five",
+        "numero_2": "five"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 123
+    },
+    {
+      "t_ini": 414.0,
+      "t_fim": 418.0,
+      "dur": 4.0,
+      "texto": "One company that learned over one hundred twenty years that the way you become",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 120,
+        "label": "Years of History",
+        "title": "Harley-Davidson's Legacy"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "one hundred twenty"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 124
+    },
+    {
+      "t_ini": 418.0,
+      "t_fim": 424.0,
+      "dur": 6.0,
+      "texto": "impossible to kill is simple: you just refuse to die publicly over and over until",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "unyielding determination",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 125
+    },
+    {
+      "t_ini": 424.0,
+      "t_fim": 426.0,
+      "dur": 2.0,
+      "texto": "the refusal itself becomes the product.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "persistence as brand product",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 126
+    },
+    {
+      "t_ini": 426.0,
+      "t_fim": 430.0,
+      "dur": 4.0,
+      "texto": "The first Harley couldn't climb a hill without help.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "first Harley Davidson uphill struggle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 127
+    },
+    {
+      "t_ini": 430.0,
+      "t_fim": 436.0,
+      "dur": 6.0,
+      "texto": "Everything since has been the same machine doing the same thing, climbing anyway.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Harley Davidson climbing steep hill",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 128
+    }
+  ]
+}

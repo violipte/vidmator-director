@@ -1,0 +1,3178 @@
+{
+  "secoes": [
+    {
+      "i": 0,
+      "titulo": "The Garden Under Attack",
+      "t_ini": 0.0,
+      "t_fim": 41.0,
+      "wash": "none",
+      "title_card": false
+    },
+    {
+      "i": 1,
+      "titulo": "The Chemical Trap & Targeted Solutions",
+      "t_ini": 41.0,
+      "t_fim": 99.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 2,
+      "titulo": "Immediate Defense & Organic Power",
+      "t_ini": 99.0,
+      "t_fim": 191.0,
+      "wash": "dourado",
+      "title_card": true
+    },
+    {
+      "i": 3,
+      "titulo": "Natural Barriers & Precision Kills",
+      "t_ini": 191.0,
+      "t_fim": 331.0,
+      "wash": "amarelo",
+      "title_card": true
+    },
+    {
+      "i": 4,
+      "titulo": "Systemic Solutions & Potent Protectors",
+      "t_ini": 331.0,
+      "t_fim": 437.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 5,
+      "titulo": "Your Garden's Natural Arsenal",
+      "t_ini": 437.0,
+      "t_fim": 473.0,
+      "wash": "vermelho",
+      "title_card": false
+    }
+  ],
+  "beats": [
+    {
+      "t_ini": 0.0,
+      "t_fim": 4.0,
+      "dur": 4.0,
+      "texto": "something is eating your garden.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "garden pests eating leaves time-lapse moody",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 0
+    },
+    {
+      "t_ini": 4.0,
+      "t_fim": 9.0,
+      "dur": 5.0,
+      "texto": "Aphids are drinking the sap out of your tomato stems, slugs are carving holes",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aphids on tomato stem close up, slugs eating lettuce time-lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 1
+    },
+    {
+      "t_ini": 9.0,
+      "t_fim": 11.0,
+      "dur": 2.0,
+      "texto": "through your lettuce at night",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "slugs eating lettuce at night close up time-lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 2
+    },
+    {
+      "t_ini": 11.0,
+      "t_fim": 13.0,
+      "dur": 2.0,
+      "texto": "the spray most people reach for",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person spraying garden pesticide",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 3
+    },
+    {
+      "t_ini": 13.0,
+      "t_fim": 17.0,
+      "dur": 4.0,
+      "texto": "kills the problem, the bees, the ladybugs, and sometimes the plant itself.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing pesticide harm to bees ladybugs and plants",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 4
+    },
+    {
+      "t_ini": 17.0,
+      "t_fim": 21.0,
+      "dur": 4.0,
+      "texto": "the most effective pest",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "moody garden center aisle, mysterious garden solution",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_video"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 5
+    },
+    {
+      "t_ini": 21.0,
+      "t_fim": 24.0,
+      "dur": 3.0,
+      "texto": "killers ever discovered weren't invented in a lab.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "sterile science lab empty clean",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "ilustracao"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 6
+    },
+    {
+      "t_ini": 24.0,
+      "t_fim": 27.0,
+      "dur": 3.0,
+      "texto": "a tree in India",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "country": "India"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "India"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 7
+    },
+    {
+      "t_ini": 27.0,
+      "t_fim": 29.0,
+      "dur": 2.0,
+      "texto": "a flower from the mountains of Kenya",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region": "Mountains of Kenya",
+        "country": "Kenya"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Kenya"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 8
+    },
+    {
+      "t_ini": 29.0,
+      "t_fim": 32.0,
+      "dur": 3.0,
+      "texto": "made of creatures that died thirty million years ago.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diatom fossils microscopic diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_imagem"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 9
+    },
+    {
+      "t_ini": 32.0,
+      "t_fim": 37.0,
+      "dur": 5.0,
+      "texto": "counting down seven natural poisons",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 7,
+        "label": "Natural Poisons"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 7
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 10
+    },
+    {
+      "t_ini": 37.0,
+      "t_fim": 41.0,
+      "dur": 4.0,
+      "texto": "without harming your plants, your pets, or the pollinators your garden depends on.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy garden plants, happy pets in garden, bees pollinating flowers",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 11
+    },
+    {
+      "t_ini": 41.0,
+      "t_fim": 44.0,
+      "dur": 3.0,
+      "texto": "The Chemical Trap & Targeted Solutions",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Chemical Trap & Targeted Solutions",
+        "number": 1
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 12
+    },
+    {
+      "t_ini": 41.0,
+      "t_fim": 45.0,
+      "dur": 4.0,
+      "texto": "Number one has been protecting crops for over four thousand years, and you can buy",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient traditional agriculture protecting crops historical",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:agricultural field harvest",
+        "ilustracao:ancient farming tools diagram"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 13
+    },
+    {
+      "t_ini": 45.0,
+      "t_fim": 47.0,
+      "dur": 2.0,
+      "texto": "it for about ten dollars.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "simple garden product for ten dollars",
+      "strict": false,
+      "entidades": {
+        "numero": 10
+      },
+      "fallback": [
+        "animacao:NumberCountOverlay",
+        "stock:money bill ten dollars"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 14
+    },
+    {
+      "t_ini": 47.0,
+      "t_fim": 51.0,
+      "dur": 4.0,
+      "texto": "Before the countdown, you need to understand why this matters.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "garden vibrant green slow zoom out",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:gardener observing plants",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 15
+    },
+    {
+      "t_ini": 51.0,
+      "t_fim": 56.0,
+      "dur": 5.0,
+      "texto": "American gardeners spend around three billion dollars every year on pest control,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 3000000000,
+        "label": "dollars spent annually on pest control"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 3000000000
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 16
+    },
+    {
+      "t_ini": 56.0,
+      "t_fim": 59.0,
+      "dur": 3.0,
+      "texto": "and most of that money goes into broad-spectrum chemical sprays.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person spraying garden with chemical pest spray",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:pesticide bottle label diagram",
+        "stock:chemical spray mist close up"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 17
+    },
+    {
+      "t_ini": 59.0,
+      "t_fim": 63.0,
+      "dur": 4.0,
+      "texto": "Broad-spectrum means exactly what it sounds like: it kills everything.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "broad spectrum pesticide effect diagram showing kill all insects",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:garden with dying insects",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 18
+    },
+    {
+      "t_ini": 63.0,
+      "t_fim": 66.0,
+      "dur": 3.0,
+      "texto": "The aphid, yes,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aphid close up on plant moving",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:aphid macro photo",
+        "ilustracao:aphid insect diagram"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 19
+    },
+    {
+      "t_ini": 66.0,
+      "t_fim": 69.0,
+      "dur": 3.0,
+      "texto": "but also the ladybug that eats two hundred aphids a week for free.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ladybug eating aphids close up",
+      "strict": false,
+      "entidades": {
+        "numero": 200
+      },
+      "fallback": [
+        "footage_imagem:ladybug and aphids photo",
+        "animacao:NumberCountOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 20
+    },
+    {
+      "t_ini": 69.0,
+      "t_fim": 73.0,
+      "dur": 4.0,
+      "texto": "University researchers have tracked what happens next, and it follows the same curve",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "research data analysis graph display on screen",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:scientist working in lab",
+        "ilustracao:research flow chart"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 21
+    },
+    {
+      "t_ini": 73.0,
+      "t_fim": 78.0,
+      "dur": 5.0,
+      "texto": "almost every time. The pests come back first because they reproduce faster, their",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "LineChart",
+      "dados": {
+        "title": "Pest & Predator Rebound After Spraying",
+        "x_axis_label": "Time (weeks)",
+        "y_axis_label": "Population",
+        "lines": [
+          {
+            "label": "Pests",
+            "data": [
+              10,
+              50,
+              150,
+              300,
+              500
+            ]
+          },
+          {
+            "label": "Predators",
+            "data": [
+              0,
+              5,
+              10,
+              20,
+              40
+            ]
+          }
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 22
+    },
+    {
+      "t_ini": 78.0,
+      "t_fim": 83.0,
+      "dur": 5.0,
+      "texto": "predators come back last, so three weeks after spraying, many gardens are worse off",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "garden plant infested with pests three weeks after spraying",
+      "strict": false,
+      "entidades": {
+        "numero": 3
+      },
+      "fallback": [
+        "footage_imagem:damaged garden plants",
+        "stock:unhealthy garden close up"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 23
+    },
+    {
+      "t_ini": 83.0,
+      "t_fim": 85.0,
+      "dur": 2.0,
+      "texto": "than before the treatment.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "garden before and after pest infestation negative result",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BeforeAfterArrow",
+        "stock:dying plant leaves"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 24
+    },
+    {
+      "t_ini": 85.0,
+      "t_fim": 89.0,
+      "dur": 4.0,
+      "texto": "A single aphid can produce up to eighty offspring in one week without mating; no",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 80,
+        "label": "offspring in one week from a single aphid"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 80
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 25
+    },
+    {
+      "t_ini": 89.0,
+      "t_fim": 91.0,
+      "dur": 2.0,
+      "texto": "chemical wins that race alone.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "empty garden chemical bottle discarded failure",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:chemical spray bottle close up",
+        "ilustracao:chemical formula diagram X mark"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 26
+    },
+    {
+      "t_ini": 91.0,
+      "t_fim": 95.0,
+      "dur": 4.0,
+      "texto": "The way you win is with targeted weapons that hit the pest and spare everything",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "targeted pest control mechanism diagram precision",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:microscope view of targeted spray",
+        "animacao:IconGrid"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 27
+    },
+    {
+      "t_ini": 95.0,
+      "t_fim": 99.0,
+      "dur": 4.0,
+      "texto": "else. That is exactly what these seven do.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy garden with diverse plants thriving",
+      "strict": false,
+      "entidades": {
+        "numero": 7
+      },
+      "fallback": [
+        "footage_video:hands tending a garden",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 28
+    },
+    {
+      "t_ini": 99.0,
+      "t_fim": 102.0,
+      "dur": 3.0,
+      "texto": "Immediate Defense & Organic Power",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Immediate Defense & Organic Power",
+        "number": 2
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 29
+    },
+    {
+      "t_ini": 99.0,
+      "t_fim": 101.0,
+      "dur": 2.0,
+      "texto": "Number seven: The beer trap.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "text": "Number seven: The Beer Trap"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 30
+    },
+    {
+      "t_ini": 101.0,
+      "t_fim": 105.0,
+      "dur": 4.0,
+      "texto": "This is the oldest trick in the slug war, and it works because slugs can't resist",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "slugs eating garden plants time-lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 31
+    },
+    {
+      "t_ini": 105.0,
+      "t_fim": 107.0,
+      "dur": 2.0,
+      "texto": "the smell of fermenting yeast.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "fermenting beer yeast close up bubbles",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 32
+    },
+    {
+      "t_ini": 107.0,
+      "t_fim": 111.0,
+      "dur": 4.0,
+      "texto": "Take a shallow container, sink it into the soil near your lettuce or hostas so the",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person burying shallow dish garden soil lettuce hostas",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 33
+    },
+    {
+      "t_ini": 111.0,
+      "t_fim": 116.0,
+      "dur": 5.0,
+      "texto": "rim sits level with the ground, and fill it with a few centimeters of cheap beer.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "pouring cheap beer into ground level slug trap",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 34
+    },
+    {
+      "t_ini": 116.0,
+      "t_fim": 118.0,
+      "dur": 2.0,
+      "texto": "Slugs crawl in overnight and drown.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "slugs crawling into beer trap drowning time-lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 35
+    },
+    {
+      "t_ini": 118.0,
+      "t_fim": 120.0,
+      "dur": 2.0,
+      "texto": "One trap covers about one square meter",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "value": 1,
+        "unit": "square meter",
+        "label": "coverage per trap"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "one"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 36
+    },
+    {
+      "t_ini": 120.0,
+      "t_fim": 122.0,
+      "dur": 2.0,
+      "texto": "a small vegetable bed usually needs three",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "value": 3,
+        "unit": "traps",
+        "label": "for a small vegetable bed (or four)"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "three"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 37
+    },
+    {
+      "t_ini": 122.0,
+      "t_fim": 127.0,
+      "dur": 5.0,
+      "texto": "or four. Empty them every two days and refill after rain.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person emptying slug trap refilling beer after rain",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 38
+    },
+    {
+      "t_ini": 127.0,
+      "t_fim": 132.0,
+      "dur": 5.0,
+      "texto": "It costs almost nothing, it uses no toxins at all, and it removes the pest that does",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy thriving organic garden close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "footage_video"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 39
+    },
+    {
+      "t_ini": 132.0,
+      "t_fim": 134.0,
+      "dur": 2.0,
+      "texto": "the most visible damage to leafy greens.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "slug damage on lettuce leaves close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 40
+    },
+    {
+      "t_ini": 134.0,
+      "t_fim": 138.0,
+      "dur": 4.0,
+      "texto": "The limit is obvious: it only works on slugs and snails.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "garden slugs and snails crawling on leaves",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 41
+    },
+    {
+      "t_ini": 138.0,
+      "t_fim": 141.0,
+      "dur": 3.0,
+      "texto": "For everything else, keep counting.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "diverse healthy garden plants close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 42
+    },
+    {
+      "t_ini": 141.0,
+      "t_fim": 143.0,
+      "dur": 2.0,
+      "texto": "Number six: Pyrethrum.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "text": "Number six: Pyrethrum"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 43
+    },
+    {
+      "t_ini": 143.0,
+      "t_fim": 147.0,
+      "dur": 4.0,
+      "texto": "This one is a true poison, and it comes from a daisy.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "daisy flower close up field",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 44
+    },
+    {
+      "t_ini": 147.0,
+      "t_fim": 151.0,
+      "dur": 4.0,
+      "texto": "The flower is a chrysanthemum species grown for centuries in the Dalmatian",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region": "Dalmatian mountains",
+        "description": "Chrysanthemum species origin"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Dalmatian mountains"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 45
+    },
+    {
+      "t_ini": 151.0,
+      "t_fim": 154.0,
+      "dur": 3.0,
+      "texto": "mountains, and later in the highlands of Kenya, which still produces most of the",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "country": "Kenya",
+        "label": "Highlands of Kenya"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Kenya"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 46
+    },
+    {
+      "t_ini": 154.0,
+      "t_fim": 160.0,
+      "dur": 6.0,
+      "texto": "world supply. The dried flower heads contain pyrethrins, compounds that shut down an",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "pyrethrin chemical structure diagram insect nervous system disruption",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 47
+    },
+    {
+      "t_ini": 160.0,
+      "t_fim": 163.0,
+      "dur": 3.0,
+      "texto": "insect's nervous system on contact within minutes.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "insect nervous system diagram pyrethrin action",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 48
+    },
+    {
+      "t_ini": 163.0,
+      "t_fim": 167.0,
+      "dur": 4.0,
+      "texto": "Organic farmers have used it for generations, and it breaks down in sunlight within",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "organic farmer spraying crops sunlight",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 49
+    },
+    {
+      "t_ini": 167.0,
+      "t_fim": 171.0,
+      "dur": 4.0,
+      "texto": "a day or two, which means it doesn't build up in your soil or your food.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "sentence": "breaks down in sunlight within a day or two",
+        "highlight": "a day or two"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 50
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 176.0,
+      "dur": 5.0,
+      "texto": "Use it as a targeted knockdown spray for hard infestations and use it late in the",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person spraying garden plants for insect infestation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 51
+    },
+    {
+      "t_ini": 176.0,
+      "t_fim": 180.0,
+      "dur": 4.0,
+      "texto": "evening after bees have returned to the hive because pyrethrum doesn't know the",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bees returning to beehive at sunset",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 52
+    },
+    {
+      "t_ini": 180.0,
+      "t_fim": 183.0,
+      "dur": 3.0,
+      "texto": "difference between a beetle and a honeybee while it is wet.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": "TwoImageComparison",
+      "dados": {
+        "image1_label": "Beetle",
+        "image2_label": "Honeybee"
+      },
+      "busca": "comparison diagram beetle vs honeybee",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_video"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 53
+    },
+    {
+      "t_ini": 183.0,
+      "t_fim": 186.0,
+      "dur": 3.0,
+      "texto": "Once it dries and degrades, the danger passes.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy garden plants sun shining",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 54
+    },
+    {
+      "t_ini": 186.0,
+      "t_fim": 191.0,
+      "dur": 5.0,
+      "texto": "Respected, and it is the strongest emergency tool in the natural arsenal.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "powerful natural pesticide concept garden",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 55
+    },
+    {
+      "t_ini": 191.0,
+      "t_fim": 194.0,
+      "dur": 3.0,
+      "texto": "Natural Barriers & Precision Kills",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Natural Barriers & Precision Kills",
+        "number": 3
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 56
+    },
+    {
+      "t_ini": 191.0,
+      "t_fim": 194.0,
+      "dur": 3.0,
+      "texto": "Number five: Garlic and hot pepper spray.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": null,
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 57
+    },
+    {
+      "t_ini": 194.0,
+      "t_fim": 198.0,
+      "dur": 4.0,
+      "texto": "blend one full head of garlic and",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "blending garlic in blender",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 58
+    },
+    {
+      "t_ini": 198.0,
+      "t_fim": 203.0,
+      "dur": 5.0,
+      "texto": "two hot peppers with a liter of water, let it sit overnight, strain it, add a",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "straining garlic pepper liquid, hot peppers and water",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 59
+    },
+    {
+      "t_ini": 203.0,
+      "t_fim": 206.0,
+      "dur": 3.0,
+      "texto": "teaspoon of liquid soap so it sticks to the leaves, and spray.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "spraying plant leaves with natural pest spray",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 60
+    },
+    {
+      "t_ini": 206.0,
+      "t_fim": 210.0,
+      "dur": 4.0,
+      "texto": "The compounds that make garlic pungent and peppers hot are chemical weapons the",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "chemical structure allicin capsaicin diagram, garlic pepper compounds",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 61
+    },
+    {
+      "t_ini": 210.0,
+      "t_fim": 215.0,
+      "dur": 5.0,
+      "texto": "plants themselves evolved against insects; you are simply borrowing them.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "macro shot plant leaves, insects on plants, natural defense",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 62
+    },
+    {
+      "t_ini": 215.0,
+      "t_fim": 220.0,
+      "dur": 5.0,
+      "texto": "Sprayed weekly, it repels aphids, whiteflies, cabbage moths, and most soft-bodied",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aphids on plant, whiteflies on plant, cabbage moth close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 63
+    },
+    {
+      "t_ini": 220.0,
+      "t_fim": 222.0,
+      "dur": 2.0,
+      "texto": "invaders before they settle in.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy garden plants, macro plant leaves dew",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 64
+    },
+    {
+      "t_ini": 222.0,
+      "t_fim": 226.0,
+      "dur": 4.0,
+      "texto": "It won't rescue a plant that is already covered in pests and heavy rain washes it",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "plant heavily infested with pests, heavy rain on plants",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 65
+    },
+    {
+      "t_ini": 226.0,
+      "t_fim": 231.0,
+      "dur": 5.0,
+      "texto": "off. But as a preventive barrier, it turns your vegetable bed into hostile",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "vegetable garden healthy, vibrant vegetable bed",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 66
+    },
+    {
+      "t_ini": 231.0,
+      "t_fim": 232.0,
+      "dur": 1.0,
+      "texto": "territory.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy garden plants, morning dew",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 67
+    },
+    {
+      "t_ini": 232.0,
+      "t_fim": 235.0,
+      "dur": 3.0,
+      "texto": "Total cost per batch under two dollars.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 2,
+        "label": "Under $ per batch",
+        "operator": "<"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "two"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 68
+    },
+    {
+      "t_ini": 235.0,
+      "t_fim": 240.0,
+      "dur": 5.0,
+      "texto": "Number four: Bacillus thuringiensis or b t.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": null,
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 69
+    },
+    {
+      "t_ini": 240.0,
+      "t_fim": 245.0,
+      "dur": 5.0,
+      "texto": "This is the sniper of the list, but is a bacterium that lives naturally in soil all",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "soil microscopic view bacteria, healthy garden soil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 70
+    },
+    {
+      "t_ini": 245.0,
+      "t_fim": 249.0,
+      "dur": 4.0,
+      "texto": "over the world, and it produces a protein that is lethal to caterpillars and nothing",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "Bacillus thuringiensis protein mechanism diagram, Bt toxin action",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 71
+    },
+    {
+      "t_ini": 249.0,
+      "t_fim": 250.0,
+      "dur": 1.0,
+      "texto": "else.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy plant leaves, green garden bokeh",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 72
+    },
+    {
+      "t_ini": 250.0,
+      "t_fim": 255.0,
+      "dur": 5.0,
+      "texto": "A cabbage worm eats a treated leaf, stops feeding within hours, and is gone in two",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "cabbage worm eating leaf, caterpillar on cabbage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 73
+    },
+    {
+      "t_ini": 255.0,
+      "t_fim": 261.0,
+      "dur": 6.0,
+      "texto": "days. Meanwhile, bees, ladybugs, earthworms, birds, your dog, and you are completely",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bee on flower, ladybug on leaf, earthworm in soil, bird in garden, dog in garden, person gardening",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 74
+    },
+    {
+      "t_ini": 261.0,
+      "t_fim": 266.0,
+      "dur": 5.0,
+      "texto": "unaffected because the protein only activates in the alkaline gut of a caterpillar.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "caterpillar digestive system diagram, Bt protein activation in gut",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 75
+    },
+    {
+      "t_ini": 266.0,
+      "t_fim": 269.0,
+      "dur": 3.0,
+      "texto": "Organic farms have relied on it for more than sixty years.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 60,
+        "label": "Years of use on organic farms",
+        "operator": ">"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "sixty"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 76
+    },
+    {
+      "t_ini": 269.0,
+      "t_fim": 273.0,
+      "dur": 4.0,
+      "texto": "Mix the powder according to the label, spray the leaves your caterpillars are",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mixing Bt powder, spraying leaves with garden sprayer",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 77
+    },
+    {
+      "t_ini": 273.0,
+      "t_fim": 276.0,
+      "dur": 3.0,
+      "texto": "chewing, and reapply after rain.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "caterpillar chewing leaf, rain on plants",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 78
+    },
+    {
+      "t_ini": 276.0,
+      "t_fim": 280.0,
+      "dur": 4.0,
+      "texto": "If tomato hornworms or cabbage loopers are your nightmare, this ends it with",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "tomato hornworm close up, cabbage looper close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 79
+    },
+    {
+      "t_ini": 280.0,
+      "t_fim": 282.0,
+      "dur": 2.0,
+      "texto": "surgical precision.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "macro shot plant leaves, healthy garden detail",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 80
+    },
+    {
+      "t_ini": 282.0,
+      "t_fim": 285.0,
+      "dur": 3.0,
+      "texto": "Number three. Diatomaceous earth:",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": null,
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 81
+    },
+    {
+      "t_ini": 285.0,
+      "t_fim": 287.0,
+      "dur": 2.0,
+      "texto": "This white powder is a fossil.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "diatomaceous earth white powder close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 82
+    },
+    {
+      "t_ini": 287.0,
+      "t_fim": 292.0,
+      "dur": 5.0,
+      "texto": "It is made of the crushed shells of diatoms, microscopic algae that settled on",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "diatom shell scanning electron microscope image, microscopic diatoms",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 83
+    },
+    {
+      "t_ini": 292.0,
+      "t_fim": 296.0,
+      "dur": 4.0,
+      "texto": "ancient lake beds tens of millions of years ago.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient lake bed landscape, geological rock layers",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 84
+    },
+    {
+      "t_ini": 296.0,
+      "t_fim": 300.0,
+      "dur": 4.0,
+      "texto": "To anything with a waxy insect shell, those microscopic shards act like broken",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diatomaceous earth microscopic shard insect shell interaction diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "abstrato"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 85
+    },
+    {
+      "t_ini": 300.0,
+      "t_fim": 302.0,
+      "dur": 2.0,
+      "texto": "glass:",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "macro broken glass shards, microscopic sharp edges",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 86
+    },
+    {
+      "t_ini": 302.0,
+      "t_fim": 306.0,
+      "dur": 4.0,
+      "texto": "the powder scratches through the coating and the pest dries out within days.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "insect drying out, desiccated insect, pest control",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 87
+    },
+    {
+      "t_ini": 306.0,
+      "t_fim": 311.0,
+      "dur": 5.0,
+      "texto": "It kills ants, earwigs, beetle larvae, and slugs mechanically, which means no pest",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ants on ground, earwig close up, beetle larvae, slug in garden",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 88
+    },
+    {
+      "t_ini": 311.0,
+      "t_fim": 316.0,
+      "dur": 5.0,
+      "texto": "can ever evolve resistance to it, the way they routinely do against chemicals.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "resilient insects, pest evolution, chemical resistance abstract",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 89
+    },
+    {
+      "t_ini": 316.0,
+      "t_fim": 320.0,
+      "dur": 4.0,
+      "texto": "Buy food-grade diatomaceous earth, dust a ring around the base of vulnerable plants",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dusting plants with white powder, applying diatomaceous earth",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 90
+    },
+    {
+      "t_ini": 320.0,
+      "t_fim": 323.0,
+      "dur": 3.0,
+      "texto": "on a dry day, and reapply after watering.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "watering garden plants, rain on diatomaceous earth",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 91
+    },
+    {
+      "t_ini": 323.0,
+      "t_fim": 327.0,
+      "dur": 4.0,
+      "texto": "Keep the dust off open flowers, because it can't tell a pollinator from a pest",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bee on flower, pollinator collecting nectar",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "stock"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 92
+    },
+    {
+      "t_ini": 327.0,
+      "t_fim": 328.0,
+      "dur": 1.0,
+      "texto": "either.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "garden flowers close up, delicate petals",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 93
+    },
+    {
+      "t_ini": 328.0,
+      "t_fim": 331.0,
+      "dur": 3.0,
+      "texto": "Under three dollars a kilo and a bag lasts a season.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PriceCallOut",
+      "dados": {
+        "price": 3,
+        "currency": "$",
+        "unit": "kilo",
+        "duration": "a season",
+        "operator": "<"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "three"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 94
+    },
+    {
+      "t_ini": 331.0,
+      "t_fim": 334.0,
+      "dur": 3.0,
+      "texto": "Systemic Solutions & Potent Protectors",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Systemic Solutions & Potent Protectors",
+        "number": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 95
+    },
+    {
+      "t_ini": 331.0,
+      "t_fim": 334.0,
+      "dur": 3.0,
+      "texto": "Number two: insecticide or soap.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "gardening pest control organic spray ingredients",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 96
+    },
+    {
+      "t_ini": 334.0,
+      "t_fim": 338.0,
+      "dur": 4.0,
+      "texto": "Not dish detergent, which can strip the waxy coating off your leaves, but real",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "plant leaves damaged dish soap close up, healthy plant leaves close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 97
+    },
+    {
+      "t_ini": 338.0,
+      "t_fim": 344.0,
+      "dur": 6.0,
+      "texto": "potassium soap, the kind sold as Castile soap, five tablespoons in four liters of",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mixing Castile soap five tablespoons into water for garden spray",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageCallout",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 98
+    },
+    {
+      "t_ini": 344.0,
+      "t_fim": 347.0,
+      "dur": 3.0,
+      "texto": "water, sprayed directly onto the insects.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "spraying plant with organic pest control, close up insects on leaf being sprayed",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 99
+    },
+    {
+      "t_ini": 347.0,
+      "t_fim": 351.0,
+      "dur": 4.0,
+      "texto": "The fatty acids dissolve the outer membrane of soft-bodied pests and they collapse",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing fatty acids dissolving insect outer membrane, pest cell lysis illustration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 100
+    },
+    {
+      "t_ini": 351.0,
+      "t_fim": 353.0,
+      "dur": 2.0,
+      "texto": "within the hour.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "wilting plant pest damage after spray time lapse, plant pest control effectiveness",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:NumberCountOverlay",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 101
+    },
+    {
+      "t_ini": 353.0,
+      "t_fim": 358.0,
+      "dur": 5.0,
+      "texto": "Aphids, spider mites, mealybugs, and whiteflies are the main targets, and studies on",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close up aphids on plant, spider mites webbing on leaves, mealybugs on stem, whiteflies on underside of leaf",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 102
+    },
+    {
+      "t_ini": 358.0,
+      "t_fim": 362.0,
+      "dur": 4.0,
+      "texto": "infested crops have measured knockdown rates around ninety percent when coverage is",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PercentageBarChart",
+      "dados": {
+        "label": "Knockdown Rate",
+        "value": 90,
+        "total": 100,
+        "unit": "%",
+        "color": "#4CAF50"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "number": 90
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 103
+    },
+    {
+      "t_ini": 362.0,
+      "t_fim": 367.0,
+      "dur": 5.0,
+      "texto": "thorough. The soap only works while it is wet, leaves no residue, and you can",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "organic soap spray residue drying on leaf close up, clear plant leaf no residue",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 104
+    },
+    {
+      "t_ini": 367.0,
+      "t_fim": 370.0,
+      "dur": 3.0,
+      "texto": "harvest and eat the vegetables the same day.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "harvesting organic vegetables, fresh garden salad close up, eating fresh vegetables",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 105
+    },
+    {
+      "t_ini": 370.0,
+      "t_fim": 374.0,
+      "dur": 4.0,
+      "texto": "It is the fastest, cheapest answer to the most common infestation in every American",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "healthy American garden vibrant, thriving vegetable garden",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 106
+    },
+    {
+      "t_ini": 374.0,
+      "t_fim": 376.0,
+      "dur": 2.0,
+      "texto": "garden.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "United States"
+        ],
+        "labels": [
+          "American Gardens"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "American garden"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 107
+    },
+    {
+      "t_ini": 376.0,
+      "t_fim": 380.0,
+      "dur": 4.0,
+      "texto": "Spray in the early morning or evening, never under the midday sun, and repeat every",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "spraying plants morning light, spraying plants evening sunset, plant under midday sun",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 108
+    },
+    {
+      "t_ini": 380.0,
+      "t_fim": 383.0,
+      "dur": 3.0,
+      "texto": "four days until the colony is gone.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 4,
+        "label": "Repeat Every",
+        "suffix": "Days"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "number": 4
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 109
+    },
+    {
+      "t_ini": 383.0,
+      "t_fim": 385.0,
+      "dur": 2.0,
+      "texto": "And number one, neem oil.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "neem oil bottle garden, organic pest control ingredient",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 110
+    },
+    {
+      "t_ini": 385.0,
+      "t_fim": 390.0,
+      "dur": 5.0,
+      "texto": "Pressed from the seeds of a tree that grows across India, neem has been protecting",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location_name": "India",
+        "latitude": 20.5937,
+        "longitude": 78.9629,
+        "zoom": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "India"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 111
+    },
+    {
+      "t_ini": 390.0,
+      "t_fim": 395.0,
+      "dur": 5.0,
+      "texto": "stored grain and standing crops for over four thousand years, and modern agriculture",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 4000,
+        "label": "Used for over",
+        "suffix": "Years"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "number": 4000
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 112
+    },
+    {
+      "t_ini": 395.0,
+      "t_fim": 397.0,
+      "dur": 2.0,
+      "texto": "still hasn't found anything quite like it.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "unique natural pest control ingredient, neem oil benefits conceptual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 113
+    },
+    {
+      "t_ini": 397.0,
+      "t_fim": 403.0,
+      "dur": 6.0,
+      "texto": "Nem's active compound doesn't just kill on contact; insects that feed on treated",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neem active compound mechanism diagram, insect digestion inhibition illustration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 114
+    },
+    {
+      "t_ini": 403.0,
+      "t_fim": 407.0,
+      "dur": 4.0,
+      "texto": "leaves stop eating, stop molting, and stop laying eggs.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "insects feeding on leaf time lapse stop, insect molting inhibition, insect egg laying prevention",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "ilustracao:IconGrid"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 115
+    },
+    {
+      "t_ini": 407.0,
+      "t_fim": 411.0,
+      "dur": 4.0,
+      "texto": "It breaks the pest's life cycle at every stage, which is why a single bottle handles",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "insect life cycle diagram with interruption points, pest metamorphosis disruption illustration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 116
+    },
+    {
+      "t_ini": 411.0,
+      "t_fim": 416.0,
+      "dur": 5.0,
+      "texto": "aphids, mites, whiteflies, leaf miners, and even the fungal diseases that follow",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close up aphids, spider mites, whiteflies on plants, leaf miner damage on leaf",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 117
+    },
+    {
+      "t_ini": 416.0,
+      "t_fim": 419.0,
+      "dur": 3.0,
+      "texto": "them like powdery mildew and black spot.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "powdery mildew on leaves close up, black spot disease on rose leaf",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "ilustracao:ImageCallout"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 118
+    },
+    {
+      "t_ini": 419.0,
+      "t_fim": 423.0,
+      "dur": 4.0,
+      "texto": "Mix two teaspoons of cold-pressed neem oil with a liter of warm water and a few",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mixing neem oil two teaspoons into warm water, cold-pressed neem oil bottle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 119
+    },
+    {
+      "t_ini": 423.0,
+      "t_fim": 427.0,
+      "dur": 4.0,
+      "texto": "drops of soap, shake hard, and spray every leaf top and bottom once a week in the",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "shaking neem oil mixture, spraying top and bottom of plant leaves, spraying garden plants",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 120
+    },
+    {
+      "t_ini": 427.0,
+      "t_fim": 432.0,
+      "dur": 5.0,
+      "texto": "evening. Evening. It is gentle on bees once dry, safe on edible crops, and about ten",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "bees pollinating flowers, healthy edible garden, organic farming safety",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 121
+    },
+    {
+      "t_ini": 432.0,
+      "t_fim": 433.0,
+      "dur": 1.0,
+      "texto": "dollars a bottle.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PriceCallOut",
+      "dados": {
+        "price": 10,
+        "currency": "$",
+        "description": "per bottle"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "number": 10
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 122
+    },
+    {
+      "t_ini": 433.0,
+      "t_fim": 437.0,
+      "dur": 4.0,
+      "texto": "If you only ever buy one thing from this list, buy neem.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "neem oil bottle on a shelf, organic garden supply, best natural pest control",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 123
+    },
+    {
+      "t_ini": 437.0,
+      "t_fim": 442.0,
+      "dur": 5.0,
+      "texto": "One honest warning before you spray anything, even the natural options: every tool",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "gardening natural pest control tools macro close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:garden spraying",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 124
+    },
+    {
+      "t_ini": 442.0,
+      "t_fim": 447.0,
+      "dur": 5.0,
+      "texto": "on this list is a weapon, and a weapon doesn't care what it hits while it is active,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "gardening natural pest control metaphor weapon danger spray indiscriminately",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:spraying garden indiscriminately",
+        "ilustracao:technical diagram spray pattern"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 125
+    },
+    {
+      "t_ini": 447.0,
+      "t_fim": 451.0,
+      "dur": 4.0,
+      "texto": "so follow the two rules that separate a healthy garden from a silent one: spray in",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "lush healthy vibrant garden vs quiet still empty garden split screen contrast",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:healthy garden",
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 126
+    },
+    {
+      "t_ini": 451.0,
+      "t_fim": 453.0,
+      "dur": 2.0,
+      "texto": "the evening when pollinators are home.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person spraying garden in evening sunset, pollinators flying away",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:pollinator insects flying at dusk",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 127
+    },
+    {
+      "t_ini": 453.0,
+      "t_fim": 456.0,
+      "dur": 3.0,
+      "texto": "And never ever spray an oak and flower.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close up spray hitting oak leaves and flower petals, damaging effect",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:oak tree close up and flower close up, do not spray",
+        "ilustracao:diagram of spray avoiding plants"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 128
+    },
+    {
+      "t_ini": 456.0,
+      "t_fim": 460.0,
+      "dur": 4.0,
+      "texto": "Do that, and these seven will clear out the invaders while your bees, your",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "7",
+        "label": "Natural Solutions"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "seven"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 129
+    },
+    {
+      "t_ini": 460.0,
+      "t_fim": 464.0,
+      "dur": 4.0,
+      "texto": "butterflies, and your ladybugs keep working for you, for free, all season long.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bees pollinating flowers, butterflies on plants, ladybugs on leaves close up working",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:macro shot of garden beneficial insects",
+        "ilustracao:illustration of beneficial insects"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 130
+    },
+    {
+      "t_ini": 464.0,
+      "t_fim": 467.0,
+      "dur": 3.0,
+      "texto": "Your garden already knows how to defend itself.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "resilient thriving garden ecosystem self-sustaining",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:healthy garden ecosystem",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 131
+    },
+    {
+      "t_ini": 467.0,
+      "t_fim": 473.0,
+      "dur": 6.0,
+      "texto": "Your job is just to hand it the right ammunition.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "gardener preparing natural pest control spray bottle hands, providing tools",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:gardener applying natural pest control",
+        "ilustracao:diagram of natural pest control tools"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 132
+    }
+  ]
+}

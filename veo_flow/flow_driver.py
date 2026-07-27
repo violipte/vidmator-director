@@ -1,0 +1,202 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""flow_driver.py — driver Playwright do Google Flow (VEO 3.1), SEM API paga.
+
+Dirige o site labs.google/fx/tools/flow reusando uma SESSÃO LOGADA num perfil
+Chrome dedicado (login manual 1x). Baseado no mapa em veo_flow/FLOW_MAP.md.
+
+FASES PRONTAS:  login · abrir/criar projeto · configurar vídeo (modelo/aspecto/
+                duração/saídas) · enviar prompt.
+STUBS (a confirmar com 1 clipe real):  esperar conclusão · baixar o mp4.
+
+Uso:
+  python flow_driver.py login
+      -> abre o browser; você loga 1x na conta Google Ultra; a sessão persiste.
+  python flow_driver.py gen "a red fox running through snow, cinematic" \
+      [--modelo "Veo 3.1 - Fast"] [--dur 8s] [--aspecto 16:9] [--saidas x2] [--proj <projId>]
+
+Requer: veo_venv (Playwright 1.61 + Chrome instalado).
+Rodar com:  "F:/Canal Dark/veo_venv/Scripts/python.exe" flow_driver.py ...
+"""
+import argparse
+import re
+import sys
+import time
+from pathlib import Path
+
+from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+
+sys.stdout.reconfigure(encoding="utf-8")
+
+# ---- config ----
+AQUI = Path(__file__).resolve().parent
+PROFILE_DIR = AQUI / "chrome_profile"      # perfil dedicado (login 1x, isolado do Chrome pessoal)
+DOWNLOADS = AQUI / "downloads"             # onde os mp4 caem
+BASE = "https://labs.google/fx/pt/tools/flow"
+UI_TIMEOUT = 60_000                        # ms p/ elementos de UI
+GEN_TIMEOUT = 8 * 60                       # s p/ a geração de vídeo terminar (VEO é lento)
+
+# regex do texto do botão seletor de modelo (muda conforme o estado)
+MODELO_BTN_RE = re.compile(r"(Veo|Banana|Omni|V[íi]deo|Imagem)", re.I)
+
+
+# ---- infra ----
+def abrir(headless=False):
+    """Abre o contexto persistente no Chrome instalado. Retorna (pw, ctx, page)."""
+    PROFILE_DIR.mkdir(parents=True, exist_ok=True)
+    DOWNLOADS.mkdir(parents=True, exist_ok=True)
+    pw = sync_playwright().start()
+    ctx = pw.chromium.launch_persistent_context(
+        user_data_dir=str(PROFILE_DIR),
+        channel="chrome",                  # usa o Google Chrome do sistema (não baixa chromium)
+        headless=headless,
+        accept_downloads=True,
+        viewport={"width": 1920, "height": 1080},
+        args=["--disable-blink-features=AutomationControlled"],  # reduz sinais óbvios de automação
+    )
+    page = ctx.pages[0] if ctx.pages else ctx.new_page()
+    page.set_default_timeout(UI_TIMEOUT)
+    return pw, ctx, page
+
+
+def _pausa(a=0.6, b=1.4):
+    """Pacing humano leve entre ações (anti-detecção básica)."""
+    import random
+    time.sleep(random.uniform(a, b))  # noqa: S311  (não-cripto, só timing)
+
+
+# ---- comandos ----
+def cmd_login():
+    """Abre o Flow p/ o usuário logar 1x. A sessão fica salva no PROFILE_DIR."""
+    pw, ctx, page = abrir(headless=False)
+    page.goto(BASE, wait_until="domcontentloaded")
+    print("=== LOGIN ===")
+    print("Faça login na tua conta Google (Ultra) NESTA janela do Chrome.")
+    print("Quando o Flow carregar logado (aparecer 'Novo projeto' / badge ULTRA),")
+    input("volte aqui e aperte ENTER pra salvar a sessão e fechar... ")
+    ctx.close(); pw.stop()
+    print(f"OK — sessão salva em {PROFILE_DIR}")
+
+
+def _abrir_projeto(page, proj_id=None):
+    """Abre um projeto existente (proj_id) ou cria um novo."""
+    if proj_id:
+        page.goto(f"{BASE}/project/{proj_id}", wait_until="domcontentloaded")
+    else:
+        page.goto(BASE, wait_until="domcontentloaded")
+        _pausa()
+        page.get_by_role("button", name=re.compile("Novo projeto", re.I)).click()
+    page.wait_for_url(re.compile(r"/project/[0-9a-f-]+"), timeout=UI_TIMEOUT)
+    _pausa()
+    print(f"  projeto: {page.url.split('/project/')[-1][:36]}")
+
+
+def _seletor_modelo_btn(page):
+    """O botão da barra de prompt que abre o popup de modelo/config."""
+    # está no rodapé, mostra o estado atual (ex.: 'Veo 3.1 - Fast' / 'Vídeo · 8s x2' / 'Nano Banana 2 x2')
+    return page.get_by_role("button").filter(has_text=MODELO_BTN_RE).last
+
+
+def configurar_video(page, modelo="Veo 3.1 - Fast", aspecto="16:9", dur="8s", saidas="x2"):
+    """Abre o popup e seta Vídeo + modelo + aspecto + duração + saídas."""
+    _seletor_modelo_btn(page).click()
+    _pausa()
+    page.get_by_role("tab", name="Vídeo", exact=True).click()      # aba Vídeo
+    _pausa(0.3, 0.7)
+    # modelo: abre o dropdown (botão mostra o modelo atual) e escolhe pelo texto
+    page.get_by_role("button", name=re.compile(r"Veo|Omni", re.I)).first.click()
+    _pausa(0.3, 0.7)
+    page.get_by_text(modelo, exact=True).click()
+    _pausa(0.3, 0.7)
+    page.get_by_role("tab", name=aspecto, exact=True).click()      # 9:16 | 16:9
+    page.get_by_role("tab", name=dur, exact=True).click()          # 4s | 6s | 8s
+    page.get_by_role("tab", name=saidas, exact=True).click()       # 1x | x2 | x3 | x4
+    # lê o custo exibido (ex.: 'A geração vai usar 20 créditos')
+    try:
+        custo = page.get_by_text(re.compile(r"cr[ée]ditos")).inner_text(timeout=3000)
+        print(f"  config: {modelo} · {aspecto} · {dur} · {saidas}  ({custo.strip()})")
+    except PWTimeout:
+        print(f"  config: {modelo} · {aspecto} · {dur} · {saidas}")
+    page.keyboard.press("Escape")   # fecha o popup
+    _pausa(0.3, 0.7)
+
+
+def enviar_prompt(page, prompt):
+    """Escreve o prompt e dispara a geração."""
+    cx = page.get_by_role("textbox").filter(has_text=re.compile(".*")).last  # textbox do rodapé
+    # placeholder é 'O que você quer criar?'; fallback p/ último textbox
+    try:
+        cx = page.get_by_placeholder(re.compile("quer criar", re.I))
+        cx.wait_for(timeout=5000)
+    except PWTimeout:
+        cx = page.get_by_role("textbox").last
+    cx.click()
+    _pausa(0.2, 0.5)
+    cx.fill(prompt)
+    _pausa(0.4, 0.9)
+    cx.press("Enter")               # submit primário (fallback: clicar a seta →)
+    print(f"  prompt enviado: {prompt[:60]}...")
+
+
+def esperar_e_baixar(page, out_dir=DOWNLOADS):
+    """STUB — a CONFIRMAR na 1ª geração real.
+
+    Plano (2 sinais de conclusão a validar ao vivo):
+      A) DOM: novo card de vídeo aparece no grid com botão play.
+      B) rede: resposta com a URL do mp4 (page.on('response') filtrando video/mp4).
+    Download (2 rotas):
+      1) abrir o card -> tela de detalhe -> clicar ⬇️  com page.expect_download().
+      2) pegar a URL do mp4 da rede e baixar direto (mais robusto).
+    """
+    print("  [STUB] esperar conclusão + baixar — confirmar com 1 clipe real (ver FLOW_MAP.md).")
+    # esqueleto da rota por rede (a ativar quando validarmos o padrão de URL):
+    # mp4s = []
+    # page.on("response", lambda r: mp4s.append(r.url) if ".mp4" in r.url else None)
+    # t0 = time.time()
+    # while time.time() - t0 < GEN_TIMEOUT and not mp4s:
+    #     time.sleep(3)
+    # ... baixar mp4s[-1] ...
+    return None
+
+
+def cmd_gen(args):
+    pw, ctx, page = abrir(headless=False)
+    try:
+        # sanidade de login
+        page.goto(BASE, wait_until="domcontentloaded")
+        if page.get_by_role("button", name=re.compile("Fazer login|Sign in", re.I)).count():
+            print("NÃO logado. Rode primeiro:  python flow_driver.py login")
+            return
+        _abrir_projeto(page, args.proj)
+        configurar_video(page, args.modelo, args.aspecto, args.dur, args.saidas)
+        enviar_prompt(page, args.prompt)
+        esperar_e_baixar(page)
+        print("\nOK (geração disparada). Download = stub até validarmos com 1 clipe.")
+        if args.hold:
+            input("ENTER pra fechar o browser... ")
+    finally:
+        ctx.close(); pw.stop()
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("login")
+    g = sub.add_parser("gen")
+    g.add_argument("prompt")
+    g.add_argument("--modelo", default="Veo 3.1 - Fast")
+    g.add_argument("--aspecto", default="16:9", choices=["16:9", "9:16"])
+    g.add_argument("--dur", default="8s", choices=["4s", "6s", "8s"])
+    g.add_argument("--saidas", default="x2", choices=["1x", "x2", "x3", "x4"])
+    g.add_argument("--proj", default=None, help="projId existente (senão cria novo)")
+    g.add_argument("--hold", action="store_true", help="não fecha o browser no fim")
+    a = ap.parse_args()
+
+    if a.cmd == "login":
+        cmd_login()
+    elif a.cmd == "gen":
+        cmd_gen(a)
+
+
+if __name__ == "__main__":
+    main()

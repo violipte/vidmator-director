@@ -189,5 +189,75 @@
     },
     "fonte_imagens": "hibrido",
     "cold_open": true
+  },
+  "survival": {
+    "glitch_topico": false,
+    "sfx": {
+      "glitch": []
+    },
+    "hook_ate": 180,
+    "fonte_hint": "impact",
+    "efeito_intensidade": 0.22,
+    "video_frac": 0.6,
+    "vet_relevancia": true,
+    "cold_open": true,
+    "mascote": {
+      "ativo": true,
+      "banco": "F:/Canal Dark/Aplicativo de Edição/banco-videos/mascote_galo",
+      "cada": [
+        2,
+        3
+      ]
+    }
+  },
+  "motos": {
+    "descricao": "review / top-N automotivo — limpo, energetico, pouco efeito, sem vintage",
+    "vintage": false,
+    "efeito_intensidade": 0.12,
+    "moods_pool": [
+      "revelacao"
+    ],
+    "apresentacao_freq": 0.3,
+    "apresentacao_pool": [
+      "spotlight",
+      "reveal",
+      "parallax",
+      "polaroid"
+    ],
+    "fonte_hint": "impact",
+    "ritmo_seg": null,
+    "glitch_topico": false,
+    "sfx": {
+      "transicao": [],
+      "entrada": [],
+      "glitch": []
+    }
+  },
+  "romance": {
+    "glitch_topico": false,
+    "sfx": {
+      "glitch": []
+    },
+    "hook_ate": 180,
+    "fonte_hint": "clean",
+    "efeito_intensidade": 0.14,
+    "video_frac": 0.5,
+    "vet_relevancia": true,
+    "cold_open": false,
+    "story_engine": true,
+    "ambiencia": {
+      "ativo": true,
+      "banco": "D:/Meu Drive/canal_dark_ambiencias",
+      "gain_db": -6
+    },
+    "foley": {
+      "ativo": true,
+      "banco": "D:/Meu Drive/canal_dark_foley",
+      "gain_db": -6
+    },
+    "personagens": {
+      "ativo": true,
+      "banco": "F:/Canal Dark/Aplicativo de Edição/banco-videos/personagens_historia"
+    }
   }
 }

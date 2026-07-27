@@ -1,0 +1,227 @@
+{
+  "cenas": [
+    {
+      "frase_inicio": "Everyone said I hired her for revenge. They were right.",
+      "lugar": "generic_interior",
+      "tempo": "present",
+      "personagens": [
+        "Narrator"
+      ],
+      "emocao": "tension",
+      "intensidade": 0.6,
+      "objetos": []
+    },
+    {
+      "frase_inicio": "Ten years ago, Clara Mendes left me standing at",
+      "lugar": "church",
+      "tempo": "flashback",
+      "personagens": [
+        "Narrator",
+        "Clara",
+        "Clara's sister"
+      ],
+      "emocao": "grief",
+      "intensidade": 0.8,
+      "objetos": [
+        "ring"
+      ]
+    },
+    {
+      "frase_inicio": "So yes. When her resume landed on my desk",
+      "lugar": "office",
+      "tempo": "flashback",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "anger",
+      "intensidade": 0.7,
+      "objetos": [
+        "resume",
+        "coffee"
+      ]
+    },
+    {
+      "frase_inicio": "For three months, I was surgical. The impossible deadlines.",
+      "lugar": "office",
+      "tempo": "present",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "tension",
+      "intensidade": 0.6,
+      "objetos": [
+        "files",
+        "office lamp"
+      ]
+    },
+    {
+      "frase_inicio": "That was the first crack in my plan: she was",
+      "lugar": "generic_interior",
+      "tempo": "present",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "suspense",
+      "intensidade": 0.5,
+      "objetos": []
+    },
+    {
+      "frase_inicio": "The second crack was the bracelet. Thin, silver,",
+      "lugar": "office",
+      "tempo": "present",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "nostalgia",
+      "intensidade": 0.6,
+      "objetos": [
+        "bracelet"
+      ]
+    },
+    {
+      "frase_inicio": "I won it in a claw machine on our",
+      "lugar": "generic_interior",
+      "tempo": "flashback",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "tenderness",
+      "intensidade": 0.6,
+      "objetos": [
+        "bracelet"
+      ]
+    },
+    {
+      "frase_inicio": "The third crack broke me. It was a Tuesday",
+      "lugar": "office",
+      "tempo": "night",
+      "personagens": [
+        "Narrator"
+      ],
+      "emocao": "suspense",
+      "intensidade": 0.7,
+      "objetos": [
+        "desk drawer",
+        "pharmacy bag",
+        "bus ticket",
+        "envelope"
+      ]
+    },
+    {
+      "frase_inicio": "I sat in her chair, in my own company,",
+      "lugar": "office",
+      "tempo": "night",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "grief",
+      "intensidade": 0.9,
+      "objetos": [
+        "letter",
+        "envelope"
+      ]
+    },
+    {
+      "frase_inicio": "There was a second page. A doctor's letter,",
+      "lugar": "office",
+      "tempo": "night",
+      "personagens": [
+        "Narrator"
+      ],
+      "emocao": "shock",
+      "intensidade": 1.0,
+      "objetos": [
+        "letter",
+        "pharmacy bag"
+      ]
+    },
+    {
+      "frase_inicio": "And she never came to tell me. Because",
+      "lugar": "generic_interior",
+      "tempo": "present",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "regret",
+      "intensidade": 0.8,
+      "objetos": [
+        "newspaper clippings"
+      ]
+    },
+    {
+      "frase_inicio": "I drove to her apartment in that rain.",
+      "lugar": "car_rain",
+      "tempo": "night_outdoor",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "hope",
+      "intensidade": 0.9,
+      "objetos": [
+        "envelope"
+      ]
+    },
+    {
+      "frase_inicio": "We talked until four in the morning. About",
+      "lugar": "generic_interior",
+      "tempo": "night",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "tenderness",
+      "intensidade": 0.8,
+      "objetos": [
+        "bracelet"
+      ]
+    },
+    {
+      "frase_inicio": "We didn't rush. We had a first date",
+      "lugar": "cafe",
+      "tempo": "day",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "joy",
+      "intensidade": 0.7,
+      "objetos": []
+    },
+    {
+      "frase_inicio": "Last June, at Saint Michael's, in front of",
+      "lugar": "church",
+      "tempo": "day",
+      "personagens": [
+        "Narrator",
+        "Clara"
+      ],
+      "emocao": "joy",
+      "intensidade": 1.0,
+      "objetos": []
+    },
+    {
+      "frase_inicio": "Some people get one love story. We got",
+      "lugar": "generic_interior",
+      "tempo": "present",
+      "personagens": [
+        "Narrator"
+      ],
+      "emocao": "relief",
+      "intensidade": 0.7,
+      "objetos": []
+    }
+  ],
+  "casting": {
+    "Narrator": "man_1",
+    "Clara": "woman_1",
+    "Clara's sister": null
+  }
+}

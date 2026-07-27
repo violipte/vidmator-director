@@ -1,0 +1,393 @@
+{
+  "video": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE.mp4",
+  "duracao": 232.45,
+  "origem": "cena",
+  "n_frames": 63,
+  "sheets": [
+    "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\sheet_01.jpg",
+    "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\sheet_02.jpg",
+    "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\sheet_03.jpg",
+    "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\sheet_04.jpg"
+  ],
+  "audio_16k": null,
+  "shots": [
+    {
+      "i": 0,
+      "t": 2.7,
+      "hms": "00:02.70",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0000.jpg"
+    },
+    {
+      "i": 1,
+      "t": 2.73,
+      "hms": "00:02.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0001.jpg"
+    },
+    {
+      "i": 2,
+      "t": 5.5,
+      "hms": "00:05.50",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0002.jpg"
+    },
+    {
+      "i": 3,
+      "t": 8.4,
+      "hms": "00:08.40",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0003.jpg"
+    },
+    {
+      "i": 4,
+      "t": 13.7,
+      "hms": "00:13.70",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0004.jpg"
+    },
+    {
+      "i": 5,
+      "t": 13.73,
+      "hms": "00:13.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0005.jpg"
+    },
+    {
+      "i": 6,
+      "t": 19.6,
+      "hms": "00:19.60",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0006.jpg"
+    },
+    {
+      "i": 7,
+      "t": 23.13,
+      "hms": "00:23.13",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0007.jpg"
+    },
+    {
+      "i": 8,
+      "t": 26.0,
+      "hms": "00:26.00",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0008.jpg"
+    },
+    {
+      "i": 9,
+      "t": 28.73,
+      "hms": "00:28.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0009.jpg"
+    },
+    {
+      "i": 10,
+      "t": 38.13,
+      "hms": "00:38.13",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0010.jpg"
+    },
+    {
+      "i": 11,
+      "t": 41.1,
+      "hms": "00:41.10",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0011.jpg"
+    },
+    {
+      "i": 12,
+      "t": 44.03,
+      "hms": "00:44.03",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0012.jpg"
+    },
+    {
+      "i": 13,
+      "t": 49.27,
+      "hms": "00:49.27",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0013.jpg"
+    },
+    {
+      "i": 14,
+      "t": 52.07,
+      "hms": "00:52.07",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0014.jpg"
+    },
+    {
+      "i": 15,
+      "t": 54.3,
+      "hms": "00:54.30",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0015.jpg"
+    },
+    {
+      "i": 16,
+      "t": 54.33,
+      "hms": "00:54.33",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0016.jpg"
+    },
+    {
+      "i": 17,
+      "t": 76.57,
+      "hms": "01:16.57",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0017.jpg"
+    },
+    {
+      "i": 18,
+      "t": 79.37,
+      "hms": "01:19.37",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0018.jpg"
+    },
+    {
+      "i": 19,
+      "t": 82.33,
+      "hms": "01:22.33",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0019.jpg"
+    },
+    {
+      "i": 20,
+      "t": 85.13,
+      "hms": "01:25.13",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0020.jpg"
+    },
+    {
+      "i": 21,
+      "t": 89.2,
+      "hms": "01:29.20",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0021.jpg"
+    },
+    {
+      "i": 22,
+      "t": 92.0,
+      "hms": "01:32.00",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0022.jpg"
+    },
+    {
+      "i": 23,
+      "t": 96.67,
+      "hms": "01:36.67",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0023.jpg"
+    },
+    {
+      "i": 24,
+      "t": 99.47,
+      "hms": "01:39.47",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0024.jpg"
+    },
+    {
+      "i": 25,
+      "t": 112.0,
+      "hms": "01:52.00",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0025.jpg"
+    },
+    {
+      "i": 26,
+      "t": 114.8,
+      "hms": "01:54.80",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0026.jpg"
+    },
+    {
+      "i": 27,
+      "t": 118.1,
+      "hms": "01:58.10",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0027.jpg"
+    },
+    {
+      "i": 28,
+      "t": 120.9,
+      "hms": "02:00.90",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0028.jpg"
+    },
+    {
+      "i": 29,
+      "t": 121.37,
+      "hms": "02:01.37",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0029.jpg"
+    },
+    {
+      "i": 30,
+      "t": 121.4,
+      "hms": "02:01.40",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0030.jpg"
+    },
+    {
+      "i": 31,
+      "t": 124.17,
+      "hms": "02:04.17",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0031.jpg"
+    },
+    {
+      "i": 32,
+      "t": 126.97,
+      "hms": "02:06.97",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0032.jpg"
+    },
+    {
+      "i": 33,
+      "t": 129.77,
+      "hms": "02:09.77",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0033.jpg"
+    },
+    {
+      "i": 34,
+      "t": 132.53,
+      "hms": "02:12.53",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0034.jpg"
+    },
+    {
+      "i": 35,
+      "t": 135.33,
+      "hms": "02:15.33",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0035.jpg"
+    },
+    {
+      "i": 36,
+      "t": 138.7,
+      "hms": "02:18.70",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0036.jpg"
+    },
+    {
+      "i": 37,
+      "t": 151.2,
+      "hms": "02:31.20",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0037.jpg"
+    },
+    {
+      "i": 38,
+      "t": 154.0,
+      "hms": "02:34.00",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0038.jpg"
+    },
+    {
+      "i": 39,
+      "t": 154.7,
+      "hms": "02:34.70",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0039.jpg"
+    },
+    {
+      "i": 40,
+      "t": 154.73,
+      "hms": "02:34.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0040.jpg"
+    },
+    {
+      "i": 41,
+      "t": 157.5,
+      "hms": "02:37.50",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0041.jpg"
+    },
+    {
+      "i": 42,
+      "t": 160.3,
+      "hms": "02:40.30",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0042.jpg"
+    },
+    {
+      "i": 43,
+      "t": 163.1,
+      "hms": "02:43.10",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0043.jpg"
+    },
+    {
+      "i": 44,
+      "t": 165.73,
+      "hms": "02:45.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0044.jpg"
+    },
+    {
+      "i": 45,
+      "t": 168.53,
+      "hms": "02:48.53",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0045.jpg"
+    },
+    {
+      "i": 46,
+      "t": 171.5,
+      "hms": "02:51.50",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0046.jpg"
+    },
+    {
+      "i": 47,
+      "t": 174.3,
+      "hms": "02:54.30",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0047.jpg"
+    },
+    {
+      "i": 48,
+      "t": 183.73,
+      "hms": "03:03.73",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0048.jpg"
+    },
+    {
+      "i": 49,
+      "t": 186.53,
+      "hms": "03:06.53",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0049.jpg"
+    },
+    {
+      "i": 50,
+      "t": 190.0,
+      "hms": "03:10.00",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0050.jpg"
+    },
+    {
+      "i": 51,
+      "t": 192.8,
+      "hms": "03:12.80",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0051.jpg"
+    },
+    {
+      "i": 52,
+      "t": 195.67,
+      "hms": "03:15.67",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0052.jpg"
+    },
+    {
+      "i": 53,
+      "t": 198.47,
+      "hms": "03:18.47",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0053.jpg"
+    },
+    {
+      "i": 54,
+      "t": 201.87,
+      "hms": "03:21.87",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0054.jpg"
+    },
+    {
+      "i": 55,
+      "t": 204.67,
+      "hms": "03:24.67",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0055.jpg"
+    },
+    {
+      "i": 56,
+      "t": 209.27,
+      "hms": "03:29.27",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0056.jpg"
+    },
+    {
+      "i": 57,
+      "t": 214.47,
+      "hms": "03:34.47",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0057.jpg"
+    },
+    {
+      "i": 58,
+      "t": 217.27,
+      "hms": "03:37.27",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0058.jpg"
+    },
+    {
+      "i": 59,
+      "t": 220.23,
+      "hms": "03:40.23",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0059.jpg"
+    },
+    {
+      "i": 60,
+      "t": 223.03,
+      "hms": "03:43.03",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0060.jpg"
+    },
+    {
+      "i": 61,
+      "t": 226.9,
+      "hms": "03:46.90",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0061.jpg"
+    },
+    {
+      "i": 62,
+      "t": 229.7,
+      "hms": "03:49.70",
+      "frame": "F:\\Canal Dark\\Aplicativo de Edição\\remotion\\motos2_SAFE_decup\\frames\\f_0062.jpg"
+    }
+  ]
+}

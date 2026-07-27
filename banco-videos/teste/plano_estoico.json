@@ -1,0 +1,5612 @@
+{
+  "secoes": [
+    {
+      "i": 0,
+      "titulo": "The Emperor's Secret Note",
+      "t_ini": 0.0,
+      "t_fim": 55.0,
+      "wash": "none",
+      "title_card": false
+    },
+    {
+      "i": 1,
+      "titulo": "The Real Stoicism",
+      "t_ini": 55.0,
+      "t_fim": 137.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 2,
+      "titulo": "Dichotomy of Control",
+      "t_ini": 137.0,
+      "t_fim": 241.0,
+      "wash": "dourado",
+      "title_card": true
+    },
+    {
+      "i": 3,
+      "titulo": "Negative Visualization",
+      "t_ini": 241.0,
+      "t_fim": 355.0,
+      "wash": "vermelho",
+      "title_card": true
+    },
+    {
+      "i": 4,
+      "titulo": "Naked Perception",
+      "t_ini": 355.0,
+      "t_fim": 463.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 5,
+      "titulo": "The View From Above",
+      "t_ini": 463.0,
+      "t_fim": 571.0,
+      "wash": "amarelo",
+      "title_card": true
+    },
+    {
+      "i": 6,
+      "titulo": "The Evening Review",
+      "t_ini": 571.0,
+      "t_fim": 665.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 7,
+      "titulo": "Assembling the Machine",
+      "t_ini": 665.0,
+      "t_fim": 738.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 8,
+      "titulo": "Digest It Instead",
+      "t_ini": 738.0,
+      "t_fim": 809.0,
+      "wash": "none",
+      "title_card": false
+    }
+  ],
+  "beats": [
+    {
+      "t_ini": 0.0,
+      "t_fim": 5.0,
+      "dur": 5.0,
+      "texto": "Two thousand years ago, the most powerful man on earth sat alone in a war tent on",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman general alone in war tent, Roman emperor tent interior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:atmospheric ancient Roman tent interior",
+        "ilustracao:Roman war camp diagram"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 0
+    },
+    {
+      "t_ini": 5.0,
+      "t_fim": 7.0,
+      "dur": 2.0,
+      "texto": "the frozen edge of the Roman Empire",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region_name": "Roman Empire",
+        "context": "Northern Frontier"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Roman Empire"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 1
+    },
+    {
+      "t_ini": 7.0,
+      "t_fim": 10.0,
+      "dur": 3.0,
+      "texto": "and wrote a private note to himself:",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman writing on scroll close up, hand writing on papyrus with stylus",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:Roman writing tools diagram",
+        "stock:ancient parchment paper texture"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 2
+    },
+    {
+      "t_ini": 10.0,
+      "t_fim": 14.0,
+      "dur": 4.0,
+      "texto": "\"You have power over your mind, not outside events.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "stoic philosophy scroll, ancient Roman contemplative atmosphere",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "ilustracao:symbolic representation of internal strength"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 3
+    },
+    {
+      "t_ini": 14.0,
+      "t_fim": 16.0,
+      "dur": 2.0,
+      "texto": "Realize this, and you will find strength.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "inner strength ancient wisdom, stoic wisdom abstract",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "ilustracao:abstract concept of inner strength"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 4
+    },
+    {
+      "t_ini": 16.0,
+      "t_fim": 19.0,
+      "dur": 3.0,
+      "texto": "\" He wasn't writing a book.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman writing scroll, papyrus scroll unrolling close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:difference between scroll and codex",
+        "stock:ancient writing materials"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 5
+    },
+    {
+      "t_ini": 19.0,
+      "t_fim": 23.0,
+      "dur": 4.0,
+      "texto": "He never intended anyone to read those pages.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "private ancient manuscript, hidden wisdom Roman era",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "ilustracao:symbol of secret knowledge"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 6
+    },
+    {
+      "t_ini": 23.0,
+      "t_fim": 28.0,
+      "dur": 5.0,
+      "texto": "Marcus Aurelius, emperor of Rome, commander of legions, was performing a daily",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Marcus Aurelius",
+        "title": "Emperor of Rome",
+        "subtitle": "Commander of Legions"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius",
+        "lugar": "Rome"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 7
+    },
+    {
+      "t_ini": 28.0,
+      "t_fim": 33.0,
+      "dur": 5.0,
+      "texto": "exercise invented by slaves and exiles, an operating system for the human mind that",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman slaves daily life art, Roman exiles historical painting",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:ancient Roman suffering depiction",
+        "ilustracao:social hierarchy ancient Rome diagram"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 8
+    },
+    {
+      "t_ini": 33.0,
+      "t_fim": 35.0,
+      "dur": 2.0,
+      "texto": "we now call stoicism.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "TextReveal",
+      "dados": {
+        "title": "Stoicism",
+        "description": "Ancient Philosophy"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 9
+    },
+    {
+      "t_ini": 35.0,
+      "t_fim": 40.0,
+      "dur": 5.0,
+      "texto": "Today we are going to take that system apart piece by piece, the five disciplines",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "stoic philosophy framework diagram, system deconstruction blueprint",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay for 'five disciplines'",
+        "stock:abstract concept of deconstruction"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 10
+    },
+    {
+      "t_ini": 40.0,
+      "t_fim": 44.0,
+      "dur": 4.0,
+      "texto": "that carried an emperor through plague and war, a senator through betrayal and",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman plague historical footage, Roman legion battle scene",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:Roman warfare diagram",
+        "stock:dark moody historical atmosphere"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 11
+    },
+    {
+      "t_ini": 44.0,
+      "t_fim": 49.0,
+      "dur": 5.0,
+      "texto": "exile, and a crippled slave through a life that should have destroyed him.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman exile scene, crippled slave historical art",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:ancient Roman daily life scene",
+        "animacao:CharacterCard"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 12
+    },
+    {
+      "t_ini": 49.0,
+      "t_fim": 52.0,
+      "dur": 3.0,
+      "texto": "This isn't motivation, this is engineering.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "engineering blueprint design, mechanical system diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "stock:abstract gears and machinery"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 13
+    },
+    {
+      "t_ini": 52.0,
+      "t_fim": 55.0,
+      "dur": 3.0,
+      "texto": "And by the end of this video, you will have the complete blueprint.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "complete blueprint technical drawing, detailed engineering schematic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "stock:architectural blueprint concept"
+      ],
+      "secao": 0,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 14
+    },
+    {
+      "t_ini": 55.0,
+      "t_fim": 58.0,
+      "dur": 3.0,
+      "texto": "The Real Stoicism",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Real Stoicism",
+        "number": 1
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 15
+    },
+    {
+      "t_ini": 55.0,
+      "t_fim": 61.0,
+      "dur": 6.0,
+      "texto": "Before the five disciplines, you need to understand what stoicism actually is,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient philosophy contemplation serene",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 16
+    },
+    {
+      "t_ini": 61.0,
+      "t_fim": 64.0,
+      "dur": 3.0,
+      "texto": "because almost everything the modern world says about it is wrong.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "modern city life confused busy",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 17
+    },
+    {
+      "t_ini": 64.0,
+      "t_fim": 69.0,
+      "dur": 5.0,
+      "texto": "Being stoic, lower case, means suppressing your feelings and gritting your teeth.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person suppressing emotion resisting struggle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 18
+    },
+    {
+      "t_ini": 69.0,
+      "t_fim": 72.0,
+      "dur": 3.0,
+      "texto": "Stoicism, upper case, is close to the opposite.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calm reflective person peaceful mindset",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 19
+    },
+    {
+      "t_ini": 72.0,
+      "t_fim": 77.0,
+      "dur": 5.0,
+      "texto": "It was founded around three hundred years before Christ by Zeno of Citium, a",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Zeno of Citium",
+        "title": "Founder of Stoicism",
+        "date": "c. 334 – c. 262 BC"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Zeno of Citium"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 20
+    },
+    {
+      "t_ini": 77.0,
+      "t_fim": 79.0,
+      "dur": 2.0,
+      "texto": "merchant from Cyprus who lost everything in a shipwreck,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient shipwreck underwater wreckage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 21
+    },
+    {
+      "t_ini": 79.0,
+      "t_fim": 81.0,
+      "dur": 2.0,
+      "texto": "wandered into a bookshop in",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient greek bookshop parchment scrolls",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 22
+    },
+    {
+      "t_ini": 81.0,
+      "t_fim": 83.0,
+      "dur": 2.0,
+      "texto": "Athens, and asked.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location_name": "Athens, Greece",
+        "coordinates": "37.9838° N, 23.7275° E"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Athens"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 23
+    },
+    {
+      "t_ini": 83.0,
+      "t_fim": 85.0,
+      "dur": 2.0,
+      "texto": "Asked the shopkeeper where he could find a man like Socrates.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Socrates",
+        "title": "Athenian Philosopher",
+        "date": "c. 470 – 399 BC"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Socrates"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 24
+    },
+    {
+      "t_ini": 85.0,
+      "t_fim": 91.0,
+      "dur": 6.0,
+      "texto": "The philosophy he built stands on one blade of an idea: some things are up to you,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mental clarity decision making process",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 25
+    },
+    {
+      "t_ini": 91.0,
+      "t_fim": 92.0,
+      "dur": 1.0,
+      "texto": "and some things aren't.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "serene landscape uncontrollable elements",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 26
+    },
+    {
+      "t_ini": 92.0,
+      "t_fim": 96.0,
+      "dur": 4.0,
+      "texto": "Your judgments, your intentions, your responses, up to you.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "thought process focus concentration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 27
+    },
+    {
+      "t_ini": 96.0,
+      "t_fim": 99.0,
+      "dur": 3.0,
+      "texto": "Your reputation, your health,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person public perception judgement OR health illness medical condition",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "footage_video"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 28
+    },
+    {
+      "t_ini": 99.0,
+      "t_fim": 103.0,
+      "dur": 4.0,
+      "texto": "the storm, the market, the empire, not up to you.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "stormy weather intense rain OR stock market fluctuations trading floor OR ancient roman empire architecture",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 29
+    },
+    {
+      "t_ini": 103.0,
+      "t_fim": 108.0,
+      "dur": 5.0,
+      "texto": "Every ounce of suffering, the Stoics argued, comes from confusing those two lists.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mental struggle confusion internal conflict",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 30
+    },
+    {
+      "t_ini": 108.0,
+      "t_fim": 112.0,
+      "dur": 4.0,
+      "texto": "Epictetus, the slave who became Rome's most famous teacher, put it in nine words:",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Epictetus",
+        "title": "Stoic Philosopher & Teacher",
+        "description": "Former slave, most famous teacher in Rome"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Epictetus"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 31
+    },
+    {
+      "t_ini": 112.0,
+      "t_fim": 116.0,
+      "dur": 4.0,
+      "texto": "\"It isn't events that disturb people, it is their judgments about events.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "It isn't events that disturb people, it is their judgments about events.",
+        "author": "Epictetus"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 32
+    },
+    {
+      "t_ini": 116.0,
+      "t_fim": 120.0,
+      "dur": 4.0,
+      "texto": "Modern psychology quietly agrees.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "modern psychology research lab OR brain scanning technology conceptual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 33
+    },
+    {
+      "t_ini": 120.0,
+      "t_fim": 124.0,
+      "dur": 4.0,
+      "texto": "Cognitive behavioral therapy, the most tested therapeutic method of the last sixty",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "cognitive behavioral therapy session OR therapist client discussion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "footage_video"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 34
+    },
+    {
+      "t_ini": 124.0,
+      "t_fim": 129.0,
+      "dur": 5.0,
+      "texto": "years, cites that exact line as its founding principle.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "60",
+        "label": "Years of CBT Research"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 60
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 35
+    },
+    {
+      "t_ini": 129.0,
+      "t_fim": 134.0,
+      "dur": 5.0,
+      "texto": "The tools you're about to see aren't ancient curiosities; they are the prototype of",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient scrolls vs modern tech OR old wisdom new application",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "footage_video"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 36
+    },
+    {
+      "t_ini": 134.0,
+      "t_fim": 137.0,
+      "dur": 3.0,
+      "texto": "the most effective mental technology we have.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mindfulness meditation brain health OR mental clarity innovation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 37
+    },
+    {
+      "t_ini": 137.0,
+      "t_fim": 140.0,
+      "dur": 3.0,
+      "texto": "Dichotomy of Control",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Dichotomy of Control",
+        "number": 2
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 38
+    },
+    {
+      "t_ini": 137.0,
+      "t_fim": 140.0,
+      "dur": 3.0,
+      "texto": "Discipline one: The Dichotomy of Control.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Dichotomy of Control",
+        "subtitle": "Discipline One"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 39
+    },
+    {
+      "t_ini": 140.0,
+      "t_fim": 142.0,
+      "dur": 2.0,
+      "texto": "This is the load-bearing wall.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "architectural cross-section load bearing wall diagram, foundation structure",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:foundation concept",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 40
+    },
+    {
+      "t_ini": 142.0,
+      "t_fim": 145.0,
+      "dur": 3.0,
+      "texto": "Everything else in stoicism stands on it.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "conceptual diagram stoicism foundation, philosophy pyramid, building blocks of wisdom",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:abstract concept building",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 41
+    },
+    {
+      "t_ini": 145.0,
+      "t_fim": 151.0,
+      "dur": 6.0,
+      "texto": "The exercise is brutally simple: take any situation that is eating you alive and",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person looking worried pensive, writing in journal, abstract problem solving, stoic reflection",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:person reflecting",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 42
+    },
+    {
+      "t_ini": 151.0,
+      "t_fim": 157.0,
+      "dur": 6.0,
+      "texto": "draw a line down the middle of a page; on the left, write what is actually inside your control.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand drawing line on paper, writing in left column 'in my control' examples, stoic journaling",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:two column diagram left side",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 43
+    },
+    {
+      "t_ini": 157.0,
+      "t_fim": 163.0,
+      "dur": 6.0,
+      "texto": "On the right, everything else: a job interview, your preparation, your sleep, your",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person preparing for job interview, person sleeping soundly, person practicing answers, stoic preparation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:mind map preparation",
+        "stock:focus and rest"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 44
+    },
+    {
+      "t_ini": 163.0,
+      "t_fim": 167.0,
+      "dur": 4.0,
+      "texto": "answers, left side.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "dichotomy of control diagram showing left column with 'my answers' highlighted, stoic exercise visual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_video:hand writing answers"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 45
+    },
+    {
+      "t_ini": 167.0,
+      "t_fim": 171.0,
+      "dur": 4.0,
+      "texto": "The interviewer's mood, the other candidates, the company's budget, right side.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "dichotomy of control diagram showing right column with 'interviewer mood, other candidates, company budget' highlighted, stoic exercise visual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_video:hand writing uncontrollable factors"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 46
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 178.0,
+      "dur": 7.0,
+      "texto": "The Stoics observe that untrained people pour roughly all of their emotional energy into the right hand column,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "stressed person obsessing over external uncontrollable factors, visibly frustrated by circumstances, stoic lesson",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:flowchart emotional energy",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 47
+    },
+    {
+      "t_ini": 178.0,
+      "t_fim": 183.0,
+      "dur": 5.0,
+      "texto": "the side that cannot be moved, and then wonder why they feel powerless.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person pushing against invisible wall, struggling against insurmountable obstacle, feeling helpless, metaphorical struggle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:person feeling powerless",
+        "ilustracao:diagram immovable object"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 48
+    },
+    {
+      "t_ini": 183.0,
+      "t_fim": 185.0,
+      "dur": 2.0,
+      "texto": "Epictetus was born a slave",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Epictetus",
+        "title": "Stoic Philosopher"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Epictetus"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 49
+    },
+    {
+      "t_ini": 185.0,
+      "t_fim": 187.0,
+      "dur": 2.0,
+      "texto": "in Hierapolis in what is now Turkey.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "latitude": 37.9255,
+        "longitude": 29.126,
+        "label": "Hierapolis, Turkey"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Hierapolis, Turkey"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 50
+    },
+    {
+      "t_ini": 187.0,
+      "t_fim": 191.0,
+      "dur": 4.0,
+      "texto": "His master shattered his leg, and he limped for the rest of his life.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman art depicting slave injury or physical hardship, historical imagery",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:ancient Roman suffering",
+        "ilustracao:historical scene drawing"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 51
+    },
+    {
+      "t_ini": 191.0,
+      "t_fim": 196.0,
+      "dur": 5.0,
+      "texto": "He owned nothing, controlled nothing, not even his own body.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram human control vs external factors, internal vs external circles of influence, stoic philosophy",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:abstract concept of control",
+        "animacao:DisplayText"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 52
+    },
+    {
+      "t_ini": 196.0,
+      "t_fim": 203.0,
+      "dur": 7.0,
+      "texto": "And yet he taught that he was freer than his master, because his master was a slave to anger, to fear, to appetite,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person consumed by anger, person in fear, person indulging appetite, modern vices, emotional struggle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:emotional struggle",
+        "ilustracao:diagram of human emotions"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 53
+    },
+    {
+      "t_ini": 203.0,
+      "t_fim": 209.0,
+      "dur": 6.0,
+      "texto": "while Epictetus governed the only territory that cannot be invaded, his own judgment.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "stoic meditating, calm mind, internal peace, fortress of mind, philosophical concept, ancient wisdom",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:mind diagram control",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 54
+    },
+    {
+      "t_ini": 209.0,
+      "t_fim": 214.0,
+      "dur": 5.0,
+      "texto": "When Rome banished all philosophers in the year ninety three, Epictetus lost his",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date": "93 AD",
+        "location": "Rome",
+        "description": "Banished all philosophers"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Rome",
+        "numero": "93"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 55
+    },
+    {
+      "t_ini": 214.0,
+      "t_fim": 217.0,
+      "dur": 3.0,
+      "texto": "home and his school in a single decree.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient ruins, abandoned settlement, metaphorical loss of home and school, stoic exile",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:ancient decree",
+        "ilustracao:historical map with displacement"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 56
+    },
+    {
+      "t_ini": 217.0,
+      "t_fim": 222.0,
+      "dur": 5.0,
+      "texto": "He moved to Nicopolis in Greece, opened a new school, and his classroom notes, the",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "latitude": 38.9667,
+        "longitude": 20.725,
+        "label": "Nicopolis, Greece",
+        "description": "New home and school"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Nicopolis, Greece"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 57
+    },
+    {
+      "t_ini": 222.0,
+      "t_fim": 225.0,
+      "dur": 3.0,
+      "texto": "Discourses, outlived the empire that exiled him.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman scrolls, manuscripts of philosophy, old books enduring time, stoic wisdom preserved",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:timeless wisdom",
+        "ilustracao:conceptual timeline"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 58
+    },
+    {
+      "t_ini": 225.0,
+      "t_fim": 229.0,
+      "dur": 4.0,
+      "texto": "That is the dichotomy of control lived at full intensity.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "stoic philosopher contemplating, deep thought, intense reflection, philosophical concept, ancient wisdom applied",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "ilustracao:abstract symbol of control"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 59
+    },
+    {
+      "t_ini": 229.0,
+      "t_fim": 234.0,
+      "dur": 5.0,
+      "texto": "Your first protocol is this: once a day, take the thing that worries you most and",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person journaling worries, hand writing in notebook daily, pensive reflection, stoic exercise",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:person looking worried",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 60
+    },
+    {
+      "t_ini": 234.0,
+      "t_fim": 239.0,
+      "dur": 5.0,
+      "texto": "physically sort it into the two columns, then act only on the left side.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand drawing two columns in journal, writing controllable actions in left column, person taking action decisively",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:dichotomy of control workflow diagram",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 61
+    },
+    {
+      "t_ini": 239.0,
+      "t_fim": 241.0,
+      "dur": 2.0,
+      "texto": "The right side It gets acknowledged and released.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person releasing stress, letting go of worries, calm serene atmosphere, abstract concept of acceptance, stoic practice",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "ilustracao:mental diagram letting go"
+      ],
+      "secao": 2,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 62
+    },
+    {
+      "t_ini": 241.0,
+      "t_fim": 244.0,
+      "dur": 3.0,
+      "texto": "Negative Visualization",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Negative Visualization",
+        "number": 3
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 63
+    },
+    {
+      "t_ini": 241.0,
+      "t_fim": 247.0,
+      "dur": 6.0,
+      "texto": "Discipline two: negative visualization or what the Stoics called \"premeditatio",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient philosophy scrolls stoicism contemplative mood",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 64
+    },
+    {
+      "t_ini": 247.0,
+      "t_fim": 251.0,
+      "dur": 4.0,
+      "texto": "malorum, \" the premeditation of evils.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person meditating deep thought dark mood",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 65
+    },
+    {
+      "t_ini": 251.0,
+      "t_fim": 256.0,
+      "dur": 5.0,
+      "texto": "Once a week, deliberately imagine losing what you value: your job is gone, your",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "empty office desk personal belongings removed feeling of loss",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 66
+    },
+    {
+      "t_ini": 256.0,
+      "t_fim": 258.0,
+      "dur": 2.0,
+      "texto": "health has turned",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person looking unwell sad thoughtful, blurry background",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 67
+    },
+    {
+      "t_ini": 258.0,
+      "t_fim": 261.0,
+      "dur": 3.0,
+      "texto": "the person you love most isn't longer at the table.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "empty chair at dining table, single place setting, melancholic light",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 68
+    },
+    {
+      "t_ini": 261.0,
+      "t_fim": 266.0,
+      "dur": 5.0,
+      "texto": "Sit inside that picture for two or three minutes, not as fantasy, as rehearsal.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person sitting alone contemplating deep thought serious mood",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DisplayText",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 69
+    },
+    {
+      "t_ini": 266.0,
+      "t_fim": 271.0,
+      "dur": 5.0,
+      "texto": "The modern mind recoils from this because we are taught that thinking about loss",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "stressed person looking overwhelmed modern city background",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 70
+    },
+    {
+      "t_ini": 271.0,
+      "t_fim": 275.0,
+      "dur": 4.0,
+      "texto": "invites it. The Stoics claimed the opposite, and they were right twice over.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient philosophy scrolls library knowledge wisdom",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 71
+    },
+    {
+      "t_ini": 275.0,
+      "t_fim": 279.0,
+      "dur": 4.0,
+      "texto": "First, rehearsed loss loses its ambush power.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person facing a challenge calmly, prepared",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 72
+    },
+    {
+      "t_ini": 279.0,
+      "t_fim": 281.0,
+      "dur": 2.0,
+      "texto": "Seneca, the wealthiest senator in Rome,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Seneca",
+        "title": "Roman Philosopher & Senator",
+        "description": "Practiced negative visualization"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "person": "Seneca",
+        "place": "Rome"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 73
+    },
+    {
+      "t_ini": 281.0,
+      "t_fim": 283.0,
+      "dur": 2.0,
+      "texto": "practiced poverty on schedule.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "simple living minimalist room, ancient Roman context hint",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 74
+    },
+    {
+      "t_ini": 283.0,
+      "t_fim": 286.0,
+      "dur": 3.0,
+      "texto": "Several days each month, he ate the cheapest food,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "simple Roman peasant food, frugal meal historical",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:technical diagram of ancient roman food preparation",
+        "stock: frugal meal still life"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 75
+    },
+    {
+      "t_ini": 286.0,
+      "t_fim": 289.0,
+      "dur": 3.0,
+      "texto": "wore his roughest clothes,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman commoner clothes, rough tunic historical",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:diagram of Roman clothing types",
+        "stock: old rough fabric texture"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 76
+    },
+    {
+      "t_ini": 289.0,
+      "t_fim": 291.0,
+      "dur": 2.0,
+      "texto": "slept on the floor, and asked himself, \"Is this?",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person sleeping on simple floor mat, ancient Roman style",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:blueprint of a simple Roman living space",
+        "stock: simple floor mat or rug"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 77
+    },
+    {
+      "t_ini": 291.0,
+      "t_fim": 293.0,
+      "dur": 2.0,
+      "texto": "This the condition I so feared",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "pensive man in humble setting contemplating",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 78
+    },
+    {
+      "t_ini": 293.0,
+      "t_fim": 296.0,
+      "dur": 3.0,
+      "texto": "so when the emperor Nero exiled him to Corsica,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MapRoute",
+      "dados": {
+        "start": "Rome, Italy",
+        "end": "Corsica, France",
+        "route_name": "Nero's Exile of Seneca"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "person": "Nero",
+        "place_start": "Rome",
+        "place_end": "Corsica"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 79
+    },
+    {
+      "t_ini": 296.0,
+      "t_fim": 301.0,
+      "dur": 5.0,
+      "texto": "stripped of fortune and status, Seneca had already been there in rehearsal.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman exiled person looking stoic and resilient, simple surroundings",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 80
+    },
+    {
+      "t_ini": 301.0,
+      "t_fim": 306.0,
+      "dur": 5.0,
+      "texto": "He wrote to his mother from exile, \"I never trusted fortune, even when she seemed to",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "I never trusted fortune, even when she seemed to be at peace.",
+        "author": "Seneca"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "person": "Seneca"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 81
+    },
+    {
+      "t_ini": 306.0,
+      "t_fim": 311.0,
+      "dur": 5.0,
+      "texto": "be at peace. Everything she gave me, money, office, influence, I stored where she",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Everything she gave me, money, office, influence, I stored where she could take it back without disturbing me.",
+        "author": "Seneca"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "person": "Seneca"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 82
+    },
+    {
+      "t_ini": 311.0,
+      "t_fim": 313.0,
+      "dur": 2.0,
+      "texto": "could take it back without disturbing me.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calm, undisturbed person, serene face, ancient Roman background hint",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 83
+    },
+    {
+      "t_ini": 313.0,
+      "t_fim": 319.0,
+      "dur": 6.0,
+      "texto": "\" Second, and this is the part nobody expects, negative visualization is a",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "brain illustration with glowing connections, abstract thought process",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 84
+    },
+    {
+      "t_ini": 319.0,
+      "t_fim": 324.0,
+      "dur": 5.0,
+      "texto": "gratitude machine. You don't appreciate what you have because your brain adapts to",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person appreciating simple things, sunrise, nature, feeling grateful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 85
+    },
+    {
+      "t_ini": 324.0,
+      "t_fim": 329.0,
+      "dur": 5.0,
+      "texto": "it, a phenomenon psychologists now call hedonic adaptation.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "brain scan showing activity, abstract representation of habituation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DisplayText",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 86
+    },
+    {
+      "t_ini": 329.0,
+      "t_fim": 333.0,
+      "dur": 4.0,
+      "texto": "The rehearsal of loss resets the adaptation.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "reset button animation, brain connections reconfiguring",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 87
+    },
+    {
+      "t_ini": 333.0,
+      "t_fim": 337.0,
+      "dur": 4.0,
+      "texto": "Imagine your morning coffee as the last one, and today's ordinary cup tastes like",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "steaming cup of coffee, morning light, hands holding cup",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: coffee still life, contemplative mood",
+        "ilustracao: coffee cup cross-section"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 88
+    },
+    {
+      "t_ini": 337.0,
+      "t_fim": 340.0,
+      "dur": 3.0,
+      "texto": "the first one ever brewed.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person with expression of intense delight and appreciation drinking coffee",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 89
+    },
+    {
+      "t_ini": 340.0,
+      "t_fim": 345.0,
+      "dur": 5.0,
+      "texto": "The protocol: every Sunday, five minutes, one imagined loss, held deliberately, then",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calendar with Sunday highlighted, hand noting a routine, mindful practice",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 90
+    },
+    {
+      "t_ini": 345.0,
+      "t_fim": 351.0,
+      "dur": 6.0,
+      "texto": "released. What follows reliably isn't dread, it is relief and a strange tenderness",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person exhaling calmly, feeling of relief and peace, soft lighting",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 91
+    },
+    {
+      "t_ini": 351.0,
+      "t_fim": 355.0,
+      "dur": 4.0,
+      "texto": "for your unremarkable day.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "simple, peaceful daily life scene, person smiling gently",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 3,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 92
+    },
+    {
+      "t_ini": 355.0,
+      "t_fim": 358.0,
+      "dur": 3.0,
+      "texto": "Naked Perception",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Naked Perception",
+        "number": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 93
+    },
+    {
+      "t_ini": 355.0,
+      "t_fim": 357.0,
+      "dur": 2.0,
+      "texto": "Discipline three: The discipline of perception",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Discipline Three: The Discipline of Perception"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 94
+    },
+    {
+      "t_ini": 357.0,
+      "t_fim": 359.0,
+      "dur": 2.0,
+      "texto": "or the art of stripping the story",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "thought process analysis stripping away layers conceptual",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 95
+    },
+    {
+      "t_ini": 359.0,
+      "t_fim": 362.0,
+      "dur": 3.0,
+      "texto": "Marcus Aurelius ruled Rome",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Marcus Aurelius",
+        "title": "Roman Emperor"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius",
+        "lugar": "Rome"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 96
+    },
+    {
+      "t_ini": 362.0,
+      "t_fim": 364.0,
+      "dur": 2.0,
+      "texto": "for nineteen years",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "19",
+        "label": "Years as Emperor"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 97
+    },
+    {
+      "t_ini": 364.0,
+      "t_fim": 368.0,
+      "dur": 4.0,
+      "texto": "the worst nineteen years anyone could have drawn.",
+      "estrategia": "abstrato",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Rome difficult times historical depiction chaos",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 98
+    },
+    {
+      "t_ini": 368.0,
+      "t_fim": 372.0,
+      "dur": 4.0,
+      "texto": "The Antonine Plague entered the empire with returning soldiers",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "Antonine Plague Roman soldiers returning historical",
+      "strict": false,
+      "entidades": {
+        "evento": "Antonine Plague"
+      },
+      "fallback": [
+        "ilustracao",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 99
+    },
+    {
+      "t_ini": 372.0,
+      "t_fim": 375.0,
+      "dur": 3.0,
+      "texto": "for fifteen years",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "15",
+        "label": "Years the Plague Lasted"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 100
+    },
+    {
+      "t_ini": 375.0,
+      "t_fim": 377.0,
+      "dur": 2.0,
+      "texto": "killing by some estimates five million people.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "5 Million",
+        "label": "Estimated Deaths"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 101
+    },
+    {
+      "t_ini": 377.0,
+      "t_fim": 379.0,
+      "dur": 2.0,
+      "texto": "The Danube frontier",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region_name": "Danube Frontier",
+        "type": "river_border"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Danube frontier"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 102
+    },
+    {
+      "t_ini": 379.0,
+      "t_fim": 380.0,
+      "dur": 1.0,
+      "texto": "collapsed into constant war.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman warfare battle Danube frontier",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "ilustracao"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 103
+    },
+    {
+      "t_ini": 380.0,
+      "t_fim": 382.0,
+      "dur": 2.0,
+      "texto": "His co-emperor died, his wife died",
+      "estrategia": "abstrato",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman figures in mourning sorrow loss historical art",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 104
+    },
+    {
+      "t_ini": 382.0,
+      "t_fim": 386.0,
+      "dur": 4.0,
+      "texto": "of his thirteen children he buried eight",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Total Children",
+          "Buried"
+        ],
+        "values": [
+          13,
+          8
+        ],
+        "title": "Marcus Aurelius's Losses"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 105
+    },
+    {
+      "t_ini": 386.0,
+      "t_fim": 390.0,
+      "dur": 4.0,
+      "texto": "his private notebook barely mentions any of it as catastrophe.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman manuscript parchment philosopher writing close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "ilustracao"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 106
+    },
+    {
+      "t_ini": 390.0,
+      "t_fim": 393.0,
+      "dur": 3.0,
+      "texto": "Instead, page after page he practices one move:",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand writing on parchment philosophical journal",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 107
+    },
+    {
+      "t_ini": 393.0,
+      "t_fim": 396.0,
+      "dur": 3.0,
+      "texto": "describe the thing exactly as it is,",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "macro close up observing mundane object detail neutral perspective",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 108
+    },
+    {
+      "t_ini": 396.0,
+      "t_fim": 398.0,
+      "dur": 2.0,
+      "texto": "without adjectives. Without narrative,",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "text": "Without adjectives. Without narrative.",
+        "highlight_words": [
+          "Without adjectives",
+          "Without narrative"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 109
+    },
+    {
+      "t_ini": 398.0,
+      "t_fim": 401.0,
+      "dur": 3.0,
+      "texto": "roasted meat is a dead animal.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "roasted meat on a plate, dead animal carcass comparison",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 110
+    },
+    {
+      "t_ini": 401.0,
+      "t_fim": 405.0,
+      "dur": 4.0,
+      "texto": "The purple imperial robe is sheep's wool dyed in shellfish blood.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "Roman imperial purple robe, sheep's wool close up, murex shellfish dye",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 111
+    },
+    {
+      "t_ini": 405.0,
+      "t_fim": 407.0,
+      "dur": 2.0,
+      "texto": "Fame is the clapping of hands",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "crowd clapping hands applause slow motion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 112
+    },
+    {
+      "t_ini": 407.0,
+      "t_fim": 409.0,
+      "dur": 2.0,
+      "texto": "that will be dust in a generation.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dust motes in light, sand flowing through hourglass, time passing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 113
+    },
+    {
+      "t_ini": 409.0,
+      "t_fim": 415.0,
+      "dur": 6.0,
+      "texto": "This sounds cold until you use it on your own catastrophes.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person contemplating difficulties thoughtful problem solving",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 114
+    },
+    {
+      "t_ini": 415.0,
+      "t_fim": 417.0,
+      "dur": 2.0,
+      "texto": "The email that ruined your night is a rectangle of text on glass,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "smartphone screen email text close up, digital message",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:ImageTextAnnotation"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 115
+    },
+    {
+      "t_ini": 417.0,
+      "t_fim": 420.0,
+      "dur": 3.0,
+      "texto": "the traffic jam is metal boxes arranged in a line,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aerial view traffic jam cars in line slow movement",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 116
+    },
+    {
+      "t_ini": 420.0,
+      "t_fim": 425.0,
+      "dur": 5.0,
+      "texto": "the insult is air pushed through a stranger's vocal cords,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "human vocal cords anatomy diagram sound production",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:ImageTextAnnotation"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 117
+    },
+    {
+      "t_ini": 425.0,
+      "t_fim": 429.0,
+      "dur": 4.0,
+      "texto": "arranged into a shape your memory recognizes.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract mind patterns memory recognition neural network visualization",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 118
+    },
+    {
+      "t_ini": 429.0,
+      "t_fim": 432.0,
+      "dur": 3.0,
+      "texto": "Marcus called this the naked description",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "text": "Marcus Aurelius called this the 'naked description'."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 119
+    },
+    {
+      "t_ini": 432.0,
+      "t_fim": 434.0,
+      "dur": 2.0,
+      "texto": "and its purpose is surgical:",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "surgical tools close up precision operation focus",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 120
+    },
+    {
+      "t_ini": 434.0,
+      "t_fim": 438.0,
+      "dur": 4.0,
+      "texto": "separate the raw fact which you must deal with from the inflammation around it",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram separating core issue from surrounding noise, abstract problem solving",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TwoImageComparison",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 121
+    },
+    {
+      "t_ini": 438.0,
+      "t_fim": 442.0,
+      "dur": 4.0,
+      "texto": "which you manufactured and can therefore stop manufacturing.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mind creating thoughts, person actively stopping a process, self-control",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 122
+    },
+    {
+      "t_ini": 442.0,
+      "t_fim": 445.0,
+      "dur": 3.0,
+      "texto": "The protocol: next time your chest tightens over an event,",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person feeling anxiety chest pain worried reaction",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 123
+    },
+    {
+      "t_ini": 445.0,
+      "t_fim": 447.0,
+      "dur": 2.0,
+      "texto": "write one sentence",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand writing in a notebook journaling reflective process",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 124
+    },
+    {
+      "t_ini": 447.0,
+      "t_fim": 450.0,
+      "dur": 3.0,
+      "texto": "describing it as a camera would record it,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "camera recording neutral objective perspective",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 125
+    },
+    {
+      "t_ini": 450.0,
+      "t_fim": 452.0,
+      "dur": 2.0,
+      "texto": "no adjectives, no motives,",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "text": "No adjectives. No motives."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 126
+    },
+    {
+      "t_ini": 452.0,
+      "t_fim": 455.0,
+      "dur": 3.0,
+      "texto": "footage, then decide what to do.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person making a decision, analytical process, contemplation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 127
+    },
+    {
+      "t_ini": 455.0,
+      "t_fim": 459.0,
+      "dur": 4.0,
+      "texto": "You will find that the fact is nearly always smaller than the story,",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract diagram fact vs story size comparison, smaller vs larger concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BarChartComparison",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 128
+    },
+    {
+      "t_ini": 459.0,
+      "t_fim": 461.0,
+      "dur": 2.0,
+      "texto": "discipline four,",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Discipline Four"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 129
+    },
+    {
+      "t_ini": 461.0,
+      "t_fim": 463.0,
+      "dur": 2.0,
+      "texto": "the view from above.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aerial view looking down, panoramic perspective, high vantage point",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:TextReveal"
+      ],
+      "secao": 4,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 130
+    },
+    {
+      "t_ini": 463.0,
+      "t_fim": 466.0,
+      "dur": 3.0,
+      "texto": "The View From Above",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The View From Above",
+        "number": 5
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 131
+    },
+    {
+      "t_ini": 463.0,
+      "t_fim": 466.0,
+      "dur": 3.0,
+      "texto": "This was the Stoics' favorite meditation,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient stoic philosophy meditation atmospheric",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_imagem"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 132
+    },
+    {
+      "t_ini": 466.0,
+      "t_fim": 468.0,
+      "dur": 2.0,
+      "texto": "and it works like a camera crane.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "camera crane mechanism diagram technical drawing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:camera crane operating on set",
+        "stock:film production equipment b-roll"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 133
+    },
+    {
+      "t_ini": 468.0,
+      "t_fim": 472.0,
+      "dur": 4.0,
+      "texto": "Start where you are, in this room, with this problem filling the entire frame.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person contemplating problem in a room wide shot focused",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:moody room interior pensive",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 134
+    },
+    {
+      "t_ini": 472.0,
+      "t_fim": 475.0,
+      "dur": 3.0,
+      "texto": "Now rise, see the building from the street,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "drone shot rising from street level to building exterior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:urban building exterior drone view",
+        "animacao:SatelliteLocationPin"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 135
+    },
+    {
+      "t_ini": 475.0,
+      "t_fim": 478.0,
+      "dur": 3.0,
+      "texto": "rise again, see your neighborhood,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "drone shot rising over residential neighborhood aerial view",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:suburban neighborhood aerial",
+        "animacao:MapRoute"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 136
+    },
+    {
+      "t_ini": 478.0,
+      "t_fim": 483.0,
+      "dur": 5.0,
+      "texto": "roads feeding into it, thousands of lives running in parallel,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aerial view highway traffic leading to city time lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:city roads traffic flow",
+        "animacao:MultiCountryOutline"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 137
+    },
+    {
+      "t_ini": 483.0,
+      "t_fim": 485.0,
+      "dur": 2.0,
+      "texto": "each one carrying a problem that fills their frame.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "diverse people walking city street pensive expressions",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_video:crowded city sidewalk"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 138
+    },
+    {
+      "t_ini": 485.0,
+      "t_fim": 488.0,
+      "dur": 3.0,
+      "texto": "Keep rising, your city becomes a texture of light,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aerial night city lights texture time lapse",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:city lights from high altitude",
+        "animacao:SatelliteLocationPin"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 139
+    },
+    {
+      "t_ini": 488.0,
+      "t_fim": 490.0,
+      "dur": 2.0,
+      "texto": "The country becomes a shape",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": null,
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 140
+    },
+    {
+      "t_ini": 490.0,
+      "t_fim": 495.0,
+      "dur": 5.0,
+      "texto": "on a curve, the Earth becomes what the astronauts saw, a blue sphere hanging in",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Earth from space blue sphere rotating",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:The Blue Marble",
+        "stock:Earth in space b-roll"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 141
+    },
+    {
+      "t_ini": 495.0,
+      "t_fim": 500.0,
+      "dur": 5.0,
+      "texto": "black, every war and bankruptcy and heartbreak in history happening on that thin",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Earth from space distant view pale blue dot perspective",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_imagem:Earth from ISS with dark background"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 142
+    },
+    {
+      "t_ini": 500.0,
+      "t_fim": 503.0,
+      "dur": 3.0,
+      "texto": "film of surface. Marcus commanded the northern legions",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Marcus Aurelius",
+        "title": "Roman Emperor, Stoic Philosopher"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 143
+    },
+    {
+      "t_ini": 503.0,
+      "t_fim": 506.0,
+      "dur": 3.0,
+      "texto": "from Canutum, a fortress on",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Carnuntum",
+        "label": "Fortress on the Danube"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Carnuntum"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 144
+    },
+    {
+      "t_ini": 506.0,
+      "t_fim": 508.0,
+      "dur": 2.0,
+      "texto": "the Danube in what is now Austria,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MapRoute",
+      "dados": {
+        "country": "Austria",
+        "river": "Danube"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Danube",
+          "Austria"
+        ]
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 145
+    },
+    {
+      "t_ini": 508.0,
+      "t_fim": 511.0,
+      "dur": 3.0,
+      "texto": "and from his tent he wrote: \"Asia and Europe are",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Asia and Europe are",
+        "author": "Marcus Aurelius"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Asia",
+          "Europe"
+        ]
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 146
+    },
+    {
+      "t_ini": 511.0,
+      "t_fim": 515.0,
+      "dur": 4.0,
+      "texto": "corners of the universe, the whole sea a drop.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "corners of the universe, the whole sea a drop.",
+        "author": "Marcus Aurelius"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 147
+    },
+    {
+      "t_ini": 515.0,
+      "t_fim": 520.0,
+      "dur": 5.0,
+      "texto": "Mount Athos, a clod of earth, all of the present, a pinpoint in eternity.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Mount Athos, a clod of earth, all of the present, a pinpoint in eternity.",
+        "author": "Marcus Aurelius"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Mount Athos"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 148
+    },
+    {
+      "t_ini": 520.0,
+      "t_fim": 523.0,
+      "dur": 3.0,
+      "texto": "This isn't nihilism.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "philosophical contemplation thought provoking serene",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video:calm reflective scene"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 149
+    },
+    {
+      "t_ini": 523.0,
+      "t_fim": 527.0,
+      "dur": 4.0,
+      "texto": "He wasn't saying nothing matters, he was recalibrating the instrument,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "calibration process diagram scientific instrument",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "stock:gears working smoothly conceptual"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 150
+    },
+    {
+      "t_ini": 527.0,
+      "t_fim": 532.0,
+      "dur": 5.0,
+      "texto": "mind measures every problem against the size of the frame around it,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract mind perception focus metaphor frame of reference",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "ilustracao:conceptual frame diagram"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 151
+    },
+    {
+      "t_ini": 532.0,
+      "t_fim": 537.0,
+      "dur": 5.0,
+      "texto": "and the untrained frame is always exactly as small as the problem.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "visual metaphor problem in small frame magnifying glass concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "stock:person overwhelmed by large problem"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 152
+    },
+    {
+      "t_ini": 537.0,
+      "t_fim": 542.0,
+      "dur": 5.0,
+      "texto": "Astronauts who saw the Earth from orbit report a permanent shift in values so",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "astronauts looking at Earth from space ISS view",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:astronaut in space looking at Earth",
+        "animacao:CharacterCard"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 153
+    },
+    {
+      "t_ini": 542.0,
+      "t_fim": 546.0,
+      "dur": 4.0,
+      "texto": "consistent that researchers gave it a name, the \"overview effect.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "text": "The Overview Effect"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 154
+    },
+    {
+      "t_ini": 546.0,
+      "t_fim": 551.0,
+      "dur": 5.0,
+      "texto": "\" The Stoics were engineering that effect from the ground two thousand years before",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient stoic philosophers thinking parchment and quill",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ancient engineering concept diagram",
+        "animacao:TextReveal"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 155
+    },
+    {
+      "t_ini": 551.0,
+      "t_fim": 553.0,
+      "dur": 2.0,
+      "texto": "rockets,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "rocket launch footage space rocket taking off",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:rocket on launchpad",
+        "ilustracao:rocket blueprint"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 156
+    },
+    {
+      "t_ini": 553.0,
+      "t_fim": 555.0,
+      "dur": 2.0,
+      "texto": "with nothing but disciplined imagination.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mind training focus meditation visualization abstract",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video:peaceful contemplative scene"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 157
+    },
+    {
+      "t_ini": 555.0,
+      "t_fim": 559.0,
+      "dur": 4.0,
+      "texto": "The protocol when a problem has swallowed your whole screen: close your eyes and run",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person closing eyes pensive calm meditation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:person in thought profile",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 158
+    },
+    {
+      "t_ini": 559.0,
+      "t_fim": 562.0,
+      "dur": 3.0,
+      "texto": "the crane shot, sixty seconds up, hold at orbit,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract cosmic journey meditation mind's eye earth from space",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:conceptual crane shot diagram",
+        "animacao:TextReveal"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 159
+    },
+    {
+      "t_ini": 562.0,
+      "t_fim": 564.0,
+      "dur": 2.0,
+      "texto": "then come back down.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract descent from space back to earth fast forward",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:time lapse descending into city",
+        "animacao:SatelliteLocationPin"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 160
+    },
+    {
+      "t_ini": 564.0,
+      "t_fim": 566.0,
+      "dur": 2.0,
+      "texto": "The problem will still be there.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person looking at problem with calm expression minimalist",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video:person looking at work desk focused"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 161
+    },
+    {
+      "t_ini": 566.0,
+      "t_fim": 571.0,
+      "dur": 5.0,
+      "texto": "It will just be actual size.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "wide angle lens perspective view magnifying glass true size metaphor",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "ilustracao:problem size comparison diagram"
+      ],
+      "secao": 5,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 162
+    },
+    {
+      "t_ini": 571.0,
+      "t_fim": 574.0,
+      "dur": 3.0,
+      "texto": "The Evening Review",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Evening Review",
+        "number": 6
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 163
+    },
+    {
+      "t_ini": 571.0,
+      "t_fim": 574.0,
+      "dur": 3.0,
+      "texto": "Discipline five: The evening review.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "TitleDescription",
+      "dados": {
+        "title": "Discipline Five",
+        "description": "The Evening Review"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 164
+    },
+    {
+      "t_ini": 574.0,
+      "t_fim": 578.0,
+      "dur": 4.0,
+      "texto": "This is the maintenance cycle that keeps the whole system running, and we know",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "cutaway diagram of a complex self-regulating mechanism",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:abstract machine parts moving",
+        "animacao:TextReveal"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 165
+    },
+    {
+      "t_ini": 578.0,
+      "t_fim": 582.0,
+      "dur": 4.0,
+      "texto": "exactly how it worked because Seneca described his own practice.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Seneca",
+        "title": "Roman Philosopher"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Seneca"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 166
+    },
+    {
+      "t_ini": 582.0,
+      "t_fim": 587.0,
+      "dur": 5.0,
+      "texto": "Every night when the lamp was out and the house was quiet, he put the day on trial.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dark quiet room subtle lamplight thoughtful person silhouette reflection",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:candle light study night",
+        "ilustracao:blueprint of a quiet room"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 167
+    },
+    {
+      "t_ini": 587.0,
+      "t_fim": 595.0,
+      "dur": 8.0,
+      "texto": "He asked himself three questions: What did I do badly? What did I do well? What did I leave undone?",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "bullets": [
+          "What did I do badly?",
+          "What did I do well?",
+          "What did I leave undone?"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 168
+    },
+    {
+      "t_ini": 595.0,
+      "t_fim": 600.0,
+      "dur": 5.0,
+      "texto": "Nothing escapes me, he wrote, for why should I fear the sight of my own errors when",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Nothing escapes me, for why should I fear the sight of my own errors...",
+        "author": "Seneca"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 169
+    },
+    {
+      "t_ini": 600.0,
+      "t_fim": 604.0,
+      "dur": 4.0,
+      "texto": "I can say to myself, \"See that you don't do it again, and today I forgive you.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "See that you don't do it again, and today I forgive you.",
+        "author": "Seneca"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 170
+    },
+    {
+      "t_ini": 604.0,
+      "t_fim": 610.0,
+      "dur": 6.0,
+      "texto": "Read that last clause again, because it carries half the technology.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person reading deep thought concentration learning concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:pages turning slow motion",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 171
+    },
+    {
+      "t_ini": 610.0,
+      "t_fim": 612.0,
+      "dur": 2.0,
+      "texto": "The review isn't self-flagellation.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calm reflective atmosphere peaceful self assessment no harshness",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:serene contemplative person",
+        "ilustracao:mindfulness diagram"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 172
+    },
+    {
+      "t_ini": 612.0,
+      "t_fim": 621.0,
+      "dur": 9.0,
+      "texto": "A judge who only punishes teaches the defendant to hide the evidence, and a mind that fears its own review will simply stop looking.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person hiding something fear of judgment conceptual avoiding self reflection",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:shadowy figure avoiding light",
+        "animacao:TextReveal"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 173
+    },
+    {
+      "t_ini": 621.0,
+      "t_fim": 625.0,
+      "dur": 4.0,
+      "texto": "Seneca audited like an engineer inspecting a machine he intends to run again",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "engineer inspecting complex machine close up working diagnostic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:technical diagram machine inspection",
+        "stock:mechanic working on engine"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 174
+    },
+    {
+      "t_ini": 625.0,
+      "t_fim": 630.0,
+      "dur": 5.0,
+      "texto": "tomorrow: find the fault, log the fix, close the ticket, sleep.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "bullets": [
+          "Find the fault",
+          "Log the fix",
+          "Close the ticket",
+          "Sleep"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 175
+    },
+    {
+      "t_ini": 630.0,
+      "t_fim": 635.0,
+      "dur": 5.0,
+      "texto": "Modern habit science has validated every component: reflection consolidates",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "laboratory research data screens human brain scans habit science",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:scientific research lab data analysis",
+        "ilustracao:brain neuron network diagram"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 176
+    },
+    {
+      "t_ini": 635.0,
+      "t_fim": 640.0,
+      "dur": 5.0,
+      "texto": "learning, specific review of failure done without global self-judgment is the",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neural network diagram learning pathway cognitive improvement",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:mind mapping visualization",
+        "stock:brain activity neural pathways growth"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 177
+    },
+    {
+      "t_ini": 640.0,
+      "t_fim": 646.0,
+      "dur": 6.0,
+      "texto": "fastest known corrector of behavior, and written review outperforms mental review",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person writing journal focused improvement and learning",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:hand writing in notebook close up",
+        "animacao:BarChartComparison"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 178
+    },
+    {
+      "t_ini": 646.0,
+      "t_fim": 649.0,
+      "dur": 3.0,
+      "texto": "because the page doesn't let you blur the details.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "macro shot of pen writing on paper sharp detail clarity",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:magnifying glass over detailed text focus",
+        "ilustracao:focused mind graphic"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 179
+    },
+    {
+      "t_ini": 649.0,
+      "t_fim": 652.0,
+      "dur": 3.0,
+      "texto": "The protocol: three questions in ink every night,",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "text": "Three Questions, In Ink, Every Night"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 180
+    },
+    {
+      "t_ini": 652.0,
+      "t_fim": 654.0,
+      "dur": 2.0,
+      "texto": "ninety seconds.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 90,
+        "label": "Seconds"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 90
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 181
+    },
+    {
+      "t_ini": 654.0,
+      "t_fim": 659.0,
+      "dur": 5.0,
+      "texto": "What went badly? What went well? What remains?",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "bullets": [
+          "What went badly?",
+          "What went well?",
+          "What remains?"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 182
+    },
+    {
+      "t_ini": 659.0,
+      "t_fim": 663.0,
+      "dur": 4.0,
+      "texto": "Then the forgiveness clause said as if you mean it, because the point is to show up",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "peaceful self acceptance forgiveness concept calm light hope",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:person meditating peacefully",
+        "ilustracao:abstract inner peace"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 183
+    },
+    {
+      "t_ini": 663.0,
+      "t_fim": 665.0,
+      "dur": 2.0,
+      "texto": "to tomorrow's audit unafraid.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "confident person looking forward positive future silhouette sunrise",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:sunrise over mountains hopeful",
+        "animacao:TextReveal"
+      ],
+      "secao": 6,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 184
+    },
+    {
+      "t_ini": 665.0,
+      "t_fim": 668.0,
+      "dur": 3.0,
+      "texto": "Assembling the Machine",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Assembling the Machine",
+        "number": 7
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 185
+    },
+    {
+      "t_ini": 665.0,
+      "t_fim": 668.0,
+      "dur": 3.0,
+      "texto": "Now assemble the machine",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "intricate machine assembly blueprint gears",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:NodeHierarchy",
+        "abstrato"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 186
+    },
+    {
+      "t_ini": 668.0,
+      "t_fim": 670.0,
+      "dur": 2.0,
+      "texto": "five disciplines aren't a list, they are a loop.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "minimalist abstract loop animation concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:LineChart"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 187
+    },
+    {
+      "t_ini": 670.0,
+      "t_fim": 672.0,
+      "dur": 2.0,
+      "texto": "The dichotomy of control",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract two sides balance concept choice",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BarChartComparison"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 188
+    },
+    {
+      "t_ini": 672.0,
+      "t_fim": 674.0,
+      "dur": 2.0,
+      "texto": "decides where your energy goes.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract energy flow direction arrows focus",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:NumberCountOverlay"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 189
+    },
+    {
+      "t_ini": 674.0,
+      "t_fim": 677.0,
+      "dur": 3.0,
+      "texto": "Negative visualization armors you",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract protective shield concept mental resilience",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 190
+    },
+    {
+      "t_ini": 677.0,
+      "t_fim": 679.0,
+      "dur": 2.0,
+      "texto": "against the losses you cannot prevent.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract inevitable forces concept uncontrollable events",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 191
+    },
+    {
+      "t_ini": 679.0,
+      "t_fim": 682.0,
+      "dur": 3.0,
+      "texto": "returns the taste of what you still hold",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "hands holding something precious abstract gratitude",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 192
+    },
+    {
+      "t_ini": 682.0,
+      "t_fim": 684.0,
+      "dur": 2.0,
+      "texto": "naked perception shrinks each incoming event",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract events shrinking perspective minimalist",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 193
+    },
+    {
+      "t_ini": 684.0,
+      "t_fim": 686.0,
+      "dur": 2.0,
+      "texto": "its actual size, the view from above",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "aerial drone view majestic landscape",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 194
+    },
+    {
+      "t_ini": 686.0,
+      "t_fim": 689.0,
+      "dur": 3.0,
+      "texto": "shrinks the frame around your entire life",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract life perspective shrinking frame minimalist aerial",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 195
+    },
+    {
+      "t_ini": 689.0,
+      "t_fim": 692.0,
+      "dur": 3.0,
+      "texto": "the evening review inspects the machine",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "technical diagram machine inspection blueprint",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:NodeHierarchy",
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 196
+    },
+    {
+      "t_ini": 692.0,
+      "t_fim": 695.0,
+      "dur": 3.0,
+      "texto": "every night and files the corrections.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract daily reflection journaling writing corrections",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 197
+    },
+    {
+      "t_ini": 695.0,
+      "t_fim": 697.0,
+      "dur": 2.0,
+      "texto": "files the corrections.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "filing system organization solutions abstract",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 198
+    },
+    {
+      "t_ini": 697.0,
+      "t_fim": 700.0,
+      "dur": 3.0,
+      "texto": "Run the loop for a week and it feels like a set of tricks",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract simple tricks illusion magician",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 199
+    },
+    {
+      "t_ini": 700.0,
+      "t_fim": 702.0,
+      "dur": 2.0,
+      "texto": "run it for a year",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calendar year passing quickly time lapse daily routine",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 200
+    },
+    {
+      "t_ini": 702.0,
+      "t_fim": 704.0,
+      "dur": 2.0,
+      "texto": "becomes what the Stoics actually promised",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient philosophy wisdom scrolls stoic principles",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 201
+    },
+    {
+      "t_ini": 704.0,
+      "t_fim": 707.0,
+      "dur": 3.0,
+      "texto": "never the absence of feeling.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "human emotions complex feelings abstract emotional spectrum",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 202
+    },
+    {
+      "t_ini": 707.0,
+      "t_fim": 710.0,
+      "dur": 3.0,
+      "texto": "Marcus buried eight children.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Marcus Aurelius",
+        "title": "Roman Emperor and Stoic Philosopher",
+        "context": "Buried eight children"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius"
+      },
+      "fallback": [],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 203
+    },
+    {
+      "t_ini": 710.0,
+      "t_fim": 714.0,
+      "dur": 4.0,
+      "texto": "Seneca wept in exile and admitted it in writing.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Seneca the Younger",
+        "title": "Roman Stoic Philosopher",
+        "context": "Wept in exile and admitted it in writing"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Seneca the Younger"
+      },
+      "fallback": [],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 204
+    },
+    {
+      "t_ini": 714.0,
+      "t_fim": 718.0,
+      "dur": 4.0,
+      "texto": "Epictetus limped to his classroom every morning",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Epictetus",
+        "title": "Greek Stoic Philosopher",
+        "context": "Lived with a physical limp, taught daily"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Epictetus"
+      },
+      "fallback": [],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 205
+    },
+    {
+      "t_ini": 718.0,
+      "t_fim": 721.0,
+      "dur": 3.0,
+      "texto": "The promise was never that the storm stops",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "intense storm heavy rain wind",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 206
+    },
+    {
+      "t_ini": 721.0,
+      "t_fim": 723.0,
+      "dur": 2.0,
+      "texto": "the storm stops steering.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "storm clearing clouds sunlight breaking through",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 207
+    },
+    {
+      "t_ini": 723.0,
+      "t_fim": 725.0,
+      "dur": 2.0,
+      "texto": "the storm stops steering.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hands on ship steering wheel calm sea",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 208
+    },
+    {
+      "t_ini": 725.0,
+      "t_fim": 728.0,
+      "dur": 3.0,
+      "texto": "three men held the extreme ends of human fortune: an emperor, a",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "Roman emperor portrait historical, wealthy businessman portrait 19th century",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 209
+    },
+    {
+      "t_ini": 728.0,
+      "t_fim": 730.0,
+      "dur": 2.0,
+      "texto": "millionaire, a slave",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "historical image of slave life, diverse social classes",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 210
+    },
+    {
+      "t_ini": 730.0,
+      "t_fim": 733.0,
+      "dur": 3.0,
+      "texto": "the same five tools worked at every altitude",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract versatile tools working universal concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 211
+    },
+    {
+      "t_ini": 733.0,
+      "t_fim": 738.0,
+      "dur": 5.0,
+      "texto": "strongest evidence anyone has ever produced that they will work at yours.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract proof evidence concept universal applicability solution",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video"
+      ],
+      "secao": 7,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 212
+    },
+    {
+      "t_ini": 738.0,
+      "t_fim": 743.0,
+      "dur": 5.0,
+      "texto": "One warning before you begin, and it is the same warning Epictetus gave his own",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Epictetus",
+        "title": "Stoic Philosopher"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Epictetus"
+      },
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 213
+    },
+    {
+      "t_ini": 743.0,
+      "t_fim": 746.0,
+      "dur": 3.0,
+      "texto": "students two thousand years ago: \"Do not talk about this.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "Do not talk about this.",
+        "author": "Epictetus"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 214
+    },
+    {
+      "t_ini": 746.0,
+      "t_fim": 751.0,
+      "dur": 5.0,
+      "texto": "\" He told them, \"Sheep don't vomit up grass to show the shepherd how much they have",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "sheep grazing green pasture",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:pastoral scene peaceful",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 215
+    },
+    {
+      "t_ini": 751.0,
+      "t_fim": 754.0,
+      "dur": 3.0,
+      "texto": "eaten; they digest it and produce wool and milk.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "sheep wool close up texture",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:sheep wool close up",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 216
+    },
+    {
+      "t_ini": 754.0,
+      "t_fim": 756.0,
+      "dur": 2.0,
+      "texto": "\" Milk. If you turn stoicism into a personality,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "stoicism concept modern life",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 217
+    },
+    {
+      "t_ini": 756.0,
+      "t_fim": 759.0,
+      "dur": 3.0,
+      "texto": "quoting Marcus at dinner,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Marcus Aurelius",
+        "title": "Roman Emperor, Stoic Philosopher"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Marcus Aurelius"
+      },
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 218
+    },
+    {
+      "t_ini": 759.0,
+      "t_fim": 764.0,
+      "dur": 5.0,
+      "texto": "announcing your equanimity, wearing the philosophy like the emperor's purple, you",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman purple fabric luxury concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 219
+    },
+    {
+      "t_ini": 764.0,
+      "t_fim": 768.0,
+      "dur": 4.0,
+      "texto": "have manufactured one more possession for fortune to take.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract concept impermanence fortune",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 220
+    },
+    {
+      "t_ini": 768.0,
+      "t_fim": 771.0,
+      "dur": 3.0,
+      "texto": "Digest it instead. Practice in silence.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "quiet contemplation meditation focus",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 221
+    },
+    {
+      "t_ini": 771.0,
+      "t_fim": 776.0,
+      "dur": 5.0,
+      "texto": "Let the evidence show up where the stoic said it would: in a steadier hand at work,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "steady hand working office focus",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:focused work calm",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 222
+    },
+    {
+      "t_ini": 776.0,
+      "t_fim": 779.0,
+      "dur": 3.0,
+      "texto": "a slower temper at home,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "calm family interaction home",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 223
+    },
+    {
+      "t_ini": 779.0,
+      "t_fim": 781.0,
+      "dur": 2.0,
+      "texto": "a clean night's sleep before the difficult day.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "peaceful deep sleep morning light",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:calm bedroom peaceful",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 224
+    },
+    {
+      "t_ini": 781.0,
+      "t_fim": 784.0,
+      "dur": 3.0,
+      "texto": "Begin tonight with the lamp out and the house quiet,",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dark quiet room lamp off peaceful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:dark house window light",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 225
+    },
+    {
+      "t_ini": 784.0,
+      "t_fim": 786.0,
+      "dur": 2.0,
+      "texto": "with three questions and ninety",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "journaling introspection quiet evening",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 226
+    },
+    {
+      "t_ini": 786.0,
+      "t_fim": 788.0,
+      "dur": 2.0,
+      "texto": "seconds of ink:",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 90,
+        "label": "seconds of reflection"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 90
+      },
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 227
+    },
+    {
+      "t_ini": 788.0,
+      "t_fim": 791.0,
+      "dur": 3.0,
+      "texto": "What went badly? What went well? What remains?",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "title": "Three Questions:",
+        "points": [
+          "What went badly?",
+          "What went well?",
+          "What remains?"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 228
+    },
+    {
+      "t_ini": 791.0,
+      "t_fim": 793.0,
+      "dur": 2.0,
+      "texto": "The men who built this system are seventeen centuries of dust,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman ruins dust time passing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:ancient ruins time passing",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 229
+    },
+    {
+      "t_ini": 793.0,
+      "t_fim": 795.0,
+      "dur": 2.0,
+      "texto": "their empire is a",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "Italy",
+          "Greece",
+          "Spain",
+          "France",
+          "UK",
+          "Egypt",
+          "Turkey",
+          "North Macedonia",
+          "Serbia",
+          "Albania",
+          "Bulgaria",
+          "Syria",
+          "Jordan",
+          "Israel",
+          "Lebanon",
+          "Morocco",
+          "Algeria",
+          "Tunisia",
+          "Libya"
+        ],
+        "title": "Roman Empire"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Roman Empire"
+      },
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 230
+    },
+    {
+      "t_ini": 795.0,
+      "t_fim": 797.0,
+      "dur": 2.0,
+      "texto": "museum,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "museum ancient Roman artifacts display",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Roman artifact display",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 231
+    },
+    {
+      "t_ini": 797.0,
+      "t_fim": 800.0,
+      "dur": 3.0,
+      "texto": "and the notebook one of them kept in a war tent is still in print in every",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "ancient Roman notebook writing tent",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:ancient book open",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 232
+    },
+    {
+      "t_ini": 800.0,
+      "t_fim": 801.0,
+      "dur": 1.0,
+      "texto": "language on earth",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "World"
+        ],
+        "title": "Global Reach"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 233
+    },
+    {
+      "t_ini": 801.0,
+      "t_fim": 803.0,
+      "dur": 2.0,
+      "texto": "because the machine still runs.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract concept enduring wisdom",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "atmosferico"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 234
+    },
+    {
+      "t_ini": 803.0,
+      "t_fim": 809.0,
+      "dur": 6.0,
+      "texto": "It is yours now, turn it on.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dawn sunrise peaceful inspiring",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video:calm inspiring landscape"
+      ],
+      "secao": 8,
+      "tier_teto": "cc_pd",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 235
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+@@@ render main v2 tentativa 1 @ 18:13:28
+=== Bundle (outDir=F:\Canal Dark\Aplicativo de Edição\remotion\_bundle) ===
+=== Select composition ===
+  duração: 1577.5s (47326 frames @ 30fps)
+=== Render em 8 chunks (concurrency=10, gl=angle) ===
+  chunk 1/8 (frames 0-5915): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20%   falhou->retoma
+@@@ render main v2 tentativa 2 @ 18:14:38
+=== Bundle (outDir=F:\Canal Dark\Aplicativo de Edição\remotion\_bundle) ===
+=== Select composition ===
+  duração: 1577.5s (47326 frames @ 30fps)
+=== Render em 8 chunks (concurrency=10, gl=angle) ===
+  chunk 1/8 (frames 0-5915): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+  chunk 2/8 (frames 5916-11831): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+  chunk 3/8 (frames 11832-17747): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% [40m Tab 4, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 8, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 2, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 6, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 7, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 1, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 9, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+100% ok
+  chunk 4/8 (frames 17748-23663): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+  chunk 5/8 (frames 23664-29579): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+  chunk 6/8 (frames 29580-35495): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% [40m Tab 3, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 8, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 2, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 4, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 5, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 6, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 7, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 9, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+100% ok
+  chunk 7/8 (frames 35496-41411): 0% [40m Tab 3, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 6, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 4, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 2, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 7, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 8, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 9, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% [40m Tab 3, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 9, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 7, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 4, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 8, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 5, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 1, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+[40m Tab 0, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+  chunk 8/8 (frames 41412-47325): 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% 0% [40m Tab 9, node_modules/remotion/dist/esm/index.mjs:9131 [49m [33m[0mEncodingError: The source image cannot be decoded.[0m[39m
+20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 20% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 40% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 60% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 80% 100% ok
+=== Concat dos chunks ===
+ffmpeg version 8.0-full_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 15.2.0 (Rev8, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-lcms2 --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-libdvdnav --enable-libdvdread --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libopenjpeg --enable-libquirc --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-liboapv --enable-libqrencode --enable-librav1e --enable-libsvtav1 --enable-libvvenc --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-openal --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-liblc3 --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint --enable-whisper
+  libavutil      60.  8.100 / 60.  8.100
+  libavcodec     62. 11.100 / 62. 11.100
+  libavformat    62.  3.100 / 62.  3.100
+  libavdevice    62.  1.100 / 62.  1.100
+  libavfilter    11.  4.100 / 11.  4.100
+  libswscale      9.  1.100 /  9.  1.100
+  libswresample   6.  1.100 /  6.  1.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 000002c8518c8240] Auto-inserting h264_mp4toannexb bitstream filter
+Input #0, concat, from 'F:\Canal Dark\Aplicativo de Edição\remotion\out\_chunks\ttm_main.list.txt':
+  Duration: N/A, start: 0.000000, bitrate: 5376 kb/s
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 5059 kb/s, 30 fps, 30 tbr, 90k tbn
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+    Side data:
+      ICC Profile
+  Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #0:1 -> #0:1 (copy)
+Output #0, mp4, to 'F:\Canal Dark\Aplicativo de Edição\remotion\out\ttm_main.mp4':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 5059 kb/s, 30 fps, 30 tbr, 90k tbn
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+    Side data:
+      ICC Profile
+  Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Press [q] to stop, [?] for help
+[mov,mp4,m4a,3gp,3g2,mj2 @ 000002c851e75800] Auto-inserting h264_mp4toannexb bitstream filter
+    Last message repeated 2 times
+[mov,mp4,m4a,3gp,3g2,mj2 @ 000002c851e982c0] Auto-inserting h264_mp4toannexb bitstream filter
+frame=26107 fps=0.0 q=-1.0 size=  628736KiB time=00:14:30.42 bitrate=5917.3kbits/s speed=1.65e+03x elapsed=0:00:00.52    [mov,mp4,m4a,3gp,3g2,mj2 @ 000002c851e99280] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 000002c851f67800] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 000002c851f68a40] Auto-inserting h264_mp4toannexb bitstream filter
+[out#0/mp4 @ 000002c8518d5c40] video:1210247KiB audio:61132KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.132222%
+frame=47326 fps=45526 q=-1.0 Lsize= 1273060KiB time=00:26:17.80 bitrate=6609.8kbits/s speed=1.52e+03x elapsed=0:00:01.03    
+
+=== DONE === 1327s -> F:\Canal Dark\Aplicativo de Edição\remotion\out\ttm_main.mp4
+  render main: 1401s
+@@@ concat (reusa cold-open existente) @ 18:36:49
+Error opening input file out/_cc.txt.
+Error opening input files: No such file or directory
+  !!! concat falhou
+@@@ FIM @ 18:36:49

@@ -1,0 +1,215 @@
+=== Banco v2 | 50/categoria | catálogo atual: 0 ===
+
+### cosmic ###
+  [ 1/50] pexels_34054569 (OK) Vibrant cosmic nebula with glowing gas clouds in g
+  [ 2/50] pexels_31084223 (OK) A vibrant cosmic nebula with swirling pink and blu
+  [ 3/50] pexels_36168347 (OK) Vibrant magenta and pink glowing nebula amidst a f
+  [ 4/50] pexels_12275385 (OK) Dark space filled with scattered stars and flowing
+  [ 5/50] pexels_12286525 (OK) Deep space filled with scattered stars and faint p
+  [ 6/50] pexels_15289793 (OK) A vibrant, colorful space nebula with swirling gre
+  [ 7/50] pexels_29186449 (OK) Blue and purple glowing particles scattered on a d
+  [ 8/50] pexels_35087360 (OK) A vibrant spiral galaxy with swirling purple and p
+  [ 9/50] pexels_33506246 (OK) A vibrant blue spiral galaxy with a bright glowing
+  [10/50] pexels_32346995 (OK) Numerous colorful, glowing spiral and elliptical s
+  [11/50] pexels_29994297 (OK) Vast deep space scene filled with blue and purple 
+  [12/50] pexels_15735937 (OK) A vibrant spiral galaxy with a bright core set aga
+  [13/50] pexels_12336940 (OK) A wide view of a starfield with dark dust lanes an
+  [14/50] pexels_1926295 (OK) A wide shot of the Milky Way galaxy with countless
+  [15/50] pexels_3194277 (OK) A vibrant cosmic nebula featuring a bright white g
+  [16/50] pexels_13142569 (OK) Red Jeep parked in a dark field under a vibrant st
+  [17/50] pexels_32817841 (sem-vision) galaxy
+  [18/50] pexels_12815787 (OK) Night sky with countless stars and the Milky Way o
+  [19/50] pexels_32876270 (OK) Close-up view of a vast spiral galaxy with countle
+  [20/50] pexels_36229894 (OK) Dark background with numerous bright blue and whit
+  [21/50] pexels_27775202 (OK) A wide-field view of the Milky Way, showing countl
+  [22/50] pexels_4483990 (OK) A dark night sky filled with countless stars over 
+  [23/50] pexels_14164051 (OK) Night sky with numerous stars and softly illuminat
+  [24/50] pexels_16544208 (OK) Dark night sky filled with numerous stars above si
+  [25/50] pexels_19098847 (OK) A starry night sky over a dark landscape with a la
+  [26/50] pexels_18358235 (OK) Vast night sky filled with stars and the Milky Way
+  [27/50] pexels_10719866 (OK) A wide shot of a starry night sky with wispy cloud
+  [28/50] pexels_20301413 (OK) Night sky with numerous stars and faint clouds abo
+  [29/50] pexels_32920021 (OK) The Milky Way galaxy arcs across a dark night sky 
+  [30/50] pexels_3628411 (OK) A dark building silhouette frames a deep blue nigh
+  [31/50] pexels_11773126 (OK) A dark night sky filled with numerous stars and sc
+  [32/50] pexels_17808869 (OK) Dark night sky revealing the Milky Way and countle
+  [33/50] pexels_27442169 (OK) Dark night sky filled with countless stars and two
+  [34/50] pexels_28492331 (OK) Vibrant green and purple Northern Lights illuminat
+  [35/50] pexels_28889010 (OK) Vibrant green and magenta aurora borealis across a
+  [36/50] pexels_852435 (OK) Vibrant green aurora borealis illuminating a starr
+  [37/50] pexels_35092214 (OK) Vibrant starry night sky with green aurora over ba
+  [38/50] pexels_5701988 (OK) Green aurora borealis shimmering over a tranquil h
+  [39/50] pexels_27791489 (OK) Green and purple aurora borealis illuminates the n
+  [40/50] pexels_5600930 (OK) A vibrant green aurora borealis lights up the nigh
+  [41/50] pexels_32103785 (OK) Starry night sky above a dark tree line, with a gr
+  [42/50] pexels_31280471 (OK) Green and purple aurora borealis shimmering across
+  [43/50] pexels_31952309 (OK) Dark blue night sky full of stars above a silhouet
+  [44/50] pexels_5700940 (OK) Vibrant green aurora borealis lights up a star-fil
+  [45/50] pexels_28180439 (OK) A dark night sky filled with numerous stars, inclu
+  [46/50] pexels_12336972 (OK) A wide diagonal band of golden and brown cosmic du
+  [47/50] pexels_18997337 (OK) A starry night sky with the Milky Way over a misty
+  [48/50] pexels_30262970 (OK) Dark night sky filled with countless stars and the
+  [49/50] pexels_8644889 (OK) Night sky with a prominent Milky Way and countless
+  [50/50] pexels_13322952 (OK) A stunning night sky displaying the Milky Way over
+  -> cosmic: 50 novos
+
+### nature ###
+  [ 1/50] pexels_30131614 (OK) Gentle ocean waves under a pastel gradient sky at 
+  [ 2/50] pexels_27048537 (OK) Golden sunset over calm ocean with a distant ship 
+  [ 3/50] pexels_12785202 (OK) Sunset over tranquil water with a vibrant orange, 
+  [ 4/50] pexels_3586676 (OK) Golden sunlight reflecting on gently rippling ocea
+  [ 5/50] pexels_13350215 (OK) Orange and red gradient sky over a dark, calm ocea
+  [ 6/50] pexels_30542568 (OK) Ocean sunset with a boat leaving a wake under a gr
+  [ 7/50] pexels_5976555 (OK) Dark ocean waves breaking under a cloudy, twilight
+  [ 8/50] pexels_34338852 (OK) Wide shot of the ocean under a golden sky with sca
+  [ 9/50] pexels_35612654 (OK) Vast ocean meeting a sky with colorful pink clouds
+  [10/50] pexels_35253648 (OK) Aerial view of a golden sunset over a calm sea wit
+  [11/50] pexels_13882841 (OK) Silhouetted palm trees frame a tranquil ocean suns
+  [12/50] pexels_4250075 (OK) Golden sunset over a vast pine forest and rolling 
+  [13/50] pexels_35274206 (OK) A lone hiker with a backpack walks along a dark mo
+  [14/50] pexels_34067541 (OK) Sun over hazy mountains at sunrise or sunset, view
+  [15/50] pexels_26583632 (sem-vision) mountain sunrise
+  [16/50] pexels_33354461 (OK) Golden sunrise over misty mountain ranges and gree
+  [17/50] pexels_36026712 (sem-vision) mountain sunrise
+  [18/50] pexels_36209109 (sem-vision) mountain sunrise
+  [19/50] pexels_3926075 (sem-vision) mountain sunrise
+  [20/50] pexels_34984497 (sem-vision) mountain sunrise
+  [21/50] pexels_35655927 (sem-vision) mountain sunrise
+  [22/50] pexels_35575345 (OK) A vibrant sunset over a vast mountain range with a
+  [23/50] pexels_2865145 (OK) Blue sky filled with scattered white and grey cumu
+  [24/50] pexels_9540152 (sem-vision) clouds timelapse
+  [25/50] pexels_11519743 (sem-vision) clouds timelapse
+  [26/50] pexels_6772577 (sem-vision) clouds timelapse
+  [27/50] pexels_33227529 (sem-vision) clouds timelapse
+  [28/50] pexels_17302276 (sem-vision) clouds timelapse
+  [29/50] pexels_12854830 (sem-vision) clouds timelapse
+  [30/50] pexels_13236825 (sem-vision) clouds timelapse
+  [31/50] pexels_27896296 (sem-vision) clouds timelapse
+  [32/50] pexels_4525344 (sem-vision) clouds timelapse
+  [33/50] pexels_25921606 (sem-vision) clouds timelapse
+  [34/50] pexels_5535406 (sem-vision) forest sunlight
+  [35/50] pexels_6718353 (sem-vision) forest sunlight
+  [36/50] pexels_5543396 (sem-vision) forest sunlight
+  [37/50] pexels_857042 (sem-vision) forest sunlight
+  [38/50] pexels_11265968 (sem-vision) forest sunlight
+  [39/50] pexels_7645660 (sem-vision) forest sunlight
+  [40/50] pexels_18209572 (sem-vision) forest sunlight
+  [41/50] pexels_15720111 (sem-vision) forest sunlight
+  [42/50] pexels_5623817 (sem-vision) forest sunlight
+  [43/50] pexels_9827205 (sem-vision) forest sunlight
+  [44/50] pexels_852335 (sem-vision) forest sunlight
+  [45/50] pexels_19955848 (sem-vision) ocean waves
+  [46/50] pexels_34693119 (sem-vision) ocean waves
+  [47/50] pexels_6748729 (sem-vision) ocean waves
+  [48/50] pexels_9806390 (sem-vision) ocean waves
+  [49/50] pexels_28570000 (sem-vision) ocean waves
+  [50/50] pexels_5668625 (sem-vision) ocean waves
+  -> nature: 50 novos
+
+### human ###
+  [ 1/50] pexels_37631404 (sem-vision) person silhouette sunset
+  [ 2/50] pexels_5739693 (sem-vision) person silhouette sunset
+  [ 3/50] pexels_4231686 (sem-vision) person silhouette sunset
+  [ 4/50] pexels_37792948 (sem-vision) person silhouette sunset
+  [ 5/50] pexels_16130610 (sem-vision) person silhouette sunset
+  [ 6/50] pexels_30520726 (sem-vision) person silhouette sunset
+  [ 7/50] pexels_5739694 (sem-vision) person silhouette sunset
+  [ 8/50] pexels_5418790 (sem-vision) person silhouette sunset
+  [ 9/50] pexels_34736308 (sem-vision) person silhouette sunset
+  [10/50] pexels_36131096 (sem-vision) person silhouette sunset
+  [11/50] pexels_5667133 (sem-vision) person silhouette sunset
+  [12/50] pexels_31329969 (sem-vision) person silhouette sunset
+  [13/50] pexels_6655122 (sem-vision) hands praying
+  [14/50] pexels_9465399 (sem-vision) hands praying
+  [15/50] pexels_5366845 (sem-vision) hands praying
+  [16/50] pexels_6860984 (sem-vision) hands praying
+  [17/50] pexels_7451740 (sem-vision) hands praying
+  [18/50] pexels_5386138 (sem-vision) hands praying
+  [19/50] pexels_20358196 (sem-vision) hands praying
+  [20/50] pexels_9737896 (sem-vision) hands praying
+  [21/50] pexels_20231493 (sem-vision) hands praying
+  [22/50] pexels_8600183 (sem-vision) hands praying
+  [23/50] pexels_20358203 (sem-vision) hands praying
+  [24/50] pexels_7184337 (sem-vision) hands praying
+  [25/50] pexels_9058671 (sem-vision) woman meditating
+  [26/50] pexels_6438174 (sem-vision) woman meditating
+  [27/50] pexels_6438177 (sem-vision) woman meditating
+  [28/50] pexels_6377674 (sem-vision) woman meditating
+  [29/50] pexels_6438172 (sem-vision) woman meditating
+  [30/50] pexels_7191271 (sem-vision) woman meditating
+  [31/50] pexels_8347394 (sem-vision) woman meditating
+  [32/50] pexels_6298147 (sem-vision) woman meditating
+  [33/50] pexels_7393763 (sem-vision) woman meditating
+  [34/50] pexels_8456787 (sem-vision) woman meditating
+  [35/50] pexels_8347510 (sem-vision) woman meditating
+  [36/50] pexels_7525597 (sem-vision) woman meditating
+  [37/50] pexels_35830059 (sem-vision) person walking alone
+  [38/50] pexels_5738706 (sem-vision) person walking alone
+  [39/50] pexels_31454393 (sem-vision) person walking alone
+  [40/50] pexels_35735039 (sem-vision) person walking alone
+  [41/50] pexels_8085542 (sem-vision) person walking alone
+  [42/50] pexels_6466850 (sem-vision) person walking alone
+  [43/50] pexels_8322821 (sem-vision) person walking alone
+  [44/50] pexels_35746302 (sem-vision) person walking alone
+  [45/50] pexels_8322549 (sem-vision) person walking alone
+  [46/50] pexels_34633224 (sem-vision) person walking alone
+  [47/50] pexels_14106695 (sem-vision) person walking alone
+  [48/50] pexels_36437806 (sem-vision) person walking alone
+  [49/50] pexels_8677058 (sem-vision) candle flame
+  [50/50] pexels_14898347 (sem-vision) candle flame
+  -> human: 50 novos
+
+### abstract ###
+  [ 1/50] pexels_29471049 (sem-vision) light rays
+  [ 2/50] pexels_34645674 (sem-vision) light rays
+  [ 3/50] pexels_14057037 (sem-vision) light rays
+  [ 4/50] pexels_13069522 (sem-vision) light rays
+  [ 5/50] pexels_2632737 (sem-vision) light rays
+  [ 6/50] pexels_37991175 (sem-vision) light rays
+  [ 7/50] pexels_35006911 (sem-vision) light rays
+  [ 8/50] pexels_33237395 (sem-vision) light rays
+  [ 9/50] pexels_11613864 (sem-vision) light rays
+  [10/50] pexels_32370429 (sem-vision) light rays
+  [11/50] pexels_4514358 (sem-vision) light rays
+  [12/50] pexels_30922271 (sem-vision) particles floating
+  [13/50] pexels_9665236 (sem-vision) particles floating
+  [14/50] pexels_35552815 (sem-vision) particles floating
+  [15/50] pexels_29755925 (sem-vision) particles floating
+  [16/50] pexels_30922259 (sem-vision) particles floating
+  [17/50] pexels_3695383 (sem-vision) particles floating
+  [18/50] pexels_32191406 (sem-vision) particles floating
+  [19/50] pexels_35552817 (sem-vision) particles floating
+  [20/50] pexels_9667570 (sem-vision) particles floating
+  [21/50] pexels_9667568 (sem-vision) particles floating
+  [22/50] pexels_29853254 (sem-vision) particles floating
+  [23/50] pexels_32108926 (sem-vision) water ripple
+  [24/50] pexels_32317029 (sem-vision) water ripple
+  [25/50] pexels_1181911 (sem-vision) water ripple
+  [26/50] pexels_27370305 (sem-vision) water ripple
+  [27/50] pexels_31320313 (sem-vision) water ripple
+  [28/50] pexels_27863511 (sem-vision) water ripple
+  [29/50] pexels_34666821 (sem-vision) water ripple
+  [30/50] pexels_28700250 (sem-vision) water ripple
+  [31/50] pexels_19069293 (sem-vision) water ripple
+  [32/50] pexels_1343225 (sem-vision) water ripple
+  [33/50] pexels_3558549 (sem-vision) water ripple
+  [34/50] pexels_18333375 (sem-vision) ink in water
+  [35/50] pexels_10223669 (sem-vision) ink in water
+  [36/50] pexels_18333471 (sem-vision) ink in water
+  [37/50] pexels_18333374 (sem-vision) ink in water
+  [38/50] pexels_4194954 (sem-vision) ink in water
+  [39/50] pexels_18333329 (sem-vision) ink in water
+  [40/50] pexels_3578239 (sem-vision) ink in water
+  [41/50] pexels_18333473 (sem-vision) ink in water
+  [42/50] pexels_5146778 (sem-vision) ink in water
+  [43/50] pexels_6045311 (sem-vision) ink in water
+  [44/50] pexels_29372103 (sem-vision) ink in water
+  [45/50] pexels_4320605 (sem-vision) smoke dark
+  [46/50] pexels_6071224 (sem-vision) smoke dark
+  [47/50] pexels_7122113 (sem-vision) smoke dark
+  [48/50] pexels_19212507 (sem-vision) smoke dark
+  [49/50] pexels_7122120 (sem-vision) smoke dark
+  [50/50] pexels_5544553 (sem-vision) smoke dark
+  -> abstract: 50 novos
+
+=== DONE === catálogo: 200 clips (66 enriquecidos) -> D:\Meu Drive\canal_dark_footage_stock\catalogo.json

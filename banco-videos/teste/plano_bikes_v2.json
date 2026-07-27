@@ -1,0 +1,2026 @@
+{
+ "secoes": [
+  {
+   "i": 0,
+   "titulo": "The Right First Bike",
+   "t_ini": 0.0,
+   "t_fim": 17.0,
+   "wash": "none",
+   "title_card": false
+  },
+  {
+   "i": 1,
+   "titulo": "The Three Golden Rules",
+   "t_ini": 17.0,
+   "t_fim": 45.0,
+   "wash": "teal",
+   "title_card": true
+  },
+  {
+   "i": 2,
+   "titulo": "Road Bikes: Allez & Domane",
+   "t_ini": 45.0,
+   "t_fim": 121.0,
+   "wash": "dourado",
+   "title_card": true
+  },
+  {
+   "i": 3,
+   "titulo": "Value & Hybrid Options",
+   "t_ini": 121.0,
+   "t_fim": 196.0,
+   "wash": "vermelho",
+   "title_card": true
+  },
+  {
+   "i": 4,
+   "titulo": "The #1 Pick: Trek FX 2",
+   "t_ini": 196.0,
+   "t_fim": 232.0,
+   "wash": "azul_frio",
+   "title_card": true
+  },
+  {
+   "i": 5,
+   "titulo": "The Best Fit",
+   "t_ini": 232.0,
+   "t_fim": 261.0,
+   "wash": "amarelo",
+   "title_card": false
+  }
+ ],
+ "beats": [
+  {
+   "t_ini": 0.0,
+   "t_fim": 5.0,
+   "dur": 5.0,
+   "texto": "A good first bike isn't the lightest one, or the fastest one, or the one your local",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "thoughtful person contemplating beginner motorcycles in showroom, evaluating options",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "abstrato"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 0
+  },
+  {
+   "t_ini": 5.0,
+   "t_fim": 7.0,
+   "dur": 2.0,
+   "texto": "shop wants to clear from stock.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "motorcycle dealership interior, rows of new bikes on display, sales floor",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "abstrato"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 1
+  },
+  {
+   "t_ini": 7.0,
+   "t_fim": 10.0,
+   "dur": 3.0,
+   "texto": "It is the one you actually ride next month.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "happy person riding a beginner motorcycle on a scenic road, enjoying the ride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock",
+    "abstrato"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 2
+  },
+  {
+   "t_ini": 10.0,
+   "t_fim": 14.0,
+   "dur": 4.0,
+   "texto": "Today we are counting down the five best bikes for beginners, and the number one",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "The Five Best Bikes for Beginners"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 3
+  },
+  {
+   "t_ini": 14.0,
+   "t_fim": 17.0,
+   "dur": 3.0,
+   "texto": "pick costs less than a weekend trip.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "affordable beginner motorcycle, value for money, budget-friendly riding experience",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "abstrato"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 4
+  },
+  {
+   "t_ini": 17.0,
+   "t_fim": 20.0,
+   "dur": 3.0,
+   "texto": "The Three Golden Rules",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "The Three Golden Rules",
+    "number": 1
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 5
+  },
+  {
+   "t_ini": 17.0,
+   "t_fim": 20.0,
+   "dur": 3.0,
+   "texto": "Before the countdown, three rules that matter more than any brand name:",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img04_SplitSlide",
+   "dados": null,
+   "busca": "bicycle workshop tools blurred background soft light",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DisplayText"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 6,
+   "img_slots": 2
+  },
+  {
+   "t_ini": 20.0,
+   "t_fim": 22.0,
+   "dur": 2.0,
+   "texto": "Rule one,",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Ovl09_TickerCaption",
+   "dados": {
+    "text": "Rule One"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 7,
+   "props_final": {
+    "text": "Rule one,",
+    "dim": 0.3
+   }
+  },
+  {
+   "t_ini": 22.0,
+   "t_fim": 24.0,
+   "dur": 2.0,
+   "texto": "fit beats spec.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto04_EditorialSerif",
+   "dados": {
+    "text": "Fit beats spec."
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 8,
+   "props_final": {
+    "text": "Fit beats spec.",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 24.0,
+   "t_fim": 27.0,
+   "dur": 3.0,
+   "texto": "A bike that fits your body will always beat a bike with a better parts list.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "cyclist riding perfectly fitted road bike smooth pedaling",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "stock"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 9
+  },
+  {
+   "t_ini": 27.0,
+   "t_fim": 29.0,
+   "dur": 2.0,
+   "texto": "parts list.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "bicycle components diagram high-end groupset exploded view",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem",
+    "stock"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 10
+  },
+  {
+   "t_ini": 29.0,
+   "t_fim": 32.0,
+   "dur": 3.0,
+   "texto": "Rule two: Comfort creates consistency.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto01_Typewriter",
+   "dados": {
+    "text": "Rule Two: Comfort creates consistency."
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 11,
+   "props_final": {
+    "text": "Comfort creates consistency",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 32.0,
+   "t_fim": 34.0,
+   "dur": 2.0,
+   "texto": "Upright geometry",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "bicycle frame geometry comparison diagram upright comfortable position",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem",
+    "stock"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 12
+  },
+  {
+   "t_ini": 34.0,
+   "t_fim": 37.0,
+   "dur": 3.0,
+   "texto": "keeps new riders on the road week after week.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "group of new cyclists riding comfortably on scenic road",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 13
+  },
+  {
+   "t_ini": 37.0,
+   "t_fim": 40.0,
+   "dur": 3.0,
+   "texto": "Rule three: Buy the frame, not the sticker.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto02_HighlightSweep",
+   "dados": {
+    "text": "Rule Three: Buy the frame, not the sticker."
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 14,
+   "props_final": {
+    "text": "Buy the frame, not the sticker",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 40.0,
+   "t_fim": 43.0,
+   "dur": 3.0,
+   "texto": "Components wear out and get replaced,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "mechanic replacing bicycle chain or brake pads close up",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "stock"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 15
+  },
+  {
+   "t_ini": 43.0,
+   "t_fim": 45.0,
+   "dur": 2.0,
+   "texto": "a solid frame stays with you for years.",
+   "estrategia": "literal",
+   "tipo": "footage_imagem",
+   "componente": null,
+   "dados": null,
+   "busca": "high quality bicycle frame carbon fiber aluminum showroom",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock",
+    "ilustracao"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 16
+  },
+  {
+   "t_ini": 45.0,
+   "t_fim": 48.0,
+   "dur": 3.0,
+   "texto": "Road Bikes: Allez & Domane",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Road Bikes: Allez & Domane",
+    "number": 2
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 17
+  },
+  {
+   "t_ini": 45.0,
+   "t_fim": 49.0,
+   "dur": 4.0,
+   "texto": "Number five, the specialized alloys.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "specialized bike frame alloy composition diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:close up of bike frame material",
+    "abstrato:abstract metallic texture"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 18
+  },
+  {
+   "t_ini": 49.0,
+   "t_fim": 52.0,
+   "dur": 3.0,
+   "texto": "This is the classic gateway to real road riding.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img05_BeforeAfterWipe",
+   "dados": null,
+   "busca": "road bike riding scenic route POV",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:cyclist riding on open road",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 19,
+   "img_slots": 2
+  },
+  {
+   "t_ini": 52.0,
+   "t_fim": 57.0,
+   "dur": 5.0,
+   "texto": "The aluminum frame has stayed sharp through eight generations, and the endurance",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "evolution of specialized allez aluminum frame diagram",
+   "strict": false,
+   "entidades": {
+    "numero": "eight"
+   },
+   "fallback": [
+    "footage_video:various models of Specialized Allez bike frames",
+    "stock:close up modern aluminum bike frame"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 20
+  },
+  {
+   "t_ini": 57.0,
+   "t_fim": 61.0,
+   "dur": 4.0,
+   "texto": "geometry keeps the handlebars a little higher than a race bike so your back and neck",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "endurance road bike geometry vs race bike geometry diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:side view of endurance road bike and race bike",
+    "animacao:BarChartComparison"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 21
+  },
+  {
+   "t_ini": 61.0,
+   "t_fim": 64.0,
+   "dur": 3.0,
+   "texto": "aren't screaming after the first hour.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img03_FramedGridPan",
+   "dados": null,
+   "busca": "cyclist enjoying comfortable ride on road bike",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:cyclist smiling while riding",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 22,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 64.0,
+   "t_fim": 68.0,
+   "dur": 4.0,
+   "texto": "The whole package weighs around nine and a half kilograms.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf01_CounterGlow",
+   "dados": {
+    "number": 9.5,
+    "unit": "kg",
+    "label": "Bike Weight"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 9.5
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 23,
+   "props_final": {
+    "title": "Bike Weight",
+    "labels": [],
+    "values": [
+     9.5
+    ],
+    "suffix": "kg"
+   }
+  },
+  {
+   "t_ini": 68.0,
+   "t_fim": 74.0,
+   "dur": 6.0,
+   "texto": "If your dream is fast group rides on smooth tarmac, the Allez is the honest starting",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "fast road bike group ride smooth tarmac",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:cyclists riding on smooth road",
+    "abstrato:road bike on smooth road scenic"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 24
+  },
+  {
+   "t_ini": 74.0,
+   "t_fim": 79.0,
+   "dur": 5.0,
+   "texto": "line. The weak point is comfort on rough roads because the tires max out at twenty",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike riding on rough pavement close up tires",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:close up of bike tire on rough road",
+    "ilustracao:bike tire tread diagram"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 25
+  },
+  {
+   "t_ini": 79.0,
+   "t_fim": 82.0,
+   "dur": 3.0,
+   "texto": "eight millimeters.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl06_CenterPunch",
+   "dados": {
+    "number": 28,
+    "unit": "mm",
+    "label": "Max Tire Width"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 28
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 26,
+   "props_final": {
+    "text": "eight millimeters.",
+    "dim": 0.55
+   }
+  },
+  {
+   "t_ini": 82.0,
+   "t_fim": 86.0,
+   "dur": 4.0,
+   "texto": "Number four: The Trek Domane a l two.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek Domane AL2 bicycle riding",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem:Trek Domane AL2 product photo",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 27
+  },
+  {
+   "t_ini": 86.0,
+   "t_fim": 90.0,
+   "dur": 4.0,
+   "texto": "Trek took the geometry of its endurance racing bikes and translated it for",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek endurance road bike geometry diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:Trek endurance road bike detail",
+    "abstrato:abstract geometry lines on bike"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 28
+  },
+  {
+   "t_ini": 90.0,
+   "t_fim": 95.0,
+   "dur": 5.0,
+   "texto": "beginners. The front end sits tall, the wheelbase is long, and the bike tracks",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek Domane AL2 bike frame geometry wheelbase diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:side view of Trek Domane AL2",
+    "stock:close up of bike wheelbase"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 29
+  },
+  {
+   "t_ini": 95.0,
+   "t_fim": 98.0,
+   "dur": 3.0,
+   "texto": "straight and calm on descents.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike descending calmly straight",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:cyclist riding downhill smooth",
+    "abstrato:wind flowing through hair cycling"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 30
+  },
+  {
+   "t_ini": 98.0,
+   "t_fim": 103.0,
+   "dur": 5.0,
+   "texto": "It clears tires up to thirty five millimeters, which turns broken pavement into",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl11_SpecBadge",
+   "dados": {
+    "number": 35,
+    "unit": "mm",
+    "label": "Max Tire Clearance"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 35
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 31,
+   "props_final": {
+    "text": "35",
+    "kicker": "mm"
+   }
+  },
+  {
+   "t_ini": 103.0,
+   "t_fim": 108.0,
+   "dur": 5.0,
+   "texto": "background noise. Riders say the Domain feels planted where nervous racebikes feel",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek Domane AL2 riding over broken pavement",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "stock:road bike tire on cracked asphalt",
+    "abstrato:road bike smooth ride concept"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 32
+  },
+  {
+   "t_ini": 108.0,
+   "t_fim": 113.0,
+   "dur": 5.0,
+   "texto": "twitchy. For beginners who want one bike for tarmac, gravel paths, and everything",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek Domane AL2 riding on tarmac then gravel path",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "stock:road bike on gravel path",
+    "footage_video:cyclist on mixed terrain"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 33
+  },
+  {
+   "t_ini": 113.0,
+   "t_fim": 116.0,
+   "dur": 3.0,
+   "texto": "between, this is the safest bet in the lineup.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike landscape versatile",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:cyclist riding versatile bike",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 34
+  },
+  {
+   "t_ini": 116.0,
+   "t_fim": 121.0,
+   "dur": 5.0,
+   "texto": "It costs around one thousand dollars new, and the used market is full of them.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl13_PriceTag",
+   "dados": {
+    "price": 1000,
+    "currency": "$",
+    "label": "New Price"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 1000
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 35,
+   "props_final": {
+    "text": "$1,000",
+    "kicker": "New Price"
+   }
+  },
+  {
+   "t_ini": 121.0,
+   "t_fim": 124.0,
+   "dur": 3.0,
+   "texto": "Value & Hybrid Options",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Value & Hybrid Options",
+    "number": 3
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 36
+  },
+  {
+   "t_ini": 121.0,
+   "t_fim": 126.0,
+   "dur": 5.0,
+   "texto": "Number three, the Triban R C five hundred from Decathlon.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Triban RC 500 road bike riding action shot",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "stock:road bike riding",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 37
+  },
+  {
+   "t_ini": 126.0,
+   "t_fim": 129.0,
+   "dur": 3.0,
+   "texto": "This is the value shock of the list.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "affordable high quality road bike detail close up",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:Triban RC 500 close up",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 38
+  },
+  {
+   "t_ini": 129.0,
+   "t_fim": 131.0,
+   "dur": 2.0,
+   "texto": "For roughly seven hundred dollars",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl12_GiantStat",
+   "dados": {
+    "number": 700,
+    "label": "dollars"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 700
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 39,
+   "props_final": {
+    "text": "700",
+    "kicker": "For roughly 700 dollars"
+   }
+  },
+  {
+   "t_ini": 131.0,
+   "t_fim": 134.0,
+   "dur": 3.0,
+   "texto": "you get an aluminum frame, a carbon fork, and",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike aluminum frame carbon fork diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:road bike frame details",
+    "animacao:IconLabels"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 40
+  },
+  {
+   "t_ini": 134.0,
+   "t_fim": 137.0,
+   "dur": 3.0,
+   "texto": "hydraulic disc brakes,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "hydraulic disc brake road bike diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:road bike disc brake close up",
+    "animacao:IconLabels"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 41
+  },
+  {
+   "t_ini": 137.0,
+   "t_fim": 140.0,
+   "dur": 3.0,
+   "texto": "a combination that cost twice as much five years ago.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl14_PillVerdict",
+   "dados": {
+    "title": "Cost Comparison",
+    "data": [
+     {
+      "label": "Today",
+      "value": 1
+     },
+     {
+      "label": "5 Years Ago",
+      "value": 2
+     }
+    ],
+    "unit": "x"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "twice as much",
+    "anos": "five years ago"
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 42,
+   "props_final": {
+    "text": "Cost Comparison",
+    "kicker": "A combination that cost twice as much five years ago."
+   }
+  },
+  {
+   "t_ini": 140.0,
+   "t_fim": 144.0,
+   "dur": 4.0,
+   "texto": "The riding position is the most relaxed of any road bike here.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person riding road bike upright comfortable position",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:road bike ergonomic design",
+    "ilustracao:bike riding position diagram"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 43
+  },
+  {
+   "t_ini": 144.0,
+   "t_fim": 149.0,
+   "dur": 5.0,
+   "texto": "Decathlon backs the frame with a lifetime warranty and the parts are standard so any",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "CharacterCard",
+   "dados": {
+    "name": "Decathlon",
+    "title": "Lifetime Frame Warranty"
+   },
+   "busca": "Decathlon portrait photo",
+   "strict": false,
+   "entidades": {
+    "org": "Decathlon"
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 44,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 149.0,
+   "t_fim": 150.0,
+   "dur": 1.0,
+   "texto": "shop can service it.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "bike mechanic servicing road bike generic tools",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:bike repair tools close up",
+    "ilustracao:bike service diagram"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 45
+  },
+  {
+   "t_ini": 150.0,
+   "t_fim": 156.0,
+   "dur": 6.0,
+   "texto": "It isn't light at close to eleven kilograms, but for a first road bike, the RC five",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf14_OvlCounterPunch",
+   "dados": {
+    "number": 11,
+    "unit": "kg",
+    "label": "Weight"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 11
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 46,
+   "props_final": {
+    "title": "Weight",
+    "labels": [],
+    "values": [
+     11.0
+    ],
+    "suffix": "kg"
+   }
+  },
+  {
+   "t_ini": 156.0,
+   "t_fim": 159.0,
+   "dur": 3.0,
+   "texto": "hundred is almost unfair to the competition.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img20_TripleCarousel",
+   "dados": null,
+   "busca": "road bike on open road competitive feel",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:road bike racing",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 47,
+   "img_slots": 3
+  },
+  {
+   "t_ini": 159.0,
+   "t_fim": 162.0,
+   "dur": 3.0,
+   "texto": "Number two, the Giant Escape.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Giant Escape hybrid bike riding",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "stock:hybrid bicycle",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 48
+  },
+  {
+   "t_ini": 162.0,
+   "t_fim": 163.0,
+   "dur": 1.0,
+   "texto": "Three.",
+   "estrategia": "literal",
+   "tipo": "footage_imagem",
+   "componente": null,
+   "dados": null,
+   "busca": "Giant Escape 3 model number detail",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "stock:hybrid bike frame detail",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 49
+  },
+  {
+   "t_ini": 163.0,
+   "t_fim": 168.0,
+   "dur": 5.0,
+   "texto": "The Escape is a flat bar hybrid, and that flat bar is exactly why beginners love it.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Giant Escape flat bar handlebar close up",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:flat bar hybrid bike diagram",
+    "stock:person holding flat bar bike handlebars"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 50
+  },
+  {
+   "t_ini": 168.0,
+   "t_fim": 171.0,
+   "dur": 3.0,
+   "texto": "You sit upright, you see traffic,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person riding hybrid bike upright in city traffic",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:cyclist looking at traffic",
+    "ilustracao:bike riding posture diagram"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 51
+  },
+  {
+   "t_ini": 171.0,
+   "t_fim": 174.0,
+   "dur": 3.0,
+   "texto": "and the wide gearing climbs hills without drama.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "hybrid bike climbing uphill easy gearing",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:bike chain gears detail",
+    "ilustracao:bicycle gear ratio diagram"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 52
+  },
+  {
+   "t_ini": 174.0,
+   "t_fim": 179.0,
+   "dur": 5.0,
+   "texto": "Giant is the largest bike manufacturer in the world, and the Escape is its best",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "CharacterCard",
+   "dados": {
+    "name": "Giant Bicycles",
+    "title": "Largest Bike Manufacturer in the World"
+   },
+   "busca": "Giant Bicycles portrait photo",
+   "strict": false,
+   "entidades": {
+    "org": "Giant"
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 53,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 179.0,
+   "t_fim": 181.0,
+   "dur": 2.0,
+   "texto": "selling model for a reason.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img12_SpotlightDetail",
+   "dados": null,
+   "busca": "popular city hybrid bike riding",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:happy cyclist riding",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 54,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 181.0,
+   "t_fim": 183.0,
+   "dur": 2.0,
+   "texto": "It weighs about eleven and a half kilograms,",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf10_BigStatCard",
+   "dados": {
+    "number": 11.5,
+    "unit": "kg",
+    "label": "Weight"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 11.5
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 55,
+   "props_final": {
+    "title": "Weight",
+    "labels": [],
+    "values": [
+     11.5
+    ],
+    "suffix": "kg"
+   }
+  },
+  {
+   "t_ini": 183.0,
+   "t_fim": 185.0,
+   "dur": 2.0,
+   "texto": "takes fenders and a rack, and turns",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "hybrid bike with fenders and rack diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:bike with accessories",
+    "stock:bicycle accessories close up"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 56
+  },
+  {
+   "t_ini": 185.0,
+   "t_fim": 190.0,
+   "dur": 5.0,
+   "texto": "into a commuter, an errand runner, or a fitness bike depending on the day.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "versatile hybrid bike riding city park trails montage",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person cycling in different scenarios",
+    "animacao:IconGrid"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 57
+  },
+  {
+   "t_ini": 190.0,
+   "t_fim": 193.0,
+   "dur": 3.0,
+   "texto": "For riders who feel unsure about drop bars,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike drop bars diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:road bike drop handlebars close up",
+    "stock:drop bar bike detail"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 58
+  },
+  {
+   "t_ini": 193.0,
+   "t_fim": 196.0,
+   "dur": 3.0,
+   "texto": "this is the confidence machine,",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "person confidently riding hybrid bike smiling city street",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:happy cyclist city",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 59
+  },
+  {
+   "t_ini": 196.0,
+   "t_fim": 199.0,
+   "dur": 3.0,
+   "texto": "The #1 Pick: Trek FX 2",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "The #1 Pick: Trek FX 2",
+    "number": 4
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 60
+  },
+  {
+   "t_ini": 196.0,
+   "t_fim": 199.0,
+   "dur": 3.0,
+   "texto": "and number one, the Trek f x two.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek FX 2 bike close up detail",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:ObjectTitle",
+    "stock"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 61
+  },
+  {
+   "t_ini": 199.0,
+   "t_fim": 205.0,
+   "dur": 6.0,
+   "texto": "The f x two is the bike shop's recommend when a friend asks what should I buy first,",
+   "estrategia": "abstrato",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "bike shop customer asking recommendation to salesperson",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 62
+  },
+  {
+   "t_ini": 205.0,
+   "t_fim": 208.0,
+   "dur": 3.0,
+   "texto": "and the recommendation has held for over fifteen years.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf15_OvlStatCorner",
+   "dados": {
+    "value": 15,
+    "label": "Years of Recommendation"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 15
+   },
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 63,
+   "props_final": {
+    "title": "Years of Recommendation",
+    "labels": [],
+    "values": [
+     15.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 208.0,
+   "t_fim": 213.0,
+   "dur": 5.0,
+   "texto": "It blends the speed of a road bike with the upright control of a hybrid.",
+   "estrategia": "abstrato",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "road bike vs hybrid bike geometry comparison diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "peca"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 64
+  },
+  {
+   "t_ini": 213.0,
+   "t_fim": 215.0,
+   "dur": 2.0,
+   "texto": "The aluminum frame is light,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek FX 2 aluminum bike frame technical diagram",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "abstrato"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 65
+  },
+  {
+   "t_ini": 215.0,
+   "t_fim": 217.0,
+   "dur": 2.0,
+   "texto": "the tires are wide enough for bad pavement, and the",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek FX 2 bike riding on rough asphalt street",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "peca",
+    "stock"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 66
+  },
+  {
+   "t_ini": 217.0,
+   "t_fim": 221.0,
+   "dur": 4.0,
+   "texto": "frame has mounts for racks, fenders, and lights.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "Trek FX 2 bike frame mounts diagram for accessories",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "abstrato"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 67
+  },
+  {
+   "t_ini": 221.0,
+   "t_fim": 223.0,
+   "dur": 2.0,
+   "texto": "It sells for around six hundred fifty dollars,",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl13_PriceTag",
+   "dados": {
+    "price": "$650",
+    "item": "Trek FX 2"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 650
+   },
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 68,
+   "props_final": {
+    "text": "$650",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 223.0,
+   "t_fim": 226.0,
+   "dur": 3.0,
+   "texto": "holds its value used, and fits almost",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img16_ZoomOutReveal",
+   "dados": null,
+   "busca": "well-maintained used hybrid bike",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 69,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 226.0,
+   "t_fim": 232.0,
+   "dur": 6.0,
+   "texto": "every body. If you buy an FX2 and it is the wrong bike for you, the problem was",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img07_FilmstripSlide",
+   "dados": null,
+   "busca": "diverse group of people riding bicycles in urban park",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 70,
+   "img_slots": 4
+  },
+  {
+   "t_ini": 232.0,
+   "t_fim": 235.0,
+   "dur": 3.0,
+   "texto": "never the bike. One honest warning before you buy anything:",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img02_PolaroidDrop",
+   "dados": null,
+   "busca": "cyclist safety warning, cautionary cycling b-roll",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 71,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 235.0,
+   "t_fim": 238.0,
+   "dur": 3.0,
+   "texto": "every bike on this list",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "variety of road bikes or commuter bikes displayed in shop",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:BulletPointOverlay",
+    "footage_video"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 72
+  },
+  {
+   "t_ini": 238.0,
+   "t_fim": 240.0,
+   "dur": 2.0,
+   "texto": "is only as good as its fit.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "professional bike fitting session, cyclist on static bike being measured",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:TextReveal"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 73
+  },
+  {
+   "t_ini": 240.0,
+   "t_fim": 242.0,
+   "dur": 2.0,
+   "texto": "Visit a shop, stand over the frame,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person trying out a bicycle in a bike shop, standing over the frame",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "stock"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 74
+  },
+  {
+   "t_ini": 242.0,
+   "t_fim": 245.0,
+   "dur": 3.0,
+   "texto": "and ride for ten minutes before you pay.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person test riding a bicycle outdoors on a path, short ride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "stock"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 75
+  },
+  {
+   "t_ini": 245.0,
+   "t_fim": 251.0,
+   "dur": 6.0,
+   "texto": "A fifty dollar professional fit session does more for your comfort than a five hundred dollar upgrade.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl09_TickerCaption",
+   "dados": {
+    "label1": "$50 Professional Fit Session",
+    "value1": 50,
+    "label2": "$500 Upgrade",
+    "value2": 500,
+    "description": "Impact on Comfort"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "50",
+     "500"
+    ]
+   },
+   "fallback": [],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 76,
+   "props_final": {
+    "text": "A fifty dollar professional fit session does more for your comfort tha",
+    "dim": 0.3
+   }
+  },
+  {
+   "t_ini": 251.0,
+   "t_fim": 253.0,
+   "dur": 2.0,
+   "texto": "Pick the bike that disappears under you",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "cyclist riding smoothly and effortlessly, feeling at one with the bike",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 77
+  },
+  {
+   "t_ini": 253.0,
+   "t_fim": 255.0,
+   "dur": 2.0,
+   "texto": "because the best beginner bike is the one",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "happy and confident beginner cyclist enjoying a comfortable ride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "footage_video"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 78
+  },
+  {
+   "t_ini": 255.0,
+   "t_fim": 261.0,
+   "dur": 6.0,
+   "texto": "you forget you are riding.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img11_VintageAngled",
+   "dados": null,
+   "busca": "cyclist in a state of flow, serene and absorbed in the riding experience",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "footage_video"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 79,
+   "img_slots": 1
+  }
+ ]
+}

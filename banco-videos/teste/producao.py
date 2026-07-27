@@ -43,6 +43,11 @@ PASSES = [
     ("ilustrar", PY, "ilustrar.py", TESTE),
     ("apresentar", PY, "apresentar.py", TESTE),
     ("produto_cta", PY, "produto_cta.py", TESTE),
+    ("mascote", PY, "mascote.py", TESTE),
+    ("analisar_cenas", PY, "analisar_cenas.py", TESTE),
+    ("ambiencia", PY, "ambiencia.py", TESTE),
+    ("foley", PY, "foley.py", TESTE),
+    ("personagens", PY, "personagens.py", TESTE),
 ]
 
 

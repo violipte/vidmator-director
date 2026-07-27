@@ -16,6 +16,7 @@ FALLBACK = {
     "ttm": {"quote": "The body keeps the score.", "author": "Bessel van der Kolk"},
     "estoicismo": {"quote": "Be silent for the most part, or say only what is necessary, and in few words.",
                    "author": "Epictetus"},
+    "survival": {"quote": "By failing to prepare, you are preparing to fail.", "author": "Benjamin Franklin"},
     "documentario": {"quote": "Those who cannot remember the past are condemned to repeat it.",
                      "author": "George Santayana"},
     "default": {"quote": "Knowing yourself is the beginning of all wisdom.", "author": "Aristotle"},

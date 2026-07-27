@@ -1,0 +1,2607 @@
+{
+ "secoes": [
+  {
+   "i": 0,
+   "titulo": "The Stanford Study: Defying Expectations",
+   "t_ini": 0.0,
+   "t_fim": 30.0,
+   "wash": "none",
+   "title_card": false
+  },
+  {
+   "i": 1,
+   "titulo": "The Aging Body: Conditions & Myths",
+   "t_ini": 30.0,
+   "t_fim": 92.0,
+   "wash": "azul_frio",
+   "title_card": true
+  },
+  {
+   "i": 2,
+   "titulo": "Practice 1: Run and Walk on Purpose",
+   "t_ini": 92.0,
+   "t_fim": 126.0,
+   "wash": "amarelo",
+   "title_card": true
+  },
+  {
+   "i": 3,
+   "titulo": "Practice 2: Shorter, Quicker Steps",
+   "t_ini": 126.0,
+   "t_fim": 158.0,
+   "wash": "teal",
+   "title_card": true
+  },
+  {
+   "i": 4,
+   "titulo": "Practice 3: The 10% Rule & Strength",
+   "t_ini": 158.0,
+   "t_fim": 192.0,
+   "wash": "dourado",
+   "title_card": true
+  },
+  {
+   "i": 5,
+   "titulo": "Practice 4: Keep Running Easy",
+   "t_ini": 192.0,
+   "t_fim": 225.0,
+   "wash": "vermelho",
+   "title_card": true
+  },
+  {
+   "i": 6,
+   "titulo": "Practice 5: Double Recovery & Signs",
+   "t_ini": 225.0,
+   "t_fim": 258.0,
+   "wash": "azul_frio",
+   "title_card": true
+  },
+  {
+   "i": 7,
+   "titulo": "Not For Everyone: Alternatives & Health",
+   "t_ini": 258.0,
+   "t_fim": 285.0,
+   "wash": "amarelo",
+   "title_card": true
+  },
+  {
+   "i": 8,
+   "titulo": "The Real Secret: Keep Moving",
+   "t_ini": 285.0,
+   "t_fim": 320.0,
+   "wash": "dourado",
+   "title_card": false
+  }
+ ],
+ "beats": [
+  {
+   "t_ini": 0.0,
+   "t_fim": 4.0,
+   "dur": 4.0,
+   "texto": "In nineteen eighty four, researchers at Stanford University started following a",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "Img01_KenBurnsCine",
+   "dados": {
+    "date": "1984",
+    "location": "Stanford University"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "lugar": "Stanford University",
+    "numero": "1984"
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 0,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 4.0,
+   "t_fim": 8.0,
+   "dur": 4.0,
+   "texto": "group of runners over the age of fifty, convinced they would watch them wear their",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "group of senior runners exercising, elderly running trail",
+   "strict": false,
+   "entidades": {
+    "numero": "fifty"
+   },
+   "fallback": [
+    "stock",
+    "animacao:NumberCountOverlay"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 1
+  },
+  {
+   "t_ini": 8.0,
+   "t_fim": 11.0,
+   "dur": 3.0,
+   "texto": "bodies out. They kept watching for twenty one years.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf02_Odometer",
+   "dados": {
+    "number": "21",
+    "label": "Years"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "twenty one"
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 2,
+   "props_final": {
+    "title": "Years",
+    "labels": [],
+    "values": [
+     21.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 11.0,
+   "t_fim": 18.0,
+   "dur": 7.0,
+   "texto": "By the end of the study, only fifteen percent of the runners had died compared to thirty four percent of the non runners.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "labels": [
+     "Runners Died",
+     "Non-Runners Died"
+    ],
+    "values": [
+     "15%",
+     "34%"
+    ],
+    "title": "Mortality Rate Comparison"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "thirty four"
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 3,
+   "img_slots": 1,
+   "props_final": {
+    "title": "Mortality Rate Comparison",
+    "chapterNumber": 1,
+    "subtitle": ""
+   }
+  },
+  {
+   "t_ini": 18.0,
+   "t_fim": 22.0,
+   "dur": 4.0,
+   "texto": "The people everyone expected to break down were dying at less than half the rate of",
+   "estrategia": "abstrato",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "vibrant active senior runners, energetic elderly people running",
+   "strict": false,
+   "entidades": {
+    "numero": "half"
+   },
+   "fallback": [
+    "stock",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 4
+  },
+  {
+   "t_ini": 22.0,
+   "t_fim": 27.0,
+   "dur": 5.0,
+   "texto": "everyone else. This is what running after sixty actually does, and these are the",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "senior person running healthy, elderly marathon runner",
+   "strict": false,
+   "entidades": {
+    "numero": "sixty"
+   },
+   "fallback": [
+    "stock",
+    "animacao:TitleDescription"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 5
+  },
+  {
+   "t_ini": 27.0,
+   "t_fim": 30.0,
+   "dur": 3.0,
+   "texto": "five practices that make it work.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf14_OvlCounterPunch",
+   "dados": {
+    "number": "5",
+    "label": "Practices"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "five"
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 6,
+   "props_final": {
+    "title": "Practices",
+    "labels": [],
+    "values": [
+     5.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 30.0,
+   "t_fim": 33.0,
+   "dur": 3.0,
+   "texto": "The Aging Body: Conditions & Myths",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "The Aging Body: Conditions & Myths",
+    "number": 1
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 7
+  },
+  {
+   "t_ini": 30.0,
+   "t_fim": 33.0,
+   "dur": 3.0,
+   "texto": "First, understand what you are working with.",
+   "estrategia": "abstrato",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "detailed human anatomy diagram, aging body systems illustration",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:aging body health conceptual",
+    "animacao:ChapterTitle"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 8
+  },
+  {
+   "t_ini": 33.0,
+   "t_fim": 37.0,
+   "dur": 4.0,
+   "texto": "After the age of thirty, the average adult loses somewhere between three and eight",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto08_GradientGlow",
+   "dados": {
+    "number_start": 3,
+    "number_end": 8,
+    "unit": "%",
+    "label": "Muscle Mass Loss Per Decade"
+   },
+   "busca": "senior athlete muscular arms training outdoor",
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "three",
+     "eight"
+    ]
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 9,
+   "img_slots": 1,
+   "props_final": {
+    "text": "After the age of 30, the average adult loses somewhere between 11",
+    "kicker": "Muscle Mass Loss Per Decad"
+   }
+  },
+  {
+   "t_ini": 37.0,
+   "t_fim": 42.0,
+   "dur": 5.0,
+   "texto": "percent of their muscle mass every decade, and the decline speeds up after sixty.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto06_SplitBar",
+   "dados": {
+    "title": "Muscle Mass Decline Over Decades",
+    "x_axis_label": "Age",
+    "y_axis_label": "Muscle Mass Retention (%)",
+    "data_series": [
+     {
+      "label": "Muscle Mass",
+      "points": [
+       {
+        "x": 30,
+        "y": 100
+       },
+       {
+        "x": 40,
+        "y": 95
+       },
+       {
+        "x": 50,
+        "y": 90
+       },
+       {
+        "x": 60,
+        "y": 80
+       },
+       {
+        "x": 70,
+        "y": 65
+       }
+      ]
+     }
+    ],
+    "note": "Rate of decline speeds up after 60"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "sixty"
+    ]
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 10,
+   "img_slots": 4,
+   "props_final": {
+    "text": "Muscle Mass Decline Over Decades",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 42.0,
+   "t_fim": 46.0,
+   "dur": 4.0,
+   "texto": "Your maximum heart rate drifts down, your recovery stretches out.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "senior man legs running closeup morning light",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:heart function aging diagram",
+    "animacao:LineChart {title: 'Max Heart Rate Decline', x_axis_label: 'Age', y_axis_label: 'BPM'}"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 11
+  },
+  {
+   "t_ini": 46.0,
+   "t_fim": 48.0,
+   "dur": 2.0,
+   "texto": "None of that is a verdict.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "aging body resilience determined mental strength conceptual",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 12
+  },
+  {
+   "t_ini": 48.0,
+   "t_fim": 53.0,
+   "dur": 5.0,
+   "texto": "It is simply a different set of operating conditions, and the body that runs under those conditions still.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "aging human body mechanics adaptation conceptual, intricate biological systems",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:TitleDescription {title: 'New Operating Conditions'}",
+    "atmosferico"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 13
+  },
+  {
+   "t_ini": 53.0,
+   "t_fim": 59.0,
+   "dur": 6.0,
+   "texto": "The daps still builds, still grows stronger, the rules change, the game doesn't",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "active seniors exercising, older adults doing strength training, senior running, elderly lifting weights",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:inspiring senior activity montage",
+    "animacao:DualImpactSentence {sentence1: 'Still Builds', sentence2: 'Still Grows Stronger'}"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 14
+  },
+  {
+   "t_ini": 59.0,
+   "t_fim": 64.0,
+   "dur": 5.0,
+   "texto": "end, and before anything else, one myth needs to die.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto03_WordPop",
+   "dados": null,
+   "busca": "breaking myths aging health concept, lightbulb shattering myth",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:TitleDescription {title: 'Myth Busters', description: 'Aging Body Edition'}",
+    "atmosferico"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 15,
+   "img_slots": 1,
+   "props_final": {
+    "text": "End, and before anything else, one myth needs to die.",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 64.0,
+   "t_fim": 68.0,
+   "dur": 4.0,
+   "texto": "The belief that running grinds down your knees is one of the most stubborn ideas in",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human knee joint wear and tear diagram, knee cartilage diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:older runner knee pain concept",
+    "animacao:TextReveal {text: 'Running grinds down your knees - MYTH'}"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 16
+  },
+  {
+   "t_ini": 68.0,
+   "t_fim": 71.0,
+   "dur": 3.0,
+   "texto": "fitness, and the research says the opposite.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "scientist reading research paper, medical research lab, close up scientific documents",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:research documents table",
+    "animacao:TextReveal {text: 'Research says the opposite.'}"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 17
+  },
+  {
+   "t_ini": 71.0,
+   "t_fim": 76.0,
+   "dur": 5.0,
+   "texto": "A review covering over one hundred thousand people found knee and hip arthritis in",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf10_BigStatCard",
+   "dados": {
+    "number": 100000,
+    "label": "People surveyed in review",
+    "unit": ""
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "one hundred thousand"
+    ]
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 18,
+   "props_final": {
+    "title": "People surveyed in review",
+    "labels": [],
+    "values": [
+     100.0
+    ],
+    "suffix": "K"
+   }
+  },
+  {
+   "t_ini": 76.0,
+   "t_fim": 84.0,
+   "dur": 8.0,
+   "texto": "about three point five percent of recreational runners compared to over ten percent of sedentary non runners.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf06_VersusTug",
+   "dados": {
+    "title": "Knee & Hip Arthritis Prevalence",
+    "categories": [
+     "Recreational Runners",
+     "Sedentary Non-Runners"
+    ],
+    "values": [
+     3.5,
+     10
+    ],
+    "units": "%",
+    "labels": [
+     "3.5%",
+     "10%"
+    ]
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "three point five",
+     "ten"
+    ]
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 19,
+   "props_final": {
+    "title": "Knee & Hip Arthritis Prevalence",
+    "labels": [
+     "3.5%",
+     "10%"
+    ],
+    "values": [
+     3.5,
+     10.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 84.0,
+   "t_fim": 88.0,
+   "dur": 4.0,
+   "texto": "Sitting still was three times more dangerous for the joints than running.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf04_GaugeMeter",
+   "dados": {
+    "number": 3,
+    "label": "times more dangerous for joints",
+    "unit": "X"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     "three"
+    ]
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 20,
+   "props_final": {
+    "title": "times more dangerous for joints",
+    "labels": [],
+    "values": [
+     3.0
+    ],
+    "suffix": "%"
+   }
+  },
+  {
+   "t_ini": 88.0,
+   "t_fim": 92.0,
+   "dur": 4.0,
+   "texto": "Movement isn't the enemy of an aging body, stillness is.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "senior runner portrait golden hour park",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:active vs inactive lifestyle",
+    "animacao:DualImpactSentence {sentence1: 'Movement is Key', sentence2: 'Stillness is a Risk'}"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 21
+  },
+  {
+   "t_ini": 92.0,
+   "t_fim": 95.0,
+   "dur": 3.0,
+   "texto": "Practice 1: Run and Walk on Purpose",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice 1: Run and Walk on Purpose",
+    "number": 2
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 22
+  },
+  {
+   "t_ini": 92.0,
+   "t_fim": 95.0,
+   "dur": 3.0,
+   "texto": "Practice one: Run and walk on purpose.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "elderly people running and walking outdoors purpose slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:ChapterTitle",
+    "stock:running walking scenic park"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 23
+  },
+  {
+   "t_ini": 95.0,
+   "t_fim": 98.0,
+   "dur": 3.0,
+   "texto": "Forget the idea that walking is failure.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto04_EditorialSerif",
+   "dados": null,
+   "busca": "elderly runner walking confidently trail sunlight",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 24,
+   "img_slots": 3,
+   "props_final": {
+    "text": "Forget the idea that walking is failure.",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 98.0,
+   "t_fim": 103.0,
+   "dur": 5.0,
+   "texto": "The run-walk method, made famous by Olympian Jeff Galloway, is the single most",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "CharacterCard",
+   "dados": {
+    "name": "Jeff Galloway",
+    "title": "Olympian, Run-Walk Method Creator"
+   },
+   "busca": "Jeff Galloway portrait photo",
+   "strict": false,
+   "entidades": {
+    "pessoa": "Jeff Galloway"
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 25,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 103.0,
+   "t_fim": 106.0,
+   "dur": 3.0,
+   "texto": "effective entry point for older runners:",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "elderly man running strong healthy morning",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:older person running outdoors"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 26
+  },
+  {
+   "t_ini": 106.0,
+   "t_fim": 108.0,
+   "dur": 2.0,
+   "texto": "Run for one to three minutes, walk for one",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Soc04_Newspaper",
+   "dados": {
+    "title": "Run-Walk Intervals",
+    "points": [
+     "Run: 1-3 minutes",
+     "Walk: 1 minute"
+    ]
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "one minute"
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 27,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 108.0,
+   "t_fim": 111.0,
+   "dur": 3.0,
+   "texto": "minute, and repeat. The walking intervals keep your heart rate under control,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "technical diagram heart rate zones for exercise",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:heart rate monitor screen running"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 28
+  },
+  {
+   "t_ini": 111.0,
+   "t_fim": 113.0,
+   "dur": 2.0,
+   "texto": "spread the The impact load",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human leg running impact load diagram biomechanics",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:running gait slow motion foot impact"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 29
+  },
+  {
+   "t_ini": 113.0,
+   "t_fim": 117.0,
+   "dur": 4.0,
+   "texto": "the The impact load and let you cover distances that continuous running wouldn't",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "elderly person running and walking long distance trail",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:scenic long trail running path",
+    "ilustracao:runner biomechanics impact zones"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 30
+  },
+  {
+   "t_ini": 117.0,
+   "t_fim": 120.0,
+   "dur": 3.0,
+   "texto": "allow. Many seniors who use this method end up running farther",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "senior couple jogging happy sunny park",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:happy senior runners group"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 31
+  },
+  {
+   "t_ini": 120.0,
+   "t_fim": 123.0,
+   "dur": 3.0,
+   "texto": "and enjoying it more",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "joyful senior runner close up face",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DisplayText",
+    "footage_video:elderly person laughing while walking"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 32
+  },
+  {
+   "t_ini": 123.0,
+   "t_fim": 126.0,
+   "dur": 3.0,
+   "texto": "than they ever did trying to run without stopping.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "elderly runner enjoying freedom easy movement outdoors",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:older person jogging effortlessly"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 33
+  },
+  {
+   "t_ini": 126.0,
+   "t_fim": 129.0,
+   "dur": 3.0,
+   "texto": "Practice 2: Shorter, Quicker Steps",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice 2: Shorter, Quicker Steps",
+    "number": 3
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 34
+  },
+  {
+   "t_ini": 126.0,
+   "t_fim": 129.0,
+   "dur": 3.0,
+   "texto": "Take shorter, quicker steps.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner short quick steps slow motion, runner high cadence close up",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:technical diagram running stride",
+    "abstrato:running form b-roll motivational"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 35
+  },
+  {
+   "t_ini": 129.0,
+   "t_fim": 134.0,
+   "dur": 5.0,
+   "texto": "Most running injuries in older adults come from overstriding",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "older adult runner overstriding slow motion, runner with long stride bad form",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:diagram of running overstriding bad form",
+    "abstrato:aging athlete struggle b-roll"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 36
+  },
+  {
+   "t_ini": 134.0,
+   "t_fim": 137.0,
+   "dur": 3.0,
+   "texto": "landing hard on the heel.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "running heel strike slow motion close up, runner foot landing heel first slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:foot strike biomechanics diagram heel strike",
+    "abstrato:painful impact b-roll concept"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 37
+  },
+  {
+   "t_ini": 137.0,
+   "t_fim": 143.0,
+   "dur": 6.0,
+   "texto": "aim for roughly 170 steps per minute",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf01_CounterGlow",
+   "dados": {
+    "number": 170,
+    "label": "steps per minute",
+    "context": "target running cadence"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 38,
+   "props_final": {
+    "title": "steps per minute",
+    "labels": [],
+    "values": [
+     170.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 143.0,
+   "t_fim": 146.0,
+   "dur": 3.0,
+   "texto": "feet landing under your hips.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running biomechanics diagram feet under hips, runner ideal stride diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runner foot landing under hips slow motion",
+    "abstrato:aligned body movement b-roll"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 39
+  },
+  {
+   "t_ini": 146.0,
+   "t_fim": 150.0,
+   "dur": 4.0,
+   "texto": "cuts the braking force that travels up through the knees",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running biomechanics force diagram knee impact reduction, short stride knee force diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runner knee movement slow motion short stride",
+    "abstrato:reduced impact concept b-roll"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 40
+  },
+  {
+   "t_ini": 150.0,
+   "t_fim": 151.0,
+   "dur": 1.0,
+   "texto": "hips with every step.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running biomechanics force diagram hip impact reduction, short stride hip force diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runner hip motion slow motion short stride",
+    "abstrato:smooth movement b-roll"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 41
+  },
+  {
+   "t_ini": 151.0,
+   "t_fim": 156.0,
+   "dur": 5.0,
+   "texto": "It feels like shuffling at first",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner shuffling gait slow motion, runner very short quick steps close up",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:diagram of short stride running technique explanation",
+    "abstrato:initial awkwardness concept b-roll"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 42
+  },
+  {
+   "t_ini": 156.0,
+   "t_fim": 158.0,
+   "dur": 2.0,
+   "texto": "running for another twenty years.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf16_OvlProgressBar",
+   "dados": {
+    "number": 20,
+    "label": "years",
+    "context": "extended running longevity"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 43,
+   "props_final": {
+    "title": "years",
+    "labels": [],
+    "values": [
+     20.0
+    ],
+    "suffix": "%"
+   }
+  },
+  {
+   "t_ini": 158.0,
+   "t_fim": 161.0,
+   "dur": 3.0,
+   "texto": "Practice 3: The 10% Rule & Strength",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice 3: The 10% Rule & Strength",
+    "number": 4
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 44
+  },
+  {
+   "t_ini": 158.0,
+   "t_fim": 162.0,
+   "dur": 4.0,
+   "texto": "Practice three: the ten percent rule plus two days of strength.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice Three",
+    "description": "The 10% Rule & Strength Training"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 45
+  },
+  {
+   "t_ini": 162.0,
+   "t_fim": 167.0,
+   "dur": 5.0,
+   "texto": "Never increase your weekly running volume by more than about ten percent.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf03_DonutPercent",
+   "dados": {
+    "percentage": 10,
+    "label": "Max Weekly Running Volume Increase",
+    "value_text": "10%"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "ten percent"
+   },
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 46,
+   "props_final": {
+    "title": "Max Weekly Running Volume Increase",
+    "labels": [],
+    "values": [
+     10.0
+    ],
+    "suffix": "%"
+   }
+  },
+  {
+   "t_ini": 167.0,
+   "t_fim": 172.0,
+   "dur": 5.0,
+   "texto": "The heart adapts in weeks, but tendons and bones in an older body need months, and",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "aging runner slow motion running feet on pavement, old body parts working hard, human heart beating slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:human anatomy adaptation diagram",
+    "animacao:BarChartComparison"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 47
+  },
+  {
+   "t_ini": 172.0,
+   "t_fim": 177.0,
+   "dur": 5.0,
+   "texto": "the gap between those two timelines is exactly where injury.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner limping in pain, close up of strained knee joint, sports injury slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:abstract injury concept",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 48
+  },
+  {
+   "t_ini": 177.0,
+   "t_fim": 182.0,
+   "dur": 5.0,
+   "texto": "And twice a week, lift something, squats to a chair, step ups, calf raises.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person performing squats to a chair, step ups, calf raises, senior fitness exercises",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:senior strength training exercises home",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 49
+  },
+  {
+   "t_ini": 182.0,
+   "t_fim": 186.0,
+   "dur": 4.0,
+   "texto": "Strength training is the only intervention that reliably rebuilds the muscle that",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto02_HighlightSweep",
+   "dados": null,
+   "busca": "muscles contracting slow motion, muscle fibers growing, strength training anatomy, cross section muscle tissue microscopic view",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:muscle anatomy diagram growth",
+    "animacao:TextReveal"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 50,
+   "img_slots": 2,
+   "props_final": {
+    "text": "Strength training is the only intervention that reliably rebuilds the muscle that",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 186.0,
+   "t_fim": 191.0,
+   "dur": 5.0,
+   "texto": "aging takes away, and it is the difference between a runner who lasts a season and a",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner struggling with injury vs strong healthy older runner, split screen or montage, contrasting runners' endurance",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:metaphor for endurance and struggle",
+    "animacao:BarChartComparison"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 51
+  },
+  {
+   "t_ini": 191.0,
+   "t_fim": 192.0,
+   "dur": 1.0,
+   "texto": "runner who lasts a decade.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "senior marathon runner, old person running long distance, healthy aging runner, thriving elderly athlete",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:peaceful elderly runner",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 52
+  },
+  {
+   "t_ini": 192.0,
+   "t_fim": 195.0,
+   "dur": 3.0,
+   "texto": "Practice 4: Keep Running Easy",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice 4: Keep Running Easy",
+    "number": 5
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 53
+  },
+  {
+   "t_ini": 192.0,
+   "t_fim": 194.0,
+   "dur": 2.0,
+   "texto": "Practice four:",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice Four",
+    "description": "Keep Running Easy"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 54
+  },
+  {
+   "t_ini": 194.0,
+   "t_fim": 196.0,
+   "dur": 2.0,
+   "texto": "Keep most of your running easy.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "runners jogging easy pace park",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runners jogging easy",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 55
+  },
+  {
+   "t_ini": 196.0,
+   "t_fim": 200.0,
+   "dur": 4.0,
+   "texto": "Roughly eighty percent of your running should happen at a pace where you can hold a",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf15_OvlStatCorner",
+   "dados": {
+    "label": "Easy Running",
+    "value": 80,
+    "unit": "%"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 80
+   },
+   "fallback": [],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 56,
+   "props_final": {
+    "title": "Easy Running",
+    "labels": [],
+    "values": [
+     80.0
+    ],
+    "suffix": "%"
+   }
+  },
+  {
+   "t_ini": 200.0,
+   "t_fim": 205.0,
+   "dur": 5.0,
+   "texto": "full conversation. If you can't speak in complete sentences, you are running too",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "two runners talking jogging",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:runners jogging easy pace park",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 57
+  },
+  {
+   "t_ini": 205.0,
+   "t_fim": 207.0,
+   "dur": 2.0,
+   "texto": "hard for that.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner struggling hard sprint",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:runner pushing hard effort",
+    "animacao:DisplayText"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 58
+  },
+  {
+   "t_ini": 207.0,
+   "t_fim": 212.0,
+   "dur": 5.0,
+   "texto": "This is how the body builds its aerobic engine without drowning in stress it can no",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human body aerobic system diagram",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:runner on track slow motion",
+    "animacao:TextReveal"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 59
+  },
+  {
+   "t_ini": 212.0,
+   "t_fim": 214.0,
+   "dur": 2.0,
+   "texto": "longer flush out overnight.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "runner sleeping recovery",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person sleeping peacefully",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 60
+  },
+  {
+   "t_ini": 214.0,
+   "t_fim": 219.0,
+   "dur": 5.0,
+   "texto": "The greatest mistake older runners make is running their easy days too hard and",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "older runner struggling",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:senior runner pushing pace",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 61
+  },
+  {
+   "t_ini": 219.0,
+   "t_fim": 224.0,
+   "dur": 5.0,
+   "texto": "their hard days too easy until every run is the same gray effort that builds",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner slow pace easy effort",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:runner jogging relaxed",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 62
+  },
+  {
+   "t_ini": 224.0,
+   "t_fim": 225.0,
+   "dur": 1.0,
+   "texto": "nothing.",
+   "estrategia": "atmosferico",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "empty track desolate",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DisplayText"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 63
+  },
+  {
+   "t_ini": 225.0,
+   "t_fim": 228.0,
+   "dur": 3.0,
+   "texto": "Practice 5: Double Recovery & Signs",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Practice 5: Double Recovery & Signs",
+    "number": 6
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 64
+  },
+  {
+   "t_ini": 225.0,
+   "t_fim": 230.0,
+   "dur": 5.0,
+   "texto": "Practice five: Double your recovery and respect the warning signs.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "athlete recovering stretching moody",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:TitleDescription",
+    "footage_video"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 65
+  },
+  {
+   "t_ini": 230.0,
+   "t_fim": 234.0,
+   "dur": 4.0,
+   "texto": "What took one day to recover from at thirty takes two at sixty-five.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf05_VersusBars",
+   "dados": {
+    "labels": [
+     "Age 30",
+     "Age 65"
+    ],
+    "values": [
+     1,
+     2
+    ],
+    "unit": "day(s) recovery"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": [
+     1,
+     30,
+     2,
+     65
+    ]
+   },
+   "fallback": [],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 66,
+   "props_final": {
+    "title": "",
+    "labels": [
+     "Age 30",
+     "Age 65"
+    ],
+    "values": [
+     1.0,
+     2.0
+    ],
+    "suffix": "day(s)"
+   }
+  },
+  {
+   "t_ini": 234.0,
+   "t_fim": 239.0,
+   "dur": 5.0,
+   "texto": "Plan for it. Hard days are followed by easy days or by rest, and sleep becomes part",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto07_StampImpact",
+   "dados": null,
+   "busca": "athlete resting after workout peaceful",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:BulletPointOverlay",
+    "footage_video"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 67,
+   "img_slots": 1,
+   "props_final": {
+    "text": "Plan for it.",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 239.0,
+   "t_fim": 244.0,
+   "dur": 5.0,
+   "texto": "of training. And learn the difference between discomfort and damage.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "athlete stretching muscle pain vs discomfort",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DualImpactSentence",
+    "footage_video"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 68
+  },
+  {
+   "t_ini": 244.0,
+   "t_fim": 247.0,
+   "dur": 3.0,
+   "texto": "Soreness that fades as you warm up is normal.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "athlete warming up stretching legs",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "stock"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 69
+  },
+  {
+   "t_ini": 247.0,
+   "t_fim": 250.0,
+   "dur": 3.0,
+   "texto": "Pain that changes the way you move is a stop sign.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner limping pain",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "stock"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 70
+  },
+  {
+   "t_ini": 250.0,
+   "t_fim": 254.0,
+   "dur": 4.0,
+   "texto": "And any pressure in the chest, unusual breathlessness or dizziness is not.",
+   "estrategia": "abstrato",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human body diagram pain areas chest head lungs",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:BulletPointOverlay",
+    "stock"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 71
+  },
+  {
+   "t_ini": 254.0,
+   "t_fim": 258.0,
+   "dur": 4.0,
+   "texto": "Not a running question at all, it is a doctor question that day.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto09_UnderlineDraw",
+   "dados": null,
+   "busca": "doctor patient consultation medical advice",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:QuoteCard",
+    "footage_video"
+   ],
+   "secao": 6,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 72,
+   "img_slots": 3,
+   "props_final": {
+    "text": "Not a running question at all",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 258.0,
+   "t_fim": 261.0,
+   "dur": 3.0,
+   "texto": "Not For Everyone: Alternatives & Health",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Not For Everyone: Alternatives & Health",
+    "number": 7
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 73
+  },
+  {
+   "t_ini": 258.0,
+   "t_fim": 262.0,
+   "dur": 4.0,
+   "texto": "Now for the honest part, running isn't the right tool for everyone.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "senior woman running forest trail morning light",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 74
+  },
+  {
+   "t_ini": 262.0,
+   "t_fim": 265.0,
+   "dur": 3.0,
+   "texto": "If you have a heart condition that hasn't been properly evaluated,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human heart diagram medical illustration",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:SubjectTitleCard"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 75
+  },
+  {
+   "t_ini": 265.0,
+   "t_fim": 268.0,
+   "dur": 3.0,
+   "texto": "severe arthritis,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "arthritic knee joint medical illustration",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:SubjectTitleCard"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 76
+  },
+  {
+   "t_ini": 268.0,
+   "t_fim": 272.0,
+   "dur": 4.0,
+   "texto": "or you're coming off years of complete inactivity, the starting line is a medical",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "doctor examining patient medical checkup office consultation",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:CharacterCard",
+    "abstrato"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 77
+  },
+  {
+   "t_ini": 272.0,
+   "t_fim": 274.0,
+   "dur": 2.0,
+   "texto": "checkup, not a trail.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "empty running trail through forest no people",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:DualImpactSentence"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 78
+  },
+  {
+   "t_ini": 274.0,
+   "t_fim": 278.0,
+   "dur": 4.0,
+   "texto": "And for some people, the answer after that checkup will be brisk walking, which",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person brisk walking outdoors happy healthy",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 79
+  },
+  {
+   "t_ini": 278.0,
+   "t_fim": 283.0,
+   "dur": 5.0,
+   "texto": "carries a remarkable share of the same benefits with a fraction of the load.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto04_EditorialSerif",
+   "dados": {
+    "text_line1": "Remarkable Share of Same Benefits",
+    "text_line2": "With a Fraction of the Load",
+    "highlightWords": [
+     [
+      "Remarkable Share",
+      "Same Benefits"
+     ],
+     [
+      "Fraction of the Load"
+     ]
+    ]
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 80,
+   "props_final": {
+    "text": "carries a remarkable share of the same benefits with a fraction of the load."
+   }
+  },
+  {
+   "t_ini": 283.0,
+   "t_fim": 285.0,
+   "dur": 2.0,
+   "texto": "That isn't a lesser path.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "person walking on a scenic path enjoying peaceful",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 7,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 81
+  },
+  {
+   "t_ini": 285.0,
+   "t_fim": 287.0,
+   "dur": 2.0,
+   "texto": "The Stanford study was never really about running",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "Texto05_BoxedKicker",
+   "dados": {
+    "title": "The Stanford Study",
+    "subtitle": "Beyond Running"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "org": "Stanford study"
+   },
+   "fallback": [],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 82,
+   "props_final": {
+    "text": "The Stanford Study",
+    "kicker": "Beyond Running"
+   }
+  },
+  {
+   "t_ini": 287.0,
+   "t_fim": 289.0,
+   "dur": 2.0,
+   "texto": "it was about people who refused",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Texto01_Typewriter",
+   "dados": null,
+   "busca": "elderly people active determined expression",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 83,
+   "img_slots": 1,
+   "props_final": {
+    "text": "It was about people who refused",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 289.0,
+   "t_fim": 292.0,
+   "dur": 3.0,
+   "texto": "to stop moving, because here is what two decades of evidence actually says:",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "people brisk walking or light jogging in park, diverse age group",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:TextReveal"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 84
+  },
+  {
+   "t_ini": 292.0,
+   "t_fim": 294.0,
+   "dur": 2.0,
+   "texto": "what two decades of evidence actually says:",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto10_LetterCascade",
+   "dados": {
+    "number": 20,
+    "unit": "Years",
+    "description": "Of Evidence"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "two decades"
+   },
+   "fallback": [],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 85,
+   "img_slots": 1,
+   "props_final": {
+    "text": "What two decades of evidence actually says",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 294.0,
+   "t_fim": 297.0,
+   "dur": 3.0,
+   "texto": "the runners in that study didn't just die later, they stayed independent longer,",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Ovl03_LowerThird",
+   "dados": null,
+   "busca": "active independent elderly people enjoying life outdoors",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DualImpactSentence",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 86,
+   "img_slots": 1,
+   "props_final": {
+    "text": "The runners in that study didn't just die later",
+    "kicker": "",
+    "dim": 0.0
+   }
+  },
+  {
+   "t_ini": 297.0,
+   "t_fim": 299.0,
+   "dur": 2.0,
+   "texto": "they stayed independent longer, their",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "marathon runners crowd city street wide aerial",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 87
+  },
+  {
+   "t_ini": 299.0,
+   "t_fim": 302.0,
+   "dur": 3.0,
+   "texto": "disabilities arrived sixteen years later on average,",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl02_SubchapterLine",
+   "dados": {
+    "number": 16,
+    "unit": "Years",
+    "description": "Disability Delayed"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "sixteen years"
+   },
+   "fallback": [],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 88,
+   "img_slots": 1,
+   "props_final": {
+    "text": "Disabilities arrived 16 years later on average",
+    "kicker": "",
+    "dim": 0.45
+   }
+  },
+  {
+   "t_ini": 302.0,
+   "t_fim": 304.0,
+   "dur": 2.0,
+   "texto": "and their bodies aged on a",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "healthy aging concept time lapse, active body",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:TextReveal",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 89
+  },
+  {
+   "t_ini": 304.0,
+   "t_fim": 307.0,
+   "dur": 3.0,
+   "texto": "different schedule than everyone around them.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "diverse group of healthy active people vs sedentary people side by side",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SplitScreenComparison",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 90
+  },
+  {
+   "t_ini": 307.0,
+   "t_fim": 309.0,
+   "dur": 2.0,
+   "texto": "Runners don't keep running because they stayed young,",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "energetic senior runners looking youthful, sunny day",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 91
+  },
+  {
+   "t_ini": 309.0,
+   "t_fim": 311.0,
+   "dur": 2.0,
+   "texto": "they stay young because they",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "people running showing vitality and youthfulness through movement",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:DualImpactSentence",
+    "atmosferico"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 92
+  },
+  {
+   "t_ini": 311.0,
+   "t_fim": 312.0,
+   "dur": 1.0,
+   "texto": "kept running. Start with one minute.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "closeup of running shoes hitting pavement, motion blur",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 93
+  },
+  {
+   "t_ini": 312.0,
+   "t_fim": 314.0,
+   "dur": 2.0,
+   "texto": "Start with one minute.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Ovl09_TickerCaption",
+   "dados": {
+    "number": 1,
+    "unit": "Minute",
+    "description": "Start Moving"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": "one minute"
+   },
+   "fallback": [],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 94,
+   "img_slots": 2,
+   "props_final": {
+    "text": "Start with one minute.",
+    "kicker": "",
+    "dim": 0.3
+   }
+  },
+  {
+   "t_ini": 314.0,
+   "t_fim": 317.0,
+   "dur": 3.0,
+   "texto": "Walk when you need to, and let the years chase you for a change.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person walking briskly on scenic path, confident stride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:TextReveal"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 95
+  },
+  {
+   "t_ini": 317.0,
+   "t_fim": 320.0,
+   "dur": 3.0,
+   "texto": "let the years chase you for a change.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "group of senior runners sunrise road cinematic",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "atmosferico",
+    "animacao:DualImpactSentence"
+   ],
+   "secao": 8,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 96
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+  "nome": "galo",
+  "itens": {
+    "Pointing_at_viewer_stern_warning_202607071822": {
+      "file": "galo_Pointing_at_viewer_stern_warning_202607071822.png",
+      "pose": "pointing at viewer",
+      "emocao": "confident",
+      "funcao": "warn",
+      "desc": "Veteran rooster warning about potential dangers."
+    },
+    "Rooster_studying_worn_paper_map_202607071822": {
+      "file": "galo_Rooster_studying_worn_paper_map_202607071822.png",
+      "pose": "reading map",
+      "emocao": "confident",
+      "funcao": "explain",
+      "desc": "Veteran rooster analyzing a detailed map."
+    },
+    "Veteran_rooster_wearing_tactical…_202607071822": {
+      "file": "galo_Veteran_rooster_wearing_tactical…_202607071822.png",
+      "pose": "arms crossed",
+      "emocao": "confident",
+      "funcao": "greet",
+      "desc": "Veteran rooster standing confidently with crossed arms."
+    }
+  }
+}

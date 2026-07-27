@@ -1,0 +1,2001 @@
+{
+ "secoes": [
+  {
+   "i": 0,
+   "titulo": "The Invisible Threat",
+   "t_ini": 0.0,
+   "t_fim": 14.0,
+   "wash": "none",
+   "title_card": false
+  },
+  {
+   "i": 1,
+   "titulo": "Why Shoes Matter Now: The 3 Rules",
+   "t_ini": 14.0,
+   "t_fim": 61.0,
+   "wash": "teal",
+   "title_card": true
+  },
+  {
+   "i": 2,
+   "titulo": "Top Picks: Practical Support (5, 4, 3)",
+   "t_ini": 61.0,
+   "t_fim": 162.0,
+   "wash": "dourado",
+   "title_card": true
+  },
+  {
+   "i": 3,
+   "titulo": "Top Picks: Maximal Cushioning & Ease (2, 1)",
+   "t_ini": 162.0,
+   "t_fim": 232.0,
+   "wash": "azul_frio",
+   "title_card": true
+  },
+  {
+   "i": 4,
+   "titulo": "Crucial Considerations: Fit & Foot Health",
+   "t_ini": 232.0,
+   "t_fim": 247.0,
+   "wash": "vermelho",
+   "title_card": true
+  },
+  {
+   "i": 5,
+   "titulo": "The True Reward: Miles of Confidence",
+   "t_ini": 247.0,
+   "t_fim": 285.0,
+   "wash": "amarelo",
+   "title_card": false
+  }
+ ],
+ "beats": [
+  {
+   "t_ini": 0.0,
+   "t_fim": 5.0,
+   "dur": 5.0,
+   "texto": "after the age of sixty",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf14_OvlCounterPunch",
+   "dados": {
+    "number": 60,
+    "label": "Age threshold"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 60
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 0,
+   "props_final": {
+    "title": "Age threshold",
+    "labels": [],
+    "values": [
+     60.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 5.0,
+   "t_fim": 8.0,
+   "dur": 3.0,
+   "texto": "thin by up to half",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto04_EditorialSerif",
+   "dados": {
+    "percentage": 50,
+    "label": "Heel Fat Pad Thinning"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 50
+   },
+   "fallback": [],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 1,
+   "props_final": {
+    "text": "Thin by up to half",
+    "kicker": "Heel Fat Pad Thinning"
+   }
+  },
+  {
+   "t_ini": 8.0,
+   "t_fim": 12.0,
+   "dur": 4.0,
+   "texto": "The natural cushion you ran on your whole life is quietly disappearing",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "human foot anatomy fat pad diagram showing thinning or degradation over time",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:close up runner's foot sole",
+    "stock:abstract decaying texture"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 2
+  },
+  {
+   "t_ini": 12.0,
+   "t_fim": 14.0,
+   "dur": 2.0,
+   "texto": "and the shoe you wear has to replace it.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "thick cushioned running shoe sole closeup slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:running shoe cutaway diagram with cushioning highlighted",
+    "stock:close up modern shoe sole texture"
+   ],
+   "secao": 0,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "none"
+   },
+   "i": 3
+  },
+  {
+   "t_ini": 14.0,
+   "t_fim": 17.0,
+   "dur": 3.0,
+   "texto": "Why Shoes Matter Now: The 3 Rules",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Why Shoes Matter Now: The 3 Rules",
+    "number": 1
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 4
+  },
+  {
+   "t_ini": 14.0,
+   "t_fim": 18.0,
+   "dur": 4.0,
+   "texto": "Today we are counting down the five best running shoes for seniors",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf01_CounterGlow",
+   "dados": {
+    "number": 5,
+    "label": "Best Running Shoes for Seniors"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 5
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 5,
+   "props_final": {
+    "title": "Best Running Shoes for Seniors",
+    "labels": [],
+    "values": [
+     5.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 18.0,
+   "t_fim": 23.0,
+   "dur": 5.0,
+   "texto": "surprising part is what actually matters after sixty: it isn't speed and it isn't looks",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img03_FramedGridPan",
+   "dados": null,
+   "busca": "senior runner slow motion feet running outdoors happy",
+   "strict": false,
+   "entidades": {
+    "numero": 60
+   },
+   "fallback": [
+    "footage_video:senior citizen running shoes feet close up",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 6,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 23.0,
+   "t_fim": 25.0,
+   "dur": 2.0,
+   "texto": "it is cushioning",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "cushioned running shoe midsole foam squeeze closeup",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:running shoe cushioning cross section diagram",
+    "stock:running shoe comfortable close up"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 7
+  },
+  {
+   "t_ini": 25.0,
+   "t_fim": 27.0,
+   "dur": 2.0,
+   "texto": "stability",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe stability test uneven ground close up",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:running shoe stability support system diagram",
+    "stock:running shoe firm sole close up"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 8
+  },
+  {
+   "t_ini": 27.0,
+   "t_fim": 29.0,
+   "dur": 2.0,
+   "texto": "and a fit your foot can live in for hours",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person trying on running shoes comfortable fit close up feet",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:person wearing comfortable running shoes walking",
+    "animacao:DualImpactSentence"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 9
+  },
+  {
+   "t_ini": 29.0,
+   "t_fim": 34.0,
+   "dur": 5.0,
+   "texto": "Three rules for choosing any shoe on this list: Rule one: cushioning",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf15_OvlStatCorner",
+   "dados": {
+    "number": 3,
+    "label": "Rules for Choosing Running Shoes"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 3
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 10,
+   "props_final": {
+    "title": "Rules for Choosing Running Shoes",
+    "labels": [],
+    "values": [
+     3.0
+    ],
+    "suffix": ""
+   }
+  },
+  {
+   "t_ini": 34.0,
+   "t_fim": 37.0,
+   "dur": 3.0,
+   "texto": "isn't a luxury anymore, it's protection.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe cushioning protective slow motion impact",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:running shoe sole absorbing impact",
+    "ilustracao:shoe cushioning cross section diagram"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 11
+  },
+  {
+   "t_ini": 37.0,
+   "t_fim": 41.0,
+   "dur": 4.0,
+   "texto": "A thinner heel pad means more impact traveling into knees and hips",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe heel impact diagram knee hip joint stress",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion runner foot strike no cushioning",
+    "stock:person with knee pain"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 12
+  },
+  {
+   "t_ini": 41.0,
+   "t_fim": 44.0,
+   "dur": 3.0,
+   "texto": "midsole absorbs what your body no longer can.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe midsole cutaway diagram impact absorption",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:running shoe sole compressing slow motion",
+    "stock:runner older person comfortable"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 13
+  },
+  {
+   "t_ini": 44.0,
+   "t_fim": 49.0,
+   "dur": 5.0,
+   "texto": "Rule two: The toe box has to be wide, feet spread with age",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe wide toe box close up, comparison narrow vs wide toe box",
+   "strict": false,
+   "entidades": {
+    "numero": 2
+   },
+   "fallback": [
+    "ilustracao:foot widening with age diagram",
+    "stock:comfortable senior feet in shoes"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 14
+  },
+  {
+   "t_ini": 49.0,
+   "t_fim": 52.0,
+   "dur": 3.0,
+   "texto": "shoes a full size too narrow without knowing it.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto10_LetterCascade",
+   "dados": {
+    "title": "Shoe Size Discrepancy",
+    "categories": [
+     "Foot Length",
+     "Shoe Length"
+    ],
+    "values": [
+     [
+      10,
+      9
+     ]
+    ],
+    "labels": [
+     "Ideal Size",
+     "1 Full Size Too Narrow"
+    ]
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 15,
+   "props_final": {
+    "text": "Shoe Size Discrepancy",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 52.0,
+   "t_fim": 57.0,
+   "dur": 5.0,
+   "texto": "Rule three: A low drop and a wide base beat any gimmick, because after sixty the",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe low drop diagram, running shoe wide base stability diagram",
+   "strict": false,
+   "entidades": {
+    "numero": 3
+   },
+   "fallback": [
+    "footage_video:running shoe low drop demonstration",
+    "stock:running shoe wide sole close up"
+   ],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 16
+  },
+  {
+   "t_ini": 57.0,
+   "t_fim": 61.0,
+   "dur": 4.0,
+   "texto": "number one enemy isn't slowness, it is falling.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf03_DonutPercent",
+   "dados": {
+    "number": 1,
+    "label": "Primary Danger for Seniors: Falling"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 1
+   },
+   "fallback": [],
+   "secao": 1,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "teal"
+   },
+   "i": 17,
+   "props_final": {
+    "title": "Primary Danger for Seniors: Falling",
+    "labels": [],
+    "values": [
+     1.0
+    ],
+    "suffix": "%"
+   }
+  },
+  {
+   "t_ini": 61.0,
+   "t_fim": 64.0,
+   "dur": 3.0,
+   "texto": "Top Picks: Practical Support (5, 4, 3)",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Top Picks: Practical Support (5, 4, 3)",
+    "number": 2
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 18
+  },
+  {
+   "t_ini": 61.0,
+   "t_fim": 65.0,
+   "dur": 4.0,
+   "texto": "Number five: The New Balance Fresh Foam eight eighty",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "New Balance Fresh Foam 880 running shoe close up",
+   "strict": true,
+   "entidades": {
+    "numero": 5,
+    "org": "New Balance",
+    "produto": "Fresh Foam 880"
+   },
+   "fallback": [
+    "footage_imagem:New Balance Fresh Foam 880 product shot",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 19
+  },
+  {
+   "t_ini": 65.0,
+   "t_fim": 70.0,
+   "dur": 5.0,
+   "texto": "The eight eighty is the sensible classic of this list, and it earns its place with",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "New Balance Fresh Foam 880 on a running track, dynamic shot, classic running shoe look",
+   "strict": true,
+   "entidades": {
+    "produto": "New Balance Fresh Foam 880"
+   },
+   "fallback": [
+    "footage_video:person tying New Balance Fresh Foam 880 laces",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 20
+  },
+  {
+   "t_ini": 70.0,
+   "t_fim": 74.0,
+   "dur": 4.0,
+   "texto": "one feature almost nobody else offers: real width options.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "foot width sizing shoe fitting diagram illustration",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person measuring foot for shoe width",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 21
+  },
+  {
+   "t_ini": 74.0,
+   "t_fim": 79.0,
+   "dur": 5.0,
+   "texto": "It comes in narrow, standard, wide, and extra wide, which for older feet isn't a",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Soc04_Newspaper",
+   "dados": {
+    "title": "Width Options",
+    "points": [
+     "Narrow",
+     "Standard",
+     "Wide",
+     "Extra Wide"
+    ]
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 22,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 79.0,
+   "t_fim": 81.0,
+   "dur": 2.0,
+   "texto": "detail, it is the whole game.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img10_ParallaxDepth",
+   "dados": null,
+   "busca": "close up of senior person trying on comfortable running shoe, focus on foot comfort",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person adjusting shoe laces for comfort",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 23,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 81.0,
+   "t_fim": 85.0,
+   "dur": 4.0,
+   "texto": "The cushioning is balanced rather than extreme, the ride is predictable, and it",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "shoe cushioning cross section diagram, balanced cushioning, shoe midsole construction",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:close up of shoe sole absorbing impact while running",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 24
+  },
+  {
+   "t_ini": 85.0,
+   "t_fim": 88.0,
+   "dur": 3.0,
+   "texto": "works as well for walking as for easy running.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person walking and person easy running with New Balance 880 in split screen or quick cuts",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:senior person walking outdoors, comfortable shoes",
+    "animacao:DualImpactSentence"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 25
+  },
+  {
+   "t_ini": 88.0,
+   "t_fim": 90.0,
+   "dur": 2.0,
+   "texto": "If your feet have gotten wider over the years.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "aging feet, senior foot comfort issues, close up of foot in tight shoe",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem:illustration of foot changing shape over time",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 26
+  },
+  {
+   "t_ini": 90.0,
+   "t_fim": 94.0,
+   "dur": 4.0,
+   "texto": "And every shoe feels like a clamp, start here.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "person wiggling toes uncomfortably in a tight shoe, then relieved look in a comfortable shoe",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person removing tight shoe with relief",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 27
+  },
+  {
+   "t_ini": 94.0,
+   "t_fim": 97.0,
+   "dur": 3.0,
+   "texto": "Number four, the a c s Gel Nimbus.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "ASICS Gel-Nimbus running shoe close up",
+   "strict": true,
+   "entidades": {
+    "numero": 4,
+    "org": "ASICS",
+    "produto": "Gel-Nimbus"
+   },
+   "fallback": [
+    "footage_imagem:ASICS Gel-Nimbus product shot",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 28
+  },
+  {
+   "t_ini": 97.0,
+   "t_fim": 103.0,
+   "dur": 6.0,
+   "texto": "The Nimbus has been a c s's flagship comfort shoe for over twenty five generations,",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto09_UnderlineDraw",
+   "dados": {
+    "number": 25,
+    "unit": "generations",
+    "description": "ASICS Gel-Nimbus: Flagship Comfort Shoe"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 25,
+    "org": "ASICS",
+    "produto": "Gel-Nimbus"
+   },
+   "fallback": [],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 29,
+   "props_final": {
+    "text": "The Nimbus has been ACS's flagship comfort shoe for over 25 generations",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 103.0,
+   "t_fim": 107.0,
+   "dur": 4.0,
+   "texto": "and the recent versions are the softest in its history.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "hand squeezing ASICS Gel-Nimbus midsole, showing softness, plush cushioning",
+   "strict": true,
+   "entidades": {
+    "produto": "ASICS Gel-Nimbus"
+   },
+   "fallback": [
+    "footage_video:slow motion shot of foot landing softly in ASICS Gel-Nimbus",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 30
+  },
+  {
+   "t_ini": 107.0,
+   "t_fim": 111.0,
+   "dur": 4.0,
+   "texto": "The stack under the heel is tall, the knit collar hugs the ankle, and the shoe is",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "ASICS Gel-Nimbus technical diagram highlighting tall heel stack and knit collar",
+   "strict": true,
+   "entidades": {
+    "produto": "ASICS Gel-Nimbus"
+   },
+   "fallback": [
+    "footage_video:close up of heel stack and knit collar on ASICS Gel-Nimbus",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 31
+  },
+  {
+   "t_ini": 111.0,
+   "t_fim": 116.0,
+   "dur": 5.0,
+   "texto": "built for one job, making long, easy miles feel gentle.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img16_ZoomOutReveal",
+   "dados": null,
+   "busca": "senior person enjoying a long, easy run on a scenic path, comfortable and gentle stride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion of a gentle foot strike on a trail",
+    "animacao:DualImpactSentence"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 32,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 116.0,
+   "t_fim": 121.0,
+   "dur": 5.0,
+   "texto": "Asics designed the new Animbus with accessibility in mind, including an easier",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "person easily slipping into an ASICS Gel-Nimbus shoe, focus on ease of entry",
+   "strict": true,
+   "entidades": {
+    "org": "ASICS",
+    "produto": "Gel-Nimbus"
+   },
+   "fallback": [
+    "footage_video:close up of flexible shoe opening",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 33
+  },
+  {
+   "t_ini": 121.0,
+   "t_fim": 124.0,
+   "dur": 3.0,
+   "texto": "step-in design. For seniors who run slow and long,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "close up of ASICS Gel-Nimbus easy step-in design, foot sliding in easily",
+   "strict": true,
+   "entidades": {
+    "produto": "ASICS Gel-Nimbus"
+   },
+   "fallback": [
+    "footage_imagem:diagram of accessible shoe entry",
+    "animacao:DisplayText"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 34
+  },
+  {
+   "t_ini": 124.0,
+   "t_fim": 126.0,
+   "dur": 2.0,
+   "texto": "this is a rolling armchair in the",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "senior person running very smoothly and comfortably, effortless motion, serene expression",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:person relaxing in an armchair, then cut to person running",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 35
+  },
+  {
+   "t_ini": 126.0,
+   "t_fim": 129.0,
+   "dur": 3.0,
+   "texto": "best possible sense.",
+   "estrategia": "atmosferico",
+   "tipo": "animacao",
+   "componente": "Img12_SpotlightDetail",
+   "dados": null,
+   "busca": "peaceful running path, golden hour, sense of ease and comfort, soft lighting",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion happy runner, serene face",
+    "animacao:TitleDescription"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 36,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 129.0,
+   "t_fim": 132.0,
+   "dur": 3.0,
+   "texto": "Number three, the Brooks Ghost Max.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Brooks Ghost Max running shoe close up",
+   "strict": true,
+   "entidades": {
+    "numero": 3,
+    "org": "Brooks",
+    "produto": "Ghost Max"
+   },
+   "fallback": [
+    "footage_imagem:Brooks Ghost Max product shot",
+    "animacao:ObjectTitle"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 37
+  },
+  {
+   "t_ini": 132.0,
+   "t_fim": 136.0,
+   "dur": 4.0,
+   "texto": "The Ghost Max is the protective tank of the Brooks family.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "Brooks Ghost Max shoe, side profile, looking robust and protective, like a tank",
+   "strict": true,
+   "entidades": {
+    "org": "Brooks",
+    "produto": "Ghost Max"
+   },
+   "fallback": [
+    "footage_video:close up of shoe sole, sturdy construction",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 38
+  },
+  {
+   "t_ini": 136.0,
+   "t_fim": 142.0,
+   "dur": 6.0,
+   "texto": "It takes the trusted Ghost formula and raises the stack, widens the base, and adds a",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "Brooks Ghost Max technical diagram, comparing original Ghost to Ghost Max, highlighting raised stack and wider base",
+   "strict": true,
+   "entidades": {
+    "produto": "Brooks Ghost Max",
+    "modelo_comparado": "Brooks Ghost"
+   },
+   "fallback": [
+    "footage_video:split screen showing Brooks Ghost vs Ghost Max, focusing on midsole/base",
+    "animacao:TwoImageComparison"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 39
+  },
+  {
+   "t_ini": 142.0,
+   "t_fim": 147.0,
+   "dur": 5.0,
+   "texto": "gentle rocker that rolls you forward instead of demanding push-off from your calves.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "technical diagram of rocker sole shoe, demonstrating rolling motion, less calf strain",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion of foot rolling forward with rocker sole shoe during stride",
+    "animacao:ImageTextAnnotation"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 40
+  },
+  {
+   "t_ini": 147.0,
+   "t_fim": 150.0,
+   "dur": 3.0,
+   "texto": "The wide platform is the quiet hero.",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "Brooks Ghost Max, low angle shot emphasizing wide stable base, sense of understated strength",
+   "strict": true,
+   "entidades": {
+    "produto": "Brooks Ghost Max"
+   },
+   "fallback": [
+    "footage_video:close up of wide shoe outsole on the ground",
+    "animacao:OneWordCallout"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 41
+  },
+  {
+   "t_ini": 150.0,
+   "t_fim": 154.0,
+   "dur": 4.0,
+   "texto": "More rubber on the ground means more stability on every landing.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "shoe outsole contact patch diagram, comparing narrow vs wide, showing increased stability",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion shot of a wide shoe sole making stable contact with the ground",
+    "animacao:DisplayText"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 42
+  },
+  {
+   "t_ini": 154.0,
+   "t_fim": 159.0,
+   "dur": 5.0,
+   "texto": "Podiatrists recommend this shoe constantly, and for a simple reason: it is very hard",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img05_BeforeAfterWipe",
+   "dados": null,
+   "busca": "podiatrist examining foot, medical professional recommending comfortable shoes, healthcare setting",
+   "strict": false,
+   "entidades": {
+    "org": "podiatrists"
+   },
+   "fallback": [
+    "footage_video:person consulting with a foot doctor, discussing shoes",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 43,
+   "img_slots": 2
+  },
+  {
+   "t_ini": 159.0,
+   "t_fim": 162.0,
+   "dur": 3.0,
+   "texto": "to roll an ankle on something this wide.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "diagram showing ankle stability with a wide shoe platform vs narrow shoe, preventing ankle roll",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:slow motion shot of foot landing on uneven ground with a stable shoe",
+    "animacao:ImageTextAnnotation"
+   ],
+   "secao": 2,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "dourado"
+   },
+   "i": 44
+  },
+  {
+   "t_ini": 162.0,
+   "t_fim": 165.0,
+   "dur": 3.0,
+   "texto": "Top Picks: Maximal Cushioning & Ease (2, 1)",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Top Picks: Maximal Cushioning & Ease (2, 1)",
+    "number": 3
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 45
+  },
+  {
+   "t_ini": 162.0,
+   "t_fim": 165.0,
+   "dur": 3.0,
+   "texto": "Number two: The Hoka Clifton.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Hoka Clifton running shoe close up detail, studio shot",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:ObjectTitle",
+    "ilustracao"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 46
+  },
+  {
+   "t_ini": 165.0,
+   "t_fim": 170.0,
+   "dur": 5.0,
+   "texto": "If the heaviest shoes on this list feel like too much, the Clifton is the answer.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person trying on Hoka Clifton, positive reaction, comfortable fit",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "stock"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 47
+  },
+  {
+   "t_ini": 170.0,
+   "t_fim": 174.0,
+   "dur": 4.0,
+   "texto": "It delivers most of the cushioning of a maximal shoe at a fraction of the weight,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "slow motion Hoka Clifton running, foot strike cushioning compression",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 48
+  },
+  {
+   "t_ini": 174.0,
+   "t_fim": 179.0,
+   "dur": 5.0,
+   "texto": "around two hundred fifty grams, light enough that tired legs at the end of a run",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Graf02_Odometer",
+   "dados": {
+    "number": 250,
+    "unit": "grams",
+    "label": "Hoka Clifton Weight"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 250
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 49,
+   "props_final": {
+    "title": "Hoka Clifton Weight",
+    "labels": [],
+    "values": [
+     250.0
+    ],
+    "suffix": "grams"
+   }
+  },
+  {
+   "t_ini": 179.0,
+   "t_fim": 184.0,
+   "dur": 5.0,
+   "texto": "barely notice it. The rocker shape does part of the work of each stride, which",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner foot strike slow motion Hoka Clifton rocker motion",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 50
+  },
+  {
+   "t_ini": 184.0,
+   "t_fim": 188.0,
+   "dur": 4.0,
+   "texto": "matters more as ankle flexibility declines with age.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img11_VintageAngled",
+   "dados": null,
+   "busca": "older person stretching ankle, senior runner doing flexibility exercises",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "footage_video"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 51,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 188.0,
+   "t_fim": 195.0,
+   "dur": 7.0,
+   "texto": "It is the shoe seniors describe with the same word over and over, effortless.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "QuoteCard",
+   "dados": {
+    "quote": "Effortless",
+    "author": "Seniors (repeatedly)"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 52,
+   "props_final": {
+    "quoteText": "Effortless",
+    "name": "Seniors (repeatedly)",
+    "title": ""
+   }
+  },
+  {
+   "t_ini": 195.0,
+   "t_fim": 199.0,
+   "dur": 4.0,
+   "texto": "And number one, the Hoka Bondi.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Hoka Bondi running shoe close up detail, studio shot",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:ObjectTitle",
+    "ilustracao"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 53
+  },
+  {
+   "t_ini": 199.0,
+   "t_fim": 204.0,
+   "dur": 5.0,
+   "texto": "The Bondi is the most cushioned shoe Hoka makes, and for senior runners, it is the",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Hoka Bondi thick sole close up, maximal cushioning visual",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 54
+  },
+  {
+   "t_ini": 204.0,
+   "t_fim": 206.0,
+   "dur": 2.0,
+   "texto": "closest thing to a prescription.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "happy senior runner smiling, enjoying run with Hoka Bondi",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "stock"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 55
+  },
+  {
+   "t_ini": 206.0,
+   "t_fim": 212.0,
+   "dur": 6.0,
+   "texto": "The tall foam midsole replaces what the aging heel pad lost, the wide base and meta-",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe midsole heel pad anatomy diagram, Hoka Bondi cross-section",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 56
+  },
+  {
+   "t_ini": 212.0,
+   "t_fim": 215.0,
+   "dur": 3.0,
+   "texto": "rocker keep each step stable and rolling.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe meta-rocker wide base stability diagram, Hoka Bondi features",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "footage_video",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 57
+  },
+  {
+   "t_ini": 215.0,
+   "t_fim": 219.0,
+   "dur": 4.0,
+   "texto": "The newest versions even added a plush knit collar that makes getting the shoe on",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "Hoka Bondi thick sole running shoe closeup",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "ilustracao",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 58
+  },
+  {
+   "t_ini": 219.0,
+   "t_fim": 224.0,
+   "dur": 5.0,
+   "texto": "easier, which matters when bending down isn't what it used to be.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "older person easily putting on shoe, bending down comfortably",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "animacao:SingleSentenceTextSlide",
+    "stock"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 59
+  },
+  {
+   "t_ini": 224.0,
+   "t_fim": 228.0,
+   "dur": 4.0,
+   "texto": "Physical therapists reach for this shoe by name if you buy one running shoe after",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "physical therapist recommending Hoka Bondi, showing shoe to senior patient",
+   "strict": true,
+   "entidades": null,
+   "fallback": [
+    "animacao:SentenceHighlight",
+    "stock"
+   ],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 60
+  },
+  {
+   "t_ini": 228.0,
+   "t_fim": 232.0,
+   "dur": 4.0,
+   "texto": "sixty and want maximum protection per step, this is it.",
+   "estrategia": "dado",
+   "tipo": "animacao",
+   "componente": "Texto05_BoxedKicker",
+   "dados": {
+    "sentence": "After 60: Maximum Protection Per Step"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": {
+    "numero": 60
+   },
+   "fallback": [],
+   "secao": 3,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "azul_frio"
+   },
+   "i": 61,
+   "props_final": {
+    "text": "After 60: Maximum Protection Per Step",
+    "kicker": ""
+   }
+  },
+  {
+   "t_ini": 232.0,
+   "t_fim": 235.0,
+   "dur": 3.0,
+   "texto": "Crucial Considerations: Fit & Foot Health",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "ChapterTitle",
+   "dados": {
+    "title": "Crucial Considerations: Fit & Foot Health",
+    "number": 4
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 62
+  },
+  {
+   "t_ini": 232.0,
+   "t_fim": 235.0,
+   "dur": 3.0,
+   "texto": "Now the honest part: the perfect shoe on paper is the wrong shoe if it doesn't match",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "running shoe technical diagram blueprint",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:technical diagram of running shoe components",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 63
+  },
+  {
+   "t_ini": 235.0,
+   "t_fim": 238.0,
+   "dur": 3.0,
+   "texto": "your foot.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner's bare foot anatomy running slow motion",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem:human foot anatomy diagram",
+    "ilustracao:foot structure diagram"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 64
+  },
+  {
+   "t_ini": 238.0,
+   "t_fim": 241.0,
+   "dur": 3.0,
+   "texto": "Cushioning this soft can feel unstable for some runners,",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "runner's foot landing on soft cushion slow motion unstable ankle movement",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:diagram of shoe cushioning layers",
+    "abstrato:running shoe sole material close up"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 65
+  },
+  {
+   "t_ini": 241.0,
+   "t_fim": 243.0,
+   "dur": 2.0,
+   "texto": "especially those",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img04_SplitSlide",
+   "dados": null,
+   "busca": "runner's feet on uneven terrain",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:diverse group of runners feet close up",
+    "atmosferico:forest trail running path"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 66,
+   "img_slots": 2
+  },
+  {
+   "t_ini": 243.0,
+   "t_fim": 245.0,
+   "dur": 2.0,
+   "texto": "with a history of ankle sprains,",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "ankle sprain diagram ligaments injury",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem:x-ray of ankle with sprain highlighted",
+    "animacao:IconGrid"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 67
+  },
+  {
+   "t_ini": 245.0,
+   "t_fim": 247.0,
+   "dur": 2.0,
+   "texto": "and no shoe replaces a proper fitting.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "shoe fitting expert measuring foot in running store",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_imagem:person measuring foot for shoe size",
+    "animacao:SingleSentenceTextSlide"
+   ],
+   "secao": 4,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "vermelho"
+   },
+   "i": 68
+  },
+  {
+   "t_ini": 247.0,
+   "t_fim": 252.0,
+   "dur": 5.0,
+   "texto": "Go to a store in the afternoon when feet are naturally swollen, wear your running",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person trying on running shoes in a store, feet swollen",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:person trying on shoes b-roll",
+    "ilustracao:diagram of foot swelling"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 69
+  },
+  {
+   "t_ini": 252.0,
+   "t_fim": 255.0,
+   "dur": 3.0,
+   "texto": "socks, and walk for ten full minutes before deciding.",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "person walking in new running shoes in shoe store",
+   "strict": false,
+   "entidades": {
+    "numero": "ten"
+   },
+   "fallback": [
+    "stock:person walking in shoes close-up",
+    "ilustracao:foot anatomy walking"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 70
+  },
+  {
+   "t_ini": 255.0,
+   "t_fim": 258.0,
+   "dur": 3.0,
+   "texto": "And if you have diabetes, neuropathy, or persistent foot pain,",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img02_PolaroidDrop",
+   "dados": null,
+   "busca": "person suffering from foot pain",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:diagram of foot neuropathy",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 71,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 258.0,
+   "t_fim": 260.0,
+   "dur": 2.0,
+   "texto": "the first stop is a podiatrist",
+   "estrategia": "entidade",
+   "tipo": "animacao",
+   "componente": "Ovl09_TickerCaption",
+   "dados": {
+    "title": "Podiatrist"
+   },
+   "busca": null,
+   "strict": false,
+   "entidades": null,
+   "fallback": [],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 72,
+   "props_final": {
+    "text": "the first stop is a podiatrist",
+    "dim": 0.3
+   }
+  },
+  {
+   "t_ini": 260.0,
+   "t_fim": 266.0,
+   "dur": 6.0,
+   "texto": "not a shoe wall, because here is the truth under all five picks: the",
+   "estrategia": "literal",
+   "tipo": "footage_video",
+   "componente": null,
+   "dados": null,
+   "busca": "shoe wall in a running store, rows of shoes",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:shoe store aisle",
+    "ilustracao:diagram of shoe selection"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 73
+  },
+  {
+   "t_ini": 266.0,
+   "t_fim": 270.0,
+   "dur": 4.0,
+   "texto": "right shoe won't make you faster and it Does not need to.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img06_StackReveal",
+   "dados": null,
+   "busca": "running shoe on track, not focusing on speed",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "ilustracao:diagram of shoe components",
+    "animacao:SentenceHighlight"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 74,
+   "img_slots": 3
+  },
+  {
+   "t_ini": 270.0,
+   "t_fim": 275.0,
+   "dur": 5.0,
+   "texto": "What it buys you is more comfortable miles, fewer aches the next morning, and the",
+   "estrategia": "abstrato",
+   "tipo": "stock",
+   "componente": null,
+   "dados": null,
+   "busca": "happy runner on trail, comfortable stride",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runner enjoying a run",
+    "animacao:BulletPointOverlay"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 75
+  },
+  {
+   "t_ini": 275.0,
+   "t_fim": 279.0,
+   "dur": 4.0,
+   "texto": "confidence to keep showing up, and showing up is the entire secret.",
+   "estrategia": "abstrato",
+   "tipo": "animacao",
+   "componente": "Img19_NewsClipping",
+   "dados": null,
+   "busca": "determined runner getting ready to run",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "footage_video:runner preparing for a run",
+    "animacao:QuoteCard"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 76,
+   "img_slots": 1
+  },
+  {
+   "t_ini": 279.0,
+   "t_fim": 285.0,
+   "dur": 6.0,
+   "texto": "Your knees carried you this far, give them the cushion they earned.",
+   "estrategia": "peca",
+   "tipo": "ilustracao",
+   "componente": null,
+   "dados": null,
+   "busca": "technical diagram of knee joint and shoe cushioning",
+   "strict": false,
+   "entidades": null,
+   "fallback": [
+    "stock:runner's knees in motion",
+    "animacao:TextReveal"
+   ],
+   "secao": 5,
+   "tier_teto": "web",
+   "tratamento": {
+    "wash": "amarelo"
+   },
+   "i": 77
+  }
+ ]
+}

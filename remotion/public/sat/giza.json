@@ -1,0 +1,33 @@
+{
+  "coord": [
+    31.1313,
+    29.9773
+  ],
+  "legenda": "Giza, Egypt",
+  "niveis": [
+    {
+      "rel": "sat/giza_0.jpg",
+      "half": 1500000
+    },
+    {
+      "rel": "sat/giza_1.jpg",
+      "half": 330000
+    },
+    {
+      "rel": "sat/giza_2.jpg",
+      "half": 73000
+    },
+    {
+      "rel": "sat/giza_3.jpg",
+      "half": 16000
+    },
+    {
+      "rel": "sat/giza_4.jpg",
+      "half": 3600
+    },
+    {
+      "rel": "sat/giza_5.jpg",
+      "half": 800
+    }
+  ]
+}

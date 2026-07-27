@@ -1,0 +1,49 @@
+# RE-INCLUI os repos gitignorados que a gente QUER mapear (código)
+!video-automator/
+!video-automator/**
+# mas mantém segredos/dados/temp do automator FORA
+video-automator/*.json
+video-automator/narracoes/
+video-automator/scripts/
+video-automator/logs/
+video-automator/temp/
+video-automator/cache/
+video-automator/static/
+# deps / build / saídas / caches gerais
+node_modules/
+remotion/out/
+remotion/public/
+**/graphify-out/
+_cache_stock/
+**/_tmp/
+**/temp/
+**/cache/
+**/__pycache__/
+automator-dev/
+# dados / mídia / segredos(.json) / backups — não é código
+*.json
+*.mp3
+*.mp4
+*.wav
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.log
+*.7z
+*.zip
+*.srt
+*.ass
+**/*.backup*
+**/*.cosmic*
+banco-videos/_*
+banco-videos/clips/
+banco-videos/teste/mapas/
+banco-videos/teste/pessoas/
+banco-videos/teste/imagens/
+banco-videos/teste/sat_tiles/
+# frontend BUILDADO (minificado — ruído, não é fonte)
+video-automator/static-frontend2/
+**/assets/index-*.js
+**/*.min.js
+**/dist/

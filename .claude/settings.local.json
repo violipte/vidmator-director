@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(schtasks //delete //tn \"VideoAutomator\" //f)",
+      "Bash(schtasks //create //tn \"VideoAutomator\" //tr \"pythonw.exe \\\\\"f:\\\\\\\\Canal Dark\\\\\\\\video-automator\\\\\\\\starter.pyw\\\\\"\" //sc onlogon //rl highest //f)",
+      "Bash(python -c ':*)",
+      "Bash(taskkill //F //IM python.exe)",
+      "Bash(python -c \"import app; print\\('OK'\\)\")",
+      "Bash(tasklist)",
+      "Bash(python app.py)",
+      "Bash(curl -s http://localhost:8500/api/health)",
+      "Bash(python -m json.tool)",
+      "WebFetch(domain:api.ai33.pro)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8500/)",
+      "Bash(ssh root@85.239.243.215 \"ls -la /opt/video-automator/exports/ 2>/dev/null\")",
+      "Bash(curl -s http://85.239.243.215:8500/api/health)",
+      "Bash(ssh root@85.239.243.215 'python3 -c \":*)",
+      "Bash(pythonw worker_watchdog.pyw)",
+      "Bash(ssh root@85.239.243.215 'cd /opt/video-automator && /opt/video-automator/venv/bin/python -c '\\\\'' *)",
+      "Bash(ssh root@85.239.243.215 \"ls -la /opt/video-automator/exports/2026-04-21/Narracoes/EN2* 2>/dev/null\")",
+      "Bash(curl -s http://85.239.243.215:8500/api/temas)",
+      "Bash(python -c \" import sys, json d = json.load\\(sys.stdin\\) linhas = d.get\\('linhas', []\\) celulas = d.get\\('celulas', {}\\) for i, l in enumerate\\(linhas\\): count = sum\\(1 for k in celulas if k.startswith\\(f'{i}_'\\) and celulas[k].get\\('tema'\\)\\) print\\(f'{i}: {l.get\\(\\\\\"data\\\\\",\\\\\"?\\\\\"\\)} - {count} canais com tema'\\) \")",
+      "Bash(tasklist //FI \"IMAGENAME eq python.exe\" //FI \"IMAGENAME eq pythonw.exe\")",
+      "Bash(tasklist //FI \"IMAGENAME eq python.exe\")",
+      "Bash(tasklist //FI \"IMAGENAME eq ffmpeg.exe\")",
+      "Bash(curl -sS --max-time 5 \"http://85.239.243.215:8500/api/health\")",
+      "Bash(curl -sS \"http://85.239.243.215:8500/api/temas\")",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
