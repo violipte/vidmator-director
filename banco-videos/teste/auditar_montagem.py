@@ -200,7 +200,8 @@ def main():
     for b in beats:
         if b["t_ini"] < 15 and b["tipo"] == "animacao":
             c = b.get("componente") or ""
-            if c == "ChapterTitle" or (eh_texto(c) and c != "Ovl10_NumberBadge"):
+            if c == "ChapterTitle" or (eh_texto(c) and c != "Ovl10_NumberBadge"
+                                       and not b.get("_cold_quote")):
                 V.append(("R-15/16", b["i"], f"hook com {c}"))
 
     # ---- A9: refs existem ----

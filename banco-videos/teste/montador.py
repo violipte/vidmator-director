@@ -36,6 +36,27 @@ def main():
 
     job = Path(a.job) if Path(a.job).is_absolute() else Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos") / a.job
     resolvido = json.loads((job / "resolvido.json").read_text(encoding="utf-8"))
+    # 27/07: o CURADOR grava por-beat em resolvido/ (inclui banco secao=900) e NÃO
+    # atualiza o resolvido.json consolidado do executor — sem este merge o banco de
+    # nicho inteiro ficava invisível pro montador (40 clipes fora da montagem)
+    _por_i = {r.get("i"): r for r in resolvido}
+    for _f in sorted((job / "resolvido").glob("b*.json")):
+        try:
+            _r = json.loads(_f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        _arq = _r.get("arquivo")
+        if _arq and not Path(_arq).exists():
+            continue  # asset condenado/apagado — não ressuscita
+        _por_i[_r.get("i")] = _r
+    _MIDIA = (".mp4", ".webm", ".mov", ".jpg", ".jpeg", ".png", ".webp")
+    resolvido = []
+    for _k in sorted(_por_i):
+        _r = _por_i[_k]
+        _arq = str(_r.get("arquivo") or "")
+        if _arq.lower().endswith(_MIDIA) and not Path(_arq).exists():
+            continue  # entrada BASE apontando pra condenado (auditor 27/07: fantasma b158)
+        resolvido.append(_r)
     plano = json.loads(Path(a.plano).read_text(encoding="utf-8"))
     secoes = plano.get("secoes", [])
     plano_por_i = {pb["i"]: pb for pb in plano.get("beats", [])}  # resolvido NÃO carrega 'texto'
@@ -237,6 +258,13 @@ def main():
             _prev_i = r0["i"]
 
     for r in resolvido:
+        if r.get("secao") == 900:  # BANCO DE NICHO: alimenta os pools, NUNCA vira beat
+            src_b = Path(r.get("arquivo") or "")
+            if src_b.exists():
+                tgt_b = dest / "assets" / src_b.name
+                if not tgt_b.exists() or src_b.stat().st_mtime > tgt_b.stat().st_mtime:
+                    shutil.copy2(src_b, tgt_b)
+            continue
         b = {"i": r["i"], "t_ini": r["t_ini"], "t_fim": r["t_fim"], "tipo": r["tipo_final"],
              "tier": r.get("tier", 0), "watermark": bool(r.get("watermark")), "secao": r.get("secao", 0)}
         if r.get("arquivo"):
@@ -273,6 +301,20 @@ def main():
                         stats["R111_announce"] = stats.get("R111_announce", 0) + 1
             else:
                 b["tipo"] = "animacao"  # arquivo sumiu -> registry decide (nunca DisplayText fixo)
+
+        # COLD-OPEN QUOTE [Piter 27/07, estoico]: citação de ABERTURA (texto entre
+        # aspas nos primeiros ~25s) = Typewriter + SFX de typewriter — a exceção
+        # consagrada ao sem-texto-no-hook (a autoridade fala antes de ser nomeada)
+        _tx_cq = _corr((plano_por_i.get(r["i"], {}) or {}).get("texto") or "").strip()
+        if float(r["t_ini"]) < 25.0 and _tx_cq.startswith('"') and not b.get("componente"):
+            tx_q = corte(humanizar(_tx_cq.strip('"').strip()), 90)
+            if len(tx_q) >= 8:
+                b.pop("src", None)
+                b["tipo"] = "animacao"
+                b["componente"] = "Texto01_Typewriter"
+                b["props"] = {"text": tx_q, "kicker": ""}
+                b["_cold_quote"] = True
+                stats["cold_quote"] = stats.get("cold_quote", 0) + 1
 
         if b["tipo"] == "animacao" and "componente" not in b:
             dur = float(r["t_fim"]) - float(r["t_ini"])
@@ -540,6 +582,10 @@ def main():
             chave_b = assunto_por_i.get(b["i"]) or f"sec{b['secao']}"
             por_sec.setdefault(chave_b, []).append(b["src"])
             bg_dono[b["src"]] = assunto_por_i.get(b["i"])
+    # BANCO DE NICHO também serve de bg (genérico, sem dono de assunto)
+    for r0 in resolvido:
+        if r0.get("secao") == 900 and str(r0.get("arquivo") or "").lower().endswith(".mp4"):
+            por_sec.setdefault("banco", []).append(f"jobs/{a.nome}/assets/{Path(r0['arquivo']).name}")
     # bg dos overlays com o MESMO guard R-56 do demote (auditor 22/07: rot cega repetia
     # o mesmo fundo em beats colados — 15 violações que nenhuma decupagem tinha visto)
     bg_uso, bg_poss = {}, {}
@@ -554,7 +600,10 @@ def main():
             # fase 1: MESMO assunto com gap 6; fase 2: pool global com gap 3 (preqa 23/07:
             # overlay de CANTO sem bg = 90% do frame preto — pior que reusar fundo)
             meu_ass_bg = assunto_por_i.get(b["i"]) or f"sec{b['secao']}"
-            for pool_cand, gap_bg in [(por_sec.get(meu_ass_bg) or [], 6),
+            # fase 0 = BANCO DE NICHO (27/07 "MUITO repetido"): fundo vem de material
+            # que NUNCA apareceu nítido — só cai no reuso se o banco secar
+            for pool_cand, gap_bg in [(por_sec.get("banco") or [], 1),
+                                      (por_sec.get(meu_ass_bg) or [], 6),
                                       ([s for v in por_sec.values() for s in v], 3)]:
                 if b.get("bg"):
                     break
@@ -807,12 +856,15 @@ def main():
             por_fam = {}
             for x in sfx_man:
                 por_fam.setdefault(x["familia"], []).append(x)
+            usados_sfx = set()  # 28/07: anti-repetição TAMBÉM nos sfx (stinger dark 2x no estoico)
 
             def _add_sfx(fam, t, vol, kseed=0, contem="", dur_max=None):
                 ops = [x for x in por_fam.get(fam, []) if contem in x["arquivo"]]
                 if not ops or t < 0:
                     return
-                x = ops[(SEED + kseed) % len(ops)]
+                livres = [x for x in ops if x["arquivo"] not in usados_sfx] or ops
+                x = livres[(SEED + kseed) % len(livres)]
+                usados_sfx.add(x["arquivo"])
                 rel = _copia_audio(x["arquivo"], "sfx")
                 if rel:
                     d_s = float(x.get("duracao_s") or 1.5)
@@ -822,9 +874,8 @@ def main():
                     audio_plan["sfx"].append({"arquivo": rel, "t": round(t, 2), "vol": vol,
                                               "dur": round(d_s, 2)})
 
-            for idx, s in enumerate(secoes):
-                if idx > 0:  # corte de seção: whoosh com pico ~no corte (§5.3: volume BAIXO)
-                    _add_sfx("whoosh", s["t_ini"] - 0.45, 0.30, kseed=idx * 7)
+            # 28/07: whoosh genérico do corte saiu daqui — as TRANSITIONS do acervo (bloco FX
+            # abaixo) trazem o próprio sfx_par; whoosh vira fallback dentro do FX
             for b in beats_out:
                 c2 = b.get("componente") or ""
                 if c2 == "Img21_ProductAnnounce":
@@ -838,6 +889,130 @@ def main():
             print(f"audio_plan FALHOU ({e_au}) — v2 sem áudio extra")
             audio_plan = None
 
+    # ---- ESTILO v2.1 (28/07): OVERLAYS de textura + TRANSITIONS do acervo da equipe ----
+    # Overlays: hook contínuo (janelas rotativas) + abertura de cada seção. Transitions:
+    # 1 por corte de seção, pool = receitas implementadas no Remotion + inks (veil vídeo),
+    # cada uma com o SEU sfx_par. Anti-repetição ABSOLUTA (usados até esgotar) [REGRAS_VDM §4].
+    fx_overlays, fx_trans = [], []
+    if _SC.get("estilo") == "v2":
+        try:
+            ACERVO_FX = Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos/_acervo_equipe")
+            (dest / "fx_assets").mkdir(exist_ok=True)
+
+            def _copia_fx(rel_acervo, sub):
+                src_f = ACERVO_FX / sub / rel_acervo
+                nome_f = rel_acervo.replace("/", "_")
+                dst_f = dest / "fx_assets" / nome_f
+                if src_f.exists() and not dst_f.exists():
+                    shutil.copy2(src_f, dst_f)
+                return f"jobs/{a.nome}/fx_assets/{nome_f}" if src_f.exists() else None
+
+            # --- overlays de textura ---
+            ov_man = json.loads((ACERVO_FX / "overlays/manifesto.json").read_text(encoding="utf-8"))["overlays"]
+            fams_ov = _SC.get("overlay_familias") or ["film", "dust", "particles", "lightleak",
+                                                      "bokeh", "fog", "smoke", "rays", "embers",
+                                                      "flare", "fireflies"]
+            pool_ov = [o for o in ov_man if o["categoria"] in fams_ov and o.get("arquivo")
+                       and o.get("modo") in ("screen", "multiply") and o.get("duracao_s")]
+            usados_ov = set()
+
+            def _pega_ov(kseed):
+                if not pool_ov:
+                    return None
+                livres = [o for o in pool_ov if o["id"] not in usados_ov] or pool_ov
+                o = livres[(SEED + kseed) % len(livres)]
+                usados_ov.add(o["id"])
+                return o
+
+            def _janela_ov(t0, t1, op, kseed):
+                o = _pega_ov(kseed)
+                if not o:
+                    return
+                rel = _copia_fx(o["arquivo"], "overlays")
+                if rel:
+                    fx_overlays.append({"arquivo": rel, "t_ini": round(t0, 2), "t_fim": round(t1, 2),
+                                        "modo": o["modo"], "op": op, "dur_s": o["duracao_s"]})
+
+            if secoes:
+                s0 = secoes[0]  # HOOK [§5.2]: textura contínua, trocando a cada ~26s
+                t = s0["t_ini"]
+                k = 0
+                while t < s0["t_fim"] - 4:
+                    fim_j = min(t + 26.0, s0["t_fim"])
+                    _janela_ov(t, fim_j, 0.26, k * 13)
+                    t = fim_j
+                    k += 1
+                for idx, s in enumerate(secoes[1:], start=1):  # abertura de seção: 6s de textura
+                    if s["t_fim"] - s["t_ini"] >= 8:
+                        _janela_ov(s["t_ini"], s["t_ini"] + 6.0, 0.30, 100 + idx * 17)
+
+            # --- transitions nos cortes de seção ---
+            tr_man = json.loads((ACERVO_FX / "transitions/manifesto.json").read_text(encoding="utf-8"))["transitions"]
+            RECEITAS_OK = {"zoom_whammy": "zoom_whammy", "deslizar_esquerda": "deslizar_esquerda",
+                           "deslizar_baixo": "deslizar_baixo", "tremor": "tremor",
+                           "sacudir_ii": "sacudir", "gire_cw_ii": "gire_cw",
+                           "flash_branco": "flash_branco", "flash_crescente": "flash_crescente",
+                           "esmaecer_preto": "esmaecer_preto", "desvanecer_difuso": "blur_dip",
+                           "travessao_blur": "blur_dip", "suave": "suave"}
+            TRANSFORMS = {"zoom_whammy", "deslizar_esquerda", "deslizar_baixo", "tremor",
+                          "sacudir", "gire_cw"}
+            fams_tr = _SC.get("trans_familias") or ["ink", "receita"]  # glitchburst/vhs só por opt-in
+            pool_tr = []
+            for tx in tr_man:
+                if tx["categoria"] == "ink" and "ink" in fams_tr and tx.get("arquivo"):
+                    pool_tr.append({"id": tx["id"], "tipo": "veil_video", "arquivo": tx["arquivo"],
+                                    "pico_s": tx.get("pico_s") or 1.0, "dur_s": tx.get("duracao_s") or 4.0,
+                                    "sfx": tx.get("sfx_par")})
+                elif tx["categoria"] == "receita" and "receita" in fams_tr \
+                        and tx.get("descritor") in RECEITAS_OK:
+                    pool_tr.append({"id": tx["id"], "tipo": RECEITAS_OK[tx["descritor"]],
+                                    "sfx": tx.get("sfx_par")})
+            usados_tr_fx = set()
+            dur_sfx = {x["arquivo"]: float(x.get("duracao_s") or 1.5) for x in
+                       (json.loads((ACERVO_FX / "sfx/manifesto.json").read_text(encoding="utf-8"))["sfx"])}
+            for idx, s in enumerate(secoes[1:], start=1):
+                if not pool_tr:
+                    break
+                livres = [x for x in pool_tr if x["id"] not in usados_tr_fx] or pool_tr
+                tx = livres[(SEED + idx * 11) % len(livres)]
+                usados_tr_fx.add(tx["id"])
+                t_corte = s["t_ini"]  # nome != corte() — sombrear a função quebrou o cold-open (28/07)
+                ent = {"t": round(t_corte, 2), "tipo": tx["tipo"]}
+                if tx["tipo"] == "veil_video":
+                    rel_v = _copia_fx(tx["arquivo"], "transitions")
+                    if not rel_v:
+                        continue
+                    ent["arquivo"] = rel_v
+                    ent["pico_s"] = tx["pico_s"]
+                    ent["dur_s"] = tx["dur_s"]
+                elif tx["tipo"] in TRANSFORMS:
+                    # transform entra no PRIMEIRO beat da seção (wrapper no Remotion)
+                    alvo = min((b for b in beats_out if b["t_ini"] >= t_corte - 0.1),
+                               key=lambda b: b["t_ini"], default=None)
+                    if alvo is not None:
+                        alvo["trans_in"] = {"tipo": tx["tipo"]}
+                fx_trans.append(ent)
+                # sfx pareado da transição (fallback: whoosh genérico da rotação)
+                if audio_plan is not None:
+                    if tx.get("sfx"):
+                        rel_s = _copia_audio(tx["sfx"].split("sfx/", 1)[-1], "sfx")
+                        if rel_s:
+                            d_par = min(dur_sfx.get(tx["sfx"].split("sfx/", 1)[-1], 1.5),
+                                        4.0 if tx["tipo"] == "veil_video" else 2.5)
+                            lead = 1.2 if tx["tipo"] == "veil_video" else 0.35
+                            audio_plan["sfx"].append({"arquivo": rel_s, "t": round(t_corte - lead, 2),
+                                                      "vol": 0.30, "dur": round(d_par, 2)})
+                    else:
+                        _add_sfx("whoosh", t_corte - 0.45, 0.30, kseed=idx * 7)
+            print(f"fx [v2.1]: {len(fx_overlays)} overlays de textura + {len(fx_trans)} transitions "
+                  f"({len(usados_ov)} arquivos ov distintos, {len(usados_tr_fx)} trans distintas)")
+        except Exception as e_fx:
+            print(f"fx FALHOU ({e_fx}) — v2 sem overlays/transitions; whoosh genérico nos cortes")
+            fx_overlays, fx_trans = [], []
+            if audio_plan is not None:
+                for idx, s in enumerate(secoes[1:], start=1):
+                    _add_sfx("whoosh", s["t_ini"] - 0.45, 0.30, kseed=idx * 7)
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",
@@ -847,6 +1022,10 @@ def main():
             "beats": beats_out}
     if audio_plan and (audio_plan["trilhas"] or audio_plan["sfx"]):
         mont["audio_plan"] = audio_plan
+    if fx_overlays:
+        mont["fx_overlays"] = fx_overlays
+    if fx_trans:
+        mont["fx_trans"] = fx_trans
     (dest / "montagem.json").write_text(json.dumps(mont, ensure_ascii=False), encoding="utf-8")
     print(f"montagem: {len(beats_out)} beats | {dur:.1f}s | assets copiados: {n_copy} -> {dest}")
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Img, Loop, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { NumberCountOverlay } from "./NumberCountOverlay";
 import { MultiCountryOutline } from "./MultiCountryOutline";
 import { ChapterTitle } from "./ChapterTitle";
@@ -52,7 +52,7 @@ const WASH: Record<string, string> = {
 
 type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: number; watermark: boolean;
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
-  off_s?: number; trato?: string };
+  off_s?: number; trato?: string; trans_in?: { tipo: string } };
 
 /* VidRush 24/07 (split de plano): 2º segmento do mesmo asset ganha offset + tratamento distinto */
 const TRATOS: Record<string, string> = {
@@ -62,10 +62,73 @@ const TRATOS: Record<string, string> = {
 };
 type AudioPlan = { trilhas: { arquivo: string; t_ini: number; t_fim: number; vol: number }[];
   sfx: { arquivo: string; t: number; vol: number; dur: number }[] };
+type FxOverlay = { arquivo: string; t_ini: number; t_fim: number; modo: string; op: number; dur_s: number };
+type FxTrans = { t: number; tipo: string; arquivo?: string; pico_s?: number; dur_s?: number };
 type Mont = { fps: number; dur_s: number; audio: string; secoes: any[]; beats: Beat[];
-  estilo?: string; audio_plan?: AudioPlan };
+  estilo?: string; audio_plan?: AudioPlan; fx_overlays?: FxOverlay[]; fx_trans?: FxTrans[] };
 
 const isVid = (s: string) => /\.(mp4|webm|mov)$/i.test(s);
+
+/* v2.1 [28/07 — acervo da equipe]: transform de ENTRADA no 1º beat da seção.
+   Receitas do manifesto (zoom_whammy, deslizar, tremor, gire) em CSS puro. */
+const TransInWrap: React.FC<{ tipo?: string; children: React.ReactNode }> = ({ tipo, children }) => {
+  const f = useCurrentFrame();
+  let tf = "";
+  if (tipo === "zoom_whammy") {
+    tf = `scale(${interpolate(f, [0, 12], [1.3, 1], { extrapolateRight: "clamp" })})`;
+  } else if (tipo === "deslizar_esquerda") {
+    tf = `translateX(${interpolate(f, [0, 12], [180, 0], { extrapolateRight: "clamp" })}px)`;
+  } else if (tipo === "deslizar_baixo") {
+    tf = `translateY(${interpolate(f, [0, 12], [-180, 0], { extrapolateRight: "clamp" })}px)`;
+  } else if (tipo === "gire_cw") {
+    const r = interpolate(f, [0, 14], [-5, 0], { extrapolateRight: "clamp" });
+    const z = interpolate(f, [0, 14], [1.1, 1], { extrapolateRight: "clamp" });
+    tf = `rotate(${r}deg) scale(${z})`;
+  } else if (tipo === "tremor" || tipo === "sacudir") {
+    const amp = interpolate(f, [0, 14], [tipo === "sacudir" ? 24 : 14, 0], { extrapolateRight: "clamp" });
+    tf = `translate(${Math.sin(f * 2.3) * amp}px, ${Math.cos(f * 1.7) * amp * 0.6}px)`;
+  }
+  if (!tf) return <>{children}</>;
+  return <AbsoluteFill style={{ transform: tf }}>{children}</AbsoluteFill>;
+};
+
+/* v2.1: veils de transição (flash/fade/blur/ink) — camada global por cima do corte.
+   Tipos transform retornam null aqui (agem via trans_in no beat). */
+const VeilFX: React.FC<{ fx: FxTrans }> = ({ fx }) => {
+  const f = useCurrentFrame();
+  if (fx.tipo === "veil_video" && fx.arquivo) {
+    return (
+      <AbsoluteFill style={{ mixBlendMode: "multiply", pointerEvents: "none" }}>
+        <OffthreadVideo src={staticFile(fx.arquivo)} muted
+          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} />
+      </AbsoluteFill>
+    );
+  }
+  if (fx.tipo === "flash_branco" || fx.tipo === "flash_crescente") {
+    const [durF, pico] = fx.tipo === "flash_branco" ? [12, 4] : [22, 14];
+    const o = interpolate(f, [0, pico, durF - 1], [0, 0.9, 0], { extrapolateRight: "clamp" });
+    return <AbsoluteFill style={{ background: "#fff", opacity: o, pointerEvents: "none" }} />;
+  }
+  if (fx.tipo === "esmaecer_preto" || fx.tipo === "suave") {
+    const [durF, teto] = fx.tipo === "esmaecer_preto" ? [24, 1] : [14, 0.65];
+    const o = interpolate(f, [0, durF * 0.42, durF * 0.58, durF - 1], [0, teto, teto, 0],
+      { extrapolateRight: "clamp" });
+    return <AbsoluteFill style={{ background: "#000", opacity: o, pointerEvents: "none" }} />;
+  }
+  if (fx.tipo === "blur_dip") {
+    const px = interpolate(f, [0, 8, 17], [0, 14, 0], { extrapolateRight: "clamp" });
+    return <AbsoluteFill style={{ backdropFilter: `blur(${px}px)`, pointerEvents: "none" }} />;
+  }
+  return null;
+};
+const veilLeadF = (fx: FxTrans, fps: number) =>
+  fx.tipo === "veil_video" ? Math.round((fx.pico_s ?? 1) * fps) :
+  fx.tipo === "flash_crescente" ? 14 : fx.tipo === "esmaecer_preto" ? 10 :
+  fx.tipo === "suave" ? 6 : fx.tipo === "blur_dip" ? 8 : 4;
+const veilDurF = (fx: FxTrans, fps: number) =>
+  fx.tipo === "veil_video" ? Math.max(1, Math.round((fx.dur_s ?? 3) * fps)) :
+  fx.tipo === "flash_crescente" ? 22 : fx.tipo === "esmaecer_preto" ? 24 :
+  fx.tipo === "suave" ? 14 : fx.tipo === "blur_dip" ? 18 : 12;
 
 /* footage T3: quadro menor + grid de fundo (receita §5.1); watermark -> zoom interno (crop).
    QA tenis 23/07 (Piter): gradiente e moldura eram SEMPRE iguais — agora 4 paletas escuras
@@ -242,11 +305,35 @@ export const Montagem: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont 
         const wash = WASH[sec?.wash || "none"] || "transparent";
         return (
           <Sequence key={b.i} from={from} durationInFrames={dur}>
-            <BeatView b={b} estilo={mont.estilo || "v1"} />
-            {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
+            <TransInWrap tipo={b.trans_in?.tipo}>
+              <BeatView b={b} estilo={mont.estilo || "v1"} />
+              {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
+            </TransInWrap>
           </Sequence>
         );
       })}
+      {/* v2.1: OVERLAYS de textura do acervo (screen/multiply, opacity baixa, loop) */}
+      {(mont.fx_overlays || []).map((o, i) => {
+        const durO = Math.max(1, Math.round((o.t_fim - o.t_ini) * fps));
+        const durArq = Math.max(1, Math.round(o.dur_s * fps));
+        return (
+          <Sequence key={`fxo${i}`} from={Math.round(o.t_ini * fps)} durationInFrames={durO}>
+            <AbsoluteFill style={{ mixBlendMode: o.modo as any, opacity: o.op, pointerEvents: "none" }}>
+              <Loop durationInFrames={durArq}>
+                <OffthreadVideo src={staticFile(o.arquivo)} muted
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </Loop>
+            </AbsoluteFill>
+          </Sequence>
+        );
+      })}
+      {/* v2.1: TRANSITIONS nos cortes de seção (veils; transforms agem via trans_in) */}
+      {(mont.fx_trans || []).map((fx, i) => (
+        <Sequence key={`fxt${i}`} from={Math.max(0, Math.round(fx.t * fps) - veilLeadF(fx, fps))}
+          durationInFrames={veilDurF(fx, fps)}>
+          <VeilFX fx={fx} />
+        </Sequence>
+      ))}
       <Audio src={staticFile(mont.audio)} />
       {/* ESTILO v2 [REGRAS_VDM §5.3]: trilha por momento (fade in/out, volume BAIXO) + SFX */}
       {(mont.audio_plan?.trilhas || []).map((t, i) => {
@@ -254,8 +341,13 @@ export const Montagem: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont 
         return (
           <Sequence key={`tr${i}`} from={Math.round(t.t_ini * fps)} durationInFrames={durT}>
             <Audio src={staticFile(t.arquivo)} loop
-              volume={(f) => interpolate(f, [0, 36, Math.max(37, durT - 50), durT],
-                [0, t.vol, t.vol, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+              volume={(f) => {
+                // keyframes sempre monotônicos, mesmo com trecho curto (crash frame 303, 27/07)
+                const a = Math.min(36, Math.max(1, durT * 0.3));
+                const b = Math.max(a + 1, durT - 50);
+                return interpolate(f, [0, a, b, Math.max(b + 1, durT)],
+                  [0, t.vol, t.vol, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+              }} />
           </Sequence>
         );
       })}
@@ -265,8 +357,12 @@ export const Montagem: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont 
           <Sequence key={`sx${i}`} from={Math.round(s.t * fps)} durationInFrames={durS}>
             {/* fade-out nos últimos frames — corte de SFX nunca é seco */}
             <Audio src={staticFile(s.arquivo)}
-              volume={(f) => interpolate(f, [0, 2, Math.max(3, durS - 9), durS],
-                [0, s.vol, s.vol, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+              volume={(f) => {
+                const a = Math.min(2, Math.max(1, durS * 0.3));
+                const b = Math.max(a + 1, durS - 9);
+                return interpolate(f, [0, a, b, Math.max(b + 1, durS)],
+                  [0, s.vol, s.vol, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+              }} />
           </Sequence>
         );
       })}

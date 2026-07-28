@@ -19,6 +19,7 @@ import argparse
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -45,8 +46,19 @@ def secoes_do_plano(plano, desamb):
 
 
 def ctx_da_secao(sec, todos_produtos):
-    """Frase de contexto pro gate — a REGRA DURA da seção."""
+    """Frase de contexto pro gate — a REGRA DURA da seção.
+    27/07: nicho SEM announce (estoico) não tem "produtos" — a desambiguacao é
+    ilustração de pessoas, não catálogo. Tratar bustos como produto concorrente
+    travou o gate (0/288 no banco)."""
     lista = "; ".join(todos_produtos) or "none"
+    if not sec.get("produto") and not todos_produtos:
+        return ("Crash/accident/injury or CCTV footage = subject_match=false. "
+                "A person presenting/talking toward the camera (vlogger, host, channel intro) = "
+                "talking_head=true even in a wide shot. "
+                "SECTION CONTEXT: thematic documentary B-ROLL. subject_match=true if the frames "
+                "match the search subject OR its mood/atmosphere (statues, ruins, nature, objects, "
+                "silhouettes are all fine). Reject only clearly unrelated or off-mood content. "
+                "There are NO product/brand constraints in this video.")
     base = ("IMPORTANT: 'bike' in this video ALWAYS means pedal BICYCLE — any motorcycle, moped or "
             "scooter content (engine, exhaust, throttle, speedometer dial) = subject_match=false. "
             "Crash/accident/injury or CCTV footage = subject_match=false. ") \
@@ -70,6 +82,11 @@ def main():
     ap.add_argument("--job", required=True)
     ap.add_argument("--plano", required=True)
     ap.add_argument("--excedente", type=int, default=2)
+    ap.add_argument("--banco", type=int, default=0,
+                    help="clipes extras do BANCO DE NICHO (queries_banco do style_card) — mata a repetição")
+    ap.add_argument("--workers", type=int, default=6, help="buscas/gates em paralelo (27/07)")
+    ap.add_argument("--resume", action="store_true",
+                    help="pula beats/banco que já têm resolvido/bNNN.json (não refaz trabalho)")
     a = ap.parse_args()
 
     job = Path(a.job)
@@ -98,43 +115,128 @@ def main():
                 ex.CANAIS_BAN.add(ln.strip().lower())
         print(f"canais banidos (curador): {len(ex.CANAIS_BAN)}")
 
+    # RESUME: semeia USED com o que JÁ está no job (mesma disciplina do executor main).
+    # Sem isso o banco re-baixa os mesmos pexels/yt e o dedup mata um a um (0/18, 27/07).
+    if a.resume:
+        n_seed = 0
+        for f in list(ctx["res"].glob("b*.json")) + list(ctx["assets"].glob("*.*")):
+            arq = f.name
+            if f.suffix == ".json":
+                try:
+                    arq = json.loads(f.read_text(encoding="utf-8")).get("arquivo") or ""
+                except Exception:
+                    continue
+            m = re.search(r"__(?:yt|pexels)_([A-Za-z0-9_-]+)\.", arq)
+            if m:
+                sid = m.group(1)
+                ex.USED.add(sid), ex.USED.add(f"pexv_{sid}"), ex.USED.add(f"pexp_{sid}")
+                n_seed += 1
+        print(f"USED semeado do job (resume): {n_seed} ids")
+
     secs = secoes_do_plano(plano, desamb)
-    print(f"curador_footage: {len(secs)} seções | produtos: {todos}")
+    # nicho sem announce (nenhuma seção com produto) => desambiguacao NÃO é catálogo
+    # de produtos; ctx vira b-roll temático (fix 0/288 estoico 27/07)
+    if not any(sec["produto"] for sec in secs.values()):
+        todos = []
+    print(f"curador_footage: {len(secs)} seções | produtos: {todos or 'nenhum (b-roll temático)'}")
 
     out = {"beats": {}, "excedente": {}}
+    tarefas = []  # (tipo_tarefa, beat_enriquecido, secao)
     for s, sec in sorted(secs.items()):
         sctx = ctx_da_secao(sec, todos)
         alvo_beats = [b for b in sec["beats"] if b.get("tipo") in ("footage_video", "stock")
                       and not ex.modelo_anunciado(b.get("texto"), {"desambiguacao": desamb})]  # anúncio = imagem (R-111)
-        print(f"\n== seção {s} ({sec['produto'] or 'genérica'}): {len(alvo_beats)} beats de vídeo "
+        print(f"== seção {s} ({sec['produto'] or 'genérica'}): {len(alvo_beats)} beats de vídeo "
               f"+ {a.excedente} excedentes ==")
         for b in alvo_beats:
+            jres = ctx["res"] / f"b{b['i']:03d}.json"
+            if a.resume and jres.exists():
+                try:
+                    r0 = json.loads(jres.read_text(encoding="utf-8"))
+                    if r0.get("arquivo") and Path(r0["arquivo"]).exists():
+                        out["beats"][str(b["i"])] = {"arquivo": r0["arquivo"], "tier": r0.get("tier", 1),
+                                                     "fonte": r0.get("fonte"),
+                                                     "watermark": bool(r0.get("watermark"))}
+                        continue  # resume: já curado, não refaz
+                except Exception:
+                    pass
             b2 = dict(b)
             b2["_sec_ctx"] = sctx
-            r = ex.resolver_footage_video(b2, ctx) if b.get("tipo") == "footage_video" \
-                else ex.resolver_stock(b2, ctx)
-            if r.get("status") == "ok" and r.get("arquivo"):
-                out["beats"][str(b["i"])] = {"arquivo": r["arquivo"], "tier": r.get("tier", 1),
-                                             "fonte": r.get("fonte"), "watermark": bool(r.get("watermark"))}
-                # formato do executor: o resume pula beats já curados
-                (ctx["res"] / f"b{b['i']:03d}.json").write_text(
-                    json.dumps({**{k: b.get(k) for k in ("i", "secao", "t_ini", "t_fim", "busca")},
-                                **r, "tipo": b.get("tipo")}, ensure_ascii=False), encoding="utf-8")
-                print(f"  b{b['i']:03d} OK {Path(r['arquivo']).name[-40:]}")
-            else:
-                print(f"  b{b['i']:03d} BURACO (sem clipe aprovado) — animador vai acusar")
-        # EXCEDENTE da seção: buscas derivadas do assunto (bg/duo/split do animador)
+            tarefas.append(("beat", b2, s))
+        base_busca = sec["produto"] or (sec["titulo"] or "b-roll")
         out["excedente"][str(s)] = []
-        base_busca = sec["produto"] or (sec["titulo"] or "senior runner training")
         for k in range(a.excedente):
             fake = {"i": 900 + s * 10 + k, "tipo": "stock", "secao": s,
                     "busca": f"{base_busca} b-roll closeup" if k == 0 else f"{base_busca} action shot",
                     "_sec_ctx": sctx, "t_ini": 0, "t_fim": 5}
-            r = ex.resolver_stock(fake, ctx)
+            tarefas.append(("excedente", fake, s))
+
+    def _rodar(t):
+        tipo_t, b2, s = t
+        r = ex.resolver_footage_video(b2, ctx) if b2.get("tipo") == "footage_video" \
+            else ex.resolver_stock(b2, ctx)
+        return tipo_t, b2, s, r
+
+    # PARALELO (27/07 — Piter: "dá pra paralelizar?"): buscas+gates simultâneos
+    with ThreadPoolExecutor(max_workers=a.workers) as pool:
+        for tipo_t, b2, s, r in pool.map(_rodar, tarefas):
             if r.get("status") == "ok" and r.get("arquivo"):
-                out["excedente"][str(s)].append({"arquivo": r["arquivo"], "tier": r.get("tier", 1),
-                                                 "watermark": bool(r.get("watermark"))})
-                print(f"  excedente {k+1} OK {Path(r['arquivo']).name[-40:]}")
+                if tipo_t == "beat":
+                    out["beats"][str(b2["i"])] = {"arquivo": r["arquivo"], "tier": r.get("tier", 1),
+                                                  "fonte": r.get("fonte"), "watermark": bool(r.get("watermark"))}
+                    (ctx["res"] / f"b{b2['i']:03d}.json").write_text(
+                        json.dumps({**{k: b2.get(k) for k in ("i", "secao", "t_ini", "t_fim", "busca")},
+                                    **r, "tipo": b2.get("tipo")}, ensure_ascii=False), encoding="utf-8")
+                    print(f"  b{b2['i']:03d} OK {Path(r['arquivo']).name[-40:]}")
+                else:
+                    out["excedente"][str(s)].append({"arquivo": r["arquivo"], "tier": r.get("tier", 1),
+                                                     "watermark": bool(r.get("watermark"))})
+                    print(f"  excedente s{s} OK {Path(r['arquivo']).name[-40:]}")
+            elif tipo_t == "beat":
+                print(f"  b{b2['i']:03d} BURACO (sem clipe aprovado) — animador vai acusar")
+
+    # BANCO DE NICHO (27/07 — "tem MUITO clipe repetido"): enche o pool com clipes
+    # temáticos variados; com abundância, reuso vira exceção natural do sort por uso
+    if a.banco > 0:
+        qs = sc.get("queries_banco") or []
+        sctx_banco = ctx_da_secao({"produto": None, "titulo": ""}, todos)
+
+        # sufixo por ciclo: mesma query re-buscada devolve a MESMA lista (determinística);
+        # variar o texto abre resultados novos em vez de re-tentar os USED
+        _SUF = ["", " cinematic", " slow motion", " dark moody", " closeup", " night",
+                " aerial", " 4k film"]
+
+        def _banco_task(kk):
+            ciclo = kk // len(qs)
+            q = qs[kk % len(qs)] + _SUF[ciclo % len(_SUF)]
+            fake = {"i": 800 + kk, "tipo": "stock", "secao": 900,
+                    "busca": q, "t_ini": 0, "t_fim": 5, "_sec_ctx": sctx_banco}
+            return kk, q, ex.resolver_stock(fake, ctx)
+
+        # ondas paralelas: cada onda = a.workers tentativas simultâneas; pode passar
+        # 1-2 do alvo (bom — banco maior = menos repetição)
+        n_ok_banco = 0
+        k = 0
+        if a.resume:  # banco já parcialmente feito: conta os existentes e continua depois deles
+            feitos = sorted(int(f.stem[1:]) for f in ctx["res"].glob("b8*.json")
+                            if f.stem[1:].isdigit() and int(f.stem[1:]) >= 800)
+            if feitos:
+                n_ok_banco = len(feitos)
+                k = feitos[-1] - 800 + 1
+                print(f"  banco resume: {n_ok_banco} existentes, continuando de k={k}")
+        with ThreadPoolExecutor(max_workers=a.workers) as pool:
+            while n_ok_banco < a.banco and k < a.banco * 8 and qs:
+                lote = range(k, min(k + a.workers, a.banco * 8))
+                for kk, q, r in pool.map(_banco_task, lote):
+                    if r.get("status") == "ok" and r.get("arquivo"):
+                        (ctx["res"] / f"b{800 + kk:03d}.json").write_text(
+                            json.dumps({"i": 800 + kk, "secao": 900, "t_ini": 0, "t_fim": 5,
+                                        "busca": q, **r, "tipo": "stock"},
+                                       ensure_ascii=False), encoding="utf-8")
+                        n_ok_banco += 1
+                print(f"  banco: {n_ok_banco}/{a.banco} (tentativas {min(k + a.workers, a.banco * 8)})")
+                k += a.workers
+        print(f"banco de nicho: {n_ok_banco} clipes")
 
     (job / "curadoria_footage.json").write_text(json.dumps(out, ensure_ascii=False, indent=1),
                                                 encoding="utf-8")

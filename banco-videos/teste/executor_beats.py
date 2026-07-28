@@ -212,25 +212,33 @@ def _dhash_video(path, tmpdir):
 
 
 def _e_dup_visual(path, ctx, limiar=6):
-    """True se o clipe é visualmente ~igual a um asset já aceito no job (dist Hamming <= limiar)."""
+    """True se o clipe é visualmente ~igual a um asset já aceito no job (dist Hamming <= limiar).
+    Thread-safe (curador paralelo 27/07)."""
     job_key = str(ctx["assets"])
-    if job_key not in _HASHES_JOB:
-        _HASHES_JOB[job_key] = {}
+    with _LOCK:
+        precisa_scan = job_key not in _HASHES_JOB
+        if precisa_scan:
+            _HASHES_JOB[job_key] = {}
+    if precisa_scan:
         for f in Path(ctx["assets"]).glob("*.mp4"):
             h0 = _dhash_video(f, ctx["tmp"])
             if h0 is not None:
-                _HASHES_JOB[job_key][f.name] = h0
+                with _LOCK:
+                    _HASHES_JOB[job_key][f.name] = h0
     hs = _dhash_video(path, ctx["tmp"])
     if not hs:
         return False
-    for nome, hs0 in _HASHES_JOB[job_key].items():
+    with _LOCK:
+        itens = list(_HASHES_JOB[job_key].items())
+    for nome, hs0 in itens:
         if nome == Path(path).name:
             continue
         for h in hs:
             for h0 in (hs0 if isinstance(hs0, list) else [hs0]):
                 if bin(h ^ h0).count("1") <= limiar:
                     return True
-    _HASHES_JOB[job_key][Path(path).name] = hs
+    with _LOCK:
+        _HASHES_JOB[job_key][Path(path).name] = hs
     return False
 
 
@@ -350,8 +358,9 @@ def resolver_footage_imagem(beat, ctx):
         if ja_usado(cid):
             continue
         dest = ctx["assets"] / f"b{beat['i']:03d}__T1__pexels_{it.get('id')}.jpg"
-        if not baixar_url(it["src"]["original"], dest, UA):
+        if not baixar_url(it["src"].get("large2x") or it["src"]["original"], dest, UA):
             continue
+        _cap_resolucao(dest)  # 27/07: original de 30MP = EncodingError no render (14 casos)
         g = gate_retry(subject_do_beat(beat), [dest])
         if g["ok"]:
             marca_usado(cid)
