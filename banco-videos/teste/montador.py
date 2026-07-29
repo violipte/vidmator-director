@@ -1112,6 +1112,69 @@ def main():
         except Exception as e_m:
             print(f"mascote FALHOU ({e_m}) — seguindo sem personagem")
 
+    # ---- AVATAR DO CANAL (v3, 29/07): apresentador consistente gerado no Flow/VEO.
+    # style_card["avatar"] = {"banco": "<pasta keep>", "persona": "Clara",
+    #                         "ilhas": {"1": "clip.mp4", ...}}  (seção -> clipe aprovado)
+    # Ilha = abertura da seção: beats LIVRES consecutivos viram UM beat tipo "avatar"
+    # full-frame com ÁUDIO NATIVO do clipe; a narração ducka ali (Montagem.tsx).
+    # Clipes vêm APENAS do keep/ (rubric do curador VEO) — nunca da pasta bruta.
+    av_cfg = _SC.get("avatar") or {}
+    avatar_ilhas = []
+    if av_cfg.get("banco") and av_cfg.get("ilhas"):
+        try:
+            ab = Path(av_cfg["banco"])
+            (dest / "avatar").mkdir(exist_ok=True)
+            for sec_s, arq_av in sorted(av_cfg["ilhas"].items(), key=lambda x: int(x[0])):
+                src_av = ab / arq_av
+                s_av = next((s for s in secoes if s["i"] == int(sec_s)), None)
+                if not src_av.exists() or not s_av:
+                    print(f"avatar: ilha seção {sec_s} pulada (clipe ou seção ausente)")
+                    continue
+                try:
+                    d_clip = float(subprocess.run(
+                        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                         "-of", "csv=p=0", str(src_av)],
+                        capture_output=True, text=True, timeout=30).stdout.strip() or 8)
+                except Exception:
+                    d_clip = 8.0
+                cadeia_av = []
+                for b in sorted(beats_out, key=lambda x: x["t_ini"]):
+                    if b["t_ini"] < s_av["t_ini"] - 0.1:
+                        continue
+                    livre_av = b.get("tipo") in ("stock", "footage_video") \
+                        and not b.get("componente") and not b.get("_seg")
+                    if not cadeia_av:
+                        if livre_av:
+                            cadeia_av.append(b)
+                        continue
+                    if livre_av and abs(b["t_ini"] - cadeia_av[-1]["t_fim"]) < 0.05 \
+                            and (b["t_fim"] - cadeia_av[0]["t_ini"]) <= d_clip + 0.3:
+                        cadeia_av.append(b)
+                    else:
+                        break
+                if not cadeia_av:
+                    print(f"avatar: seção {sec_s} sem beat livre — ilha pulada")
+                    continue
+                t0_av = cadeia_av[0]["t_ini"]
+                t1_av = round(min(cadeia_av[-1]["t_fim"], t0_av + d_clip), 2)
+                if not (dest / "avatar" / src_av.name).exists():
+                    shutil.copy2(src_av, dest / "avatar" / src_av.name)
+                b0 = cadeia_av[0]
+                for bx in cadeia_av[1:]:
+                    if bx["t_fim"] <= t1_av + 0.05:
+                        beats_out.remove(bx)  # absorvido pela ilha
+                    else:
+                        bx["t_ini"] = t1_av  # parcialmente absorvido: encolhe
+                b0.pop("mascote", None)
+                b0.update({"tipo": "avatar", "src": f"jobs/{a.nome}/avatar/{src_av.name}",
+                           "t_fim": t1_av, "componente": None, "props": {}, "bg": None})
+                avatar_ilhas.append({"t_ini": round(t0_av, 2), "t_fim": t1_av})
+                print(f"avatar [{av_cfg.get('persona', '?')}]: ilha seção {sec_s} "
+                      f"{t0_av:.1f}-{t1_av:.1f}s ({src_av.name})")
+        except Exception as e_av:
+            print(f"avatar FALHOU ({e_av}) — sem ilhas de apresentador")
+            avatar_ilhas = []
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",
@@ -1125,6 +1188,8 @@ def main():
         mont["fx_overlays"] = fx_overlays
     if fx_trans:
         mont["fx_trans"] = fx_trans
+    if avatar_ilhas:
+        mont["avatar_ilhas"] = avatar_ilhas
     (dest / "montagem.json").write_text(json.dumps(mont, ensure_ascii=False), encoding="utf-8")
     print(f"montagem: {len(beats_out)} beats | {dur:.1f}s | assets copiados: {n_copy} -> {dest}")
 

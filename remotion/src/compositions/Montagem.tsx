@@ -67,7 +67,8 @@ type AudioPlan = { trilhas: { arquivo: string; t_ini: number; t_fim: number; vol
 type FxOverlay = { arquivo: string; t_ini: number; t_fim: number; modo: string; op: number; dur_s: number };
 type FxTrans = { t: number; tipo: string; arquivo?: string; pico_s?: number; dur_s?: number };
 type Mont = { fps: number; dur_s: number; audio: string; secoes: any[]; beats: Beat[];
-  estilo?: string; audio_plan?: AudioPlan; fx_overlays?: FxOverlay[]; fx_trans?: FxTrans[] };
+  estilo?: string; audio_plan?: AudioPlan; fx_overlays?: FxOverlay[]; fx_trans?: FxTrans[];
+  avatar_ilhas?: { t_ini: number; t_fim: number }[] };
 
 const isVid = (s: string) => /\.(mp4|webm|mov)$/i.test(s);
 
@@ -262,6 +263,16 @@ const KenImg: React.FC<{ src: string }> = ({ src }) => {
 
 const BeatView: React.FC<{ b: Beat; estilo?: string }> = ({ b, estilo = "v1" }) => {
   const durB = b.t_fim - b.t_ini;
+  if (b.tipo === "avatar" && b.src) {
+    // AVATAR v3 (29/07): apresentador do Flow — full-frame COM áudio nativo
+    // (a narração ducka nesta janela; ver volume do <Audio> principal)
+    return (
+      <AbsoluteFill style={{ background: "#000" }}>
+        <OffthreadVideo src={staticFile(b.src)}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </AbsoluteFill>
+    );
+  }
   if (b.tipo === "animacao") {
     const C = COMP_MAP[b.componente || ""] || DisplayText;
     if (b.bg) {
@@ -341,7 +352,16 @@ export const Montagem: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont 
           <VeilFX fx={fx} />
         </Sequence>
       ))}
-      <Audio src={staticFile(mont.audio)} />
+      <Audio src={staticFile(mont.audio)}
+        volume={(f) => {
+          // AVATAR v3: narração DUCKA nas ilhas de apresentador (áudio nativo do clipe)
+          for (const il of mont.avatar_ilhas || []) {
+            const a = Math.round(il.t_ini * fps) - 3;
+            const b = Math.round(il.t_fim * fps) + 3;
+            if (f >= a && f <= b) return 0.06;
+          }
+          return 1;
+        }} />
       {/* ESTILO v2 [REGRAS_VDM §5.3]: trilha por momento (fade in/out, volume BAIXO) + SFX */}
       {(mont.audio_plan?.trilhas || []).map((t, i) => {
         const durT = Math.max(1, Math.round((t.t_fim - t.t_ini) * fps));
