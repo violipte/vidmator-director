@@ -1069,8 +1069,9 @@ def main():
                        if (mb / v["file"]).exists()]
             if poses_m:
                 (dest / "mascote").mkdir(exist_ok=True)
-                # 29/07 (Piter): "1 sim e 1 não" => default cada=[2]; e MAIOR => 0.82/0.64
-                cada_m = masc_cfg.get("cada") or [2]
+                # 29/07 (Piter): padrão cíclico [aparições seguidas, folga] => "2 sim, 2 não"
+                pad_m = masc_cfg.get("padrao") or [2, 2]
+                ciclo_m = max(1, pad_m[0] + pad_m[1])
                 alturas_m = masc_cfg.get("alturas") or [0.82, 0.64]  # perto/longe (zoom variável)
 
                 def _funcao_do_texto(tx):
@@ -1083,15 +1084,15 @@ def main():
                         return "explain"
                     return None
 
-                livre_desde = 0
-                alvo_m = cada_m[SEED % len(cada_m)]
+                k_livre = 0  # posição no ciclo de beats livres: [0..pad[0]) = COM mascote
                 ult_pose = None
                 for b in sorted(beats_out, key=lambda x: x["t_ini"]):
                     if b.get("tipo") not in ("stock", "footage_video") or b.get("componente") \
                             or b.get("_seg") or b["t_ini"] < 20 or (b["t_fim"] - b["t_ini"]) < 2.2:
                         continue
-                    livre_desde += 1
-                    if livre_desde < alvo_m:
+                    no_ar = (k_livre % ciclo_m) < pad_m[0]
+                    k_livre += 1
+                    if not no_ar:
                         continue
                     tx_b = (plano_por_i.get(b["i"]) or {}).get("texto")
                     fn = _funcao_do_texto(tx_b)
@@ -1106,8 +1107,6 @@ def main():
                                     "altura": alturas_m[n_masc % len(alturas_m)],
                                     "pose": p.get("pose")}
                     n_masc += 1
-                    livre_desde = 0
-                    alvo_m = cada_m[(SEED + n_masc) % len(cada_m)]
                 print(f"mascote [{ix_m.get('nome', '?')}]: {n_masc} entradas "
                       f"({len(poses_m)} poses no banco)")
         except Exception as e_m:
