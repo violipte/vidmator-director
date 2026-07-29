@@ -48,6 +48,7 @@ def main():
         _arq = _r.get("arquivo")
         if _arq and not Path(_arq).exists():
             continue  # asset condenado/apagado — não ressuscita
+        _r.setdefault("tipo_final", _r.get("tipo"))  # jsons por-beat não carregam tipo_final
         _por_i[_r.get("i")] = _r
     _MIDIA = (".mp4", ".webm", ".mov", ".jpg", ".jpeg", ".png", ".webp")
     resolvido = []
@@ -1137,17 +1138,20 @@ def main():
                         capture_output=True, text=True, timeout=30).stdout.strip() or 8)
                 except Exception:
                     d_clip = 8.0
+                # 29/07: ilha absorve QUALQUER beat consecutivo que caiba INTEIRO na
+                # janela do clipe (só livres dava ilha de 3s e cortava a fala em 8s).
+                # 1º beat precisa ser livre; parcial não entra (sem encolher animação).
                 cadeia_av = []
                 for b in sorted(beats_out, key=lambda x: x["t_ini"]):
-                    if b["t_ini"] < s_av["t_ini"] - 0.1:
+                    if b["t_ini"] < s_av["t_ini"] - 0.1 or b.get("_seg"):
                         continue
                     livre_av = b.get("tipo") in ("stock", "footage_video") \
-                        and not b.get("componente") and not b.get("_seg")
+                        and not b.get("componente")
                     if not cadeia_av:
                         if livre_av:
                             cadeia_av.append(b)
                         continue
-                    if livre_av and abs(b["t_ini"] - cadeia_av[-1]["t_fim"]) < 0.05 \
+                    if abs(b["t_ini"] - cadeia_av[-1]["t_fim"]) < 0.05 \
                             and (b["t_fim"] - cadeia_av[0]["t_ini"]) <= d_clip + 0.3:
                         cadeia_av.append(b)
                     else:
@@ -1156,15 +1160,12 @@ def main():
                     print(f"avatar: seção {sec_s} sem beat livre — ilha pulada")
                     continue
                 t0_av = cadeia_av[0]["t_ini"]
-                t1_av = round(min(cadeia_av[-1]["t_fim"], t0_av + d_clip), 2)
+                t1_av = round(cadeia_av[-1]["t_fim"], 2)
                 if not (dest / "avatar" / src_av.name).exists():
                     shutil.copy2(src_av, dest / "avatar" / src_av.name)
                 b0 = cadeia_av[0]
                 for bx in cadeia_av[1:]:
-                    if bx["t_fim"] <= t1_av + 0.05:
-                        beats_out.remove(bx)  # absorvido pela ilha
-                    else:
-                        bx["t_ini"] = t1_av  # parcialmente absorvido: encolhe
+                    beats_out.remove(bx)  # absorvido INTEIRO pela ilha
                 b0.pop("mascote", None)
                 b0.update({"tipo": "avatar", "src": f"jobs/{a.nome}/avatar/{src_av.name}",
                            "t_fim": t1_av, "componente": None, "props": {}, "bg": None})
