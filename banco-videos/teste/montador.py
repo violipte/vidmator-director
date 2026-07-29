@@ -1013,6 +1013,106 @@ def main():
                 for idx, s in enumerate(secoes[1:], start=1):
                     _add_sfx("whoosh", s["t_ini"] - 0.45, 0.30, kseed=idx * 7)
 
+    # ---- GATES DE CONTEÚDO (29/07, prints do Piter) ----
+    # G1: badge/stat SEM dado não renderiza scaffolding — Img18 com title vazio virava
+    # um risco âmbar órfão sobre a foto. Vira foto hero limpa (Img01).
+    for b in beats_out:
+        if b.get("componente") == "Img18_PhotoStatBadge":
+            pr18 = b.get("props") or {}
+            if not (pr18.get("title") or "").strip():
+                b["componente"] = "Img01_KenBurnsCine"
+                stats["gate_img18"] = stats.get("gate_img18", 0) + 1
+    # G2: card de TEXTO nunca corta no meio da frase ("Asia and Europe are" sublinhando
+    # "are"). Completa com o texto dos beats seguintes; se não der (dado forte/limite),
+    # apara palavras penduradas e fecha com reticências.
+    _PENDURADAS = {"are", "is", "was", "were", "and", "or", "the", "a", "an", "of",
+                   "to", "in", "on", "at", "for", "with", "that", "this", "it", "as"}
+    for b in beats_out:
+        c9 = b.get("componente") or ""
+        pr9 = b.get("props") or {}
+        tx9 = (pr9.get("text") or "").strip()
+        if not (c9.startswith("Texto") and tx9) or re.search(r"[.!?…\"”']\s*$", tx9):
+            continue
+        extra9 = []
+        for j9 in range(b["i"] + 1, b["i"] + 4):
+            nx9 = ((plano_por_i.get(j9) or {}).get("texto") or "").strip()
+            if not nx9:
+                break
+            extra9.append(nx9)
+            if re.search(r"[.!?…]", nx9):
+                break
+        cand9 = " ".join([tx9] + extra9)
+        m9 = re.search(r"^(.{%d,}?[.!?…])" % len(tx9), cand9)
+        ext9 = m9.group(1)[len(tx9):] if m9 else ""
+        if m9 and len(m9.group(1)) <= 120 and len(_nums_do_texto(ext9)) < 2:
+            pr9["text"] = humanizar(m9.group(1))  # frase completa INTEIRA — corte() aqui recriava o corte cego
+        else:  # sem extensão segura: apara penduradas e fecha
+            palavras9 = tx9.rstrip(",;: ").split()
+            while palavras9 and palavras9[-1].lower().strip(",;:") in _PENDURADAS:
+                palavras9.pop()
+            if palavras9:
+                pr9["text"] = " ".join(palavras9).rstrip(",;: ") + "…"
+        b["props"] = pr9
+        stats["frase_completa"] = stats.get("frase_completa", 0) + 1
+
+    # ---- MASCOTE (28/07, opção por style_card): personagem overlay do canal.
+    # style_card["mascote"] = {"banco": "<pasta com index_mascote.json>", "cada": [2,3]}
+    # Entra a cada 2-3 beats LIVRES (footage sem componente, >=2.2s, fora do cold-open),
+    # pose casada com o TEXTO do trecho (funcao warn/explain/...), lado e zoom alternam.
+    masc_cfg = _SC.get("mascote") or {}
+    n_masc = 0
+    if masc_cfg.get("banco"):
+        try:
+            mb = Path(masc_cfg["banco"])
+            ix_m = json.loads((mb / "index_mascote.json").read_text(encoding="utf-8"))
+            poses_m = [{**v, "key": k} for k, v in ix_m.get("itens", {}).items()
+                       if (mb / v["file"]).exists()]
+            if poses_m:
+                (dest / "mascote").mkdir(exist_ok=True)
+                # 29/07 (Piter): "1 sim e 1 não" => default cada=[2]; e MAIOR => 0.82/0.64
+                cada_m = masc_cfg.get("cada") or [2]
+                alturas_m = masc_cfg.get("alturas") or [0.82, 0.64]  # perto/longe (zoom variável)
+
+                def _funcao_do_texto(tx):
+                    t = (tx or "").lower()
+                    if any(w in t for w in ("never", "don't", "do not", "warning", "danger",
+                                            "mistake", "wrong", "avoid", "worst", "fail")):
+                        return "warn"
+                    if any(w in t for w in ("because", "science", "study", "research", "how ",
+                                            "why ", "means", "brain", "body", "practice")):
+                        return "explain"
+                    return None
+
+                livre_desde = 0
+                alvo_m = cada_m[SEED % len(cada_m)]
+                ult_pose = None
+                for b in sorted(beats_out, key=lambda x: x["t_ini"]):
+                    if b.get("tipo") not in ("stock", "footage_video") or b.get("componente") \
+                            or b.get("_seg") or b["t_ini"] < 20 or (b["t_fim"] - b["t_ini"]) < 2.2:
+                        continue
+                    livre_desde += 1
+                    if livre_desde < alvo_m:
+                        continue
+                    tx_b = (plano_por_i.get(b["i"]) or {}).get("texto")
+                    fn = _funcao_do_texto(tx_b)
+                    cand = [p for p in poses_m if p.get("funcao") == fn and p["key"] != ult_pose] \
+                        or [p for p in poses_m if p["key"] != ult_pose] or poses_m
+                    p = cand[(SEED + b["i"] * 7) % len(cand)]
+                    ult_pose = p["key"]
+                    if not (dest / "mascote" / p["file"]).exists():
+                        shutil.copy2(mb / p["file"], dest / "mascote" / p["file"])
+                    b["mascote"] = {"img": f"jobs/{a.nome}/mascote/{p['file']}",
+                                    "lado": ("right", "left")[n_masc % 2],
+                                    "altura": alturas_m[n_masc % len(alturas_m)],
+                                    "pose": p.get("pose")}
+                    n_masc += 1
+                    livre_desde = 0
+                    alvo_m = cada_m[(SEED + n_masc) % len(cada_m)]
+                print(f"mascote [{ix_m.get('nome', '?')}]: {n_masc} entradas "
+                      f"({len(poses_m)} poses no banco)")
+        except Exception as e_m:
+            print(f"mascote FALHOU ({e_m}) — seguindo sem personagem")
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",

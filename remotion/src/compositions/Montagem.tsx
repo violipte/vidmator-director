@@ -20,6 +20,7 @@ import { SingleSentenceTextSlide } from "./SingleSentenceTextSlide";
 import { TitleDescription } from "./TitleDescription";
 import { CharacterCard } from "./CharacterCard";
 import { SentenceHighlight } from "./SentenceHighlight";
+import { Mascot } from "./Mascot";
 import { TEXTO_COMPS } from "./texto/AcervoTexto";
 import { OVERLAY_COMPS } from "./texto/AcervoTextoOverlay";
 import { GRAFICOS_COMPS } from "./graficos/AcervoGraficos";
@@ -52,7 +53,8 @@ const WASH: Record<string, string> = {
 
 type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: number; watermark: boolean;
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
-  off_s?: number; trato?: string; trans_in?: { tipo: string } };
+  off_s?: number; trato?: string; trans_in?: { tipo: string };
+  mascote?: { img: string; lado: "left" | "right"; altura: number; pose?: string } };
 
 /* VidRush 24/07 (split de plano): 2º segmento do mesmo asset ganha offset + tratamento distinto */
 const TRATOS: Record<string, string> = {
@@ -308,6 +310,11 @@ export const Montagem: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont 
             <TransInWrap tipo={b.trans_in?.tipo}>
               <BeatView b={b} estilo={mont.estilo || "v1"} />
               {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
+              {/* MASCOTE opcional (28/07): personagem do canal por cima do beat */}
+              {b.mascote && (
+                <Mascot imgRel={b.mascote.img} lado={b.mascote.lado}
+                  sceneFrames={dur} alturaFrac={b.mascote.altura} />
+              )}
             </TransInWrap>
           </Sequence>
         );

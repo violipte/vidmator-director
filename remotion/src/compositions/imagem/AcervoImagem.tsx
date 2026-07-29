@@ -354,13 +354,19 @@ export const Img18_PhotoStatBadge: React.FC<P> = ({ images = [], title = "", kic
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {images[0] ? <Img src={staticFile(images[0])} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${z})`, filter: "brightness(0.72)" }} /> : null}
-      <AbsoluteFill style={{ background: "linear-gradient(70deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 42%, transparent 65%)" }} />
-      <div style={{ position: "absolute", left: 110, top: "50%", transform: `translateY(-50%) translateX(${(1 - s) * -80}px)`, opacity: s }}>
-        {kicker ? <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 26, color: accent, letterSpacing: 7, marginBottom: 16 }}>{kicker.toUpperCase()}</div> : null}
-        <div style={{ fontFamily: DISPLAY, fontSize: 170, color: "#fff", lineHeight: 1, textShadow: `0 0 54px ${accent}55` }}>{title}</div>
-        {captions[0] ? <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 32, color: "#dfe2e8", marginTop: 18, maxWidth: 620 }}>{captions[0]}</div> : null}
-        <div style={{ width: 140, height: 6, background: accent, borderRadius: 3, marginTop: 26, boxShadow: `0 0 18px ${accent}` }} />
-      </div>
+      {/* 29/07 (print Piter): badge SÓ com conteúdo — title vazio deixava um risco
+          âmbar órfão flutuando sobre a foto */}
+      {(title || kicker || captions[0]) ? (
+        <>
+          <AbsoluteFill style={{ background: "linear-gradient(70deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 42%, transparent 65%)" }} />
+          <div style={{ position: "absolute", left: 110, top: "50%", transform: `translateY(-50%) translateX(${(1 - s) * -80}px)`, opacity: s }}>
+            {kicker ? <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 26, color: accent, letterSpacing: 7, marginBottom: 16 }}>{kicker.toUpperCase()}</div> : null}
+            <div style={{ fontFamily: DISPLAY, fontSize: 170, color: "#fff", lineHeight: 1, textShadow: `0 0 54px ${accent}55` }}>{title}</div>
+            {captions[0] ? <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: 32, color: "#dfe2e8", marginTop: 18, maxWidth: 620 }}>{captions[0]}</div> : null}
+            <div style={{ width: 140, height: 6, background: accent, borderRadius: 3, marginTop: 26, boxShadow: `0 0 18px ${accent}` }} />
+          </div>
+        </>
+      ) : null}
     </AbsoluteFill>
   );
 };
