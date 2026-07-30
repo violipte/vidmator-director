@@ -404,19 +404,5 @@
   "402": "remotion/src/compositions/*.tsx",
   "403": "CLAUDE.md",
   "404": "CLAUDE.md",
-  "405": "vite.config.js",
-  "406": "deploy.sh",
-  "407": "auto-download.sh script",
-  "408": "entrypoint.sh",
-  "409": "refresh-bundle.sh",
-  "410": "sync-assets.sh",
-  "411": "gatilho_eno_01jun.py",
-  "412": "_redistribute_gemini.py",
-  "413": "montar_lote.py",
-  "414": "eslint.config.mjs",
-  "415": "remotion.config.ts",
-  "416": "render-gallery.mjs",
-  "417": "CLAUDE.md",
-  "418": "CLAUDE.md",
-  "419": "vite.config.js"
+  "405": "vite.config.js"
 }

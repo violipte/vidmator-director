@@ -70,3 +70,8 @@ banco-videos/*.mp4
 banco-videos/**/*.mp3
 remotion/motos2_SAFE.mp4
 remotion/*.mp4
+
+# VEO Flow: perfil do Chrome (Playwright), downloads e clipes gerados — mídia, não código
+veo_flow/chrome_profile/
+veo_flow/downloads/
+veo_clips/
