@@ -47,3 +47,7 @@ video-automator/static-frontend2/
 **/assets/index-*.js
 **/*.min.js
 **/dist/
+# veo_flow: perfil Chrome do Playwright + downloads + clipes = MUITO arquivo, não é código
+veo_flow/chrome_profile/
+veo_flow/downloads/
+veo_clips/
