@@ -1199,6 +1199,72 @@ def main():
                     trans_v5.append({"t": round(t_corte5, 2), "tipo": tipo5, "dur_f": TRANS_F})
         print(f"blocos [v5]: {len(blocos_v5)} blocos | {len(trans_v5)} transições nativas")
 
+        # ---- v5 F3: efeito CSS por beat — GRADE consistente por seção (rotação
+        # anti-repetição) + ANIMADO no hook (lightLeak) e na seção final (glowPulse)
+        GRADES5 = ["tealOrange", "duotone", "silverGrade", "warmGrade", "coldGrade", "vignette"]
+        usadas_g5 = set()
+        accent5 = (_SC.get("paleta") or ["#f59e0b"])[0]
+        for idx5, s5 in enumerate(secoes):
+            livres_g = [g for g in GRADES5 if g not in usadas_g5] or GRADES5
+            grade5 = livres_g[(SEED + idx5 * 7) % len(livres_g)]
+            usadas_g5.add(grade5)
+            alvo_fx = [b for b in beats_out
+                       if s5["t_ini"] - 0.1 <= b["t_ini"] < s5["t_fim"]
+                       and b.get("tipo") in ("stock", "footage_video", "footage_imagem",
+                                             "ilustracao", "parallax")]
+            for b in alvo_fx:
+                b["fx_img"] = {"tipo": grade5, "accent": accent5}
+            anim5 = "lightLeak" if idx5 == 0 else ("glowPulse" if idx5 == len(secoes) - 1 else None)
+            if anim5:  # os 2 primeiros beats do momento ganham o animado no lugar da grade
+                for b in alvo_fx[:2]:
+                    b["fx_img"] = {"tipo": anim5, "accent": accent5}
+        print(f"fx_img [v5]: {len(usadas_g5)} grades distintas + animados hook/final")
+
+        # ---- v5 F4: Ken Burns SEMÂNTICO nas imagens (11 tipos por natureza do beat)
+        KB_NAT = {"produto": ["productShot", "detailShot", "punchZoom"],
+                  "epoca": ["archiveShot", "zoomOutReveal", "steadyDrift"],
+                  "acao": ["actionShot", "smoothZoomPan", "punchZoom"],
+                  "paisagem": ["smoothZoomPan", "focusPan", "verticalPan"],
+                  "generico": ["steadyDrift", "smoothZoomPan", "rotateZoom", "zoomOutReveal"]}
+
+        def _nat_beat5(b):
+            tx = ((plano_por_i.get(b["i"]) or {}).get("busca") or "").lower()
+            if any(w in tx for w in ("product", "shoe", "bike", "car", "tool", "gear")):
+                return "produto"
+            if any(w in tx for w in ("ancient", "historical", "archive", "vintage", "roman",
+                                     "greek", "manuscript", "engraving")):
+                return "epoca"
+            if any(w in tx for w in ("running", "action", "moving", "training", "storm", "battle")):
+                return "acao"
+            if any(w in tx for w in ("landscape", "aerial", "mountain", "ocean", "sky", "ruins", "city")):
+                return "paisagem"
+            return "generico"
+
+        n_kb5 = 0
+        for b in beats_out:
+            src5 = (b.get("src") or "")
+            eh_img5 = src5 and not src5.lower().endswith((".mp4", ".webm", ".mov"))
+            if eh_img5 and not b.get("componente"):
+                ops_kb = KB_NAT[_nat_beat5(b)]
+                b["kb"] = ops_kb[(SEED + b["i"] * 3) % len(ops_kb)]
+                n_kb5 += 1
+        print(f"kb [v5]: {n_kb5} imagens com Ken Burns semântico")
+
+        # ---- v5 F5: KARAOKÊ opcional (style_card {"karaoke": true}) — timing
+        # proporcional por palavra dentro da janela do beat (frames locais)
+        if _SC.get("karaoke"):
+            n_k5 = 0
+            for b in beats_out:
+                tx5 = ((plano_por_i.get(b["i"]) or {}).get("texto") or "").strip()
+                if not tx5 or b.get("componente") or b.get("_seg"):
+                    continue
+                pal5 = tx5.split()
+                durF5 = max(1, round((b["t_fim"] - b["t_ini"]) * 30))
+                b["captionWords"] = [{"word": w, "startFrame": round(i * durF5 / len(pal5))}
+                                     for i, w in enumerate(pal5)]
+                n_k5 += 1
+            print(f"karaoke [v5]: {n_k5} beats legendados")
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",

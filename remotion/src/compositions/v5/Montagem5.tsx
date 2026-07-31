@@ -22,6 +22,9 @@ import { CharacterCard } from "../CharacterCard";
 import { SentenceHighlight } from "../SentenceHighlight";
 import { Mascot } from "../Mascot";
 import { Parallax3Scene5 } from "./Parallax3Scene5";
+import { ImageEffect5 } from "./ImageEffects5";
+import { KenBurnsPro5 } from "./KenBurnsPro5";
+import { Karaoke5 } from "./Karaoke5";
 import { TEXTO_COMPS } from "../texto/AcervoTexto";
 import { OVERLAY_COMPS } from "../texto/AcervoTextoOverlay";
 import { GRAFICOS_COMPS } from "../graficos/AcervoGraficos";
@@ -56,6 +59,9 @@ type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: numbe
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
   off_s?: number; trato?: string; trans_in?: { tipo: string };
   trans_out?: { tipo: string; dur_f: number };
+  fx_img?: { tipo: string; accent?: string };
+  kb?: string;
+  captionWords?: { word: string; startFrame: number }[];
   mascote?: { img: string; lado: "left" | "right"; altura: number; pose?: string } };
 
 /* VidRush 24/07 (split de plano): 2º segmento do mesmo asset ganha offset + tratamento distinto */
@@ -263,7 +269,7 @@ const ClipT3: React.FC<{ src: string; wm: boolean; i?: number; secao?: number; e
 };
 
 /* footage T1/stock: full-frame + vinheta leve. off/trato = split de plano (VidRush) */
-const ClipFull: React.FC<{ src: string; off?: number; trato?: string }> = ({ src, off = 0, trato }) => {
+const ClipFull: React.FC<{ src: string; off?: number; trato?: string; kb?: string }> = ({ src, off = 0, trato, kb }) => {
   const { fps } = useVideoConfig();
   const filtro = trato ? TRATOS[trato] || "" : "";
   const escala = trato === "zoom" ? 1.24 : 1;
@@ -272,15 +278,16 @@ const ClipFull: React.FC<{ src: string; off?: number; trato?: string }> = ({ src
       {isVid(src)
         ? <OffthreadVideo src={staticFile(src)} muted loop startFrom={Math.round(off * fps)}
             style={{ width: "100%", height: "100%", objectFit: "cover", filter: filtro || undefined, transform: escala !== 1 ? `scale(${escala})` : undefined }} />
-        : <KenImg src={src} />}
+        : <KenImg src={src} kb={kb} />}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 88% 88% at 50% 50%, transparent 58%, rgba(0,0,0,0.42) 100%)" }} />
     </AbsoluteFill>
   );
 };
 
-/* imagem/ilustração: Ken Burns lento */
-const KenImg: React.FC<{ src: string }> = ({ src }) => {
+/* imagem/ilustração: Ken Burns — v5 F4: com `kb` usa o tipo SEMÂNTICO (11 variações) */
+const KenImg: React.FC<{ src: string; kb?: string }> = ({ src, kb }) => {
   const f = useCurrentFrame();
+  if (kb) return <KenBurnsPro5 src={src} kb={kb} />;
   const s = 1.02 + Math.min(f / 1400, 0.09);
   return <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${s})` }} />;
 };
@@ -324,12 +331,12 @@ const BeatView: React.FC<{ b: Beat; estilo?: string }> = ({ b, estilo = "v1" }) 
     if (b.tier === 3) return <ClipT3 src={b.src} wm={true} i={b.i} secao={b.secao} estilo={estilo} durS={durB} />;
     return (
       <AbsoluteFill style={{ background: "#0a0b0f" }}>
-        <KenImg src={b.src} />
+        <KenImg src={b.src} kb={b.kb} />
       </AbsoluteFill>
     );
   }
   if (b.tier === 3) return <ClipT3 src={b.src} wm={b.watermark} i={b.i} secao={b.secao} estilo={estilo} durS={durB} />;
-  return <ClipFull src={b.src} off={b.off_s || 0} trato={b.trato} />;
+  return <ClipFull src={b.src} off={b.off_s || 0} trato={b.trato} kb={b.kb} />;
 };
 
 export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont }) => {
@@ -350,12 +357,16 @@ export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont
             <TransOutWrap to={b.trans_out} durBase={durBase}>
               <TransInWrap tipo={b.trans_in?.tipo}>
                 <BeatView b={b} estilo={mont.estilo || "v1"} />
+                {/* v5 F3: efeito CSS por beat (grade/animado, zero asset) */}
+                {b.fx_img && <ImageEffect5 tipo={b.fx_img.tipo} accent={b.fx_img.accent} />}
                 {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
                 {/* MASCOTE opcional (28/07): personagem do canal por cima do beat */}
                 {b.mascote && (
                   <Mascot imgRel={b.mascote.img} lado={b.mascote.lado}
                     sceneFrames={dur} alturaFrac={b.mascote.altura} />
                 )}
+                {/* v5 F5: karaokê word-by-word (opcional por style_card) */}
+                {b.captionWords && <Karaoke5 words={b.captionWords} accent={(b.fx_img?.accent) || "#f59e0b"} />}
               </TransInWrap>
             </TransOutWrap>
           </Sequence>
