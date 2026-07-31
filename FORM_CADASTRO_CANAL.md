@@ -1,8 +1,9 @@
 # 📋 FORMULÁRIO DE CADASTRO DE CANAL — Automator + VidMator
 
-> ⚠️ **SUPERADO (28/07/2026):** o formulário canônico agora é a aba **Cadastro Canal** do automator
-> (`http://85.239.243.215:8500/v2/cadastro-canal`) — podado pelo Piter (19 obrigatórias) e com campos novos
-> (tempo do hook, estilo de abertura). Este MD ficou como rascunho histórico da 1ª versão.
+> ⚠️ **SUPERADO (31/07/2026):** o cadastro canônico agora vive em
+> **Painel Youtube › Canais › (clicar no canal) › aba Produção**
+> (`http://85.239.243.215:8500/v2/painel-youtube`), gravando em `canais_yt.producao` (Supabase).
+> A aba "Cadastro Canal" foi fundida ali — um canal = um lugar. Este MD é rascunho histórico da 1ª versão.
 
 > Preencha e me devolva. Com isso eu gero: coluna no grid de Temas (VPS), `templates.json` (1 template POR canal — nome único), pipeline, style_card (se VidMator), correções de pronúncia, e o checklist de debut.
 > **Legenda:** 🔴 = obrigatória pro debut · ⚪ = opcional (tem default sensato — deixe em branco pra aceitar)
