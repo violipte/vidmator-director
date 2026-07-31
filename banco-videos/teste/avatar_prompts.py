@@ -25,8 +25,12 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 
 def linha_do_slot(plano, sec_i, max_palavras=22):
-    """Frase(s) iniciais da seção — o que o avatar VAI FALAR (~8s ≈ 20-24 palavras)."""
-    beats = [b for b in plano.get("beats", []) if b.get("secao") == sec_i and b.get("texto")]
+    """Frase(s) iniciais da seção — o que o avatar VAI FALAR (~8s ≈ 20-24 palavras).
+    29/07: pula beats de TÍTULO (ChapterTitle/marcador) — o título vazava na fala."""
+    titulo = next((s.get("titulo") or "" for s in plano.get("secoes", [])
+                   if s.get("i") == sec_i), "").strip('"\' ')
+    beats = [b for b in plano.get("beats", []) if b.get("secao") == sec_i and b.get("texto")
+             and (b.get("texto") or "").strip().strip('"\' ').lower() != titulo.lower()]
     beats.sort(key=lambda b: b.get("t_ini", 0))
     palavras = []
     for b in beats:
