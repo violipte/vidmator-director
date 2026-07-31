@@ -1176,6 +1176,29 @@ def main():
             print(f"avatar FALHOU ({e_av}) — sem ilhas de apresentador")
             avatar_ilhas = []
 
+    # ---- v5 F2: PLANO DE BLOCOS + TRANSIÇÕES NATIVAS (sobreposição viva) ----
+    # Seções agrupadas em blocos de ~2; corte ENTRE blocos é sempre SECO (permite
+    # render por blocos + concat). Cortes de seção DENTRO do bloco ganham transição
+    # nativa: o último beat da seção que sai é ESTENDIDO e anima por cima do beat
+    # que entra (fade | slidePush | blurCut) — conteúdo VIVO dos dois lados.
+    blocos_v5, trans_v5 = [], []
+    if _SC.get("estilo") == "v5" and secoes:
+        TRANS_TIPOS = ["fade", "slidePush", "blurCut"]
+        TRANS_F = 14  # frames de sobreposição (~0.47s)
+        por_bloco = 2
+        for bi in range(0, len(secoes), por_bloco):
+            grupo = secoes[bi:bi + por_bloco]
+            blocos_v5.append({"t_ini": grupo[0]["t_ini"], "t_fim": grupo[-1]["t_fim"]})
+            for s_in in grupo[1:]:  # cortes INTERNOS do bloco
+                t_corte5 = s_in["t_ini"]
+                tipo5 = TRANS_TIPOS[(SEED + int(t_corte5)) % len(TRANS_TIPOS)]
+                saindo = max((b for b in beats_out if abs(b["t_fim"] - t_corte5) < 0.05),
+                             key=lambda b: b["t_ini"], default=None)
+                if saindo is not None:
+                    saindo["trans_out"] = {"tipo": tipo5, "dur_f": TRANS_F}
+                    trans_v5.append({"t": round(t_corte5, 2), "tipo": tipo5, "dur_f": TRANS_F})
+        print(f"blocos [v5]: {len(blocos_v5)} blocos | {len(trans_v5)} transições nativas")
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",
@@ -1191,6 +1214,10 @@ def main():
         mont["fx_trans"] = fx_trans
     if avatar_ilhas:
         mont["avatar_ilhas"] = avatar_ilhas
+    if blocos_v5:
+        mont["blocos"] = blocos_v5
+    if trans_v5:
+        mont["trans_v5"] = trans_v5
     (dest / "montagem.json").write_text(json.dumps(mont, ensure_ascii=False), encoding="utf-8")
     print(f"montagem: {len(beats_out)} beats | {dur:.1f}s | assets copiados: {n_copy} -> {dest}")
 

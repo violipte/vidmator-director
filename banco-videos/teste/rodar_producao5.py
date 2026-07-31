@@ -48,19 +48,65 @@ def main():
         sys.exit(2)
 
     # render script por job (clona o template se não existir)
-    render_mjs = REMOTION / f"_render_{a.nome.replace('_mont', '')}.mjs"
+    curto = a.nome.replace("_mont", "")
+    render_mjs = REMOTION / f"_render_{curto}.mjs"
     if not render_mjs.exists():
         base = (REMOTION / "_render_v5base.mjs").read_text(encoding="utf-8")
-        render_mjs.write_text(base.replace("v5base", a.nome.replace("_mont", "")), encoding="utf-8")
-    etapa("RENDER", ["node", str(render_mjs)], cwd=REMOTION)
+        render_mjs.write_text(base.replace("v5base", curto), encoding="utf-8")
 
-    curto = a.nome.replace("_mont", "")
-    origem = REMOTION / "out" / f"_{curto}" / f"{curto}_full.mp4"
+    # ---- v5 F2: RENDER POR BLOCOS (checkpoint + concat) ----
+    # Áudio mixado numa passada única (WAV); blocos de vídeo renderizados um a um
+    # (bloco pronto = pulado no resume), normalizados cfr30 sem áudio, concatenados
+    # com -c:v copy e muxados com o WAV. Fronteira de bloco = corte seco (montador5).
+    import json as _json
+    import shutil
+    mont5 = _json.loads(mont_json.read_text(encoding="utf-8"))
+    blocos = mont5.get("blocos") or [{"t_ini": 0.0, "t_fim": mont5["dur_s"]}]
+    outdir = REMOTION / "out" / f"_{curto}"
+    ck = outdir / "blocos"
+    ck.mkdir(parents=True, exist_ok=True)
+
+    wav = outdir / f"{curto}_audio.wav"
+    if not wav.exists():
+        etapa("AUDIO (mix único)", ["node", str(render_mjs), "--audio"], cwd=REMOTION)
+        if not wav.exists():
+            print("!!! passada de áudio não gerou o WAV — ABORTADO !!!")
+            sys.exit(4)
+
+    lista = ck / "concat.txt"
+    linhas = []
+    for i, b in enumerate(blocos):
+        norm = ck / f"blk{i:02d}.mp4"
+        linhas.append(f"file '{norm.as_posix()}'")
+        if norm.exists():
+            print(f"  bloco {i}: já pronto (checkpoint)")
+            continue
+        etapa(f"RENDER bloco {i} ({b['t_ini']:.0f}-{b['t_fim']:.0f}s)",
+              ["node", str(render_mjs), str(b["t_ini"]), str(b["t_fim"])], cwd=REMOTION)
+        bruto = outdir / f"{curto}_{b['t_ini']}_{b['t_fim']}.mp4"
+        if not bruto.exists():  # nome do slice pode formatar float diferente — acha o mais novo
+            cand = sorted(outdir.glob(f"{curto}_*.mp4"), key=lambda p: p.stat().st_mtime)
+            bruto = cand[-1] if cand else bruto
+        n_frames = round((b["t_fim"] - b["t_ini"]) * 30)
+        etapa(f"NORMALIZA bloco {i}",
+              ["ffmpeg", "-y", "-loglevel", "error", "-i", str(bruto), "-an",
+               "-frames:v", str(n_frames), "-c:v", "libx264", "-preset", "medium",
+               "-crf", "19", "-fps_mode", "cfr", "-r", "30", "-pix_fmt", "yuv420p", str(norm)])
+        bruto.unlink(missing_ok=True)
+    lista.write_text("\n".join(linhas) + "\n", encoding="utf-8")
+
+    video_cat = outdir / f"{curto}_video.mp4"
+    etapa("CONCAT blocos", ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
+                            "-i", str(lista), "-c:v", "copy", str(video_cat)])
+    origem = outdir / f"{curto}_full.mp4"
+    etapa("MUX áudio", ["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_cat), "-i", str(wav),
+                        "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac",
+                        "-b:a", "192k", "-shortest", str(origem)])
+
     destino = Path(a.saida) if a.saida else Path(a.job) / f"{curto}_final.mp4"
     if not origem.exists():
         print(f"!!! RENDER sem MP4 em {origem} — ABORTADO !!!")
         sys.exit(3)
-    import shutil
     shutil.copy2(origem, destino)  # cópia protegida (out/ já foi varrido por limpeza externa)
     print(f"\n=== PRODUÇÃO OK -> {destino} ===")
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Audio, Img, Loop, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Easing, Img, Loop, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { NumberCountOverlay } from "../NumberCountOverlay";
 import { MultiCountryOutline } from "../MultiCountryOutline";
 import { ChapterTitle } from "../ChapterTitle";
@@ -55,6 +55,7 @@ const WASH: Record<string, string> = {
 type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: number; watermark: boolean;
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
   off_s?: number; trato?: string; trans_in?: { tipo: string };
+  trans_out?: { tipo: string; dur_f: number };
   mascote?: { img: string; lado: "left" | "right"; altura: number; pose?: string } };
 
 /* VidRush 24/07 (split de plano): 2º segmento do mesmo asset ganha offset + tratamento distinto */
@@ -72,6 +73,28 @@ type Mont = { fps: number; dur_s: number; audio: string; secoes: any[]; beats: B
   avatar_ilhas?: { t_ini: number; t_fim: number }[] };
 
 const isVid = (s: string) => /\.(mp4|webm|mov)$/i.test(s);
+
+/* v5 F2: transição NATIVA de saída — o beat que SAI é estendido dur_f frames além
+   do corte e anima por cima do beat entrante (que já roda embaixo): conteúdo VIVO
+   dos dois lados, como o TransitionSeries, sem reestruturar a timeline. */
+const TransOutWrap: React.FC<{ to?: { tipo: string; dur_f: number };
+  durBase: number; children: React.ReactNode }> = ({ to, durBase, children }) => {
+  const f = useCurrentFrame();
+  if (!to) return <>{children}</>;
+  const ini = durBase;                       // frame local onde o corte nominal acontece
+  const fim = durBase + to.dur_f;
+  const p = interpolate(f, [ini, fim], [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  let estilo: React.CSSProperties = {};
+  if (to.tipo === "fade") {
+    estilo = { opacity: 1 - p };
+  } else if (to.tipo === "slidePush") {
+    estilo = { opacity: 1 - p * 0.4, transform: `translateX(${-p * 34}%)` };
+  } else if (to.tipo === "blurCut") {
+    estilo = { opacity: 1 - p, filter: `blur(${p * 16}px)` };
+  }
+  return <AbsoluteFill style={{ ...estilo, zIndex: 5 }}>{children}</AbsoluteFill>;
+};
 
 /* v2.1 [28/07 — acervo da equipe]: transform de ENTRADA no 1º beat da seção.
    Receitas do manifesto (zoom_whammy, deslizar, tremor, gire) em CSS puro. */
@@ -318,20 +341,23 @@ export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont
     <AbsoluteFill style={{ background: "#000" }}>
       {mont.beats.map((b) => {
         const from = Math.round(b.t_ini * fps);
-        const dur = Math.max(1, Math.round((b.t_fim - b.t_ini) * fps));
+        const durBase = Math.max(1, Math.round((b.t_fim - b.t_ini) * fps));
+        const dur = durBase + (b.trans_out?.dur_f || 0);  // v5: estende p/ transição viva
         const sec = mont.secoes.find((s) => s.i === b.secao);
         const wash = WASH[sec?.wash || "none"] || "transparent";
         return (
           <Sequence key={b.i} from={from} durationInFrames={dur}>
-            <TransInWrap tipo={b.trans_in?.tipo}>
-              <BeatView b={b} estilo={mont.estilo || "v1"} />
-              {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
-              {/* MASCOTE opcional (28/07): personagem do canal por cima do beat */}
-              {b.mascote && (
-                <Mascot imgRel={b.mascote.img} lado={b.mascote.lado}
-                  sceneFrames={dur} alturaFrac={b.mascote.altura} />
-              )}
-            </TransInWrap>
+            <TransOutWrap to={b.trans_out} durBase={durBase}>
+              <TransInWrap tipo={b.trans_in?.tipo}>
+                <BeatView b={b} estilo={mont.estilo || "v1"} />
+                {wash !== "transparent" && <AbsoluteFill style={{ background: wash, pointerEvents: "none" }} />}
+                {/* MASCOTE opcional (28/07): personagem do canal por cima do beat */}
+                {b.mascote && (
+                  <Mascot imgRel={b.mascote.img} lado={b.mascote.lado}
+                    sceneFrames={dur} alturaFrac={b.mascote.altura} />
+                )}
+              </TransInWrap>
+            </TransOutWrap>
           </Sequence>
         );
       })}
