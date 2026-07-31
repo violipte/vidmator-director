@@ -26,8 +26,14 @@ def _num(texto):
     return v, ""
 
 def _s(d, *ks):
+    # 31/07: o LLM às vezes devolve `dados` como LISTA (ex.: [{...}]) — normaliza pro
+    # 1º dict em vez de estourar AttributeError no meio do v2 pass
+    if isinstance(d, (list, tuple)):
+        d = next((x for x in d if isinstance(x, dict)), None)
+    if not isinstance(d, dict):
+        return None
     for k in ks:
-        v = (d or {}).get(k)
+        v = d.get(k)
         if v not in (None, "", []):
             return v
     return None

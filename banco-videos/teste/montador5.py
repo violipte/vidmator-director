@@ -35,7 +35,10 @@ def main():
     a = ap.parse_args()
 
     job = Path(a.job) if Path(a.job).is_absolute() else Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos") / a.job
-    resolvido = json.loads((job / "resolvido.json").read_text(encoding="utf-8"))
+    # job novo (curador5 sozinho) não tem o consolidado do executor — a pasta
+    # resolvido/ abaixo é a fonte; o consolidado é opcional
+    _rj = job / "resolvido.json"
+    resolvido = json.loads(_rj.read_text(encoding="utf-8")) if _rj.exists() else []
     # 27/07: o CURADOR grava por-beat em resolvido/ (inclui banco secao=900) e NÃO
     # atualiza o resolvido.json consolidado do executor — sem este merge o banco de
     # nicho inteiro ficava invisível pro montador (40 clipes fora da montagem)
@@ -1192,8 +1195,10 @@ def main():
             for s_in in grupo[1:]:  # cortes INTERNOS do bloco
                 t_corte5 = s_in["t_ini"]
                 tipo5 = TRANS_TIPOS[(SEED + int(t_corte5)) % len(TRANS_TIPOS)]
-                saindo = max((b for b in beats_out if abs(b["t_fim"] - t_corte5) < 0.05),
-                             key=lambda b: b["t_ini"], default=None)
+                # tolerância 1.2s: com buracos na timeline o fim do beat raramente
+                # bate exatamente no corte da seção (0 transições no 1º teste, 31/07)
+                saindo = min((b for b in beats_out if abs(b["t_fim"] - t_corte5) < 1.2),
+                             key=lambda b: abs(b["t_fim"] - t_corte5), default=None)
                 if saindo is not None:
                     saindo["trans_out"] = {"tipo": tipo5, "dur_f": TRANS_F}
                     trans_v5.append({"t": round(t_corte5, 2), "tipo": tipo5, "dur_f": TRANS_F})

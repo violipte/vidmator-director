@@ -72,7 +72,9 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12):
             continue
         ctx = f"SECTION RULE: {ctx_secao}\n" if ctx_secao else ""
         prompt = RUBRIC.format(desc=descricao[:220], ctx=ctx)
-        resp = _vision(prompt, frames) or _vision_luna(prompt, frames)
+        # 31/07: Gemini em 429 (quota free estourada) — Luna PRIMEIRO evita queimar
+        # 8 tentativas mortas por lote; Gemini fica de fallback (volta quando resetar)
+        resp = _vision_luna(prompt, frames) or _vision(prompt, frames)
         try:
             m = re.search(r"\[.*\]", resp or "", re.S)
             notas = json.loads(m.group(0)) if m else []

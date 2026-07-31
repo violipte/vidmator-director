@@ -118,9 +118,11 @@ _PROMPT = (
 def gate(subject, frames, niche_allows_children=False):
     """Retorna {ok, flags[], reason, raw}. ok=True só se relevante, sem criança e sem talking-head (salvo TV)."""
     prompt = _PROMPT.format(subject=subject, n=len(frames))
-    o = _parse(_vision(prompt, frames))
-    if not o:  # Gemini esgotado/indisponível -> Luna assume (cascata)
-        o = _parse(_vision_luna(prompt, frames))
+    # 31/07: ordem invertida enquanto o free tier do Gemini está em 429 — Luna primeiro
+    # (com crédito), Gemini de fallback. Reverter quando a quota resetar.
+    o = _parse(_vision_luna(prompt, frames))
+    if not o:
+        o = _parse(_vision(prompt, frames))
     if not o:
         return {"ok": False, "flags": ["sem-resposta-vision"], "reason": "gate indisponível → rejeita por segurança", "raw": {}}
     rel = bool(o.get("subject_match"))

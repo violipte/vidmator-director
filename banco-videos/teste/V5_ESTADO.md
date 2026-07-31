@@ -58,8 +58,27 @@ Job v5 = style_card `"estilo": "v5"` (superset do v2: audio_plan/fx/mascote/avat
 - montador main: nunca criar variável `corte` (sombreia a função `corte()`).
 - Job de teste: `_job_v5teste` + `remotion/public/jobs/v5teste_mont/` (montagem manual).
 
+## ⚠️ CORREÇÃO 31/07 (Piter) — v5 SOMA, NUNCA SUBSTITUI
+Erro cometido no 1º vídeo (cobras): o `curador5` tentava o pool NOVO (stock: Pexels/
+Coverr/Pixabay) ANTES da cascata v4 — resultado: stock genérico com score 8 vencia e o
+**YouTube (footage REAL, carro-chefe do T3) nunca era consultado**. Saíram tênis/prédio/
+diagrama no lugar de cobra. **CORRIGIDO**: ordem = cascata v4 primeiro (YouTube+gates),
+fontes novas como ADIÇÃO onde o v4 não acha.
+**Regra permanente:** toda feature absorvida de fora ENTRA SOMANDO à hierarquia T3
+(real > TV > celular > stock). Nunca reordenar/substituir o que já funciona.
+Idioma das buscas: **EN mantido** (o Google acha material de sobra em EN — validado pelo
+Piter com print). O que falta é GAMA de fontes, não idioma.
+
 ## Pendências / próximos passos
-1. **1º vídeo COMPLETO na v5** (cadeia inteira num roteiro real — estoico ou novo).
+1. **Re-rodar o vídeo das cobras** com a ordem corrigida (job `_job_cobras` pronto:
+   roteiro/narração/transcript/plano/banco 25 clipes já feitos — é só `curador5 --resume`
+   depois de apagar os resolvidos de stock genérico) e validar por decupagem.
+2. **Ampliar a GAMA de fontes** (pedido do Piter): ligar busca web (SearXNG self-hosted,
+   grátis) e estender o yt-dlp a TikTok/Instagram/Facebook (ele suporta) — no MESMO
+   batch-score, somando ao YouTube. Nicho local (fauna BR) vive nessas fontes.
+3. **Buracos → banco de nicho**: montador5 deve preencher beat sem asset com clipe do
+   banco (secao 900) em vez de deixar tela PRETA (metade do vídeo de cobras ficou preta).
+4. **1º vídeo COMPLETO na v5** (cadeia inteira num roteiro real — estoico ou novo).
 2. Diretor ainda não emite beats `parallax` (hoje só manual/montador) — integrar no
    diretor/registry quando o Piter aprovar o visual em vídeo real.
 3. Karaokê: upgrade p/ word-timings reais do STT (hoje proporcional).

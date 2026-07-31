@@ -45,7 +45,9 @@ def queries_estratificadas(busca, assunto_secao=""):
 def _baixar_normalizar(url, dest_mp4, tmp):
     """Download + normaliza 1920x1080/30fps h264 (padrão do executor)."""
     import httpx
-    bruto = Path(tmp) / f"c5_{abs(hash(url)) % 10**10}.mp4"
+    import threading
+    # nome ÚNICO por thread+chamada (WinError 32: dois workers colidiam no mesmo temp)
+    bruto = Path(tmp) / f"c5_{threading.get_ident()}_{abs(hash(url)) % 10**8}.mp4"
     try:
         with httpx.stream("GET", url, headers={"User-Agent": "Mozilla/5.0"},
                           timeout=120, follow_redirects=True) as r:
@@ -65,7 +67,10 @@ def _baixar_normalizar(url, dest_mp4, tmp):
     except Exception:
         return False
     finally:
-        bruto.unlink(missing_ok=True)
+        try:
+            bruto.unlink(missing_ok=True)
+        except OSError:
+            pass  # Windows pode segurar o handle um instante — o tmp é limpo depois
 
 
 def resolver_beat5(b, sctx, ctx, usados_urls):
@@ -136,13 +141,26 @@ def main():
     print(f"curador5: {len(tarefas)} beats | fontes novas + batch-score + fallback v4")
 
     def _rodar5(par):
+        """31/07 (correção Piter): a v5 SOMA fontes, NUNCA substitui a hierarquia T3.
+        Ordem = cascata v4 PRIMEIRO (YouTube/footage REAL = carro-chefe do T3, com
+        todos os gates do executor) e só então o pool novo (Pexels/Coverr/Pixabay
+        batch-score) como ADIÇÃO — antes eu tinha invertido e o stock genérico
+        ganhava do footage real."""
         b2, sctx = par
-        r = resolver_beat5(b2, sctx, ctx, usados_urls)
-        origem = "v5"
-        if r is None:  # fallback: cadeia v4 intacta (pexels/yt + gates do executor)
+        origem = "v4"
+        try:
             r = ex.resolver_footage_video(b2, ctx) if b2.get("tipo") == "footage_video" \
                 else ex.resolver_stock(b2, ctx)
-            origem = "v4"
+        except Exception as e4:
+            print(f"  b{b2['i']:03d} v4 erro ({type(e4).__name__})")
+            r = None
+        if not (r and r.get("status") == "ok" and r.get("arquivo")):
+            try:  # ADIÇÃO v5: fontes novas + batch-score entram onde o v4 não achou
+                r = resolver_beat5(b2, sctx, ctx, usados_urls)
+                origem = "v5"
+            except Exception as e5:
+                print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
+                r = None
         return b2, r, origem
 
     ok5 = ok4 = falhas = 0
