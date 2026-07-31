@@ -35,6 +35,7 @@ import { StatReveal } from "./compositions/StatReveal";
 import { VintageAngled } from "./compositions/VintageAngled";
 import { FramedGridMontage } from "./compositions/FramedGridMontage";
 import { Montagem } from "./compositions/Montagem";
+import { Montagem5 } from "./compositions/v5/Montagem5";
 import { TEXTO_COMPS } from "./compositions/texto/AcervoTexto";
 import { OVERLAY_COMPS } from "./compositions/texto/AcervoTextoOverlay";
 import { GRAFICOS_COMPS } from "./compositions/graficos/AcervoGraficos";
@@ -317,6 +318,25 @@ export const Root: React.FC = () => {
       <Composition
         id="Montagem"
         component={Montagem}
+        durationInFrames={300}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ job: "hilux_mont", mont: null }}
+        calculateMetadata={async ({ props }) => {
+          if (props.mont) {
+            return { durationInFrames: Math.ceil(props.mont.dur_s * 30), props };
+          }
+          const res = await fetch(staticFile(`jobs/${props.job}/montagem.json`));
+          const mont = await res.json();
+          return { durationInFrames: Math.ceil(mont.dur_s * 30), props: { ...props, mont } };
+        }}
+      />
+
+      {/* ===== MONTADOR v5 (isolado — NÃO toca a Montagem v1-v4) ===== */}
+      <Composition
+        id="Montagem5"
+        component={Montagem5}
         durationInFrames={300}
         fps={30}
         width={1920}
