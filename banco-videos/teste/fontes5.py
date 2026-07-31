@@ -70,6 +70,29 @@ def openverse_img(query, n=3):
         return []
 
 
+def pexels_video(query, n=3):
+    """Pexels no POOL v5 (decisão Piter 31/07: Pexels é a key mantida) — usa a
+    mesma rotação de keys do executor (pexels_api.KEYS)."""
+    try:
+        from pexels_api import KEYS as PK
+        k = PK[0] if PK else None
+        if not k:
+            return []
+        r = httpx.get("https://api.pexels.com/videos/search", params={
+            "query": query[:100], "per_page": max(3, n), "orientation": "landscape"},
+            headers={**_UA, "Authorization": k}, timeout=25)
+        out = []
+        for v in r.json().get("videos", [])[:n]:
+            arqs = sorted((f for f in v.get("video_files", []) if f.get("width")),
+                          key=lambda f: -f["width"])
+            if arqs:
+                out.append({"url": arqs[0]["link"], "source": "pexels", "id": f"pexv_{v['id']}",
+                            "thumb": v.get("image"), "meta": ""})
+        return out if r.status_code == 200 else []
+    except Exception:
+        return []
+
+
 def pixabay_video(query, n=3):
     k = _key5("pixabay")
     if not k:
@@ -142,8 +165,8 @@ def coletar_imagens(query, n_por_fonte=3, usados=None):
 def coletar_videos(query, n_por_fonte=3, usados=None):
     from concurrent.futures import ThreadPoolExecutor
     usados = usados or set()
-    with ThreadPoolExecutor(max_workers=2) as ex5:
-        futs = [ex5.submit(f, query, n_por_fonte) for f in (pixabay_video, coverr_video)]
+    with ThreadPoolExecutor(max_workers=3) as ex5:
+        futs = [ex5.submit(f, query, n_por_fonte) for f in (pexels_video, pixabay_video, coverr_video)]
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
