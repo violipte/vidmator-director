@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "remotion/src/Root.tsx": {
-    "mtime": 1784818407.7913992,
-    "ast_hash": "4bb05fed839436ba433fba4d68f32c59",
+    "mtime": 1785514782.5463498,
+    "ast_hash": "369541fa17bbcb3a1a60b8b15aa1185d",
     "semantic_hash": ""
   },
   "remotion/src/compositions/AnimatedIcons.tsx": {
@@ -745,8 +745,8 @@
     "semantic_hash": ""
   },
   "video-automator/app.py": {
-    "mtime": 1785444321.877243,
-    "ast_hash": "45d8a7bf6df8c8136cb4a347784de399",
+    "mtime": 1785514913.2232199,
+    "ast_hash": "2a9af45f87d3e40ca735cc519a79d445",
     "semantic_hash": ""
   },
   "video-automator/auth_drive.py": {
@@ -820,8 +820,8 @@
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/App.jsx": {
-    "mtime": 1785444458.486787,
-    "ast_hash": "a1beced17b44d8f94eada5d310b86dc5",
+    "mtime": 1785515069.6273592,
+    "ast_hash": "5a7d3e480dafb963ae9c214f5803ff2d",
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/api/client.js": {
@@ -890,8 +890,8 @@
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/components/Layout/Sidebar.jsx": {
-    "mtime": 1785444468.5693438,
-    "ast_hash": "bbab84e1d7582a1e65878c7d6cbadc70",
+    "mtime": 1785515075.8548746,
+    "ast_hash": "e65d69602a7a1bdc99281879d878f5a0",
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/main.jsx": {
@@ -1240,8 +1240,8 @@
     "semantic_hash": ""
   },
   "video-automator/CLAUDE.md": {
-    "mtime": 1785444886.0846083,
-    "ast_hash": "7cc75fb2cd89a8f98bcc97cde1b5a10e",
+    "mtime": 1785513354.9516163,
+    "ast_hash": "ad6d1c24a26505169a6d9d9f8ae3d8ed",
     "semantic_hash": ""
   },
   "video-automator/MULTI-CLAUDE-ONBOARDING.md": {
@@ -2275,8 +2275,8 @@
     "semantic_hash": ""
   },
   "video-automator/upload_trigger.py": {
-    "mtime": 1785443775.396397,
-    "ast_hash": "283dfa0006ca6a31e20243e570999d25",
+    "mtime": 1785512938.1187167,
+    "ast_hash": "5b6c1cb594bf9c7bf35ba0973a8adceb",
     "semantic_hash": ""
   },
   "FORM_CADASTRO_CANAL.md": {
@@ -2285,23 +2285,23 @@
     "semantic_hash": ""
   },
   "video-automator/_testar_yt_keys.py": {
-    "mtime": 1785444882.9391046,
-    "ast_hash": "6f2854a8705cf27e87d84f361b33e281",
+    "mtime": 1785449025.270264,
+    "ast_hash": "9102f8a49f01d7294e75c86dbf5f4175",
     "semantic_hash": ""
   },
   "video-automator/esteira.py": {
-    "mtime": 1785443315.0108404,
-    "ast_hash": "313a3e0e9ca26a797ffe9833b3a1c903",
+    "mtime": 1785512067.8912084,
+    "ast_hash": "d1e3f8f5e03aca880b9a1914eb2b4a4d",
     "semantic_hash": ""
   },
   "video-automator/esteira_worker.py": {
-    "mtime": 1785443885.965363,
-    "ast_hash": "41c2c5b638a57f3ebe2c3c1ddb919fc6",
+    "mtime": 1785512950.6596591,
+    "ast_hash": "108783b79975ba9ab42fc802e8ff6b96",
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/pages/NicheSpy/index.jsx": {
-    "mtime": 1785444394.6199057,
-    "ast_hash": "30e87c6b1601b1c74e399f4badde1af1",
+    "mtime": 1785509735.472082,
+    "ast_hash": "ac83de3cdf8e4615b5000d6959a14390",
     "semantic_hash": ""
   },
   "video-automator/niche_spy_db.py": {
@@ -2325,18 +2325,108 @@
     "semantic_hash": ""
   },
   "video-automator/upload_daily_check.py": {
-    "mtime": 1785443819.0312808,
-    "ast_hash": "46b8d55086f4ceed65db60465419a98c",
+    "mtime": 1785508649.290206,
+    "ast_hash": "17b0d2841bd0ffac00aa851f5a8f7d75",
     "semantic_hash": ""
   },
   "video-automator/upload_verify.py": {
-    "mtime": 1785443565.5799525,
-    "ast_hash": "560e1c20cdbe65d5129ba96cd0e1f5ff",
+    "mtime": 1785511673.488425,
+    "ast_hash": "8d1b0987b9829b6a6bcc9eb3b0783a9b",
     "semantic_hash": ""
   },
   "video-automator/_esteira/worker_heartbeat.txt": {
-    "mtime": 1785448724.0464993,
-    "ast_hash": "85fda88c908f305f89aa3d5910a4349b",
+    "mtime": 1785522646.040193,
+    "ast_hash": "2b3046e433bbbfff36771d69803bb980",
+    "semantic_hash": ""
+  },
+  "video-automator/niche_search.py": {
+    "mtime": 1785449118.9556909,
+    "ast_hash": "320f2e23d44b855105daa7ab9697de20",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/curador5.py": {
+    "mtime": 1785518899.119087,
+    "ast_hash": "b2ce47f60c9cdde798c6e50778c34a53",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/fontes5.py": {
+    "mtime": 1785522366.9449184,
+    "ast_hash": "98c05c003098cc425436d88f38cb18f6",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/gate5.py": {
+    "mtime": 1785518754.8004317,
+    "ast_hash": "d34f63752b59a570057f2bc1d898e5c5",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/montador5.py": {
+    "mtime": 1785518596.734501,
+    "ast_hash": "2c1925334ac14ac7f814be8a69c9eda3",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/parallax5.py": {
+    "mtime": 1785515056.2378006,
+    "ast_hash": "8aeafbb5ce5475ef4a23bc184d7cc5cc",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/rodar_producao5.py": {
+    "mtime": 1785518153.9884472,
+    "ast_hash": "e8fef6c67d57b0ea00d838a657274be7",
+    "semantic_hash": ""
+  },
+  "remotion/_render_v5base.mjs": {
+    "mtime": 1785518104.1287897,
+    "ast_hash": "7152d710928dbea54d8cd121218f085d",
+    "semantic_hash": ""
+  },
+  "remotion/_render_v5teste.mjs": {
+    "mtime": 1785518181.867055,
+    "ast_hash": "f7f338df82b8f3e43af3aba6a232c027",
+    "semantic_hash": ""
+  },
+  "remotion/src/compositions/v5/ImageEffects5.tsx": {
+    "mtime": 1785518386.235476,
+    "ast_hash": "000866aea271f7917da7e0132c69aeb9",
+    "semantic_hash": ""
+  },
+  "remotion/src/compositions/v5/Karaoke5.tsx": {
+    "mtime": 1785518499.466289,
+    "ast_hash": "8672578c269bbcace638845a5a481341",
+    "semantic_hash": ""
+  },
+  "remotion/src/compositions/v5/KenBurnsPro5.tsx": {
+    "mtime": 1785518482.3214672,
+    "ast_hash": "93d5c4a10ffb7ab85922337ee7cb4114",
+    "semantic_hash": ""
+  },
+  "remotion/src/compositions/v5/Montagem5.tsx": {
+    "mtime": 1785518558.9693313,
+    "ast_hash": "2feec56222f8920b7d33bdb18e52d6be",
+    "semantic_hash": ""
+  },
+  "remotion/src/compositions/v5/Parallax3Scene5.tsx": {
+    "mtime": 1785514940.0160258,
+    "ast_hash": "1a0fa3895186303c9702b698893d3199",
+    "semantic_hash": ""
+  },
+  "video-automator/frontend2/src/pages/PainelYoutube/Canais.jsx": {
+    "mtime": 1785518231.00977,
+    "ast_hash": "866c299f5502564dec278b494c4d49eb",
+    "semantic_hash": ""
+  },
+  "video-automator/frontend2/src/pages/PainelYoutube/api.js": {
+    "mtime": 1785514951.6405704,
+    "ast_hash": "d449a0d1e6dbde0763bd256a5d81dea0",
+    "semantic_hash": ""
+  },
+  "video-automator/frontend2/src/pages/PainelYoutube/index.jsx": {
+    "mtime": 1785518251.8018305,
+    "ast_hash": "775a433758fc777f5abec506afed460d",
+    "semantic_hash": ""
+  },
+  "video-automator/painel_yt.py": {
+    "mtime": 1785518536.6224234,
+    "ast_hash": "362dd35ece723aca9b8d2c1c046f1394",
     "semantic_hash": ""
   }
 }
