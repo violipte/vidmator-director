@@ -26,6 +26,13 @@ REG_INFO = {r["comp"]: r for r in REG_R}
 # "SUBJECT") vazavam pro video. O REGISTRY e a UNICA porta de render agora (pass no main).
 
 
+def _dic5(d):
+    """dados do LLM podem vir como LISTA — normaliza p/ dict (31/07)."""
+    if isinstance(d, (list, tuple)):
+        d = next((x for x in d if isinstance(x, dict)), None)
+    return d if isinstance(d, dict) else {}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--job", required=True)
@@ -62,6 +69,16 @@ def main():
             continue  # entrada BASE apontando pra condenado (auditor 27/07: fantasma b158)
         resolvido.append(_r)
     plano = json.loads(Path(a.plano).read_text(encoding="utf-8"))
+    _pi = {r.get("i"): r for r in resolvido}
+    _n_an = 0
+    for _b in plano.get("beats", []):   # ANIMAÇÕES vêm do plano (não passam pelo executor)
+        if _b.get("tipo") == "animacao" and _b["i"] not in _pi:
+            _pi[_b["i"]] = {**_b, "status": "ok", "tipo_final": "animacao",
+                            "arquivo": None, "tier": 0}
+            _n_an += 1
+    if _n_an:
+        resolvido = [_pi[k] for k in sorted(_pi)]
+        print(f"animações do plano injetadas [v5]: {_n_an}")
     secoes = plano.get("secoes", [])
     plano_por_i = {pb["i"]: pb for pb in plano.get("beats", [])}  # resolvido NÃO carrega 'texto'
 
@@ -387,7 +404,7 @@ def main():
                 if props_novos and _eh_texto(comp) and pb.get("estrategia") == "dado":
                     nums_pre = [n for n in _nums_do_texto(texto_b)
                                 if not (n.isdigit() and 1300 <= int(n) <= 2099)]
-                    if len(nums_pre) >= 2 or len((dados_b or {}).get("values") or []) >= 2:
+                    if len(nums_pre) >= 2 or len(_dic5(dados_b).get("values") or []) >= 2:
                         props_novos = None  # cai pro re-pick, onde o R-26 crava o chart
 
                 # R-109 (Piter 23/07): NUNCA 2 animações de texto seguidas — nem antes
@@ -426,7 +443,7 @@ def main():
                     # e ignora cooldown; dado forte NUNCA degrada pra frase.
                     nums_b = [n for n in _nums_do_texto(texto_b) if not (1300 <= int(n.replace(",", "") or 0) <= 2099)] \
                         if texto_b else []
-                    if len(nums_b) >= 2 or len((dados_b or {}).get("values") or []) >= 2:
+                    if len(nums_b) >= 2 or len(_dic5(dados_b).get("values") or []) >= 2:
                         res26 = escolher("chart", dados_b, texto_b, SEED + r["i"] * 31, quotas,
                                          imgs=imgs, last_use=last_use, beat_i=r["i"],
                                          dur=max(dur, 3.0), cooldown=0)
@@ -1016,6 +1033,89 @@ def main():
             if audio_plan is not None:
                 for idx, s in enumerate(secoes[1:], start=1):
                     _add_sfx("whoosh", s["t_ini"] - 0.45, 0.30, kseed=idx * 7)
+
+    # ---- v5 (31/07 bis): GAP de TIMELINE nunca vira tela preta ----
+    # O montador DESCARTA beat sem asset -> sobra buraco de TEMPO (25 gaps / 298s no
+    # 1º vídeo de cobras = 62% de tela preta). Aqui os gaps viram beats novos servidos
+    # pelo BANCO DE NICHO, em rodízio e sem repetir o vizinho.
+    # pool = banco de nicho (uso 0) + TODO mp4 já resolvido (uso 1) — com 62 gaps e só
+    # 25 clipes de banco o R-56 (3+ usos) estourava; o pool maior distribui
+    _bnc = [r["arquivo"] for r in resolvido
+            if r.get("secao") == 900 and str(r.get("arquivo") or "").lower().endswith(".mp4")
+            and Path(r.get("arquivo") or "").exists()]
+    # usos REAIS na timeline (src E bg; split/bg fazem o mesmo asset aparecer 2x).
+    # Vale pro BANCO também — clipe de banco usado como bg de overlay (R-27) já tem
+    # uso e zerá-lo estourava o R-56 no preenchimento.
+    _na_timeline = {}
+    for b in beats_out:
+        for ch in ("src", "bg"):
+            v = str(b.get(ch) or "")
+            if v.lower().endswith(".mp4"):
+                _na_timeline[Path(v).name] = _na_timeline.get(Path(v).name, 0) + 1
+    for r in resolvido:  # amplia o pool com os mp4 já resolvidos (não-banco)
+        arq = str(r.get("arquivo") or "")
+        if r.get("secao") != 900 and arq.lower().endswith(".mp4") and Path(arq).exists():
+            _bnc.append(arq)
+    _usos_g = {a: _na_timeline.get(Path(a).name, 0) for a in _bnc}
+    if _bnc and beats_out:
+        beats_ord = sorted(beats_out, key=lambda x: x["t_ini"])
+        dur_alvo = max(b["t_fim"] for b in beats_ord)
+        novos_gap, ant_t, ult_a, k_gap = [], 0.0, None, 0
+        limites = [(b["t_ini"], b["t_fim"], b.get("secao", 0)) for b in beats_ord] + \
+                  [(dur_alvo, dur_alvo, beats_ord[-1].get("secao", 0))]
+        for t_i, t_f, sec_g in limites:
+            if t_i - ant_t > 0.4:                    # gap real
+                ini_g = ant_t
+                while ini_g < t_i - 0.2:             # fatia em pedaços de <= 6s
+                    fim_g = min(ini_g + 6.0, t_i)
+                    # sempre o MENOS usado (desempate determinístico) e nunca o vizinho
+                    ops = sorted((a for a in _bnc if a != ult_a and _usos_g.get(a, 0) < 2),
+                                 key=lambda x: (_usos_g.get(x, 0), x))
+                    if not ops:  # pool saturado: aceita quem tiver menos uso (R-56 cap 2)
+                        ops = sorted((a for a in _bnc if a != ult_a),
+                                     key=lambda x: (_usos_g.get(x, 0), x))
+                    esc = ops[0] if ops else _bnc[0]
+                    _usos_g[esc] = _usos_g.get(esc, 0) + 1
+                    dst = dest / "assets" / Path(esc).name
+                    if not dst.exists():
+                        shutil.copy2(esc, dst)
+                    novos_gap.append({"i": 7000 + k_gap, "t_ini": round(ini_g, 2),
+                                      "t_fim": round(fim_g, 2), "tipo": "stock",
+                                      "secao": sec_g, "tier": 1, "watermark": False,
+                                      "src": f"jobs/{a.nome}/assets/{Path(esc).name}",
+                                      "props": {}, "_do_banco": True})
+                    ult_a = esc
+                    k_gap += 1
+                    ini_g = fim_g
+            ant_t = max(ant_t, t_f)
+        if novos_gap:
+            beats_out.extend(novos_gap)
+            print(f"gaps preenchidos [v5]: {len(novos_gap)} beats do banco "
+                  f"({sum(b['t_fim']-b['t_ini'] for b in novos_gap):.0f}s de tela preta eliminados)")
+
+    # ---- v5 (31/07): BURACO NUNCA VIRA TELA PRETA ----
+    # beat sem asset é preenchido com clipe do BANCO DE NICHO (secao 900), em rodízio
+    # e sem repetir vizinho — metade do 1º vídeo de cobras ficou preta por falta disso
+    _banco5 = [r["arquivo"] for r in resolvido
+               if r.get("secao") == 900 and str(r.get("arquivo") or "").lower().endswith(".mp4")
+               and Path(r.get("arquivo") or "").exists()]
+    if _banco5:
+        n_pre5, ult5 = 0, None
+        for b in sorted(beats_out, key=lambda x: x["t_ini"]):
+            if b.get("componente") or b.get("src") or b.get("tipo") == "parallax":
+                continue
+            ops5 = [a for a in _banco5 if a != ult5] or _banco5
+            esc5 = ops5[(SEED + b["i"] * 5) % len(ops5)]
+            dst5 = dest / "assets" / Path(esc5).name
+            if not dst5.exists():
+                shutil.copy2(esc5, dst5)
+            b["src"] = f"jobs/{a.nome}/assets/{Path(esc5).name}"
+            b["tier"] = b.get("tier") or 1
+            b["_do_banco"] = True
+            ult5 = esc5
+            n_pre5 += 1
+        if n_pre5:
+            print(f"buracos preenchidos [v5]: {n_pre5} beats com clipe do banco de nicho")
 
     # ---- GATES DE CONTEÚDO (29/07, prints do Piter) ----
     # G1: badge/stat SEM dado não renderiza scaffolding — Img18 com title vazio virava

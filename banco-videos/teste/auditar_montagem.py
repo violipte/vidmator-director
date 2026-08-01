@@ -12,6 +12,13 @@ import re
 import sys
 from pathlib import Path
 
+def _dic_a(d):
+    """dados do LLM podem vir como LISTA — normaliza (31/07)."""
+    if isinstance(d, (list, tuple)):
+        d = next((x for x in d if isinstance(x, dict)), None)
+    return d if isinstance(d, dict) else {}
+
+
 sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).parent))
 from acervo_registry import DEPRECATED, _nums_do_texto  # noqa
@@ -81,7 +88,7 @@ def main():
         if pest.get(b["i"]) == "dado" and eh_texto(b.get("componente")):
             d = pdad.get(b["i"]) or {}
             nums = [n for n in _nums_do_texto(ptxt.get(b["i"], "")) if not (n.isdigit() and 1300 <= int(n) <= 2099)]
-            estatistica = len(d.get("values") or []) >= 2 or any(n.isdigit() and int(n) >= 10 for n in nums)
+            estatistica = len(_dic_a(d).get("values") or []) >= 2 or any(n.isdigit() and int(n) >= 10 for n in nums)
             if len(nums) >= 2 and estatistica:
                 V.append(("R-26", b["i"], f"DADO ({nums[:3]}) degradado pra {b['componente']}"))
 
@@ -101,7 +108,7 @@ def main():
 
     # ---- A5 [R-25]: pessoa nomeada = foto real ou nada ----
     for b in beats:
-        nome = (pdad.get(b["i"]) or {}).get("name")
+        nome = _dic_a(pdad.get(b["i"])).get("name")
         c = b.get("componente") or ""
         if c == "CharacterCard":
             img = (b.get("props") or {}).get("characterImage") or ""

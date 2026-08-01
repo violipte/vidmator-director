@@ -18,19 +18,28 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).parent))
 from vision_gate import _vision, _vision_luna  # noqa — rotação de 8 keys Gemini + fallback Luna
 
-RUBRIC = """You are a STRICT photo editor selecting images for a professional documentary.
+RUBRIC = """You are the FILM EDITOR of a documentary. You are choosing the shot that
+plays on screen while the narrator says a specific line.
 
-TOPIC: "{desc}"
+DOCUMENTARY SUBJECT (what the whole film is about): "{tema}"
+NARRATION AT THIS MOMENT: "{desc}"
 {ctx}
+Judge each image as a CUTAWAY for this moment — not as a literal illustration of the
+sentence. When the narration mentions a person, place or object that is INCIDENTAL to
+the film (a doctor, a researcher, a city, a date), a good editor does not cut to that
+incidental thing: they stay inside the film's own world — its subject, its textures,
+its environment — and let the line play over an image that carries the tension.
+Cut to the literal thing ONLY when that thing IS the subject of the film.
+
 For EACH numbered image below, give a JSON object with:
-- "score" (0-10): how precisely it matches the topic.
-  10 = the EXACT subject is clearly the main focus, professional quality
-  8-9 = main subject matches, minor details differ
-  6-7 = related theme but a key element is missing or wrong
-  3-5 = loosely related, generic/cliché, or staged stock look
-  0-2 = wrong subject or unusable
-  Be STRICT: only award 8+ if the image could genuinely illustrate this exact
-  topic in a documentary.
+- "score" (0-10): how well it works as the shot for this moment.
+  10 = belongs to the documentary subject AND carries the mood/tension of this line
+  8-9 = clearly belongs to the subject and fits the moment
+  6-7 = belongs to the subject but is flat//generic for this moment
+  3-5 = only literally matches the sentence but is foreign to the film's subject
+        (e.g. an office, a stock businessman, a lab diagram in a wildlife film)
+  0-2 = unusable, wrong, or empty/dark frame with no readable content
+  Prefer the shot that serves the FILM over the shot that serves the sentence.
 - "vetos": array of any that apply (empty if none):
   "talking_head" (person presenting/talking to camera, vlogger, host),
   "child" (any minor visible),
@@ -42,7 +51,7 @@ For EACH numbered image below, give a JSON object with:
 Respond ONLY a JSON array, one object per image, same order. No markdown."""
 
 
-def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12):
+def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema=""):
     """candidatos: [{url|path, source, id, ...}] -> mesmos itens + score/vetos, ordenado.
     Baixa miniaturas quando url remota; aceita path local. Veto => score forçado a 0."""
     import base64
@@ -71,7 +80,7 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12):
         if not frames:
             continue
         ctx = f"SECTION RULE: {ctx_secao}\n" if ctx_secao else ""
-        prompt = RUBRIC.format(desc=descricao[:220], ctx=ctx)
+        prompt = RUBRIC.format(desc=descricao[:200], tema=(tema or "documentary")[:80], ctx=ctx)
         # 31/07: Gemini em 429 (quota free estourada) — Luna PRIMEIRO evita queimar
         # 8 tentativas mortas por lote; Gemini fica de fallback (volta quando resetar)
         resp = _vision_luna(prompt, frames) or _vision(prompt, frames)

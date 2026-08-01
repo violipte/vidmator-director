@@ -30,16 +30,39 @@ from gate5 import batch_gate, SCORE_THRESHOLD  # noqa
 STOPWORDS5 = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "for", "to"}
 
 
-def queries_estratificadas(busca, assunto_secao=""):
-    """4 estratégias do dark-content-studio, determinísticas (sem LLM)."""
+def queries_estratificadas(busca, assunto_secao="", ancora=""):
+    """4 estratégias + ÂNCORA DO TEMA (31/07, QA Piter: 'ilustra a frase, não a cena').
+    Beat isolado buscava 'doctor writing notebook' num vídeo de COBRA e trazia clipe
+    genérico. A âncora do style_card entra em TODA query — o assunto do vídeo domina."""
     base = busca.split(" OR ")[0].strip()
     kws = [w for w in re.findall(r"[a-zA-Z]{3,}", busca) if w.lower() not in STOPWORDS5]
+    anc = (ancora or "").strip()
     return [
-        base,                                                       # 1 fiel
-        f"{base} close up detail",                                  # 2 específica
-        f"{assunto_secao} {base} wide shot".strip()[:90],           # 3 ângulo/contexto
-        " ".join(kws[:4]),                                          # 4 keywords
+        f"{anc} {base}".strip()[:95],                     # 1 âncora + fiel
+        f"{base} close up detail {anc}".strip()[:95],     # 2 específica ancorada
+        f"{anc} {' '.join(kws[:3])}".strip()[:95],        # 3 âncora + keywords
+        base,                                             # 4 fiel puro (último recurso)
     ]
+
+
+def _luminancia_ok(mp4, tmp, min_brilho=42):
+    """Gate de TELA (31/07): clipe escuro demais NÃO vai ao ar — o Vision aprova
+    'é uma cobra' mas não vê que na tela é um borrão preto (frame 7s do vídeo v2).
+    Determinístico, sem API: brilho médio de 3 instantes."""
+    from PIL import Image, ImageStat
+    vals = []
+    for ss in ("1", "2.5", "4"):
+        o = Path(tmp) / f"lum_{abs(hash(str(mp4) + ss)) % 10**8}.jpg"
+        subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-ss", ss,
+                        "-i", str(mp4), "-frames:v", "1", "-vf", "scale=160:-2", str(o)],
+                       capture_output=True, timeout=60)
+        if o.exists():
+            try:
+                vals.append(ImageStat.Stat(Image.open(o).convert("L")).mean[0])
+            except Exception:
+                pass
+            o.unlink(missing_ok=True)
+    return (sum(vals) / len(vals)) >= min_brilho if vals else True
 
 
 def _baixar_normalizar(url, dest_mp4, tmp):
@@ -73,10 +96,10 @@ def _baixar_normalizar(url, dest_mp4, tmp):
             pass  # Windows pode segurar o handle um instante — o tmp é limpo depois
 
 
-def resolver_beat5(b, sctx, ctx, usados_urls):
+def resolver_beat5(b, sctx, ctx, usados_urls, ancora=""):
     """Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4)."""
     assunto = (b.get("_sec_ctx") or "")[:0]  # ctx vai pro gate, não pra query
-    for rodada, q in enumerate(queries_estratificadas(b.get("busca") or "", "")):
+    for rodada, q in enumerate(queries_estratificadas(b.get("busca") or "", "", ancora)):
         if not q.strip():
             continue
         cands = coletar_videos(q, n_por_fonte=3, usados=usados_urls)
@@ -84,8 +107,8 @@ def resolver_beat5(b, sctx, ctx, usados_urls):
             continue
         # gate pelo THUMB (barato); sem thumb usa a própria url do vídeo? -> pula
         pool = [{**c, "url": c.get("thumb") or c["url"]} for c in cands]
-        notas = batch_gate(pool, b.get("busca") or q, sctx)
-        melhor = next((n for n in notas if n["score"] >= SCORE_THRESHOLD), None)
+        notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora)
+        melhor = next((n for n in notas if n["score"] >= 7), None)
         if not melhor:
             continue
         orig = next(c for c in cands if c["id"] == melhor["id"])
@@ -93,6 +116,9 @@ def resolver_beat5(b, sctx, ctx, usados_urls):
         if not _baixar_normalizar(orig["url"], dest, ctx["tmp"]):
             continue
         if ex._e_dup_visual(str(dest), ctx):
+            dest.unlink(missing_ok=True)
+            continue
+        if not _luminancia_ok(dest, ctx["tmp"]):   # gate de TELA
             dest.unlink(missing_ok=True)
             continue
         usados_urls.add(orig["url"])  # SÓ o vencedor é reivindicado (release implícito dos demais)
@@ -121,6 +147,7 @@ def main():
     if not any(s["produto"] for s in secs.values()):
         todos = []  # nicho sem announce => ctx b-roll (fix 27/07)
 
+    ancora5 = sc.get("assunto_ancora") or ""
     ctx = {"assets": job / "assets", "tmp": job / "_tmp", "res": job / "resolvido"}
     for d in ctx.values():
         d.mkdir(parents=True, exist_ok=True)
@@ -138,7 +165,7 @@ def main():
             b2 = dict(b)
             b2["_sec_ctx"] = sctx
             tarefas.append((b2, sctx))
-    print(f"curador5: {len(tarefas)} beats | fontes novas + batch-score + fallback v4")
+    print(f"curador5: {len(tarefas)} beats | âncora='{ancora5}' | v4 primeiro + fontes novas")
 
     def _rodar5(par):
         """31/07 (correção Piter): a v5 SOMA fontes, NUNCA substitui a hierarquia T3.
@@ -148,6 +175,8 @@ def main():
         ganhava do footage real."""
         b2, sctx = par
         origem = "v4"
+        if ancora5 and ancora5.split()[0].lower() not in (b2.get("busca") or "").lower():
+            b2 = {**b2, "busca": f"{ancora5} {b2.get('busca') or ''}".strip()[:110]}
         try:
             r = ex.resolver_footage_video(b2, ctx) if b2.get("tipo") == "footage_video" \
                 else ex.resolver_stock(b2, ctx)
@@ -156,7 +185,7 @@ def main():
             r = None
         if not (r and r.get("status") == "ok" and r.get("arquivo")):
             try:  # ADIÇÃO v5: fontes novas + batch-score entram onde o v4 não achou
-                r = resolver_beat5(b2, sctx, ctx, usados_urls)
+                r = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5)
                 origem = "v5"
             except Exception as e5:
                 print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
