@@ -69,6 +69,38 @@ fontes novas como ADIÇÃO onde o v4 não acha.
 Idioma das buscas: **EN mantido** (o Google acha material de sobra em EN — validado pelo
 Piter com print). O que falta é GAMA de fontes, não idioma.
 
+
+## 🔧 CORREÇÕES 31/07 rodada 2 (QA Piter no vídeo de cobras) — commit 4251c14
+Três causas raiz achadas e corrigidas. Montagem final: **140 beats, cobertura 100%,
+26 componentes, mesa VERDE** (antes: 69 beats, 38% de cobertura, 4 componentes).
+
+1. **ANIMAÇÕES SUMIAM DA MONTAGEM** (a mais grave). `montador5` itera sobre
+   `resolvido`, mas beat de ANIMAÇÃO não passa pelo executor (não precisa de asset)
+   -> as 46 animações do plano — **21 delas de TEXTO/OVERLAY, que nem imagem pedem** —
+   nunca chegavam. Fix: injetar do plano logo após ler o plano (`_pi`/`_n_an`).
+   Efeito: 4 -> 26 componentes, texto 4s -> 58s, 5 ChapterTitles, mapa/gráfico/quote.
+2. **TELA PRETA = GAP DE TIMELINE, não beat sem asset.** O montador DESCARTA beat sem
+   asset e sobra buraco de TEMPO (25 gaps / 298s = 62% do vídeo). Fix: gaps viram
+   beats novos servidos pelo acervo (fatias <=6s), rodízio pelo MENOS USADO com
+   contagem REAL de usos (src E bg — split/bg contam 2x) e cap do R-56.
+3. **GATE julgava a FRASE, não a CENA.** Rubric reescrito: o modelo é o MONTADOR do
+   documentário, recebe `{tema}` (assunto do filme) + `{desc}` (linha narrada) +
+   `{ctx}`; plano que só ilustra a frase mas é estranho ao filme cai pra 3-5.
+   **Agnóstico de nicho** (sem exemplo hardcoded — a regra é incidental x assunto).
+   + âncora do tema em TODA query + gate de LUMINÂNCIA (clipe escuro não vai ao ar).
++ `acervo_registry._s`, `montador5` e `auditar_montagem` tolerantes a `dados` vindo
+  como LISTA do LLM (estourava AttributeError no meio do pass).
+
+**PENDENTE (pedido do Piter: NÃO renderizar até ele avisar).** A montagem do job
+`_job_cobras` está pronta e VERDE — é só `rodar_producao5.py` quando ele liberar.
+
+### O que ainda incomoda (próxima frente)
+- 4 clipes com 3+ usos e ~4 planos estranhos ao tema: falta MATERIAL, não regra.
+  Ampliar a gama (SearXNG self-hosted + yt-dlp em TikTok/Instagram/Facebook) é o
+  próximo passo real — nicho local (fauna BR) vive nessas fontes.
+- Preferir IMAGEM boa a VÍDEO ruim: hoje o beat de vídeo com nota baixa ganha do
+  slot de imagem que ilustraria melhor. Deve virar regra no curador.
+
 ## Pendências / próximos passos
 1. **Re-rodar o vídeo das cobras** com a ordem corrigida (job `_job_cobras` pronto:
    roteiro/narração/transcript/plano/banco 25 clipes já feitos — é só `curador5 --resume`
