@@ -23,11 +23,17 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).parent))
 import executor_beats as ex  # noqa — dedup/USED/normalização/fallback v4 (read-only)
+import vision_gate as vg  # noqa — amostragem de frames p/ dar nota ao candidato do v4
 from curador_footage import secoes_do_plano, ctx_da_secao  # noqa
 from fontes5 import coletar_videos, coletar_imagens  # noqa
 from gate5 import batch_gate, SCORE_THRESHOLD  # noqa
 
 STOPWORDS5 = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "for", "to"}
+
+# hierarquia T3 preservada (regra Piter 31/07): footage REAL vale mais que stock, então
+# entra na disputa com vantagem — não com passe livre.
+BONUS_TIER = {3: 2, 2: 1, 1: 0}
+NOTA_V4_OTIMA = 9  # v4 com plano ótimo fecha o beat sem gastar o pool novo (tempo)
 
 
 def queries_estratificadas(busca, assunto_secao="", ancora=""):
@@ -199,7 +205,11 @@ def main():
     for s, sec in sorted(secs.items()):
         sctx = ctx_da_secao(sec, todos)
         for b in sec["beats"]:
-            if b.get("tipo") not in ("footage_video", "stock"):
+            # 01/08: ILUSTRACAO entrou aqui. Os 21 beats de "diagram" do plano de cobras
+            # (neuromuscular junction, diaphragm paralysis, crotoxin molecule) iam DIRETO
+            # pro v4 — sem âncora do tema e sem score — e voltavam com esquema de livro
+            # de fisiologia, que não ilustra cobra nenhuma. Agora disputam igual.
+            if b.get("tipo") not in ("footage_video", "stock", "ilustracao", "footage_imagem"):
                 continue
             jres = ctx["res"] / f"b{b['i']:03d}.json"
             if a.resume and jres.exists():
@@ -209,30 +219,67 @@ def main():
             tarefas.append((b2, sctx))
     print(f"curador5: {len(tarefas)} beats | âncora='{ancora5}' | v4 primeiro + fontes novas")
 
+    def _nota_do_v4(r4, b2, sctx):
+        """Dá ao candidato do v4 uma NOTA na mesma régua do pool novo (0-10 + bônus de
+        tier). Vídeo é julgado por 1 frame do meio; imagem, por ela mesma."""
+        arq = Path(r4["arquivo"])
+        alvo = arq
+        if arq.suffix.lower() in (".mp4", ".mov", ".webm"):
+            frames = vg._frames_de_video(arq, ctx["tmp"], n=1)
+            if not frames:
+                return 6  # não deu pra amostrar: assume mediano (não pune o v4 à toa)
+            alvo = frames[0]
+        notas = batch_gate([{"path": str(alvo), "id": f"v4_{b2['i']}", "source": "v4"}],
+                           b2.get("busca") or "", sctx, tema=ancora5)
+        n = notas[0]["score"] if notas else -1
+        return 6 if n < 0 else n  # gate mudo não condena o que o v4 já aprovou
+
     def _rodar5(par):
-        """31/07 (correção Piter): a v5 SOMA fontes, NUNCA substitui a hierarquia T3.
-        Ordem = cascata v4 PRIMEIRO (YouTube/footage REAL = carro-chefe do T3, com
-        todos os gates do executor) e só então o pool novo (Pexels/Coverr/Pixabay
-        batch-score) como ADIÇÃO — antes eu tinha invertido e o stock genérico
-        ganhava do footage real."""
+        """01/08 (QA cobras): a ordem "v4 primeiro, v5 só se o v4 falhar" fazia o v5
+        NUNCA ser consultado — 38 dos 47 beats foram decididos pelo v4 sozinho, com
+        gate BINÁRIO (o primeiro que passa, não o melhor). Era daí que vinham o
+        "doctor writing notebook" e os diagramas técnicos num filme sobre cobras.
+
+        Mas inverter a ordem reintroduziria o erro de 31/07 (stock genérico ganhando
+        do YouTube real). Então nem uma coisa nem outra: o candidato do v4 entra no
+        MESMO batch-score, com BÔNUS DE TIER. A hierarquia T3 continua valendo —
+        footage real (T3) leva +2, CC/PD (T2) +1, stock (T1) 0 — mas um plano
+        medíocre do v4 (nota 4) não ganha mais de uma foto certa nota 9."""
         b2, sctx = par
-        origem = "v4"
         if ancora5 and ancora5.split()[0].lower() not in (b2.get("busca") or "").lower():
             b2 = {**b2, "busca": f"{ancora5} {b2.get('busca') or ''}".strip()[:110]}
+        _RESOLVER_V4 = {"footage_video": ex.resolver_footage_video,
+                        "footage_imagem": ex.resolver_footage_imagem,
+                        "ilustracao": ex.resolver_ilustracao}
         try:
-            r = ex.resolver_footage_video(b2, ctx) if b2.get("tipo") == "footage_video" \
-                else ex.resolver_stock(b2, ctx)
+            r4 = _RESOLVER_V4.get(b2.get("tipo"), ex.resolver_stock)(b2, ctx)
         except Exception as e4:
             print(f"  b{b2['i']:03d} v4 erro ({type(e4).__name__})")
-            r = None
-        if not (r and r.get("status") == "ok" and r.get("arquivo")):
-            try:  # ADIÇÃO v5: fontes novas + batch-score entram onde o v4 não achou
-                r = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5)
-                origem = "v5"
-            except Exception as e5:
-                print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
-                r = None
-        return b2, r, origem
+            r4 = None
+        if not (r4 and r4.get("status") == "ok" and r4.get("arquivo")
+                and Path(r4["arquivo"]).exists()):
+            r4 = None
+
+        nota4 = -1
+        if r4:
+            try:
+                nota4 = _nota_do_v4(r4, b2, sctx) + BONUS_TIER.get(int(r4.get("tier") or 1), 0)
+            except Exception:
+                nota4 = 6
+            if nota4 >= NOTA_V4_OTIMA:   # v4 achou plano BOM: nem gasta pool novo
+                return b2, {**r4, "score": nota4}, "v4"
+
+        try:  # v4 fraco (ou vazio) -> o pool novo disputa a vaga
+            r5 = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5)
+        except Exception as e5:
+            print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
+            r5 = None
+        nota5 = (r5 or {}).get("score", -1)
+        if r5 and nota5 > nota4:
+            if r4:  # o do v4 perdeu a disputa — não deixa lixo no assets/
+                Path(r4["arquivo"]).unlink(missing_ok=True)
+            return b2, r5, "v5"
+        return b2, ({**r4, "score": nota4} if r4 else None), "v4"
 
     ok5 = ok4 = falhas = 0
     with ThreadPoolExecutor(max_workers=a.workers) as pool:
