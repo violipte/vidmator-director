@@ -91,8 +91,40 @@ Três causas raiz achadas e corrigidas. Montagem final: **140 beats, cobertura 1
 + `acervo_registry._s`, `montador5` e `auditar_montagem` tolerantes a `dados` vindo
   como LISTA do LLM (estourava AttributeError no meio do pass).
 
-**PENDENTE (pedido do Piter: NÃO renderizar até ele avisar).** A montagem do job
-`_job_cobras` está pronta e VERDE — é só `rodar_producao5.py` quando ele liberar.
+## 🔧 CORREÇÕES 01/08 rodada 3 (QA do render com animações) — commit e51b5bb
+Vídeo renderizado e decupado por mim. 4 defeitos que IAM AO AR:
+
+1. **Citação assinada por pessoa INEXISTENTE.** Roteiro: "The doctor in Minas
+   Gerais"; o STT ouviu **"Nasgerice"** e o diretor extraiu como entidade PESSOA →
+   QuoteCard final assinado por ela. O diretor trabalha sobre a TRANSCRIÇÃO (precisa
+   dela pro timing) e nome próprio é o que o STT mais erra. Fix: `acervo_registry.
+   set_roteiro()` + `_autor_confiavel()` — só assina se o nome está LITERAL no
+   roteiro; senão card sem assinatura. `montador5 --roteiro` (auto-detecta
+   `<job>/roteiro*.txt`). ⚠️ o `roteiro_en.txt` DO JOB tinha só o hook (897 B) — o
+   completo estava em `teste/`; passar `--roteiro` explícito é o certo.
+2. **Os 5 ChapterTitle do "Top 5" nunca chegavam à tela** (log dizia `chapters=5`).
+   A proteção "capítulo intocável" só cobria `chapter_style=minimal` (Ovl02); no
+   **cinematic** o `ChapterTitle` entrava na lista de sacrifício do orçamento de
+   texto — e como o corte vai do FIM pro começo, os títulos morriam primeiro.
+   Protegido nos 3 pontos (demote, sweep R-109, rebalance R-62). 26 → 31 componentes.
+3. **`veil_video` = a "fumaça" que o Piter reclamou.** Tocava o clipe de tinta
+   INTEIRO (`dur_s` 11s) com opacity fixa 0.9 em `multiply`, começando `pico_s` (8s)
+   antes do corte: o auge alinhava no corte (certo) mas SEM envelope de saída a tinta
+   FICAVA — borrão preto peludo por segundos, engoliu os capítulos 01 e 04. Agora é
+   wipe de **1.4s** (corte no meio), seek alinhando o auge, envelope 0→0.85→0.
+4. **`limpar_disco.py` (PROD) matou o 1º render**: apagou `remotion/out` (com a pasta
+   `blocos/` = checkpoint) no meio. O guard dele (`_remotion_ativo`) só olha
+   `remotion/_tmp` e job v5 usa `_tmp_<job>` → produção invisível. Fix nosso:
+   `rodar_producao5.heartbeat_antilimpeza()`. **PENDENTE em PROD** (aval do Piter):
+   o guard deveria varrer `_tmp*`. Agrava quando F: > 85% (limpeza em LOOP).
+
+⚠️ **A montagem NÃO é determinística** (o rodízio de bg troca 17 beats entre duas
+montagens do mesmo job). Por isso existe `rodar_producao5 --sem-montar`: para patch
+cirúrgico no `montagem.json` + re-render de UM bloco sem invalidar os checkpoints.
+
+**Entregue:** `_job_cobras/cobras_final.mp4` (495s, 140 beats, 31 componentes,
+70 clipes distintos, preqa 6 flags R-72 = 3%). Versões anteriores guardadas no job
+(`cobras_v1_sem_capitulos.mp4`, `cobras_v2_veu_ruim.mp4`) para comparação.
 
 ### O que ainda incomoda (próxima frente)
 - 4 clipes com 3+ usos e ~4 planos estranhos ao tema: falta MATERIAL, não regra.
