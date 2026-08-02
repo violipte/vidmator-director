@@ -16,6 +16,32 @@ TESTE = Path(__file__).parent
 REMOTION = Path(r"F:/Canal Dark/Aplicativo de Edição/remotion")
 
 
+def heartbeat_antilimpeza():
+    """01/08: o `limpar_disco.py` do PROD apagou `remotion/out` NO MEIO da produção
+    (a pasta `blocos/` sumiu entre o mkdir e a normalização → render abortado, bloco
+    0 perdido). O guard dele (`_remotion_ativo`) só olha `remotion/_tmp`, mas job v5
+    usa temp ISOLADO (`_tmp_<job>`) — então o render ficava invisível pra ele.
+    Fix do NOSSO lado (sem tocar em PROD): tocar um arquivo em `remotion/_tmp` a cada
+    30s enquanto a produção roda; o guard vê mtime < 120s e preserva o `out`."""
+    import threading
+    import time
+
+    tmp = REMOTION / "_tmp"
+    tmp.mkdir(parents=True, exist_ok=True)
+    marca = tmp / ".render_v5_ativo"
+
+    def _bater():
+        while True:
+            try:
+                tmp.mkdir(parents=True, exist_ok=True)  # a própria _tmp pode ter sido apagada
+                marca.write_text(str(time.time()), encoding="utf-8")
+            except OSError:
+                pass
+            time.sleep(30)
+
+    threading.Thread(target=_bater, daemon=True).start()
+
+
 def etapa(nome, cmd, cwd=None, timeout=7200):
     print(f"\n=== [{nome}] ===", flush=True)
     r = subprocess.run(cmd, cwd=cwd or TESTE, timeout=timeout)
@@ -31,11 +57,17 @@ def main():
     ap.add_argument("--audio", required=True)
     ap.add_argument("--nome", required=True)
     ap.add_argument("--saida", default="", help="mp4 final (default: <job>/<nome>_final.mp4)")
+    ap.add_argument("--sem-montar", action="store_true",
+                    help="usa a montagem.json que já está no disco (patch cirúrgico + "
+                         "re-render de bloco: montar de novo troca bgs no rodízio e "
+                         "invalidaria os checkpoints dos outros blocos)")
     a = ap.parse_args()
     py = sys.executable
+    heartbeat_antilimpeza()
 
-    etapa("MONTADOR", [py, "montador5.py", "--job", a.job, "--plano", a.plano,
-                       "--audio", a.audio, "--nome", a.nome])
+    if not a.sem_montar:
+        etapa("MONTADOR", [py, "montador5.py", "--job", a.job, "--plano", a.plano,
+                           "--audio", a.audio, "--nome", a.nome])
     etapa("GOLDENS", [py, "test_regras.py"])
     mont_json = REMOTION / "public" / "jobs" / a.nome / "montagem.json"
     etapa("AUDITOR", [py, "auditar_montagem.py", str(mont_json), a.plano])
@@ -88,6 +120,7 @@ def main():
             cand = sorted(outdir.glob(f"{curto}_*.mp4"), key=lambda p: p.stat().st_mtime)
             bruto = cand[-1] if cand else bruto
         n_frames = round((b["t_fim"] - b["t_ini"]) * 30)
+        ck.mkdir(parents=True, exist_ok=True)  # defesa: limpeza externa pode ter levado a pasta
         etapa(f"NORMALIZA bloco {i}",
               ["ffmpeg", "-y", "-loglevel", "error", "-i", str(bruto), "-an",
                "-frames:v", str(n_frames), "-c:v", "libx264", "-preset", "medium",

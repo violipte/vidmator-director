@@ -125,15 +125,28 @@ const TransInWrap: React.FC<{ tipo?: string; children: React.ReactNode }> = ({ t
   return <AbsoluteFill style={{ transform: tf }}>{children}</AbsoluteFill>;
 };
 
+/* janela do véu de vídeo: transição, não cena — o corte fica no meio dela */
+const VEIL_JANELA_S = 1.4;
+
 /* v2.1: veils de transição (flash/fade/blur/ink) — camada global por cima do corte.
    Tipos transform retornam null aqui (agem via trans_in no beat). */
 const VeilFX: React.FC<{ fx: FxTrans }> = ({ fx }) => {
   const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
   if (fx.tipo === "veil_video" && fx.arquivo) {
+    /* 01/08 (QA cobras): o véu tocava o clipe de tinta INTEIRO (dur_s 11s) com opacity
+       fixa 0.9 em multiply, começando pico_s (8s) ANTES do corte — no auge da tinta a
+       tela virava um borrão PRETO por vários segundos e engoliu os capítulos 01 e 04.
+       Transição de tinta é um WIPE: janela curta em torno do corte, com o AUGE do asset
+       (pico_s) alinhado ao corte via seek, e envelope 0 -> teto -> 0. */
+    const durF = Math.max(6, Math.round(VEIL_JANELA_S * fps));
+    const o = interpolate(f, [0, durF * 0.45, durF * 0.62, durF - 1], [0, 0.85, 0.85, 0],
+      { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+    const seekS = Math.max(0, (fx.pico_s ?? 1) - VEIL_JANELA_S * 0.5);
     return (
-      <AbsoluteFill style={{ mixBlendMode: "multiply", pointerEvents: "none" }}>
-        <OffthreadVideo src={staticFile(fx.arquivo)} muted
-          style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} />
+      <AbsoluteFill style={{ mixBlendMode: "multiply", pointerEvents: "none", opacity: o }}>
+        <OffthreadVideo src={staticFile(fx.arquivo)} muted startFrom={Math.round(seekS * fps)}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </AbsoluteFill>
     );
   }
@@ -155,11 +168,11 @@ const VeilFX: React.FC<{ fx: FxTrans }> = ({ fx }) => {
   return null;
 };
 const veilLeadF = (fx: FxTrans, fps: number) =>
-  fx.tipo === "veil_video" ? Math.round((fx.pico_s ?? 1) * fps) :
+  fx.tipo === "veil_video" ? Math.round(VEIL_JANELA_S * 0.5 * fps) :
   fx.tipo === "flash_crescente" ? 14 : fx.tipo === "esmaecer_preto" ? 10 :
   fx.tipo === "suave" ? 6 : fx.tipo === "blur_dip" ? 8 : 4;
 const veilDurF = (fx: FxTrans, fps: number) =>
-  fx.tipo === "veil_video" ? Math.max(1, Math.round((fx.dur_s ?? 3) * fps)) :
+  fx.tipo === "veil_video" ? Math.max(6, Math.round(VEIL_JANELA_S * fps)) :
   fx.tipo === "flash_crescente" ? 22 : fx.tipo === "esmaecer_preto" ? 24 :
   fx.tipo === "suave" ? 14 : fx.tipo === "blur_dip" ? 18 : 12;
 

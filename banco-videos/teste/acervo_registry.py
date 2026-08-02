@@ -149,12 +149,38 @@ def _b(d, t, im):
             "text": str(_s(d, "text", "label") or "")[:40]}
 
 # ===== TEXTO FULL (cartão com fundo próprio) =====
+_ROTEIRO = {"txt": ""}
+
+
+def set_roteiro(txt):
+    """Carrega o roteiro ORIGINAL (fonte de verdade dos nomes próprios)."""
+    _ROTEIRO["txt"] = " ".join((txt or "").lower().split())
+
+
+def _autor_confiavel(nome):
+    """01/08 (QA cobras): o roteiro dizia "The doctor in Minas Gerais"; o STT ouviu
+    "Nasgerice" e o diretor extraiu isso como ENTIDADE PESSOA — o vídeo foi ao ar com
+    uma citação assinada por alguém que NÃO EXISTE. Nome próprio é justamente o que o
+    STT mais erra, e o diretor trabalha sobre a transcrição (precisa dela pro timing).
+    Regra: só assina se o nome aparece LITERAL no roteiro. Senão o card vai sem
+    assinatura — melhor citação anônima que fonte inventada."""
+    n = " ".join((nome or "").lower().split())
+    if not n:
+        return False
+    if not _ROTEIRO["txt"]:
+        return True  # roteiro não carregado => não bloqueia (comportamento antigo)
+    return n in _ROTEIRO["txt"]
+
+
 @reg("QuoteCard", "texto_full", peso=1.2)
 def _b(d, t, im):
     q = str(_s(d, "quote", "quoteText") or "")[:180]
     autor = str(_s(d, "author") or "")
     if not q or not autor: return None
     nome, _, cargo = autor.partition(",")
+    if not _autor_confiavel(nome):
+        print(f"[registry] atribuição DESCARTADA (nome ausente do roteiro): {nome.strip()!r}")
+        nome, cargo = "", ""
     return {"quoteText": q, "name": nome.strip()[:30], "title": cargo.strip()[:40]}
 
 @reg("ChapterTitle", "texto_full")

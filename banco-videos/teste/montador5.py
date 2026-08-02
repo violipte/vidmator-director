@@ -39,11 +39,23 @@ def main():
     ap.add_argument("--plano", required=True)
     ap.add_argument("--audio", required=True)
     ap.add_argument("--nome", required=True)
+    ap.add_argument("--roteiro", default="", help="roteiro ORIGINAL (valida nomes próprios "
+                                                  "contra erro de STT; default: <job>/roteiro*.txt)")
     a = ap.parse_args()
 
     job = Path(a.job) if Path(a.job).is_absolute() else Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos") / a.job
     # job novo (curador5 sozinho) não tem o consolidado do executor — a pasta
     # resolvido/ abaixo é a fonte; o consolidado é opcional
+    # roteiro = fonte de verdade dos nomes próprios (o diretor lê a TRANSCRIÇÃO, e o
+    # STT troca nome: "Minas Gerais" -> "Nasgerice" virou autor de citação no ar)
+    _rot = Path(a.roteiro) if a.roteiro else next(iter(sorted(job.glob("roteiro*.txt"))), None)
+    if _rot and Path(_rot).exists():
+        from acervo_registry import set_roteiro  # noqa
+        set_roteiro(Path(_rot).read_text(encoding="utf-8", errors="ignore"))
+        print(f"roteiro de validação: {Path(_rot).name}")
+    else:
+        print("!! sem roteiro — atribuições de citação NÃO serão validadas")
+
     _rj = job / "resolvido.json"
     resolvido = json.loads(_rj.read_text(encoding="utf-8")) if _rj.exists() else []
     # 27/07: o CURADOR grava por-beat em resolvido/ (inclui banco secao=900) e NÃO
@@ -241,6 +253,13 @@ def main():
                     continue
                 pool_uso[nome_arq] = pool_uso.get(nome_arq, 0) + 1
                 pool_poss.setdefault(nome_arq, []).append(r["i"])
+                # 01/08 (QA cobras): num "Top 5" com chapter_style CINEMATIC os 5 títulos
+                # foram criados (chapters=5) e comidos aqui pelo demote de orçamento —
+                # o vídeo foi ao ar sem UM capítulo sequer. Capítulo é ESTRUTURA da
+                # narrativa, não enfeite de texto: quem cede o tempo é o resto.
+                if b.get("_chapter") or b.get("componente") == "ChapterTitle":
+                    print(f"  [R-64] capítulo i={r['i']} protegido do demote de orçamento")
+                    return False
                 b["tipo"], b["tier"], b["watermark"] = "stock", tier, wm
                 b["src"] = f"jobs/{a.nome}/assets/{nome_arq}"
                 b.pop("componente", None), b.pop("props", None)
@@ -378,6 +397,8 @@ def main():
                     b["componente"] = "ChapterTitle"
                     b["props"] = {"title": corte(humanizar(str(titulo)), 40), "chapterNumber": n_chapter, "subtitle": ""}
                     b["_min_dur"] = 3.0
+                    b["_chapter"] = True  # 01/08: faltava aqui — só o ramo minimal marcava,
+                    # e no cinematic o sweep R-109/R-62 comia os capítulos (ver abaixo)
                     quotas["ChapterTitle"] = quotas.get("ChapterTitle", 0) + 1
             else:
                 if comp == "ChapterTitle":
@@ -785,8 +806,13 @@ def main():
         return tot
 
     teto62 = _tb * dur_total * 1.10  # folga menor que a do auditor (1.15) = margem de segurança
+    # 01/08 (QA cobras): "capítulo intocável" só valia pro estilo MINIMAL (Ovl02). No
+    # CINEMATIC o capítulo é ChapterTitle — entrava na lista de sacrifício e os 5 títulos
+    # do "Top 5" foram os PRIMEIROS a morrer (texto 70s/74s, demote=23, chapters=5 criados
+    # e 0 na tela). O capítulo é ESTRUTURA, não enfeite: quem cede é o resto do texto.
     for b in sorted([x for x in beats_out if x["tipo"] == "animacao" and _eh_texto(x.get("componente") or "")
-                     and "Ovl02" not in (x.get("componente") or "")],
+                     and "Ovl02" not in (x.get("componente") or "")
+                     and (x.get("componente") or "") != "ChapterTitle"],
                     key=lambda x: -x["t_ini"]):  # sacrifica do FIM pro começo; capítulo intocável
         if _texto_total() <= teto62:
             break
