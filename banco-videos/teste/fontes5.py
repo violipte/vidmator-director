@@ -11,6 +11,7 @@ gate5 (batch score). Keys em video-automator/credentials.json (gitignored):
 """
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -163,12 +164,8 @@ def web_img(query, n=6):
     o pool ficava só com stock genérico e esquema técnico. Sem infra: o SearXNG
     self-hosted (`searxng_img`) entra por cima quando a instância estiver de pé."""
     try:
-        from ddgs import DDGS
-    except ImportError:
-        return []
-    try:
         out = []
-        for x in DDGS().images(query[:100], max_results=n * 6):  # a blacklist come metade
+        for x in _ddgs_tentar("images", query, n * 6):  # a blacklist come metade
             u = x.get("image") or ""
             if not u.startswith("http") or any(d in u.lower() for d in _DOM_MARCADOS):
                 continue
@@ -179,6 +176,102 @@ def web_img(query, n=6):
         return out
     except Exception:
         return []
+
+
+# só padrão de post que É VÍDEO: o /p/ do Instagram também é foto/carrossel e o
+# yt-dlp morre com "There is no video in this post"; o vídeo do FB precisa do ID
+# numérico (a URL com slug sozinho dá 404)
+_PAD_POST = {"tiktok.com": r"/video/\d+",
+             "instagram.com": r"/(reel|tv)/[\w-]+",
+             "facebook.com": r"/videos?/[^/]+/\d+"}
+
+
+def _ddgs_tentar(metodo, query, max_results, tentativas=3):
+    """O ddgs LEVANTA `No results found` em vez de devolver lista vazia — e falha de
+    forma intermitente quando os backends rate-limitam (numa curadoria de 70+ beats
+    isso acontece o tempo todo). Retry curto com backoff; lista vazia é resposta
+    legítima, não erro que derruba o beat."""
+    import random
+    import time
+    try:
+        from ddgs import DDGS
+    except ImportError:
+        return []
+    for t in range(tentativas):
+        try:
+            return list(getattr(DDGS(), metodo)(query[:100], max_results=max_results))
+        except Exception as e:
+            if "no results" in str(e).lower() and t == tentativas - 1:
+                return []
+            time.sleep(1.5 * (t + 1) + random.random())
+    return []
+
+
+def web_video(query, n=4):
+    """Vídeo por BUSCA WEB (não só nos 3 bancos de stock).
+
+    01/08: o print do Piter mostrava TikTok/Facebook/Instagram cheios de material de
+    fauna BR que Pexels & cia não têm. A busca devolve a URL da PÁGINA; quem baixa é
+    o yt-dlp (`_via: ytdlp`). NÃO julgar pelo thumb: TikTok/Reels é gente falando pra
+    câmera e o rosto costuma aparecer só depois do 1º frame — o veredito real sai do
+    gate v4 com 6 frames DEPOIS do download (regra dura: nada de criador falando)."""
+    out, vistos = [], set()
+    for x in _ddgs_tentar("videos", query, n * 3):
+        u = x.get("content") or ""
+        if not u.startswith("http") or u in vistos:
+            continue
+        vistos.add(u)
+        out.append({"url": u, "source": "web_video", "_via": "ytdlp", "tier": 3,
+                    "thumb": (x.get("images") or {}).get("medium"),
+                    "meta": (x.get("title") or "")[:80],
+                    "id": f"wv_{abs(hash(u)) % 10**10}"})
+        if len(out) >= n:
+            break
+    if out:
+        return out
+    # o backend de VÍDEO do ddgs cai com frequência (devolve 0 enquanto text/images
+    # respondem) — nesse caso a busca textual acha o mesmo material
+    for x in _ddgs_tentar("text", f"site:youtube.com {query[:80]}", n * 3):
+        u = x.get("href") or ""
+        if not re.search(r"youtube\.com/watch\?v=|youtu\.be/", u) or u in vistos:
+            continue
+        vistos.add(u)
+        out.append({"url": u, "source": "web_video", "_via": "ytdlp", "tier": 3,
+                    "thumb": None, "meta": (x.get("title") or "")[:80],
+                    "id": f"wv_{abs(hash(u)) % 10**10}"})
+        if len(out) >= n:
+            break
+    return out
+
+
+def social_video(query, n=4, redes=("tiktok.com", "instagram.com", "facebook.com"),
+                 query_local=""):
+    """Posts de TikTok/Instagram/Facebook (yt-dlp suporta os três).
+
+    A busca por `site:` devolve MUITA página de agregação (/discover/, /popular/) —
+    só entra o que casa com o padrão de POST de verdade. E o material de nicho LOCAL
+    está indexado no IDIOMA LOCAL: `site:tiktok.com brazilian venomous snake` devolve
+    zero post, `site:tiktok.com jararaca cobra` devolve 18. Por isso `query_local`
+    (a âncora traduzida 1x por job) é tentada JUNTO com a query em inglês."""
+    out, vistos = [], set()
+    consultas = [q for q in (query_local, query) if q and q.strip()]
+    for rede in redes:
+        pad = _PAD_POST.get(rede)
+        for consulta in consultas:
+            for x in _ddgs_tentar("text", f"site:{rede} {consulta[:80]}", 10):
+                h = x.get("href") or ""
+                if not pad or not re.search(pad, h) or h in vistos:
+                    continue
+                vistos.add(h)
+                out.append({"url": h, "source": rede.split(".")[0], "_via": "ytdlp",
+                            "tier": 3, "thumb": None,
+                            "meta": (x.get("title") or "")[:80],
+                            "id": f"sv_{abs(hash(h)) % 10**10}"})
+                if len([o for o in out if o["source"] == rede.split(".")[0]]) >= n:
+                    break
+            if len([o for o in out if o["source"] == rede.split(".")[0]]) >= n:
+                break  # já tem o bastante desta rede: não gasta a 2ª consulta
+    return out
 
 
 def coletar_imagens(query, n_por_fonte=3, usados=None):

@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import executor_beats as ex  # noqa — dedup/USED/normalização/fallback v4 (read-only)
 import vision_gate as vg  # noqa — amostragem de frames p/ dar nota ao candidato do v4
 from curador_footage import secoes_do_plano, ctx_da_secao  # noqa
-from fontes5 import coletar_videos, coletar_imagens  # noqa
+from fontes5 import coletar_videos, coletar_imagens, web_video, social_video  # noqa
 from gate5 import batch_gate, SCORE_THRESHOLD  # noqa
 
 STOPWORDS5 = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "for", "to"}
@@ -34,6 +34,7 @@ STOPWORDS5 = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "fo
 # entra na disputa com vantagem — não com passe livre.
 BONUS_TIER = {3: 2, 2: 1, 1: 0}
 NOTA_V4_OTIMA = 9  # v4 com plano ótimo fecha o beat sem gastar o pool novo (tempo)
+_REDES = ("tiktok.com", "instagram.com", "facebook.com")
 
 
 def queries_estratificadas(busca, assunto_secao="", ancora=""):
@@ -123,7 +124,81 @@ def _baixar_imagem(url, dest_jpg):
         return False
 
 
-def resolver_beat5(b, sctx, ctx, usados_urls, ancora=""):
+def ancora_local(ancora_en, idioma="Portuguese (Brazil)"):
+    """Traduz a âncora do tema UMA VEZ por job, pra busca em rede social.
+
+    01/08: as buscas do editor são em EN (decisão do Piter — o Google devolve
+    material de sobra). Mas rede social de nicho LOCAL é indexada no idioma local:
+    `site:tiktok.com brazilian venomous snake` = 0 posts; `jararaca cobra` = 18.
+    Uma chamada por job (não por beat) — se falhar, devolve "" e o social busca só
+    em EN, sem quebrar nada."""
+    import httpx
+    if not ancora_en or not vg._OKEY:
+        return ""
+    try:
+        r = httpx.post("https://api.openai.com/v1/chat/completions",
+                       headers={"Authorization": "Bearer " + vg._OKEY},
+                       # 400, não 60: o Luna é modelo de RACIOCÍNIO e os reasoning
+                       # tokens saem deste mesmo orçamento — com 60 ele pensa e
+                       # devolve content vazio (finish_reason=length)
+                       json={"model": vg._LUNA_MODEL, "max_completion_tokens": 400,
+                             "messages": [{"role": "user", "content":
+                                           f"Translate to {idioma} the search terms below. "
+                                           f"Reply with ONLY the translated terms, no quotes, "
+                                           f"no explanation.\n\n{ancora_en}"}]},
+                       timeout=60)
+        if r.status_code == 200:
+            return (r.json()["choices"][0]["message"]["content"] or "").strip()[:80]
+    except Exception:
+        pass
+    return ""
+
+
+def _baixar_ytdlp(url, dest_mp4, tmp):
+    """Baixa post de página (YouTube/TikTok/Reels/FB) via yt-dlp e normaliza 1080p30.
+    Usa o MESMO pool de proxy do executor (não queimar IP) e corta em 12s. Vertical
+    (TikTok/Reels) vira crop central — o T3 já renderiza em quadro menor."""
+    import threading
+    bruto = Path(tmp) / f"s5_{threading.get_ident()}_{abs(hash(url)) % 10**8}.%(ext)s"
+    _, pargs = ex._yt_args_proxy()
+    cmd = ex.YTDLP + pargs + [
+        "--no-warnings", "--no-playlist", "--quiet",
+        "-f", "best[height<=1080][ext=mp4]/best[ext=mp4]/best",
+        "--max-filesize", "120M", "-o", str(bruto), url]
+    try:
+        r = subprocess.run(cmd, capture_output=True, timeout=300)
+        if r.returncode != 0:
+            return False
+        achados = sorted(Path(tmp).glob(bruto.name.replace(".%(ext)s", ".*")))
+        if not achados:
+            return False
+        src = achados[0]
+        r2 = subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", str(src),
+                             "-t", "12", "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,"
+                             "crop=1920:1080", "-r", "30", "-an", "-c:v", "libx264", "-preset",
+                             "fast", "-crf", "20", "-pix_fmt", "yuv420p", str(dest_mp4)],
+                            capture_output=True, timeout=300)
+        src.unlink(missing_ok=True)
+        return r2.returncode == 0 and Path(dest_mp4).exists()
+    except Exception:
+        return False
+
+
+def _gate_pesado_ok(mp4, beat, ctx):
+    """Gate v4 COMPLETO (6 frames pela duração inteira) — obrigatório pra material
+    social. Regra dura do Piter: NUNCA criador falando pra câmera (máx entrevista de
+    TV), nunca criança. O thumb não denuncia isso: no TikTok/Reels o rosto costuma
+    entrar depois do 1º frame (mesmo motivo do QA de tênis 23/07)."""
+    frames = vg._frames_de_video(mp4, ctx["tmp"], n=6)
+    if not frames:
+        return False
+    g = vg.gate(ex.subject_do_beat(beat), [str(f) for f in frames])
+    if not g["ok"]:
+        print(f"  b{beat['i']:03d} social REPROVADO {g['flags']}")
+    return bool(g["ok"])
+
+
+def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
     """Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4).
 
     01/08 (QA cobras + pedido do Piter): antes só VÍDEO era coletado aqui — a via de
@@ -136,25 +211,45 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora=""):
         if not q.strip():
             continue
         from concurrent.futures import ThreadPoolExecutor
-        with ThreadPoolExecutor(max_workers=2) as _p:
-            f_v = _p.submit(coletar_videos, q, 3, usados_urls)
-            f_i = _p.submit(coletar_imagens, q, 3, usados_urls)
+        with ThreadPoolExecutor(max_workers=4) as _p:
+            f_v = _p.submit(coletar_videos, q, 3, usados_urls)   # stock: Pexels/Coverr/Pixabay
+            f_i = _p.submit(coletar_imagens, q, 3, usados_urls)  # imagem: Openverse/web/...
+            # web/social SÓ na 1ª rodada: o ddgs rate-limita, e 70 beats x 4 queries
+            # x 4 redes queimaria a cota logo no começo da curadoria
+            f_w = _p.submit(web_video, q, 3) if rodada == 0 else None
+            f_s = _p.submit(social_video, q, 2, _REDES, ancora_pt) if rodada == 0 else None
             vids = [{**c, "_midia": "video"} for c in (f_v.result() or [])]
             imgs = [{**c, "_midia": "imagem"} for c in (f_i.result() or [])]
-        cands = vids + imgs
-        if not cands:
+            web_v = [{**c, "_midia": "video"} for c in ((f_w.result() if f_w else []) or [])]
+            soc = [{**c, "_midia": "video"} for c in ((f_s.result() if f_s else []) or [])]
+        # social sem thumb não tem como ser pré-triado por imagem — vai direto pro
+        # teste caro (baixar + gate de 6 frames), e só depois dos que têm nota
+        cands = vids + imgs + web_v + [c for c in soc if c.get("thumb")]
+        sem_thumb = [c for c in soc if not c.get("thumb")]
+        if not cands and not sem_thumb:
             continue
         # vídeo é julgado pelo THUMB (barato); imagem, por ela mesma
         pool = [{**c, "url": c.get("thumb") or c["url"]} for c in cands]
-        notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora)
-        # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08)
-        for melhor in [n for n in notas if n["score"] >= 7]:
-            orig = next((c for c in cands if c["id"] == melhor["id"]), None)
+        notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora) if pool else []
+        # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08).
+        # social sem thumb entra no FIM da fila: só é tentado se nada com nota vingou.
+        fila = [n for n in notas if n["score"] >= 7] + [{**c, "score": 7} for c in sem_thumb]
+        for melhor in fila:
+            orig = next((c for c in cands + sem_thumb if c["id"] == melhor["id"]), None)
             if not orig:
                 continue
             if orig["_midia"] == "video":
-                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T1__{orig['id']}.mp4"
-                if not _baixar_normalizar(orig["url"], dest, ctx["tmp"]):
+                tier_c = int(orig.get("tier") or 1)
+                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T{tier_c}__{orig['id']}.mp4"
+                if orig.get("_via") == "ytdlp":
+                    if not _baixar_ytdlp(orig["url"], dest, ctx["tmp"]):
+                        continue
+                    # material da web/social: gate PESADO (6 frames) — talking-head,
+                    # criança e marca só aparecem depois do 1º frame
+                    if not _gate_pesado_ok(dest, b, ctx):
+                        dest.unlink(missing_ok=True)
+                        continue
+                elif not _baixar_normalizar(orig["url"], dest, ctx["tmp"]):
                     continue
                 if not _luminancia_ok(dest, ctx["tmp"]):   # gate de TELA
                     dest.unlink(missing_ok=True)
@@ -171,7 +266,8 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora=""):
             usados_urls.add(orig["url"])  # SÓ o vencedor reivindica (demais voltam ao pool)
             return {"i": b["i"], "t_ini": b.get("t_ini", 0), "t_fim": b.get("t_fim", 0),
                     "secao": b.get("secao", 0), "status": "ok", "arquivo": str(dest),
-                    "tier": 1, "fonte": orig["source"], "tipo": tipo_final,
+                    "tier": int(orig.get("tier") or 1),  # T3 (web/social) => máscara pesada
+                    "fonte": orig["source"], "tipo": tipo_final,
                     "tipo_final": tipo_final, "midia": orig["_midia"],
                     "score": melhor["score"], "busca": q[:120]}
     return None
@@ -196,6 +292,10 @@ def main():
         todos = []  # nicho sem announce => ctx b-roll (fix 27/07)
 
     ancora5 = sc.get("assunto_ancora") or ""
+    # 1 chamada por JOB: rede social de nicho local é indexada no idioma local
+    ancora_pt5 = sc.get("assunto_ancora_local") or ancora_local(ancora5)
+    if ancora_pt5:
+        print(f"âncora local (busca social): '{ancora_pt5}'")
     ctx = {"assets": job / "assets", "tmp": job / "_tmp", "res": job / "resolvido"}
     for d in ctx.values():
         d.mkdir(parents=True, exist_ok=True)
@@ -270,7 +370,7 @@ def main():
                 return b2, {**r4, "score": nota4}, "v4"
 
         try:  # v4 fraco (ou vazio) -> o pool novo disputa a vaga
-            r5 = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5)
+            r5 = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5, ancora_pt5)
         except Exception as e5:
             print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
             r5 = None
