@@ -133,6 +133,28 @@ cirúrgico no `montagem.json` + re-render de UM bloco sem invalidar os checkpoin
 - Preferir IMAGEM boa a VÍDEO ruim: hoje o beat de vídeo com nota baixa ganha do
   slot de imagem que ilustraria melhor. Deve virar regra no curador.
 
+## 🔎 PESQUISADOR (01/08) — o que ESTÁ e o que NÃO está funcionando
+| Fonte | Busca | Baixa | Obs |
+|---|---|---|---|
+| `web_img` (ddgs, imagem) | ✅ | ✅ | **maior ganho**: traz reptile-database/snakeradar/sciencephoto (nicho local) |
+| `web_video` (ddgs → yt-dlp) | ✅ | ✅ | backend "videos" do ddgs cai → fallback `site:youtube.com` |
+| TikTok | ✅ | ✅ | end-to-end provado (1 aprovado + 1 barrado pelo gate) |
+| Instagram | ⚠️ | ⚠️ | só `/reel/` e `/tv/` (o `/p/` é foto); raro na busca |
+| Facebook | ✅ | ❌ | yt-dlp não baixa (login) |
+| SearXNG self-hosted | ❌ | — | Docker não sobe: sockets órfãos no kernel, **precisa reboot**. Já deixei `EnableDockerAI=false` (era ele que travava). O `ddgs` cobre o papel enquanto isso. |
+
+**Regras que valem pro material web/social:** gate PESADO obrigatório (6 frames pela
+duração inteira, nunca o thumb — talking-head só aparece depois do 1º frame) +
+`tier=3` (máscara pesada) + áudio 0% + proxy do pool (não queimar IP).
+**Idioma:** buscas gerais em EN (decisão do Piter); busca SOCIAL usa a âncora
+traduzida 1x por job (`ancora_local()`) — `site:tiktok.com brazilian venomous snake`
+devolve 0 posts, `jararaca cobra` devolve 18.
+
+⚠️ **`ddgs` LEVANTA exceção** (`No results found`) em vez de devolver lista vazia, e
+rate-limita: `_ddgs_tentar()` faz retry, e web/social só rodam na 1ª query do beat.
+⚠️ **Luna é modelo de RACIOCÍNIO**: `max_completion_tokens` cobre reasoning + saída.
+Com 60 ele pensa e devolve content VAZIO (`finish_reason=length`). Usar ≥400.
+
 ## Pendências / próximos passos
 1. **Re-rodar o vídeo das cobras** com a ordem corrigida (job `_job_cobras` pronto:
    roteiro/narração/transcript/plano/banco 25 clipes já feitos — é só `curador5 --resume`
