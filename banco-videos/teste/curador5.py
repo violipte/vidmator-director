@@ -96,36 +96,78 @@ def _baixar_normalizar(url, dest_mp4, tmp):
             pass  # Windows pode segurar o handle um instante — o tmp é limpo depois
 
 
+def _baixar_imagem(url, dest_jpg):
+    """Download de imagem + cap de resolução (o executor já tem a regra: original de
+    30MP estoura EncodingError no render)."""
+    import httpx
+    try:
+        r = httpx.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=60, follow_redirects=True)
+        if r.status_code != 200 or len(r.content) < 8000:
+            return False
+        Path(dest_jpg).write_bytes(r.content)
+        from PIL import Image
+        with Image.open(dest_jpg) as im:   # valida que é imagem de verdade
+            if min(im.size) < 480:
+                Path(dest_jpg).unlink(missing_ok=True)
+                return False
+        ex._cap_resolucao(Path(dest_jpg))
+        return True
+    except Exception:
+        Path(dest_jpg).unlink(missing_ok=True)
+        return False
+
+
 def resolver_beat5(b, sctx, ctx, usados_urls, ancora=""):
-    """Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4)."""
-    assunto = (b.get("_sec_ctx") or "")[:0]  # ctx vai pro gate, não pra query
+    """Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4).
+
+    01/08 (QA cobras + pedido do Piter): antes só VÍDEO era coletado aqui — a via de
+    IMAGEM (`coletar_imagens`: Openverse/SearXNG/Pixabay/Unsplash) estava importada e
+    NUNCA era chamada. Efeito: a imagem nota 9 que ilustrava o bicho não perdia a
+    disputa, ela nunca ENTRAVA na disputa, e o beat acabava com vídeo genérico nota 6
+    (ou com esquema técnico vindo do fallback v4). Agora vídeo e imagem vão para o
+    MESMO batch-score e o melhor vence, seja qual for a mídia."""
     for rodada, q in enumerate(queries_estratificadas(b.get("busca") or "", "", ancora)):
         if not q.strip():
             continue
-        cands = coletar_videos(q, n_por_fonte=3, usados=usados_urls)
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=2) as _p:
+            f_v = _p.submit(coletar_videos, q, 3, usados_urls)
+            f_i = _p.submit(coletar_imagens, q, 3, usados_urls)
+            vids = [{**c, "_midia": "video"} for c in (f_v.result() or [])]
+            imgs = [{**c, "_midia": "imagem"} for c in (f_i.result() or [])]
+        cands = vids + imgs
         if not cands:
             continue
-        # gate pelo THUMB (barato); sem thumb usa a própria url do vídeo? -> pula
+        # vídeo é julgado pelo THUMB (barato); imagem, por ela mesma
         pool = [{**c, "url": c.get("thumb") or c["url"]} for c in cands]
         notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora)
-        melhor = next((n for n in notas if n["score"] >= 7), None)
-        if not melhor:
-            continue
-        orig = next(c for c in cands if c["id"] == melhor["id"])
-        dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T1__{orig['id']}.mp4"
-        if not _baixar_normalizar(orig["url"], dest, ctx["tmp"]):
-            continue
-        if ex._e_dup_visual(str(dest), ctx):
-            dest.unlink(missing_ok=True)
-            continue
-        if not _luminancia_ok(dest, ctx["tmp"]):   # gate de TELA
-            dest.unlink(missing_ok=True)
-            continue
-        usados_urls.add(orig["url"])  # SÓ o vencedor é reivindicado (release implícito dos demais)
-        return {"i": b["i"], "t_ini": b.get("t_ini", 0), "t_fim": b.get("t_fim", 0),
-                "secao": b.get("secao", 0), "status": "ok", "arquivo": str(dest),
-                "tier": 1, "fonte": orig["source"], "tipo": "stock",
-                "score": melhor["score"], "busca": q[:120]}
+        # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08)
+        for melhor in [n for n in notas if n["score"] >= 7]:
+            orig = next((c for c in cands if c["id"] == melhor["id"]), None)
+            if not orig:
+                continue
+            if orig["_midia"] == "video":
+                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T1__{orig['id']}.mp4"
+                if not _baixar_normalizar(orig["url"], dest, ctx["tmp"]):
+                    continue
+                if not _luminancia_ok(dest, ctx["tmp"]):   # gate de TELA
+                    dest.unlink(missing_ok=True)
+                    continue
+                tipo_final = "stock"
+            else:
+                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T1__{orig['id']}.jpg"
+                if not _baixar_imagem(orig["url"], dest):
+                    continue
+                tipo_final = "footage_imagem"
+            if ex._e_dup_visual(str(dest), ctx):
+                dest.unlink(missing_ok=True)
+                continue
+            usados_urls.add(orig["url"])  # SÓ o vencedor reivindica (demais voltam ao pool)
+            return {"i": b["i"], "t_ini": b.get("t_ini", 0), "t_fim": b.get("t_fim", 0),
+                    "secao": b.get("secao", 0), "status": "ok", "arquivo": str(dest),
+                    "tier": 1, "fonte": orig["source"], "tipo": tipo_final,
+                    "tipo_final": tipo_final, "midia": orig["_midia"],
+                    "score": melhor["score"], "busca": q[:120]}
     return None
 
 

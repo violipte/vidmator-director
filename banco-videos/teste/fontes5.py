@@ -146,13 +146,48 @@ def searxng_img(query, n=5):
         return []
 
 
+# bancos que entregam a foto MARCADA (a marca some só pagando) — o Vision até veta por
+# "watermark", mas cada candidato desses é uma vaga de pool e uma chamada de gate à toa
+_DOM_MARCADOS = ("alamy.", "shutterstock.", "dreamstime.", "123rf.", "gettyimages.",
+                 "istockphoto.", "depositphotos.", "agefotostock.", "stockphoto",
+                 "premium-photo", "canstockphoto.", "vectorstock.", "zoonar.",
+                 "vecteezy.", "/previews/", "watermark", "shutterstock",
+                 "stock.adobe.", "ftcdn.net", "lookaside.")
+
+
+def web_img(query, n=6):
+    """Busca web ABERTA (ddgs — open source, sem servidor e sem key).
+
+    01/08: é a fonte que faltava pro nicho LOCAL. O Piter mostrou por print que o
+    Google acha jararaca/coral de sobra, mas Pexels & cia não têm fauna brasileira —
+    o pool ficava só com stock genérico e esquema técnico. Sem infra: o SearXNG
+    self-hosted (`searxng_img`) entra por cima quando a instância estiver de pé."""
+    try:
+        from ddgs import DDGS
+    except ImportError:
+        return []
+    try:
+        out = []
+        for x in DDGS().images(query[:100], max_results=n * 6):  # a blacklist come metade
+            u = x.get("image") or ""
+            if not u.startswith("http") or any(d in u.lower() for d in _DOM_MARCADOS):
+                continue
+            out.append({"url": u, "source": "web", "meta": (x.get("title") or "")[:80],
+                        "id": f"web_{abs(hash(u)) % 10**10}"})
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
 def coletar_imagens(query, n_por_fonte=3, usados=None):
     """Todas as fontes de imagem em paralelo -> candidatos dedupados."""
     from concurrent.futures import ThreadPoolExecutor
     usados = usados or set()
     with ThreadPoolExecutor(max_workers=5) as ex5:
         futs = [ex5.submit(f, query, n_por_fonte) for f in
-                (pixabay_img, unsplash_img, openverse_img, searxng_img)]
+                (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img)]
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
