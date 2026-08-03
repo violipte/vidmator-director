@@ -231,7 +231,7 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomic
             # espécie explícita do diretor OU nicho taxonômico no style_card — busca
             # frouxa nele casa qualquer coisa ("harley" -> a planta Harleya).
             f_i = _p.submit(coletar_imagens, q, 3, usados_urls, _especie_do_beat(b),
-                            taxonomico, bool(b.get("strict")))
+                            taxonomico, bool(b.get("strict")), rodada)
             # web/social SÓ na 1ª rodada: o ddgs rate-limita, e 70 beats x 4 queries
             # x 4 redes queimaria a cota logo no começo da curadoria
             f_w = _p.submit(web_video, q, 3) if rodada == 0 else None

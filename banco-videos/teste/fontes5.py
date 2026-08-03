@@ -525,6 +525,56 @@ def gbif_img(query, n=4):
         return []
 
 
+# ------------------------------------------------------- Flickr via gallery-dl
+# gallery-dl é o par do yt-dlp para IMAGEM (centenas de sites). Aqui ele entra pelo
+# Flickr, que tem acervo enorme de natureza/lugares E filtro de licença na própria
+# busca: license=4(CC-BY),9(CC0),10(PD) — SA(5) fora, mesma trava do iNaturalist.
+# ⚠️ CUSTA CARO (~10-20s: ele negocia uma API key a cada chamada). Por isso só entra
+# na 1ª rodada de queries, igual ao social_video.
+_GDL_LIC = "4,9,10"
+
+
+def flickr_img(query, n=4, timeout=45):
+    if _off("flickr") or not query:
+        return []
+    import subprocess
+    url = ("https://www.flickr.com/search/?text="
+           + re.sub(r"\s+", "+", query.strip()[:70]) + f"&license={_GDL_LIC}")
+    try:
+        # pede 3x: ~metade do Flickr é vertical/pequena (scan de livro antigo,
+        # figura de paper) e cai no filtro de paisagem logo abaixo
+        r = subprocess.run([sys.executable, "-m", "gallery_dl", "-j",
+                            "--range", f"1-{max(6, n * 3)}", url],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=timeout)
+        txt = r.stdout or ""
+        i = txt.find("[")           # a linha "[flickr][info] ..." vem antes do JSON
+        if i < 0:
+            return []
+        out = []
+        for it in json.loads(txt[i:]):
+            # mensagens do gallery-dl: [3, url, meta] é a de arquivo
+            if not (isinstance(it, list) and len(it) >= 3 and isinstance(it[1], str)):
+                continue
+            m = it[2] if isinstance(it[2], dict) else {}
+            larg, alt = m.get("width") or 0, m.get("height") or 0
+            if larg < 1200 or larg <= alt:      # 16:9 exige paisagem com folga
+                continue
+            dono = (m.get("owner") or {}).get("username") or "Flickr"
+            out.append({"url": it[1], "source": "flickr",
+                        "id": f"fl_{m.get('id') or abs(hash(it[1])) % 10**10}",
+                        "meta": (m.get("title") or "")[:60],
+                        # a busca filtra 4/9/10 mas o metadata não diz QUAL: assume a
+                        # mais exigente das três (CC-BY = crédito obrigatório)
+                        "tier": 2, "licenca": "cc-by/cc0/pd",
+                        "atribuicao": f"(c) {dono} via Flickr (CC)"})
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
 # ------------------------------------------------------------ Internet Archive
 def archive_img(query, n=4):
     """Acervo histórico (domínio público) — o que resolve beat de ÉPOCA, que stock
@@ -553,9 +603,10 @@ def archive_img(query, n=4):
 
 
 def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=False,
-                    strict=False):
+                    strict=False, rodada=0):
     """Todas as fontes de imagem em paralelo -> candidatos dedupados.
-    `especie`/`taxonomico` ligam o iNaturalist (ver inaturalist_img)."""
+    `especie`/`taxonomico` ligam o iNaturalist (ver inaturalist_img).
+    `rodada` > 0 pula as fontes CARAS (Flickr/gallery-dl negocia API key)."""
     from concurrent.futures import ThreadPoolExecutor
     usados = usados or set()
     with ThreadPoolExecutor(max_workers=8) as ex5:
@@ -564,9 +615,19 @@ def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=
                  wikimedia_img, archive_img)]
         futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
                                taxonomico))
-        # GBIF é taxonômico: só faz sentido com ser vivo em jogo (senão vira ruído)
+        # GBIF só entende nome CIENTÍFICO ('jararaca'=0, 'Bothrops jararaca'=1) —
+        # o autocomplete do iNat é justamente o tradutor comum->científico
         if especie or taxonomico:
-            futs.append(ex5.submit(gbif_img, especie or query, n_por_fonte))
+            _tx = _inat_taxon(especie) if especie else None
+            futs.append(ex5.submit(gbif_img, (_tx or {}).get("name") or especie or query,
+                                   n_por_fonte))
+        if rodada == 0:   # Flickr custa subprocess: só na 1ª rodada de queries
+            # busca do Flickr é AND: 'venomous snake fangs close up' = 0 resultados,
+            # 'jararaca' = 2. Manda o alvo, não a frase inteira.
+            _q_fl = especie or " ".join(
+                [w for w in re.findall(r"[A-Za-zÀ-ÿ]{3,}", query or "")
+                 if w.lower() not in _INAT_STOP][:3])
+            futs.append(ex5.submit(flickr_img, _q_fl or query, n_por_fonte))
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
