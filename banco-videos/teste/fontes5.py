@@ -442,17 +442,131 @@ def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False):
     return out
 
 
+# ------------------------------------------------- INTERRUPTOR POR FONTE (02/08)
+# "vamos separando o antes e o depois, caso algo dê ruim voltamos ao que era" (Piter).
+# Rollback de código = tag git `v5-fontes-base`. Isto aqui é o bisturi: desliga UMA
+# fonte que esteja poluindo sem perder as outras e sem reverter commit.
+#   FONTES_OFF=archive,gbif  python curador5.py ...
+FONTES_OFF = {s.strip().lower() for s in os.environ.get("FONTES_OFF", "").split(",") if s.strip()}
+
+
+def _off(nome):
+    return nome in FONTES_OFF
+
+
+# ---------------------------------------------------------- Wikimedia Commons
+def wikimedia_img(query, n=4):
+    """Commons via API de busca. O executor v4 já consulta Commons na cascata dele;
+    aqui ele entra no MESMO batch-score, disputando com as outras fontes.
+    Tier pela licença, igual executor_beats:111 (PD/CC0 -> T1, resto CC -> T2)."""
+    if _off("wikimedia"):
+        return []
+    # ⚠️ 403 "Please respect our robot policy" ao chamar com httpx — inclusive com
+    # User-Agent descritivo e com UA de curl. O MESMO endpoint responde 200 via
+    # urllib (é fingerprint do cliente, não bloqueio de IP). Como o executor v4 já
+    # tem `commons_list` em urllib, funcionando e com a regra de tier consagrada
+    # (PD/CC0 -> T1, resto CC -> T2), delegamos em vez de manter dois acessos.
+    try:
+        import executor_beats as _ex  # tardio: evita ciclo de import
+        out = []
+        for u, lic, tier in _ex.commons_list(query[:80], n=n * 2):
+            low = (lic or "").lower()
+            # bordas de palavra: "nc"/"nd" como substring casariam dentro de "and",
+            # "unported" etc. e reprovariam licença boa
+            if re.search(r"\bnc\b|\bnd\b|non[- ]?commercial|no[- ]?deriv|"
+                         r"fair use|non-free", low):
+                continue
+            out.append({"url": u, "source": "wikimedia",
+                        "id": f"wm_{abs(hash(u)) % 10**10}",
+                        "meta": u.rsplit("/", 1)[-1][:70], "tier": tier,
+                        "licenca": (lic or "")[:24],
+                        "atribuicao": f"Wikimedia Commons ({lic})"})
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
+# --------------------------------------------------------------- GBIF (fauna)
+def gbif_img(query, n=4):
+    """Ocorrências com foto de museus/herbários/coleções — complementa o iNaturalist
+    (mesma lógica taxonômica, acervo diferente). Só entra com termo de ser vivo, pela
+    mesma razão do iNat: busca frouxa casa nome científico de qualquer coisa."""
+    if _off("gbif") or not query:
+        return []
+    try:
+        r = httpx.get("https://api.gbif.org/v1/occurrence/search", params={
+            "q": query[:60], "mediaType": "StillImage", "limit": n * 3},
+            headers=_UA, timeout=25)
+        out = []
+        for o in r.json().get("results") or []:
+            lic = (o.get("license") or "").lower()
+            # GBIF devolve a URL da licença: só cc0/by (mesma trava do iNat)
+            if not ("zero" in lic or "publicdomain" in lic
+                    or ("/by/" in lic and "nc" not in lic and "nd" not in lic)):
+                continue
+            for m in (o.get("media") or [])[:1]:
+                u = m.get("identifier")
+                if not u:
+                    continue
+                out.append({"url": u, "source": "gbif",
+                            "id": f"gb_{abs(hash(u)) % 10**10}",
+                            "meta": (o.get("scientificName") or "")[:60],
+                            "tier": 1 if ("zero" in lic or "publicdomain" in lic) else 2,
+                            "licenca": "cc0" if "zero" in lic else "cc-by",
+                            "atribuicao": (m.get("rightsHolder") or o.get("recordedBy") or "")[:120],
+                            "taxon": (o.get("scientificName") or "")[:60], "degrau": "P1",
+                            "gate_relevancia": True})  # GBIF não tem o consenso do iNat
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
+# ------------------------------------------------------------ Internet Archive
+def archive_img(query, n=4):
+    """Acervo histórico (domínio público) — o que resolve beat de ÉPOCA, que stock
+    não tem. ⚠️ VÍDEO do archive segue DESLIGADO (decisão anterior: instável); aqui
+    é só imagem."""
+    if _off("archive"):
+        return []
+    try:
+        r = httpx.get("https://archive.org/advancedsearch.php", params={
+            "q": f'{query[:70]} AND mediatype:image', "fl[]": "identifier",
+            "rows": n * 2, "output": "json"}, headers=_UA, timeout=25)
+        out = []
+        for d in ((r.json().get("response") or {}).get("docs") or []):
+            ident = d.get("identifier")
+            if not ident:
+                continue
+            out.append({"url": f"https://archive.org/services/img/{ident}",
+                        "source": "archive", "id": f"ia_{ident[:16]}",
+                        "meta": ident[:60], "tier": 1, "licenca": "public domain",
+                        "atribuicao": f"Internet Archive / {ident[:40]}"})
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
 def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=False,
                     strict=False):
     """Todas as fontes de imagem em paralelo -> candidatos dedupados.
     `especie`/`taxonomico` ligam o iNaturalist (ver inaturalist_img)."""
     from concurrent.futures import ThreadPoolExecutor
     usados = usados or set()
-    with ThreadPoolExecutor(max_workers=6) as ex5:
+    with ThreadPoolExecutor(max_workers=8) as ex5:
         futs = [ex5.submit(f, query, n_por_fonte) for f in
-                (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img)]
+                (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img,
+                 wikimedia_img, archive_img)]
         futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
                                taxonomico))
+        # GBIF é taxonômico: só faz sentido com ser vivo em jogo (senão vira ruído)
+        if especie or taxonomico:
+            futs.append(ex5.submit(gbif_img, especie or query, n_por_fonte))
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
