@@ -198,6 +198,39 @@ def _gate_pesado_ok(mp4, beat, ctx):
     return bool(g["ok"])
 
 
+def _relatar_duplicatas(ctx):
+    """Passe final: near-duplicate por embedding CLIP (02/08).
+
+    O dedup do executor (`_e_dup_visual`, dHash) tem dois furos: varre só `*.mp4`
+    (imagem nunca era comparada) e quebra quando o MESMO conteúdo vem de fontes
+    diferentes, com crop e compressão distintos. Com 7 fontes no pool isso ficou
+    comum — o preqa do vídeo de cobras fechou com 6 flags R-72. Aqui o problema é
+    visto ANTES da montagem, não depois de renderizar.
+    Só REPORTA (com o comando de condenação pronto): apagar asset no automático
+    arrisca esvaziar beat que já foi dado como resolvido."""
+    from gate5 import CLIP_PY
+    assets = sorted(Path(ctx["assets"]).glob("*.jpg"))
+    if not CLIP_PY.exists() or len(assets) < 2:
+        return
+    try:
+        r = subprocess.run([str(CLIP_PY), str(Path(__file__).parent / "clip_rank.py"),
+                            "--dedup", "--imgs", *[str(x) for x in assets]],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=300)
+        grupos = json.loads((r.stdout or "").strip().splitlines()[-1])
+    except Exception:
+        return
+    if not grupos:
+        print("dedup CLIP: nenhuma imagem repetida no job")
+        return
+    print(f"!! dedup CLIP: {len(grupos)} grupo(s) de imagem repetida (R-72 antes do render):")
+    for g in grupos:
+        print("   " + " == ".join(Path(x).name for x in g))
+        for extra in g[1:]:   # o 1º fica; os demais são candidatos a re-resolver
+            bid = Path(extra).name.split("__")[0]
+            print(f'     del "resolvido/{bid}.json" + assets/{bid}__*')
+
+
 def _especie_do_beat(b):
     """entidades.especie do diretor = o ser vivo daquele beat. É o que liga o
     iNaturalist em MENÇÃO PONTUAL (um bicho citado dentro de um roteiro que não é
@@ -433,6 +466,7 @@ def main():
                 falhas += 1
                 print(f"  b{b2['i']:03d} BURACO")
     print(f"=== curador5: {ok5} via fontes novas + {ok4} via fallback v4 | {falhas} buracos ===")
+    _relatar_duplicatas(ctx)
 
 
 if __name__ == "__main__":

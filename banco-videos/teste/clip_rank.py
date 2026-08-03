@@ -67,13 +67,55 @@ def ranquear(texto, imagens):
                   key=lambda x: -x["score"])
 
 
+def duplicatas(imagens, limiar=0.94):
+    """Grupos de imagens visualmente ~iguais, por embedding CLIP.
+
+    Por que não o dHash do executor: ele compara só `*.mp4` (imagem nunca entrava) e
+    quebra com near-duplicate — MESMO conteúdo vindo de fontes diferentes, com crop e
+    compressão distintos, passa batido. Foi assim que o preqa do vídeo de cobras
+    fechou com 6 flags R-72 ("beats visualmente idênticos com srcs distintos").
+    Embedding é robusto a crop/reescala/recompressão.
+    Devolve [[path, path, ...]] — só os grupos com 2+ membros."""
+    import torch
+    from PIL import Image
+    c = _carregar()
+    tensores, validos = [], []
+    for p in imagens:
+        try:
+            tensores.append(c["p"](Image.open(p).convert("RGB")))
+            validos.append(p)
+        except Exception:
+            continue
+    if len(validos) < 2:
+        return []
+    with torch.no_grad():
+        f = c["m"].encode_image(torch.stack(tensores).to(c["d"]))
+        f /= f.norm(dim=-1, keepdim=True)
+        sim = (f @ f.T).cpu().tolist()
+    vistos, grupos = set(), []
+    for i in range(len(validos)):
+        if i in vistos:
+            continue
+        g = [i] + [j for j in range(i + 1, len(validos))
+                   if j not in vistos and sim[i][j] >= limiar]
+        if len(g) > 1:
+            vistos.update(g)
+            grupos.append([validos[k] for k in g])
+    return grupos
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--texto", required=True)
+    ap.add_argument("--texto", default="")
     ap.add_argument("--imgs", nargs="+", required=True)
+    ap.add_argument("--dedup", action="store_true", help="agrupa duplicatas visuais")
+    ap.add_argument("--limiar", type=float, default=0.94)
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
-    print(json.dumps(ranquear(a.texto, a.imgs), ensure_ascii=False))
+    if a.dedup:
+        print(json.dumps(duplicatas(a.imgs, a.limiar), ensure_ascii=False))
+    else:
+        print(json.dumps(ranquear(a.texto, a.imgs), ensure_ascii=False))
 
 
 if __name__ == "__main__":
