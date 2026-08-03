@@ -768,37 +768,6 @@ def main():
                 pool_uso[n_arq] = pool_uso.get(n_arq, 0) + 1
                 pool_poss.setdefault(n_arq, []).append(b["i"])
 
-    # ---- R-72b: REPETIÇÃO VIRA OVERLAY (02/08, decisão do Piter) ----
-    # Antes: clipe repetido era trocado por outro footage — caro, e em nicho local
-    # simplesmente não há outro. Agora o repetido FICA, mas a 2ª aparição em diante
-    # ganha um overlay por cima: a tela muda, o olho não registra como repetição, e
-    # não se gasta uma busca. É o mesmo padrão do R-27 (ano vira NumberBadge sobre o
-    # próprio clipe), aplicado ao problema de reuso.
-    _OVL_ROT = ["Ovl04_FootnotePill", "Ovl05_CornerTag", "Ovl09_TickerCaption",
-                "Ovl03_LowerThird"]
-    _visto_src = {}
-    _n72b = 0
-    for b in beats_out:
-        s = b.get("src")
-        if not s or b.get("componente"):
-            continue
-        _visto_src[s] = _visto_src.get(s, 0) + 1
-        if _visto_src[s] < 2:
-            continue                      # 1ª aparição vai limpa
-        tx72 = frase_de_tela(_corr((plano_por_i.get(b["i"], {}) or {}).get("texto") or ""))
-        if not tx72 or len(tx72) < 8:
-            continue
-        comp72 = _OVL_ROT[(_visto_src[s] - 2) % len(_OVL_ROT)]
-        b["tipo"] = "animacao"
-        b["componente"] = comp72
-        b["props"] = {"text": corte(humanizar(tx72), 60), "kicker": "",
-                      "dim": _OVL_DIM_M.get(comp72, 0.0)}
-        b["bg"], b["bg_nitido"] = b.pop("src"), True
-        _n72b += 1
-    if _n72b:
-        print(f"R-72b: {_n72b} repetição(ões) quebrada(s) com overlay (clipe mantido)")
-        stats["R72b_overlay"] = _n72b
-
     # ---- SWEEP FINAL R-109 (timeline DEFINITIVA): o tracker do loop vê a ordem da
     # lista, mas o ajuste de sobreposição pode ENGOLIR o beat separador (tenis 23/07:
     # demote do 46 tinha overlap total com o capítulo 45 e sumiu — capítulo colou no
@@ -863,6 +832,56 @@ def main():
                 beats_out[idx62 + 1]["t_ini"] = min(beats_out[idx62 + 1]["t_ini"], b["t_ini"])
                 beats_out.remove(b)
                 stats["R62_merge"] = stats.get("R62_merge", 0) + 1
+
+    # ---- R-72b: REPETIÇÃO VIRA OVERLAY (02/08, decisão do Piter) ----
+    # Antes: clipe repetido era trocado por outro footage — caro, e em nicho local
+    # simplesmente não há outro. Agora o repetido FICA, mas a 2ª aparição em diante
+    # ganha um overlay por cima: a tela muda, o olho não registra como repetição, e
+    # não se gasta uma busca. É o mesmo padrão do R-27 (ano vira NumberBadge sobre o
+    # próprio clipe), aplicado ao problema de reuso.
+    # ⚠️ ORDEM IMPORTA — roda DEPOIS do rebalance R-62, de propósito (produção em
+    # série, 02/08). Antes ele rodava ANTES: inflava o orçamento de texto (98s num
+    # teto de 89s) e o corte automático desfazia de forma imprevisível, podendo
+    # derrubar TEXTO INFORMATIVO bom para caber overlay de disfarce. Aqui ele só
+    # consome a FOLGA que sobrou — nunca causa estouro, por construção, e não
+    # precisa de `texto_budget` ajustado a mão por job (parâmetro por job não
+    # serializa: em 12 vídeos/dia ninguém decide isso, e vira lixo acumulado).
+    # Vídeo com pouco texto quebra muitas repetições; vídeo carregado não quebra
+    # nenhuma — e nos dois casos nada de bom é cortado.
+    _OVL_ROT = ["Ovl04_FootnotePill", "Ovl05_CornerTag", "Ovl09_TickerCaption",
+                "Ovl03_LowerThird"]
+    _visto_src = {}
+    _n72b = 0
+    _folga72 = teto62 - _texto_total()
+    for b in beats_out:
+        s = b.get("src")
+        if not s or b.get("componente"):
+            continue
+        _visto_src[s] = _visto_src.get(s, 0) + 1
+        if _visto_src[s] < 2:
+            continue                      # 1ª aparição vai limpa
+        _custo = (b["t_fim"] - b["t_ini"]) * 0.5   # overlay conta meio peso (R-62)
+        if _custo > _folga72:
+            continue                      # sem folga: repete limpo, que é o estado antigo
+        tx72 = frase_de_tela(_corr((plano_por_i.get(b["i"], {}) or {}).get("texto") or ""))
+        if not tx72 or len(tx72) < 8:
+            continue
+        _folga72 -= _custo
+        comp72 = _OVL_ROT[(_visto_src[s] - 2) % len(_OVL_ROT)]
+        b["tipo"] = "animacao"
+        b["componente"] = comp72
+        b["props"] = {"text": corte(humanizar(tx72), 60), "kicker": "",
+                      "dim": _OVL_DIM_M.get(comp72, 0.0)}
+        b["bg"], b["bg_nitido"] = b.pop("src"), True
+        _n72b += 1
+    # repetição é SINTOMA de falta de material: mede e reporta sempre, mesmo quando
+    # o overlay disfarça. Sem isso, "ampliar as fontes" vira decisão por impressão.
+    _rep_total = sum(v - 1 for v in _visto_src.values() if v > 1)
+    if _rep_total or _n72b:
+        print(f"R-72b: {_rep_total} reuso(s) de clipe | {_n72b} disfarçado(s) com overlay "
+              f"| {_rep_total - _n72b} sem folga de orçamento")
+        stats["R72b_overlay"] = _n72b
+        stats["R72b_reuso"] = _rep_total
 
     # ---- SPLIT DE PLANO (VidRush 24/07): footage >6s vira 2 planos (deles: ~4s/plano) —
     # 2º segmento do MESMO asset com offset e tratamento distinto (zoom/tint/p&b) ----
