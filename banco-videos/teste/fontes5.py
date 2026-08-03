@@ -173,7 +173,10 @@ def searxng_video(query, n=4):
     out = []
     for x in _searxng(query, "videos", n * 4):
         u = x.get("url") or ""
-        if not re.search(r"youtube\.com/watch|youtu\.be/|dailymotion\.com/video|vimeo\.com/\d+", u):
+        # Dailymotion FORA: o yt-dlp exige impersonation e no Windows+Python 3.14 não
+        # há wheel de curl_cffi com isso compilado ("none of these impersonate targets
+        # are available") — 100% de falha. É 11% do pool; YouTube (83%) cobre.
+        if not re.search(r"youtube\.com/watch|youtu\.be/|vimeo\.com/\d+", u):
             continue
         out.append({"url": u, "source": "searxng_video", "_via": "ytdlp", "tier": 3,
                     "thumb": x.get("thumbnail") or None,
