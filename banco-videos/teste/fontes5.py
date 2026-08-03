@@ -409,7 +409,7 @@ def _inat_escada(taxon, strict=False):
     return [ids[i] for i in range(len(ids) - 1, max(len(ids) - 4, 5), -1)]
 
 
-def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False):
+def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False, ancora=""):
     """Fotos de ser vivo identificadas por especialistas.
 
     `termo`    = nome explícito do bicho/planta (vem de entidades.especie do diretor).
@@ -419,10 +419,15 @@ def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False):
       style_card marcar nicho taxonômico (fauna/flora), onde palavra de bicho na
       busca É o assunto. Com `termo` explícito funciona sempre, inclusive pra menção
       pontual dentro de um roteiro que não é de natureza."""
-    tx = _inat_taxon(termo) if termo else None
+    # ⚠️ palavra do TEMA nunca é espécie. No job amazônico o garimpo casou "amazon"
+    # com *Amazona* (gênero de PAPAGAIOS mexicanos) e plantou 9 fotos de papagaio —
+    # o maior grupo do vídeo, mais que a própria onça. Bloqueia tudo que já está na
+    # âncora do tema: se a palavra descreve o vídeo, ela não é o bicho do beat.
+    bloq = {w.lower() for w in re.findall(r"[A-Za-zÀ-ÿ]{3,}", ancora or "")}
+    tx = _inat_taxon(termo) if termo and termo.lower() not in bloq else None
     if not tx and garimpar:
         for w in [w for w in re.findall(r"[A-Za-zÀ-ÿ]{4,}", query or "")
-                  if w.lower() not in _INAT_STOP][:4]:
+                  if w.lower() not in _INAT_STOP and w.lower() not in bloq][:4]:
             tx = _inat_taxon(w)
             if tx:
                 break
@@ -629,7 +634,7 @@ def archive_img(query, n=4):
 
 
 def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=False,
-                    strict=False, rodada=0):
+                    strict=False, rodada=0, ancora=""):
     """Todas as fontes de imagem em paralelo -> candidatos dedupados.
     `especie`/`taxonomico` ligam o iNaturalist (ver inaturalist_img).
     `rodada` > 0 pula as fontes CARAS (Flickr/gallery-dl negocia API key)."""
@@ -640,7 +645,7 @@ def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=
                 (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img,
                  wikimedia_img, archive_img)]
         futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
-                               taxonomico))
+                               taxonomico, ancora))
         # GBIF só entende nome CIENTÍFICO ('jararaca'=0, 'Bothrops jararaca'=1) —
         # o autocomplete do iNat é justamente o tradutor comum->científico
         if especie or taxonomico:
