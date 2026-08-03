@@ -133,18 +133,55 @@ def coverr_video(query, n=3):
         return []
 
 
-def searxng_img(query, n=5):
-    """Busca web GRÁTIS via instância self-hosted (Bing+Brave+DDG). Opcional."""
-    base = os.environ.get("SEARXNG_URL", "")
-    if not base:
+# SearXNG self-hosted (container `searxng`, porta 8080) — metabuscador que agrega
+# Google/Bing/Brave/DDG numa consulta só. É a fonte MAIS FARTA que temos: "jararaca
+# cobra" devolve 187 imagens e 88 vídeos, contra 6-12 do ddgs. `ok=None` = ainda não
+# testado; ao primeiro erro vira False e para de ser consultado (sem isso, container
+# parado custaria um timeout por beat na curadoria inteira).
+_SEARX = {"url": os.environ.get("SEARXNG_URL", "http://localhost:8080"), "ok": None}
+
+
+def _searxng(query, categoria, n):
+    if _SEARX["ok"] is False or not _SEARX["url"]:
         return []
     try:
-        r = httpx.get(f"{base.rstrip('/')}/search", params={
-            "q": query[:100], "categories": "images", "format": "json"}, headers=_UA, timeout=25)
-        return [{"url": x.get("img_src"), "source": "searxng", "id": f"sx_{abs(hash(x.get('img_src',''))) % 10**10}"}
-                for x in r.json().get("results", [])[:n] if x.get("img_src")] if r.status_code == 200 else []
+        r = httpx.get(f"{_SEARX['url'].rstrip('/')}/search", params={
+            "q": query[:100], "categories": categoria, "format": "json"},
+            headers=_UA, timeout=20)
+        if r.status_code != 200:
+            _SEARX["ok"] = False
+            return []
+        _SEARX["ok"] = True
+        return r.json().get("results", [])[:n]
     except Exception:
+        _SEARX["ok"] = False   # container fora do ar: não insiste beat a beat
         return []
+
+
+def searxng_img(query, n=6):
+    return [{"url": x["img_src"], "source": "searxng",
+             "meta": (x.get("title") or "")[:80],
+             "id": f"sx_{abs(hash(x['img_src'])) % 10**10}"}
+            for x in _searxng(query, "images", n * 3)
+            if x.get("img_src", "").startswith("http")
+            and not any(d in x["img_src"].lower() for d in _DOM_MARCADOS)][:n]
+
+
+def searxng_video(query, n=4):
+    """Vídeo pelo metabuscador — mais estável que o backend `videos` do ddgs (que vive
+    caindo). Devolve URL de PÁGINA; quem baixa é o yt-dlp."""
+    out = []
+    for x in _searxng(query, "videos", n * 4):
+        u = x.get("url") or ""
+        if not re.search(r"youtube\.com/watch|youtu\.be/|dailymotion\.com/video|vimeo\.com/\d+", u):
+            continue
+        out.append({"url": u, "source": "searxng_video", "_via": "ytdlp", "tier": 3,
+                    "thumb": x.get("thumbnail") or None,
+                    "meta": (x.get("title") or "")[:80],
+                    "id": f"sxv_{abs(hash(u)) % 10**10}"})
+        if len(out) >= n:
+            break
+    return out
 
 
 # bancos que entregam a foto MARCADA (a marca some só pagando) — o Vision até veta por
@@ -216,6 +253,11 @@ def web_video(query, n=4):
     câmera e o rosto costuma aparecer só depois do 1º frame — o veredito real sai do
     gate v4 com 6 frames DEPOIS do download (regra dura: nada de criador falando)."""
     out, vistos = [], set()
+    for c in searxng_video(query, n):   # metabuscador primeiro: mais farto e estável
+        vistos.add(c["url"])
+        out.append(c)
+    if len(out) >= n:
+        return out
     for x in _ddgs_tentar("videos", query, n * 3):
         u = x.get("content") or ""
         if not u.startswith("http") or u in vistos:

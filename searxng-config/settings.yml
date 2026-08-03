@@ -1,0 +1,15 @@
+# SearXNG local do editor (v5 / F6) — usado por fontes5.searxng_img via SEARXNG_URL.
+# Só o essencial: JSON ligado (o default serve apenas HTML) e limiter desligado,
+# porque quem consulta é o curador na mesma máquina, não tráfego público.
+use_default_settings: true
+
+server:
+  secret_key: "vidmator-editor-local-f6"
+  limiter: false
+  image_proxy: false
+
+search:
+  safe_search: 1
+  formats:
+    - html
+    - json
