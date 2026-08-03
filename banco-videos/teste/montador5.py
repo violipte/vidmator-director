@@ -16,6 +16,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).parent))
 from acervo_registry import R as REG_R, DEPRECATED, escolher, rebuild, frase_de_tela, frase_forcada, humanizar, _nums_do_texto, set_style, corte, SWAP_TO_OVL  # noqa
+from acervo_registry import _OVL_DIM as _OVL_DIM_M  # noqa — dim por overlay (R-72b)
 from diretor_v2_pass import natureza_do_beat, CADEIA  # noqa
 
 REMOTION_PUB = Path(r"F:/Canal Dark/Aplicativo de Edição/remotion/public")
@@ -766,6 +767,37 @@ def main():
                 n_arq = Path(u).name
                 pool_uso[n_arq] = pool_uso.get(n_arq, 0) + 1
                 pool_poss.setdefault(n_arq, []).append(b["i"])
+
+    # ---- R-72b: REPETIÇÃO VIRA OVERLAY (02/08, decisão do Piter) ----
+    # Antes: clipe repetido era trocado por outro footage — caro, e em nicho local
+    # simplesmente não há outro. Agora o repetido FICA, mas a 2ª aparição em diante
+    # ganha um overlay por cima: a tela muda, o olho não registra como repetição, e
+    # não se gasta uma busca. É o mesmo padrão do R-27 (ano vira NumberBadge sobre o
+    # próprio clipe), aplicado ao problema de reuso.
+    _OVL_ROT = ["Ovl04_FootnotePill", "Ovl05_CornerTag", "Ovl09_TickerCaption",
+                "Ovl03_LowerThird"]
+    _visto_src = {}
+    _n72b = 0
+    for b in beats_out:
+        s = b.get("src")
+        if not s or b.get("componente"):
+            continue
+        _visto_src[s] = _visto_src.get(s, 0) + 1
+        if _visto_src[s] < 2:
+            continue                      # 1ª aparição vai limpa
+        tx72 = frase_de_tela(_corr((plano_por_i.get(b["i"], {}) or {}).get("texto") or ""))
+        if not tx72 or len(tx72) < 8:
+            continue
+        comp72 = _OVL_ROT[(_visto_src[s] - 2) % len(_OVL_ROT)]
+        b["tipo"] = "animacao"
+        b["componente"] = comp72
+        b["props"] = {"text": corte(humanizar(tx72), 60), "kicker": "",
+                      "dim": _OVL_DIM_M.get(comp72, 0.0)}
+        b["bg"], b["bg_nitido"] = b.pop("src"), True
+        _n72b += 1
+    if _n72b:
+        print(f"R-72b: {_n72b} repetição(ões) quebrada(s) com overlay (clipe mantido)")
+        stats["R72b_overlay"] = _n72b
 
     # ---- SWEEP FINAL R-109 (timeline DEFINITIVA): o tracker do loop vê a ordem da
     # lista, mas o ajuste de sobreposição pode ENGOLIR o beat separador (tenis 23/07:

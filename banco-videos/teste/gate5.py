@@ -46,7 +46,13 @@ For EACH numbered image below, give a JSON object with:
   "watermark" (visible watermark/logo overlay),
   "burned_text" (caption/subtitle/text burned into the image),
   "crash" (accident/injury/CCTV footage),
-  "brand" (a prominent identifiable brand/product foreign to the topic)
+  "brand" (a prominent identifiable brand/product foreign to the topic),
+  "fake" (AI-generated, digitally composited, or manipulated to look real:
+     an animal at an IMPOSSIBLE size next to a boat/person/car, two species
+     that never meet posed together, painterly or 3D-render lighting sold as
+     a photograph, anatomy that does not exist. This is a DOCUMENTARY — a
+     viral fake destroys the credibility of every real fact around it. When
+     an image looks too extraordinary to be a real photograph, it is not one.)
 
 Respond ONLY a JSON array, one object per image, same order. No markdown."""
 
