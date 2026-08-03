@@ -198,7 +198,21 @@ def _gate_pesado_ok(mp4, beat, ctx):
     return bool(g["ok"])
 
 
-def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
+def _especie_do_beat(b):
+    """entidades.especie do diretor = o ser vivo daquele beat. É o que liga o
+    iNaturalist em MENÇÃO PONTUAL (um bicho citado dentro de um roteiro que não é
+    de natureza). Aceita rótulos vizinhos porque o prompt do diretor pode variar."""
+    e = b.get("entidades")
+    if not isinstance(e, dict):
+        return None
+    for k in ("especie", "taxon", "animal", "planta", "species"):
+        v = e.get(k)
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return None
+
+
+def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomico=False):
     """Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4).
 
     01/08 (QA cobras + pedido do Piter): antes só VÍDEO era coletado aqui — a via de
@@ -213,7 +227,11 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
         from concurrent.futures import ThreadPoolExecutor
         with ThreadPoolExecutor(max_workers=4) as _p:
             f_v = _p.submit(coletar_videos, q, 3, usados_urls)   # stock: Pexels/Coverr/Pixabay
-            f_i = _p.submit(coletar_imagens, q, 3, usados_urls)  # imagem: Openverse/web/...
+            # imagem: Openverse/web/... + iNaturalist (02/08). O iNat só dispara com
+            # espécie explícita do diretor OU nicho taxonômico no style_card — busca
+            # frouxa nele casa qualquer coisa ("harley" -> a planta Harleya).
+            f_i = _p.submit(coletar_imagens, q, 3, usados_urls, _especie_do_beat(b),
+                            taxonomico, bool(b.get("strict")))
             # web/social SÓ na 1ª rodada: o ddgs rate-limita, e 70 beats x 4 queries
             # x 4 redes queimaria a cota logo no começo da curadoria
             f_w = _p.submit(web_video, q, 3) if rodada == 0 else None
@@ -228,12 +246,21 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
         sem_thumb = [c for c in soc if not c.get("thumb")]
         if not cands and not sem_thumb:
             continue
+        # iNaturalist P1 = a espécie EXATA, identificada por especialista humano
+        # (research grade): a relevância já está provada por gente que entende do
+        # bicho — mandar pro Vision perguntar "é uma jararaca?" é pagar pra ter uma
+        # resposta pior. Pula só o gate de RELEVÂNCIA; os de DEFEITO seguem adiante.
+        verificados = [c for c in cands if c.get("source") == "inaturalist"
+                       and not c.get("gate_relevancia")]
         # vídeo é julgado pelo THUMB (barato); imagem, por ela mesma
-        pool = [{**c, "url": c.get("thumb") or c["url"]} for c in cands]
+        pool = [{**c, "url": c.get("thumb") or c["url"]}
+                for c in cands if c not in verificados]
         notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora) if pool else []
         # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08).
         # social sem thumb entra no FIM da fila: só é tentado se nada com nota vingou.
-        fila = [n for n in notas if n["score"] >= 7] + [{**c, "score": 7} for c in sem_thumb]
+        fila = [{**c, "score": 10, "vetos": []} for c in verificados] + \
+               [n for n in notas if n["score"] >= 7] + \
+               [{**c, "score": 7} for c in sem_thumb]
         for melhor in fila:
             orig = next((c for c in cands + sem_thumb if c["id"] == melhor["id"]), None)
             if not orig:
@@ -256,7 +283,8 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
                     continue
                 tipo_final = "stock"
             else:
-                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T1__{orig['id']}.jpg"
+                # tier da IMAGEM vem da licença (iNat: cc0=T1, cc-by=T2), não fixo
+                dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T{int(orig.get('tier') or 1)}__{orig['id']}.jpg"
                 if not _baixar_imagem(orig["url"], dest):
                     continue
                 tipo_final = "footage_imagem"
@@ -269,7 +297,12 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt=""):
                     "tier": int(orig.get("tier") or 1),  # T3 (web/social) => máscara pesada
                     "fonte": orig["source"], "tipo": tipo_final,
                     "tipo_final": tipo_final, "midia": orig["_midia"],
-                    "score": melhor["score"], "busca": q[:120]}
+                    "score": melhor["score"], "busca": q[:120],
+                    # CC-BY obriga crédito na descrição do vídeo — sem isso a licença
+                    # é violada mesmo sendo "livre". Vira CREDITOS.txt no job.
+                    "atribuicao": orig.get("atribuicao", ""),
+                    "licenca": orig.get("licenca", ""),
+                    "taxon": orig.get("taxon", ""), "degrau": orig.get("degrau", "")}
     return None
 
 
@@ -294,6 +327,9 @@ def main():
     ancora5 = sc.get("assunto_ancora") or ""
     # 1 chamada por JOB: rede social de nicho local é indexada no idioma local
     ancora_pt5 = sc.get("assunto_ancora_local") or ancora_local(ancora5)
+    # nicho de fauna/flora: libera o iNaturalist a garimpar a própria busca
+    # (fora dele, só com entidades.especie explícita — ver inaturalist_img)
+    taxo5 = bool(sc.get("taxonomico"))
     if ancora_pt5:
         print(f"âncora local (busca social): '{ancora_pt5}'")
     ctx = {"assets": job / "assets", "tmp": job / "_tmp", "res": job / "resolvido"}
@@ -370,7 +406,7 @@ def main():
                 return b2, {**r4, "score": nota4}, "v4"
 
         try:  # v4 fraco (ou vazio) -> o pool novo disputa a vaga
-            r5 = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5, ancora_pt5)
+            r5 = resolver_beat5(b2, sctx, ctx, usados_urls, ancora5, ancora_pt5, taxo5)
         except Exception as e5:
             print(f"  b{b2['i']:03d} v5 erro ({type(e5).__name__})")
             r5 = None

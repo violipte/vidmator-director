@@ -319,13 +319,140 @@ def social_video(query, n=4, redes=("tiktok.com", "instagram.com", "facebook.com
     return out
 
 
-def coletar_imagens(query, n_por_fonte=3, usados=None):
-    """Todas as fontes de imagem em paralelo -> candidatos dedupados."""
+# ---------------------------------------------------------------- iNaturalist
+# Acervo de ciência cidadã: a foto JÁ foi identificada como a espécie X por
+# especialistas humanos (research grade). Para beat que nomeia um ser vivo isso é
+# verdade documental, não palpite de Vision — o gate de RELEVÂNCIA pode ser pulado
+# (os de DEFEITO não). Sem key; API pública.
+#
+# LICENÇA (trava dura, decisão 02/08): só `cc0` e `cc-by`.
+#   - cc0    -> T1 (sem obrigação, igual PD do Commons em executor_beats:111)
+#   - cc-by  -> T2 (exige crédito na descrição — vem pronto em `atribuicao`)
+#   - cc-by-sa  FORA: ShareAlike obrigaria licenciar o VÍDEO INTEIRO como SA.
+#   - *-nc/*-nd FORA: NC proíbe uso comercial (canal monetizado É comercial) e ND
+#     proíbe derivada — Ken Burns + crop 16:9 + grade É obra derivada.
+#   NC/ND não viram T3: T3 mitiga risco de IP com máscara, e máscara não conserta
+#   licença. Se não pode, não entra.
+_INAT = "https://api.inaturalist.org/v1"
+_INAT_LIC = "cc0,cc-by"
+_INAT_TIER = {"cc0": 1, "cc-by": 2}
+_INAT_STOP = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "for", "to",
+              "close", "up", "shot", "wide", "detail", "macro", "moody", "cinematic",
+              "brazilian", "brazil", "wild", "wildlife", "nature", "footage", "video"}
+
+
+def _inat_norm(s):
+    """normaliza pra comparar termo x matched_term (plural simples tolerado)."""
+    s = " ".join((s or "").lower().split())
+    return s[:-1] if s.endswith("s") else s
+
+
+def _inat_taxon(termo):
+    """nome (comum ou científico, PT ou EN) -> taxon do iNaturalist, ou None.
+
+    ⚠️ O iNat tem nome científico pra TUDO, então busca frouxa sempre casa alguma
+    coisa: 'harley' casou `Harleya` (uma planta) e 'venomous' casou `venomous king`
+    (uma naja das Filipinas) — os dois iam parar no vídeo. A defesa é o campo
+    `matched_term`: só vale se o que casou FOR o termo buscado (plural tolerado:
+    'coral snake' x 'Coral Snakes'). Prefixo de epíteto científico não passa.
+    rank_level > 30 também cai fora: 'snake' -> Serpentes ilustra qualquer cobra
+    do planeta, o que é o oposto de precisão."""
+    try:
+        r = httpx.get(f"{_INAT}/taxa/autocomplete", params={"q": termo[:60], "per_page": 5},
+                      headers=_UA, timeout=20)
+        alvo = _inat_norm(termo)
+        cands = [t for t in (r.json().get("results") or [])
+                 if t.get("rank_level") and t["rank_level"] <= 30 and t.get("ancestor_ids")
+                 and _inat_norm(t.get("matched_term")) == alvo]
+        if not cands:
+            return None
+        return sorted(cands, key=lambda t: (t["rank_level"], -t.get("observations_count", 0)))[0]
+    except Exception:
+        return None
+
+
+def _inat_escada(taxon, strict=False):
+    """P1 espécie -> P2 gênero -> P3 subfamília/família (ancestor_ids sobe a árvore).
+    strict=True (beat destaca A espécie) trava em P1. Nunca sobe além de 3 degraus
+    nem toca os ancestrais de topo (reino/filo/classe) — 'Animalia' não ilustra nada."""
+    ids = taxon.get("ancestor_ids") or []
+    if not ids:
+        return [taxon["id"]]
+    if strict:
+        return [ids[-1]]
+    return [ids[i] for i in range(len(ids) - 1, max(len(ids) - 4, 5), -1)]
+
+
+def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False):
+    """Fotos de ser vivo identificadas por especialistas.
+
+    `termo`    = nome explícito do bicho/planta (vem de entidades.especie do diretor).
+    `garimpar` = sem termo, vasculha as palavras da própria busca. **Default OFF**:
+      mesmo com o filtro de matched_term, um vídeo de moto com "eagle" no nome de um
+      modelo casaria a ave — e uma águia entraria na montagem. Só ligue quando o
+      style_card marcar nicho taxonômico (fauna/flora), onde palavra de bicho na
+      busca É o assunto. Com `termo` explícito funciona sempre, inclusive pra menção
+      pontual dentro de um roteiro que não é de natureza."""
+    tx = _inat_taxon(termo) if termo else None
+    if not tx and garimpar:
+        for w in [w for w in re.findall(r"[A-Za-zÀ-ÿ]{4,}", query or "")
+                  if w.lower() not in _INAT_STOP][:4]:
+            tx = _inat_taxon(w)
+            if tx:
+                break
+    if not tx:
+        return []
+    out, vistos = [], set()
+    for degrau, tid in enumerate(_inat_escada(tx, strict), start=1):
+        if len(out) >= n:
+            break
+        try:
+            r = httpx.get(f"{_INAT}/observations", params={
+                "taxon_id": tid, "photos": "true", "photo_license": _INAT_LIC,
+                "quality_grade": "research", "order_by": "votes",
+                "per_page": min(30, n * 4)}, headers=_UA, timeout=25)
+            if r.status_code != 200:
+                continue
+            for o in r.json().get("results") or []:
+                for p in (o.get("photos") or [])[:1]:
+                    lic = (p.get("license_code") or "").lower()
+                    dim = p.get("original_dimensions") or {}
+                    url = (p.get("url") or "").replace("square", "original")
+                    # foto de naturalista costuma ser vertical/quadrada: em 16:9 vira
+                    # crop agressivo ou barra lateral — exige paisagem com folga
+                    if lic not in _INAT_TIER or not url or url in vistos:
+                        continue
+                    if dim.get("width", 0) < 1200 or dim.get("width", 0) <= dim.get("height", 1):
+                        continue
+                    vistos.add(url)
+                    out.append({"url": url, "source": "inaturalist",
+                                "id": f"inat_{p.get('id')}", "thumb": p.get("url"),
+                                "meta": (o.get("place_guess") or "")[:60],
+                                "tier": _INAT_TIER[lic], "licenca": lic,
+                                "atribuicao": (p.get("attribution") or "")[:120],
+                                "taxon": tx.get("name"), "taxon_rank": tx.get("rank"),
+                                "degrau": f"P{degrau}",
+                                # P1 = a espécie exata, verificada por humano: relevância
+                                # já provada. P2/P3 sobem na árvore -> Vision decide.
+                                "gate_relevancia": degrau > 1})
+                if len(out) >= n:
+                    break          # corta o loop de OBSERVAÇÕES, não só o de fotos
+        except Exception:
+            continue
+    return out
+
+
+def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=False,
+                    strict=False):
+    """Todas as fontes de imagem em paralelo -> candidatos dedupados.
+    `especie`/`taxonomico` ligam o iNaturalist (ver inaturalist_img)."""
     from concurrent.futures import ThreadPoolExecutor
     usados = usados or set()
-    with ThreadPoolExecutor(max_workers=5) as ex5:
+    with ThreadPoolExecutor(max_workers=6) as ex5:
         futs = [ex5.submit(f, query, n_por_fonte) for f in
                 (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img)]
+        futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
+                               taxonomico))
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
