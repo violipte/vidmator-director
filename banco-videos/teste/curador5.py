@@ -240,8 +240,13 @@ def _especie_do_beat(b):
         return None
     for k in ("especie", "taxon", "animal", "planta", "species"):
         v = e.get(k)
+        # o LLM às vezes devolve LISTA (`['jaguar','stingray']`) — mesmo problema que
+        # `dados` já deu. Pega o 1º: é o sujeito do beat; o resto é contexto.
+        if isinstance(v, list):
+            v = next((x for x in v if isinstance(x, str) and x.strip()), None)
         if isinstance(v, str) and v.strip():
-            return v.strip()
+            # "lion, tiger, leopard" não é UMA espécie — a primeira é a que ilustra
+            return v.split(",")[0].strip()
     return None
 
 

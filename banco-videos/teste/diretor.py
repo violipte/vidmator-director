@@ -155,7 +155,17 @@ def stage2_beats(segs, secao, use_start):
         "line), estrategia (literal|entidade|dado|peca|abstrato|atmosferico), tipo (footage_video|"
         "footage_imagem|ilustracao|animacao|stock), componente (exact name or null), dados (object or "
         "null — REAL values from the narration), busca (English query or null), strict (bool), "
-        "entidades (object or null: lugar/pessoa/org/numero), fallback (array of strings, [] for animacao)}.\n\n"
+        "entidades (object or null: lugar/pessoa/org/numero/especie), fallback (array of strings, [] for animacao)}.\n\n"
+        # 02/08: 'especie' = o SER VIVO daquele beat (animal, planta, inseto, fungo),
+        # em nome comum OU científico. É o que liga as fontes taxonômicas
+        # (iNaturalist/GBIF), onde a foto já foi identificada por especialistas —
+        # verdade documental, não palpite de Vision. Vale para MENÇÃO PONTUAL: um
+        # bicho citado de passagem num roteiro que não é de natureza também conta.
+        "IMPORTANT — 'especie': whenever the line names a living thing (animal, plant, "
+        "insect, fungus), put it in entidades.especie, using the name AS SPOKEN "
+        "(common or scientific: 'jaguar', 'Bothrops atrox', 'wandering spider'). Do "
+        "this even if the video is not about nature — a single passing mention counts. "
+        "Omit it when the reference is generic ('the animals', 'wildlife').\n\n"
         "NARRATION LINES:\n" + linhas
     )
     arr = gemini_arr(prompt, timeout=200)

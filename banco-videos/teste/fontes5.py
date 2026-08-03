@@ -342,8 +342,13 @@ _INAT_STOP = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "fo
 
 
 def _inat_norm(s):
-    """normaliza pra comparar termo x matched_term (plural simples tolerado)."""
+    """normaliza pra comparar termo x matched_term, tolerando plural inglês.
+    y->ies importa de verdade: 'peccary' x 'Peccaries' era recusado por isso."""
     s = " ".join((s or "").lower().split())
+    if s.endswith("ies"):
+        return s[:-3] + "y"
+    if s.endswith("es") and len(s) > 4:
+        return s[:-2]
     return s[:-1] if s.endswith("s") else s
 
 
@@ -361,12 +366,33 @@ def _inat_taxon(termo):
         r = httpx.get(f"{_INAT}/taxa/autocomplete", params={"q": termo[:60], "per_page": 5},
                       headers=_UA, timeout=20)
         alvo = _inat_norm(termo)
+        def _casa(m):
+            """Termo igual ao que casou, OU o NÚCLEO dele. Em inglês o núcleo do nome
+            comum é a ÚLTIMA palavra e os adjetivos vêm antes: 'Giant Peccary' É um
+            peccary, 'Neotropical Lanceheads' É um lancehead. Aceitar SUFIXO libera
+            esses; aceitar PREFIXO traria de volta os falsos positivos que já me
+            morderam — 'venomous' casando 'venomous king' (uma naja) e 'harley'
+            casando 'Harleya' (uma planta)."""
+            n = _inat_norm(m)
+            return n == alvo or (n.split() or [""])[-1] == alvo
+
         cands = [t for t in (r.json().get("results") or [])
                  if t.get("rank_level") and t["rank_level"] <= 30 and t.get("ancestor_ids")
-                 and _inat_norm(t.get("matched_term")) == alvo]
-        if not cands:
-            return None
-        return sorted(cands, key=lambda t: (t["rank_level"], -t.get("observations_count", 0)))[0]
+                 and _casa(t.get("matched_term"))]
+        if cands:
+            # espécie > gênero > resto, e desempata pelo mais observado. Ordenar por
+            # rank_level cru levava 'peccary' a uma SUBESPÉCIE do México
+            # (Pecari tajacu sonoriensis) em vez da espécie — mais fundo na árvore
+            # não é mais representativo.
+            ordem = {"species": 0, "genus": 1}
+            return sorted(cands, key=lambda t: (ordem.get(t.get("rank"), 2),
+                                                -t.get("observations_count", 0)))[0]
+        # termo composto que não casou inteiro: tenta o NÚCLEO. "Potamotrygon ray"
+        # falha, "Potamotrygon" resolve. Só uma vez (a recursão para aqui).
+        partes = (termo or "").split()
+        if len(partes) > 1:
+            return _inat_taxon(partes[0])
+        return None
     except Exception:
         return None
 
