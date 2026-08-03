@@ -92,6 +92,44 @@ def _notas_do_vision(prompt, frames):
     return _notas_do_vision(prompt, frames[:meio]) + _notas_do_vision(prompt, frames[meio:])
 
 
+CLIP_PY = Path(r"F:/Canal Dark/clip_venv/Scripts/python.exe")
+CLIP_TOPK = 8      # quantos finalistas seguem pro Vision
+CLIP_MIN = 4       # lote menor que isto não compensa o custo de subir o modelo
+_CLIP_OK = {"v": None}   # None = não testado; False = indisponível, para de tentar
+
+
+def _pre_filtro_clip(frames, validos, descricao, tema):
+    """Peneira SEMÂNTICA local antes do Vision pago (02/08).
+
+    Motivo: em 31/07 a curadoria parou com 8 chaves Gemini em 429 + Luna sem crédito.
+    O CLIP roda na 5070 Ti, custa 0, e ordena por 'casa com o texto' — então o Vision
+    só arbitra os finalistas. Validado no job de cobras: separou a gravura de
+    *Bothrops jararaca* (0.263) da prancha anatômica de perna humana (0.057).
+
+    Falha do CLIP nunca derruba o gate: sem venv/modelo, devolve o lote intacto e o
+    Vision decide sozinho, como antes.
+    """
+    if _CLIP_OK["v"] is False or len(frames) <= CLIP_MIN or not CLIP_PY.exists():
+        return frames, validos
+    alvo = f"{tema}. {descricao}"[:180] if tema else (descricao or "")[:180]
+    try:
+        import subprocess
+        r = subprocess.run([str(CLIP_PY), str(Path(__file__).parent / "clip_rank.py"),
+                            "--texto", alvo, "--imgs", *frames],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=180)
+        ranking = json.loads((r.stdout or "").strip().splitlines()[-1])
+        if not ranking:
+            return frames, validos
+        _CLIP_OK["v"] = True
+        ordem = {x["path"]: i for i, x in enumerate(x for x in ranking)}
+        pares = sorted(zip(frames, validos), key=lambda fv: ordem.get(fv[0], 999))[:CLIP_TOPK]
+        return [f for f, _ in pares], [v for _, v in pares]
+    except Exception:
+        _CLIP_OK["v"] = False   # some do caminho até o próximo processo
+        return frames, validos
+
+
 def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema=""):
     """candidatos: [{url|path, source, id, ...}] -> mesmos itens + score/vetos, ordenado.
     Baixa miniaturas quando url remota; aceita path local. Veto => score forçado a 0.
@@ -121,6 +159,7 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema=""):
                 continue
         if not frames:
             continue
+        frames, validos = _pre_filtro_clip(frames, validos, descricao, tema)
         ctx = f"SECTION RULE: {ctx_secao}\n" if ctx_secao else ""
         prompt = RUBRIC.format(desc=descricao[:200], tema=(tema or "documentary")[:80], ctx=ctx)
         notas = _notas_do_vision(prompt, frames)
