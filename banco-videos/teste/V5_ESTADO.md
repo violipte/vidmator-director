@@ -155,6 +155,45 @@ rate-limita: `_ddgs_tentar()` faz retry, e web/social só rodam na 1ª query do 
 ⚠️ **Luna é modelo de RACIOCÍNIO**: `max_completion_tokens` cobre reasoning + saída.
 Com 60 ele pensa e devolve content VAZIO (`finish_reason=length`). Usar ≥400.
 
+## 📚 FONTES — antes/depois (02/08) — commits 73b113d, c9b1cb7
+
+**Como voltar atrás, do mais fino ao mais grosso:**
+1. `FONTES_OFF=inaturalist,gbif python curador5.py ...` — desliga UMA fonte que
+   esteja poluindo, sem reverter commit e sem perder as outras.
+2. `git reset --hard v5-fontes-base` — volta ao estado ANTES de iNat/Wikimedia/
+   Archive/GBIF (tag criada exatamente pra isso).
+3. `git reset --hard v4-estavel` — abandona a v5 inteira.
+
+| | ANTES (baseline: vídeo de cobras, 01/08) | DEPOIS |
+|---|---|---|
+| imagem | Pexels · Openverse · SearXNG · web | + **iNaturalist** · **Wikimedia** · **Archive** · **GBIF** |
+| vídeo | Pexels · Coverr · YouTube · TikTok/IG/FB | (inalterado) |
+| nicho local | 70 clipes distintos, **4 com 3+ usos**, diagrama de DPOC e sinapse num vídeo de cobra | a medir no próximo job |
+
+**Baseline a bater** (vídeo `_job_cobras`, medido): 140 beats · 70 clipes distintos ·
+4 com 3+ usos · 31 componentes · preqa 6 flags R-72 (3%).
+
+### Gotchas caros desta rodada
+- **iNaturalist casa qualquer coisa**: tem nome científico pra tudo. `"harley
+  davidson"` trouxe *Ibatia harleyi* (uma planta) e `"venomous"` trouxe uma naja
+  pelo nome popular "venomous king" — os dois iam pro vídeo. Defesa: só aceita se
+  `matched_term` == termo buscado (plural tolerado) + `rank_level <= 30`. Garimpo
+  da query fica **OFF** por padrão; liga com `entidades.especie` (menção pontual em
+  roteiro que não é de natureza) ou `style_card.taxonomico`.
+- **Wikimedia dá 403 por httpx** ("respect our robot policy") mesmo com UA
+  descritivo e com UA de curl; por **urllib** responde 200 — é fingerprint do
+  cliente, não IP. O provider delega pro `commons_list` do executor v4.
+- **Licença por substring reprova licença boa**: `"nc"`/`"nd"` casam dentro de
+  `"and"`, `"unported"`. Usar borda de palavra.
+- **A alavanca de alcance é a escada taxonômica, não a licença**: espécie 183 →
+  gênero 1.927 → ordem 45.258 (medido). Soltar país/research grade não muda nada.
+
+### Decisão pendente do Piter — ShareAlike
+Há **inconsistência** hoje: travei o iNaturalist em `cc0+cc-by` (SA fora, porque
+ShareAlike obrigaria licenciar o vídeo inteiro como SA), mas o **Commons do v4 já
+traz CC-BY-SA** há tempos (`executor_beats:111` dá T2 pra ele) — e o Wikimedia novo
+herda isso. Ou aceita SA nos dois, ou exclui nos dois. Não decidi sozinho.
+
 ## Pendências / próximos passos
 1. **Re-rodar o vídeo das cobras** com a ordem corrigida (job `_job_cobras` pronto:
    roteiro/narração/transcript/plano/banco 25 clipes já feitos — é só `curador5 --resume`
