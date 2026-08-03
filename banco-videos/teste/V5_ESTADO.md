@@ -194,6 +194,32 @@ ShareAlike obrigaria licenciar o vídeo inteiro como SA), mas o **Commons do v4 
 traz CC-BY-SA** há tempos (`executor_beats:111` dá T2 pra ele) — e o Wikimedia novo
 herda isso. Ou aceita SA nos dois, ou exclui nos dois. Não decidi sozinho.
 
+## 🧠 FERRAMENTAS LOCAIS (02/08) — commits e0a0a5d, 1d8c2d7, 34f0537
+
+Tudo em **venv próprio** `F:/Canal Dark/clip_venv` (torch 2.11+cu128 — a 5070 Ti é
+Blackwell sm_120 e não roda em build antiga). ⚠️ O venv do PROD
+(`chatterbox-test/venv`) NÃO é tocado: trocar o torch de lá derruba a narração.
+Rollback = apagar a pasta do venv; sem ele tudo degrada pro comportamento antigo.
+
+| ferramenta | o que resolve | validação |
+|---|---|---|
+| `clip_rank.py --texto` | peneira semântica ANTES do Vision (o 429 de 31/07 parou a produção) | gravura de *Bothrops jararaca* 0.263 × prancha de perna humana 0.057; 19→8 finalistas em 6s |
+| `clip_rank.py --dedup` | near-duplicate que o dHash não pega (só varria `*.mp4`, e quebra com crop/recompressão) | original × cópia 60%+crop+qualidade ruim → agrupou; diferente ficou fora |
+| `alinhar_roteiro.py` | timestamp por PALAVRA a partir do ROTEIRO | 1335 palavras, última em 496.3s (áudio 495.5s); "doctor in **Minas Gerais**" em 4.84s |
+
+**Divisão CLIP × Vision:** CLIP responde *"tem a ver com o assunto?"* (local, lote,
+custo 0); Vision responde *"pode ir ao ar?"* — só ele enxerga talking-head, criança,
+marca d'água, texto queimado. CLIP **não** substitui o gate.
+
+**Forced alignment mata a classe do "Nasgerice"**: o diretor lê a transcrição porque
+precisa do timing, e o STT erra nome próprio. Alinhando o ROTEIRO, o texto é a
+verdade e o áudio só diz *quando* — nome próprio nunca é adivinhado. Falta plugar no
+diretor/Karaoke5 (hoje é ferramenta de linha de comando).
+
+Descartados com motivo: **WhisperX** (exige `ctranslate2==4.4.0`, sem build p/ Python
+3.14 — `torchaudio.forced_align` faz o mesmo sem dependência nova) e **imagededup**
+(puxaria TensorFlow pra fazer o que o CLIP já instalado faz melhor).
+
 ## Pendências / próximos passos
 1. **Re-rodar o vídeo das cobras** com a ordem corrigida (job `_job_cobras` pronto:
    roteiro/narração/transcript/plano/banco 25 clipes já feitos — é só `curador5 --resume`
