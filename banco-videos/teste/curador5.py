@@ -231,6 +231,13 @@ def _relatar_duplicatas(ctx):
             print(f'     del "resolvido/{bid}.json" + assets/{bid}__*')
 
 
+_CORPUS = {"txt": ""}   # tudo que é DITO no vídeo — régua contra espécie inventada
+
+
+def carregar_corpus(plano):
+    _CORPUS["txt"] = " ".join((b.get("texto") or "") for b in plano.get("beats", [])).lower()
+
+
 def _especie_do_beat(b):
     """entidades.especie do diretor = o ser vivo daquele beat. É o que liga o
     iNaturalist em MENÇÃO PONTUAL (um bicho citado dentro de um roteiro que não é
@@ -246,7 +253,17 @@ def _especie_do_beat(b):
             v = next((x for x in v if isinstance(x, str) and x.strip()), None)
         if isinstance(v, str) and v.strip():
             # "lion, tiger, leopard" não é UMA espécie — a primeira é a que ilustra
-            return v.split(",")[0].strip()
+            esp = v.split(",")[0].strip()
+            # ⚠️ o diretor ALUCINA espécie: o roteiro amazônico dizia "any big cat" e
+            # ele extraiu lion/tiger/leopard, plantando um LEÃO AFRICANO no vídeo.
+            # Mas a checagem tem que ser contra o ROTEIRO INTEIRO, não contra a frase
+            # do beat: "It is the largest cat in the Americas" fala do jaguar por
+            # CORREFERÊNCIA, e o diretor acertou — validar frase a frase barrava 21
+            # de 50, quase todos corretos. Regra: a espécie precisa ser dita em algum
+            # lugar do vídeo; se não é, o LLM inventou.
+            if _CORPUS["txt"] and esp.lower().split()[0] not in _CORPUS["txt"]:
+                return None
+            return esp
     return None
 
 
@@ -354,6 +371,7 @@ def main():
 
     job = Path(a.job)
     plano = json.loads(Path(a.plano).read_text(encoding="utf-8"))
+    carregar_corpus(plano)   # régua contra espécie que o diretor inventou
     sc = json.loads((job / "style_card.json").read_text(encoding="utf-8")) \
         if (job / "style_card.json").exists() else {}
     desamb = sc.get("desambiguacao") or {}

@@ -645,13 +645,20 @@ def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=
                 (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img,
                  wikimedia_img, archive_img)]
         futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
-                               taxonomico, ancora))
+                               False, ancora))
         # GBIF só entende nome CIENTÍFICO ('jararaca'=0, 'Bothrops jararaca'=1) —
         # o autocomplete do iNat é justamente o tradutor comum->científico
         if especie or taxonomico:
             _tx = _inat_taxon(especie) if especie else None
             futs.append(ex5.submit(gbif_img, (_tx or {}).get("name") or especie or query,
                                    n_por_fonte))
+        # ⚠️ GARIMPO da query DESLIGADO mesmo em nicho taxonômico (02/08). Ele deu 3
+        # falsos positivos num job só: *Ibatia harleyi* (planta) em "harley davidson",
+        # *Amazona* (papagaio) em "amazon rainforest", *Geranium robertianum* e
+        # *Asperugo procumbens* (plantas europeias) em queries de floresta. O iNat
+        # NUNCA devolve vazio: qualquer palavra casa algum ser vivo. Fazia sentido
+        # quando o diretor não extraía espécie; agora extrai (49 aceitas no job
+        # amazônico), então o termo explícito + validado é a única porta.
         if rodada == 0:   # Flickr custa subprocess: só na 1ª rodada de queries
             # busca do Flickr é AND: 'venomous snake fangs close up' = 0 resultados,
             # 'jararaca' = 2. Manda o alvo, não a frase inteira.
