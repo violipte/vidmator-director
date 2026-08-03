@@ -86,19 +86,44 @@ def alinhar(audio, roteiro_txt):
             for i, sp in enumerate(spans) if sp]
 
 
+def montar_transcript(palavras, max_palavras=14):
+    """Linhas `[M:SS] texto` — o MESMO formato que o `diretor.py` já consome, mas com
+    o texto do ROTEIRO e os tempos reais. Plug-and-play: o diretor não muda, só passa
+    a receber uma entrada em que nome próprio não pode estar errado.
+    (No transcript do STT das cobras, "Minas Gerais" saiu certo aos 0:03 e virou
+    "Nasgerice" aos 8:10 — erro INTERMITENTE, que é pior de caçar que erro fixo.)
+    Quebra em fim de frase; se a frase for longa, corta no limite de palavras."""
+    linhas, buf, t0 = [], [], None
+    for w in palavras:
+        if t0 is None:
+            t0 = w["t_ini"]
+        buf.append(w["palavra"])
+        fim_frase = w["palavra"].rstrip('"\'').endswith((".", "!", "?"))
+        if fim_frase or len(buf) >= max_palavras:
+            linhas.append(f"[{int(t0) // 60}:{int(t0) % 60:02d}] " + " ".join(buf))
+            buf, t0 = [], None
+    if buf:
+        linhas.append(f"[{int(t0 or 0) // 60}:{int(t0 or 0) % 60:02d}] " + " ".join(buf))
+    return "\n".join(linhas) + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--audio", required=True)
     ap.add_argument("--roteiro", required=True)
     ap.add_argument("--saida", default="")
+    ap.add_argument("--transcript", default="", help="gera [M:SS] pro diretor")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     from pathlib import Path
     palavras = alinhar(a.audio, Path(a.roteiro).read_text(encoding="utf-8", errors="ignore"))
+    if a.transcript:
+        Path(a.transcript).write_text(montar_transcript(palavras), encoding="utf-8")
+        print(f"transcript alinhado ({len(palavras)} palavras) -> {a.transcript}")
     if a.saida:
         Path(a.saida).write_text(json.dumps(palavras, ensure_ascii=False), encoding="utf-8")
         print(f"{len(palavras)} palavras alinhadas -> {a.saida}")
-    else:
+    if not (a.saida or a.transcript):
         print(json.dumps(palavras[:40], ensure_ascii=False))
 
 
