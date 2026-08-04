@@ -44,11 +44,18 @@ def queries_estratificadas(busca, assunto_secao="", ancora=""):
     base = busca.split(" OR ")[0].strip()
     kws = [w for w in re.findall(r"[a-zA-Z]{3,}", busca) if w.lower() not in STOPWORDS5]
     anc = (ancora or "").strip()
+    # ⚠️ ORDEM INVERTIDA em 02/08 (QA Piter). A âncora vinha PRIMEIRO e a busca fiel
+    # era o ÚLTIMO recurso — então o beat que pedia "calm hospital hallway" buscava
+    # "amazon rainforest dangerous wildlife calm hospital hallway" e o buscador
+    # devolvia FAUNA. Resultado no vídeo: corredor de hospital virou JAGUAR, botas na
+    # porta viraram COBRA, frasco de antiveneno virou ARANHA. A âncora existe pra
+    # desambiguar busca VAGA ("the fangs"), não pra sequestrar busca já específica:
+    # agora ela entra como REFORÇO, depois que o pedido literal teve sua chance.
     return [
-        f"{anc} {base}".strip()[:95],                     # 1 âncora + fiel
-        f"{base} close up detail {anc}".strip()[:95],     # 2 específica ancorada
-        f"{anc} {' '.join(kws[:3])}".strip()[:95],        # 3 âncora + keywords
-        base,                                             # 4 fiel puro (último recurso)
+        base,                                             # 1 FIEL ao que o beat pediu
+        f"{base} close up detail".strip()[:95],           # 2 fiel + enquadramento
+        f"{anc} {base}".strip()[:95],                     # 3 ancorada (desambigua vaga)
+        f"{anc} {' '.join(kws[:3])}".strip()[:95],        # 4 âncora + keywords
     ]
 
 
@@ -344,7 +351,8 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomic
         # vídeo é julgado pelo THUMB (barato); imagem, por ela mesma
         pool = [{**c, "url": c.get("thumb") or c["url"]}
                 for c in cands if c not in verificados]
-        notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora) if pool else []
+        notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora,
+                           busca=b.get("busca") or q) if pool else []
         # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08).
         # social sem thumb entra no FIM da fila: só é tentado se nada com nota vingou.
         fila = [{**c, "score": 10, "vetos": []} for c in verificados] + \

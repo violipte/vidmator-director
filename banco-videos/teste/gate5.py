@@ -24,12 +24,22 @@ plays on screen while the narrator says a specific line.
 DOCUMENTARY SUBJECT (what the whole film is about): "{tema}"
 NARRATION AT THIS MOMENT: "{desc}"
 {ctx}
+SHOT THE EDITOR ASKED FOR: "{busca}"
+
 Judge each image as a CUTAWAY for this moment — not as a literal illustration of the
 sentence. When the narration mentions a person, place or object that is INCIDENTAL to
 the film (a doctor, a researcher, a city, a date), a good editor does not cut to that
 incidental thing: they stay inside the film's own world — its subject, its textures,
 its environment — and let the line play over an image that carries the tension.
 Cut to the literal thing ONLY when that thing IS the subject of the film.
+
+HARD LIMIT (02/08): "stay inside the film's world" is NOT a licence to ignore the
+requested shot. When the editor asks for a hospital corridor, an image of the film's
+animal is a WRONG answer, however beautiful — it scores 0-3. Real failures we shipped:
+"calm hospital hallway" returned a jaguar, "dirty boots by the door" returned a snake,
+"antivenom vial" returned a spider — all rated 10. If an image does not plausibly
+answer the REQUESTED SHOT, it cannot score above 5, no matter how well it fits the
+documentary subject.
 
 For EACH numbered image below, give a JSON object with:
 - "score" (0-10): how well it works as the shot for this moment.
@@ -115,7 +125,7 @@ CLIP_MIN = 4       # lote menor que isto não compensa o custo de subir o modelo
 _CLIP_OK = {"v": None}   # None = não testado; False = indisponível, para de tentar
 
 
-def _pre_filtro_clip(frames, validos, descricao, tema):
+def _pre_filtro_clip(frames, validos, descricao, tema, busca=""):
     """Peneira SEMÂNTICA local antes do Vision pago (02/08).
 
     Motivo: em 31/07 a curadoria parou com 8 chaves Gemini em 429 + Luna sem crédito.
@@ -128,7 +138,12 @@ def _pre_filtro_clip(frames, validos, descricao, tema):
     """
     if _CLIP_OK["v"] is False or len(frames) <= CLIP_MIN or not CLIP_PY.exists():
         return frames, validos
-    alvo = f"{tema}. {descricao}"[:180] if tema else (descricao or "")[:180]
+    # 02/08: o alvo era "{tema}. {descricao}" — mesma contaminação da query: pra
+    # "hospital hallway" o CLIP ranqueava FAUNA no topo, porque o tema pesava mais
+    # que o pedido. O que o editor PEDIU manda; tema entra só como contexto.
+    alvo = (busca or descricao or "")[:150]
+    if tema and not busca:
+        alvo = f"{tema}. {descricao}"[:180]
     try:
         import subprocess
         r = subprocess.run([str(CLIP_PY), str(Path(__file__).parent / "clip_rank.py"),
@@ -147,7 +162,7 @@ def _pre_filtro_clip(frames, validos, descricao, tema):
         return frames, validos
 
 
-def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema=""):
+def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca=""):
     """candidatos: [{url|path, source, id, ...}] -> mesmos itens + score/vetos, ordenado.
     Baixa miniaturas quando url remota; aceita path local. Veto => score forçado a 0.
     Candidato que o Vision não conseguiu avaliar sai com score -1 (≠ 'ruim')."""
@@ -176,9 +191,10 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema=""):
                 continue
         if not frames:
             continue
-        frames, validos = _pre_filtro_clip(frames, validos, descricao, tema)
+        frames, validos = _pre_filtro_clip(frames, validos, descricao, tema, busca)
         ctx = f"SECTION RULE: {ctx_secao}\n" if ctx_secao else ""
-        prompt = RUBRIC.format(desc=descricao[:200], tema=(tema or "documentary")[:80], ctx=ctx)
+        prompt = RUBRIC.format(desc=descricao[:200], tema=(tema or "documentary")[:80],
+                           busca=(busca or descricao)[:110], ctx=ctx)
         notas = _notas_do_vision(prompt, frames)
         for i, c in enumerate(validos):
             bruto = notas[i] if i < len(notas) else None
