@@ -34,12 +34,12 @@ its environment — and let the line play over an image that carries the tension
 Cut to the literal thing ONLY when that thing IS the subject of the film.
 
 HARD LIMIT (02/08): "stay inside the film's world" is NOT a licence to ignore the
-requested shot. When the editor asks for a hospital corridor, an image of the film's
-animal is a WRONG answer, however beautiful — it scores 0-3. Real failures we shipped:
-"calm hospital hallway" returned a jaguar, "dirty boots by the door" returned a snake,
-"antivenom vial" returned a spider — all rated 10. If an image does not plausibly
-answer the REQUESTED SHOT, it cannot score above 5, no matter how well it fits the
-documentary subject.
+requested shot. Real failures we shipped: "calm hospital hallway" returned a jaguar,
+"dirty boots by the door" returned a snake, "antivenom vial" returned a spider — all
+rated 10, all of them beautiful, all of them WRONG. Scoring them low was not enough,
+because when the whole pool is wrong the least-wrong still wins: they now get the
+"fora_do_pedido" VETO, which annuls the score entirely. An empty beat is better than
+a beat that answers a question nobody asked.
 
 For EACH numbered image below, give a JSON object with:
 - "score" (0-10): how well it works as the shot for this moment.
@@ -67,6 +67,12 @@ For EACH numbered image below, give a JSON object with:
      regardless of how legitimate the context is. When in doubt, veto.),
   "screen_capture" (a recording of a video PLAYER or app: progress bar, play
      button, seek scrubber, UI chrome at the edges of frame),
+  "fora_do_pedido" (the image does NOT show what the SHOT THE EDITOR ASKED FOR
+     describes. Ask yourself literally: "is this a <requested shot>?" — if the
+     answer is no, veto it, even when the image belongs beautifully to the
+     documentary subject. A jaguar is not a hospital corridor. A snake is not a
+     pair of boots by a door. A spider is not an antivenom vial. Belonging to the
+     film does NOT substitute for answering the request.),
   "brand" (a prominent identifiable brand/product foreign to the topic),
   "fake" (AI-generated, digitally composited, or manipulated to look real:
      an animal at an IMPOSSIBLE size next to a boat/person/car, two species
