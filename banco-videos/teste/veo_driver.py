@@ -184,9 +184,29 @@ def _baixar_do_detalhe(page, out_path, quer_1080=True):
         return False
 
 
+def _aprovado(caminho, item, tipo, tmp):
+    """GATE NO GERADO (01/08). O clipe do VEO entrava na montagem sem nenhuma
+    checagem — enquanto footage de terceiros passa por 3 gates. Mas modelo generativo
+    erra à sua maneira: escreve texto na placa mesmo mandado não escrever, inventa mão
+    com seis dedos, e às vezes produz alguém encarando/falando pra lente. Mesma régua
+    do footage real: 6 frames pela duração inteira (vídeo) ou a própria imagem."""
+    import vision_gate as vg
+    caminho = Path(caminho)
+    if not caminho.exists():
+        return False, ["arquivo ausente"]
+    frames = [str(caminho)] if tipo == "imagem" else \
+        [str(f) for f in vg._frames_de_video(caminho, tmp, n=6)]
+    if not frames:
+        return True, []          # não deu pra amostrar: não condena por isso
+    g = vg.gate(item.get("busca_original") or item.get("prompt", "")[:90], frames)
+    return bool(g["ok"]), g.get("flags") or []
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lote", required=True)
+    ap.add_argument("--regen", type=int, default=1,
+                    help="re-gerações por item reprovado no gate (0 = aceita como veio)")
     ap.add_argument("--out", required=True)
     ap.add_argument("--fila", type=int, default=5)
     ap.add_argument("--modelo", default="Veo 3.1 - Lite [Lower Priority]")
@@ -295,6 +315,19 @@ def main():
                     fd._pausa(1.0, 1.6)
                 vistos.add(href)
                 em_voo.remove(it)
+                if ok and a.regen >= 0:
+                    passou, flags = _aprovado(out / it["arquivo"], it, a.tipo, out / "_tmp")
+                    if not passou:
+                        (out / it["arquivo"]).unlink(missing_ok=True)
+                        it["_tent"] = it.get("_tent", 0) + 1
+                        if it["_tent"] <= a.regen:
+                            fila_itens.append(it)   # volta pro fim: será re-gerado
+                            print(f"  {it['arquivo']} REPROVADO {flags} — re-gerando "
+                                  f"({it['_tent']}/{a.regen})")
+                        else:
+                            falhas += 1
+                            print(f"  {it['arquivo']} REPROVADO {flags} — desisto")
+                        continue
                 if ok:
                     feitos += 1
                     print(f"  [{feitos}/{len(fila_itens)}] {it['arquivo']} OK")
