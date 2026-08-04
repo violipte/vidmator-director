@@ -574,6 +574,11 @@ def bing_img(query, n=6):
     if _off("bing"):
         return []
     try:
+        # `first` pagina: 1 traz ~35, e a 2a leva de resultado. Query de NICHO rende
+        # muito mais que query comercial — "bothrops atrox snake amazon" devolveu 100
+        # brutos / 97 livres, enquanto "stacked banana crates warehouse" deu 35/1
+        # (stock com marca d'água). Foi esse segundo caso que me fez subestimar a
+        # fonte: o filtro de domínio marcado só morde onde a query é comercial.
         r = httpx.get("https://www.bing.com/images/search",
                       params={"q": query[:100], "first": "1"},
                       headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -708,6 +713,9 @@ def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=
                 [w for w in re.findall(r"[A-Za-zÀ-ÿ]{3,}", query or "")
                  if w.lower() not in _INAT_STOP][:3])
             futs.append(ex5.submit(flickr_img, _q_fl or query, n_por_fonte))
+        # Bing entrega ~100 candidatos livres em query de nicho e virou a fonte mais
+        # farta desde que o SearXNG caiu com o Docker: pede o DOBRO das outras
+        futs.append(ex5.submit(bing_img, query, n_por_fonte * 2))
         tudo = [c for fu in futs for c in fu.result()]
     vistos, out = set(usados), []
     for c in tudo:
