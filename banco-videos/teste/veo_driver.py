@@ -184,6 +184,23 @@ def _baixar_do_detalhe(page, out_path, quer_1080=True):
         return False
 
 
+def _normalizar_lote(lote):
+    """Aceita os DOIS formatos de fila que existem hoje:
+      • `veo_lote.json`  (modo generativo do canal)  -> {tipo, arquivo, prompt, ...}
+      • `_gerar.json`    (buracos da curadoria, 02/08) -> {i, prompt, dest}
+    Sem isso o driver quebrava no `x["tipo"]` ao consumir a fila da curadoria."""
+    out = []
+    for x in lote:
+        y = dict(x)
+        if not y.get("arquivo") and y.get("dest"):
+            y["arquivo"] = y["dest"]
+        if not y.get("tipo"):
+            y["tipo"] = "imagem" if str(y.get("arquivo", "")).lower().endswith(
+                (".jpg", ".jpeg", ".png")) else "video"
+        out.append(y)
+    return out
+
+
 def _aprovado(caminho, item, tipo, tmp):
     """GATE NO GERADO (01/08). O clipe do VEO entrava na montagem sem nenhuma
     checagem — enquanto footage de terceiros passa por 3 gates. Mas modelo generativo
@@ -207,6 +224,9 @@ def main():
     ap.add_argument("--lote", required=True)
     ap.add_argument("--regen", type=int, default=1,
                     help="re-gerações por item reprovado no gate (0 = aceita como veio)")
+    ap.add_argument("--dirigir", default="", metavar="ESTILO",
+                    help='passa os prompts pelo diretor de fotografia com este look de '
+                         'canal, ex: "dark stoic documentary, candlelit, 35mm"')
     ap.add_argument("--out", required=True)
     ap.add_argument("--fila", type=int, default=5)
     ap.add_argument("--modelo", default="Veo 3.1 - Lite [Lower Priority]")
@@ -219,7 +239,16 @@ def main():
 
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    lote = json.loads(Path(a.lote).read_text(encoding="utf-8"))
+    lote = _normalizar_lote(json.loads(Path(a.lote).read_text(encoding="utf-8")))
+    if a.dirigir:
+        # a fila da curadoria (_gerar.json) traz a `busca` CRUA como prompt — boa pro
+        # Nano Banana, fraca pro VEO. Aqui ela passa pelo diretor de fotografia.
+        from veo_prompt import dirigir as _dirigir
+        alvo = [x for x in lote if x["tipo"] == a.tipo]
+        novos = _dirigir([{"busca": x["prompt"], "tipo": x["tipo"]} for x in alvo], a.dirigir)
+        for x, p in zip(alvo, novos):
+            x["busca_original"], x["prompt"] = x["prompt"], p
+        print(f"  prompts dirigidos: {len(novos)}")
     fila_itens = [x for x in lote if x["tipo"] == a.tipo and not (out / x["arquivo"]).exists()]
     print(f"=== veo_driver: {len(fila_itens)} {a.tipo}s a gerar | fila {a.fila} | {a.modelo} ===")
     if not fila_itens:
