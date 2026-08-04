@@ -125,13 +125,31 @@ def _baixar_do_grid(page, href, out_path, quer_1080=True):
         fd._pausa(0.4, 0.8)
         card.hover()
         fd._pausa(0.6, 1.0)
-        # 30/07: os botões ♥/↻/⋮ NÃO são filhos do <a> — clicar por coordenada:
-        # o ⋮ fica no canto superior-direito do card hoverado
+        # 30/07: os botões ♥/↻/⋮ NÃO são filhos do <a>, então era clique por coordenada
+        # (canto sup-direito do card). 04/08: passou a errar o alvo — os botões ficam
+        # RECUADOS da borda (⋮ em x=749 num card que termina em 795; o clique caía em
+        # x=773, no vazio) e todo download falhava. Agora acha o botão DE VERDADE pelo
+        # aria-label, filtrando os que estão dentro da área do card.
         box = card.bounding_box()
         if not box:
             return False
+        btn_mais = None
+        for b in page.locator("button").all():
+            try:
+                bb = b.bounding_box()
+                if not bb:
+                    continue
+                dentro = (box["x"] <= bb["x"] <= box["x"] + box["width"]
+                          and box["y"] <= bb["y"] <= box["y"] + box["height"])
+                rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=400) or "")
+                if dentro and ("more_vert" in rot or "Mais" in rot or "More" in rot):
+                    btn_mais = b
+            except Exception:
+                continue
+        if btn_mais is None:
+            return False
         with page.expect_download(timeout=150_000) as dl_info:
-            page.mouse.click(box["x"] + box["width"] - 22, box["y"] + 22)
+            btn_mais.click()
             fd._pausa(0.4, 0.8)
             page.get_by_role("menuitem", name=re.compile("^Baixar$|Download", re.I)).first.click()
             fd._pausa(0.4, 0.8)
@@ -216,7 +234,14 @@ def _aprovado(caminho, item, tipo, tmp):
     if not frames:
         return True, []          # não deu pra amostrar: não condena por isso
     g = vg.gate(item.get("busca_original") or item.get("prompt", "")[:90], frames)
-    return bool(g["ok"]), g.get("flags") or []
+    flags = list(g.get("flags") or [])
+    # AVATAR DO CANAL é a única exceção legítima ao veto de talking-head: a regra
+    # existe pra barrar CRIADOR DE TERCEIRO falando pra câmera (vlogger, review), e
+    # o apresentador do próprio canal é o oposto disso. Marcado item a item — nunca
+    # global, senão o veto perde o sentido no resto do vídeo.
+    if item.get("avatar"):
+        flags = [f for f in flags if f != "talking-head"]
+    return (not flags), flags
 
 
 def main():
@@ -224,6 +249,9 @@ def main():
     ap.add_argument("--lote", required=True)
     ap.add_argument("--regen", type=int, default=1,
                     help="re-gerações por item reprovado no gate (0 = aceita como veio)")
+    ap.add_argument("--sem-config", action="store_true",
+                    help="nao mexe no seletor de modelo: usa a config ja persistida "
+                         "no projeto (o passo mais fragil do driver)")
     ap.add_argument("--dirigir", default="", metavar="ESTILO",
                     help='passa os prompts pelo diretor de fotografia com este look de '
                          'canal, ex: "dark stoic documentary, candlelit, 35mm"')
@@ -273,6 +301,13 @@ def main():
                   '"F:/Canal Dark/Aplicativo de Edição/veo_flow/flow_driver.py" login')
             return
         try:
+            if a.sem_config:
+                # 04/08: a config PERSISTE por projeto. Reabrir o popup a cada rodada
+                # é o passo mais frágil do driver (a UI do Flow muda os rótulos e o
+                # popper fica interceptando clique). Com o projeto já configurado na
+                # mão, pular aqui é mais seguro que reconfigurar. ⚠️ conferir no
+                # rodapé que está em Vídeo — foi assim que um lote saiu como imagem.
+                raise RuntimeError("--sem-config")
             fd.configurar_video(page, a.modelo, "16:9", "8s", "1x")
         except Exception as e_cfg:
             # config PERSISTE por projeto — se o popup mudou/travou, segue com a atual

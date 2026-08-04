@@ -46,6 +46,34 @@ URL base: `https://labs.google/fx/pt/tools/flow`
 - **Rota B (detalhe):** clicar no card → `/edit/<mediaId>` → barra superior tem **⬇️ download** também.
 - O card mostra só o poster; o mp4 real carrega no play/baixar. `expect_download` é o caminho mais simples e robusto.
 
+## PERSONAGENS (avatar do canal) — ditado pelo Piter 04/08, fluxo REAL
+Sidebar: ícone do bonequinho de braços abertos (`accessibility_new`, aria "Personagens").
+"Crie e reutilize personagens para manter a consistência nos vídeos" — é o que resolve
+o VEO **não manter o mesmo rosto entre gerações**.
+
+**Dois caminhos para a imagem-base** (ambos válidos):
+- **A — direto na tela de Personagens (preferido p/ automação):** escrever no campo
+  **"Descreva seu personagem..."** e enviar. O **Nano Banana** gera ali mesmo, 0 créditos.
+  Um passo só, sem depender de mídia pré-existente no projeto.
+- **B — reaproveitar mídia:** gerar/ter a imagem no projeto → **"Adicionar do projeto"**
+  (rodapé, ao lado de "Fazer upload") → escolher na lista → **"Adicionar ao personagem"**.
+  Útil quando o avatar já existe ou veio de upload.
+
+**Depois da imagem-base, em qualquer um dos caminhos:**
+4. Tela de customização (título "Personagem sem título"):
+   - **"Selecionar uma voz"** — SEMPRE fazer. Modal "Selecione a voz" lista vozes com
+     descrição (`Iapetus · Male, clear, mid-low pitch`). Tem "Exemplo de diálogo"
+     (120 chars) e "Personalizar a performance (opcional)". Confirma em
+     **"Adicionar ao personagem"**. ⚠️ muitas vozes são ruins — ver `VOZES.md`.
+   - "Informações sobre o personagem" e "Criar corpo": **não mexer**.
+   - Nomear no título (ícone de lápis ao lado de "Personagem sem título").
+5. **"Concluir"** no canto superior DIREITO.
+
+**Uso na geração:** `@Nome` dentro do prompt (ex.: `@Russel`). É assim que o clipe sai
+com o mesmo host.
+
+Primeiro personagem real: **Russel** (biólogo de campo, voz Iapetus) — canal AMZ.
+
 ## Riscos / boas práticas
 - ToS/detecção: pacing humano (delays), perfil real, headful, sem rajada.
 - Seletores: preferir `get_by_role`/`get_by_text` + padrões de href; evitar classes hasheadas do build.

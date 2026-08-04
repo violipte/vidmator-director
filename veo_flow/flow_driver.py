@@ -97,27 +97,49 @@ def _seletor_modelo_btn(page):
     return page.get_by_role("button").filter(has_text=MODELO_BTN_RE).last
 
 
+def _tab(page, alvo):
+    """04/08: os tabs do Flow têm o nome do ÍCONE material colado no texto —
+    'videocam\\nVídeo', 'crop_16_9\\n16:9'. Com `name=..., exact=True` NADA casava:
+    configurar_video estourava TimeoutError, o driver seguia com 'config pulada' e a
+    geração saía no modelo que estivesse selecionado. Foi assim que um lote de VÍDEO
+    saiu como IMAGEM do Nano Banana — e, pior, imagem de alguém FALANDO vira legenda
+    DESENHADA no quadro. Casar por substring resolve a classe toda."""
+    return page.get_by_role("tab", name=re.compile(re.escape(alvo), re.I)).first
+
+
 def configurar_video(page, modelo="Veo 3.1 - Fast", aspecto="16:9", dur="8s", saidas="x2"):
     """Abre o popup e seta Vídeo + modelo + aspecto + duração + saídas."""
     _seletor_modelo_btn(page).click()
     _pausa()
-    page.get_by_role("tab", name="Vídeo", exact=True).click()      # aba Vídeo
+    _tab(page, "Vídeo").click()                                    # aba Vídeo
     _pausa(0.3, 0.7)
     # modelo: abre o dropdown (botão mostra o modelo atual) e escolhe pelo texto
     page.get_by_role("button", name=re.compile(r"Veo|Omni", re.I)).first.click()
     _pausa(0.3, 0.7)
-    page.get_by_text(modelo, exact=True).click()
+    page.get_by_text(re.compile(re.escape(modelo), re.I)).first.click()
     _pausa(0.3, 0.7)
-    page.get_by_role("tab", name=aspecto, exact=True).click()      # 9:16 | 16:9
-    page.get_by_role("tab", name=dur, exact=True).click()          # 4s | 6s | 8s
-    page.get_by_role("tab", name=saidas, exact=True).click()       # 1x | x2 | x3 | x4
+    _tab(page, aspecto).click()                                    # 9:16 | 16:9
+    _tab(page, dur).click()                                        # 4s | 6s | 8s
+    _tab(page, saidas).click()                                     # 1x | x2 | x3 | x4
     # lê o custo exibido (ex.: 'A geração vai usar 20 créditos')
     try:
         custo = page.get_by_text(re.compile(r"cr[ée]ditos")).inner_text(timeout=3000)
         print(f"  config: {modelo} · {aspecto} · {dur} · {saidas}  ({custo.strip()})")
     except PWTimeout:
         print(f"  config: {modelo} · {aspecto} · {dur} · {saidas}")
-    page.keyboard.press("Escape")   # fecha o popup
+    # 04/08: UM Escape não bastava — o popper do Radix ficava montado e "intercepts
+    # pointer events", travando o clique seguinte (o envio do prompt). Fecha o
+    # dropdown E o popup, e confirma que o overlay sumiu antes de devolver o controle.
+    for _ in range(3):
+        page.keyboard.press("Escape")
+        _pausa(0.3, 0.6)
+        if not page.locator("[data-radix-popper-content-wrapper]").count():
+            break
+    else:
+        try:  # ainda montado: clica numa área morta pra dispensar
+            page.mouse.click(page.viewport_size["width"] - 30, 300)
+        except Exception:
+            pass
     _pausa(0.3, 0.7)
 
 
