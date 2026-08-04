@@ -1605,8 +1605,8 @@
     "semantic_hash": ""
   },
   "remotion/src/compositions/ChapterTitle.tsx": {
-    "mtime": 1784242915.438004,
-    "ast_hash": "506fd34035717014abde65635471d7e3",
+    "mtime": 1785865351.0720255,
+    "ast_hash": "bfb7b5244f07638975a21b57b51c7aec",
     "semantic_hash": ""
   },
   "remotion/src/compositions/CharacterCard.tsx": {
@@ -1970,8 +1970,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/vision_gate.py": {
-    "mtime": 1785529344.8084998,
-    "ast_hash": "364408273b088f5a15c0b3cf69aef779",
+    "mtime": 1785865539.3353355,
+    "ast_hash": "1348685bfffc1fb5bd23d340988f465c",
     "semantic_hash": ""
   },
   "remotion/_render_acervo_graficos.mjs": {
@@ -2120,7 +2120,7 @@
     "semantic_hash": ""
   },
   "remotion/src/tema_atual.ts": {
-    "mtime": 1785800543.7122185,
+    "mtime": 1785865416.4626496,
     "ast_hash": "13d5d75f64b4efc755c3653ca6de4069",
     "semantic_hash": ""
   },
@@ -2255,8 +2255,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_driver.py": {
-    "mtime": 1785416570.8419712,
-    "ast_hash": "6dbc10574a8ef5b31640fcdacc2cc3a5",
+    "mtime": 1785867836.3582067,
+    "ast_hash": "b388c71fe6a48eaf63d8337c60e69f3c",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_ingest.py": {
@@ -2265,8 +2265,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_lote.py": {
-    "mtime": 1785357279.4618278,
-    "ast_hash": "8a4c09fb98487157e38a06be7eca2437",
+    "mtime": 1785864843.5828066,
+    "ast_hash": "45356f0ef82de539d9a77998e4330901",
     "semantic_hash": ""
   },
   "video-automator/upload_trigger.py": {
@@ -2330,8 +2330,8 @@
     "semantic_hash": ""
   },
   "video-automator/_esteira/worker_heartbeat.txt": {
-    "mtime": 1785812477.342522,
-    "ast_hash": "5a044549fe17891dd9963ac15b11bc81",
+    "mtime": 1785867903.9343934,
+    "ast_hash": "ae902be5c176a2b833962a3803f6a70d",
     "semantic_hash": ""
   },
   "video-automator/niche_search.py": {
@@ -2340,23 +2340,23 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/curador5.py": {
-    "mtime": 1785793214.2961261,
-    "ast_hash": "50a1cb7b529c6c81b27a1e6611334ad8",
+    "mtime": 1785867588.5059056,
+    "ast_hash": "9166e6dab1aa2710cde89e12fb45086d",
     "semantic_hash": ""
   },
   "banco-videos/teste/fontes5.py": {
-    "mtime": 1785793443.9658105,
-    "ast_hash": "63c9a7e3733bf47f9b3a881fd13ebc22",
+    "mtime": 1785867711.3726256,
+    "ast_hash": "ca4abe9b51a1adf4a5cc903f689c57b0",
     "semantic_hash": ""
   },
   "banco-videos/teste/gate5.py": {
-    "mtime": 1785799297.2911456,
-    "ast_hash": "376e22404c63fa70d56fac7477dfd37b",
+    "mtime": 1785866890.5708077,
+    "ast_hash": "cf2c0876c36f6b457061a9fc0fec2a04",
     "semantic_hash": ""
   },
   "banco-videos/teste/montador5.py": {
-    "mtime": 1785800543.5803497,
-    "ast_hash": "5a3b0ebb323ced4402dd735b7960b6f2",
+    "mtime": 1785865416.2508888,
+    "ast_hash": "08e5f86d2bab00bf7a3351c221a712ef",
     "semantic_hash": ""
   },
   "banco-videos/teste/parallax5.py": {
@@ -2395,8 +2395,8 @@
     "semantic_hash": ""
   },
   "remotion/src/compositions/v5/Montagem5.tsx": {
-    "mtime": 1785685559.5356052,
-    "ast_hash": "c2392ba6ee58ddb3ff3449c38d31fb5b",
+    "mtime": 1785865483.0626328,
+    "ast_hash": "385c877e9731c5cfa8da937ec15ae17d",
     "semantic_hash": ""
   },
   "remotion/src/compositions/v5/Parallax3Scene5.tsx": {
@@ -2502,6 +2502,21 @@
   "video-automator/COLLAB_TELA_FINAL.md": {
     "mtime": 1785812014.3204486,
     "ast_hash": "6f534319cfe1215927b09bdc59611666",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/veo_prompt.py": {
+    "mtime": 1785864795.7679155,
+    "ast_hash": "3570e2ce1980d042293b8dfeb0cbcb5c",
+    "semantic_hash": ""
+  },
+  "remotion/_render_amazonia.mjs": {
+    "mtime": 1785863240.703976,
+    "ast_hash": "7c0e333d611056b5dee4646e3f210649",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/GERACAO_FLOW.md": {
+    "mtime": 1785867879.9462874,
+    "ast_hash": "d3a7cdb4f76f174dd782a9e957c81e41",
     "semantic_hash": ""
   }
 }

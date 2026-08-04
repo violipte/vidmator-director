@@ -3392,7 +3392,7 @@
       "label": "_luminancia_ok()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L55",
+      "source_location": "L62",
       "_origin": "ast"
     },
     {
@@ -3400,7 +3400,7 @@
       "label": "_baixar_normalizar()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L75",
+      "source_location": "L82",
       "_origin": "ast"
     },
     {
@@ -3408,7 +3408,7 @@
       "label": "_baixar_imagem()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L106",
+      "source_location": "L113",
       "_origin": "ast"
     },
     {
@@ -3416,7 +3416,7 @@
       "label": "ancora_local()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L127",
+      "source_location": "L134",
       "_origin": "ast"
     },
     {
@@ -3424,7 +3424,7 @@
       "label": "_baixar_ytdlp()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L157",
+      "source_location": "L164",
       "_origin": "ast"
     },
     {
@@ -3432,7 +3432,15 @@
       "label": "_gate_pesado_ok()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L187",
+      "source_location": "L194",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_curador5_fila_geracao",
+      "label": "_fila_geracao()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L208",
       "_origin": "ast"
     },
     {
@@ -3440,7 +3448,7 @@
       "label": "_relatar_duplicatas()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L201",
+      "source_location": "L242",
       "_origin": "ast"
     },
     {
@@ -3448,7 +3456,15 @@
       "label": "carregar_corpus()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L237",
+      "source_location": "L278",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_curador5_mapear_especie_por_secao",
+      "label": "mapear_especie_por_secao()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L285",
       "_origin": "ast"
     },
     {
@@ -3456,7 +3472,7 @@
       "label": "_especie_do_beat()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L241",
+      "source_location": "L314",
       "_origin": "ast"
     },
     {
@@ -3464,7 +3480,7 @@
       "label": "resolver_beat5()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L270",
+      "source_location": "L345",
       "_origin": "ast"
     },
     {
@@ -3472,7 +3488,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L364",
+      "source_location": "L440",
       "_origin": "ast"
     },
     {
@@ -3484,75 +3500,91 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_56",
+      "id": "banco_videos_teste_curador5_rationale_63",
       "label": "Gate de TELA (31/07): clipe escuro demais NÃO vai ao ar — o Vision aprova     '",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L56",
+      "source_location": "L63",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_76",
+      "id": "banco_videos_teste_curador5_rationale_83",
       "label": "Download + normaliza 1920x1080/30fps h264 (padrão do executor).",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L76",
+      "source_location": "L83",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_107",
+      "id": "banco_videos_teste_curador5_rationale_114",
       "label": "Download de imagem + cap de resolução (o executor já tem a regra: original de",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L107",
+      "source_location": "L114",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_128",
+      "id": "banco_videos_teste_curador5_rationale_135",
       "label": "Traduz a âncora do tema UMA VEZ por job, pra busca em rede social.      01/08:",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L128",
+      "source_location": "L135",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_158",
+      "id": "banco_videos_teste_curador5_rationale_165",
       "label": "Baixa post de página (YouTube/TikTok/Reels/FB) via yt-dlp e normaliza 1080p30.",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L158",
+      "source_location": "L165",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_188",
+      "id": "banco_videos_teste_curador5_rationale_195",
       "label": "Gate v4 COMPLETO (6 frames pela duração inteira) — obrigatório pra material",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L188",
+      "source_location": "L195",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_202",
+      "id": "banco_videos_teste_curador5_rationale_209",
+      "label": "Buraco vira PROMPT de geração (02/08, decisão do Piter).      Antes: beat sem",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L209",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_curador5_rationale_243",
       "label": "Passe final: near-duplicate por embedding CLIP (02/08).      O dedup do execut",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L202",
+      "source_location": "L243",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_242",
+      "id": "banco_videos_teste_curador5_rationale_286",
+      "label": "Espécie que MANDA em cada seção (02/08, QA Piter).      'Na parte que fala da",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L286",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_curador5_rationale_315",
       "label": "entidades.especie do diretor = o ser vivo daquele beat. É o que liga o     iNat",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L242",
+      "source_location": "L315",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_curador5_rationale_271",
+      "id": "banco_videos_teste_curador5_rationale_346",
       "label": "Pool multi-fonte + batch score; devolve dict resolvido ou None (=> fallback v4).",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L271",
+      "source_location": "L346",
       "_origin": "ast"
     },
     {
@@ -4436,11 +4468,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_fontes5_bing_img",
+      "label": "bing_img()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L560",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_fontes5_flickr_img",
       "label": "flickr_img()",
       "file_type": "code",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L568",
+      "source_location": "L610",
       "_origin": "ast"
     },
     {
@@ -4448,7 +4488,7 @@
       "label": "archive_img()",
       "file_type": "code",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L610",
+      "source_location": "L652",
       "_origin": "ast"
     },
     {
@@ -4456,7 +4496,7 @@
       "label": "coletar_imagens()",
       "file_type": "code",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L636",
+      "source_location": "L678",
       "_origin": "ast"
     },
     {
@@ -4464,7 +4504,7 @@
       "label": "coletar_videos()",
       "file_type": "code",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L678",
+      "source_location": "L720",
       "_origin": "ast"
     },
     {
@@ -4572,19 +4612,27 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_fontes5_rationale_611",
-      "label": "Acervo histórico (domínio público) — o que resolve beat de ÉPOCA, que stock",
+      "id": "banco_videos_teste_fontes5_rationale_561",
+      "label": "Bing Images direto — sem Docker, sem API key (02/08).      Nasceu porque o Sea",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L611",
+      "source_location": "L561",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_fontes5_rationale_638",
+      "id": "banco_videos_teste_fontes5_rationale_653",
+      "label": "Acervo histórico (domínio público) — o que resolve beat de ÉPOCA, que stock",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L653",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_fontes5_rationale_680",
       "label": "Todas as fontes de imagem em paralelo -> candidatos dedupados.     `especie`/`t",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L638",
+      "source_location": "L680",
       "_origin": "ast"
     },
     {
@@ -4600,7 +4648,7 @@
       "label": "_preparar_frame()",
       "file_type": "code",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L60",
+      "source_location": "L81",
       "_origin": "ast"
     },
     {
@@ -4608,7 +4656,7 @@
       "label": "_notas_do_vision()",
       "file_type": "code",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L81",
+      "source_location": "L102",
       "_origin": "ast"
     },
     {
@@ -4616,7 +4664,7 @@
       "label": "_pre_filtro_clip()",
       "file_type": "code",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L107",
+      "source_location": "L128",
       "_origin": "ast"
     },
     {
@@ -4624,39 +4672,39 @@
       "label": "batch_gate()",
       "file_type": "code",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L139",
-      "_origin": "ast"
-    },
-    {
-      "id": "banco_videos_teste_gate5_rationale_61",
-      "label": "Garante que o que vai pro Vision É uma imagem — e uma que a API aceite.      0",
-      "file_type": "rationale",
-      "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L61",
+      "source_location": "L165",
       "_origin": "ast"
     },
     {
       "id": "banco_videos_teste_gate5_rationale_82",
-      "label": "Notas alinhadas aos frames. Se a chamada morrer com N>1, BISSECTA em vez de",
+      "label": "Garante que o que vai pro Vision É uma imagem — e uma que a API aceite.      0",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/gate5.py",
       "source_location": "L82",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_gate5_rationale_108",
-      "label": "Peneira SEMÂNTICA local antes do Vision pago (02/08).      Motivo: em 31/07 a",
+      "id": "banco_videos_teste_gate5_rationale_103",
+      "label": "Notas alinhadas aos frames. Se a chamada morrer com N>1, BISSECTA em vez de",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L108",
+      "source_location": "L103",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_gate5_rationale_140",
+      "id": "banco_videos_teste_gate5_rationale_129",
+      "label": "Peneira SEMÂNTICA local antes do Vision pago (02/08).      Motivo: em 31/07 a",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/gate5.py",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_gate5_rationale_166",
       "label": "candidatos: [{url|path, source, id, ...}] -> mesmos itens + score/vetos, ordenad",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L140",
+      "source_location": "L166",
       "_origin": "ast"
     },
     {
@@ -5692,11 +5740,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_montador5_rotulo_capitulo",
+      "label": "_rotulo_capitulo()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_montador5_dic5",
       "label": "_dic5()",
       "file_type": "code",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L30",
+      "source_location": "L56",
       "_origin": "ast"
     },
     {
@@ -5704,15 +5760,23 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L37",
+      "source_location": "L63",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_montador5_rationale_31",
+      "id": "banco_videos_teste_montador5_rationale_35",
+      "label": "(rótulo, número) do marcador de seção, LIDO DO ROTEIRO.      QA Piter 02/08: n",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_montador5_rationale_57",
       "label": "dados do LLM podem vir como LISTA — normaliza p/ dict (31/07).",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L31",
+      "source_location": "L57",
       "_origin": "ast"
     },
     {
@@ -7132,11 +7196,27 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_driver_normalizar_lote",
+      "label": "_normalizar_lote()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L187",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_driver_aprovado",
+      "label": "_aprovado()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L204",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_driver_main",
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L187",
+      "source_location": "L222",
       "_origin": "ast"
     },
     {
@@ -7188,6 +7268,22 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_driver_rationale_188",
+      "label": "Aceita os DOIS formatos de fila que existem hoje:       • `veo_lote.json`  (modo",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L188",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_driver_rationale_205",
+      "label": "GATE NO GERADO (01/08). O clipe do VEO entrava na montagem sem nenhuma     checa",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L205",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_ingest",
       "label": "veo_ingest.py",
       "file_type": "code",
@@ -7212,11 +7308,67 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_lote_estilo_do_canal",
+      "label": "_estilo_do_canal()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_lote_main",
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L25",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lote_rationale_36",
+      "label": "Look do canal. `gen_estilo` é a fonte boa; mood_words são o fallback — e aí",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L36",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_prompt",
+      "label": "veo_prompt.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_prompt_fallback",
+      "label": "_fallback()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L60",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_prompt_pedir",
+      "label": "_pedir()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_prompt_dirigir",
+      "label": "dirigir()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L83",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_prompt_rationale_84",
+      "label": "itens: [{busca, texto, tipo}] -> lista de prompts na MESMA ordem.     `tipo` ==",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L84",
       "_origin": "ast"
     },
     {
@@ -7264,7 +7416,7 @@
       "label": "gate()",
       "file_type": "code",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L118",
+      "source_location": "L123",
       "_origin": "ast"
     },
     {
@@ -7272,7 +7424,7 @@
       "label": "_frames_de_video()",
       "file_type": "code",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L149",
+      "source_location": "L156",
       "_origin": "ast"
     },
     {
@@ -7292,19 +7444,19 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_vision_gate_rationale_119",
+      "id": "banco_videos_teste_vision_gate_rationale_124",
       "label": "Retorna {ok, flags[], reason, raw}. ok=True só se relevante, sem criança e sem t",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L119",
+      "source_location": "L124",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_vision_gate_rationale_150",
+      "id": "banco_videos_teste_vision_gate_rationale_157",
       "label": "Amostra n frames espalhados pela duração INTEIRA do vídeo (p/ passar ao gate).",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L150",
+      "source_location": "L157",
       "_origin": "ast"
     },
     {
@@ -7712,6 +7864,54 @@
       "label": "AMOSTRA",
       "file_type": "code",
       "source_file": "remotion/_render_acervo_texto.mjs",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia",
+      "label": "_render_amazonia.mjs",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia_bundle",
+      "label": "BUNDLE",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia_tmp",
+      "label": "TMP",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia_mont",
+      "label": "mont",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia_modoaudio",
+      "label": "modoAudio",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_amazonia_framerange",
+      "label": "frameRange",
+      "file_type": "code",
+      "source_file": "remotion/_render_amazonia.mjs",
       "source_location": "L18",
       "_origin": "ast"
     },
@@ -13768,7 +13968,7 @@
       "label": "ClipFull()",
       "file_type": "code",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L285",
+      "source_location": "L293",
       "_origin": "ast"
     },
     {
@@ -13776,7 +13976,7 @@
       "label": "KenImg()",
       "file_type": "code",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L301",
+      "source_location": "L309",
       "_origin": "ast"
     },
     {
@@ -13784,7 +13984,7 @@
       "label": "BeatView()",
       "file_type": "code",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L308",
+      "source_location": "L316",
       "_origin": "ast"
     },
     {
@@ -13792,7 +13992,7 @@
       "label": "Montagem5()",
       "file_type": "code",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L355",
+      "source_location": "L363",
       "_origin": "ast"
     },
     {
@@ -27392,6 +27592,70 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_geracao_flow",
+      "label": "GERACAO_FLOW.md",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "label": "Geração no Flow (VEO 3.1 / Nano Banana) — manual operacional",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_as_duas_filas_que_alimentam_o_flow",
+      "label": "As duas filas que alimentam o Flow",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_modo_de_geração_por_canal_style_card_json",
+      "label": "Modo de geração POR CANAL (style_card.json)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_cadeia",
+      "label": "Cadeia",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_o_prompt_não_é_a_query_de_busca_01_08",
+      "label": "O prompt NÃO é a query de busca (01/08)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_gate_no_que_foi_gerado_regen_n_default_1",
+      "label": "Gate no que foi gerado (`--regen N`, default 1)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L73",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_gotchas_do_flow",
+      "label": "Gotchas do Flow",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L84",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_pendentes_qa",
       "label": "PENDENTES_QA.md",
       "file_type": "document",
@@ -38638,7 +38902,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L55",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -38647,7 +38911,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L75",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -38656,7 +38920,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L106",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -38665,7 +38929,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L127",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -38674,7 +38938,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L157",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -38683,7 +38947,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L187",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5",
+      "target": "banco_videos_teste_curador5_fila_geracao",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -38692,7 +38965,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L201",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -38701,7 +38974,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L237",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5",
+      "target": "banco_videos_teste_curador5_mapear_especie_por_secao",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -38710,7 +38992,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L241",
+      "source_location": "L314",
       "weight": 1.0
     },
     {
@@ -38719,7 +39001,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L270",
+      "source_location": "L345",
       "weight": 1.0
     },
     {
@@ -38728,7 +39010,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L364",
+      "source_location": "L440",
       "weight": 1.0
     },
     {
@@ -38738,7 +39020,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L279",
+      "source_location": "L354",
       "weight": 1.0
     },
     {
@@ -38748,7 +39030,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L288",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -38758,7 +39040,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L327",
+      "source_location": "L403",
       "weight": 1.0
     },
     {
@@ -38768,7 +39050,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L331",
+      "source_location": "L407",
       "weight": 1.0
     },
     {
@@ -38778,7 +39060,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L334",
+      "source_location": "L410",
       "weight": 1.0
     },
     {
@@ -38788,7 +39070,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L336",
+      "source_location": "L412",
       "weight": 1.0
     },
     {
@@ -38798,7 +39080,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L343",
+      "source_location": "L419",
       "weight": 1.0
     },
     {
@@ -38808,7 +39090,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L374",
+      "source_location": "L450",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5_main",
+      "target": "banco_videos_teste_curador5_mapear_especie_por_secao",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L451",
       "weight": 1.0
     },
     {
@@ -38818,7 +39110,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L385",
+      "source_location": "L463",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5_main",
+      "target": "banco_videos_teste_curador5_fila_geracao",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L570",
       "weight": 1.0
     },
     {
@@ -38828,7 +39130,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L492",
+      "source_location": "L571",
       "weight": 1.0
     },
     {
@@ -38841,84 +39143,102 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_56",
+      "source": "banco_videos_teste_curador5_rationale_63",
       "target": "banco_videos_teste_curador5_luminancia_ok",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L56",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_76",
+      "source": "banco_videos_teste_curador5_rationale_83",
       "target": "banco_videos_teste_curador5_baixar_normalizar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L76",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_107",
+      "source": "banco_videos_teste_curador5_rationale_114",
       "target": "banco_videos_teste_curador5_baixar_imagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L107",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_128",
+      "source": "banco_videos_teste_curador5_rationale_135",
       "target": "banco_videos_teste_curador5_ancora_local",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L128",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_158",
+      "source": "banco_videos_teste_curador5_rationale_165",
       "target": "banco_videos_teste_curador5_baixar_ytdlp",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L158",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_188",
+      "source": "banco_videos_teste_curador5_rationale_195",
       "target": "banco_videos_teste_curador5_gate_pesado_ok",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L188",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_202",
+      "source": "banco_videos_teste_curador5_rationale_209",
+      "target": "banco_videos_teste_curador5_fila_geracao",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5_rationale_243",
       "target": "banco_videos_teste_curador5_relatar_duplicatas",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L202",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_242",
+      "source": "banco_videos_teste_curador5_rationale_286",
+      "target": "banco_videos_teste_curador5_mapear_especie_por_secao",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/curador5.py",
+      "source_location": "L286",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_curador5_rationale_315",
       "target": "banco_videos_teste_curador5_especie_do_beat",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L242",
+      "source_location": "L315",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_curador5_rationale_271",
+      "source": "banco_videos_teste_curador5_rationale_346",
       "target": "banco_videos_teste_curador5_resolver_beat5",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L271",
+      "source_location": "L346",
       "weight": 1.0
     },
     {
@@ -41255,16 +41575,16 @@
     },
     {
       "source": "banco_videos_teste_fontes5",
-      "target": "banco_videos_teste_fontes5_flickr_img",
+      "target": "banco_videos_teste_fontes5_bing_img",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L568",
+      "source_location": "L560",
       "weight": 1.0
     },
     {
       "source": "banco_videos_teste_fontes5",
-      "target": "banco_videos_teste_fontes5_archive_img",
+      "target": "banco_videos_teste_fontes5_flickr_img",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
@@ -41273,11 +41593,20 @@
     },
     {
       "source": "banco_videos_teste_fontes5",
+      "target": "banco_videos_teste_fontes5_archive_img",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L652",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_fontes5",
       "target": "banco_videos_teste_fontes5_coletar_imagens",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L636",
+      "source_location": "L678",
       "weight": 1.0
     },
     {
@@ -41286,7 +41615,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L678",
+      "source_location": "L720",
       "weight": 1.0
     },
     {
@@ -41440,13 +41769,23 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_fontes5_bing_img",
+      "target": "banco_videos_teste_fontes5_off",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L574",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_fontes5_flickr_img",
       "target": "banco_videos_teste_fontes5_off",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L569",
+      "source_location": "L611",
       "weight": 1.0
     },
     {
@@ -41456,7 +41795,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L614",
+      "source_location": "L656",
       "weight": 1.0
     },
     {
@@ -41466,7 +41805,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L645",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -41476,7 +41815,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L645",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -41486,7 +41825,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L645",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -41496,7 +41835,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L645",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -41506,7 +41845,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L645",
+      "source_location": "L687",
       "weight": 1.0
     },
     {
@@ -41516,7 +41855,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L646",
+      "source_location": "L688",
       "weight": 1.0
     },
     {
@@ -41526,7 +41865,17 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L646",
+      "source_location": "L688",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_fontes5_coletar_imagens",
+      "target": "banco_videos_teste_fontes5_bing_img",
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L688",
       "weight": 1.0
     },
     {
@@ -41536,7 +41885,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L647",
+      "source_location": "L689",
       "weight": 1.0
     },
     {
@@ -41546,7 +41895,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L652",
+      "source_location": "L694",
       "weight": 1.0
     },
     {
@@ -41556,7 +41905,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L653",
+      "source_location": "L695",
       "weight": 1.0
     },
     {
@@ -41566,7 +41915,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L668",
+      "source_location": "L710",
       "weight": 1.0
     },
     {
@@ -41576,7 +41925,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L682",
+      "source_location": "L724",
       "weight": 1.0
     },
     {
@@ -41586,7 +41935,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L682",
+      "source_location": "L724",
       "weight": 1.0
     },
     {
@@ -41596,7 +41945,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L682",
+      "source_location": "L724",
       "weight": 1.0
     },
     {
@@ -41717,21 +42066,30 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_fontes5_rationale_611",
+      "source": "banco_videos_teste_fontes5_rationale_561",
+      "target": "banco_videos_teste_fontes5_bing_img",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/fontes5.py",
+      "source_location": "L561",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_fontes5_rationale_653",
       "target": "banco_videos_teste_fontes5_archive_img",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L611",
+      "source_location": "L653",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_fontes5_rationale_638",
+      "source": "banco_videos_teste_fontes5_rationale_680",
       "target": "banco_videos_teste_fontes5_coletar_imagens",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/fontes5.py",
-      "source_location": "L638",
+      "source_location": "L680",
       "weight": 1.0
     },
     {
@@ -41790,7 +42148,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L60",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -41799,7 +42157,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L81",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -41808,7 +42166,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L107",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -41817,7 +42175,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L139",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -41827,7 +42185,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L192",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -41837,7 +42195,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L160",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -41847,7 +42205,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L168",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -41857,21 +42215,12 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L171",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_gate5_rationale_61",
-      "target": "banco_videos_teste_gate5_preparar_frame",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L61",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
       "source": "banco_videos_teste_gate5_rationale_82",
-      "target": "banco_videos_teste_gate5_notas_do_vision",
+      "target": "banco_videos_teste_gate5_preparar_frame",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
@@ -41879,21 +42228,30 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_gate5_rationale_108",
+      "source": "banco_videos_teste_gate5_rationale_103",
+      "target": "banco_videos_teste_gate5_notas_do_vision",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/gate5.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gate5_rationale_129",
       "target": "banco_videos_teste_gate5_pre_filtro_clip",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L108",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_gate5_rationale_140",
+      "source": "banco_videos_teste_gate5_rationale_166",
       "target": "banco_videos_teste_gate5_batch_gate",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L140",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -44777,11 +45135,20 @@
     },
     {
       "source": "banco_videos_teste_montador5",
+      "target": "banco_videos_teste_montador5_rotulo_capitulo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5",
       "target": "banco_videos_teste_montador5_dic5",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L30",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -44790,7 +45157,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L37",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5_main",
+      "target": "banco_videos_teste_montador5_rotulo_capitulo",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L435",
       "weight": 1.0
     },
     {
@@ -44800,16 +45177,25 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L429",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_montador5_rationale_31",
+      "source": "banco_videos_teste_montador5_rationale_35",
+      "target": "banco_videos_teste_montador5_rotulo_capitulo",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5_rationale_57",
       "target": "banco_videos_teste_montador5_dic5",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L31",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -48321,11 +48707,29 @@
     },
     {
       "source": "banco_videos_teste_veo_driver",
-      "target": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_normalizar_lote",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
       "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver",
+      "target": "banco_videos_teste_veo_driver_aprovado",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver",
+      "target": "banco_videos_teste_veo_driver_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -48350,17 +48754,7 @@
     },
     {
       "source": "banco_videos_teste_veo_driver_main",
-      "target": "banco_videos_teste_veo_driver_carregar_todos_cards",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L238",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_veo_driver_main",
-      "target": "banco_videos_teste_veo_driver_cards_edit",
+      "target": "banco_videos_teste_veo_driver_normalizar_lote",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -48370,12 +48764,32 @@
     },
     {
       "source": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_carregar_todos_cards",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L287",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_cards_edit",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L291",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_main",
       "target": "banco_videos_teste_veo_driver_match_pendente",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L271",
+      "source_location": "L320",
       "weight": 1.0
     },
     {
@@ -48385,7 +48799,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L279",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -48395,7 +48809,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L280",
+      "source_location": "L329",
       "weight": 1.0
     },
     {
@@ -48405,7 +48819,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L284",
+      "source_location": "L333",
       "weight": 1.0
     },
     {
@@ -48415,7 +48829,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L293",
+      "source_location": "L342",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_aprovado",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -48470,6 +48894,24 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
       "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_rationale_188",
+      "target": "banco_videos_teste_veo_driver_normalizar_lote",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_rationale_205",
+      "target": "banco_videos_teste_veo_driver_aprovado",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -48548,7 +48990,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L12",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -48558,7 +49000,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L13",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -48568,7 +49010,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L14",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -48578,7 +49020,26 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L15",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lote",
+      "target": "veo_prompt",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lote",
+      "target": "banco_videos_teste_veo_lote_estilo_do_canal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -48587,7 +49048,132 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_lote.py",
-      "source_location": "L25",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lote_main",
+      "target": "banco_videos_teste_veo_lote_estilo_do_canal",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lote_rationale_36",
+      "target": "banco_videos_teste_veo_lote_estilo_do_canal",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "vision_gate",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "banco_videos_teste_veo_prompt_fallback",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "banco_videos_teste_veo_prompt_pedir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt",
+      "target": "banco_videos_teste_veo_prompt_dirigir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt_dirigir",
+      "target": "banco_videos_teste_veo_prompt_pedir",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt_dirigir",
+      "target": "banco_videos_teste_veo_prompt_fallback",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_prompt_rationale_84",
+      "target": "banco_videos_teste_veo_prompt_dirigir",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_prompt.py",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -48702,7 +49288,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L118",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -48711,7 +49297,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L149",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -48741,7 +49327,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L123",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -48751,7 +49337,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L123",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -48761,7 +49347,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L125",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -48783,21 +49369,21 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_vision_gate_rationale_119",
+      "source": "banco_videos_teste_vision_gate_rationale_124",
       "target": "banco_videos_teste_vision_gate_gate",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L119",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_vision_gate_rationale_150",
+      "source": "banco_videos_teste_vision_gate_rationale_157",
       "target": "banco_videos_teste_vision_gate_frames_de_video",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/vision_gate.py",
-      "source_location": "L150",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -49613,6 +50199,91 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/_render_acervo_texto.mjs",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "ref_remotion_bundler",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "ref_remotion_renderer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "remotion_render_amazonia_bundle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "remotion_render_amazonia_tmp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "remotion_render_amazonia_mont",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "remotion_render_amazonia_modoaudio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_amazonia",
+      "target": "remotion_render_amazonia_framerange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_amazonia.mjs",
       "source_location": "L18",
       "weight": 1.0
     },
@@ -65464,7 +66135,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L285",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -65473,7 +66144,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L301",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -65482,7 +66153,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L308",
+      "source_location": "L316",
       "weight": 1.0
     },
     {
@@ -65491,7 +66162,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L355",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -65501,7 +66172,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L198",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -65511,7 +66182,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L291",
+      "source_location": "L299",
       "weight": 1.0
     },
     {
@@ -65521,7 +66192,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L331",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -65531,7 +66202,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L405",
+      "source_location": "L413",
       "weight": 1.0
     },
     {
@@ -65541,7 +66212,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "remotion/src/compositions/v5/Montagem5.tsx",
-      "source_location": "L406",
+      "source_location": "L414",
       "weight": 1.0
     },
     {
@@ -96722,6 +97393,69 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_geracao_flow",
+      "target": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_as_duas_filas_que_alimentam_o_flow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_modo_de_geração_por_canal_style_card_json",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_cadeia",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_o_prompt_não_é_a_query_de_busca_01_08",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_gate_no_que_foi_gerado_regen_n_default_1",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_gotchas_do_flow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_pendentes_qa",
       "target": "banco_videos_teste_pendentes_qa_pendentes_de_qa_corrigir_antes_do_próximo_vídeo_não_regenerar_o_atual",
       "relation": "contains",
@@ -101142,7 +101876,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L284",
+      "source_location": "L359",
       "weight": 1.0
     },
     {
@@ -101153,7 +101887,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L288",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -101164,7 +101898,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L292",
+      "source_location": "L367",
       "weight": 1.0
     },
     {
@@ -101175,7 +101909,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L293",
+      "source_location": "L368",
       "weight": 1.0
     },
     {
@@ -101186,7 +101920,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L313",
+      "source_location": "L388",
       "weight": 1.0
     },
     {
@@ -101197,7 +101931,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L379",
+      "source_location": "L457",
       "weight": 1.0
     },
     {
@@ -101208,7 +101942,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/curador5.py",
-      "source_location": "L398",
+      "source_location": "L476",
       "weight": 1.0
     },
     {
@@ -101450,7 +102184,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/gate5.py",
-      "source_location": "L87",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -101681,7 +102415,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L55",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -101692,7 +102426,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L112",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -101703,7 +102437,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L340",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -101714,7 +102448,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L351",
+      "source_location": "L382",
       "weight": 1.0
     },
     {
@@ -101725,7 +102459,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L422",
+      "source_location": "L474",
       "weight": 1.0
     },
     {
@@ -101736,7 +102470,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L427",
+      "source_location": "L479",
       "weight": 1.0
     },
     {
@@ -101747,7 +102481,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L469",
+      "source_location": "L521",
       "weight": 1.0
     },
     {
@@ -101758,7 +102492,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L479",
+      "source_location": "L531",
       "weight": 1.0
     },
     {
@@ -101769,7 +102503,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L534",
+      "source_location": "L586",
       "weight": 1.0
     },
     {
@@ -101780,7 +102514,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L534",
+      "source_location": "L586",
       "weight": 1.0
     },
     {
@@ -101880,6 +102614,17 @@
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/topicos.py",
       "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lote_main",
+      "target": "banco_videos_teste_veo_prompt_dirigir",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_lote.py",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
