@@ -556,6 +556,48 @@ def gbif_img(query, n=4):
         return []
 
 
+# ------------------------------------------------------------------ Bing imagens
+def bing_img(query, n=6):
+    """Bing Images direto — sem Docker, sem API key (02/08).
+
+    Nasceu porque o SearXNG (nossa meta-busca) depende do Docker Desktop, que caiu no
+    meio do dia e derrubou a fonte mais farta do pool. Instância pública de SearXNG
+    não serve de plano B: praticamente todas desabilitaram `format=json` por abuso
+    (testadas searx.be, searxng.site, priv.au, bus-hit.me — todas recusaram).
+    O Bing responde 200 a um GET simples e devolveu 35 imagens para
+    "stacked banana crates warehouse" — a MESMA query que voltou vazia e deixou o
+    beat 97 sem asset no job amazônico.
+
+    É T3: material da web aberta, sem licença verificável. Vai com máscara pesada,
+    crop de borda (piso 1.18 no ClipT3) e cap de 5s, como todo T3.
+    """
+    if _off("bing"):
+        return []
+    try:
+        r = httpx.get("https://www.bing.com/images/search",
+                      params={"q": query[:100], "first": "1"},
+                      headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                                             "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                             "Chrome/120.0 Safari/537.36"},
+                      timeout=25, follow_redirects=True)
+        if r.status_code != 200:
+            return []
+        # as URLs vêm HTML-escapadas no atributo `m` de cada resultado
+        urls = re.findall(r"murl&quot;:&quot;(.*?)&quot;", r.text)
+        out = []
+        for u in urls:
+            u = u.replace("\\/", "/")
+            if not u.startswith("http") or any(d in u.lower() for d in _DOM_MARCADOS):
+                continue
+            out.append({"url": u, "source": "bing", "tier": 3,
+                        "id": f"bg_{abs(hash(u)) % 10**10}", "meta": ""})
+            if len(out) >= n:
+                break
+        return out
+    except Exception:
+        return []
+
+
 # ------------------------------------------------------- Flickr via gallery-dl
 # gallery-dl é o par do yt-dlp para IMAGEM (centenas de sites). Aqui ele entra pelo
 # Flickr, que tem acervo enorme de natureza/lugares E filtro de licença na própria
@@ -643,7 +685,7 @@ def coletar_imagens(query, n_por_fonte=3, usados=None, especie=None, taxonomico=
     with ThreadPoolExecutor(max_workers=8) as ex5:
         futs = [ex5.submit(f, query, n_por_fonte) for f in
                 (pixabay_img, unsplash_img, openverse_img, searxng_img, web_img,
-                 wikimedia_img, archive_img)]
+                 wikimedia_img, archive_img, bing_img)]
         futs.append(ex5.submit(inaturalist_img, query, n_por_fonte, strict, especie,
                                False, ancora))
         # GBIF só entende nome CIENTÍFICO ('jararaca'=0, 'Bothrops jararaca'=1) —
