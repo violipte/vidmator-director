@@ -70,6 +70,30 @@ candlelit marble tones, muted contrast
 isso funciona bem (validado pelo Piter: "stacked banana crates warehouse" saiu melhor
 que o stock). Para **VEO**, passe `--dirigir "<look do canal>"`.
 
+## Avatar do canal (personagem) e a VOZ ÚNICA
+
+`style_card["avatar"] = {escopo, nome, voz, descricao, fala_intro}` — ver
+`veo_personagem.py`. `escopo: canal` cria o host UMA vez e reusa em todo vídeo
+(identidade); `video` cria por vídeo; `nenhum` = faceless. Registro em
+`veo_flow/personagens.json`. **Na geração, basta `@Nome` no prompt** (ex.: `@Russel`).
+Fluxo de criação na interface: `veo_flow/FLOW_MAP.md` › PERSONAGENS.
+
+**A voz não pode destoar (regra do Piter 04/08).** O avatar fala com a voz do Flow
+(ex.: Iapetus) e a narração sai do Chatterbox com OUTRA voz de referência — dá duas
+pessoas diferentes no mesmo vídeo. Então a voz do host vira a referência de clone:
+
+```bash
+# 1. extrai a fala do(s) take(s) do avatar, limpa e concatena (5-15s)
+python veo_voz.py --clipes <take1.mp4> [take2.mp4] --canal AMZ
+# 2. a narração passa a usar essa referência, não o Bill EN.MP3 genérico
+#    narrar_chatterbox(texto, r"<veo_flow/vozes_ref/voz_AMZ.wav>", nome, ...)
+```
+
+⚠️ O take de REFERÊNCIA deve ser gerado com ambiente MÍNIMO ("clean voice recording,
+no ambient sound"): som de rio/insetos melhora o clipe e ATRAPALHA o clone, porque o
+Chatterbox aprende o ruído junto com o timbre. Um take de 8s rende ~6-7s de fala —
+passa, mas 2-3 takes concatenados clonam melhor.
+
 ## Gate no que foi gerado (`--regen N`, default 1)
 
 Material generativo era a única coisa da pipeline que entrava **sem checagem**, embora
