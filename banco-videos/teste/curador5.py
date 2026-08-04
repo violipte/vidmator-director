@@ -205,6 +205,40 @@ def _gate_pesado_ok(mp4, beat, ctx):
     return bool(g["ok"])
 
 
+def _fila_geracao(ctx, tarefas):
+    """Buraco vira PROMPT de geração (02/08, decisão do Piter).
+
+    Antes: beat sem asset = tela vazia (o 'Banana crates' do job amazônico) ou
+    tapa-buraco reusado do banco. Agora a própria `busca` do diretor vira prompt do
+    Nano Banana — ela já é uma descrição visual em inglês, que é exatamente o que o
+    gerador quer. O Piter validou na mão: "stacked banana crates warehouse" e
+    "neurotoxin molecular structure diagram" saíram melhores do que qualquer stock.
+
+    Ilustrar não é fraudar: o vídeo não afirma que aquela imagem é um registro real —
+    ela ilustra o que está sendo dito. (Ainda assim, gerado NUNCA deve ilustrar
+    pessoa real, lugar real nomeado ou evento histórico: aí a imagem passaria a
+    afirmar um fato. Para objeto, esquema e ambiente genérico é seguro.)
+
+    Escreve `_gerar.json` no job; o driver do Flow consome em lote.
+    """
+    res = ctx["res"]
+    pend = []
+    for b2, _ in tarefas:
+        if (res / f"b{b2['i']:03d}.json").exists():
+            continue
+        q = (b2.get("busca") or "").strip()
+        if q:
+            pend.append({"i": b2["i"], "prompt": q,
+                         "dest": f"b{b2['i']:03d}__T1__gen.jpg"})
+    if not pend:
+        return
+    (Path(ctx["res"]).parent / "_gerar.json").write_text(
+        json.dumps(pend, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"!! {len(pend)} buraco(s) -> fila de geração (_gerar.json):")
+    for p in pend[:6]:
+        print(f"   b{p['i']:03d}  {p['prompt'][:66]}")
+
+
 def _relatar_duplicatas(ctx):
     """Passe final: near-duplicate por embedding CLIP (02/08).
 
@@ -533,6 +567,7 @@ def main():
                 falhas += 1
                 print(f"  b{b2['i']:03d} BURACO")
     print(f"=== curador5: {ok5} via fontes novas + {ok4} via fallback v4 | {falhas} buracos ===")
+    _fila_geracao(ctx, tarefas)
     _relatar_duplicatas(ctx)
 
 
