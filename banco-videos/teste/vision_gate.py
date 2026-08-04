@@ -85,6 +85,11 @@ _PROMPT = (
     "You are shown {n} frame(s) sampled from ONE short b-roll clip; judge the CLIP as a whole. "
     "Return ONLY a JSON object with EXACT fields: "
     "subject_match (bool), child_present (bool), talking_head (bool), tv_interview (bool), "
+    # 02/08: nudez foi AO AR (indígena com genitália visível em footage etnográfico).
+    # Canal MONETIZADO: exposição = demonetização e possível strike, por mais
+    # legítimo que seja o contexto documental. Sem isto o gate não tinha como ver.
+    "nudity (bool: ANY exposed genitalia, buttocks or female breasts — including "
+    "ethnographic, tribal, documentary or artistic footage; when in doubt, true), "
     "watermark_visible (bool), watermark_position (string or null), text_card (bool), reason (short string). "
     "subject_match=true if the frames show the subject OR closely-related supporting imagery that would "
     "naturally illustrate a documentary line about it (documentaries use adjacent b-roll); false ONLY if "
@@ -142,6 +147,8 @@ def gate(subject, frames, niche_allows_children=False):
         flags.append("watermark-center")
     if bool(o.get("text_card")):
         flags.append("text-card")
+    if bool(o.get("nudity")):
+        flags.append("NUDEZ")
     return {"ok": not flags, "flags": flags, "reason": o.get("reason", ""),
             "watermark": wm, "watermark_pos": wm_pos, "raw": o}
 

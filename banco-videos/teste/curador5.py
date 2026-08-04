@@ -238,6 +238,38 @@ def carregar_corpus(plano):
     _CORPUS["txt"] = " ".join((b.get("texto") or "") for b in plano.get("beats", [])).lower()
 
 
+_ESP_SECAO = {}   # secao -> espécie DOMINANTE dela
+
+
+def mapear_especie_por_secao(plano):
+    """Espécie que MANDA em cada seção (02/08, QA Piter).
+
+    'Na parte que fala da stingray ilustra MUITAS vezes uma cobra, às vezes jacaré,
+    anta, jaguar, escorpião — faz perder a imersão.' A causa: só o beat que NOMEIA
+    o bicho carrega `entidades.especie`; os vizinhos ('It has no interest in you at
+    all') caem no pool genérico e trazem qualquer animal amazônico. Mas uma seção
+    inteira fala de UM bicho — então a espécie mais citada nela vira âncora de TODOS
+    os seus beats. É a mesma ideia da âncora do tema, um nível abaixo."""
+    from collections import Counter
+    porsec = {}
+    for b in plano.get("beats", []):
+        e = b.get("entidades")
+        if not isinstance(e, dict):
+            continue
+        v = e.get("especie") or e.get("taxon")
+        if isinstance(v, list):
+            v = next((x for x in v if isinstance(x, str)), None)
+        if isinstance(v, str) and v.strip():
+            porsec.setdefault(b.get("secao", 0), Counter())[v.split(",")[0].strip().lower()] += 1
+    _ESP_SECAO.clear()
+    for s, c in porsec.items():
+        nome, n = c.most_common(1)[0]
+        if n >= 2:            # 1 menção solta não define a seção
+            _ESP_SECAO[s] = nome
+    if _ESP_SECAO:
+        print("espécie por seção: " + ", ".join(f"s{k}={v}" for k, v in sorted(_ESP_SECAO.items())))
+
+
 def _especie_do_beat(b):
     """entidades.especie do diretor = o ser vivo daquele beat. É o que liga o
     iNaturalist em MENÇÃO PONTUAL (um bicho citado dentro de um roteiro que não é
@@ -264,7 +296,9 @@ def _especie_do_beat(b):
             if _CORPUS["txt"] and esp.lower().split()[0] not in _CORPUS["txt"]:
                 return None
             return esp
-    return None
+    # beat sem espécie própria HERDA a da seção: dentro do capítulo da arraia, todo
+    # beat ilustra arraia — não jacaré, anta ou onça (QA Piter 02/08)
+    return _ESP_SECAO.get(b.get("secao", 0))
 
 
 def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomico=False):
@@ -372,6 +406,8 @@ def main():
     job = Path(a.job)
     plano = json.loads(Path(a.plano).read_text(encoding="utf-8"))
     carregar_corpus(plano)   # régua contra espécie que o diretor inventou
+    mapear_especie_por_secao(plano)   # âncora de SEÇÃO (imersão: cada capítulo,
+                                      # seu bicho)
     sc = json.loads((job / "style_card.json").read_text(encoding="utf-8")) \
         if (job / "style_card.json").exists() else {}
     desamb = sc.get("desambiguacao") or {}

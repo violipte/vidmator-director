@@ -44,8 +44,19 @@ For EACH numbered image below, give a JSON object with:
   "talking_head" (person presenting/talking to camera, vlogger, host),
   "child" (any minor visible),
   "watermark" (visible watermark/logo overlay),
-  "burned_text" (caption/subtitle/text burned into the image),
+  "burned_text" (ANY text baked into the footage — subtitle, caption, headline,
+     big title card, thumbnail-style lettering, channel name, "TOP 10"/"10 ANIMAIS"
+     style numbering, arrows or circles drawn on the image. If you can READ words
+     on the frame and they are not a natural part of the scene (a road sign, a
+     product label), veto it. Text on the frame means the clip was cut from
+     SOMEONE ELSE'S finished video — it exposes the source and looks stolen.),
   "crash" (accident/injury/CCTV footage),
+  "nudez" (ANY exposed genitalia, buttocks or female breasts — including
+     ethnographic, tribal, documentary, artistic or historical footage. This is
+     for a MONETISED channel: exposure is demonetisation and possible strike,
+     regardless of how legitimate the context is. When in doubt, veto.),
+  "screen_capture" (a recording of a video PLAYER or app: progress bar, play
+     button, seek scrubber, UI chrome at the edges of frame),
   "brand" (a prominent identifiable brand/product foreign to the topic),
   "fake" (AI-generated, digitally composited, or manipulated to look real:
      an animal at an IMPOSSIBLE size next to a boat/person/car, two species
