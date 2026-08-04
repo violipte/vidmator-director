@@ -743,6 +743,47 @@ def main():
             b["props"] = {"videos": [b.pop("src"), par]}
             n_duos += 1
             pos_duos.append(b["i"])
+
+        # 02/08: duo de IMAGEM quando não há vídeo suficiente. Com as fontes novas
+        # (iNaturalist/Wikimedia/Archive/Flickr/GBIF) o pool virou majoritariamente
+        # FOTO — no job amazônico, 93 jpg contra 26 mp4 — e a regra acima, que só
+        # olha .mp4, ficou órfã: 0 duos e mesa VERMELHA no R-106. Os componentes
+        # Img04/Img17 já são reconhecidos como duo pelo cap; faltava criá-los.
+        if n_duos < 2:
+            _IMG_DUO = ("Img04_SplitSlide", "Img17_DiagonalDuo")
+            cand_img = [b for b in beats_out
+                        if b.get("src") and str(b["src"]).lower().endswith((".jpg", ".jpeg", ".png"))
+                        and (b["t_fim"] - b["t_ini"]) >= 3.0 and b["t_ini"] >= 15.0
+                        and not b.get("watermark") and not b.get("componente")]
+            # o PAR não pode ser imagem que já aparece sozinha em outro beat: o R-56
+            # não tolera imagem estática repetida, e o duo conta como aparição. Sem
+            # isto o próprio duo CRIA a violação que ele veio resolver (mesa vermelha
+            # em [10,17] e [10,29] — descoberto rodando o job amazônico).
+            # duo FUNDE dois planos adjacentes num só — não duplica imagem. Tentar
+            # emparelhar com uma imagem "livre" do pool não funciona: com 116 assets
+            # para 165 beats não sobra nenhuma, e reusar uma que já aparece sozinha
+            # cria a violação R-56 que o duo veio evitar. Fundir é o que um duo é.
+            _ids_cand = {x["i"] for x in cand_img}
+            for b in list(cand_img):
+                if n_duos >= 2:
+                    break
+                if pos_duos and min(abs(p - b["i"]) for p in pos_duos) < 10:
+                    continue
+                idx = beats_out.index(b) if b in beats_out else -1
+                if idx < 0 or idx + 1 >= len(beats_out):
+                    continue
+                viz = beats_out[idx + 1]
+                if viz["i"] not in _ids_cand or not viz.get("src") or viz.get("componente"):
+                    continue
+                b["tipo"] = "animacao"
+                b["componente"] = _IMG_DUO[n_duos % len(_IMG_DUO)]
+                b["props"] = {"images": [b.pop("src"), viz["src"]]}
+                b["t_fim"] = max(b["t_fim"], viz["t_fim"])   # herda o tempo do vizinho
+                beats_out.remove(viz)
+                _ids_cand.discard(viz["i"])
+                n_duos += 1
+                pos_duos.append(b["i"])
+                stats["R106_duo_img"] = stats.get("R106_duo_img", 0) + 1
             stats["R106_duo"] = stats.get("R106_duo", 0) + 1
 
     # R-106: MÁXIMO 3 duos — excedente vira single (auditor 27/07: 4 duos = ruído)
@@ -852,8 +893,19 @@ def main():
                 "Ovl03_LowerThird"]
     _visto_src = {}
     _n72b = 0
-    _folga72 = teto62 - _texto_total()
-    for b in beats_out:
+    # teto do AUDITOR (1.15), não o do rebalance (1.10). O 1.10 é margem de segurança
+    # pro CORTE; usá-lo aqui fazia o montador ser mais rígido que o juiz que o julga —
+    # e eram exatamente esses ~4s que faltavam pra quebrar as últimas repetições.
+    _folga72 = _tb * dur_total * 1.15 - _texto_total()
+    # ORDEM DE GASTO DA FOLGA (02/08): imagem ESTÁTICA repetida primeiro. O R-56 a
+    # trata como violação DURA (mesa vermelha) enquanto tolera reuso de vídeo — foto
+    # parada repetida salta ao olho de um jeito que clipe em movimento não salta.
+    # Com folga escassa, gastar na ordem da timeline desperdiçava em vídeo e deixava
+    # a imagem barrando o render.
+    _ordem72 = sorted(beats_out,
+                      key=lambda x: 0 if str(x.get("src") or "").lower()
+                      .endswith((".jpg", ".jpeg", ".png")) else 1)
+    for b in _ordem72:
         s = b.get("src")
         if not s or b.get("componente"):
             continue
@@ -862,8 +914,29 @@ def main():
             continue                      # 1ª aparição vai limpa
         _custo = (b["t_fim"] - b["t_ini"]) * 0.5   # overlay conta meio peso (R-62)
         if _custo > _folga72:
-            continue                      # sem folga: repete limpo, que é o estado antigo
-        tx72 = frase_de_tela(_corr((plano_por_i.get(b["i"], {}) or {}).get("texto") or ""))
+            # SEM FOLGA. Vídeo repetido pode ficar (o R-56 tolera). Imagem ESTÁTICA
+            # repetida NÃO — é mesa vermelha. Então aqui a regra troca de asset, que
+            # é o plano B: overlay quando cabe, substituição quando não cabe, e a
+            # violação nunca fica de pé por falta de orçamento.
+            if str(s).lower().endswith((".jpg", ".jpeg", ".png")):
+                _alt = next((a for a in sorted(pool_uso, key=lambda k: pool_uso.get(k, 0))
+                             if a.lower().endswith((".jpg", ".jpeg", ".png"))
+                             and pool_uso.get(a, 0) == 0
+                             and Path(a).name not in {Path(x).name for x in _visto_src}), None)
+                if _alt:
+                    pool_uso[_alt] = pool_uso.get(_alt, 0) + 1
+                    b["src"] = f"jobs/{a.nome}/assets/{Path(_alt).name}"
+                    _visto_src[b["src"]] = 1
+                    _visto_src[s] -= 1
+                    stats["R72b_troca"] = stats.get("R72b_troca", 0) + 1
+            continue
+        _txt72 = _corr((plano_por_i.get(b["i"], {}) or {}).get("texto") or "")
+        # beat com NÚMERO pertence ao R-26 (componente de DADO: SpecBadge/Graf/...).
+        # Cobrir com FootnotePill genérico é degradar o dado — o auditor barra, e
+        # com razão: "4 em 20 pessoas" merece número na tela, não uma pílula de nota.
+        if _nums_do_texto(_txt72):
+            continue
+        tx72 = frase_de_tela(_txt72)
         if not tx72 or len(tx72) < 8:
             continue
         _folga72 -= _custo
