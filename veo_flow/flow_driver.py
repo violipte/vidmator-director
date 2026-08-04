@@ -154,7 +154,37 @@ def enviar_prompt(page, prompt):
         cx = page.get_by_role("textbox").last
     cx.click()
     _pausa(0.2, 0.5)
-    cx.fill(prompt)
+    m = re.match(r"\s*@(\w[\w-]*)\s*(.*)", prompt, re.S)
+    if m:
+        # 04/08 (QA Piter: "não puxou o personagem"): `fill()` COLA o texto de uma vez
+        # e não dispara os eventos de teclado que abrem o autocomplete de menção — o
+        # "@Russel" virava texto literal e o clipe saía com outro rosto. Menção tem de
+        # ser DIGITADA e a sugestão ESCOLHIDA da lista pra virar referência de verdade.
+        nome, resto = m.group(1), m.group(2)
+        # digita só o GATILHO (@ + 3 letras) e deixa a lista completar: o Flow NÃO
+        # substitui o texto já digitado pelo chip — digitar o nome inteiro deixaria
+        # "@Russel" literal grudado no chip (visto no print do Piter 04/08).
+        cx.type("@" + nome[:3], delay=110)
+        _pausa(1.2, 2.0)
+        escolhido = False
+        for sel in (f'[role="option"]:has-text("{nome}")',
+                    f'[role="menuitem"]:has-text("{nome}")',
+                    f'li:has-text("{nome}")'):
+            try:
+                op = page.locator(sel).first
+                if op.count() and op.is_visible():
+                    op.click()
+                    escolhido = True
+                    break
+            except Exception:
+                continue
+        if not escolhido:      # sem lista visível: Enter costuma aceitar a 1ª sugestão
+            page.keyboard.press("Enter")
+        _pausa(0.5, 1.0)
+        print(f"  menção @{nome}: {'escolhida da lista' if escolhido else 'via Enter'}")
+        cx.type(" " + resto.strip(), delay=6)
+    else:
+        cx.fill(prompt)
     _pausa(0.4, 0.9)
     cx.press("Enter")               # submit primário (fallback: clicar a seta →)
     print(f"  prompt enviado: {prompt[:60]}...")

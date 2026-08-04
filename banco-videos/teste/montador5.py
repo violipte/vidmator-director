@@ -339,6 +339,12 @@ def main():
             continue
         b = {"i": r["i"], "t_ini": r["t_ini"], "t_fim": r["t_fim"], "tipo": r["tipo_final"],
              "tier": r.get("tier", 0), "watermark": bool(r.get("watermark")), "secao": r.get("secao", 0)}
+        # ÁUDIO NATIVO (04/08, pedido do Piter): "áudio 0% em footage" é regra de
+        # COPYRIGHT — vale pro material de terceiro. O clipe GERADO no VEO tem áudio
+        # NOSSO: o avatar falando entra a 100% (a voz dele É o áudio do trecho) e o
+        # b-roll gerado vira um leito de ambiência sob a narração (ASMR, não trilha).
+        if r.get("gerado") or str(r.get("fonte") or "").startswith(("veo", "flow")):
+            b["som"] = "avatar" if r.get("avatar") else "amb"
         if r.get("arquivo"):
             src = Path(r["arquivo"])
             if src.exists():

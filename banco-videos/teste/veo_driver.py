@@ -235,6 +235,15 @@ def _aprovado(caminho, item, tipo, tmp):
         return True, []          # não deu pra amostrar: não condena por isso
     g = vg.gate(item.get("busca_original") or item.get("prompt", "")[:90], frames)
     flags = list(g.get("flags") or [])
+    # 04/08: o vision_gate rejeita por segurança quando a API não responde
+    # ("sem-resposta-vision"). Isso é certo pra footage de TERCEIRO (é de graça
+    # buscar outro), mas aqui o clipe JÁ FOI GERADO e PAGO — descartar troca um
+    # arquivo provavelmente bom por mais uma geração. Gate mudo => fica, com aviso
+    # alto pra conferência; só defeito REAL manda re-gerar.
+    if "sem-resposta-vision" in flags:
+        print(f"  !! {item.get('arquivo')}: Vision fora do ar — MANTIDO sem avaliar "
+              f"(conferir na decupagem)")
+        return True, ["nao-avaliado"]
     # AVATAR DO CANAL é a única exceção legítima ao veto de talking-head: a regra
     # existe pra barrar CRIADOR DE TERCEIRO falando pra câmera (vlogger, review), e
     # o apresentador do próprio canal é o oposto disso. Marcado item a item — nunca

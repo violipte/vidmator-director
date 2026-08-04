@@ -41,6 +41,9 @@ def main():
             "i": x["i"], "t_ini": x.get("t_ini", 0), "t_fim": x.get("t_fim", 0),
             "secao": x.get("secao", 0), "status": "ok", "arquivo": str(dest), "tier": 0,
             "fonte": "veo", "tipo": "stock" if x["tipo"] == "video" else "ilustracao",
+            # o montador usa isto pra decidir o ÁUDIO do clipe: gerado por nós =>
+            # ambiência sob a narração; avatar => voz do host a 100%
+            "gerado": True, "avatar": bool(x.get("avatar")),
             "busca": x["prompt"][:120]}, ensure_ascii=False), encoding="utf-8")
         n_ok += 1
         print(f"  {f.name} -> {dest.name}")

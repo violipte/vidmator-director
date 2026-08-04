@@ -57,7 +57,7 @@ const WASH: Record<string, string> = {
 
 type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: number; watermark: boolean;
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
-  off_s?: number; trato?: string; trans_in?: { tipo: string };
+  off_s?: number; trato?: string; som?: string; trans_in?: { tipo: string };
   trans_out?: { tipo: string; dur_f: number };
   fx_img?: { tipo: string; accent?: string };
   kb?: string;
@@ -289,15 +289,33 @@ const ClipT3: React.FC<{ src: string; wm: boolean; i?: number; secao?: number; e
   );
 };
 
+/* ÁUDIO NATIVO DO CLIPE (04/08, pedido do Piter).
+   A regra "áudio 0% em footage" existe por COPYRIGHT — vale pra material de terceiro.
+   O clipe GERADO no VEO tem áudio NOSSO, e jogá-lo fora é perder a imersão de graça:
+     som="avatar" -> 100%: o host está falando, a voz dele É o áudio daquele trecho.
+     som="amb"    -> leito de ambiência sob a narração (rio, insetos, vento). Bem
+                     baixo de propósito: é ASMR por baixo da voz, não trilha. Acima
+                     de ~0.10 começa a disputar com a narração e vira sujeira.
+   Sem `som` => mudo (o padrão de todo footage de terceiro). */
+const AMB_VOL = 0.07;
+const volDoSom = (som?: string) =>
+  som === "avatar" ? 1 : som === "amb" ? AMB_VOL : 0;
+
 /* footage T1/stock: full-frame + vinheta leve. off/trato = split de plano (VidRush) */
-const ClipFull: React.FC<{ src: string; off?: number; trato?: string; kb?: string }> = ({ src, off = 0, trato, kb }) => {
+const ClipFull: React.FC<{ src: string; off?: number; trato?: string; kb?: string; som?: string }> = ({ src, off = 0, trato, kb, som }) => {
   const { fps } = useVideoConfig();
+  const f = useCurrentFrame();
   const filtro = trato ? TRATOS[trato] || "" : "";
   const escala = trato === "zoom" ? 1.24 : 1;
+  const vol = volDoSom(som);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       {isVid(src)
-        ? <OffthreadVideo src={staticFile(src)} muted loop startFrom={Math.round(off * fps)}
+        ? <OffthreadVideo src={staticFile(src)} loop startFrom={Math.round(off * fps)}
+            muted={vol <= 0}
+            // fade de 6 frames nas bordas: corte seco com ambiente ligado estala
+            volume={vol <= 0 ? 0 : (ff) => vol * interpolate(ff, [0, 6], [0, 1],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}
             style={{ width: "100%", height: "100%", objectFit: "cover", filter: filtro || undefined, transform: escala !== 1 ? `scale(${escala})` : undefined }} />
         : <KenImg src={src} kb={kb} />}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 88% 88% at 50% 50%, transparent 58%, rgba(0,0,0,0.42) 100%)" }} />
@@ -357,7 +375,7 @@ const BeatView: React.FC<{ b: Beat; estilo?: string }> = ({ b, estilo = "v1" }) 
     );
   }
   if (b.tier === 3) return <ClipT3 src={b.src} wm={b.watermark} i={b.i} secao={b.secao} estilo={estilo} durS={durB} />;
-  return <ClipFull src={b.src} off={b.off_s || 0} trato={b.trato} kb={b.kb} />;
+  return <ClipFull src={b.src} off={b.off_s || 0} trato={b.trato} kb={b.kb} som={b.som} />;
 };
 
 export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont }) => {
