@@ -27,6 +27,32 @@ REG_INFO = {r["comp"]: r for r in REG_R}
 # "SUBJECT") vazavam pro video. O REGISTRY e a UNICA porta de render agora (pass no main).
 
 
+_ORD_TXT = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+            "seven": 7, "eight": 8, "nine": 9, "ten": 10}
+
+
+def _rotulo_capitulo(texto_beat, titulo):
+    """(rótulo, número) do marcador de seção, LIDO DO ROTEIRO.
+
+    QA Piter 02/08: num "Top 5" o narrador diz "Number Five" e a tela mostrava
+    "CHAPTER 01" — número invertido (o contador subia, a contagem do roteiro descia)
+    e rótulo que o roteiro nunca usa. Quem manda é a narração:
+      "number five"  -> ("Number", 5)
+      "part two"     -> ("Part", 2)
+      "chapter three"-> ("Chapter", 3)
+    Sem numeral no texto devolve (rótulo padrão, None) e o chamador usa o contador —
+    que é o certo para vídeo que não é lista.
+    """
+    t = f"{texto_beat} {titulo}".lower()
+    m = re.search(r"\b(number|part|chapter|step|rule|stage|lesson)\s+"
+                  r"(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})\b", t)
+    if not m:
+        return "Chapter", None
+    bruto = m.group(2)
+    n = _ORD_TXT.get(bruto) or (int(bruto) if bruto.isdigit() else None)
+    return m.group(1).capitalize(), n
+
+
 def _dic5(d):
     """dados do LLM podem vir como LISTA — normaliza p/ dict (31/07)."""
     if isinstance(d, (list, tuple)):
@@ -97,6 +123,11 @@ def main():
 
     # R-64 [F1] (QA Piter 22/07): capítulo cinematográfico NÃO é default universal —
     # o NICHO decide via style_card: cinematic (card CHAPTER NN) | minimal (linha overlay) | none
+    # vídeo é uma CONTAGEM? (o roteiro numera as seções). Decide se seção sem
+    # numeral pode virar card numerado — ver _rotulo_capitulo.
+    _video_e_lista = bool(re.search(
+        r"(number|part|step|rule)\s+(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})",
+        " ".join((x.get("texto") or "") for x in plano.get("beats", [])).lower()))
     chapter_style = "cinematic"
     sc_path = job / "style_card.json"
     if sc_path.exists():
@@ -395,9 +426,30 @@ def main():
                     quotas["Ovl02_SubchapterLine"] = quotas.get("Ovl02_SubchapterLine", 0) + 1
                     tempo_texto += dur * 0.5  # capítulo minimal CONTA no orçamento (meio peso)
                 else:
-                    b["componente"] = "ChapterTitle"
-                    b["props"] = {"title": corte(humanizar(str(titulo)), 40), "chapterNumber": n_chapter, "subtitle": ""}
-                    b["_min_dur"] = 3.0
+                    # 02/08 (QA Piter): o card numerava 01,02,03 CRESCENTE por um
+                    # contador interno, enquanto o narrador dizia "Number Five",
+                    # "Number Four" — REGRESSIVO. A tela contradizia o áudio, e o
+                    # rótulo "CHAPTER" era fixo mesmo quando o roteiro nunca fala em
+                    # capítulo. Agora número e rótulo saem do que É DITO; o contador
+                    # só entra quando o roteiro não numera nada.
+                    _rot, _num = _rotulo_capitulo(texto_b, str(titulo))
+                    if _num is None and _video_e_lista:
+                        # vídeo É uma contagem ("Number Five"...) mas ESTA seção não
+                        # é um item dela: é intro ou fecho. Carimbar "CHAPTER 01" aqui
+                        # é o card aparecer deslocado do que está sendo falado (QA
+                        # Piter). Vira marcador discreto, sem número inventado.
+                        b["componente"] = "Ovl02_SubchapterLine"
+                        b["props"] = {"text": corte(humanizar(str(titulo)), 60),
+                                      "kicker": "", "dim": 0.45}
+                        b["_min_dur"] = 2.0
+                        b["_chapter"] = True
+                        tempo_texto += dur * 0.5
+                    else:
+                        b["componente"] = "ChapterTitle"
+                        b["props"] = {"title": corte(humanizar(str(titulo)), 40),
+                                      "chapterNumber": _num or n_chapter,
+                                      "label": _rot, "subtitle": ""}
+                        b["_min_dur"] = 3.0
                     b["_chapter"] = True  # 01/08: faltava aqui — só o ramo minimal marcava,
                     # e no cinematic o sweep R-109/R-62 comia os capítulos (ver abaixo)
                     quotas["ChapterTitle"] = quotas.get("ChapterTitle", 0) + 1

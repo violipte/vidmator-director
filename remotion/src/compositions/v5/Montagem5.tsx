@@ -189,7 +189,14 @@ const T3_TEMAS = [
 const ClipT3: React.FC<{ src: string; wm: boolean; i?: number; secao?: number; estilo?: string; durS?: number }> =
   ({ src, wm, i = 0, secao = 0, estilo = "v1", durS = 4 }) => {
   const f = useCurrentFrame();
-  const inner = wm ? 1.28 : 1.04 + Math.min(f / 900, 0.05);
+  /* 02/08 (QA Piter — take com logo "UNIVERSO CRIATIVO" no ar): o crop de borda só
+     acontecia quando o Vision DETECTAVA a marca (wm). No job amazônico havia 13
+     beats T3 e ZERO marcados — a detecção falhou e o zoom de 1.04 não cortava canto
+     nenhum. A premissa estava invertida: em material T3 (web/social/YouTube) marca
+     d'água é a REGRA, não a exceção, e o custo de errar é logo de TERCEIRO no nosso
+     vídeo (copyright, não estética). Agora o piso de T3 já corta ~8% de cada borda,
+     independente da detecção; detectada, aperta mais. */
+  const inner = wm ? 1.28 : 1.18 + Math.min(f / 900, 0.04);
   const tema = T3_TEMAS[secao % T3_TEMAS.length];
   const shape = i % 3;
 
@@ -238,7 +245,8 @@ const ClipT3: React.FC<{ src: string; wm: boolean; i?: number; secao?: number; e
       const v2i = i % 3;
       if (v2i === 1 || (v2i === 2 && durS > 2.6)) {
         // vinheta + zoom dramático de 2s no ponto de importância (centro)
-        const z = interpolate(f, [0, 60], [1.35, 1.0], { extrapolateRight: "clamp" });
+        // piso 1.18: imagem T3 também nunca mostra a borda crua (marca de canto)
+        const z = interpolate(f, [0, 60], [1.35, 1.18], { extrapolateRight: "clamp" });
         return (
           <AbsoluteFill style={{ background: "#000" }}>
             <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${z})` }} />
@@ -248,7 +256,7 @@ const ClipT3: React.FC<{ src: string; wm: boolean; i?: number; secao?: number; e
       }
       if (v2i === 2) {
         // full screen com passagem rápida (≤2.6s, garantido acima)
-        const z = 1.02 + Math.min(f / 500, 0.1);
+        const z = 1.18 + Math.min(f / 500, 0.1);   // idem: piso de crop em T3
         return (
           <AbsoluteFill style={{ background: "#000" }}>
             <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${z})`, filter: wm ? "blur(0px)" : undefined }} />

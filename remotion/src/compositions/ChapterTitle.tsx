@@ -12,9 +12,13 @@ export const ChapterTitle: React.FC<{
   chapterNumber?: number;
   subtitle?: string;
   accent?: string;
+  /* 02/08: o rótulo era "Chapter" FIXO. Num "Top 5" o narrador diz "Number Five" e
+     a tela contradizia ele com "CHAPTER 01". O rótulo vem do roteiro. */
+  label?: string;
 }> = ({
   title = "THE ORIGIN",
   chapterNumber = 1,
+  label = "Chapter",
   subtitle = "The greatest empire",
   accent = "#f59e0b",
 }) => {
@@ -54,7 +58,7 @@ export const ChapterTitle: React.FC<{
             paddingLeft: 16,
           }}
         >
-          Chapter
+          {label}
         </div>
         <div
           style={{
