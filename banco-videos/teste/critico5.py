@@ -56,6 +56,10 @@ Approve it only if the image genuinely serves THIS moment INSIDE THIS FILM.
 Reject when any of these is true — each one has actually shipped in our videos:
 1. It answers the film's SUBJECT instead of the requested shot (a jaguar where the
    line needs a hospital corridor). Belonging to the film is not enough.
+1b. It does not show what was SEARCHED FOR. Ask literally: "is this a <searched
+   shot>?" — a FROG is not an INSECT even though both are small and Amazonian
+   (that one shipped: the line's payoff was the mosquito). When the editor searched
+   for a specific thing, the image must show THAT thing or be rejected.
 2. It repeats what the neighbouring moments already show, so the cut goes nowhere.
 3. It contradicts the section: in the chapter about ONE animal, another animal
    appears and the viewer loses the thread.
@@ -150,31 +154,77 @@ def main():
     hist = json.loads(hist_f.read_text(encoding="utf-8")) if hist_f.exists() else {}
 
     reprovados, aprovados, pra_gerar = [], 0, []
+    relatorio = []   # veredito POR BEAT — vira _critico_relatorio.json (o diretor lê)
+
+    # COBERTURA TOTAL (02/08, QA Piter): a fonte da revisão é a MONTAGEM, não o
+    # resolvido/. Três portas laterais entregavam clipe à tela sem juiz nenhum:
+    # gaps 7xxx (a cobra em "treated a jaguar attack..."), demote com bg do pool
+    # e beats servidos pelo pool interno do montador. Se está na tela, é julgado.
+    itens = []
+    vistos = set()
+    mont_f = Path(r"F:/Canal Dark/Aplicativo de Edição/remotion/public/jobs")         / (job.name.replace("_job_", "") + "_mont") / "montagem.json"
+    if mont_f.exists():
+        mont = json.loads(mont_f.read_text(encoding="utf-8"))
+        pub = mont_f.parent
+        for mb in mont.get("beats", []):
+            src = mb.get("src") or mb.get("bg")
+            if not src:
+                continue
+            arq = pub / Path(str(src).replace("jobs/" + pub.name + "/", ""))
+            base = por_i.get(mb.get("i")) or {
+                "i": mb.get("i"), "t_ini": mb.get("t_ini"), "t_fim": mb.get("t_fim"),
+                # gap/pool: sem beat no plano — o texto do momento vem do vizinho
+                "texto": next((x.get("texto") or "" for x in plano.get("beats", [])
+                               if x.get("t_ini", 9e9) <= mb.get("t_ini", 0) < x.get("t_fim", -1)), ""),
+                "secao": mb.get("secao", 0), "busca": ""}
+            chave = (mb.get("i"), Path(str(src)).name)
+            if chave in vistos:
+                continue
+            vistos.add(chave)
+            itens.append((base, {"i": mb.get("i"), "arquivo": str(arq),
+                                 "fonte": "montagem", "busca": base.get("busca") or ""}))
     for f in sorted((job / "resolvido").glob("b*.json")):
         res = json.loads(f.read_text(encoding="utf-8"))
         b = por_i.get(res.get("i"))
+        if b and (res.get("i"), Path(str(res.get("arquivo") or "")).name) not in vistos:
+            itens.append((b, res))
+
+    for b, res in itens:
         if not b:
             continue
         ok, motivo, melhor = revisar_beat(b, res, plano, resumo, tema, tmp)
+        relatorio.append({"i": res.get("i"), "aprovado": ok, "motivo": motivo,
+                          "melhor_busca": melhor, "fonte": res.get("fonte"),
+                          "arquivo": Path(res.get("arquivo") or "").name})
         if ok:
             aprovados += 1
             continue
         n = hist.get(str(res.get("i")), 0) + 1
         hist[str(res.get("i"))] = n
-        reprovados.append((f, res, motivo, melhor, n))
+        # item da MONTAGEM (gap/pool) não tem json em resolvido/ — a aplicação
+        # (apagar + re-resolver) usa o arquivo quando existe; None = só relatório
+        _fj = job / "resolvido" / f"b{res.get('i'):03d}.json"             if isinstance(res.get("i"), int) and res.get("fonte") != "montagem" else None
+        reprovados.append((_fj if _fj and _fj.exists() else None, res, motivo, melhor, n))
         print(f"  b{res.get('i'):03d} REPROVADO ({n}/{a.rodadas}) — {motivo}")
         if melhor:
             print(f"        crítico sugere: \"{melhor}\"")
 
+    (job / "_critico_relatorio.json").write_text(
+        json.dumps(relatorio, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\n=== crítico: {aprovados} aprovados | {len(reprovados)} reprovados ===")
     if a.so_revisar:
         return
 
     for f, res, _motivo, melhor, n in reprovados:
         arq = res.get("arquivo")
-        if arq and Path(arq).exists():
-            Path(arq).unlink(missing_ok=True)
-        f.unlink(missing_ok=True)
+        if f is None:
+            # gap/pool: não há resolvido pra apagar; o conserto é o beat entrar na
+            # fila de geração/re-busca pelo plano (o montador re-preenche o gap)
+            pass
+        else:
+            if arq and Path(arq).exists():
+                Path(arq).unlink(missing_ok=True)
+            f.unlink(missing_ok=True)
         if n >= a.rodadas:
             # o acervo já provou que não tem esse plano — gerar é mais barato que
             # continuar rodando busca (decisão do Piter: 5 tentativas e gera)
