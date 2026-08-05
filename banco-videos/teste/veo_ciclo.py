@@ -39,7 +39,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 import flow_driver as fd  # noqa
 import veo_driver as vd  # noqa — _normalizar_lote, _cards_falha, _aprovado
-from veo_colecao import abrir_colecao, baixar_colecao, projeto_do_canal  # noqa
+from veo_colecao import abrir_colecao, baixar_projeto, projeto_do_canal  # noqa
 from veo_zip import aplicar  # noqa
 from veo_supervisor import matar_tudo  # noqa
 
@@ -79,6 +79,8 @@ def main():
     ap.add_argument("--espera-max", type=int, default=25, help="min de geração por rodada")
     ap.add_argument("--regen", type=int, default=1, help="re-gerações por reprovado no gate")
     ap.add_argument("--min-sim", type=float, default=0.6)
+    ap.add_argument("--pausa-rajada", type=int, default=50,
+                    help="segundos entre rajadas de 3 (timer puro; DOM mente)")
     a = ap.parse_args()
 
     out = Path(a.out)
@@ -115,38 +117,21 @@ def main():
             # 1) ENVIA em RAJADAS DE 3 (Piter 05/08): 1 em 1 com pausa era lento
             # demais pro Lower Priority, que enfileira no SERVIDOR de qualquer jeito.
             # Rajada de 3 + pausa curta preenche a fila sem virar metralhadora.
-            cards0, falhas0, enviados = _n_cards(page), vd._cards_falha(page), 0
-            i = 0
-            while i < len(faltam):
-                t_espera = time.time()
-                n_esp = 0
-                while True:
-                    voo = enviados - max(0, _n_cards(page) - cards0) \
-                          - max(0, vd._cards_falha(page) - falhas0)
-                    if voo <= a.fila - 3:
-                        break
-                    fd.dispensar_avisos(page)
-                    # 05/08: o grid do Flow é LAZY e não re-renderiza com a página
-                    # parada — os cards novos existem no servidor mas o DOM fica
-                    # velho, o voo "nunca" cai e cada rajada esperava 12min à toa
-                    # (48 prompts em 55min COM Nano Banana instantâneo). Scroll
-                    # acorda o grid; se nem assim, reload = verdade do servidor.
-                    page.mouse.move(660, 400)
-                    page.mouse.wheel(0, 1400 if n_esp % 2 == 0 else -1400)
-                    n_esp += 1
-                    if n_esp % 8 == 0:
-                        page.reload(wait_until="domcontentloaded")
-                        fd._pausa(3, 5)
-                    if time.time() - t_espera > 12 * 60:
-                        _log("  fila presa há 12min — sigo enviando assim mesmo")
-                        break
-                    time.sleep(10)
+            # 05/08 (3ª iteração do pacing): contar cards NÃO funciona — o grid é
+            # VIRTUALIZADO, o DOM só monta o que cabe na viewport, então a contagem
+            # fica capada num teto constante e o "voo" nunca drena (nem com scroll,
+            # nem com reload). Ritmo por TIMER puro: rajada de 3 a cada ~50s. É
+            # imune à mentira do DOM; o Lower Priority/NB enfileira no servidor.
+            enviados = 0
+            for i in range(0, len(faltam), 3):
+                fd.dispensar_avisos(page)
                 for it in faltam[i:i + 3]:
                     fd.enviar_prompt(page, it["prompt"])
                     enviados += 1
                     fd._pausa(1.0, 2.0)
-                i += 3
-                fd._pausa(2, 4)
+                _log(f"  rajada: {enviados}/{len(faltam)} enviados")
+                if i + 3 < len(faltam):
+                    fd._pausa(a.pausa_rajada * 0.8, a.pausa_rajada * 1.2)
             _log(f"  {enviados} prompts enviados")
 
             # 2) ESPERA a geração terminar (badges de % sumirem), com teto.
@@ -165,9 +150,10 @@ def main():
                 time.sleep(20)
             _log(f"  geração encerrada ({_n_gerando(page)} pendentes no teto)")
 
-            # 3) UM download da coleção inteira
+            # 3) UM download do PROJETO inteiro (o card da coleção some na
+            # virtualização do grid; o ⋮ do topo está sempre lá — plano do Piter)
             zip_p = job / f"_colecao_{a.tipo}_r{rodada}.zip"
-            baixar_colecao(page, a.canal, a.colecao, zip_p)
+            baixar_projeto(page, a.canal, zip_p)
         except Exception as e:
             _log(f"!! rodada {rodada} caiu: {type(e).__name__}: {str(e)[:120]}")
             try:

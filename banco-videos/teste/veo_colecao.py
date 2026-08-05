@@ -22,6 +22,7 @@ aqui é escolhido excluindo a barra de prompt e a busca, nunca por `.last`.
 import json
 import re
 import sys
+import time as _t
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "veo_flow"))
@@ -199,6 +200,49 @@ def abrir_colecao(page, canal, nome, criar_se_faltar=True):
     return cid
 
 
+def baixar_projeto(page, canal, dest_zip, timeout_ms=1_200_000):
+    """⋮ do TOPO -> "Baixar projeto" -> zip com TUDO (raiz + coleções).
+
+    05/08: o plano A era o "Baixar coleção" no hover do card, mas a aba "Todas as
+    mídias" ordena por mídia recente — 70 imagens novas empurram o card da coleção
+    pra baixo da dobra e a VIRTUALIZAÇÃO nunca o monta no DOM ("coleção não
+    encontrada" com a coleção existindo). O ⋮ do topo está SEMPRE lá (print do
+    Piter: menu com "Baixar projeto"). Zip maior, mas o casamento por título +
+    guarda de tipo filtra o que não é do lote."""
+    fd = _fd()
+    reg = projeto_do_canal(canal) or {}
+    if reg.get("projeto"):
+        page.goto(f"{fd.BASE}/project/{reg['projeto']}", wait_until="domcontentloaded")
+        fd._pausa(6, 9)
+    fd.dispensar_avisos(page)
+    # dois ⋮ no topo (o do título e o "Mais" da direita, que tem o Baixar projeto):
+    # pega o MAIS À DIREITA entre os botões da barra (y<70)
+    alvo, alvo_x = None, -1
+    for b in page.locator("button").all():
+        try:
+            bb = b.bounding_box()
+            if not bb or bb["y"] > 70:
+                continue
+            rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=250) or "")
+            if re.search(r"more_vert|\bMais\b|More", rot, re.I) and bb["x"] > alvo_x:
+                alvo, alvo_x = b, bb["x"]
+        except Exception:
+            continue
+    if alvo is None:
+        raise RuntimeError("⋮ do topo não encontrado")
+    alvo.click()
+    fd._pausa(0.8, 1.4)
+    mi = page.get_by_role("menuitem", name=re.compile("Baixar projeto|Download project", re.I))
+    if not mi.count():
+        page.keyboard.press("Escape")
+        raise RuntimeError("menuitem 'Baixar projeto' não encontrado")
+    with page.expect_download(timeout=timeout_ms) as di:
+        mi.first.click()
+    di.value.save_as(str(dest_zip))
+    print(f"  projeto baixado: {dest_zip}")
+    return Path(dest_zip)
+
+
 def baixar_colecao(page, canal, nome, dest_zip, timeout_ms=900_000):
     """No grid do PROJETO: hover no card -> ⬇ 'Baixar coleção' -> salva o zip.
     Substitui as ~6 interações de UI por clipe por UM download por rodada."""
@@ -206,9 +250,17 @@ def baixar_colecao(page, canal, nome, dest_zip, timeout_ms=900_000):
     reg = projeto_do_canal(canal) or {}
     if reg.get("projeto"):
         page.goto(f"{fd.BASE}/project/{reg['projeto']}", wait_until="domcontentloaded")
-        fd._pausa(2.0, 3.0)
-    fd.dispensar_avisos(page)
-    lab, box = _label_da_colecao(page, nome)
+    # 05/08: o grid do projeto leva ~8s pra montar — 2s de pausa achava grid VAZIO e
+    # o erro dizia "coleção não encontrada" com a coleção existindo. Espera de
+    # verdade: revarre por até 40s antes de desistir.
+    lab = box = None
+    t0 = _t.time()
+    while _t.time() - t0 < 40:
+        fd.dispensar_avisos(page)
+        lab, box = _label_da_colecao(page, nome)
+        if box:
+            break
+        _t.sleep(3)
     if not box:
         raise RuntimeError(f"coleção '{nome}' não encontrada no grid do projeto")
     lab.hover()

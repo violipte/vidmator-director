@@ -50,7 +50,14 @@ def casar(arquivos, lote):
     pares = []
     for f in arquivos:
         tf = _tokens(f.name)
+        # 05/08: MÍDIA tem que bater com o TIPO do item. Depois da reclassificação
+        # por movimento, um beat que virou .jpg pode ter um VÍDEO antigo no zip com o
+        # mesmo prompt — copiar mp4 pra dentro de bNNN.jpg é o golpe do "jpg com
+        # ftypisom dentro" de novo (já nos custou ~90 créditos e um passe inteiro).
+        kind_f = "video" if f.suffix.lower() in (".mp4", ".webm", ".mov") else "imagem"
         for it in lote:
+            if it.get("tipo") and it["tipo"] != kind_f:
+                continue
             ti = _tokens(it.get("prompt", ""))
             if not tf or not ti:
                 continue
