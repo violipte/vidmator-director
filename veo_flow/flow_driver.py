@@ -292,10 +292,13 @@ def configurar_video(page, modelo="Veo 3.1 - Fast", aspecto="16:9", dur="8s", sa
 
 def enviar_prompt(page, prompt):
     """Escreve o prompt e dispara a geração."""
-    cx = page.get_by_role("textbox").filter(has_text=re.compile(".*")).last  # textbox do rodapé
-    # placeholder é 'O que você quer criar?'; fallback p/ último textbox
+    # 05/08 (sonda): a barra de prompt virou um CONTENTEDITABLE sem placeholder —
+    # get_by_placeholder("quer criar") não acha mais nada. O contenteditable é único
+    # na página; placeholder e textbox.last ficam de reserva pra UIs antigas.
+    cx = page.locator('[contenteditable="true"]').first
     try:
-        cx = page.get_by_placeholder(re.compile("quer criar", re.I))
+        if not cx.count():
+            cx = page.get_by_placeholder(re.compile("quer criar", re.I))
         cx.wait_for(timeout=5000)
     except PWTimeout:
         cx = page.get_by_role("textbox").last
@@ -303,13 +306,61 @@ def enviar_prompt(page, prompt):
     _pausa(0.2, 0.5)
     m = re.match(r"\s*@(\w[\w-]*)\s*(.*)", prompt, re.S)
     if m:
-        # 05/08 (decisão após 3 falhas em formas diferentes — Piter: "tá saindo tudo
-        # errado"): a menção por DIGITAÇÃO é a interação mais frágil do Flow (lista
-        # inline vs painel de busca, Escape que não fecha, overlay comendo o texto).
-        # DESLIGADA: take com @ não é enviado pelo driver — sai no semi-manual (o
-        # Piter cola com o @ na interface; o zip/casamento pega o resto sozinho).
-        print(f"  !! prompt com menção @{m.group(1)} — envio automático DESLIGADO "
-              f"(colar manualmente no Flow); take PULADO")
+        # MENÇÃO DE PERSONAGEM — fluxo SONDADO na UI real (05/08, screenshots):
+        #   1. o CORPO entra por insert_text (atômico, ZERO eventos de tecla — nada
+        #      de autocomplete disparando no meio; foi digitação de corpo que caiu
+        #      na busca do painel duas vezes);
+        #   2. " @Rus" digitado no FIM abre o painel de recursos com filtro "Rus";
+        #   3. a opção certa é [role=option] com o NOME **e** "Personagem" — o
+        #      filtro tb devolve mídias ("Rusted machete..." apareceu junto);
+        #   4. clicar na opção SÓ ABRE O DETALHE — o chip entra no botão
+        #      **"Incluir no comando"** (era o passo que faltava em 3 tentativas);
+        #   5. verificação: dialog fechado E corpo ainda no campo; falhou => Escape,
+        #      limpa, reenvia SEM personagem avisando alto (nunca trava o lote).
+        nome, resto = m.group(1), m.group(2).strip()
+        cx.click()
+        _pausa(0.3, 0.6)
+        page.keyboard.insert_text(resto)
+        _pausa(0.5, 0.9)
+        page.keyboard.type(" @" + nome[:3], delay=140)
+        _pausa(1.6, 2.4)
+        ok_mencao = False
+        try:
+            op = page.locator('[role="option"]').filter(
+                has_text=re.compile(re.escape(nome), re.I)).filter(
+                has_text=re.compile("Personagem|Character", re.I))
+            if not op.count():   # fallback: opção só com o nome exato
+                op = page.locator('[role="option"]').filter(
+                    has_text=re.compile(rf"^{re.escape(nome)}", re.I))
+            if op.count():
+                op.first.click()
+                _pausa(0.9, 1.5)
+                inc = page.get_by_role("button",
+                                       name=re.compile("Incluir no comando|Include", re.I))
+                if inc.count():
+                    inc.first.click()
+                    _pausa(0.9, 1.5)
+                    ok_mencao = not page.locator('[role="dialog"]').count()
+        except Exception:
+            ok_mencao = False
+        corpo_ok = False
+        try:
+            corpo_ok = resto[:25].lower() in (cx.inner_text(timeout=3000) or "").lower()
+        except Exception:
+            pass
+        if not ok_mencao or not corpo_ok:
+            page.keyboard.press("Escape")
+            _pausa(0.4, 0.7)
+            cx.click()
+            page.keyboard.press("Control+A")
+            page.keyboard.press("Delete")
+            page.keyboard.insert_text(resto)
+            print(f"  !! menção @{nome} não confirmada — take SEM personagem")
+        else:
+            print(f"  menção @{nome}: chip incluído no comando")
+        _pausa(0.4, 0.9)
+        cx.press("Enter")
+        print(f"  prompt enviado: {prompt[:60]}...")
         return
         # 04/08 (QA Piter: "não puxou o personagem"): `fill()` COLA o texto de uma vez
         # e não dispara os eventos de teclado que abrem o autocomplete de menção — o
