@@ -99,12 +99,13 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
         acao = pad.sub("he", acao or "")
         fala = pad.sub("he", fala or "")
         estilo = pad.sub("", estilo or "")
-    # calibração EMPÍRICA (05/08, medida no job amazônia): num take de 8s, ~70
-    # chars falam inteiros; a fala de 122 chars do v1 CORTOU no meio. Teto duplo:
-    # 14 palavras E 75 caracteres (palavra longa engana a contagem de palavras).
-    if fala and (len(fala) > 75 or len(fala.split()) > 14):
+    # calibração EMPÍRICA em refino (05/08, medida no job amazônia):
+    #   122 chars -> CORTOU no meio | 69 chars -> falou inteiro mas LENTO (o VEO
+    #   estica a fala pra preencher os 8s). Piter: testar 80-90. Teto atual: 90
+    #   chars / 16 palavras — ajustar aqui conforme os testes de ritmo.
+    if fala and (len(fala) > 90 or len(fala.split()) > 16):
         raise ValueError(f"fala do take longa demais ({len(fala)} chars / "
-                         f"{len(fala.split())} palavras; teto 75/14): {fala[:60]!r}")
+                         f"{len(fala.split())} palavras; teto 90/16): {fala[:60]!r}")
     p = f"{ficha['mencao']} {acao.strip()}"
     if estilo:
         p += f". {estilo.strip()}"
