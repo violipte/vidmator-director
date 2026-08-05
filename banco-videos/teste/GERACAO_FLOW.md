@@ -117,7 +117,20 @@ projeto por tipo elimina a troca de seletor — o passo mais frágil do driver, 
 fez lote de VÍDEO sair como imagem e passe de IMAGEM sair como vídeo (~90 créditos
 num trabalho de 0). Mesmo assim, `garantir_modo()` confere antes de CADA lote.
 
-## O encarregado (`veo_supervisor.py`)
+## O ciclo por coleção (`veo_ciclo.py`) — o fluxo ATUAL
+
+```bash
+"F:/Canal Dark/veo_venv/Scripts/python.exe" -u veo_ciclo.py     --lote <job>/veo_lote.json --out <job>/assets     --canal AMZ --colecao 05-08-26 --tipo video --fila 4
+```
+Por rodada: entra na coleção (rota direta pela URL registrada) → **só envia** os
+prompts que faltam → espera os badges de % sumirem → **UM "Baixar coleção"** → zip →
+casa por título (`veo_zip.aplicar`, cobertura ≥0.6) → gate local; reprovado é apagado
+e re-gera na rodada seguinte (até `--regen`; depois vai pro curador/banco). Para com
+tudo pronto ou 2 rodadas sem arquivo novo. Idempotente: quem tem arquivo nunca é
+re-enviado. Elimina as ~6 interações de UI por clipe do fluxo antigo — era nelas que
+o lote de 98 morria. `projetos.json` = registro canal → projeto/coleções.
+
+## O encarregado (`veo_supervisor.py`) — fluxo antigo (por clipe)
 
 ```bash
 "F:/Canal Dark/veo_venv/Scripts/python.exe" -u veo_supervisor.py     --lote <job>/veo_lote.json --out <job>/assets --tipo video     --fila 4 --paciencia 10 --proj <projeto do tipo>

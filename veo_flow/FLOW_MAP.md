@@ -74,6 +74,22 @@ com o mesmo host.
 
 Primeiro personagem real: **Russel** (biólogo de campo, voz Iapetus) — canal AMZ.
 
+## COLEÇÕES (1 projeto por CANAL, 1 coleção por VÍDEO) — Piter 05/08
+Por que: o PERSONAGEM vive no projeto — projeto novo por vídeo mataria o `@Russel`.
+Coleção = "projeto dentro do projeto": herda os personagens (o `@` segue valendo) e
+tem **"Baixar coleção"** próprio (zip só com as mídias daquele vídeo, fora de ordem —
+o casamento é por TÍTULO derivado do prompt, ver `veo_zip.py`).
+
+- Criar: **"+"** no topo → menu (Enviar mídia | **Criar coleção** | Criar personagem |
+  Criar cena) → nasce "Coleção sem título" → ⋮ → Renomear (nome = data de publicação,
+  ex. `05-08-26`) → ✓/Enter.
+- Entrar: **1 clique no MEIO do card**. Confirmação DETERMINÍSTICA: a URL vira
+  `…/project/<proj>/collection/<id>`. O id fica em `veo_flow/projetos.json` — depois
+  disso navega-se DIRETO pela URL, sem clique.
+- Baixar: hover no card (no grid do projeto) → botão **⬇ "Baixar coleção"** → zip.
+- ⚠️ O campo de RENOMEAR não é `textbox.last` — o last é a BARRA DE PROMPT: digitar
+  ali GERA um vídeo com o nome como prompt (aconteceu; o Piter apagou o card).
+
 ## Riscos / boas práticas
 - ToS/detecção: pacing humano (delays), perfil real, headful, sem rajada.
 - Seletores: preferir `get_by_role`/`get_by_text` + padrões de href; evitar classes hasheadas do build.
