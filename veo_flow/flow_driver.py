@@ -292,22 +292,51 @@ def enviar_prompt(page, prompt):
         cx.type("@" + nome[:3], delay=110)
         _pausa(1.2, 2.0)
         escolhido = False
-        for sel in (f'[role="option"]:has-text("{nome}")',
-                    f'[role="menuitem"]:has-text("{nome}")',
-                    f'li:has-text("{nome}")'):
-            try:
-                op = page.locator(sel).first
-                if op.count() and op.is_visible():
-                    op.click()
-                    escolhido = True
-                    break
-            except Exception:
-                continue
-        if not escolhido:      # sem lista visível: Enter costuma aceitar a 1ª sugestão
-            page.keyboard.press("Enter")
-        _pausa(0.5, 1.0)
-        print(f"  menção @{nome}: {'escolhida da lista' if escolhido else 'via Enter'}")
-        cx.type(" " + resto.strip(), delay=6)
+        for _tent in range(2):
+            for sel in (f'[role="option"]:has-text("{nome}")',
+                        f'[role="menuitem"]:has-text("{nome}")',
+                        f'li:has-text("{nome}")'):
+                try:
+                    op = page.locator(sel).first
+                    if op.count() and op.is_visible():
+                        op.click()
+                        escolhido = True
+                        break
+                except Exception:
+                    continue
+            if not escolhido:   # linhas do painel de recursos são divs sem role
+                try:
+                    op = page.get_by_text(re.compile(rf"^{re.escape(nome)}$", re.I)).first
+                    if op.count() and op.is_visible():
+                        op.click()
+                        escolhido = True
+                except Exception:
+                    pass
+            if escolhido:
+                break
+            _pausa(1.0, 1.6)
+        # 05/08 (print do Piter): o Enter ÀS CEGAS abria o PAINEL DE BUSCA de
+        # recursos e o resto do prompt era digitado DENTRO DA BUSCA — saiu lixo
+        # tipo "...are @Rusalmost never..." e o envio nunca acontecia. Agora:
+        # menção não confirmada => Escape, limpa o campo e manda SEM personagem
+        # (avisando alto) — take ruim se regenera; painel travado trava o lote.
+        painel = page.get_by_text(re.compile("Nenhum resultado|Pesquisar recursos", re.I))
+        painel_aberto = False
+        try:
+            painel_aberto = painel.count() > 0 and painel.first.is_visible()
+        except Exception:
+            pass
+        if not escolhido or painel_aberto:
+            page.keyboard.press("Escape")
+            _pausa(0.4, 0.8)
+            cx.click()
+            page.keyboard.press("Control+A")
+            page.keyboard.press("Delete")
+            print(f"  !! menção @{nome} NÃO confirmada — enviando SEM personagem")
+            cx.type(resto.strip(), delay=6)
+        else:
+            print(f"  menção @{nome}: escolhida da lista")
+            cx.type(" " + resto.strip(), delay=6)
     else:
         cx.fill(prompt)
     _pausa(0.4, 0.9)
