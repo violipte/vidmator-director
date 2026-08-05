@@ -56,10 +56,13 @@ Approve it only if the image genuinely serves THIS moment INSIDE THIS FILM.
 Reject when any of these is true — each one has actually shipped in our videos:
 1. It answers the film's SUBJECT instead of the requested shot (a jaguar where the
    line needs a hospital corridor). Belonging to the film is not enough.
-1b. It does not show what was SEARCHED FOR. Ask literally: "is this a <searched
-   shot>?" — a FROG is not an INSECT even though both are small and Amazonian
-   (that one shipped: the line's payoff was the mosquito). When the editor searched
-   for a specific thing, the image must show THAT thing or be rejected.
+1b. It does not show what was SEARCHED FOR. This rule OUTRANKS the narration:
+   even when the image loosely fits the spoken line, if the editor searched for a
+   specific thing the image must show THAT thing. A FROG for the search "macro shot
+   insect" is a rejection — the frog fits "something far smaller", but the editor
+   asked for an insect because the film's payoff is the mosquito, and the editor
+   knows the film better than the single line does. Judge the image against the
+   SEARCH first, the narration second.
 2. It repeats what the neighbouring moments already show, so the cut goes nowhere.
 3. It contradicts the section: in the chapter about ONE animal, another animal
    appears and the viewer loses the thread.
@@ -203,7 +206,9 @@ def main():
         hist[str(res.get("i"))] = n
         # item da MONTAGEM (gap/pool) não tem json em resolvido/ — a aplicação
         # (apagar + re-resolver) usa o arquivo quando existe; None = só relatório
-        _fj = job / "resolvido" / f"b{res.get('i'):03d}.json"             if isinstance(res.get("i"), int) and res.get("fonte") != "montagem" else None
+        # o item pode ter vindo pela MONTAGEM e ainda assim ter resolvido/ — o que
+        # decide é o arquivo existir (sem isto, 91 reprovados ficavam inapagáveis)
+        _fj = job / "resolvido" / f"b{res.get('i'):03d}.json"             if isinstance(res.get("i"), int) and res.get("i") < 7000 else None
         reprovados.append((_fj if _fj and _fj.exists() else None, res, motivo, melhor, n))
         print(f"  b{res.get('i'):03d} REPROVADO ({n}/{a.rodadas}) — {motivo}")
         if melhor:

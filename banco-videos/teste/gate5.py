@@ -226,6 +226,11 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca=
                                ja_na_secao=(ja_na_secao or "(none yet)")[:200],
                                especie=(especie or "(not a specific species)")[:60])
         notas = _notas_do_vision(prompt, frames)
+        # REFORÇO TAXONÔMICO (02/08): Vision e CLIP julgam por SEMELHANÇA — sapo e
+        # besouro em macro sobre folha são visualmente irmãos, e o sapo passou com
+        # nota 9 + CLIP 100 numa busca por "insect". A taxonomia decide isso de
+        # graça e sem opinião: Insecta não está na linhagem de Dendrobatidae.
+        _esp_ped = (especie or "").strip()
         for i, c in enumerate(validos):
             bruto = notas[i] if i < len(notas) else None
             if not isinstance(bruto, dict):
@@ -235,6 +240,13 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca=
                 continue
             vetos = bruto.get("vetos") or []
             score = int(bruto.get("score") or 0)
+            if _esp_ped and c.get("taxon") and not vetos:
+                try:
+                    from fontes5 import taxon_compativel
+                    if not taxon_compativel(_esp_ped, c["taxon"]):
+                        vetos = list(vetos) + ["fora_do_pedido"]
+                except Exception:
+                    pass
             if vetos:
                 score = 0  # defeito ANULA — proteção v4 preservada
             out.append({**c, "score": max(0, min(10, score)), "vetos": vetos})

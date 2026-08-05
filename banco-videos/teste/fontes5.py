@@ -409,6 +409,42 @@ def _inat_escada(taxon, strict=False):
     return [ids[i] for i in range(len(ids) - 1, max(len(ids) - 4, 5), -1)]
 
 
+def taxon_compativel(pedido, entregue):
+    """O que foi entregue pertence ao grupo que foi PEDIDO? (02/08)
+
+    Nasceu do sapo: a busca era "macro shot insect" e veio um sapo-flecha. Vision
+    aprovou duas vezes (com a regra endurecida) e o CLIP deu 100 — os dois julgam
+    por SEMELHANÇA VISUAL, e sapo e besouro em macro sobre folha são visualmente
+    irmãos. Mas a diferença é FACTUAL, não estética, e a taxonomia responde de
+    graça: `insect` = Insecta (id 47158); Dendrobatidae descende de Amphibia, e
+    47158 não está na linhagem dela.
+
+    Devolve True quando não dá pra decidir (termo não-taxonômico, API fora): esta
+    é uma checagem de REFORÇO, não pode virar gargalo."""
+    def _resolver(termo):
+        """SEM o cap de rank_level do _inat_taxon: aqui os níveis ALTOS são o alvo
+        ('insect' é a classe Insecta, nível 50 — o cap de 30 a rejeitava e a
+        checagem devolvia 'compatível' pra tudo)."""
+        try:
+            r = httpx.get(f"{_INAT}/taxa/autocomplete",
+                          params={"q": str(termo)[:60], "per_page": 5},
+                          headers=_UA, timeout=20)
+            alvo = _inat_norm(termo)
+            for t in (r.json().get("results") or []):
+                n = _inat_norm(t.get("matched_term"))
+                if n == alvo or (n.split() or [""])[-1] == alvo:
+                    return t
+        except Exception:
+            return None
+        return None
+
+    tp, te = _resolver(pedido), _resolver(entregue)
+    if not tp or not te:
+        return True
+    alvo = tp.get("id")
+    return alvo in (te.get("ancestor_ids") or []) or alvo == te.get("id")
+
+
 def inaturalist_img(query, n=6, strict=False, termo=None, garimpar=False, ancora=""):
     """Fotos de ser vivo identificadas por especialistas.
 
