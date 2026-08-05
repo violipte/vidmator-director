@@ -26,6 +26,26 @@ NARRATION AT THIS MOMENT: "{desc}"
 {ctx}
 SHOT THE EDITOR ASKED FOR: "{busca}"
 
+CONTEXT AROUND THIS MOMENT (02/08 — the art director used to catch these AFTER the
+fact, at the cost of re-searching 68% of the video; now you catch them here):
+- Lines just before and after: "{vizinhas}"
+- Already ON SCREEN in this section: {ja_na_secao}
+- Species this section is about: {especie}
+
+Use that context. Three failures it prevents, all of which shipped:
+a) REPEAT — if the neighbouring moments already show this same thing, the cut goes
+   nowhere. A close-up of the animal, right after another close-up of the animal,
+   is a wasted beat even when it is beautiful. Score it 3-5.
+b) WRONG SPECIES — when the section is about a named species, another species is a
+   factual error, not a stylistic choice. We shipped an *Aedes* mosquito while the
+   narration announced *Anopheles darlingi*, and a larva where the line needed the
+   adult. If the section names a species and the image is clearly another, veto
+   "fora_do_pedido".
+c) LITERAL WHEN THE LINE IS ABOUT A SYSTEM — when the narration talks about distance
+   to a clinic, cost, labour or access, another portrait of the animal answers
+   nothing. The shot has to show the SYSTEM (the river, the boat, the road, the
+   clinic, the work), not the creature again. Score it 3-5.
+
 Judge each image as a CUTAWAY for this moment — not as a literal illustration of the
 sentence. When the narration mentions a person, place or object that is INCIDENTAL to
 the film (a doctor, a researcher, a city, a date), a good editor does not cut to that
@@ -168,7 +188,8 @@ def _pre_filtro_clip(frames, validos, descricao, tema, busca=""):
         return frames, validos
 
 
-def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca=""):
+def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca="",
+               vizinhas="", ja_na_secao="", especie=""):
     """candidatos: [{url|path, source, id, ...}] -> mesmos itens + score/vetos, ordenado.
     Baixa miniaturas quando url remota; aceita path local. Veto => score forçado a 0.
     Candidato que o Vision não conseguiu avaliar sai com score -1 (≠ 'ruim')."""
@@ -200,7 +221,10 @@ def batch_gate(candidatos, descricao, ctx_secao="", max_lote=12, tema="", busca=
         frames, validos = _pre_filtro_clip(frames, validos, descricao, tema, busca)
         ctx = f"SECTION RULE: {ctx_secao}\n" if ctx_secao else ""
         prompt = RUBRIC.format(desc=descricao[:200], tema=(tema or "documentary")[:80],
-                           busca=(busca or descricao)[:110], ctx=ctx)
+                               ctx=ctx, busca=(busca or descricao)[:120],
+                               vizinhas=(vizinhas or "(not provided)")[:300],
+                               ja_na_secao=(ja_na_secao or "(none yet)")[:200],
+                               especie=(especie or "(not a specific species)")[:60])
         notas = _notas_do_vision(prompt, frames)
         for i, c in enumerate(validos):
             bruto = notas[i] if i < len(notas) else None

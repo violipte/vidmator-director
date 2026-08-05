@@ -346,10 +346,35 @@ _CORPUS = {"txt": ""}   # tudo que é DITO no vídeo — régua contra espécie 
 
 
 def carregar_corpus(plano):
+    _PLANO_BEATS.clear(); _PLANO_BEATS.extend(plano.get("beats", []))
     _CORPUS["txt"] = " ".join((b.get("texto") or "") for b in plano.get("beats", [])).lower()
 
 
-_ESP_SECAO = {}   # secao -> espécie DOMINANTE dela
+_ESP_SECAO = {}    # secao -> espécie DOMINANTE dela
+_PLANO_BEATS = []  # o filme em ordem, pra dar VIZINHANÇA ao gate
+_ESCOLHIDO_SEC = {}  # secao -> [assuntos já na tela], contra repetir o mesmo plano
+
+
+def _viz_beats(b, janela=2):
+    """Beats imediatamente antes/depois — o gate precisa saber o que a cena vizinha
+    diz pra não repetir o mesmo plano duas vezes seguidas."""
+    if not _PLANO_BEATS:
+        return []
+    i = next((k for k, x in enumerate(_PLANO_BEATS) if x.get("i") == b.get("i")), None)
+    if i is None:
+        return []
+    return _PLANO_BEATS[max(0, i - janela):i] + _PLANO_BEATS[i + 1:i + 1 + janela]
+
+
+def _ja_na_secao(secao):
+    """O que a seção JÁ mostrou (buscas vencedoras), pro gate ver a repetição
+    antes de ela existir — em vez do crítico ver depois, ao custo de re-buscar."""
+    v = _ESCOLHIDO_SEC.get(secao) or []
+    return "; ".join(v[-6:]) if v else ""
+
+
+def _registrar_escolha(secao, busca):
+    _ESCOLHIDO_SEC.setdefault(secao, []).append((busca or "")[:60])
 
 
 def mapear_especie_por_secao(plano):
@@ -455,8 +480,13 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomic
         # vídeo é julgado pelo THUMB (barato); imagem, por ela mesma
         pool = [{**c, "url": c.get("thumb") or c["url"]}
                 for c in cands if c not in verificados]
+        # contexto LOCAL pro gate (02/08): vizinhança + o que a seção já mostrou +
+        # espécie da seção. É o que o crítico via depois — agora chega antes.
+        _viz = " ".join((x.get("texto") or "") for x in _viz_beats(b))[:300]
         notas = batch_gate(pool, b.get("busca") or q, sctx, tema=ancora,
-                           busca=b.get("busca") or q) if pool else []
+                           busca=b.get("busca") or q, vizinhas=_viz,
+                           ja_na_secao=_ja_na_secao(b.get("secao", 0)),
+                           especie=_ESP_SECAO.get(b.get("secao", 0), "")) if pool else []
         # o pool inteiro disputa por SCORE — imagem 9 ganha de vídeo 6 (regra Piter 01/08).
         # social sem thumb entra no FIM da fila: só é tentado se nada com nota vingou.
         fila = [{**c, "score": 10, "vetos": []} for c in verificados] + \
@@ -502,6 +532,7 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomic
                 dest.unlink(missing_ok=True)
                 continue
             usados_urls.add(orig["url"])  # SÓ o vencedor reivindica (demais voltam ao pool)
+            _registrar_escolha(b.get("secao", 0), b.get("busca") or q)
             return {"i": b["i"], "t_ini": b.get("t_ini", 0), "t_fim": b.get("t_fim", 0),
                     "secao": b.get("secao", 0), "status": "ok", "arquivo": str(dest),
                     "tier": int(orig.get("tier") or 1),  # T3 (web/social) => máscara pesada
