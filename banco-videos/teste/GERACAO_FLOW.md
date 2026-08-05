@@ -105,6 +105,29 @@ dedos, gente encarando a lente. Agora passa pelos **mesmos 6 frames** do footage
 ⚠️ **Custo:** com `--regen 1`, um lote de 100 pode virar 200 gerações. Nano Banana é
 0 crédito (não importa); VEO custa — use `--regen 0` se quiser conservador.
 
+## Projetos do Flow (a config de modelo persiste POR PROJETO)
+
+| Projeto | Uso | Modelo fixo |
+|---|---|---|
+| `3bfb56aa-8db8-44d4-b47d-532828a6b33b` | VÍDEO (job amazônia + personagem Russel) | Veo 3.1 - Lite [Lower Priority] |
+| `335d7ba7-549f-4ddf-aa57-b24b976654a4` | IMAGEM | Nano Banana 2 (0 créditos) |
+
+Separar não é organização, é **economia**: a config persiste por projeto, então um
+projeto por tipo elimina a troca de seletor — o passo mais frágil do driver, que já
+fez lote de VÍDEO sair como imagem e passe de IMAGEM sair como vídeo (~90 créditos
+num trabalho de 0). Mesmo assim, `garantir_modo()` confere antes de CADA lote.
+
+## O encarregado (`veo_supervisor.py`)
+
+```bash
+"F:/Canal Dark/veo_venv/Scripts/python.exe" -u veo_supervisor.py     --lote <job>/veo_lote.json --out <job>/assets --tipo video     --fila 4 --paciencia 10 --proj <projeto do tipo>
+```
+Vigia pela contagem de arquivos NO DISCO (log de driver de browser mente: buferiza e
+o processo segue "vivo" esperando um clique). Travou => mata driver+Chrome, roda
+`--so-baixar` pra RESGATAR o que já foi gerado e pago, e reinicia só o que falta.
+Para sozinho após 2 rodadas sem avanço (sessão/crédito/rate limit não se curam
+reiniciando). Log em `<job>/_supervisor_<tipo>.log`.
+
 ## Gotchas do Flow
 
 - **Sempre o `veo_venv`** — `playwright` não está no Python principal.
