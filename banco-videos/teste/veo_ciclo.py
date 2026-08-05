@@ -122,13 +122,29 @@ def main():
             # fica capada num teto constante e o "voo" nunca drena (nem com scroll,
             # nem com reload). Ritmo por TIMER puro: rajada de 3 a cada ~50s. É
             # imune à mentira do DOM; o Lower Priority/NB enfileira no servidor.
+            # VARIAÇÃO AUTOMÁTICA (05/08, regra do Piter): o filtro do Google às
+            # vezes recusa por "pessoa famosa"/política — e re-tentar o MESMO texto
+            # recusa de novo. Item reenviado ganha uma cauda diferente por rodada
+            # (no FIM, pra não mudar o TÍTULO que o casamento do zip usa).
+            VARIA = ["", " Candid documentary field recording.",
+                     " Natural unposed moment, observational style.",
+                     " Quiet vérité tone, ordinary working day."]
+            envios_f = job / "_envios.json"
+            envios = json.loads(envios_f.read_text(encoding="utf-8"))                 if envios_f.exists() else {}
             enviados = 0
             for i in range(0, len(faltam), 3):
                 fd.dispensar_avisos(page)
                 for it in faltam[i:i + 3]:
-                    fd.enviar_prompt(page, it["prompt"])
+                    n_env = envios.get(it["arquivo"], 0)
+                    sufixo = VARIA[n_env % len(VARIA)]
+                    fd.enviar_prompt(page, it["prompt"] + sufixo)
+                    envios[it["arquivo"]] = n_env + 1
                     enviados += 1
                     fd._pausa(1.0, 2.0)
+            envios_f.write_text(json.dumps(envios), encoding="utf-8")
+            _reenv = [k for k, v in envios.items() if v > 1]
+            if _reenv:
+                _log(f"  variação aplicada em {len(_reenv)} reenviados")
                 _log(f"  rajada: {enviados}/{len(faltam)} enviados")
                 if i + 3 < len(faltam):
                     fd._pausa(a.pausa_rajada * 0.8, a.pausa_rajada * 1.2)
@@ -138,6 +154,7 @@ def main():
             # Mesmo problema do grid lazy: recarrega periodicamente pra ler a verdade.
             t0 = time.time()
             n_esp2 = 0
+            time.sleep(75)   # badges de % demoram a aparecer; checar cedo = falso "acabou"
             while time.time() - t0 < a.espera_max * 60:
                 fd.dispensar_avisos(page)
                 n_esp2 += 1
