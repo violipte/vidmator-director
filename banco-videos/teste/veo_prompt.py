@@ -109,6 +109,53 @@ def dirigir(itens, estilo, tema="", lote=10):
     return out
 
 
+MOVIMENTO = """You are planning the GENERATED shots of a documentary. For each shot
+below, decide the medium:
+- "video"  ONLY when the subject's OWN motion carries the meaning: an animal moving
+  or striking, water flowing, a person performing an action, weather changing —
+  anything where temporal change IS the story of the shot.
+- "still"  for everything else: composition, texture, detail, object, environment,
+  mood. The edit adds camera movement over stills (Ken Burns / parallax), so a still
+  is never static on screen — and stills are sharper and instant to generate.
+Bias to "still" unless motion is essential.
+Reply ONLY a JSON array of "video"|"still", same order. No markdown."""
+
+_VERBOS_MOV = re.compile(
+    r"(swim|walk|run|fly|flee|flow|crawl|strik|attack|slither|hunt|chas|leap|jump"
+    r"|dive|glid|wad|step|bit|lung|splash|drift|sway|rippl|trembl|speak|talk|swirl"
+    r"|pour|drip|land|takeoff|coil|lash)", re.I)
+
+
+def _parece_movimento(it):
+    """Fallback determinístico quando o LLM não responde."""
+    return bool(_VERBOS_MOV.search((it.get("busca") or "") + " " + (it.get("texto") or "")))
+
+
+def classificar_midia(itens, lote=25):
+    """'video' | 'imagem' por shot — a régua é MOVIMENTO ESSENCIAL, não o tipo
+    narrativo do beat (05/08, Piter: 84% do lote caiu na fila lenta do VEO porque a
+    divisão herdava a lógica da era da BUSCA; 'stingray resting' virava vídeo)."""
+    out = []
+    for ini in range(0, len(itens), lote):
+        parte = itens[ini:ini + lote]
+        linhas = [f'{k}. "{(it.get("busca") or "")[:90]}"'
+                  + (f' | narration: "{(it.get("texto") or "")[:70]}"' if it.get("texto") else "")
+                  for k, it in enumerate(parte, 1)]
+        resp = _pedir(MOVIMENTO + "\n\nSHOTS:\n" + "\n".join(linhas))
+        vals = []
+        try:
+            m = re.search(r"\[.*\]", resp or "", re.S)
+            vals = [str(x).lower() for x in json.loads(m.group(0))] if m else []
+        except Exception:
+            vals = []
+        for k, it in enumerate(parte):
+            v = vals[k] if k < len(vals) else ""
+            if v not in ("video", "still", "imagem"):
+                v = "video" if _parece_movimento(it) else "still"
+            out.append("video" if v == "video" else "imagem")
+    return out
+
+
 if __name__ == "__main__":
     demo = [{"busca": "ancient Roman general alone in war tent", "tipo": "video",
              "texto": "He wrote only for himself, never to be read."},

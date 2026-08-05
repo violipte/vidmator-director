@@ -74,7 +74,7 @@ def main():
     ap.add_argument("--canal", required=True)
     ap.add_argument("--colecao", required=True, help="nome da coleção = data de publicação")
     ap.add_argument("--tipo", default="video", choices=["video", "imagem"])
-    ap.add_argument("--fila", type=int, default=4)
+    ap.add_argument("--fila", type=int, default=9)   # Lower Priority enfileira no servidor: 3 rajadas de 3
     ap.add_argument("--rodadas", type=int, default=6)
     ap.add_argument("--espera-max", type=int, default=25, help="min de geração por rodada")
     ap.add_argument("--regen", type=int, default=1, help="re-gerações por reprovado no gate")
@@ -112,23 +112,29 @@ def main():
             abrir_colecao(page, a.canal, a.colecao)
             fd.garantir_modo(page, a.tipo)
 
-            # 1) ENVIA o que falta, mantendo <= fila gerações simultâneas
+            # 1) ENVIA em RAJADAS DE 3 (Piter 05/08): 1 em 1 com pausa era lento
+            # demais pro Lower Priority, que enfileira no SERVIDOR de qualquer jeito.
+            # Rajada de 3 + pausa curta preenche a fila sem virar metralhadora.
             cards0, falhas0, enviados = _n_cards(page), vd._cards_falha(page), 0
-            for it in faltam:
+            i = 0
+            while i < len(faltam):
                 t_espera = time.time()
                 while True:
                     voo = enviados - max(0, _n_cards(page) - cards0) \
                           - max(0, vd._cards_falha(page) - falhas0)
-                    if voo < a.fila:
+                    if voo <= a.fila - 3:
                         break
                     fd.dispensar_avisos(page)
                     if time.time() - t_espera > 12 * 60:
-                        _log("  fila presa há 12min — sigo pro download do que houver")
+                        _log("  fila presa há 12min — sigo enviando assim mesmo")
                         break
                     time.sleep(10)
-                fd.enviar_prompt(page, it["prompt"])
-                enviados += 1
-                fd._pausa(3, 6)
+                for it in faltam[i:i + 3]:
+                    fd.enviar_prompt(page, it["prompt"])
+                    enviados += 1
+                    fd._pausa(1.0, 2.0)
+                i += 3
+                fd._pausa(2, 4)
             _log(f"  {enviados} prompts enviados")
 
             # 2) ESPERA a geração terminar (badges de % sumirem), com teto

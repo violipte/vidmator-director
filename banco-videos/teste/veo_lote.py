@@ -50,6 +50,8 @@ def main():
     ap.add_argument("--max", type=int, default=0, help="limita o nº de prompts (piloto)")
     ap.add_argument("--modo", choices=["video", "imagem", "misto"], default=None,
                     help="sobrepõe o gen_modo do style_card")
+    ap.add_argument("--sem-reclass", action="store_true",
+                    help="não reclassifica vídeo->imagem por movimento (misto)")
     a = ap.parse_args()
 
     job = Path(a.job)
@@ -81,6 +83,23 @@ def main():
                        "busca": b.get("busca"), "texto": b.get("texto")})
         if a.max and len(brutos) >= a.max:
             break
+
+    # RECLASSIFICAÇÃO POR MOVIMENTO (05/08, Piter). No misto, a divisão herdava a
+    # lógica da era da BUSCA (footage->vídeo, ilustração->imagem) e 84% do lote caía
+    # na fila lenta do VEO — inclusive "stingray RESTING on the riverbed". A régua
+    # certa pra GERAÇÃO é outra: vídeo SÓ quando o movimento do sujeito é a história;
+    # o resto vira still (mais nítido, instantâneo, 0 créd) e ganha movimento na
+    # montagem (Ken Burns semântico / parallax). Quem já tem .mp4 no assets não muda.
+    if modo == "misto" and not a.sem_reclass:
+        from veo_prompt import classificar_midia
+        cands = [b for b in brutos if b["tipo"] == "video"
+                 and not (job / "assets" / f"b{b['i']:03d}.mp4").exists()]
+        if cands:
+            novas = classificar_midia(cands)
+            n_re = sum(1 for m in novas if m == "imagem")
+            for b, m in zip(cands, novas):
+                b["tipo"] = m
+            print(f"reclassificação por movimento: {n_re}/{len(cands)} viram IMAGEM")
 
     print(f"modo={modo} | estilo='{estilo[:60]}...' | dirigindo {len(brutos)} planos...")
     prompts = dirigir(brutos, estilo, tema=tema)
