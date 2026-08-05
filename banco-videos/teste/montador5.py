@@ -1317,6 +1317,24 @@ def main():
     # 1º vídeo de cobras = 62% de tela preta). Aqui os gaps viram beats novos servidos
     # pelo BANCO DE NICHO, em rodízio e sem repetir o vizinho.
     # pool = banco de nicho (uso 0) + TODO mp4 já resolvido (uso 1) — com 62 gaps e só
+    def _prompt_do_gap(t_ini, t_fim, secao):
+        """O que o gap deve MOSTRAR, a partir do que está sendo DITO ali (02/08).
+
+        Decisão do Piter: gap se preenche com Nano Banana, não com clipe sorteado.
+        O rodízio "menos usado" era cego ao conteúdo — foi ele que colou uma COBRA
+        em "she had treated a jaguar attack, a stingray wound" (o clipe nunca passou
+        por gate nem crítico, entrava pela porta dos fundos). Gerar custa 0 crédito
+        e responde exatamente ao momento."""
+        falado = " ".join((x.get("texto") or "") for x in plano.get("beats", [])
+                          if x.get("t_ini", 9e9) < t_fim and x.get("t_fim", -1) > t_ini)[:160]
+        base = next((x.get("busca") for x in plano.get("beats", [])
+                     if x.get("t_ini", 9e9) < t_fim and x.get("t_fim", -1) > t_ini
+                     and x.get("busca")), "")
+        anc = (_SC.get("assunto_ancora") or "").strip()
+        return (base or f"{anc} {falado}").strip()[:180]
+
+    _gaps_gerar = []   # vira _gerar.json: o Nano Banana preenche antes do render
+
     # 25 clipes de banco o R-56 (3+ usos) estourava; o pool maior distribui
     _bnc = [r["arquivo"] for r in resolvido
             if r.get("secao") == 900 and str(r.get("arquivo") or "").lower().endswith(".mp4")
@@ -1375,6 +1393,26 @@ def main():
                     _ult5.append(esc)
                     if len(_ult5) > 5:
                         _ult5.pop(0)
+                    # 1º: imagem GERADA pra este gap já existe? (2ª montagem, pós
+                    # Nano Banana) — ela responde ao momento, o clipe sorteado não
+                    _gen = Path(a.job if Path(a.job).is_absolute() else
+                                Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos") / a.job)                         / "assets" / f"gap{k_gap:03d}__T1__gen.jpg"
+                    if _gen.exists():
+                        dst_g = dest / "assets" / _gen.name
+                        if not dst_g.exists():
+                            shutil.copy2(_gen, dst_g)
+                        novos_gap.append({"i": 7000 + k_gap, "t_ini": round(ini_g, 2),
+                                          "t_fim": round(fim_g, 2), "tipo": "footage_imagem",
+                                          "secao": sec_g, "tier": 1, "watermark": False,
+                                          "src": f"jobs/{a.nome}/assets/{_gen.name}",
+                                          "props": {}, "_gerado": True})
+                        k_gap += 1
+                        ini_g = fim_g
+                        continue
+                    # ainda não gerada: entra na fila com o prompt DO MOMENTO
+                    _gaps_gerar.append({"i": 7000 + k_gap,
+                                        "prompt": _prompt_do_gap(ini_g, fim_g, sec_g),
+                                        "dest": f"gap{k_gap:03d}__T1__gen.jpg"})
                     _usos_g[esc] = _usos_g.get(esc, 0) + 1
                     dst = dest / "assets" / Path(esc).name
                     if not dst.exists():
@@ -1388,6 +1426,15 @@ def main():
                     k_gap += 1
                     ini_g = fim_g
             ant_t = max(ant_t, t_f)
+        if _gaps_gerar:
+            _jobdir = Path(a.job) if Path(a.job).is_absolute() else                 Path(r"F:/Canal Dark/Aplicativo de Edição/banco-videos") / a.job
+            _gf = _jobdir / "_gerar.json"
+            _atual = json.loads(_gf.read_text(encoding="utf-8")) if _gf.exists() else []
+            _ids = {x.get("i") for x in _atual}
+            _atual += [x for x in _gaps_gerar if x["i"] not in _ids]
+            _gf.write_text(json.dumps(_atual, ensure_ascii=False, indent=1), encoding="utf-8")
+            print(f"gaps -> Nano Banana: {len(_gaps_gerar)} prompt(s) em _gerar.json "
+                  f"(rode o veo_driver e re-monte)")
         if novos_gap:
             beats_out.extend(novos_gap)
             print(f"gaps preenchidos [v5]: {len(novos_gap)} beats do banco "
