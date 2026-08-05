@@ -334,6 +334,8 @@ def main():
     ap.add_argument("--proj", default=None)
     ap.add_argument("--timeout-total", type=int, default=4 * 3600)
     ap.add_argument("--tipo", default="video", choices=["video", "imagem"])
+    ap.add_argument("--perfil", default="",
+                    help="perfil Chrome; vazio = o 1º LIVRE (veo_flow/perfis.py)")
     ap.add_argument("--so-baixar", action="store_true",
                     help="não gera nada: casa os cards JÁ existentes no projeto e baixa")
     a = ap.parse_args()
@@ -355,7 +357,9 @@ def main():
     if not fila_itens:
         return
 
-    pw, ctx, page = fd.abrir(headless=False)
+    # perfil LIVRE (02/08): perfil ocupado fazia o Playwright cair em "sessão de
+    # navegador existente" e o lote inteiro sair com 0 imagens, sem erro claro
+    pw, ctx, page = fd.abrir(headless=False, perfil=a.perfil or None)
     page.set_default_timeout(45_000)   # nenhum clique espera pra sempre
     try:
         page.goto(fd.BASE, wait_until="domcontentloaded")
