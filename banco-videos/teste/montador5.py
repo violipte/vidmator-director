@@ -504,7 +504,14 @@ def main():
 
                 info = REG_INFO.get(comp)
                 props_novos = None
-                if props and info and comp not in DEPRECATED and dur >= info.get("min_dur", 0):
+                # 02/08 — A TERCEIRA camada da regressão que o Piter chamou de
+                # "foi emburrecendo". Exigir `props_final` aqui significa exigir que o
+                # v2 pass do diretor tenha rodado; quando ele NÃO roda (plano direto do
+                # diretor), TODOS os 60 beats com componente caem fora — `ok=0`,
+                # `repick=26` — e mapa/contador/duo viram texto genérico. O que manda é
+                # ter DADOS que sustentem o componente; o builder logo abaixo decide.
+                if (props or dados_b) and info and comp not in DEPRECATED \
+                        and dur >= info.get("min_dur", 0):
                     # RE-CONSTRÓI pelo builder ATUAL (props antigos podem carregar texto cru pré-fix)
                     props_novos = rebuild(comp, dados_b, texto_b, imgs)
                 # R-26: DADO FORTE nunca fica em texto — mesmo texto VÁLIDO é rejeitado

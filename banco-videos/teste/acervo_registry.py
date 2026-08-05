@@ -55,12 +55,43 @@ def reg(comp, natureza, needs_imgs=0, peso=1.0):
     return deco
 
 # ===== CHARTS =====
+def _valor_num(*vals):
+    """Número + sufixo a partir do que o diretor escreve: "10,000+", "< 1",
+    "29 000", 27000. Ele redige como se fala; o componente conta um INTEIRO.
+    Sem isto, 13 pedidos de contador animado viraram None no job amazônico."""
+    import re as _re
+    for v in vals:
+        if isinstance(v, (int, float)):
+            return int(v), ""
+        s = str(v or "").strip()
+        if not s:
+            continue
+        m = _re.search(r"(\d[\d.,\s]*)", s)
+        if not m:
+            continue
+        try:
+            n = int(float(m.group(1).replace(" ", "").replace(",", "")))
+        except ValueError:
+            continue
+        resto = s.replace(m.group(1), "").strip()
+        suf = "+" if "+" in resto else ("%" if "%" in resto else resto[:6])
+        return n, suf
+    return None, ""
+
+
 @reg("NumberCountOverlay", "chart", peso=1.2)
 def _b(d, t, im):
-    g = _num(t)
-    if not g: return None
-    lab = str(_s(d, "label", "title") or "")[:40]
-    return {"value": g[0], "suffix": g[1], "label": lab} if lab else None
+    # 02/08: exigia o número no TEXTO (`_num(t)`) e ignorava o que vinha em `dados`.
+    # O diretor manda {"number": "10,000+"} e o beat era descartado. Agora dados
+    # primeiro, texto como reserva.
+    val, suf = _valor_num(_s(d, "number", "value", "valor", "count"))
+    if val is None:
+        g = _num(t)
+        if not g:
+            return None
+        val, suf = g[0], g[1]
+    lab = str(_s(d, "label", "title", "description", "unit") or "")[:40]
+    return {"value": val, "suffix": suf, "label": lab} if lab else None
 
 @reg("PercentageBarChart", "chart")
 def _b(d, t, im):
@@ -124,22 +155,61 @@ def _b(d, t, im):
     if any(limp): p["values"] = limp
     return p
 
+def _coord(*vals):
+    """(lat, lon) a partir das MUITAS formas que o diretor emite (02/08).
+
+    Aqui estava a regressão que o Piter sentiu como "foi emburrecendo": o diretor
+    PEDIA mapa — 9 pedidos no job amazônico — e o builder devolvia None em todos,
+    porque ele mandava `coords: [-3.35, -64.71]` e o builder exigia `lat`/`lon`
+    separados. Resultado: `ok=0` no registry-pass, repick, e o mapa virava uma pílula
+    de texto. Os componentes SEMPRE estiveram registrados; faltava o tradutor.
+    Aceita: [lat, lon] | {"lat":..,"lon":..} | {"latitude":..,"longitude":..}."""
+    for v in vals:
+        if isinstance(v, (list, tuple)) and len(v) >= 2:
+            try:
+                return float(v[0]), float(v[1])
+            except (TypeError, ValueError):
+                continue
+        if isinstance(v, dict):
+            la = v.get("lat", v.get("latitude"))
+            lo = v.get("lon", v.get("lng", v.get("longitude")))
+            if la is not None and lo is not None:
+                try:
+                    return float(la), float(lo)
+                except (TypeError, ValueError):
+                    continue
+    return None, None
+
+
 @reg("MapRoute", "mapa")
 def _b(d, t, im):
     s, e = _s(d, "start_location") or {}, _s(d, "end_location") or {}
-    if not (isinstance(s, dict) and isinstance(e, dict)): return None
-    if not (s.get("name") and e.get("name") and s.get("lat") is not None and e.get("lat") is not None):
-        return None  # SEM coords reais = NUNCA renderiza (mata o Tehran→Dubai default)
-    return {"startName": str(s["name"]).split(",")[0][:18], "endName": str(e["name"]).split(",")[0][:18],
-            "startCoord": [float(s["lon"]), float(s["lat"])], "endCoord": [float(e["lon"]), float(e["lat"])]}
+    la1, lo1 = _coord(s, _s(d, "start_coords", "startCoord"))
+    la2, lo2 = _coord(e, _s(d, "end_coords", "endCoord"))
+    n1 = str((s.get("name") if isinstance(s, dict) else None)
+             or _s(d, "start_name", "from", "origem") or "")[:18]
+    n2 = str((e.get("name") if isinstance(e, dict) else None)
+             or _s(d, "end_name", "to", "destino") or "")[:18]
+    # rota SEM coordenada real nunca renderiza (era o default Tehran->Dubai no ar)
+    if not (n1 or n2):
+        # o diretor às vezes nomeia a ROTA ("Solimões River") em vez das pontas —
+        # com as coordenadas certas, isso basta pra desenhar o traçado
+        rota = str(_s(d, "route_name", "name") or "").split(",")[0][:18]
+        n1, n2 = (rota or "Origin"), (rota and "" or "Destination")
+    if not (la1 is not None and la2 is not None):
+        return None
+    return {"startName": n1.split(",")[0], "endName": n2.split(",")[0],
+            "startCoord": [lo1, la1], "endCoord": [lo2, la2]}
+
 
 @reg("SatelliteLocationPin", "mapa")
 def _b(d, t, im):
-    nome = str(_s(d, "location", "name") or "")[:28]
-    lat, lon = _s(d, "lat"), _s(d, "lon")
-    if not nome or lat is None or lon is None: return None
+    nome = str(_s(d, "location", "name", "locationName", "place") or "")[:28]
+    lat, lon = _coord(_s(d, "coords", "coordinates", "coord"), d)
+    if not nome or lat is None:
+        return None
     return {"locationName": nome, "locationSubTitle": str(_s(d, "year", "subtitle") or "")[:20],
-            "latitude": float(lat), "longitude": float(lon)}
+            "latitude": lat, "longitude": lon}
 
 @reg("RegionLocationText", "mapa")
 def _b(d, t, im):
@@ -202,8 +272,10 @@ def _b(d, t, im):
 
 @reg("DualImpactSentence", "texto_full")
 def _b(d, t, im):
-    a = str(_s(d, "first", "text") or "")[:70].strip()
-    b2 = str(_s(d, "second") or "")[:70].strip()
+    # 02/08: o diretor escreve sentence1/sentence2; o builder só olhava first/second
+    # e devolvia None — 6 pedidos perdidos num job só.
+    a = str(_s(d, "first", "text", "sentence1", "linha1") or "")[:70].strip()
+    b2 = str(_s(d, "second", "sentence2", "linha2") or "")[:70].strip()
     return {"firstSentence": a, "secondSentence": b2} if a and b2 else None
 
 @reg("SubjectTitleCard", "texto_full")
