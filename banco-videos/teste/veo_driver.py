@@ -116,9 +116,17 @@ def _eh_mp4(path):
         return False
 
 
-def _baixar_do_grid(page, href, out_path, quer_1080=True):
-    """Rota A (a que funciona pra VÍDEO): hover no card do grid -> ⋮ -> Baixar -> 1080p.
-    29/07: o botão da página de DETALHE baixa o POSTER (jpeg) — 111 arquivos falsos."""
+def _baixar_do_grid(page, href, out_path, quer_1080=False):
+    """Rota A (a que funciona pra VÍDEO): hover no card do grid -> ⋮ -> Baixar.
+    29/07: o botão da página de DETALHE baixa o POSTER (jpeg) — 111 arquivos falsos.
+
+    ⚠️ 05/08 (QA Piter): "1080p Aumentada" NÃO é download, é UPSCALE NO SERVIDOR do
+    Google — o próprio Flow avisa "pode levar alguns minutos. Evite iniciar várias
+    tarefas de aumento de resolução". Nós pedíamos isso em TODO clipe com fila 4:
+    cada download ficava esperando minutos por um upscale, e a fila estrangulava.
+    Forte candidato ao lote que ficou pendurado. Agora o padrão é o download DIRETO
+    (720p nativo); o render final é 1080p e o Remotion escala o vídeo inteiro de uma
+    vez — muito mais barato que 98 upscales de 8s no servidor."""
     card = page.locator(f'a[href="{href}"]').first
     try:
         card.scroll_into_view_if_needed(timeout=10000)
@@ -154,10 +162,10 @@ def _baixar_do_grid(page, href, out_path, quer_1080=True):
             page.get_by_role("menuitem", name=re.compile("^Baixar$|Download", re.I)).first.click()
             fd._pausa(0.4, 0.8)
             try:
-                m1080 = page.get_by_role("menuitem", name=re.compile("1080p", re.I))
+                m1080 = page.get_by_role("menuitem", name=re.compile("1080p|Aumentada", re.I))
                 if quer_1080 and m1080.count():
                     m1080.first.click()
-                else:
+                else:   # 720p / "Tamanho original": sai na hora, sem upscale no servidor
                     mit = page.get_by_role("menuitem",
                                            name=re.compile("720p|original|Tamanho", re.I))
                     if mit.count():
@@ -258,6 +266,10 @@ def main():
     ap.add_argument("--lote", required=True)
     ap.add_argument("--regen", type=int, default=1,
                     help="re-gerações por item reprovado no gate (0 = aceita como veio)")
+    ap.add_argument("--upscale-1080", action="store_true",
+                    help="baixa em '1080p Aumentada' (UPSCALE no servidor do Google: "
+                         "minutos por clipe e o Flow pede pra nao paralelizar). "
+                         "Default: 720p nativo — o render final ja e' 1080p.")
     ap.add_argument("--sem-progresso", type=int, default=12, metavar="MIN",
                     help="aborta apos N minutos sem NENHUM download novo (watchdog)")
     ap.add_argument("--sem-config", action="store_true",
@@ -380,7 +392,8 @@ def main():
                     continue
                 # VÍDEO: menu ⋮ do card por coordenada (rota que funciona); fallback rede
                 if a.tipo == "video":
-                    ok = _baixar_do_grid(page, href, out / it["arquivo"], quer_1080=True)
+                    ok = _baixar_do_grid(page, href, out / it["arquivo"],
+                                         quer_1080=a.upscale_1080)
                     if ok and not _eh_mp4(out / it["arquivo"]):
                         (out / it["arquivo"]).unlink(missing_ok=True)
                         ok = False
