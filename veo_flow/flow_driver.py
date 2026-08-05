@@ -65,8 +65,30 @@ def _limpar_saida_suja():
             pass
 
 
-def abrir(headless=False):
-    """Abre o contexto persistente no Chrome instalado. Retorna (pw, ctx, page)."""
+def abrir(headless=False, perfil=None):
+    """Abre o contexto persistente no Chrome instalado. Retorna (pw, ctx, page).
+
+    `perfil` (02/08): permite usar OUTRA conta Google. Sem ele, pergunta ao
+    `perfis.py` qual está LIVRE — o perfil ocupado por uma janela do Piter fazia o
+    Playwright cair em "Abrindo em uma sessão de navegador existente" e gerar ZERO
+    imagens sem erro claro (travou a fila de 5 gaps). Se nenhum está livre, segue
+    no padrão e o erro aparece explícito."""
+    global PROFILE_DIR
+    if perfil:
+        PROFILE_DIR = Path(perfil)
+    else:
+        try:
+            sys.path.insert(0, str(AQUI))
+            from perfis import primeiro_livre
+            _liv = primeiro_livre()
+            if _liv:
+                PROFILE_DIR = Path(_liv)
+                print(f"perfil livre: {PROFILE_DIR.name}")
+            else:
+                print("!! nenhum perfil LIVRE — o Chrome do Flow está aberto? "
+                      "(veo_flow/perfis.py mostra o estado)")
+        except Exception:
+            pass
     PROFILE_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     _limpar_saida_suja()
