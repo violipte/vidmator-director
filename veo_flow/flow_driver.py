@@ -101,6 +101,32 @@ MODELO_VIDEO = "Veo 3.1 - Lite [Lower Priority]"   # padrão do canal (Piter 04/
 MODELO_IMAGEM = "Nano Banana 2"                    # 0 créditos — imagem NUNCA no VEO
 
 
+def dispensar_avisos(page):
+    """Popups de ANÚNCIO do Flow ("Tools Community Gallery is Live!" etc.) bloqueiam
+    a UI e derrubam o driver. Solução já provada em PROD (`video-automator/thumb_gen/
+    thumb_nano.py`, visto 31/07 e 04/08) — trazida pra cá porque o Google solta um
+    aviso novo a cada feature e QUALQUER driver do Flow precisa disso.
+
+    Forte suspeita de ser a causa do lote de 98 ter ficado 3h30 pendurado: um popup
+    aparece no meio do lote, todo clique seguinte cai nele, e o driver espera pra
+    sempre. Best-effort e silencioso: nunca derruba o lote."""
+    try:
+        page.keyboard.press("Escape")
+        _pausa(0.2, 0.4)
+    except Exception:
+        pass
+    for pat in (r"Comece j[aá]", r"Come[cç]ar", r"Got it", r"Entendi", r"Start",
+                r"Dismiss", r"Continuar", r"Fechar", r"Close", r"^OK$"):
+        try:
+            b = page.get_by_role("button", name=re.compile(pat, re.I)).first
+            if b.is_visible(timeout=700):
+                b.click(timeout=2000)
+                print(f"  aviso do Flow dispensado (~/{pat}/)")
+                _pausa(0.3, 0.6)
+        except Exception:
+            pass
+
+
 def modo_atual(page):
     """Lê o botão do rodapé, que mostra o estado: 'Vídeo · 8s crop_16_9 x1' ou
     '🍌 Nano Banana 2 x2'. Devolve ('video'|'imagem'|'?', texto_lido)."""
@@ -125,6 +151,7 @@ def garantir_modo(page, tipo, modelo=None, aspecto="16:9", dur="8s", saidas="x1"
     Confere, corrige se preciso, CONFERE DE NOVO e falha alto se não bater. Gerar no
     modelo errado é pior que não gerar."""
     alvo_modelo = modelo or (MODELO_VIDEO if tipo == "video" else MODELO_IMAGEM)
+    dispensar_avisos(page)      # popup na frente do seletor = leitura errada do modo
     atual, txt = modo_atual(page)
     if atual == tipo:
         print(f"  modo OK: {tipo} ({txt.strip()[:44]})")

@@ -352,6 +352,9 @@ def main():
                 em_voo.append(it)
                 i_next += 1
                 fd._pausa(4, 8)
+            # popup de anúncio do Flow aparece a qualquer momento e trava TODO
+            # clique seguinte (suspeita nº1 do lote que ficou 3h30 pendurado)
+            fd.dispensar_avisos(page)
             # 2) procura cards novos concluídos
             if a.so_baixar:  # grid é lazy e o goto reseta o scroll — recarrega tudo
                 _carregar_todos_cards(page, max_rodadas=15)
