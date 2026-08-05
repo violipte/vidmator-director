@@ -51,16 +51,34 @@ def _cards_falha(page):
 
 def _limpar_falhas(page):
     """Manda os cards falhados pra lixeira: se ficam no grid, são recontados a cada
-    volta e o driver acha que 'ainda tem falha nova'."""
+    volta e o driver acha que 'ainda tem falha nova'.
+
+    ⚠️ 05/08: a 1ª versão varria TODOS os botões por rótulo ("lixeira|excluir") e
+    clicava no **"Ver lixeira" do menu LATERAL** — o driver navegava pra /trash, onde
+    não há card nenhum, e se perdia sozinho (o Piter viu a tela na lixeira). Agora o
+    clique é restrito ao INTERIOR da caixa do card que falhou, e o menu lateral
+    (faixa da esquerda) fica fora por construção."""
     n = 0
     try:
-        for b in page.locator("button").all():
+        avisos = page.get_by_text(re.compile(r"Ops!|Algo deu errado", re.I))
+        for i in range(min(avisos.count(), 6)):
             try:
-                rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=300) or "")
-                if re.search(r"delete|lixeira|excluir|remover", rot, re.I) and b.is_visible():
-                    b.click(timeout=3000)
-                    n += 1
-                    fd._pausa(0.4, 0.8)
+                cx = avisos.nth(i).bounding_box()
+                if not cx or cx["x"] < 220:      # faixa da esquerda = menu, nunca card
+                    continue
+                # a caixa do card: em volta do aviso, com folga pra pegar o ícone
+                x0, x1 = cx["x"] - 260, cx["x"] + cx["width"] + 260
+                y0, y1 = cx["y"] - 60, cx["y"] + cx["height"] + 300
+                for b in page.locator("button").all():
+                    bb = b.bounding_box()
+                    if not bb or not (x0 <= bb["x"] <= x1 and y0 <= bb["y"] <= y1):
+                        continue
+                    rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=300) or "")
+                    if re.search(r"delete|excluir|remover|lixeira", rot, re.I):
+                        b.click(timeout=3000)
+                        n += 1
+                        fd._pausa(0.4, 0.8)
+                        break
             except Exception:
                 continue
     except Exception:
@@ -399,6 +417,12 @@ def main():
             # popup de anúncio do Flow aparece a qualquer momento e trava TODO
             # clique seguinte (suspeita nº1 do lote que ficou 3h30 pendurado)
             fd.dispensar_avisos(page)
+            # 05/08: um clique errado (ex.: "Ver lixeira" do menu) tirava o driver do
+            # projeto e ele NUNCA mais via card — voltar é barato, se perder não é.
+            if "/project/" not in page.url or page.url.rstrip("/").endswith("/trash"):
+                print(f"  fora do projeto ({page.url[-28:]}) — voltando", flush=True)
+                page.goto(proj_url, wait_until="domcontentloaded")
+                fd._pausa(1.2, 2.0)
             # 1b) CARDS FALHADOS: o Flow diz "Ops! Algo deu errado" e aquele card
             # nunca vira vídeo. Sem tratar, o item fica em voo pra sempre. Devolve o
             # mais antigo em voo pra fila (até --regen tentativas) e limpa o card.

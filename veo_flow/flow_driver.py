@@ -41,10 +41,35 @@ MODELO_BTN_RE = re.compile(r"(Veo|Banana|Omni|V[íi]deo|Imagem)", re.I)
 
 
 # ---- infra ----
+def _limpar_saida_suja():
+    """Tira o "Restaurar páginas? O Chrome não foi encerrado corretamente" (05/08).
+
+    O supervisor mata o Chrome à força (é a única forma quando o Playwright está
+    preso), e o Chrome guarda isso nas Preferences pra mostrar a bolha no próximo
+    boot. Ela nasce no CANTO SUPERIOR DIREITO — em cima dos botões do Flow —, ou
+    seja, é mais um candidato a roubar clique, como o popup de anúncio. Marcar a
+    saída como limpa antes de abrir resolve na origem."""
+    import json as _j
+    for pref in (PROFILE_DIR / "Default" / "Preferences", PROFILE_DIR / "Preferences"):
+        try:
+            if not pref.exists():
+                continue
+            d = _j.loads(pref.read_text(encoding="utf-8", errors="ignore"))
+            perfil = d.setdefault("profile", {})
+            if perfil.get("exit_type") == "Normal" and perfil.get("exited_cleanly") is True:
+                continue
+            perfil["exit_type"] = "Normal"
+            perfil["exited_cleanly"] = True
+            pref.write_text(_j.dumps(d), encoding="utf-8")
+        except Exception:
+            pass
+
+
 def abrir(headless=False):
     """Abre o contexto persistente no Chrome instalado. Retorna (pw, ctx, page)."""
     PROFILE_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
+    _limpar_saida_suja()
     pw = sync_playwright().start()
     ctx = pw.chromium.launch_persistent_context(
         user_data_dir=str(PROFILE_DIR),
@@ -52,7 +77,9 @@ def abrir(headless=False):
         headless=headless,
         accept_downloads=True,
         viewport={"width": 1920, "height": 1080},
-        args=["--disable-blink-features=AutomationControlled"],  # reduz sinais óbvios de automação
+        args=["--disable-blink-features=AutomationControlled",   # reduz sinais óbvios de automação
+              "--hide-crash-restore-bubble",   # cinto/suspensório do _limpar_saida_suja
+              "--no-first-run", "--no-default-browser-check"],
     )
     page = ctx.pages[0] if ctx.pages else ctx.new_page()
     page.set_default_timeout(UI_TIMEOUT)
