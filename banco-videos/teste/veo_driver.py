@@ -36,6 +36,38 @@ def _cards_edit(page):
     return hrefs
 
 
+def _cards_falha(page):
+    """Cards que o Flow marcou 'Falha / Ops! Algo deu errado' (05/08, QA Piter).
+
+    Card falhado NUNCA vira `a[href*="/edit/"]` — então o item correspondente ficava
+    'em voo' pra SEMPRE e o lote inteiro parava esperando um clipe que não vem. É a
+    terceira causa de travamento que achamos hoje, junto com o popup de anúncio e o
+    upscale no servidor."""
+    try:
+        return page.get_by_text(re.compile(r"Ops!|Algo deu errado|Falha", re.I)).count()
+    except Exception:
+        return 0
+
+
+def _limpar_falhas(page):
+    """Manda os cards falhados pra lixeira: se ficam no grid, são recontados a cada
+    volta e o driver acha que 'ainda tem falha nova'."""
+    n = 0
+    try:
+        for b in page.locator("button").all():
+            try:
+                rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=300) or "")
+                if re.search(r"delete|lixeira|excluir|remover", rot, re.I) and b.is_visible():
+                    b.click(timeout=3000)
+                    n += 1
+                    fd._pausa(0.4, 0.8)
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return n
+
+
 def _match_pendente(texto_pagina, pendentes):
     """Casa o prompt visível na página de detalhe com um item do lote."""
     for it in pendentes:
@@ -367,6 +399,22 @@ def main():
             # popup de anúncio do Flow aparece a qualquer momento e trava TODO
             # clique seguinte (suspeita nº1 do lote que ficou 3h30 pendurado)
             fd.dispensar_avisos(page)
+            # 1b) CARDS FALHADOS: o Flow diz "Ops! Algo deu errado" e aquele card
+            # nunca vira vídeo. Sem tratar, o item fica em voo pra sempre. Devolve o
+            # mais antigo em voo pra fila (até --regen tentativas) e limpa o card.
+            n_falha = _cards_falha(page)
+            if n_falha and em_voo:
+                _limpar_falhas(page)
+                it_f = em_voo.pop(0)
+                it_f["_falhas"] = it_f.get("_falhas", 0) + 1
+                if it_f["_falhas"] <= max(1, a.regen):
+                    fila_itens.append(it_f)
+                    print(f"  {it_f['arquivo']}: card FALHOU no Flow — re-enfileirado "
+                          f"({it_f['_falhas']})", flush=True)
+                else:
+                    falhas += 1
+                    print(f"  {it_f['arquivo']}: falhou {it_f['_falhas']}x no Flow — "
+                          f"desisto (provável bloqueio de conteúdo no prompt)", flush=True)
             # 2) procura cards novos concluídos
             if a.so_baixar:  # grid é lazy e o goto reseta o scroll — recarrega tudo
                 _carregar_todos_cards(page, max_rodadas=15)
