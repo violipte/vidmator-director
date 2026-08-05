@@ -258,6 +258,8 @@ def main():
     ap.add_argument("--lote", required=True)
     ap.add_argument("--regen", type=int, default=1,
                     help="re-gerações por item reprovado no gate (0 = aceita como veio)")
+    ap.add_argument("--sem-progresso", type=int, default=12, metavar="MIN",
+                    help="aborta apos N minutos sem NENHUM download novo (watchdog)")
     ap.add_argument("--sem-config", action="store_true",
                     help="nao mexe no seletor de modelo: usa a config ja persistida "
                          "no projeto (o passo mais fragil do driver)")
@@ -292,6 +294,7 @@ def main():
         return
 
     pw, ctx, page = fd.abrir(headless=False)
+    page.set_default_timeout(45_000)   # nenhum clique espera pra sempre
     try:
         page.goto(fd.BASE, wait_until="domcontentloaded")
         fd._pausa(1.5, 2.5)
@@ -336,7 +339,20 @@ def main():
             i_next = 0
         feitos, falhas = 0, 0
         t0 = time.time()
+        # WATCHDOG (04/08): o lote de 98 ficou 3h30 PENDURADO sem baixar nada e só o
+        # Piter percebeu, olhando a tela. `--timeout-total` (4h) é longo demais pra
+        # servir de alarme: um clique preso mata a noite inteira. Aqui, N minutos sem
+        # NENHUM progresso => aborta e reporta, com o que já foi baixado preservado.
+        t_prog = time.time()
+        n_prog = -1
         while (feitos + falhas) < len(fila_itens) and time.time() - t0 < a.timeout_total:
+            if feitos + falhas != n_prog:
+                n_prog, t_prog = feitos + falhas, time.time()
+            elif time.time() - t_prog > a.sem_progresso * 60:
+                print(f"!!! {a.sem_progresso} min sem progresso (feitos={feitos} "
+                      f"falhas={falhas} voo={len(em_voo)}) — ABORTANDO. Os clipes já "
+                      f"gerados ficam no Flow: recupere com --so-baixar.", flush=True)
+                break
             # 1) mantém a fila cheia
             while len(em_voo) < a.fila and i_next < len(fila_itens):
                 it = fila_itens[i_next]
