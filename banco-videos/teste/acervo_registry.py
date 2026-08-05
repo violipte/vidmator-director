@@ -218,6 +218,30 @@ def _b(d, t, im):
     return {"countryName": pais[:24], "regionName": str(_s(d, "region", "city") or "")[:24],
             "text": str(_s(d, "text", "label") or "")[:40]}
 
+# ===== CTA DO YOUTUBE =====
+# 02/08: existiam desde os canais normais (não-VidMator) e nunca foram registrados
+# nem entraram no COMP_MAP da v5 — por isso sumiram do editor. Não precisam de dado
+# nenhum do roteiro: são pedidos de engajamento, não ilustração do conteúdo.
+@reg("YtCta", "cta", peso=1.4)
+def _b(d, t, im):
+    return {"headline": str(_s(d, "headline", "title") or "ENJOYING THE VIDEO?")[:38]}
+
+
+@reg("SubscribeBellPulse", "cta", peso=1.0)
+def _b(d, t, im):
+    return {}
+
+
+@reg("SubscribeMinimal", "cta", peso=1.0)
+def _b(d, t, im):
+    return {}
+
+
+@reg("CtaBannerSlim", "cta", peso=0.8)
+def _b(d, t, im):
+    return {"text": str(_s(d, "text", "headline") or "SUBSCRIBE")[:40]}
+
+
 # ===== TEXTO FULL (cartão com fundo próprio) =====
 _ROTEIRO = {"txt": ""}
 

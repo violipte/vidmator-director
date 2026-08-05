@@ -21,6 +21,14 @@ import { TitleDescription } from "../TitleDescription";
 import { CharacterCard } from "../CharacterCard";
 import { SentenceHighlight } from "../SentenceHighlight";
 import { Mascot } from "../Mascot";
+/* CTA do YouTube (02/08): os componentes existiam desde os canais normais mas nunca
+   entraram no COMP_MAP da v5 — invisíveis pro montador, por isso sumiram do VidMator. */
+import { YtCta } from "../YtCta";
+import { SubscribeBellPulse } from "../SubscribeBellPulse";
+import { SubscribeMinimal } from "../SubscribeMinimal";
+import { CtaCard } from "../CtaCard";
+import { CtaPopupCenter } from "../CtaPopupCenter";
+import { CtaBannerSlim } from "../CtaBannerSlim";
 import { Parallax3Scene5 } from "./Parallax3Scene5";
 import { ImageEffect5 } from "./ImageEffects5";
 import { KenBurnsPro5 } from "./KenBurnsPro5";
@@ -45,6 +53,7 @@ const COMP_MAP: Record<string, React.FC<any>> = {
   MapRoute, SubjectTitleCard, BulletPointOverlay, LineChart, CirclePercent,
   SatelliteLocationPin, OneWordCallout, GrowingBarChart, LogoFlagGrid, QuoteCard,
   TextReveal, SingleSentenceTextSlide, TitleDescription, CharacterCard, SentenceHighlight,
+  YtCta, SubscribeBellPulse, SubscribeMinimal, CtaCard, CtaPopupCenter, CtaBannerSlim,
   // almoxarifado 2.0 — 79 variações curadas (Diretor sorteia por ID no registry)
   ...TEXTO_COMPS, ...OVERLAY_COMPS, ...GRAFICOS_COMPS, ...IMAGEM_COMPS, ...SOCIAL_COMPS, ...MAPAS_COMPS,
   ...DUO_COMPS, ...LISTA_COMPS,
