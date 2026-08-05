@@ -303,6 +303,14 @@ def enviar_prompt(page, prompt):
     _pausa(0.2, 0.5)
     m = re.match(r"\s*@(\w[\w-]*)\s*(.*)", prompt, re.S)
     if m:
+        # 05/08 (decisão após 3 falhas em formas diferentes — Piter: "tá saindo tudo
+        # errado"): a menção por DIGITAÇÃO é a interação mais frágil do Flow (lista
+        # inline vs painel de busca, Escape que não fecha, overlay comendo o texto).
+        # DESLIGADA: take com @ não é enviado pelo driver — sai no semi-manual (o
+        # Piter cola com o @ na interface; o zip/casamento pega o resto sozinho).
+        print(f"  !! prompt com menção @{m.group(1)} — envio automático DESLIGADO "
+              f"(colar manualmente no Flow); take PULADO")
+        return
         # 04/08 (QA Piter: "não puxou o personagem"): `fill()` COLA o texto de uma vez
         # e não dispara os eventos de teclado que abrem o autocomplete de menção — o
         # "@Russel" virava texto literal e o clipe saía com outro rosto. Menção tem de
