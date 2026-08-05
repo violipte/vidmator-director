@@ -97,6 +97,77 @@ def _seletor_modelo_btn(page):
     return page.get_by_role("button").filter(has_text=MODELO_BTN_RE).last
 
 
+MODELO_VIDEO = "Veo 3.1 - Lite [Lower Priority]"   # padrão do canal (Piter 04/08)
+MODELO_IMAGEM = "Nano Banana 2"                    # 0 créditos — imagem NUNCA no VEO
+
+
+def modo_atual(page):
+    """Lê o botão do rodapé, que mostra o estado: 'Vídeo · 8s crop_16_9 x1' ou
+    '🍌 Nano Banana 2 x2'. Devolve ('video'|'imagem'|'?', texto_lido)."""
+    try:
+        txt = _seletor_modelo_btn(page).inner_text(timeout=8000).replace("\n", " ")
+    except Exception:
+        return "?", ""
+    if re.search(r"nano\s*banana|imagem", txt, re.I):
+        return "imagem", txt
+    if re.search(r"v[ií]deo|veo|\d+\s*s\b", txt, re.I):
+        return "video", txt
+    return "?", txt
+
+
+def garantir_modo(page, tipo, modelo=None, aspecto="16:9", dur="8s", saidas="x1"):
+    """TRAVA ANTES DE GERAR (04/08, pedido do Piter). A config do modelo PERSISTE por
+    projeto e errá-la custa dinheiro nos dois sentidos, já aconteceu duas vezes hoje:
+      • lote de VÍDEO rodou como IMAGEM (o seletor estava em Nano Banana) e ainda por
+        cima desenhou a legenda da fala no quadro;
+      • passe de IMAGEM rodou como VÍDEO (seletor em Veo) — ~90 créditos num trabalho
+        que no Nano Banana é 0.
+    Confere, corrige se preciso, CONFERE DE NOVO e falha alto se não bater. Gerar no
+    modelo errado é pior que não gerar."""
+    alvo_modelo = modelo or (MODELO_VIDEO if tipo == "video" else MODELO_IMAGEM)
+    atual, txt = modo_atual(page)
+    if atual == tipo:
+        print(f"  modo OK: {tipo} ({txt.strip()[:44]})")
+        return True
+    print(f"  modo era '{atual}' ({txt.strip()[:40]}) — trocando para {tipo}...")
+    if tipo == "video":
+        configurar_video(page, alvo_modelo, aspecto, dur, saidas)
+    else:
+        configurar_imagem(page, alvo_modelo, aspecto)
+    atual2, txt2 = modo_atual(page)
+    if atual2 != tipo:
+        raise RuntimeError(f"NÃO consegui pôr o Flow em '{tipo}' (está '{atual2}': "
+                           f"{txt2.strip()[:60]}). Abortando ANTES de gerar no modelo "
+                           f"errado — conserte na tela e rode de novo.")
+    print(f"  modo confirmado: {tipo} ({txt2.strip()[:44]})")
+    return True
+
+
+def configurar_imagem(page, modelo=MODELO_IMAGEM, aspecto="16:9"):
+    """Aba Imagem + Nano Banana (0 créditos)."""
+    _seletor_modelo_btn(page).click()
+    _pausa()
+    _tab(page, "Imagem").click()
+    _pausa(0.3, 0.7)
+    try:
+        page.get_by_role("button", name=re.compile(r"Nano|Banana|Imagen|Omni", re.I)).first.click()
+        _pausa(0.3, 0.7)
+        page.get_by_text(re.compile(re.escape(modelo), re.I)).first.click()
+        _pausa(0.3, 0.7)
+    except Exception:
+        print(f"  (dropdown de modelo de imagem não abriu — usando o atual)")
+    try:
+        _tab(page, aspecto).click()
+    except Exception:
+        pass
+    for _ in range(3):
+        page.keyboard.press("Escape")
+        _pausa(0.3, 0.6)
+        if not page.locator("[data-radix-popper-content-wrapper]").count():
+            break
+    _pausa(0.3, 0.7)
+
+
 def _tab(page, alvo):
     """04/08: os tabs do Flow têm o nome do ÍCONE material colado no texto —
     'videocam\\nVídeo', 'crop_16_9\\n16:9'. Com `name=..., exact=True` NADA casava:

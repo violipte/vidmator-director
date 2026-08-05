@@ -312,20 +312,12 @@ def main():
                   '"F:/Canal Dark/veo_venv/Scripts/python.exe" '
                   '"F:/Canal Dark/Aplicativo de Edição/veo_flow/flow_driver.py" login')
             return
-        try:
-            if a.sem_config:
-                # 04/08: a config PERSISTE por projeto. Reabrir o popup a cada rodada
-                # é o passo mais frágil do driver (a UI do Flow muda os rótulos e o
-                # popper fica interceptando clique). Com o projeto já configurado na
-                # mão, pular aqui é mais seguro que reconfigurar. ⚠️ conferir no
-                # rodapé que está em Vídeo — foi assim que um lote saiu como imagem.
-                raise RuntimeError("--sem-config")
-            fd.configurar_video(page, a.modelo, "16:9", "8s", "1x")
-        except Exception as e_cfg:
-            # config PERSISTE por projeto — se o popup mudou/travou, segue com a atual
-            print(f"  config pulada ({type(e_cfg).__name__}) — usando a config persistida do projeto")
-            page.keyboard.press("Escape")
-            fd._pausa(0.5, 1.0)
+        # TRAVA DE MODO (04/08): confere SEMPRE, mesmo com --sem-config. A config
+        # persiste por projeto, e gerar no modelo errado já custou caro duas vezes
+        # hoje (vídeo saindo como imagem; imagem saindo como vídeo a 10 créditos).
+        # `--sem-config` agora quer dizer "não reconfigure à toa", nunca "não confira".
+        fd.garantir_modo(page, a.tipo, None if a.sem_config else a.modelo,
+                         "16:9", "8s", "1x")
 
         if a.so_baixar:
             em_voo = list(fila_itens)   # tudo pendente de download; nada a gerar
