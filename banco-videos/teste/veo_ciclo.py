@@ -119,12 +119,24 @@ def main():
             i = 0
             while i < len(faltam):
                 t_espera = time.time()
+                n_esp = 0
                 while True:
                     voo = enviados - max(0, _n_cards(page) - cards0) \
                           - max(0, vd._cards_falha(page) - falhas0)
                     if voo <= a.fila - 3:
                         break
                     fd.dispensar_avisos(page)
+                    # 05/08: o grid do Flow é LAZY e não re-renderiza com a página
+                    # parada — os cards novos existem no servidor mas o DOM fica
+                    # velho, o voo "nunca" cai e cada rajada esperava 12min à toa
+                    # (48 prompts em 55min COM Nano Banana instantâneo). Scroll
+                    # acorda o grid; se nem assim, reload = verdade do servidor.
+                    page.mouse.move(660, 400)
+                    page.mouse.wheel(0, 1400 if n_esp % 2 == 0 else -1400)
+                    n_esp += 1
+                    if n_esp % 8 == 0:
+                        page.reload(wait_until="domcontentloaded")
+                        fd._pausa(3, 5)
                     if time.time() - t_espera > 12 * 60:
                         _log("  fila presa há 12min — sigo enviando assim mesmo")
                         break
@@ -137,10 +149,16 @@ def main():
                 fd._pausa(2, 4)
             _log(f"  {enviados} prompts enviados")
 
-            # 2) ESPERA a geração terminar (badges de % sumirem), com teto
+            # 2) ESPERA a geração terminar (badges de % sumirem), com teto.
+            # Mesmo problema do grid lazy: recarrega periodicamente pra ler a verdade.
             t0 = time.time()
+            n_esp2 = 0
             while time.time() - t0 < a.espera_max * 60:
                 fd.dispensar_avisos(page)
+                n_esp2 += 1
+                if n_esp2 % 6 == 0:
+                    page.reload(wait_until="domcontentloaded")
+                    fd._pausa(3, 5)
                 g = _n_gerando(page)
                 if g == 0:
                     break
