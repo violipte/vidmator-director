@@ -351,10 +351,16 @@ const BeatView: React.FC<{ b: Beat; estilo?: string }> = ({ b, estilo = "v1" }) 
   if (b.tipo === "avatar" && b.src) {
     // AVATAR v3 (29/07): apresentador do Flow — full-frame COM áudio nativo
     // (a narração ducka nesta janela; ver volume do <Audio> principal)
+    // 05/08 (Piter): ilha de CTA — animação clássica de YT como OVERLAY por baixo
+    // do avatar falando ("fim do passo 2 / antes do passo 3" e no encerramento)
+    const Cta = b.componente ? COMP_MAP[b.componente] : null;
     return (
       <AbsoluteFill style={{ background: "#000" }}>
         <OffthreadVideo src={staticFile(b.src)}
           style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        {Cta ? <AbsoluteFill style={{ pointerEvents: "none" }}>
+          <Cta {...(b.props || {})} />
+        </AbsoluteFill> : null}
       </AbsoluteFill>
     );
   }

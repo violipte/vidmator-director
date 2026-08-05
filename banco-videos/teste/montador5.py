@@ -1576,6 +1576,13 @@ def main():
             ab = Path(av_cfg["banco"])
             (dest / "avatar").mkdir(exist_ok=True)
             for sec_s, arq_av in sorted(av_cfg["ilhas"].items(), key=lambda x: int(x[0])):
+                # 05/08 (Piter): ilha pode levar CTA junto — valor vira dict:
+                #   {"clip": "x.mp4", "cta": "SubscribeBellPulse", "props": {...}}
+                cta_comp, cta_props = None, {}
+                if isinstance(arq_av, dict):
+                    cta_comp = arq_av.get("cta")
+                    cta_props = arq_av.get("props") or {}
+                    arq_av = arq_av["clip"]
                 src_av = ab / arq_av
                 s_av = next((s for s in secoes if s["i"] == int(sec_s)), None)
                 if not src_av.exists() or not s_av:
@@ -1611,6 +1618,20 @@ def main():
                     continue
                 t0_av = cadeia_av[0]["t_ini"]
                 t1_av = round(cadeia_av[-1]["t_fim"], 2)
+                # 05/08 (QA Piter: "a frase ficou cortada"): se o CLIPE é maior que a
+                # cadeia absorvida, a fala era truncada no corte. Estende a ilha até a
+                # duração REAL do clipe APARANDO o início do beat seguinte — desde que
+                # ele seja footage livre e sobre >=1.5s dele. Animação não encolhe.
+                alvo_fim = round(t0_av + d_clip - 0.15, 2)
+                if alvo_fim > t1_av:
+                    prox = next((b for b in sorted(beats_out, key=lambda x: x["t_ini"])
+                                 if abs(b["t_ini"] - t1_av) < 0.05 and b not in cadeia_av), None)
+                    if prox is not None and prox.get("src") and not prox.get("componente") \
+                            and prox["t_fim"] - alvo_fim >= 1.5:
+                        prox["t_ini"] = alvo_fim
+                        t1_av = alvo_fim
+                        print(f"avatar: ilha seção {sec_s} estendida até {t1_av:.1f}s "
+                              f"(fala inteira; beat seguinte aparado)")
                 if not (dest / "avatar" / src_av.name).exists():
                     shutil.copy2(src_av, dest / "avatar" / src_av.name)
                 b0 = cadeia_av[0]
@@ -1618,7 +1639,8 @@ def main():
                     beats_out.remove(bx)  # absorvido INTEIRO pela ilha
                 b0.pop("mascote", None)
                 b0.update({"tipo": "avatar", "src": f"jobs/{a.nome}/avatar/{src_av.name}",
-                           "t_fim": t1_av, "componente": None, "props": {}, "bg": None})
+                           "t_fim": t1_av, "componente": cta_comp, "props": cta_props,
+                           "bg": None})
                 avatar_ilhas.append({"t_ini": round(t0_av, 2), "t_fim": t1_av})
                 print(f"avatar [{av_cfg.get('persona', '?')}]: ilha seção {sec_s} "
                       f"{t0_av:.1f}-{t1_av:.1f}s ({src_av.name})")
