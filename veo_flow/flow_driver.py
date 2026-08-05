@@ -343,6 +343,23 @@ def enviar_prompt(page, prompt):
                     ok_mencao = not page.locator('[role="dialog"]').count()
         except Exception:
             ok_mencao = False
+        if ok_mencao:
+            # 05/08 (print do Piter): o "Incluir no comando" deixa o NOME em TEXTO
+            # puro no fim do prompt, além do chip — e nome literal dispara a
+            # política de "pessoa famosa" (o cta_final caiu 3x nisso). O chip é um
+            # nó à parte e sobrevive ao delete-por-palavra; o texto residual sai.
+            try:
+                for _ in range(2):
+                    txt = (cx.inner_text(timeout=2000) or "").strip()
+                    if re.search(rf"{re.escape(nome)}\s*$", txt, re.I):
+                        page.keyboard.press("End")
+                        page.keyboard.press("Control+Backspace")
+                        _pausa(0.2, 0.4)
+                    else:
+                        break
+                print(f"  resíduo do nome removido do texto (só o chip fica)")
+            except Exception:
+                pass
         corpo_ok = False
         try:
             corpo_ok = resto[:25].lower() in (cx.inner_text(timeout=3000) or "").lower()
