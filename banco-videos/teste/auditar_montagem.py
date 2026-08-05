@@ -23,9 +23,21 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, str(Path(__file__).parent))
 from acervo_registry import DEPRECATED, _nums_do_texto  # noqa
 
+_PEDIDOS = {}   # i -> componente pedido pelo diretor (carregado do plano)
+
+
+def _pedido_do_diretor(i, comp):
+    return _PEDIDOS.get(i) == comp
+
 PUB = Path(r"F:/Canal Dark/Aplicativo de Edição/remotion/public")
 ESTRUTURAIS = {"ChapterTitle", "QuoteCard", "CharacterCard", "CharacterKeyword", "NodeHierarchy",
-               "LineChart", "LogoFlagGrid", "SentenceHighlight", "SubjectTitleCard"}
+               "LineChart", "LogoFlagGrid", "SentenceHighlight", "SubjectTitleCard",
+               # 02/08 (arquitetura Piter): legados que o DIRETOR pede e o COMP_MAP
+               # da v5 renderiza — deprecado saiu do sorteio, não do vocabulário
+               "NumberCountOverlay", "MultiCountryOutline", "MapRoute", "SatelliteLocationPin",
+               "RegionLocationText", "DualImpactSentence", "BulletPointOverlay", "TextReveal",
+               "SingleSentenceTextSlide", "OneWordCallout", "BarChartComparison",
+               "YtCta", "SubscribeBellPulse", "SubscribeMinimal", "CtaBannerSlim"}
 PREFIXOS_OK = ("Texto", "Ovl", "Graf", "Img", "Soc", "Map", "Duo", "Lst")
 ANOTA_OVL = {"Ovl11_SpecBadge", "Ovl12_GiantStat", "Ovl13_PriceTag"}  # anotação de dado, não texto
 
@@ -55,6 +67,8 @@ def main():
                 desamb = [k.lower() for k in (_sc.get("desambiguacao") or {})]
             except Exception:
                 pass
+    _PEDIDOS.update({b.get("i"): b.get("componente") for b in plano.get("beats", [])
+                     if b.get("componente")})
     ptxt = {b["i"]: (b.get("texto") or "") for b in plano.get("beats", [])}
     pdad = {b["i"]: (b.get("dados") or {}) for b in plano.get("beats", [])}
     pest = {b["i"]: b.get("estrategia") for b in plano.get("beats", [])}
@@ -68,8 +82,11 @@ def main():
             if not c:
                 V.append(("R-31", b["i"], "beat de animação sem componente"))
                 continue
-            if c in DEPRECATED:
-                V.append(("R-31", b["i"], f"componente DEPRECATED renderizando: {c}"))
+            if c in DEPRECATED and not _pedido_do_diretor(b["i"], c):
+                # 02/08 (arquitetura Piter): DEPRECATED tira do SORTEIO, não do
+                # vocabulário do DIRETOR. Se o plano pediu o componente, renderizar
+                # é honrar o pedido — violação seria só se veio do re-pick.
+                V.append(("R-31", b["i"], f"componente DEPRECATED via re-pick: {c}"))
             elif not (c in ESTRUTURAIS or c.startswith(PREFIXOS_OK)):
                 V.append(("R-31", b["i"], f"componente fora do COMP_MAP: {c}"))
             props = b.get("props") or {}

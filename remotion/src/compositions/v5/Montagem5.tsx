@@ -20,6 +20,7 @@ import { SingleSentenceTextSlide } from "../SingleSentenceTextSlide";
 import { TitleDescription } from "../TitleDescription";
 import { CharacterCard } from "../CharacterCard";
 import { SentenceHighlight } from "../SentenceHighlight";
+import { DualImpactSentence } from "../DualImpactSentence";
 import { Mascot } from "../Mascot";
 /* CTA do YouTube (02/08): os componentes existiam desde os canais normais mas nunca
    entraram no COMP_MAP da v5 — invisíveis pro montador, por isso sumiram do VidMator. */
@@ -54,6 +55,7 @@ const COMP_MAP: Record<string, React.FC<any>> = {
   SatelliteLocationPin, OneWordCallout, GrowingBarChart, LogoFlagGrid, QuoteCard,
   TextReveal, SingleSentenceTextSlide, TitleDescription, CharacterCard, SentenceHighlight,
   YtCta, SubscribeBellPulse, SubscribeMinimal, CtaCard, CtaPopupCenter, CtaBannerSlim,
+  DualImpactSentence,
   // almoxarifado 2.0 — 79 variações curadas (Diretor sorteia por ID no registry)
   ...TEXTO_COMPS, ...OVERLAY_COMPS, ...GRAFICOS_COMPS, ...IMAGEM_COMPS, ...SOCIAL_COMPS, ...MAPAS_COMPS,
   ...DUO_COMPS, ...LISTA_COMPS,

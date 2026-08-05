@@ -232,6 +232,16 @@ def main():
     anos_usados = set()  # R-27: overlay de ano 1x por ano distinto
     ano_pendente = None  # R-27: carry — ano visto num beat sem src espera o próximo footage
     stats = {"registry_ok": 0, "repick": 0, "resgate_texto": 0, "demote_footage": 0}
+    # RECUSAS (02/08, arquitetura do Piter): "o montador SÓ MONTA". Quando ele não
+    # consegue montar o que o diretor pediu, isso não pode virar troca silenciosa —
+    # vira MOTIVO, que volta pro DIRETOR resolver (e depois o crítico avalia a
+    # resolução). Antes o pedido era substituído sem registro e ninguém ficava
+    # sabendo: era assim que 9 mapas viravam pílula de texto sem deixar rastro.
+    recusas = []
+
+    def recusar(beat_i, comp, motivo, detalhe=""):
+        recusas.append({"i": beat_i, "componente": comp, "motivo": motivo,
+                        "detalhe": str(detalhe)[:120]})
     anterior_foi_texto = False  # R-109: nunca 2 animações de texto seguidas
     SEED = sum(ord(c) for c in a.nome) * 100003
 
@@ -510,10 +520,19 @@ def main():
                 # diretor), TODOS os 60 beats com componente caem fora — `ok=0`,
                 # `repick=26` — e mapa/contador/duo viram texto genérico. O que manda é
                 # ter DADOS que sustentem o componente; o builder logo abaixo decide.
-                if (props or dados_b) and info and comp not in DEPRECATED \
-                        and dur >= info.get("min_dur", 0):
+                # 02/08 — A RAIZ do "foi emburrecendo", com data: em 21/07 o
+                # almoxarifado 2.0 tirou 29 comps originais do SORTEIO (DEPRECATED)
+                # com a intenção ESCRITA de que "continuam rebuild-áveis". Esta
+                # condição usava DEPRECATED também no rebuild — então todo pedido
+                # explícito do diretor (mapa, contador, rota) era descartado em
+                # silêncio desde então. Arquitetura do Piter: o montador SÓ MONTA;
+                # DEPRECATED vale só pro sorteio do re-pick.
+                if (props or dados_b) and info and dur >= info.get("min_dur", 0):
                     # RE-CONSTRÓI pelo builder ATUAL (props antigos podem carregar texto cru pré-fix)
                     props_novos = rebuild(comp, dados_b, texto_b, imgs)
+                    if not props_novos:
+                        recusar(r["i"], comp, "dados_insuficientes",
+                                f"builder rejeitou: {json.dumps(_dic5(dados_b), ensure_ascii=False)[:90]}")
                 # R-26: DADO FORTE nunca fica em texto — mesmo texto VÁLIDO é rejeitado
                 # (auditor 22/07: beats de estratégia 'dado' passavam porque o rebuild de
                 # texto dava props válidos e o R-26 só rodava no caminho de re-pick)
@@ -521,12 +540,14 @@ def main():
                     nums_pre = [n for n in _nums_do_texto(texto_b)
                                 if not (n.isdigit() and 1300 <= int(n) <= 2099)]
                     if len(nums_pre) >= 2 or len(_dic5(dados_b).get("values") or []) >= 2:
+                        recusar(r["i"], comp, "R26_dado_em_texto", "dado forte deve virar chart")
                         props_novos = None  # cai pro re-pick, onde o R-26 crava o chart
 
                 # R-109 (Piter 23/07): NUNCA 2 animações de texto seguidas — nem antes
                 # de um capítulo minimal (Ovl02), cuja posição é fixa (lookahead)
                 # R-111: anúncio de produto TAMBÉM nunca fica em texto
                 if props_novos and _eh_texto(comp) and (anterior_foi_texto or r["i"] in pre_chapter or anuncio):
+                    recusar(r["i"], comp, "R109_texto_adjacente", "2 animações de texto seguidas")
                     props_novos = None
                     stats['R109_seq'] = stats.get('R109_seq', 0) + 1
                 # R-56 (QA tenis 23/07): imagem ESTÁTICA dentro de props conta reuso como src
@@ -537,6 +558,7 @@ def main():
                 # R-16 [F1]: texto no HOOK NUNCA — incondicional (QA bikes 25/07: demote
                 # falhou e o Ovl14 ficou no hook); o fluxo abaixo acha o substituto
                 if props_novos and _eh_texto(comp) and hook:
+                    recusar(r["i"], comp, "R16_texto_no_hook", "primeiros 15s")
                     _demote_footage(b, r, relax=True)
                     props_novos = None
                     stats["R16_hook"] = stats.get("R16_hook", 0) + 1
@@ -695,6 +717,12 @@ def main():
         elif ajustados and b["t_fim"] > ajustados[-1]["t_fim"]:
             ajustados[-1]["t_fim"] = b["t_fim"]  # engolido: vizinho cobre (sem buraco preto)
     beats_out = ajustados
+    if recusas:
+        _rec = dest / "_recusas.json"
+        _rec.write_text(json.dumps(recusas, ensure_ascii=False, indent=1), encoding="utf-8")
+        import collections as _c
+        _mot = _c.Counter(x["motivo"] for x in recusas)
+        print(f"RECUSAS do montador: {len(recusas)} -> {dict(_mot)}")
     print(f"registry-pass [R-81]: ok={stats['registry_ok']} repick={stats['repick']} resgate[R-62]={stats['resgate_texto']} "
           f"demote[R-56/62]={stats['demote_footage']} hook[R-15/16]={stats.get('R15_hook', 0) + stats.get('R16_hook', 0)} "
           f"| chapters={n_chapter} | texto={tempo_texto:.0f}s/{BUDGET_TEXTO:.0f}s [R-62]")
@@ -1311,6 +1339,7 @@ def main():
         beats_ord = sorted(beats_out, key=lambda x: x["t_ini"])
         dur_alvo = max(b["t_fim"] for b in beats_ord)
         novos_gap, ant_t, ult_a, k_gap = [], 0.0, None, 0
+        _ult5 = []   # últimos 5 assets usados em gaps (anti reuso-colado do R-56)
         limites = [(b["t_ini"], b["t_fim"], b.get("secao", 0)) for b in beats_ord] + \
                   [(dur_alvo, dur_alvo, beats_ord[-1].get("secao", 0))]
         for t_i, t_f, sec_g in limites:
@@ -1318,13 +1347,34 @@ def main():
                 ini_g = ant_t
                 while ini_g < t_i - 0.2:             # fatia em pedaços de <= 6s
                     fim_g = min(ini_g + 6.0, t_i)
-                    # sempre o MENOS usado (desempate determinístico) e nunca o vizinho
-                    ops = sorted((a for a in _bnc if a != ult_a and _usos_g.get(a, 0) < 2),
+                    # sempre o MENOS usado, nunca os ÚLTIMOS 5 (auditor: reuso a
+                    # <6 beats é colado mesmo não sendo vizinho imediato — [7000,7002])
+                    _recentes = {x for x in _ult5 if x}
+                    ops = sorted((a for a in _bnc if a not in _recentes
+                                  and _usos_g.get(a, 0) < 2),
                                  key=lambda x: (_usos_g.get(x, 0), x))
-                    if not ops:  # pool saturado: aceita quem tiver menos uso (R-56 cap 2)
-                        ops = sorted((a for a in _bnc if a != ult_a),
+                    if not ops:
+                        # pool saturado: NÃO fura o cap do R-56 (o fallback antigo
+                        # criava o 3º uso — b062 em [62,78,7005]). Estica a fatia
+                        # anterior pra cobrir o buraco em vez de repetir clipe.
+                        if novos_gap and novos_gap[-1]["t_fim"] >= ini_g - 0.01:
+                            novos_gap[-1]["t_fim"] = round(fim_g, 2)
+                            ini_g = fim_g
+                            continue
+                        # gap novo sem fatia contígua: estica o beat REAL anterior
+                        # (só se tem footage — animação full não pode ser esticada)
+                        _ant = max((x for x in beats_ord if x["t_fim"] <= ini_g + 0.01
+                                    and x.get("src")), key=lambda x: x["t_fim"], default=None)
+                        if _ant is not None:
+                            _ant["t_fim"] = round(fim_g, 2)
+                            ini_g = fim_g
+                            continue
+                        ops = sorted((a for a in _bnc if a not in _recentes),
                                      key=lambda x: (_usos_g.get(x, 0), x))
                     esc = ops[0] if ops else _bnc[0]
+                    _ult5.append(esc)
+                    if len(_ult5) > 5:
+                        _ult5.pop(0)
                     _usos_g[esc] = _usos_g.get(esc, 0) + 1
                     dst = dest / "assets" / Path(esc).name
                     if not dst.exists():
