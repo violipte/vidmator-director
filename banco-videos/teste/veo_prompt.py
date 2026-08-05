@@ -110,14 +110,21 @@ def dirigir(itens, estilo, tema="", lote=10):
 
 
 MOVIMENTO = """You are planning the GENERATED shots of a documentary. For each shot
-below, decide the medium:
-- "video"  ONLY when the subject's OWN motion carries the meaning: an animal moving
-  or striking, water flowing, a person performing an action, weather changing —
-  anything where temporal change IS the story of the shot.
-- "still"  for everything else: composition, texture, detail, object, environment,
-  mood. The edit adds camera movement over stills (Ken Burns / parallax), so a still
-  is never static on screen — and stills are sharper and instant to generate.
-Bias to "still" unless motion is essential.
+below, decide the medium (rubric refined by the channel owner, 05/08):
+- "video"  when the subject's OWN motion carries the meaning AND that motion is
+  SIMPLE and readable: one animal moving or striking, water flowing, one person
+  performing a clear action, weather changing.
+- "still"  for:
+  • composition, texture, detail, object, environment, mood;
+  • scientific/anatomical diagrams, explanatory structures, biology illustrations;
+  • maps and map-like illustrations;
+  • scenes whose motion would be COMPLEX or chaotic (several agents, fast
+    interactions, intricate choreography) — video generators garble complex motion;
+    a sharp still with camera movement reads better than mushy fake action.
+  The edit adds camera movement over stills (Ken Burns / parallax), so a still is
+  never static on screen — and stills are sharper and instant to generate.
+Aim for a roughly BALANCED mix across the batch (~half stills). Not a hard quota:
+harmony over arithmetic — but when in doubt, choose "still".
 Reply ONLY a JSON array of "video"|"still", same order. No markdown."""
 
 _VERBOS_MOV = re.compile(

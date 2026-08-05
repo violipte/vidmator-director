@@ -70,6 +70,23 @@ candlelit marble tones, muted contrast
 isso funciona bem (validado pelo Piter: "stacked banana crates warehouse" saiu melhor
 que o stock). Para **VEO**, passe `--dirigir "<look do canal>"`.
 
+## Divisão imagem × vídeo (régua do Piter, 05/08)
+
+Quem decide NÃO é o tipo narrativo do beat — é a pergunta: *o movimento simples e
+legível do sujeito é a história deste plano?*
+
+- **vídeo**: movimento próprio e SIMPLES (bote, água correndo, um animal se movendo,
+  avatar falando).
+- **imagem**: composição/textura/objeto/ambiente; esquemas ilustrativos e estruturas
+  científicas/biológicas; mapas; e **cenas de movimento COMPLEXO** (vários agentes,
+  interação rápida) — gerador de vídeo embola coreografia; still nítido + movimento
+  de câmera lê melhor. Still nunca fica parado na tela (Ken Burns/parallax do montador).
+
+Alvo: **~50/50, sem cravar** — harmonia acima de aritmética; na dúvida, imagem.
+Overlays e animações de texto seguem por fora (Remotion, na montagem).
+Implementação: `veo_prompt.classificar_midia` (LLM batch + fallback por verbos),
+aplicada no `veo_lote` em modo misto (`--sem-reclass` desliga).
+
 ## Avatar do canal (personagem) e a VOZ ÚNICA
 
 `style_card["avatar"] = {escopo, nome, voz, descricao, fala_intro}` — ver
