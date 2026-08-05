@@ -84,7 +84,21 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
 
     A fala vai como ÁUDIO explícito: pedir a fala junto da descrição visual fez o
     gerador DESENHAR a legenda no quadro (04/08, QA do Piter: "imagem precisa ser sem
-    texto, somente o vídeo com texto")."""
+    texto, somente o vídeo com texto").
+
+    ⚠️ 05/08 (Piter): o NOME do personagem existe SÓ no chip do @ — nome escrito no
+    TEXTO do prompt dispara a política de "pessoa famosa" do Google e o take cai.
+    No corpo, sempre pronome; qualquer ocorrência do nome é trocada automaticamente."""
+    nome = (ficha.get("nome") or "").strip()
+    if nome:
+        pad = re.compile(rf"\b{re.escape(nome)}\b", re.I)
+        for rot, txt in (("acao", acao), ("fala", fala), ("estilo", estilo)):
+            if pad.search(txt or ""):
+                print(f"  !! nome '{nome}' no {rot} do prompt — trocado por pronome "
+                      f"(política de pessoa famosa)")
+        acao = pad.sub("he", acao or "")
+        fala = pad.sub("he", fala or "")
+        estilo = pad.sub("", estilo or "")
     p = f"{ficha['mencao']} {acao.strip()}"
     if estilo:
         p += f". {estilo.strip()}"

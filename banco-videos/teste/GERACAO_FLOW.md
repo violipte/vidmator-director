@@ -95,6 +95,11 @@ aplicada no `veo_lote` em modo misto (`--sem-reclass` desliga).
 `veo_flow/personagens.json`. **Na geração, basta `@Nome` no prompt** (ex.: `@Russel`).
 Fluxo de criação na interface: `veo_flow/FLOW_MAP.md` › PERSONAGENS.
 
+⚠️ **O nome do personagem existe SÓ no chip do `@`** (Piter 05/08). Nome escrito no
+TEXTO do prompt dispara a política de "pessoa famosa" do Google e o take cai — no
+corpo, sempre pronome. `montar_prompt_avatar` troca automaticamente. Se um take cair
+na política mesmo assim, o ciclo re-tenta com variação de cauda no prompt.
+
 **A voz não pode destoar (regra do Piter 04/08).** O avatar fala com a voz do Flow
 (ex.: Iapetus) e a narração sai do Chatterbox com OUTRA voz de referência — dá duas
 pessoas diferentes no mesmo vídeo. Então a voz do host vira a referência de clone:
