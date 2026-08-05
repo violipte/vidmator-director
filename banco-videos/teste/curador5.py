@@ -110,6 +110,76 @@ def _baixar_normalizar(url, dest_mp4, tmp):
             pass  # Windows pode segurar o handle um instante — o tmp é limpo depois
 
 
+_OCR = {"m": None}
+
+
+def tem_texto_queimado(caminho, tmp=None, min_conf=0.4, min_chars=6, alt_min=0.07):
+    """OCR DETERMINÍSTICO — texto na imagem/clipe reprova (02/08, QA Piter).
+
+    Um clipe de TikTok com "Animais Mais Perigosos da Amazônia" em letra garrafal
+    foi ao ar DUAS vezes num vídeo em inglês. O veto `burned_text` do Vision não
+    pegou, e não vai pegar sempre: vídeo de rede social tem texto queimado como
+    REGRA — é a linguagem da plataforma. Isso precisa de checagem determinística,
+    não de opinião de modelo.
+
+    RapidOCR (ONNX, sem binário externo). Falha do OCR nunca reprova nada: se a lib
+    não estiver lá, devolve False e o Vision segue como única defesa.
+    """
+    def _grande(res, altura_img):
+        """Só TEXTO SOBREPOSTO reprova — não o texto natural da cena.
+        Um caderno de campo com "Panthera onca" manuscrito é asset LEGÍTIMO de
+        documentário; um título "Animais Mais Perigosos" queimado por outro canal
+        não é. O que separa os dois é o TAMANHO: título de vídeo ocupa >7% da altura
+        do quadro (o do clipe PT ocupava 21%), anotação e placa ficam bem abaixo."""
+        for t in res or []:
+            try:
+                if float(t[2]) < min_conf or len((t[1] or "").strip()) < min_chars:
+                    continue
+                ys = [pt[1] for pt in t[0]]
+                if (max(ys) - min(ys)) / max(altura_img, 1) >= alt_min:
+                    return True
+            except Exception:
+                continue
+        return False
+
+    try:
+        if _OCR["m"] is None:
+            from rapidocr_onnxruntime import RapidOCR
+            _OCR["m"] = RapidOCR()
+        from PIL import Image
+        alvo = str(caminho)
+        if alvo.lower().endswith((".mp4", ".webm", ".mov")):
+            # vídeo: o título queimado costuma durar só os PRIMEIROS segundos — no
+            # clipe do "Animais Mais Perigosos" ele existe em 0.2s e 1s e some aos 3s.
+            # Amostrar em 0.5/2.5 quase o perdeu; agora começa no primeiro quadro útil.
+            frames = []
+            for ss in ("0.2", "1", "2", "4"):
+                o = Path(tmp or Path(caminho).parent) / f"ocr_{abs(hash(alvo+ss)) % 10**8}.jpg"
+                subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-ss", ss,
+                                "-i", alvo, "-frames:v", "1", "-vf", "scale=640:-2", str(o)],
+                               capture_output=True, timeout=60)
+                if o.exists():
+                    frames.append(o)
+            achou = False
+            for f in frames:
+                # ⚠️ o RapidOCR devolve a confiança como STRING ('0.883...'), não
+                # float: comparar direto estourava TypeError, que o `except` engolia
+                # e virava "sem texto". Foi por isso que o clipe passou duas vezes.
+                res, _ = _OCR["m"](str(f))
+                with Image.open(f) as im:
+                    h = im.height
+                if _grande(res, h):
+                    achou = True
+                f.unlink(missing_ok=True)
+            return achou
+        res, _ = _OCR["m"](alvo)
+        with Image.open(alvo) as im:
+            h = im.height
+        return _grande(res, h)
+    except Exception:
+        return False
+
+
 def _baixar_imagem(url, dest_jpg):
     """Download de imagem + cap de resolução (o executor já tem a regra: original de
     30MP estoura EncodingError no render)."""
@@ -412,11 +482,20 @@ def resolver_beat5(b, sctx, ctx, usados_urls, ancora="", ancora_pt="", taxonomic
                 if not _luminancia_ok(dest, ctx["tmp"]):   # gate de TELA
                     dest.unlink(missing_ok=True)
                     continue
+                # OCR determinístico: título queimado de OUTRO canal não entra
+                if tem_texto_queimado(dest, ctx["tmp"]):
+                    print(f"  b{b['i']:03d} TEXTO QUEIMADO (OCR) — descartado")
+                    dest.unlink(missing_ok=True)
+                    continue
                 tipo_final = "stock"
             else:
                 # tier da IMAGEM vem da licença (iNat: cc0=T1, cc-by=T2), não fixo
                 dest = Path(ctx["assets"]) / f"b{b['i']:03d}__T{int(orig.get('tier') or 1)}__{orig['id']}.jpg"
                 if not _baixar_imagem(orig["url"], dest):
+                    continue
+                if tem_texto_queimado(dest):
+                    print(f"  b{b['i']:03d} TEXTO QUEIMADO (OCR) — descartado")
+                    dest.unlink(missing_ok=True)
                     continue
                 tipo_final = "footage_imagem"
             if ex._e_dup_visual(str(dest), ctx):

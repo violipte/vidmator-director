@@ -31,6 +31,33 @@ _ORD_TXT = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
             "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 
 
+def mapear_ordinal_por_secao(plano):
+    """secao -> (rótulo, número) DITO na narração daquela seção.
+
+    ⚠️ 2ª tentativa (a 1ª falhou e foi ao ar): eu procurava o numeral no TÍTULO da
+    seção ("Jaguar: The Fear vs. Reality Gap") — que nunca tem número. O "Number
+    five" está na NARRAÇÃO, no beat logo depois do marcador. Agora varre os textos
+    da seção inteira e pega o 1º ordinal falado."""
+    out = {}
+    for b in plano.get("beats", []):
+        s = b.get("secao", 0)
+        if s in out:
+            continue
+        # o numeral tem que FECHAR a frase — é MARCADOR ("Number five."), não menção
+        # de passagem. O hook diz "Number five will surprise you" e sem isto a INTRO
+        # virava "Number 05", roubando o número do capítulo que vem depois.
+        m = re.search(r"\b(number|part|chapter|step|rule|stage|lesson)\s+"
+                      r"(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})\b"
+                      r"\s*(?:[.:;!?—-]|$)",
+                      (b.get("texto") or "").lower())
+        if m:
+            bruto = m.group(2)
+            n = _ORD_TXT.get(bruto) or (int(bruto) if bruto.isdigit() else None)
+            if n:
+                out[s] = (m.group(1).capitalize(), n)
+    return out
+
+
 def _rotulo_capitulo(texto_beat, titulo):
     """(rótulo, número) do marcador de seção, LIDO DO ROTEIRO.
 
@@ -125,6 +152,7 @@ def main():
     # o NICHO decide via style_card: cinematic (card CHAPTER NN) | minimal (linha overlay) | none
     # vídeo é uma CONTAGEM? (o roteiro numera as seções). Decide se seção sem
     # numeral pode virar card numerado — ver _rotulo_capitulo.
+    _ord_secao = mapear_ordinal_por_secao(plano)   # "Number five" da NARRAÇÃO
     _video_e_lista = bool(re.search(
         r"(number|part|step|rule)\s+(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})",
         " ".join((x.get("texto") or "") for x in plano.get("beats", [])).lower()))
@@ -438,7 +466,8 @@ def main():
                     # rótulo "CHAPTER" era fixo mesmo quando o roteiro nunca fala em
                     # capítulo. Agora número e rótulo saem do que É DITO; o contador
                     # só entra quando o roteiro não numera nada.
-                    _rot, _num = _rotulo_capitulo(texto_b, str(titulo))
+                    _rot, _num = (_ord_secao.get(r.get("secao", 0))
+                                  or _rotulo_capitulo(texto_b, str(titulo)))
                     if _num is None and _video_e_lista:
                         # vídeo É uma contagem ("Number Five"...) mas ESTA seção não
                         # é um item dela: é intro ou fecho. Carimbar "CHAPTER 01" aqui
@@ -1079,8 +1108,14 @@ def main():
                 usadas_tr.add(arq_t)
                 rel = _copia_audio(arq_t, "Trilhas sonoras/documentario")
                 if rel:
+                    # 02/08 (QA Piter: "trilha não encaixou, ficou bem fraco"): 0.08 é
+                    # 8% — inaudível sob narração, a trilha existia só no JSON. Régua
+                    # de documentário: música sob voz vive em 15-25%. 0.20 com o HOOK
+                    # um pouco acima (a abertura carrega no clima, ainda sem informação
+                    # densa competindo) e a REVELAÇÃO idem, que é onde o argumento fecha.
+                    _vol = 0.26 if idx == 0 else 0.24 if idx == n_sec - 1 else 0.20
                     audio_plan["trilhas"].append({"arquivo": rel, "t_ini": s["t_ini"],
-                                                  "t_fim": s["t_fim"], "vol": 0.08})
+                                                  "t_fim": s["t_fim"], "vol": _vol})
             sfx_man = json.loads((ACERVO / "sfx/manifesto.json").read_text(encoding="utf-8"))["sfx"]
             por_fam = {}
             for x in sfx_man:
