@@ -47,7 +47,11 @@ ACOES_PRESENCA = [
     "kneels at the water's edge and studies the surface for movement in the {amb}, low angle, static tripod",
     "adjusts the strap of a field bag and checks the sky before moving on through the {amb}, medium wide shot",
 ]
-_SEM_FALA = ("Natural ambient sound only, he does not speak, no narration, "
+# 05/08 (print do Piter: "Falha ao gerar áudio"): pedir o áudio por NEGAÇÃO
+# ("does not speak, no narration") derruba o gerador de áudio. Enquadramento
+# POSITIVO: descrever o que o ambiente SOA, e a ausência de fala vira consequência.
+_SEM_FALA = ("Audio: gentle ambient sounds of the environment — birdsong, insects, "
+             "soft wind and distant water. He works in comfortable silence, "
              "unhurried observational pacing")
 
 
