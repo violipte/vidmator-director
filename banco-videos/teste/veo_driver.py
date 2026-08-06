@@ -338,6 +338,9 @@ def main():
                     help="perfil Chrome; vazio = o 1º LIVRE (veo_flow/perfis.py)")
     ap.add_argument("--so-baixar", action="store_true",
                     help="não gera nada: casa os cards JÁ existentes no projeto e baixa")
+    ap.add_argument("--reusar", action="store_true",
+                    help="abre o projeto EXISTENTE mais recente em vez de criar um "
+                         "(evita projeto vazio e a UI nova, que o driver não dirige)")
     ap.add_argument("--forcar", action="store_true",
                     help="regera mesmo com o destino já em disco (arquiva o antigo "
                          "em _rejeitados/) — a rota de reprovação do crítico")
@@ -389,7 +392,23 @@ def main():
         if page.get_by_role("button", name=re.compile("Fazer login|Sign in", re.I)).count():
             print("!!! chrome_profile NÃO logado — rode: flow_driver.py login !!!")
             return
-        fd._abrir_projeto(page, a.proj)
+        # REUSAR o projeto existente em vez de criar um (06/08). Dois motivos, e o
+        # segundo só apareceu hoje:
+        #   1. sem isso, cada lote deixa um projeto novo na conta — o conta2 já
+        #      acumulou vários "Sessão sem título" vazios;
+        #   2. projeto NOVO no conta3 nasce na UI NOVA do Flow, que não tem o
+        #      seletor de modelo — o driver morria num TimeoutError. Projeto ANTIGO
+        #      continua servido pela UI antiga, então reusar contorna o rollout.
+        proj = a.proj
+        if not proj and a.reusar:
+            try:
+                href = page.locator('a[href*="/project/"]').first.get_attribute(
+                    "href", timeout=12000) or ""
+                proj = href.rstrip("/").split("/project/")[-1][:36] or None
+                print(f"  reusando projeto existente: {proj}")
+            except Exception:
+                print("  nenhum projeto para reusar — criando um novo")
+        fd._abrir_projeto(page, proj)
         proj_url = page.url
         time.sleep(6)  # settle: SPA termina de montar a barra de prompt
         page.screenshot(path=str(Path(a.out) / "_debug_projeto.png"))
@@ -399,6 +418,22 @@ def main():
             print('!!! Rode 1x e logue na conta Ultra:  '
                   '"F:/Canal Dark/veo_venv/Scripts/python.exe" '
                   '"F:/Canal Dark/Aplicativo de Edição/veo_flow/flow_driver.py" login')
+            return
+        # UI NOVA do Flow (06/08): o Google faz rollout POR CONTA, então perfis da
+        # mesma frota abrem telas diferentes. A nova troca a barra de prompt por um
+        # painel de sessão ("O que você quer fazer?", sidebar Personagens/Cenas) e
+        # não tem o seletor de modelo que o driver procura — o sintoma era um
+        # TimeoutError cru do Playwright esperando um botão que não existe.
+        # Detectar aqui transforma 40 linhas de traceback numa frase acionável.
+        if (page.get_by_text(re.compile(r"O que você quer fazer|What do you want to",
+                                        re.I)).count()
+                and not page.get_by_role("button").filter(
+                    has_text=re.compile(r"Veo|Banana", re.I)).count()):
+            print(f"!!! UI NOVA do Flow neste perfil ({Path(a.perfil).name or 'padrão'}) — o driver "
+                  f"fala com a UI antiga (barra de prompt + seletor de modelo).")
+            print("!!! Rode este lote num perfil de UI antiga. Veja quais em:")
+            print('!!!   "F:/Canal Dark/veo_venv/Scripts/python.exe" '
+                  '"F:/Canal Dark/Aplicativo de Edição/veo_flow/smoke_perfis.py"')
             return
         # TRAVA DE MODO (04/08): confere SEMPRE, mesmo com --sem-config. A config
         # persiste por projeto, e gerar no modelo errado já custou caro duas vezes
@@ -454,13 +489,36 @@ def main():
             # mais antigo em voo pra fila (até --regen tentativas) e limpa o card.
             n_falha = _cards_falha(page)
             if n_falha and em_voo:
+                # POR QUE falhou, antes de limpar o card (06/08). O driver contava
+                # "falhas=1" e mandava tentar de novo — foi assim que o b120 queimou
+                # 13 min em duas contas diferentes sem dizer que o prompt estava
+                # sendo RECUSADO. Detector emprestado do flow_driver (Claude do
+                # Flow), que já separa ritmo de política: repetir prompt recusado
+                # não adianta nunca, e recuar por ritmo é o oposto de re-enfileirar.
+                politica = ritmo = False
+                try:
+                    _txt = (page.inner_text("body", timeout=4000) or "")[:24000]
+                    ritmo = fd.erro_de_ritmo(page)
+                    politica = bool(fd._ERRO_POLITICA.search(_txt)) and not ritmo
+                except Exception:
+                    pass
                 _limpar_falhas(page)
                 it_f = em_voo.pop(0)
                 it_f["_falhas"] = it_f.get("_falhas", 0) + 1
-                if it_f["_falhas"] <= max(1, a.regen):
+                if politica:
+                    # recusa de conteúdo não melhora com repetição — para na hora e
+                    # mostra o prompt, que é o que precisa ser reescrito
+                    falhas += 1
+                    print(f"  {it_f['arquivo']}: RECUSADO POR POLÍTICA — o prompt "
+                          f"precisa ser reescrito, repetir não resolve", flush=True)
+                    print(f"    prompt: {str(it_f.get('prompt'))[:120]}", flush=True)
+                elif it_f["_falhas"] <= max(1, a.regen):
                     fila_itens.append(it_f)
-                    print(f"  {it_f['arquivo']}: card FALHOU no Flow — re-enfileirado "
+                    print(f"  {it_f['arquivo']}: card FALHOU no Flow"
+                          f"{' (RITMO)' if ritmo else ''} — re-enfileirado "
                           f"({it_f['_falhas']})", flush=True)
+                    if ritmo:   # insistir no mesmo passo só reforça o freio
+                        fd._pausa(25, 40)
                 else:
                     falhas += 1
                     print(f"  {it_f['arquivo']}: falhou {it_f['_falhas']}x no Flow — "

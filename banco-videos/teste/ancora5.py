@@ -28,6 +28,15 @@ import re
 
 MAX = 180
 
+# ESQUEMA não tem lugar. Um diagrama de coagulação não acontece na Amazônia — a
+# âncora geográfica só disputa espaço com o assunto e empurra o gerador para uma
+# foto de selva com rótulos falsos. O Piter já tinha validado isso na mão em
+# 02/08: "neurotoxin molecular structure diagram" saiu ótimo SEM âncora nenhuma.
+# A âncora serve para CENA (onde a câmera está), não para ilustração técnica.
+_ESQUEMA = ("diagram", "infographic", "schematic", "cross-section", "cutaway",
+            "molecular", "anatomy", "anatomical", "chart", "graph of",
+            "vector illustration", "scientific illustration")
+
 
 def ancorar(busca, ancora, falado=""):
     """Prompt de geração com o tema garantido na frente.
@@ -45,9 +54,17 @@ def ancorar(busca, ancora, falado=""):
         return alvo[:MAX]
     if not alvo:
         return anc[:MAX]
+    if e_esquema(alvo):
+        return alvo[:MAX]
     if not _ja_ancorado(alvo, anc):
         alvo = f"{anc}, {alvo}"
     return alvo.strip()[:MAX]
+
+
+def e_esquema(alvo):
+    """O pedido é ilustração TÉCNICA, não cena? Então não leva âncora de lugar."""
+    a = (alvo or "").lower()
+    return any(k in a for k in _ESQUEMA)
 
 
 def _ja_ancorado(alvo, anc):
@@ -73,6 +90,8 @@ def conferir(prompt, ancora):
     gastar geração, em vez de descobrir no frame renderizado."""
     if not (ancora or "").strip():
         return True, "job sem âncora declarada"
+    if e_esquema(prompt or ""):
+        return True, "ilustração técnica — âncora de lugar não se aplica"
     if _ja_ancorado(prompt or "", ancora):
         return True, ""
     return False, f"prompt sem o tema '{ancora}' — pode sair em qualquer lugar do mundo"

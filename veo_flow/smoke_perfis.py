@@ -17,6 +17,7 @@ Uso:
   python smoke_perfis.py --todos          # inclusive de outros donos (cuidado)
 """
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -26,7 +27,27 @@ sys.path.insert(0, str(AQUI))
 BASE = "https://labs.google/fx/pt/tools/flow"
 
 
-def testar(caminho, timeout_s=45):
+def variante_ui(page):
+    """Qual UI do Flow esta conta recebeu (06/08).
+
+    O Google faz rollout POR CONTA, então perfis da mesma frota abrem telas
+    diferentes — o conta3 abriu a UI nova enquanto o conta2 seguia na antiga. Isso
+    quebra a premissa de que perfil logado = perfil utilizável: o `veo_driver` fala
+    com a barra de prompt + seletor de modelo, que a UI nova não tem. O sintoma era
+    um TimeoutError cru esperando um botão inexistente.
+
+    Só é detectável DENTRO de um projeto — na grade as duas são iguais.
+    """
+    if page.get_by_role("button").filter(
+            has_text=re.compile(r"Veo|Banana|Omni", re.I)).count():
+        return "antiga", "seletor de modelo presente — driver funciona"
+    if page.get_by_text(re.compile(r"O que você quer fazer|What do you want to",
+                                   re.I)).count():
+        return "NOVA", "painel de sessão, sem seletor de modelo — driver NÃO funciona"
+    return "?", "nem seletor nem painel — tela inesperada"
+
+
+def testar(caminho, timeout_s=45, ver_ui=False):
     """(estado, detalhe) — abre, lê, fecha. Não gera nada."""
     from playwright.sync_api import sync_playwright
     pw = ctx = None
@@ -56,7 +77,27 @@ def testar(caminho, timeout_s=45):
                 "sessão existe mas o Flow pede re-login" if tem_conta
                 else "landing pública — nunca logou neste perfil")
         if "Novo projeto" in txt or "New project" in txt or "/project/" in url:
-            return "LOGADO", "grade de projetos visível"
+            if not ver_ui:
+                return "LOGADO", "grade de projetos visível"
+            # entra num projeto só para ler a variante — abre o PRIMEIRO existente
+            # em vez de criar, para não deixar projeto vazio na conta do Piter
+            try:
+                card = page.locator('a[href*="/project/"]').first
+                if not card.count():
+                    return "LOGADO", "grade visível, mas sem projeto — UI indeterminada"
+                # `goto`, NÃO `click` (06/08): o mesmo projeto abre na UI ANTIGA por
+                # navegação SPA e na UI NOVA por carga do servidor. O driver usa
+                # goto, então medir por clique dava VERDE em perfil onde o driver
+                # morria — um diagnóstico que mede diferente do executor é pior que
+                # nenhum, porque autoriza o lote que vai falhar.
+                href = card.get_attribute("href", timeout=15000) or ""
+                page.goto(href if href.startswith("http") else
+                          f"https://labs.google{href}", wait_until="domcontentloaded")
+                page.wait_for_timeout(7000)
+                v, det = variante_ui(page)
+                return "LOGADO", f"UI {v} — {det}"
+            except Exception as e:
+                return "LOGADO", f"grade ok; UI indeterminada ({type(e).__name__})"
         return "INDEFINIDO", (txt[:70].replace("\n", " ") or url)[:70]
     except Exception as e:
         return "ERRO", f"{type(e).__name__}: {str(e)[:60]}"
@@ -74,6 +115,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--perfil", default="")
     ap.add_argument("--todos", action="store_true")
+    ap.add_argument("--ui", action="store_true",
+                    help="entra num projeto e diz QUAL UI do Flow a conta recebeu "
+                         "(a nova nao funciona com o veo_driver) - mais lento")
     a = ap.parse_args()
     from perfis import status, EU
 
@@ -88,7 +132,7 @@ def main():
         if s["ocupado"]:
             print(f"  {s['perfil']:<24} {(s['conta'] or '—'):<38} PULADO (ocupado)")
             continue
-        est, det = testar(s["caminho"])
+        est, det = testar(s["caminho"], ver_ui=a.ui)
         print(f"  {s['perfil']:<24} {(s['conta'] or '—'):<38} {est} — {det}")
 
 
