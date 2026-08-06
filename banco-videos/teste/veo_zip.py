@@ -35,11 +35,39 @@ STOP = {"the", "a", "an", "of", "in", "on", "at", "with", "and", "or", "for", "t
         "shallow", "frame", "clean", "no", "subtitles", "captions", "text"}
 
 
-def _tokens(s):
+def _radical(w):
+    """Corta plural/gerúndio/passado: 'checking'->'check', 'walks'->'walk'.
+    06/08: sem isto, 'Man_checking_track_in_dirt' casava 0.50 com o prompt que diz
+    'crouches to CHECK a track' e a guarda de avatar (0.72) descartava um take
+    legítimo do host — o clipe estava lá, o casamento é que não enxergava."""
+    for suf in ("ing", "ies", "ed", "es", "s"):
+        if len(w) > len(suf) + 3 and w.endswith(suf):
+            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    return w
+
+
+# o NOME do host nunca vai no prompt (política de "pessoa famosa"), mas o Flow
+# titula o clipe de "Man_..." — sem esta ponte o token 'man' fica órfão e derruba
+# a cobertura de TODO take de avatar.
+_SIN_PESSOA = {"man", "person", "guy", "male", "he", "his", "him", "figure"}
+
+# palavras que provam que o TÍTULO é de um clipe de gente (o Flow titula "Man_...",
+# "Ranger_...", "Naturalist_..."). Slot de avatar só aceita arquivo cujo título
+# nomeie uma pessoa — foi a AUSÊNCIA disso, e não a nota baixa, o que deixou uma
+# onça entrar no lugar do host em 05/08.
+_PESSOA_TITULO = {"man", "person", "guy", "male", "ranger", "naturalist", "biologist",
+                  "host", "hiker", "walker", "explorer", "guide", "presenter",
+                  "scientist", "researcher", "figure", "he"}
+
+
+def _tokens(s, pessoa=False):
     s = re.sub(r"_?\d{10,}(_\d+)?$", "", str(s))          # timestamp do download
     s = re.sub(r"\.(mp4|jpe?g|png|webm|mov)$", "", s, flags=re.I)
     s = s.replace("…", " ").replace("_", " ")
-    return {w for w in re.findall(r"[a-zA-Z]{3,}", s.lower()) if w not in STOP}
+    t = {_radical(w) for w in re.findall(r"[a-zA-Z]{3,}", s.lower()) if w not in STOP}
+    if pessoa:
+        t |= {_radical(w) for w in _SIN_PESSOA}
+    return t
 
 
 def casar(arquivos, lote):
@@ -62,14 +90,24 @@ def casar(arquivos, lote):
             # (tokens genéricos "through/forest"). Identidade não admite palpite:
             # item avatar exige cobertura alta; na dúvida, fica sem e regenera.
             LIMIAR_AVATAR = 0.72
-            ti = _tokens(it.get("prompt", ""))
+            ti = _tokens(it.get("prompt", ""), pessoa=bool(it.get("avatar")))
             if not tf or not ti:
                 continue
             inter = len(tf & ti)
             if not inter:
                 continue
-            if it.get("avatar") and inter / len(tf) < LIMIAR_AVATAR:
-                continue
+            if it.get("avatar"):
+                cob = inter / len(tf)
+                # 06/08: o limiar sozinho é cego pro que importa. O que reprovou a
+                # ONÇA não foi a nota (0.5) — foi o título dizer "Jaguar". Slot de
+                # host exige que o TÍTULO NOMEIE UMA PESSOA; com isso um clipe de
+                # bicho é barrado com qualquer nota, e um take legítimo do host que
+                # ficou em 0.67 ("Man_walking_in_bushland") não se perde à toa.
+                # 3 tokens em comum, no mínimo: "Man_working_in_field" casa 1.00 com
+                # QUALQUER take do host porque só sobram 2 palavras depois das STOP —
+                # cobertura alta em título curto não é evidência, é coincidência.
+                if not (tf & _PESSOA_TITULO) or cob < 0.60 or inter < 3:
+                    continue
             # COBERTURA DO TÍTULO, não Jaccard: o título do Flow tem ~5 palavras e o
             # prompt dirigido tem ~60 (lente, luz, movimento, grading). Jaccard divide
             # pela união e afunda todo mundo pra ~0.10 — inútil pra ranquear. O que
@@ -125,12 +163,14 @@ def main():
     pasta = Path(a.zip)
     arquivos = [f for f in pasta.rglob("*") if f.is_file()
                 and f.suffix.lower() in (".mp4", ".jpg", ".jpeg", ".png", ".webm", ".mov")]
-    # JANELA TEMPORAL (06/08, Piter: "está gerando fora da coleção") — o Flow deposita
-    # TODA geração na raiz do projeto mesmo com a coleção aberta, então um projeto por
-    # CANAL acumula os vídeos anteriores e o casamento por título pode puxar asset do
-    # vídeo errado (foi assim que uma onça caiu no slot do host). O nome do arquivo
-    # carrega o carimbo AAAAMMDDHHMM da geração: filtrar por ele isola o job SEM
-    # depender de a coleção funcionar como pasta de destino.
+    # ⚠️ JANELA TEMPORAL — PREMISSA ERRADA, MANTIDA SÓ COMO REDE (06/08).
+    # Eu apostei que o carimbo `AAAAMMDDHHMM` do nome era a hora da GERAÇÃO e que
+    # filtrar por ele isolaria o job. É a hora do DOWNLOAD: o mesmo asset sai com
+    # carimbo novo a cada rodada (`Amazon_rainforest_canopy_in_breeze` apareceu como
+    # _202608061054 E _202608061121 no mesmo zip), então um download novo re-carimba
+    # TUDO — inclusive os vídeos antigos do canal — e o filtro não separa nada.
+    # O isolamento de verdade é baixar só a COLEÇÃO (`baixar_colecao_de_dentro`).
+    # Isto aqui só serve pra descartar zips VELHOS misturados na mesma pasta.
     if a.desde:
         corte = re.sub(r"\D", "", str(a.desde))[:12]
         n_dig = len(corte)

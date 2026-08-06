@@ -1,11 +1,13 @@
 {
  "AMZ": {
-  "nome": "Russel",
+  "nome": "Travesseiro",
   "voz": "Iapetus",
   "descricao": "weathered field biologist, mid forties, greying beard, faded olive field shirt",
   "escopo": "canal",
-  "mencao": "@Russel",
+  "mencao": "@Travesseiro",
   "origem": "manual",
-  "voz_ref": "F:\\Canal Dark\\Aplicativo de Edição\\veo_flow\\vozes_ref\\voz_AMZ.wav"
+  "voz_ref": "F:\\Canal Dark\\Aplicativo de Edição\\veo_flow\\vozes_ref\\voz_AMZ.wav",
+  "nome_anterior": "Russel",
+  "aviso": "NOME COMUM (=pillow em PT): NUNCA pode vazar no texto do prompt — o gerador desenharia um travesseiro na cena. So no chip do @."
  }
 }

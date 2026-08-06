@@ -412,6 +412,21 @@ def enviar_prompt(page, prompt, exigir_mencao=False):
             corpo_ok = resto[:25].lower() in (cx.inner_text(timeout=3000) or "").lower()
         except Exception:
             pass
+        # 06/08: com o host renomeado pra um NOME COMUM ("Travesseiro" = pillow), o
+        # nome sobrando em texto puro deixa de ser risco de recusa e vira erro
+        # visível — o gerador desenha o objeto na cena. Se o resíduo resistiu às 2
+        # tentativas de apagar, o take NÃO vai: melhor faltar do que sair errado.
+        try:
+            visivel = (cx.inner_text(timeout=2000) or "")
+            sem_chip = re.sub(rf"@\s*{re.escape(nome)}", "", visivel, flags=re.I)
+            if re.search(rf"\b{re.escape(nome)}\b", sem_chip, re.I):
+                print(f"  !! nome '{nome}' AINDA em texto puro — take descartado "
+                      f"(geraria o objeto na cena)")
+                page.keyboard.press("Control+A")
+                page.keyboard.press("Delete")
+                return False
+        except Exception:
+            pass
         if not ok_mencao or not corpo_ok:
             page.keyboard.press("Escape")
             _pausa(0.4, 0.7)

@@ -273,6 +273,59 @@ def baixar_projeto(page, canal, dest_zip, timeout_ms=1_200_000):
     return Path(dest_zip)
 
 
+def baixar_colecao_de_dentro(page, canal, nome, dest_zip, timeout_ms=900_000):
+    """ENTRA na coleção e baixa pelo ⋮ do TÍTULO dela. Zip só deste vídeo.
+
+    06/08 — por que isto virou obrigatório: eu havia isolado os jobs por uma
+    "janela temporal" no nome do arquivo, e o premissa estava ERRADA. O carimbo
+    `AAAAMMDDHHMM` do nome é a hora do DOWNLOAD, não a da geração: o mesmo asset
+    aparece com carimbos diferentes a cada rodada (prova: `Amazon_rainforest_
+    canopy_in_breeze` saiu como _202608061054 e _202608061121 no mesmo dia). Ou
+    seja, um download novo re-carimba TUDO, inclusive os vídeos antigos do canal,
+    e a janela não filtrava nada. A resposta certa é baixar só a COLEÇÃO.
+
+    A v1 (`baixar_colecao`) tentava pelo hover do card no grid do projeto e
+    esbarrava na virtualização (card empurrado pra baixo da dobra). Aqui entramos
+    na coleção — que é o caminho já provado — e usamos o ⋮ ao lado do título, que
+    está sempre na barra superior."""
+    fd = _fd()
+    abrir_colecao(page, canal, nome, criar_se_faltar=False)
+    if not dentro_da_colecao(page):
+        raise RuntimeError(f"não consegui entrar na coleção '{nome}' pra baixar")
+    fd.dispensar_avisos(page)
+    # ⋮ da ESQUERDA (colado no título da coleção) — o da direita é o "Mais" do projeto
+    alvo, alvo_x = None, 10 ** 9
+    for b in page.locator("button").all():
+        try:
+            bb = b.bounding_box()
+            if not bb or bb["y"] > 70:
+                continue
+            rot = (b.get_attribute("aria-label") or "") + " " + (b.inner_text(timeout=250) or "")
+            if re.search(r"more_vert|\bMais\b|More", rot, re.I) and bb["x"] < alvo_x:
+                alvo, alvo_x = b, bb["x"]
+        except Exception:
+            continue
+    if alvo is None:
+        raise RuntimeError("⋮ do título da coleção não encontrado")
+    alvo.click()
+    fd._pausa(0.8, 1.4)
+    mi = page.get_by_role("menuitem",
+                          name=re.compile(r"Baixar (cole[çc][ãa]o|tudo)|Download (collection|all)", re.I))
+    if not mi.count():
+        itens = []
+        try:
+            itens = [x.strip()[:28] for x in page.get_by_role("menuitem").all_inner_texts()]
+        except Exception:
+            pass
+        page.keyboard.press("Escape")
+        raise RuntimeError(f"menu da coleção sem 'Baixar coleção' (tinha: {itens})")
+    with page.expect_download(timeout=timeout_ms) as di:
+        mi.first.click()
+    di.value.save_as(str(dest_zip))
+    print(f"  coleção '{nome}' baixada: {dest_zip}")
+    return Path(dest_zip)
+
+
 def baixar_colecao(page, canal, nome, dest_zip, timeout_ms=900_000):
     """No grid do PROJETO: hover no card -> ⬇ 'Baixar coleção' -> salva o zip.
     Substitui as ~6 interações de UI por clipe por UM download por rodada."""

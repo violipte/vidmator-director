@@ -112,7 +112,22 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     p += ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
     if fala:
         p += f". AUDIO ONLY (spoken by him, never written on screen): {fala.strip()}"
-    return p[:900]
+    p = p[:900]
+    # 06/08 (Piter renomeou o host pra "Travesseiro" pra fugir da política de pessoa
+    # famosa): com nome COMUM o vazamento deixa de ser risco de recusa e vira erro
+    # VISÍVEL — "travesseiro" solto no texto faz o gerador desenhar um travesseiro na
+    # cena. A substituição acima é best-effort (regex de palavra); esta checagem é a
+    # rede: fora do chip inicial, o nome não pode sobrar em lugar nenhum.
+    if nome:
+        corpo = p[len(ficha["mencao"]):]
+        # SUBSTRING, não palavra inteira: a troca por pronome usa \b e deixaria passar
+        # "Travesseiros"/"Travesseiro-". Com nome COMUM, qualquer pedaço do nome no
+        # corpo já é motivo pra abortar — o gerador desenharia o objeto na cena.
+        if nome.lower() in corpo.lower():
+            raise ValueError(
+                f"nome '{nome}' vazou no CORPO do prompt — o gerador desenharia o "
+                f"objeto na cena. Prompt: {p[:160]!r}")
+    return p
 
 
 def criar_personagem(page, nome, descricao, voz="Iapetus", espera_gen=45):
