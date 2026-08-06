@@ -1,0 +1,3499 @@
+{
+  "secoes": [
+    {
+      "i": 0,
+      "titulo": "The Silent Threat",
+      "t_ini": 0.0,
+      "t_fim": 41.0,
+      "wash": "none",
+      "title_card": false
+    },
+    {
+      "i": 1,
+      "titulo": "Ranking the Danger",
+      "t_ini": 41.0,
+      "t_fim": 62.0,
+      "wash": "dourado",
+      "title_card": true
+    },
+    {
+      "i": 2,
+      "titulo": "The Subtle Killers",
+      "t_ini": 62.0,
+      "t_fim": 171.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 3,
+      "titulo": "Systemic Attackers",
+      "t_ini": 171.0,
+      "t_fim": 284.0,
+      "wash": "amarelo",
+      "title_card": true
+    },
+    {
+      "i": 4,
+      "titulo": "The Ubiquitous Threat",
+      "t_ini": 284.0,
+      "t_fim": 366.0,
+      "wash": "vermelho",
+      "title_card": true
+    },
+    {
+      "i": 5,
+      "titulo": "A Century of Antivenom",
+      "t_ini": 366.0,
+      "t_fim": 410.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 6,
+      "titulo": "Staying Safe: Prevention & First Aid",
+      "t_ini": 410.0,
+      "t_fim": 501.0,
+      "wash": "none",
+      "title_card": false
+    }
+  ],
+  "beats": [
+    {
+      "t_ini": 0.0,
+      "t_fim": 3.0,
+      "dur": 3.0,
+      "texto": "The snake doesn't warn you, it waits.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "snake ambush hunting close up moody",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:snake camouflage",
+        "ilustracao:snake anatomy diagram"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 0
+    },
+    {
+      "t_ini": 3.0,
+      "t_fim": 5.0,
+      "dur": 2.0,
+      "texto": "That is what a rural doctor in Minas Gerais",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "region": "Minas Gerais",
+        "country": "Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Minas Gerais"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 1
+    },
+    {
+      "t_ini": 5.0,
+      "t_fim": 7.0,
+      "dur": 2.0,
+      "texto": "wrote in his field notebook after his",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "doctor writing field notebook medical notes",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:vintage medical notebook",
+        "footage_imagem:historical doctor journal"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 2
+    },
+    {
+      "t_ini": 7.0,
+      "t_fim": 10.0,
+      "dur": 3.0,
+      "texto": "fourth snake bite death in a single month.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "value": 4,
+        "label": "Snake Bite Deaths in a Month"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 4
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 3
+    },
+    {
+      "t_ini": 10.0,
+      "t_fim": 13.0,
+      "dur": 3.0,
+      "texto": "He wasn't being dramatic, he was being accurate.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "close up medical supplies rural clinic Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:doctor examining notes",
+        "ilustracao:human nervous system diagram"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 4
+    },
+    {
+      "t_ini": 13.0,
+      "t_fim": 15.0,
+      "dur": 2.0,
+      "texto": "Brazil records around",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "Brazil"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 5
+    },
+    {
+      "t_ini": 15.0,
+      "t_fim": 17.0,
+      "dur": 2.0,
+      "texto": "twenty-nine thousand snake bites every single year.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "value": 29000,
+        "label": "Snake Bites per Year in Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 29000
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 6
+    },
+    {
+      "t_ini": 17.0,
+      "t_fim": 21.0,
+      "dur": 4.0,
+      "texto": "Most of them happen to people doing ordinary things: walking to a field before",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian farmer walking to field sunrise rural",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:rural landscape sunrise",
+        "ilustracao:diagram of common snake bite locations"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 7
+    },
+    {
+      "t_ini": 21.0,
+      "t_fim": 24.0,
+      "dur": 3.0,
+      "texto": "sunrise, reaching into a woodpile,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person reaching into woodpile rural Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:woodpile close up",
+        "ilustracao:cutaway of woodpile hiding snake"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 8
+    },
+    {
+      "t_ini": 24.0,
+      "t_fim": 26.0,
+      "dur": 2.0,
+      "texto": "stepping over a fallen log on a trail they have",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person stepping over fallen log forest trail",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:forest trail fallen log",
+        "ilustracao:snake hidden under log diagram"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 9
+    },
+    {
+      "t_ini": 26.0,
+      "t_fim": 28.0,
+      "dur": 2.0,
+      "texto": "walked a thousand times.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "technical diagram snake bite risk areas rural home",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:worn dirt path rural Brazil",
+        "animacao:SingleSentenceTextSlide with 'A THOUSAND TIMES'"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 10
+    },
+    {
+      "t_ini": 28.0,
+      "t_fim": 34.0,
+      "dur": 6.0,
+      "texto": "And here is the part that surprises almost everyone: the snake that kills the most,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "ominous jungle foliage Brazilian forest",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:snake camouflage in leaves",
+        "animacao:SingleSentenceTextSlide with 'The Silent Killer'"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 11
+    },
+    {
+      "t_ini": 34.0,
+      "t_fim": 38.0,
+      "dur": 4.0,
+      "texto": "Brazilians, isn't the biggest one, and it isn't the one with the most powerful",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "snake size and venom strength comparison diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:mysterious shadows deep forest Brazil",
+        "footage_video:various snake species compilation"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 12
+    },
+    {
+      "t_ini": 38.0,
+      "t_fim": 41.0,
+      "dur": 3.0,
+      "texto": "venom. It is the one that lives closest to us.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Bothrops jararaca close up in garden Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:common Brazilian snake camouflage",
+        "ilustracao:Bothrops jararaca range map"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 13
+    },
+    {
+      "t_ini": 41.0,
+      "t_fim": 44.0,
+      "dur": 3.0,
+      "texto": "Ranking the Danger",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Ranking the Danger",
+        "number": 1
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 14
+    },
+    {
+      "t_ini": 41.0,
+      "t_fim": 45.0,
+      "dur": 4.0,
+      "texto": "In the next ten minutes, you will meet the five most dangerous snakes in Brazil,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "Brazil"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 15
+    },
+    {
+      "t_ini": 45.0,
+      "t_fim": 50.0,
+      "dur": 5.0,
+      "texto": "ranked by what actually- Matters how likely they are to meet you and what happens to",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "brazilian snake hidden in environment human proximity",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: dangerous animal encounter concept",
+        "ilustracao: risk assessment chart"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 16
+    },
+    {
+      "t_ini": 50.0,
+      "t_fim": 52.0,
+      "dur": 2.0,
+      "texto": "your body if they do.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "snake venom effect on human body diagram medical",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: abstract danger concept",
+        "footage_video: human skin texture close up"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 17
+    },
+    {
+      "t_ini": 52.0,
+      "t_fim": 57.0,
+      "dur": 5.0,
+      "texto": "Number one is responsible for more attacks than all the others combined, and there",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "highly venomous brazilian snake dominant threatening",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video: powerful snake movement",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 18
+    },
+    {
+      "t_ini": 57.0,
+      "t_fim": 60.0,
+      "dur": 3.0,
+      "texto": "is a very good chance it lives within a few kilometers of where you are sitting",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "brazilian snake in dense forest undergrowth close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SatelliteLocationPin",
+        "stock: forest b-roll brazil"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 19
+    },
+    {
+      "t_ini": 60.0,
+      "t_fim": 62.0,
+      "dur": 2.0,
+      "texto": "right now.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close up venomous snake eyes staring",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: unsettling snake texture",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 20
+    },
+    {
+      "t_ini": 62.0,
+      "t_fim": 65.0,
+      "dur": 3.0,
+      "texto": "The Subtle Killers",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Subtle Killers",
+        "number": 2
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 21
+    },
+    {
+      "t_ini": 62.0,
+      "t_fim": 67.0,
+      "dur": 5.0,
+      "texto": "Number five: The true coral snake Start with the one everybody thinks they can",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "true coral snake close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:coral snake forest floor",
+        "ilustracao:coral snake scientific illustration"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 22
+    },
+    {
+      "t_ini": 67.0,
+      "t_fim": 72.0,
+      "dur": 5.0,
+      "texto": "recognize: red, black, and white bands arranged like a warning label.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "true coral snake distinct bands close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:graphic red black white warning pattern",
+        "ilustracao:coral snake pattern diagram"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 23
+    },
+    {
+      "t_ini": 72.0,
+      "t_fim": 76.0,
+      "dur": 4.0,
+      "texto": "In Brazil, there are more than thirty species of true coral snake, all of them in",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "30+",
+        "unit": "species",
+        "context": "True Coral Snakes in Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil",
+        "numero": ">30"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 24
+    },
+    {
+      "t_ini": 76.0,
+      "t_fim": 82.0,
+      "dur": 6.0,
+      "texto": "the genus Micrurus, and all of them carrying a venom that works in complete silence.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "micrurus coral snake close up head fangs",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:venom mechanism diagram",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 25
+    },
+    {
+      "t_ini": 82.0,
+      "t_fim": 87.0,
+      "dur": 5.0,
+      "texto": "Its venom is neurotoxic, it doesn't destroy the flesh around the bite.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neurotoxic venom mechanism diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:human nerve cells background",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 26
+    },
+    {
+      "t_ini": 87.0,
+      "t_fim": 91.0,
+      "dur": 4.0,
+      "texto": "It goes straight for the connection between your nerves and your muscles, and it",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neuromuscular junction diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:human nervous system visualization",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 27
+    },
+    {
+      "t_ini": 91.0,
+      "t_fim": 93.0,
+      "dur": 2.0,
+      "texto": "switches that connection off.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neuromuscular block diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:synapse firing ending animation concept",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 28
+    },
+    {
+      "t_ini": 93.0,
+      "t_fim": 98.0,
+      "dur": 5.0,
+      "texto": "The bite is often nearly painless, and hours later the eyelids start to droop.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person with ptosis eyelids drooping",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:human eye muscle paralysis diagram",
+        "stock:sleepy eyes close up"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 29
+    },
+    {
+      "t_ini": 98.0,
+      "t_fim": 102.0,
+      "dur": 4.0,
+      "texto": "What follows is a shutdown that ends with the muscles that drive the lungs.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diaphragm respiratory paralysis diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:respiratory system visualization",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 30
+    },
+    {
+      "t_ini": 102.0,
+      "t_fim": 105.0,
+      "dur": 3.0,
+      "texto": "So why is it only number five?",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mysterious jungle background with coral snake motif",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "footage_video:coral snake moving slowly"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 31
+    },
+    {
+      "t_ini": 105.0,
+      "t_fim": 107.0,
+      "dur": 2.0,
+      "texto": "Because of the mouth.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "coral snake mouth close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:snake mouth anatomy diagram",
+        "stock:snake head detail"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 32
+    },
+    {
+      "t_ini": 107.0,
+      "t_fim": 110.0,
+      "dur": 3.0,
+      "texto": "The coral snake has a short fixed fang and a small gape.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "coral snake fang anatomy diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:coral snake fangs close up",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 33
+    },
+    {
+      "t_ini": 110.0,
+      "t_fim": 113.0,
+      "dur": 3.0,
+      "texto": "It can't strike the way the pit vipers do.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "pit viper striking slow motion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:pit viper strike mechanism diagram",
+        "animacao:TwoImageComparison"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 34
+    },
+    {
+      "t_ini": 113.0,
+      "t_fim": 118.0,
+      "dur": 5.0,
+      "texto": "It has to hold on and chew to deliver a full dose, and it would much rather flee",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "coral snake biting and chewing action",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:coral snake biting mechanism diagram",
+        "stock:snake head close up"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 35
+    },
+    {
+      "t_ini": 118.0,
+      "t_fim": 123.0,
+      "dur": 5.0,
+      "texto": "than fight. Coral snakes account for less than one percent of the snakebites",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PercentageBarChart",
+      "dados": {
+        "label": "Coral Snakebites",
+        "value": "<1",
+        "unit": "%",
+        "comparison_label": "Other Snakebites",
+        "comparison_value": ">99"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "<1%"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 36
+    },
+    {
+      "t_ini": 123.0,
+      "t_fim": 126.0,
+      "dur": 3.0,
+      "texto": "recorded in Brazil.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "country": "Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 37
+    },
+    {
+      "t_ini": 126.0,
+      "t_fim": 129.0,
+      "dur": 3.0,
+      "texto": "Number four, the Bushmaster",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Bushmaster snake",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:bushmaster snake jungle",
+        "ilustracao:bushmaster scientific illustration"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 38
+    },
+    {
+      "t_ini": 129.0,
+      "t_fim": 133.0,
+      "dur": 4.0,
+      "texto": "the largest venomous snake in the Americas and one of the largest in the world,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "text": "The largest venomous snake in the Americas and one of the largest in the world",
+        "highlight_words": [
+          "largest venomous snake",
+          "Americas",
+          "largest in the world"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 39
+    },
+    {
+      "t_ini": 133.0,
+      "t_fim": 135.0,
+      "dur": 2.0,
+      "texto": "Laevisis muta.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "text": "Lachesis muta",
+        "subtitle": "Bushmaster (Genus and Species)"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 40
+    },
+    {
+      "t_ini": 135.0,
+      "t_fim": 139.0,
+      "dur": 4.0,
+      "texto": "Adults commonly reach two and a half meters and specimens over three meters have",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "2.5",
+        "unit": "meters",
+        "context": "Common Bushmaster Length",
+        "secondary_number": "3+",
+        "secondary_unit": "meters",
+        "secondary_context": "Documented Specimens"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "3 meters"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 41
+    },
+    {
+      "t_ini": 139.0,
+      "t_fim": 145.0,
+      "dur": 6.0,
+      "texto": "been documented; a snake that size can deliver a bite at the height of a human thigh.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bushmaster snake striking human thigh height",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:bushmaster snake human height comparison diagram",
+        "stock:large snake in jungle floor"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 42
+    },
+    {
+      "t_ini": 145.0,
+      "t_fim": 150.0,
+      "dur": 5.0,
+      "texto": "The venom destroys tissue, prevents clotting, and drops blood pressure so severely",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "hemotoxic venom effects diagram tissue damage blood clotting",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:human blood cells under microscope",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 43
+    },
+    {
+      "t_ini": 150.0,
+      "t_fim": 153.0,
+      "dur": 3.0,
+      "texto": "that some victims collapse within minutes.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract fast collapse medical emergency concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:human vital signs rapidly declining graph",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 44
+    },
+    {
+      "t_ini": 153.0,
+      "t_fim": 162.0,
+      "dur": 9.0,
+      "texto": "Where a jararaca injects twenty-five to fifty milligrams, a large bushmaster can deliver hundreds of milligrams in a single bite.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Jararaca Venom (avg.)",
+          "Bushmaster Venom"
+        ],
+        "values": [
+          37.5,
+          300
+        ],
+        "units": [
+          "mg",
+          "mg"
+        ],
+        "title": "Venom Yield Per Bite",
+        "description": "Jararaca (average 25-50mg) vs. Bushmaster (can deliver hundreds of mg)"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "hundreds of milligrams"
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 45
+    },
+    {
+      "t_ini": 162.0,
+      "t_fim": 167.0,
+      "dur": 5.0,
+      "texto": "And it lives deep in primary forest, far from any hospital,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dense primary rainforest Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:jungle canopy aerial view",
+        "animacao:MapRoute"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 46
+    },
+    {
+      "t_ini": 167.0,
+      "t_fim": 171.0,
+      "dur": 4.0,
+      "texto": "with this snake distance is the second venom",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "remote winding jungle path long distance",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:QuoteCard",
+        "ilustracao:map showing remote areas with hospital markers"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 47
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 174.0,
+      "dur": 3.0,
+      "texto": "Systemic Attackers",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Systemic Attackers",
+        "number": 3
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 48
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 174.0,
+      "dur": 3.0,
+      "texto": "number three: The Tropical Rattlesnake.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SubjectTitleCard",
+      "dados": {
+        "name": "The Tropical Rattlesnake",
+        "title": "Number Three"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": "Three"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 49
+    },
+    {
+      "t_ini": 174.0,
+      "t_fim": 176.0,
+      "dur": 2.0,
+      "texto": "Every child in Brazil can imitate the sound,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian children imitating animal sounds playing outdoors, happy children Brazil",
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": "Brazil",
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [
+        "animacao:MultiCountryOutline",
+        "stock:children playing happy Brazil"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 50
+    },
+    {
+      "t_ini": 176.0,
+      "t_fim": 179.0,
+      "dur": 3.0,
+      "texto": "and that sound is the reason this snake",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "tropical rattlesnake tail rattling sound close up, slow motion rattle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:technical diagram of rattlesnake tail rattle",
+        "stock:rattlesnake tail close up shallow depth of field"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 51
+    },
+    {
+      "t_ini": 179.0,
+      "t_fim": 184.0,
+      "dur": 5.0,
+      "texto": "isn't higher on this list.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "tropical rattlesnake camouflaged in dry grass, warning signal",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:rattlesnake slithering through dry leaves",
+        "ilustracao:diagram of rattlesnake defensive posture"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 52
+    },
+    {
+      "t_ini": 184.0,
+      "t_fim": 187.0,
+      "dur": 3.0,
+      "texto": "The rattlesnake announces itself.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "rattlesnake tail rattling vibrantly close up, warning sign",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:detailed diagram of rattlesnake rattle mechanism",
+        "stock:rattlesnake tail vibrating dry leaves"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 53
+    },
+    {
+      "t_ini": 187.0,
+      "t_fim": 190.0,
+      "dur": 3.0,
+      "texto": "Crotophaga durissus, the casquebel,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ObjectTitle",
+      "dados": {
+        "name": "Crotophaga durissus",
+        "subtitle": "The Casquebel (Tropical Rattlesnake)"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 54
+    },
+    {
+      "t_ini": 190.0,
+      "t_fim": 192.0,
+      "dur": 2.0,
+      "texto": "lives in the open country, the cerrado, the dry",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian cerrado landscape wide shot, dry savanna vegetation",
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": "cerrado",
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [
+        "animacao:RegionLocationText",
+        "footage_imagem:Cerrado biome panorama"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 55
+    },
+    {
+      "t_ini": 192.0,
+      "t_fim": 196.0,
+      "dur": 4.0,
+      "texto": "scrub of the caatinga, the pastures and the edges of farms.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian caatinga scrubland, dry pasture lands Brazil, farm edges in dry region",
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": "caatinga",
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [
+        "footage_imagem:collage of caatinga cerrado pasture photos",
+        "stock:aerial view of dry Brazilian farmlands"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 56
+    },
+    {
+      "t_ini": 196.0,
+      "t_fim": 200.0,
+      "dur": 4.0,
+      "texto": "It is a snake of dry ground and open sun.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "tropical rattlesnake basking in open sun on dry ground, arid habitat",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:sun-baked dry earth texture close up",
+        "ilustracao:diagram of snake heat regulation"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 57
+    },
+    {
+      "t_ini": 200.0,
+      "t_fim": 205.0,
+      "dur": 5.0,
+      "texto": "What makes it terrifying isn't the bite, it is what happens over the next few days.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "tropical rattlesnake fangs close up, dangerous snake in dry environment, slow lurking danger",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:rattlesnake striking slow motion (miss)",
+        "ilustracao:diagram of snake fangs"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 58
+    },
+    {
+      "t_ini": 205.0,
+      "t_fim": 210.0,
+      "dur": 5.0,
+      "texto": "The venom of the tropical rattlesnake carries crotoxin, a potent neurotoxin, and it",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "molecular structure diagram of crotoxin neurotoxin, chemical formula",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "stock:abstract molecular biology animation"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 59
+    },
+    {
+      "t_ini": 210.0,
+      "t_fim": 213.0,
+      "dur": 3.0,
+      "texto": "does something none of the others do.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "tropical rattlesnake unique pattern close up, distinct snake, singular quality",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:snake slithering out of frame, mystery",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 60
+    },
+    {
+      "t_ini": 213.0,
+      "t_fim": 217.0,
+      "dur": 4.0,
+      "texto": "It attacks the muscle tissue itself throughout the entire body.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram of muscle tissue breakdown, rhabdomyolysis mechanism, entire body effect",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:microscopic view of muscle fibers (stylized)"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 61
+    },
+    {
+      "t_ini": 217.0,
+      "t_fim": 221.0,
+      "dur": 4.0,
+      "texto": "The medical term is rhabdomyolysis.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "text": "Rhabdomyolysis",
+        "subtitle": "Medical term for muscle tissue breakdown"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 62
+    },
+    {
+      "t_ini": 221.0,
+      "t_fim": 226.0,
+      "dur": 5.0,
+      "texto": "Muscle fibers break down and dump their contents into the bloodstream.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram of muscle fiber contents entering bloodstream, cellular breakdown",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:medical animation of cells breaking down"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 63
+    },
+    {
+      "t_ini": 226.0,
+      "t_fim": 231.0,
+      "dur": 5.0,
+      "texto": "Acute kidney failure is the leading cause of death in rattlesnake envenomation in",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "text": "Acute kidney failure is the leading cause of death in rattlesnake envenomation",
+        "highlight": "Acute kidney failure"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 64
+    },
+    {
+      "t_ini": 231.0,
+      "t_fim": 233.0,
+      "dur": 2.0,
+      "texto": "Brazil, not the paralysis,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian hospital interior, medical treatment room, emergency care",
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": "Brazil",
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [
+        "animacao:MultiCountryOutline",
+        "stock:medical facility exterior Brazil"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 65
+    },
+    {
+      "t_ini": 233.0,
+      "t_fim": 235.0,
+      "dur": 2.0,
+      "texto": "not the paralysis, not the bite.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract medical concern, internal body view, human kidneys, systemic effects",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:diagram of human kidney system",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 66
+    },
+    {
+      "t_ini": 235.0,
+      "t_fim": 238.0,
+      "dur": 3.0,
+      "texto": "The kidneys, days later, in a patient who thought the worst was over,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "medical diagram of human kidneys, kidney failure timeline, delayed effects",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:medical animation of kidney function",
+        "stock:abstract medical concern, internal body view"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 67
+    },
+    {
+      "t_ini": 238.0,
+      "t_fim": 240.0,
+      "dur": 2.0,
+      "texto": "number two,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "text": "Number Two"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": "two"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 68
+    },
+    {
+      "t_ini": 240.0,
+      "t_fim": 243.0,
+      "dur": 3.0,
+      "texto": "the jararacussu,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SubjectTitleCard",
+      "dados": {
+        "name": "The Jararacussu",
+        "title": "Number Two"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 69
+    },
+    {
+      "t_ini": 243.0,
+      "t_fim": 246.0,
+      "dur": 3.0,
+      "texto": "take the e- Of the number one snake on this list and add mass,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "large powerful snake in jungle, heavy snake moving through undergrowth, imposing presence",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:large snake slithering through undergrowth",
+        "ilustracao:comparison diagram of snake sizes (silhouette)"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 70
+    },
+    {
+      "t_ini": 246.0,
+      "t_fim": 249.0,
+      "dur": 3.0,
+      "texto": "that is the jararacussu.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jararacussu snake footage, Bothrops jararacussu large and dark",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:jararacussu snake photo",
+        "ilustracao:anatomical drawing of Bothrops jararacussu"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 71
+    },
+    {
+      "t_ini": 249.0,
+      "t_fim": 252.0,
+      "dur": 3.0,
+      "texto": "Bothrops jararacussu is the heavyweight of the Bothrops group",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ObjectTitle",
+      "dados": {
+        "name": "Bothrops jararacussu",
+        "subtitle": "Heavyweight of the Bothrops group"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 72
+    },
+    {
+      "t_ini": 252.0,
+      "t_fim": 254.0,
+      "dur": 2.0,
+      "texto": "in Brazil, reaching",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "country": "Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": "Brazil",
+        "pessoa": null,
+        "numero": null
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 73
+    },
+    {
+      "t_ini": 254.0,
+      "t_fim": 256.0,
+      "dur": 2.0,
+      "texto": "over two meters",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 2,
+        "unit": "meters",
+        "label": "Length"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": 2
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 74
+    },
+    {
+      "t_ini": 256.0,
+      "t_fim": 259.0,
+      "dur": 3.0,
+      "texto": "and carrying the largest venom yield of any pit viper in the region.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "text": "Largest Venom Yield of any Pit Viper in the Region",
+        "highlight": "Largest Venom Yield"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 75
+    },
+    {
+      "t_ini": 259.0,
+      "t_fim": 263.0,
+      "dur": 4.0,
+      "texto": "A single bite can deliver more than a thousand milligrams of venom.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 1000,
+        "unit": "milligrams",
+        "label": "Venom per bite"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": 1000
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 76
+    },
+    {
+      "t_ini": 263.0,
+      "t_fim": 266.0,
+      "dur": 3.0,
+      "texto": "The venom does three things at once:",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Bothrops jararacussu snake close up, imposing venomous snake, multiple effects",
+      "strict": false,
+      "entidades": {
+        "org": null,
+        "lugar": null,
+        "pessoa": null,
+        "numero": 3
+      },
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "footage_video:slow motion of snake striking (miss)"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 77
+    },
+    {
+      "t_ini": 266.0,
+      "t_fim": 269.0,
+      "dur": 3.0,
+      "texto": "it dissolves muscle and skin in an expanding",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram of muscle and skin necrosis, venom dissolving tissue, expanding damage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:microscopic view of tissue damage (stylized)"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 78
+    },
+    {
+      "t_ini": 269.0,
+      "t_fim": 271.0,
+      "dur": 2.0,
+      "texto": "zone of necrosis,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "expanding zone of necrosis diagram, tissue damage spread",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:medical animation of spreading tissue damage"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 79
+    },
+    {
+      "t_ini": 271.0,
+      "t_fim": 273.0,
+      "dur": 2.0,
+      "texto": "it attacks the clotting system.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram of blood clotting system disruption, anticoagulant effect",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:medical animation of blood thinning"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 80
+    },
+    {
+      "t_ini": 273.0,
+      "t_fim": 275.0,
+      "dur": 2.0,
+      "texto": "Until the blood can't clot at all,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "blood no longer clotting diagram, hemorrhage, internal bleeding",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "stock:abstract blood flow animation"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 81
+    },
+    {
+      "t_ini": 275.0,
+      "t_fim": 277.0,
+      "dur": 2.0,
+      "texto": "and it makes fluid leak into the limb until the",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram of fluid leakage into limb, edema, swelling, compartment syndrome cause",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TextReveal",
+        "footage_video:medical animation of fluid accumulation"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 82
+    },
+    {
+      "t_ini": 277.0,
+      "t_fim": 282.0,
+      "dur": 5.0,
+      "texto": "pressure inside the muscle is high enough that surgeons have to cut the leg open to",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "stylized medical animation compartment syndrome fasciotomy, surgical incision leg, high pressure",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:diagram of fasciotomy procedure, compartment syndrome",
+        "stock:surgical tools laid out, sterile environment"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 83
+    },
+    {
+      "t_ini": 282.0,
+      "t_fim": 284.0,
+      "dur": 2.0,
+      "texto": "save it.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "jararacussu snake hidden in jungle undergrowth, dangerous predator, struggle for survival",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:surgical recovery room (abstract)",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 84
+    },
+    {
+      "t_ini": 284.0,
+      "t_fim": 287.0,
+      "dur": 3.0,
+      "texto": "The Ubiquitous Threat",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "The Ubiquitous Threat",
+        "number": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 85
+    },
+    {
+      "t_ini": 284.0,
+      "t_fim": 286.0,
+      "dur": 2.0,
+      "texto": "Number one: The jararaca",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bothrops jararaca snake close up fangs tongue",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao: technical diagram jararaca snake",
+        "stock: moody jungle floor leaves"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 86
+    },
+    {
+      "t_ini": 286.0,
+      "t_fim": 291.0,
+      "dur": 5.0,
+      "texto": "The most dangerous snake in Brazil is a snake most people have already walked past.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person walking rural path brazilian jungle subtle snake camouflage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: camouflaged jararaca snake on forest floor",
+        "ilustracao: diagram snake camouflage forest"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 87
+    },
+    {
+      "t_ini": 291.0,
+      "t_fim": 296.0,
+      "dur": 5.0,
+      "texto": "Bothrops jararaca is a modest animal, usually under a meter and a half, brown,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bothrops jararaca snake brown color close up scale detail",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao: jararaca snake size comparison diagram",
+        "stock: brazilian forest floor detail"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 88
+    },
+    {
+      "t_ini": 296.0,
+      "t_fim": 300.0,
+      "dur": 4.0,
+      "texto": "olive, gray, with a pattern of dark triangles along the flank that vanishes",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bothrops jararaca snake olive gray triangular pattern detail",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao: jararaca pattern detail diagram",
+        "stock: snake skin pattern macro"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 89
+    },
+    {
+      "t_ini": 300.0,
+      "t_fim": 303.0,
+      "dur": 3.0,
+      "texto": "completely against dead leaves.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jararaca snake camouflage dead leaves forest floor",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: dead leaves forest floor b-roll",
+        "ilustracao: diagram snake camouflage leaves"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 90
+    },
+    {
+      "t_ini": 303.0,
+      "t_fim": 308.0,
+      "dur": 5.0,
+      "texto": "It has no rattle, no bright warning colors, no size to make you look twice, and it",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "jararaca snake anatomy diagram showing lack of rattle, lack of bright warning colors, and relative size",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video: jararaca snake subtle appearance",
+        "stock: camouflaged snake forest floor"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 91
+    },
+    {
+      "t_ini": 308.0,
+      "t_fim": 313.0,
+      "dur": 5.0,
+      "texto": "is responsible for the overwhelming majority of snakebites in Brazil.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "CirclePercent",
+      "dados": {
+        "value": 90,
+        "label": "of snakebites in Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "overwhelming majority"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 92
+    },
+    {
+      "t_ini": 313.0,
+      "t_fim": 317.0,
+      "dur": 4.0,
+      "texto": "The Bothrops group accounts for roughly ninety percent of all recorded",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PercentageBarChart",
+      "dados": {
+        "value": 90,
+        "label": "Bothrops Group Envenomations",
+        "unit": "%"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "ninety percent"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 93
+    },
+    {
+      "t_ini": 317.0,
+      "t_fim": 322.0,
+      "dur": 5.0,
+      "texto": "envenomations, and in the south east, the jararaca is the animal behind most of",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region": "South East Brazil",
+        "text": "Jararaca: Leading Cause of Bites"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "south east"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 94
+    },
+    {
+      "t_ini": 322.0,
+      "t_fim": 327.0,
+      "dur": 5.0,
+      "texto": "them. The reason isn't aggression, it is address.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "brazilian rural landscape forest edge atmospheric",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video: jararaca moving through habitat",
+        "ilustracao: concept diagram snake habitat overlap"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 95
+    },
+    {
+      "t_ini": 327.0,
+      "t_fim": 332.0,
+      "dur": 5.0,
+      "texto": "The jararaca thrives exactly where humans change the landscape:",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "human altered landscape brazil rural area forest edge",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: aerial view human encroachment forest",
+        "ilustracao: diagram of habitat fragmentation"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 96
+    },
+    {
+      "t_ini": 332.0,
+      "t_fim": 334.0,
+      "dur": 2.0,
+      "texto": "field edges,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "agricultural field edge brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: tall grass field edge",
+        "ilustracao: diagram rural landscape field"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 97
+    },
+    {
+      "t_ini": 334.0,
+      "t_fim": 340.0,
+      "dur": 6.0,
+      "texto": "banana plantations, sugarcane, stone walls, wood piles beside a house, the tall",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "banana plantation brazil, sugarcane field brazil, rural stone wall, wood pile beside house rural",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: rural brazilian farm montage",
+        "ilustracao: infographic snake habitat elements"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 98
+    },
+    {
+      "t_ini": 340.0,
+      "t_fim": 342.0,
+      "dur": 2.0,
+      "texto": "grass at the border of a pasture.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "tall grass pasture border brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: rural pasture fence line grass",
+        "ilustracao: diagram pasture border habitat"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 99
+    },
+    {
+      "t_ini": 342.0,
+      "t_fim": 347.0,
+      "dur": 5.0,
+      "texto": "It hunts rodents, and rodents follow agriculture, so the snake follows the farm.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "rodent in brazil agriculture field, jararaca snake hunting rodent in farm setting",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: rodent in crop field, snake in farm field",
+        "ilustracao: food chain diagram agriculture ecosystem"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 100
+    },
+    {
+      "t_ini": 347.0,
+      "t_fim": 353.0,
+      "dur": 6.0,
+      "texto": "Most victims are men of working age, most bites are on the foot or the lower leg,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "IconLabels",
+      "dados": [
+        {
+          "icon": "male_worker_icon",
+          "label": "Working Age Men",
+          "value": "Most Victims"
+        },
+        {
+          "icon": "leg_icon",
+          "label": "Foot / Lower Leg",
+          "value": "Most Bites"
+        }
+      ],
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "most"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 101
+    },
+    {
+      "t_ini": 353.0,
+      "t_fim": 357.0,
+      "dur": 4.0,
+      "texto": "most happen between October and March, the hot and rainy months when the snakes are",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DateLocationOverlay",
+      "dados": {
+        "date_range": "October - March",
+        "label": "Peak Snake Activity & Bites"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "data": "October and March"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 102
+    },
+    {
+      "t_ini": 357.0,
+      "t_fim": 360.0,
+      "dur": 3.0,
+      "texto": "most active and the fields are most worked.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "brazilian farm fields rainy season activity moody",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video: farmers working rainy fields",
+        "ilustracao: weather and agriculture diagram"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 103
+    },
+    {
+      "t_ini": 360.0,
+      "t_fim": 365.0,
+      "dur": 5.0,
+      "texto": "The typical victim isn't an explorer in a remote jungle, he is a man walking to work",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "brazilian rural man walking to work path everyday life",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: rural worker walking",
+        "ilustracao: infographic typical snakebite victim"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 104
+    },
+    {
+      "t_ini": 365.0,
+      "t_fim": 366.0,
+      "dur": 1.0,
+      "texto": "with the wrong shoes.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "bare feet rural path or open-toed shoes rural path close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock: simple footwear rural setting",
+        "ilustracao: footwear protection diagram"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 105
+    },
+    {
+      "t_ini": 366.0,
+      "t_fim": 369.0,
+      "dur": 3.0,
+      "texto": "A Century of Antivenom",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "A Century of Antivenom",
+        "number": 5
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 106
+    },
+    {
+      "t_ini": 366.0,
+      "t_fim": 368.0,
+      "dur": 2.0,
+      "texto": "In eighteen ninety nine, an outbreak of plague",
+      "estrategia": "abstrato",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "1899 Santos plague outbreak Brazil historical photograph",
+      "strict": false,
+      "entidades": {
+        "numero": 1899
+      },
+      "fallback": [
+        "animacao:DateLocationOverlay",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 107
+    },
+    {
+      "t_ini": 368.0,
+      "t_fim": 371.0,
+      "dur": 3.0,
+      "texto": "in the port of Santos led the state",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Santos, Brazil",
+        "latitude": -23.9608,
+        "longitude": -46.3333
+      },
+      "busca": null,
+      "strict": true,
+      "entidades": {
+        "lugar": "Santos"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 108
+    },
+    {
+      "t_ini": 371.0,
+      "t_fim": 372.5,
+      "dur": 1.5,
+      "texto": "of Sao Paulo",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "region": "São Paulo State",
+        "country": "Brazil"
+      },
+      "busca": null,
+      "strict": true,
+      "entidades": {
+        "lugar": "Sao Paulo"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 109
+    },
+    {
+      "t_ini": 372.5,
+      "t_fim": 374.0,
+      "dur": 1.5,
+      "texto": "to found a laboratory.",
+      "estrategia": "abstrato",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage biological laboratory Brazil 1900s",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:technical diagram of laboratory equipment",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 110
+    },
+    {
+      "t_ini": 374.0,
+      "t_fim": 378.0,
+      "dur": 4.0,
+      "texto": "A young physician named Vital Brazil was put in charge, and he turned that",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "CharacterCard",
+      "dados": {
+        "name": "Vital Brazil",
+        "title": "Physician and Scientist",
+        "era": "1865-1950"
+      },
+      "busca": null,
+      "strict": true,
+      "entidades": {
+        "pessoa": "Vital Brazil"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 111
+    },
+    {
+      "t_ini": 378.0,
+      "t_fim": 380.0,
+      "dur": 2.0,
+      "texto": "laboratory toward a different problem:",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "vintage research lab equipment closeup moody",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:technical blueprint of a laboratory layout",
+        "animacao:TextReveal"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 112
+    },
+    {
+      "t_ini": 380.0,
+      "t_fim": 382.0,
+      "dur": 2.0,
+      "texto": "the snakes that were killing rural workers by",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "venomous snake moving in natural habitat Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:snake anatomy diagram",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 113
+    },
+    {
+      "t_ini": 382.0,
+      "t_fim": 385.0,
+      "dur": 3.0,
+      "texto": "the thousands. That single insight and the institute built around it",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "atmospheric shot of a large scientific institute building vintage Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:conceptual diagram of scientific progress",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 114
+    },
+    {
+      "t_ini": 385.0,
+      "t_fim": 388.0,
+      "dur": 3.0,
+      "texto": "changed the outcome of every bite on this list.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "serum injection close up medical",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:diagram of antivenom production",
+        "footage_video"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 115
+    },
+    {
+      "t_ini": 388.0,
+      "t_fim": 390.0,
+      "dur": 2.0,
+      "texto": "outcome of every bite on this list.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "medical success story concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_video"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 116
+    },
+    {
+      "t_ini": 390.0,
+      "t_fim": 392.5,
+      "dur": 2.5,
+      "texto": "Today, more than a hundred years later,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "time lapse of clouds passing modern city",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DateLocationOverlay",
+        "abstrato"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 117
+    },
+    {
+      "t_ini": 392.5,
+      "t_fim": 395.0,
+      "dur": 2.5,
+      "texto": "Brazil produces its own antivenom,",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "modern antivenom production facility Brazil",
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [
+        "ilustracao:diagram of antivenom manufacturing process",
+        "animacao:MultiCountryOutline"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 118
+    },
+    {
+      "t_ini": 395.0,
+      "t_fim": 397.0,
+      "dur": 2.0,
+      "texto": "distributes it through the public health system,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "supply chain logistics medical Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:network diagram of healthcare distribution",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 119
+    },
+    {
+      "t_ini": 397.0,
+      "t_fim": 399.0,
+      "dur": 2.0,
+      "texto": "and provides it free of charge to",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "medical care accessible concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_video"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 120
+    },
+    {
+      "t_ini": 399.0,
+      "t_fim": 402.0,
+      "dur": 3.0,
+      "texto": "anyone bitten anywhere in the country.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "country": "Brazil",
+        "highlight_regions": [
+          "all"
+        ]
+      },
+      "busca": null,
+      "strict": true,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 121
+    },
+    {
+      "t_ini": 402.0,
+      "t_fim": 407.0,
+      "dur": 5.0,
+      "texto": "Fatality across all snakebites in Brazil now sits below one percent.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "CirclePercent",
+      "dados": {
+        "percentage": 1,
+        "label": "Snakebite Fatality Rate in Brazil",
+        "unit": "%",
+        "description": "below one percent"
+      },
+      "busca": null,
+      "strict": true,
+      "entidades": {
+        "numero": "one percent",
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 122
+    },
+    {
+      "t_ini": 407.0,
+      "t_fim": 410.0,
+      "dur": 3.0,
+      "texto": "The venom didn't get weaker, the country got better.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "resilience human progress concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "atmosferico"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 123
+    },
+    {
+      "t_ini": 410.0,
+      "t_fim": 414.0,
+      "dur": 4.0,
+      "texto": "So here is what actually protects you, in order of how much it matters.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "moody b-roll of dense jungle path or forest floor, low light, slightly ominous",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "footage_video"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 124
+    },
+    {
+      "t_ini": 414.0,
+      "t_fim": 417.0,
+      "dur": 3.0,
+      "texto": "Boots - High boots above the ankle are the single most effective protection that",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person walking in high ankle hiking boots through tall grass or light vegetation, close up of boots",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 125
+    },
+    {
+      "t_ini": 417.0,
+      "t_fim": 427.0,
+      "dur": 10.0,
+      "texto": "exists because the overwhelming majority of bites land on the foot and the lower leg.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "human leg anatomy diagram highlighting foot and lower leg with 'snake bite common zone' text, demonstrating protection",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 126
+    },
+    {
+      "t_ini": 427.0,
+      "t_fim": 432.0,
+      "dur": 5.0,
+      "texto": "Light Never walk through vegetation at night without a flashlight, and never put a",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person walking at night with flashlight through dense vegetation, beam sweeping ground ahead",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 127
+    },
+    {
+      "t_ini": 432.0,
+      "t_fim": 435.0,
+      "dur": 3.0,
+      "texto": "hand where your eyes haven't gone first.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hand reaching into dark unseen space like under a log, then quickly recoiling",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao:ImageTextAnnotation"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 128
+    },
+    {
+      "t_ini": 435.0,
+      "t_fim": 439.0,
+      "dur": 4.0,
+      "texto": "Wood piles, holes, and the underside of logs are the three classic mistakes.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "quick cuts: rustic wood pile, dark hole in ground, underside of a fallen log in forest",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "ilustracao:IconGrid"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 129
+    },
+    {
+      "t_ini": 439.0,
+      "t_fim": 444.0,
+      "dur": 5.0,
+      "texto": "Speed. If you are bitten, immobilize the limb, keep it at the level of the heart,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "person demonstrating immobilizing a limb (arm or leg) after a hypothetical bite, keeping it still and low",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:ImageTextAnnotation",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 130
+    },
+    {
+      "t_ini": 444.0,
+      "t_fim": 447.0,
+      "dur": 3.0,
+      "texto": "and get to a hospital that stocks antivenom.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "ambulance with flashing lights rushing towards a hospital entrance, conveying urgency",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SatelliteLocationPin",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 131
+    },
+    {
+      "t_ini": 447.0,
+      "t_fim": 449.0,
+      "dur": 2.0,
+      "texto": "Speed is the whole game.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "urgent, fast-paced hospital corridor or emergency room activity b-roll, motion blur, medical theme",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_video"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 132
+    },
+    {
+      "t_ini": 449.0,
+      "t_fim": 454.0,
+      "dur": 5.0,
+      "texto": "And what you must never do: Do not cut the wound, do not suck the venom, do not",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "visual metaphor for 'do not cut wound' (e.g., sharp object next to skin, quickly removed); then 'do not suck venom' (mouth approaching wound, quickly recoiling)",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconGrid",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 133
+    },
+    {
+      "t_ini": 454.0,
+      "t_fim": 458.0,
+      "dur": 4.0,
+      "texto": "apply a tourniquet, do not use ice, alcohol, coffee grounds.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "hands applying (then removing) a tourniquet; quick cuts of ice, alcohol bottle, and coffee grounds on a surface",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:IconLabels",
+        "animacao:FiveTextListicle"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 134
+    },
+    {
+      "t_ini": 458.0,
+      "t_fim": 465.0,
+      "dur": 7.0,
+      "texto": "Or any of the folk remedies still repeated in the countryside, every one of them increases the damage.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "old, worn hands mixing traditional remedies or herbs, rustic setting, focus on 'ineffective' feel, implying harm",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 135
+    },
+    {
+      "t_ini": 465.0,
+      "t_fim": 474.0,
+      "dur": 9.0,
+      "texto": "The tourniquet in particular converts a survivable bite into an amputation with remarkable reliability.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "medical diagram showing limb with tourniquet and progression to severe tissue damage or amputation, warning symbols",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "footage_imagem"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 136
+    },
+    {
+      "t_ini": 474.0,
+      "t_fim": 476.0,
+      "dur": 2.0,
+      "texto": "Five snakes:",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "word": "FIVE SNAKES"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 137
+    },
+    {
+      "t_ini": 476.0,
+      "t_fim": 481.0,
+      "dur": 5.0,
+      "texto": "one that kills in silence, one that kills by size, one that kills your kidneys, one",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "quick cuts montage: silent striking snake, large snake (e.g., boa/python) constricting, a snake known for nephrotoxic venom (subtle visual cue)",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:IconGrid",
+        "footage_imagem"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 138
+    },
+    {
+      "t_ini": 481.0,
+      "t_fim": 486.0,
+      "dur": 5.0,
+      "texto": "that kills your limb, and one that kills more people than all of the others because",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "quick cuts montage: snake striking a limb (simulated/CGI), then a common snake species (e.g., viper) camouflaged in a rural field or pathway",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:IconGrid",
+        "footage_imagem"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 139
+    },
+    {
+      "t_ini": 486.0,
+      "t_fim": 490.0,
+      "dur": 4.0,
+      "texto": "it lives at the edge of the field where the work is.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close-up of a common agricultural viper species camouflaged at the edge of an agricultural field or rural pathway",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_imagem"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 140
+    },
+    {
+      "t_ini": 490.0,
+      "t_fim": 495.0,
+      "dur": 5.0,
+      "texto": "The doctor in me, Nasgerice, was right, the snake doesn't warn you, but now you have",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "QuoteCard",
+      "dados": {
+        "quote": "The snake doesn't warn you.",
+        "author": "Nasgerice",
+        "title": "Doctor"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "pessoa": "Nasgerice"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 141
+    },
+    {
+      "t_ini": 495.0,
+      "t_fim": 501.0,
+      "dur": 6.0,
+      "texto": "been warned.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "slow zoom out from a snake's eye, or a final warning shot of a snake disappearing into foliage, slightly ominous, end credit style",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 142
+    }
+  ]
+}

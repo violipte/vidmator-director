@@ -1,0 +1,4325 @@
+{
+  "secoes": [
+    {
+      "i": 0,
+      "titulo": "The Forest Makes No Exceptions",
+      "t_ini": 0.0,
+      "t_fim": 47.0,
+      "wash": "none",
+      "title_card": false
+    },
+    {
+      "i": 1,
+      "titulo": "#5 The Jaguar: Fear vs. Reality",
+      "t_ini": 47.0,
+      "t_fim": 173.0,
+      "wash": "teal",
+      "title_card": true
+    },
+    {
+      "i": 2,
+      "titulo": "#4 The Stingray: Invisible Impact",
+      "t_ini": 173.0,
+      "t_fim": 286.0,
+      "wash": "amarelo",
+      "title_card": true
+    },
+    {
+      "i": 3,
+      "titulo": "#3 The Wandering Spider: Antivenom's Edge",
+      "t_ini": 286.0,
+      "t_fim": 357.0,
+      "wash": "vermelho",
+      "title_card": true
+    },
+    {
+      "i": 4,
+      "titulo": "#2 The Lancehead: Proximity & Access",
+      "t_ini": 357.0,
+      "t_fim": 474.0,
+      "wash": "dourado",
+      "title_card": true
+    },
+    {
+      "i": 5,
+      "titulo": "#1 The Mosquito: The Silent Killer",
+      "t_ini": 474.0,
+      "t_fim": 548.0,
+      "wash": "azul_frio",
+      "title_card": true
+    },
+    {
+      "i": 6,
+      "titulo": "The True Dangers of the Amazon",
+      "t_ini": 548.0,
+      "t_fim": 595.0,
+      "wash": "teal",
+      "title_card": false
+    }
+  ],
+  "beats": [
+    {
+      "t_ini": 0.0,
+      "t_fim": 1.0,
+      "dur": 1.0,
+      "texto": "The forest does not attack you.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon rainforest canopy establishing shot, dense, green, majestic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 0
+    },
+    {
+      "t_ini": 1.0,
+      "t_fim": 5.0,
+      "dur": 4.0,
+      "texto": "It simply does not make exceptions.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dense amazon jungle floor detail, sunlight filtering through, untouched wilderness",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 1
+    },
+    {
+      "t_ini": 5.0,
+      "t_fim": 8.0,
+      "dur": 3.0,
+      "texto": "That is what a river nurse in Tefe wrote in her logbook after her",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Tefé",
+        "coordinates": [
+          -3.356944,
+          -64.708889
+        ],
+        "label": "Tefé, Amazonas, Brazil"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Tefe"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 2
+    },
+    {
+      "t_ini": 8.0,
+      "t_fim": 11.0,
+      "dur": 3.0,
+      "texto": "second season on the Solimoes.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MapRoute",
+      "dados": {
+        "route_name": "Solimões River",
+        "start_location": {
+          "name": "Iquitos, Peru",
+          "coordinates": [
+            -3.74917,
+            -73.25389
+          ]
+        },
+        "end_location": {
+          "name": "Manaus, Brazil",
+          "coordinates": [
+            -3.11903,
+            -60.02173
+          ]
+        },
+        "description": "Solimões River Section (Amazon)"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Solimoes"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 3
+    },
+    {
+      "t_ini": 11.0,
+      "t_fim": 15.0,
+      "dur": 4.0,
+      "texto": "She had treated a jaguar attack, a stingray wound, and forty three cases of",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon medical treatment clinic, jungle hospital patient care, wound dressing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao:diagram of first aid for animal bites/stings",
+        "stock:vintage medical logbook close up"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 4
+    },
+    {
+      "t_ini": 15.0,
+      "t_fim": 17.0,
+      "dur": 2.0,
+      "texto": "something far smaller.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "extreme close up mosquito biting skin, microscopic insect detail",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 5
+    },
+    {
+      "t_ini": 17.0,
+      "t_fim": 21.0,
+      "dur": 4.0,
+      "texto": "Only one of those three things filled her ward.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Jaguar Attacks",
+          "Stingray Wounds",
+          "Smaller Cases"
+        ],
+        "values": [
+          1,
+          1,
+          43
+        ],
+        "title": "Nurse's Cases (Example)",
+        "unit": "cases"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "three"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 6
+    },
+    {
+      "t_ini": 21.0,
+      "t_fim": 27.0,
+      "dur": 6.0,
+      "texto": "Every year the Amazon basin sends tens of thousands of people to emergency rooms,",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "Tens of Thousands",
+        "label": "Annual Amazon ER Visits",
+        "subtitle": "Attacks & Injuries"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "tens of thousands"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 7
+    },
+    {
+      "t_ini": 27.0,
+      "t_fim": 31.0,
+      "dur": 4.0,
+      "texto": "and almost none of them were attacked by what you are picturing right now.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dark amazon river at twilight, mysterious jungle mist, ominous atmosphere",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 8
+    },
+    {
+      "t_ini": 31.0,
+      "t_fim": 36.0,
+      "dur": 5.0,
+      "texto": "The animal that kills the most people in the rainforest weighs less than a paperclip.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "labels": [
+          "Deadliest Amazon Animal (e.g., mosquito)",
+          "Standard Paperclip"
+        ],
+        "values": [
+          0.0025,
+          1.0
+        ],
+        "unit": "grams",
+        "title": "Weight Comparison"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 9
+    },
+    {
+      "t_ini": 36.0,
+      "t_fim": 41.0,
+      "dur": 5.0,
+      "texto": "Today we are counting down the five deadliest animals of the Amazon, ranked by",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Amazon's 5 Deadliest Animals",
+        "subtitle": "Ranked by Real Impact"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "five"
+      },
+      "fallback": [],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 10
+    },
+    {
+      "t_ini": 41.0,
+      "t_fim": 46.0,
+      "dur": 5.0,
+      "texto": "the only measure that matters: how many people they actually kill and injure.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "vast amazon rainforest panorama, sunrise over jungle, peaceful but powerful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 11
+    },
+    {
+      "t_ini": 46.0,
+      "t_fim": 48.0,
+      "dur": 2.0,
+      "texto": "Not how frightening they look on a poster.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "close-up of intricate amazon plant life, hidden beauty, natural patterns",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 0,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "none"
+      },
+      "i": 12
+    },
+    {
+      "t_ini": 47.0,
+      "t_fim": 50.0,
+      "dur": 3.0,
+      "texto": "#5 The Jaguar: Fear vs. Reality",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "#5 The Jaguar: Fear vs. Reality",
+        "number": 1
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 13
+    },
+    {
+      "t_ini": 48.0,
+      "t_fim": 52.0,
+      "dur": 4.0,
+      "texto": "Number five will surprise you, because it is the one that gets all the",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar in jungle cinematic reveal",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:TitleDescription",
+        "atmosferico"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 14
+    },
+    {
+      "t_ini": 52.0,
+      "t_fim": 55.0,
+      "dur": 3.0,
+      "texto": "movie posters and almost none of the bodies.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar dramatic cinematic portrait",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SingleSentenceTextSlide",
+        "footage_video"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 15
+    },
+    {
+      "t_ini": 55.0,
+      "t_fim": 57.0,
+      "dur": 2.0,
+      "texto": "Number five.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "text": "Number five."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 16
+    },
+    {
+      "t_ini": 57.0,
+      "t_fim": 58.0,
+      "dur": 1.0,
+      "texto": "The jaguar.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar walking slow motion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 17
+    },
+    {
+      "t_ini": 58.0,
+      "t_fim": 62.0,
+      "dur": 4.0,
+      "texto": "It is the largest cat in the Americas, it can crush a skull with",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar hunting powerful bite",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "footage_imagem"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 18
+    },
+    {
+      "t_ini": 62.0,
+      "t_fim": 66.0,
+      "dur": 4.0,
+      "texto": "a single bite, and it has the strongest bite force relative to size of",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar skull anatomy bite force diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 19
+    },
+    {
+      "t_ini": 66.0,
+      "t_fim": 68.0,
+      "dur": 2.0,
+      "texto": "any big cat.",
+      "estrategia": "literal",
+      "tipo": "footage_imagem",
+      "componente": null,
+      "dados": null,
+      "busca": "close up jaguar fangs teeth",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 20
+    },
+    {
+      "t_ini": 68.0,
+      "t_fim": 69.0,
+      "dur": 1.0,
+      "texto": "It hunts caiman.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar hunting caiman",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 21
+    },
+    {
+      "t_ini": 69.0,
+      "t_fim": 71.0,
+      "dur": 2.0,
+      "texto": "It hunts anaconda.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar hunting anaconda",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 22
+    },
+    {
+      "t_ini": 71.0,
+      "t_fim": 74.0,
+      "dur": 3.0,
+      "texto": "And it almost never hunts you.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar avoiding human encounter camera trap",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 23
+    },
+    {
+      "t_ini": 74.0,
+      "t_fim": 79.0,
+      "dur": 5.0,
+      "texto": "Confirmed fatal jaguar attacks on humans in the Amazon average fewer than one per",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "<1",
+        "unit": "fatal attacks per year",
+        "description": "Jaguar attacks on humans in Amazon"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 24
+    },
+    {
+      "t_ini": 79.0,
+      "t_fim": 81.0,
+      "dur": 2.0,
+      "texto": "year across the entire basin.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Amazon Basin",
+        "coordinates": [
+          -4.0,
+          -65.0
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon Basin"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 25
+    },
+    {
+      "t_ini": 81.0,
+      "t_fim": 85.0,
+      "dur": 4.0,
+      "texto": "Compare that to the tens of thousands of envenomations in the same territory.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "BarChartComparison",
+      "dados": {
+        "title": "Annual Incidents in Amazon",
+        "labels": [
+          "Jaguar Fatalities",
+          "Envenomations"
+        ],
+        "values": [
+          0.5,
+          20000
+        ],
+        "unit": "incidents"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "tens of thousands"
+      },
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 26
+    },
+    {
+      "t_ini": 85.0,
+      "t_fim": 90.0,
+      "dur": 5.0,
+      "texto": "The jaguar is on this list not because of its body count, but because",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar observing from distance",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 27
+    },
+    {
+      "t_ini": 90.0,
+      "t_fim": 92.0,
+      "dur": 2.0,
+      "texto": "of what it teaches you about fear.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "dark mysterious Amazon jungle atmosphere",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 28
+    },
+    {
+      "t_ini": 92.0,
+      "t_fim": 97.0,
+      "dur": 5.0,
+      "texto": "We rank danger by teeth and size, and nature ranks it by frequency of",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "We rank danger by teeth and size",
+        "sentence2": "Nature ranks it by frequency of contact"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 29
+    },
+    {
+      "t_ini": 97.0,
+      "t_fim": 98.0,
+      "dur": 1.0,
+      "texto": "contact.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar hidden jungle foliage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:DisplayText"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 30
+    },
+    {
+      "t_ini": 98.0,
+      "t_fim": 101.0,
+      "dur": 3.0,
+      "texto": "A jaguar avoids you deliberately.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar disappearing into jungle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 31
+    },
+    {
+      "t_ini": 101.0,
+      "t_fim": 105.0,
+      "dur": 4.0,
+      "texto": "It hears you long before you arrive, and it leaves.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar stealthily moving away through undergrowth",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 32
+    },
+    {
+      "t_ini": 105.0,
+      "t_fim": 110.0,
+      "dur": 5.0,
+      "texto": "Almost every documented attack involves a cornered animal, a wounded animal, or a hunting",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar snarling cornered aggressive",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:BulletPointOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 33
+    },
+    {
+      "t_ini": 110.0,
+      "t_fim": 114.0,
+      "dur": 4.0,
+      "texto": "dog that started something its owner had to finish.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing human hunter dog jaguar interaction scenario",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:CaptionTextOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 34
+    },
+    {
+      "t_ini": 114.0,
+      "t_fim": 118.0,
+      "dur": 4.0,
+      "texto": "The jaguar is the most powerful predator here and the least relevant to your",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Most powerful predator",
+        "sentence2": "Least relevant to your survival"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 35
+    },
+    {
+      "t_ini": 118.0,
+      "t_fim": 119.0,
+      "dur": 1.0,
+      "texto": "survival.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "close up jaguar eyes looking alert",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 36
+    },
+    {
+      "t_ini": 119.0,
+      "t_fim": 124.0,
+      "dur": 5.0,
+      "texto": "Keep that gap in mind, because everything that follows is smaller than the last,",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "transition small amazon dangerous animals",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 37
+    },
+    {
+      "t_ini": 124.0,
+      "t_fim": 126.0,
+      "dur": 2.0,
+      "texto": "and deadlier than the last.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "text": "Smaller, and deadlier."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 38
+    },
+    {
+      "t_ini": 126.0,
+      "t_fim": 130.0,
+      "dur": 4.0,
+      "texto": "There is a second reason the jaguar belongs at the bottom of this list,",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar disappearing into dense forest",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:TitleDescription"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 39
+    },
+    {
+      "t_ini": 130.0,
+      "t_fim": 132.0,
+      "dur": 2.0,
+      "texto": "and it is uncomfortable.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dark misty Amazon jungle unsettling",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 40
+    },
+    {
+      "t_ini": 132.0,
+      "t_fim": 137.0,
+      "dur": 5.0,
+      "texto": "In the rare cases where a jaguar does kill a person, the investigation almost",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DetectiveBoard",
+      "dados": {
+        "title": "Jaguar Attack Investigation",
+        "nodes": [
+          {
+            "id": "attack",
+            "label": "Jaguar Kills Person"
+          },
+          {
+            "id": "investigation",
+            "label": "Investigation Reveals"
+          }
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 41
+    },
+    {
+      "t_ini": 137.0,
+      "t_fim": 142.0,
+      "dur": 5.0,
+      "texto": "always finds a human decision at the start of the chain.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "NodeHierarchy",
+      "dados": {
+        "title": "Attack Chain of Events",
+        "nodes": [
+          {
+            "id": "human_decision",
+            "label": "Human Decision",
+            "type": "root"
+          },
+          {
+            "id": "trigger_event",
+            "label": "Trigger Event",
+            "parent": "human_decision"
+          },
+          {
+            "id": "jaguar_attack",
+            "label": "Jaguar Attack",
+            "parent": "trigger_event"
+          }
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 42
+    },
+    {
+      "t_ini": 142.0,
+      "t_fim": 145.0,
+      "dur": 3.0,
+      "texto": "A wounded animal that escaped a hunter days earlier.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing wounded jaguar hunter interaction",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:CaptionTextOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 43
+    },
+    {
+      "t_ini": 145.0,
+      "t_fim": 149.0,
+      "dur": 4.0,
+      "texto": "A cattle ranch built at the edge of hunting territory, where the cats learned",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing cattle ranch jaguar hunting territory overlap",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:MapRoute",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 44
+    },
+    {
+      "t_ini": 149.0,
+      "t_fim": 152.0,
+      "dur": 3.0,
+      "texto": "that livestock is easier than peccary.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar stalking cattle at ranch edge",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SentenceHighlight"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 45
+    },
+    {
+      "t_ini": 152.0,
+      "t_fim": 156.0,
+      "dur": 4.0,
+      "texto": "A tourist operation that fed animals to guarantee a photograph.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing tourist feeding jaguar for photo",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:CaptionTextOverlay"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 46
+    },
+    {
+      "t_ini": 156.0,
+      "t_fim": 158.0,
+      "dur": 2.0,
+      "texto": "The forest did not change.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "pristine untouched Amazon rainforest",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 47
+    },
+    {
+      "t_ini": 158.0,
+      "t_fim": 161.0,
+      "dur": 3.0,
+      "texto": "The distance between us and it did.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "The forest did not change.",
+        "sentence2": "The distance between us and it did."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 48
+    },
+    {
+      "t_ini": 161.0,
+      "t_fim": 166.0,
+      "dur": 5.0,
+      "texto": "Keep that idea, because it is the quiet argument running underneath this entire ranking:",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon jungle hidden dangers cinematic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:TitleDescription"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 49
+    },
+    {
+      "t_ini": 166.0,
+      "t_fim": 171.0,
+      "dur": 5.0,
+      "texto": "almost every serious injury in the Amazon happens at a boundary we moved, not",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "map diagram showing human settlement expanding into Amazon wildlife boundary",
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon"
+      },
+      "fallback": [
+        "animacao:MapRoute",
+        "stock"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 50
+    },
+    {
+      "t_ini": 171.0,
+      "t_fim": 174.0,
+      "dur": 3.0,
+      "texto": "one the animal crossed.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jungle human settlement border",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 1,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 51
+    },
+    {
+      "t_ini": 173.0,
+      "t_fim": 176.0,
+      "dur": 3.0,
+      "texto": "#4 The Stingray: Invisible Impact",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "#4 The Stingray: Invisible Impact",
+        "number": 2
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 52
+    },
+    {
+      "t_ini": 174.0,
+      "t_fim": 175.0,
+      "dur": 1.0,
+      "texto": "Number four.",
+      "estrategia": "atmosferico",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "word": "FOUR"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 53
+    },
+    {
+      "t_ini": 175.0,
+      "t_fim": 177.0,
+      "dur": 2.0,
+      "texto": "The freshwater stingray.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "freshwater stingray swimming amazon river",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:freshwater stingray still",
+        "ilustracao:freshwater stingray scientific drawing"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 54
+    },
+    {
+      "t_ini": 177.0,
+      "t_fim": 180.0,
+      "dur": 3.0,
+      "texto": "It has no interest in you at all, which is exactly the problem.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon river shallow water peaceful, calm amazon river",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:amazon riverbed sandy",
+        "ilustracao:abstract danger concept"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 55
+    },
+    {
+      "t_ini": 180.0,
+      "t_fim": 186.0,
+      "dur": 6.0,
+      "texto": "Potamotrygon rays lie flat in the shallows, buried under a thin layer of sand,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Potamotrygon ray buried in sand shallow water",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Potamotrygon ray camouflaged in sand",
+        "ilustracao:Potamotrygon ray camouflage diagram"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 56
+    },
+    {
+      "t_ini": 186.0,
+      "t_fim": 189.0,
+      "dur": 3.0,
+      "texto": "in precisely the water where people walk.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "people walking in shallow amazon river water, legs in river",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:feet in shallow river water",
+        "stock:amazon riverbank people activity"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 57
+    },
+    {
+      "t_ini": 189.0,
+      "t_fim": 191.0,
+      "dur": 2.0,
+      "texto": "A ray does not chase.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "freshwater stingray motionless on riverbed",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:still stingray on sand",
+        "stock:calm river bottom"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 58
+    },
+    {
+      "t_ini": 191.0,
+      "t_fim": 193.0,
+      "dur": 2.0,
+      "texto": "It waits to be stepped on.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "POV feet walking into shallow murky amazon river water",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:shallow river water b-roll",
+        "ilustracao:foot stepping on invisible ray silhouette"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 59
+    },
+    {
+      "t_ini": 193.0,
+      "t_fim": 197.0,
+      "dur": 4.0,
+      "texto": "When your weight lands on its back, the tail comes up and drives a",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "stingray barb attack mechanism diagram, stingray tail striking foot diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:slow motion stingray tail movement",
+        "stock:foot stepping on unseen object in water"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 60
+    },
+    {
+      "t_ini": 197.0,
+      "t_fim": 202.0,
+      "dur": 5.0,
+      "texto": "serrated barb into your ankle or calf, and it injects venom through a groove",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "stingray barb serrations and venom groove diagram, venom delivery system stingray barb",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:close up stingray barb",
+        "stock:venom injection concept"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 61
+    },
+    {
+      "t_ini": 202.0,
+      "t_fim": 204.0,
+      "dur": 2.0,
+      "texto": "in that barb as it goes in.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "stingray barb entering skin diagram, venom injection process diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:simulated barb entry",
+        "stock:medical illustration of wound"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 62
+    },
+    {
+      "t_ini": 204.0,
+      "t_fim": 209.0,
+      "dur": 5.0,
+      "texto": "The pain is described by victims and by physicians in the same words: among",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person holding painful leg, person in pain grimacing, amazon river village clinic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video:medical professional examining leg wound",
+        "animacao:QuoteCard"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 63
+    },
+    {
+      "t_ini": 209.0,
+      "t_fim": 211.0,
+      "dur": 2.0,
+      "texto": "the worst that medicine sees.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "sentence": "Among the worst pain that medicine sees."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 64
+    },
+    {
+      "t_ini": 211.0,
+      "t_fim": 214.0,
+      "dur": 3.0,
+      "texto": "Barbs break off inside the wound.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "broken stingray barb embedded in tissue diagram, medical diagram barb in wound",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:x-ray barb in tissue",
+        "stock:medical tweezers removing splinter"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 65
+    },
+    {
+      "t_ini": 214.0,
+      "t_fim": 216.0,
+      "dur": 2.0,
+      "texto": "Tissue dies around the puncture.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "necrotic tissue around puncture wound diagram, skin necrosis illustration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:medical photo necrosis",
+        "stock:cellular damage concept"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 66
+    },
+    {
+      "t_ini": 216.0,
+      "t_fim": 221.0,
+      "dur": 5.0,
+      "texto": "In remote communities where the nearest clinic is eight hours by boat, that wound",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MapRoute",
+      "dados": {
+        "start": "Remote Amazon community",
+        "end": "Clinic",
+        "route_description": "8 hours by boat",
+        "region": "Amazon basin"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Amazon remote community",
+          "Clinic"
+        ]
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 67
+    },
+    {
+      "t_ini": 221.0,
+      "t_fim": 226.0,
+      "dur": 5.0,
+      "texto": "becomes an infection, and the infection becomes an amputation.",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "medical flowchart wound infection amputation progression",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:infected wound footage",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 68
+    },
+    {
+      "t_ini": 226.0,
+      "t_fim": 231.0,
+      "dur": 5.0,
+      "texto": "Brazil records thousands of stingray injuries a year, concentrated in exactly the river communities",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": "Thousands",
+        "unit": "stingray injuries",
+        "period": "a year",
+        "location": "Brazil river communities"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Brazil",
+          "river communities"
+        ]
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 69
+    },
+    {
+      "t_ini": 231.0,
+      "t_fim": 235.0,
+      "dur": 4.0,
+      "texto": "that have the least access to surgical care.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "location": "Amazon river communities",
+        "description": "Least access to surgical care"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Amazon river communities"
+        ]
+      },
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 70
+    },
+    {
+      "t_ini": 235.0,
+      "t_fim": 239.0,
+      "dur": 4.0,
+      "texto": "This is the pattern you will see repeat: in the Amazon, the danger is",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "establishing shot wide amazon river peaceful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:amazon river landscape",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 71
+    },
+    {
+      "t_ini": 239.0,
+      "t_fim": 241.0,
+      "dur": 2.0,
+      "texto": "rarely the animal alone.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "freshwater stingray in amazon river isolation",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:close up stingray",
+        "ilustracao:stingray icon isolated"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 72
+    },
+    {
+      "t_ini": 241.0,
+      "t_fim": 244.0,
+      "dur": 3.0,
+      "texto": "It is the animal plus the distance to a hospital.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Animal",
+        "sentence2": "Distance to Hospital",
+        "connection_word": "+"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 73
+    },
+    {
+      "t_ini": 244.0,
+      "t_fim": 248.0,
+      "dur": 4.0,
+      "texto": "And there is a detail about stingray injuries that explains why they are so",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon river water surface reflections, thoughtful mood",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:amazon river slow flow",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 74
+    },
+    {
+      "t_ini": 248.0,
+      "t_fim": 251.0,
+      "dur": 3.0,
+      "texto": "badly underestimated in the statistics.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "sentence": "Injuries are badly underestimated in statistics."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 75
+    },
+    {
+      "t_ini": 251.0,
+      "t_fim": 253.0,
+      "dur": 2.0,
+      "texto": "Almost nobody dies.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "PercentageBarChart",
+      "dados": {
+        "label": "Fatalities",
+        "percentage": "Almost 0%",
+        "value": 0.01,
+        "max_value": 100
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 76
+    },
+    {
+      "t_ini": 253.0,
+      "t_fim": 257.0,
+      "dur": 4.0,
+      "texto": "Fatalities are rare enough to be individually notable.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "calm amazon river scene, rare event concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:close up of stingray",
+        "animacao:TextReveal"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 77
+    },
+    {
+      "t_ini": 257.0,
+      "t_fim": 261.0,
+      "dur": 4.0,
+      "texto": "So the ray does not appear in any ranking of deadly animals, because we",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "ranking of deadly animals list diagram, deadliest animals chart",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BulletPointOverlay",
+        "stock:dangerous animal montage"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 78
+    },
+    {
+      "t_ini": 261.0,
+      "t_fim": 263.0,
+      "dur": 2.0,
+      "texto": "built those rankings around death.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "OneWordCallout",
+      "dados": {
+        "word": "DEATH"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 79
+    },
+    {
+      "t_ini": 263.0,
+      "t_fim": 267.0,
+      "dur": 4.0,
+      "texto": "But if you measure the thing that actually matters to a river community, which",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon river village daily life, people working in community",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:people fishing in Amazon",
+        "ilustracao:community icon"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 80
+    },
+    {
+      "t_ini": 267.0,
+      "t_fim": 272.0,
+      "dur": 5.0,
+      "texto": "is how many working adults lose weeks of income, or a foot, or the",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "BulletPointOverlay",
+      "dados": {
+        "points": [
+          "Lost income (weeks)",
+          "Lost foot (amputation)",
+          "Lost ability to stand in water"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 81
+    },
+    {
+      "t_ini": 272.0,
+      "t_fim": 278.0,
+      "dur": 6.0,
+      "texto": "ability to stand in water again, the ray outranks almost everything in this forest.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SingleSentenceTextSlide",
+      "dados": {
+        "sentence": "The ray outranks almost everything in this forest."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 82
+    },
+    {
+      "t_ini": 278.0,
+      "t_fim": 281.0,
+      "dur": 3.0,
+      "texto": "Danger is not only what ends a life.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Danger",
+        "sentence2": "Not only what ends a life."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 83
+    },
+    {
+      "t_ini": 281.0,
+      "t_fim": 286.0,
+      "dur": 5.0,
+      "texto": "It is also what quietly removes a person from their own.",
+      "estrategia": "abstrato",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon local person thoughtful, pensive river villager",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:person looking out at river at sunset",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 2,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "amarelo"
+      },
+      "i": 84
+    },
+    {
+      "t_ini": 286.0,
+      "t_fim": 289.0,
+      "dur": 3.0,
+      "texto": "#3 The Wandering Spider: Antivenom's Edge",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "#3 The Wandering Spider: Antivenom's Edge",
+        "number": 3
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 85
+    },
+    {
+      "t_ini": 286.0,
+      "t_fim": 288.0,
+      "dur": 2.0,
+      "texto": "Number three.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "Number Three"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 86
+    },
+    {
+      "t_ini": 288.0,
+      "t_fim": 291.0,
+      "dur": 3.0,
+      "texto": "The Brazilian wandering spider.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider close up, Phoneutria nigriventer",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Brazilian wandering spider still, Phoneutria nigriventer",
+        "ilustracao:Brazilian wandering spider scientific diagram"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 87
+    },
+    {
+      "t_ini": 291.0,
+      "t_fim": 295.0,
+      "dur": 4.0,
+      "texto": "Its own name in Portuguese, armadeira, means the one that arms itself, because of",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "TextReveal",
+      "dados": {
+        "text": "Armadeira: The one that arms itself",
+        "highlight": [
+          "Armadeira"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 88
+    },
+    {
+      "t_ini": 295.0,
+      "t_fim": 300.0,
+      "dur": 5.0,
+      "texto": "what it does when cornered: it lifts its front legs, exposes its fangs, and",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider defensive posture fangs, Phoneutria nigriventer aggressive",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Brazilian wandering spider aggressive stance",
+        "ilustracao:diagram of spider defensive posture"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 89
+    },
+    {
+      "t_ini": 300.0,
+      "t_fim": 302.0,
+      "dur": 2.0,
+      "texto": "stands its ground.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider standing its ground close up, Phoneutria nigriventer holding position",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Brazilian wandering spider static aggressive pose",
+        "stock:spider silhouette aggressive"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 90
+    },
+    {
+      "t_ini": 302.0,
+      "t_fim": 303.0,
+      "dur": 1.0,
+      "texto": "Most spiders flee.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "generic spider running away fast motion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:spider running away blurred",
+        "ilustracao:generic spider icon with arrow indicating movement"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 91
+    },
+    {
+      "t_ini": 303.0,
+      "t_fim": 305.0,
+      "dur": 2.0,
+      "texto": "This one advances.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider walking towards camera aggressive, Phoneutria nigriventer advancing",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:Brazilian wandering spider moving forward",
+        "stock:spider walking dark background menacing"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 92
+    },
+    {
+      "t_ini": 305.0,
+      "t_fim": 307.0,
+      "dur": 2.0,
+      "texto": "It does not build a web to wait in,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "empty spider web dew drops no spider",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:spider web close up",
+        "ilustracao:spider web diagram"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 93
+    },
+    {
+      "t_ini": 307.0,
+      "t_fim": 309.0,
+      "dur": 2.0,
+      "texto": "it walks, and at night",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider walking at night dark, Phoneutria nigriventer nocturnal movement",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock:spider walking in darkness",
+        "footage_imagem:spider silhouette at night"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 94
+    },
+    {
+      "t_ini": 309.0,
+      "t_fim": 312.0,
+      "dur": 3.0,
+      "texto": "it walks into the places we store things.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider in house storage area, Phoneutria nigriventer hidden",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "stock:dark cluttered storage room",
+        "footage_imagem:spider in cluttered corner"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 95
+    },
+    {
+      "t_ini": 312.0,
+      "t_fim": 314.0,
+      "dur": 2.0,
+      "texto": "Banana crates.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider near banana crates, Phoneutria nigriventer on fruit",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:banana crates in warehouse",
+        "ilustracao:spider on banana bunch"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 96
+    },
+    {
+      "t_ini": 314.0,
+      "t_fim": 316.0,
+      "dur": 2.0,
+      "texto": "Boots left by the door.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider inside shoe or boot by door, Phoneutria nigriventer hiding",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:boots by doorway",
+        "stock:spider hiding in dark boot"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 97
+    },
+    {
+      "t_ini": 316.0,
+      "t_fim": 318.0,
+      "dur": 2.0,
+      "texto": "Piles of firewood.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Brazilian wandering spider in wood pile firewood stack, Phoneutria nigriventer camouflage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:firewood stack close up",
+        "stock:spider crawling on log"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 98
+    },
+    {
+      "t_ini": 318.0,
+      "t_fim": 323.0,
+      "dur": 5.0,
+      "texto": "Its venom is a neurotoxin, and its effects are strange and violent enough that",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "neurotoxin affecting nerve cells diagram, Phoneutria venom action",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:neural network abstract animation",
+        "footage_imagem:microscopic view of nerve cells"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 99
+    },
+    {
+      "t_ini": 323.0,
+      "t_fim": 327.0,
+      "dur": 4.0,
+      "texto": "pharmacology took a serious interest: it disrupts nerve signalling in a way that causes",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "nerve signal disruption mechanism diagram, pharmacology research",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock:pharmacology lab research",
+        "footage_video:neurons firing and disrupting"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 100
+    },
+    {
+      "t_ini": 327.0,
+      "t_fim": 332.0,
+      "dur": 5.0,
+      "texto": "intense pain, sweating, and cardiovascular collapse in serious cases.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "person in intense pain sweating medical distress abstract, spider bite symptoms",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:emergency room monitor",
+        "ilustracao:human body diagram showing affected areas"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 101
+    },
+    {
+      "t_ini": 332.0,
+      "t_fim": 334.0,
+      "dur": 2.0,
+      "texto": "Brazil records...",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "countries": [
+          "Brazil"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": [
+          "Brazil"
+        ]
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 102
+    },
+    {
+      "t_ini": 334.0,
+      "t_fim": 336.0,
+      "dur": 2.0,
+      "texto": "...thousands of Phoneutria bites every year.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "sentence": "Thousands of Phoneutria bites every year.",
+        "highlight": [
+          "Thousands"
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "thousands"
+      },
+      "fallback": [],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 103
+    },
+    {
+      "t_ini": 336.0,
+      "t_fim": 342.0,
+      "dur": 6.0,
+      "texto": "The reason it sits at number three instead of number one is antivenom.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "medical solution abstract concept, antivenom significance",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "footage_imagem:antivenom vial"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 104
+    },
+    {
+      "t_ini": 342.0,
+      "t_fim": 344.0,
+      "dur": 2.0,
+      "texto": "It exists, it works,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "antivenom production medical lab",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem:antivenom vials on a production line",
+        "ilustracao:antivenom chemical structure"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 105
+    },
+    {
+      "t_ini": 344.0,
+      "t_fim": 347.0,
+      "dur": 3.0,
+      "texto": "and it is distributed through the public health system.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "public health system medical supply chain abstract, antivenom distribution",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:IconGrid",
+        "footage_imagem:medical supplies distribution center"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 106
+    },
+    {
+      "t_ini": 347.0,
+      "t_fim": 352.0,
+      "dur": 5.0,
+      "texto": "That single fact converts a potentially fatal bite into a bad night in a",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "medical care transformation abstract concept, patient recovery journey",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:BeforeAfterArrow",
+        "footage_video:hospital environment calming"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 107
+    },
+    {
+      "t_ini": 352.0,
+      "t_fim": 357.0,
+      "dur": 5.0,
+      "texto": "hospital, and it is the difference between a statistic and a tragedy.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "hospital room patient recovering hope, statistic vs tragedy concept",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "footage_imagem:empty hospital bed sunlight"
+      ],
+      "secao": 3,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "vermelho"
+      },
+      "i": 108
+    },
+    {
+      "t_ini": 357.0,
+      "t_fim": 360.0,
+      "dur": 3.0,
+      "texto": "#2 The Lancehead: Proximity & Access",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "#2 The Lancehead: Proximity & Access",
+        "number": 4
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 109
+    },
+    {
+      "t_ini": 357.0,
+      "t_fim": 358.0,
+      "dur": 1.0,
+      "texto": "Number two.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon jungle mist atmosphere",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:OneWordCallout",
+        "atmosferico"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 110
+    },
+    {
+      "t_ini": 358.0,
+      "t_fim": 359.0,
+      "dur": 1.0,
+      "texto": "The lancehead.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Bothrops atrox close up moving",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 111
+    },
+    {
+      "t_ini": 359.0,
+      "t_fim": 362.0,
+      "dur": 3.0,
+      "texto": "Bothrops atrox is the pit viper of the Amazon lowlands,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "location_name": "Amazon Lowlands",
+        "coords": [
+          -4.0,
+          -68.0
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon lowlands"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 112
+    },
+    {
+      "t_ini": 362.0,
+      "t_fim": 364.0,
+      "dur": 2.0,
+      "texto": "and it is responsible",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dense Amazon jungle floor POV",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 113
+    },
+    {
+      "t_ini": 364.0,
+      "t_fim": 369.0,
+      "dur": 5.0,
+      "texto": "for the overwhelming majority of snakebite envenomations across the basin.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Bothrops atrox hidden in leaves",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 114
+    },
+    {
+      "t_ini": 369.0,
+      "t_fim": 373.0,
+      "dur": 4.0,
+      "texto": "It is not the largest venomous snake here, and it is not the most",
+      "estrategia": "abstrato",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "comparison diagram snake size venom potency",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:BarChartComparison"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 115
+    },
+    {
+      "t_ini": 373.0,
+      "t_fim": 375.0,
+      "dur": 2.0,
+      "texto": "potent drop for drop.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "snake venom molecular structure diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 116
+    },
+    {
+      "t_ini": 375.0,
+      "t_fim": 378.0,
+      "dur": 3.0,
+      "texto": "It is simply everywhere people are.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon riverside village daily life",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 117
+    },
+    {
+      "t_ini": 378.0,
+      "t_fim": 382.0,
+      "dur": 4.0,
+      "texto": "It hunts rodents, rodents follow agriculture, and agriculture follows people,",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "amazonian small farm landscape drone",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 118
+    },
+    {
+      "t_ini": 382.0,
+      "t_fim": 384.0,
+      "dur": 2.0,
+      "texto": "so the lancehead follows",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Bothrops atrox moving through undergrowth",
+      "strict": true,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 119
+    },
+    {
+      "t_ini": 384.0,
+      "t_fim": 387.0,
+      "dur": 3.0,
+      "texto": "all three straight to the edge of the village.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon village edge jungle",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SatelliteLocationPin"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 120
+    },
+    {
+      "t_ini": 387.0,
+      "t_fim": 389.0,
+      "dur": 2.0,
+      "texto": "Its venom is haemotoxic.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "haemotoxic venom effect diagram blood cells",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 121
+    },
+    {
+      "t_ini": 389.0,
+      "t_fim": 393.0,
+      "dur": 4.0,
+      "texto": "It destroys tissue at the bite site and it attacks the blood's ability to",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "human hand snake bite tissue damage diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_video"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 122
+    },
+    {
+      "t_ini": 393.0,
+      "t_fim": 394.0,
+      "dur": 1.0,
+      "texto": "clot.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "blood clotting mechanism diagram",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 123
+    },
+    {
+      "t_ini": 394.0,
+      "t_fim": 400.0,
+      "dur": 6.0,
+      "texto": "Survivors frequently lose fingers, feet, entire limbs, not to the venom directly but to",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "diagram showing necrosis progression limb",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 124
+    },
+    {
+      "t_ini": 400.0,
+      "t_fim": 405.0,
+      "dur": 5.0,
+      "texto": "the necrosis that follows and the delay in reaching antivenom.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "antivenom vials medical clinic setting",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 125
+    },
+    {
+      "t_ini": 405.0,
+      "t_fim": 409.0,
+      "dur": 4.0,
+      "texto": "Most victims are working age men, bitten on the foot or the lower leg,",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazonian man working in field",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 126
+    },
+    {
+      "t_ini": 409.0,
+      "t_fim": 413.0,
+      "dur": 4.0,
+      "texto": "in the last hours of daylight, doing agricultural work.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazonian agriculture farming sunset",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:DateLocationOverlay"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 127
+    },
+    {
+      "t_ini": 413.0,
+      "t_fim": 419.0,
+      "dur": 6.0,
+      "texto": "That profile is almost identical across every part of the Amazon that keeps records,",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "regions": [
+          "Amazon Rainforest region"
+        ],
+        "highlight_color": "#FFD700"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 128
+    },
+    {
+      "t_ini": 419.0,
+      "t_fim": 424.0,
+      "dur": 5.0,
+      "texto": "which tells you something important: this is not a wilderness problem.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "deforested amazon landscape",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 129
+    },
+    {
+      "t_ini": 424.0,
+      "t_fim": 428.0,
+      "dur": 4.0,
+      "texto": "It is a labour problem wearing a wilderness costume.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "indigenous community work agriculture amazon",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 130
+    },
+    {
+      "t_ini": 428.0,
+      "t_fim": 432.0,
+      "dur": 4.0,
+      "texto": "There is one more thing about the lancehead that belongs here, because it is",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "moody amazon jungle atmosphere sunrise",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 131
+    },
+    {
+      "t_ini": 432.0,
+      "t_fim": 435.0,
+      "dur": 3.0,
+      "texto": "the closest thing this list has to good news.",
+      "estrategia": "atmosferico",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "light filtering through amazon canopy",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 132
+    },
+    {
+      "t_ini": 435.0,
+      "t_fim": 440.0,
+      "dur": 5.0,
+      "texto": "Antivenom for Bothrops exists because of work done in Brazil more than a century",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "country": "Brazil",
+        "label": "Brazil: Pioneer in Antivenom"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil"
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 133
+    },
+    {
+      "t_ini": 440.0,
+      "t_fim": 444.0,
+      "dur": 4.0,
+      "texto": "ago, and it is produced domestically to this day.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "antivenom production lab Brazil",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 134
+    },
+    {
+      "t_ini": 444.0,
+      "t_fim": 446.0,
+      "dur": 2.0,
+      "texto": "The bottleneck was never the science.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract laboratory science research equipment",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 135
+    },
+    {
+      "t_ini": 446.0,
+      "t_fim": 450.0,
+      "dur": 4.0,
+      "texto": "It is the cold chain, the boat, the fuel, the road that floods for",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon river boat transport difficult roads",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "ilustracao"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 136
+    },
+    {
+      "t_ini": 450.0,
+      "t_fim": 453.0,
+      "dur": 3.0,
+      "texto": "five months of the year.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "number": 5,
+        "label": "Months of Flooding"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 5
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 137
+    },
+    {
+      "t_ini": 453.0,
+      "t_fim": 457.0,
+      "dur": 4.0,
+      "texto": "Studies of snakebite outcomes in the Amazon keep landing on the same variable, and",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "scientific research papers medical outcomes",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 138
+    },
+    {
+      "t_ini": 457.0,
+      "t_fim": 460.0,
+      "dur": 3.0,
+      "texto": "it is not the size of the snake or the amount of venom.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "snake size and venom quantity comparison chart",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:BarChartComparison"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 139
+    },
+    {
+      "t_ini": 460.0,
+      "t_fim": 464.0,
+      "dur": 4.0,
+      "texto": "It is the number of hours between the bite and the vial.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "hourglass sand flowing quickly",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 140
+    },
+    {
+      "t_ini": 464.0,
+      "t_fim": 467.0,
+      "dur": 3.0,
+      "texto": "Under six, most people keep the limb.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "number": 6,
+        "label": "Hours to Antivenom"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 6
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 141
+    },
+    {
+      "t_ini": 467.0,
+      "t_fim": 470.0,
+      "dur": 3.0,
+      "texto": "Past twenty four, the arithmetic turns cruel.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "number": 24,
+        "label": "Hours to Antivenom"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": 24
+      },
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 142
+    },
+    {
+      "t_ini": 470.0,
+      "t_fim": 474.0,
+      "dur": 4.0,
+      "texto": "The deadliest thing about the lancehead is the map.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "DisplayText",
+      "dados": {
+        "start_label": "Village",
+        "end_label": "Clinic",
+        "route_type": "difficult_terrain"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 4,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "dourado"
+      },
+      "i": 143
+    },
+    {
+      "t_ini": 474.0,
+      "t_fim": 477.0,
+      "dur": 3.0,
+      "texto": "#1 The Mosquito: The Silent Killer",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "ChapterTitle",
+      "dados": {
+        "title": "#1 The Mosquito: The Silent Killer",
+        "number": 5
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 144
+    },
+    {
+      "t_ini": 474.0,
+      "t_fim": 475.0,
+      "dur": 1.0,
+      "texto": "Number one.",
+      "estrategia": "atmosferico",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "amazon rainforest establishing shot cinematic",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:OneWordCallout"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 145
+    },
+    {
+      "t_ini": 475.0,
+      "t_fim": 476.0,
+      "dur": 1.0,
+      "texto": "The mosquito.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito close up flying slow motion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 146
+    },
+    {
+      "t_ini": 476.0,
+      "t_fim": 479.0,
+      "dur": 3.0,
+      "texto": "Specifically Anopheles darlingi,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "Anopheles darlingi scientific illustration anatomical labels",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SubjectTitleCard",
+        "footage_video"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 147
+    },
+    {
+      "t_ini": 479.0,
+      "t_fim": 482.0,
+      "dur": 3.0,
+      "texto": "the primary malaria vector of the Amazon.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "RegionLocationText",
+      "dados": {
+        "location": "Amazon Region",
+        "label": "Primary Malaria Vector"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 148
+    },
+    {
+      "t_ini": 482.0,
+      "t_fim": 485.0,
+      "dur": 3.0,
+      "texto": "It weighs about two and a half milligrams.",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 2.5,
+        "unit": "milligrams",
+        "label": "Avg. Weight"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "numero": "two and a half milligrams"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 149
+    },
+    {
+      "t_ini": 485.0,
+      "t_fim": 489.0,
+      "dur": 4.0,
+      "texto": "It has no venom, no fangs, no strength, and it kills more people in",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito anatomy diagram highlighting mouthparts and body, showing absence of fangs/venom glands",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "footage_video"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 150
+    },
+    {
+      "t_ini": 489.0,
+      "t_fim": 496.0,
+      "dur": 7.0,
+      "texto": "this forest than every animal on this list combined, multiplied several times over.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "dangerous amazon animals compilation montage, jaguar snake caiman close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 151
+    },
+    {
+      "t_ini": 496.0,
+      "t_fim": 501.0,
+      "dur": 5.0,
+      "texto": "Brazil reports well over one hundred thousand malaria cases a year, and the overwhelming",
+      "estrategia": "dado",
+      "tipo": "animacao",
+      "componente": "NumberCountOverlay",
+      "dados": {
+        "number": 100000,
+        "unit": "malaria cases",
+        "label": "Brazil, per year"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Brazil",
+        "numero": "one hundred thousand"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 152
+    },
+    {
+      "t_ini": 501.0,
+      "t_fim": 504.0,
+      "dur": 3.0,
+      "texto": "majority of them come from the Amazon region.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "MultiCountryOutline",
+      "dados": {
+        "region": "Amazon rainforest",
+        "label": "Majority of malaria cases"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Amazon region"
+      },
+      "fallback": [],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 153
+    },
+    {
+      "t_ini": 504.0,
+      "t_fim": 507.0,
+      "dur": 3.0,
+      "texto": "Add dengue, add yellow fever,",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "dengue yellow fever transmission cycle diagram mosquito vector",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:IconGrid",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 154
+    },
+    {
+      "t_ini": 507.0,
+      "t_fim": 510.0,
+      "dur": 3.0,
+      "texto": "and the mosquito is not simply the deadliest animal",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito silhouette ominous impactful",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 155
+    },
+    {
+      "t_ini": 510.0,
+      "t_fim": 514.0,
+      "dur": 4.0,
+      "texto": "in the rainforest, it is the deadliest animal in human history.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "global health crisis abstract",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 156
+    },
+    {
+      "t_ini": 514.0,
+      "t_fim": 519.0,
+      "dur": 5.0,
+      "texto": "And here is the part that should genuinely change how you think about danger:",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "abstract mind-bending visual, conceptual shift in perspective",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "atmosferico",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 157
+    },
+    {
+      "t_ini": 519.0,
+      "t_fim": 522.0,
+      "dur": 3.0,
+      "texto": "it kills for the least dramatic reason imaginable.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito mundane behavior slow motion, mosquito normal resting close up",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 158
+    },
+    {
+      "t_ini": 522.0,
+      "t_fim": 524.0,
+      "dur": 2.0,
+      "texto": "It is not aggressive.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito resting peacefully close up, calm mosquito not aggressive",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 159
+    },
+    {
+      "t_ini": 524.0,
+      "t_fim": 526.0,
+      "dur": 2.0,
+      "texto": "It is not defending territory.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito isolated flying close up, solitary mosquito behavior",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 160
+    },
+    {
+      "t_ini": 526.0,
+      "t_fim": 527.0,
+      "dur": 1.0,
+      "texto": "It is not hunting you.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito flying indifferently past human, mosquito ignoring human",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 161
+    },
+    {
+      "t_ini": 527.0,
+      "t_fim": 532.0,
+      "dur": 5.0,
+      "texto": "It needs protein to produce eggs, and you are a convenient source.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito blood meal egg production scientific illustration",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_video",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 162
+    },
+    {
+      "t_ini": 532.0,
+      "t_fim": 535.0,
+      "dur": 3.0,
+      "texto": "There is no malice anywhere in the transaction.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito non-aggressive blood feeding close up, mosquito natural behavior neutral",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 163
+    },
+    {
+      "t_ini": 535.0,
+      "t_fim": 539.0,
+      "dur": 4.0,
+      "texto": "The jaguar at number five could kill you in four seconds and has essentially",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar hunting in rainforest, powerful jaguar moving stealthily",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:CharacterCard",
+        "stock"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 164
+    },
+    {
+      "t_ini": 539.0,
+      "t_fim": 540.0,
+      "dur": 1.0,
+      "texto": "never chosen to.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "jaguar resting peaceful, calm jaguar observing",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 165
+    },
+    {
+      "t_ini": 540.0,
+      "t_fim": 545.0,
+      "dur": 5.0,
+      "texto": "The mosquito at number one has no capacity to choose at all, and it",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito automatic movement close up, mosquito instinctual feeding",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "stock",
+        "animacao:SingleSentenceTextSlide"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 166
+    },
+    {
+      "t_ini": 545.0,
+      "t_fim": 548.0,
+      "dur": 3.0,
+      "texto": "has killed more people than every war ever fought.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "historical warfare montage destruction, global human conflict impact",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "footage_imagem",
+        "animacao:DualImpactSentence"
+      ],
+      "secao": 5,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "azul_frio"
+      },
+      "i": 167
+    },
+    {
+      "t_ini": 548.0,
+      "t_fim": 552.0,
+      "dur": 4.0,
+      "texto": "So what does that leave you with.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon rainforest mysterious atmospheric",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 168
+    },
+    {
+      "t_ini": 552.0,
+      "t_fim": 557.0,
+      "dur": 5.0,
+      "texto": "The forest ranks its dangers in exactly the opposite order to our instincts.",
+      "estrategia": "peca",
+      "tipo": "ilustracao",
+      "componente": null,
+      "dados": null,
+      "busca": "conceptual diagram danger perception inversion",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:DualImpactSentence",
+        "abstrato"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 169
+    },
+    {
+      "t_ini": 557.0,
+      "t_fim": 560.0,
+      "dur": 3.0,
+      "texto": "We fear what could destroy us in one motion.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon jaguar close up intimidating OR Amazon caiman attack footage",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 170
+    },
+    {
+      "t_ini": 560.0,
+      "t_fim": 565.0,
+      "dur": 5.0,
+      "texto": "an insect at dusk, a",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "mosquito flying close up amazon dusk OR insect swarm amazon sunset",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 171
+    },
+    {
+      "t_ini": 565.0,
+      "t_fim": 569.0,
+      "dur": 4.0,
+      "texto": "snake in the grass at the end of a work day, a ray under",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "snake hidden in amazon grass close up OR small amazon snake camouflaged",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 172
+    },
+    {
+      "t_ini": 569.0,
+      "t_fim": 573.0,
+      "dur": 4.0,
+      "texto": "a footprint in shallow water.",
+      "estrategia": "literal",
+      "tipo": "footage_video",
+      "componente": null,
+      "dados": null,
+      "busca": "stingray in shallow amazon water hidden OR foot in muddy amazon river",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "ilustracao",
+        "stock"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 173
+    },
+    {
+      "t_ini": 573.0,
+      "t_fim": 576.0,
+      "dur": 3.0,
+      "texto": "The nurse in Tefe was right.",
+      "estrategia": "entidade",
+      "tipo": "animacao",
+      "componente": "SatelliteLocationPin",
+      "dados": {
+        "location": "Tefe",
+        "coordinates": [
+          -3.35,
+          -64.72
+        ]
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": {
+        "lugar": "Tefe"
+      },
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 174
+    },
+    {
+      "t_ini": 576.0,
+      "t_fim": 578.0,
+      "dur": 2.0,
+      "texto": "The forest is not hunting anyone.",
+      "estrategia": "abstrato",
+      "tipo": "stock",
+      "componente": null,
+      "dados": null,
+      "busca": "Amazon rainforest serene peaceful wide shot",
+      "strict": false,
+      "entidades": null,
+      "fallback": [
+        "animacao:SentenceHighlight",
+        "atmosferico"
+      ],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 175
+    },
+    {
+      "t_ini": 578.0,
+      "t_fim": 585.0,
+      "dur": 7.0,
+      "texto": "It simply does not make exceptions for people who assumed the danger would look dangerous.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "SentenceHighlight",
+      "dados": {
+        "sentence": "The forest makes no exceptions for assumptions about danger.",
+        "highlight_word": "exceptions"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 176
+    },
+    {
+      "t_ini": 585.0,
+      "t_fim": 589.0,
+      "dur": 4.0,
+      "texto": "If you take one thing from this, take that: in the Amazon, the animals",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "TextReveal",
+      "dados": {
+        "text": "One crucial takeaway:"
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 177
+    },
+    {
+      "t_ini": 589.0,
+      "t_fim": 595.0,
+      "dur": 6.0,
+      "texto": "that fill the wards are never the animals on the posters.",
+      "estrategia": "abstrato",
+      "tipo": "animacao",
+      "componente": "DualImpactSentence",
+      "dados": {
+        "sentence1": "Animals that fill the wards...",
+        "sentence2": "...are never the animals on the posters."
+      },
+      "busca": null,
+      "strict": false,
+      "entidades": null,
+      "fallback": [],
+      "secao": 6,
+      "tier_teto": "web",
+      "tratamento": {
+        "wash": "teal"
+      },
+      "i": 178
+    }
+  ]
+}
