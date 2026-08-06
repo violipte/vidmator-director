@@ -116,6 +116,26 @@ no ambient sound"): som de rio/insetos melhora o clipe e ATRAPALHA o clone, porq
 Chatterbox aprende o ruído junto com o timbre. Um take de 8s rende ~6-7s de fala —
 passa, mas 2-3 takes concatenados clonam melhor.
 
+## AVATAR — doutrina de identidade (05/08, paga a caro)
+
+1. **A única prova de identidade é o log**: take vale como "do host" SÓ se o envio
+   registrou `menção @Nome: chip incluído no comando`. Rosto parecido NÃO é prova —
+   três clipes de "biólogo genérico de camisa de campo" passaram por Russel em
+   verificação visual (minha). Take de avatar sem chip confirmado **não é enviado**
+   (`enviar_prompt(exigir_mencao=True)`).
+2. **Casamento de slot de avatar exige cobertura ≥0.72** (`veo_zip`). Uma ONÇA
+   entrou a 0.5 no slot do host por tokens genéricos ("through/forest").
+3. **Nome só no chip** — no texto vira pronome (`montar_prompt_avatar` troca) e o
+   driver apaga o resíduo que o "Incluir no comando" deixa. Nome literal no prompt
+   = política de "pessoa famosa" (3 recusas até achar isso).
+4. **Fala: 80-90 chars / ≤16 palavras** (aprovado): 122 corta, 69 arrasta, 89 natural.
+5. **Janela da ilha ≥ duração da fala**: o "frase cortada" do v1 era a ILHA (6.8s)
+   cortando fala de 7.1s — o montador estende aparando o beat seguinte (footage) e,
+   se for animação, desliza o início dela.
+6. **Take silencioso**: áudio pedido POSITIVO ("gentle ambient sounds — birdsong,
+   insects...") — negação ("does not speak") derruba o gerador de áudio.
+7. Recusa de política → reenvio ganha variação de cauda automática (`_envios.json`).
+
 ## Gate no que foi gerado (`--regen N`, default 1)
 
 Material generativo era a única coisa da pipeline que entrava **sem checagem**, embora
