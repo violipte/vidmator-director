@@ -163,7 +163,13 @@ def main():
     _ord_secao = mapear_ordinal_por_secao(plano)   # "Number five" da NARRAÇÃO
     _video_e_lista = bool(re.search(
         r"(number|part|step|rule)\s+(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})",
-        " ".join((x.get("texto") or "") for x in plano.get("beats", [])).lower()))
+        " ".join((x.get("texto") or "") for x in plano.get("beats", [])).lower())) \
+        or any(re.search(r"#\s*\d", str(s.get("titulo") or ""))
+               for s in plano.get("secoes", []))
+    # 06/08: o vídeo da Austrália É uma contagem, mas esta detecção só olhava a
+    # narração e deixou passar — a seção de INTRO recebeu "CHAPTER 01" do contador
+    # interno, que é justamente o carimbo deslocado que a regra existe pra evitar.
+    # O "#N" que o diretor põe no título das seções é o mesmo sinal, mais confiável.
     chapter_style = "cinematic"
     sc_path = job / "style_card.json"
     if sc_path.exists():
@@ -1637,6 +1643,12 @@ def main():
                 for b in sorted(beats_out, key=lambda x: x["t_ini"]):
                     if b["t_ini"] < piso_busca or b.get("_seg"):
                         continue
+                    # 06/08: encurtar a janela no fim não bastava — a CADEIA já tinha
+                    # absorvido (e removido) o ChapterTitle do #3, deixando um buraco
+                    # de 3s onde o card devia estar. A ilha "antes do card" não pode
+                    # nem TOCAR na seção seguinte.
+                    if antes_card and b["t_ini"] >= s_av["t_ini"] - 0.05:
+                        break
                     livre_av = b.get("tipo") in ("stock", "footage_video") \
                         and not b.get("componente")
                     if not cadeia_av:
@@ -1658,6 +1670,13 @@ def main():
                 # duração REAL do clipe APARANDO o início do beat seguinte — desde que
                 # ele seja footage livre e sobre >=1.5s dele. Animação não encolhe.
                 alvo_fim = round(t0_av + d_clip - 0.15, 2)
+                # 06/08: a ilha "antes_do_card" NÃO pode atravessar a fronteira da
+                # seção — atravessou e ENGOLIU o ChapterTitle do #3 (o card sumiu do
+                # vídeo). Ela existe pra caber ANTES do card: termina onde a seção
+                # começa, e o clipe é aparado no corte em vez de invadir.
+                if antes_card:
+                    alvo_fim = min(alvo_fim, round(s_av["t_ini"], 2))
+                    t1_av = min(t1_av, alvo_fim)
                 if alvo_fim > t1_av:
                     prox = next((b for b in sorted(beats_out, key=lambda x: x["t_ini"])
                                  if abs(b["t_ini"] - t1_av) < 0.05 and b not in cadeia_av), None)
