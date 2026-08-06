@@ -152,7 +152,6 @@ def main():
     etapa("MUX áudio", ["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_cat), "-i", str(wav),
                         "-map", "0:v:0", "-map", "1:a:0", "-af", "apad",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-                        "-fflags", "+shortest", "-max_interleave_delta", "0",
                         "-t", str(_dur_video(video_cat)), str(origem)])
 
     destino = Path(a.saida) if a.saida else Path(a.job) / f"{curto}_final.mp4"

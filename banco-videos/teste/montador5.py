@@ -1853,6 +1853,22 @@ def main():
                 if saindo is not None:
                     saindo["trans_out"] = {"tipo": tipo5, "dur_f": TRANS_F}
                     trans_v5.append({"t": round(t_corte5, 2), "tipo": tipo5, "dur_f": TRANS_F})
+        # 06/08: o plano de blocos vem das SEÇÕES, mas a ilha INSERIDA na abertura
+        # é um beat FORA de qualquer seção (0-8s) — os blocos começavam em 8s e o
+        # render entregava 460s de vídeo contra 468,5s de áudio: os 8s do host
+        # ficavam de fora e o mux morria. Os blocos têm que cobrir a LINHA DO TEMPO
+        # inteira, não só o que está dentro de seção.
+        if blocos_v5 and beats_out:
+            ini_real = round(min(b["t_ini"] for b in beats_out), 2)
+            fim_real = round(max(b["t_fim"] for b in beats_out), 2)
+            if blocos_v5[0]["t_ini"] > ini_real + 0.01:
+                print(f"blocos: 1º estendido pra cobrir a ilha inserida "
+                      f"({blocos_v5[0]['t_ini']:.1f}s -> {ini_real:.1f}s)")
+                blocos_v5[0]["t_ini"] = ini_real
+            if blocos_v5[-1]["t_fim"] < fim_real - 0.01:
+                print(f"blocos: último estendido pra cobrir a ilha final "
+                      f"({blocos_v5[-1]['t_fim']:.1f}s -> {fim_real:.1f}s)")
+                blocos_v5[-1]["t_fim"] = fim_real
         print(f"blocos [v5]: {len(blocos_v5)} blocos | {len(trans_v5)} transições nativas")
 
         # ---- v5 F3: efeito CSS por beat — GRADE consistente por seção (rotação
