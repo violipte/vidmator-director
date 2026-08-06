@@ -42,6 +42,7 @@ import { SOCIAL_COMPS } from "../social/AcervoSocial";
 import { MAPAS_COMPS } from "../mapas/AcervoMapas";
 import { DUO_COMPS } from "../duo/AcervoDuo";
 import { LISTA_COMPS } from "../lista/AcervoListas";
+import { TITULO_COMPS } from "../titulo/PlaceTitleMassive";
 
 /* ============================================================
    MONTAGEM (Stage 4) — renderiza o montagem.json do montador.py:
@@ -58,7 +59,7 @@ const COMP_MAP: Record<string, React.FC<any>> = {
   DualImpactSentence,
   // almoxarifado 2.0 — 79 variações curadas (Diretor sorteia por ID no registry)
   ...TEXTO_COMPS, ...OVERLAY_COMPS, ...GRAFICOS_COMPS, ...IMAGEM_COMPS, ...SOCIAL_COMPS, ...MAPAS_COMPS,
-  ...DUO_COMPS, ...LISTA_COMPS,
+  ...DUO_COMPS, ...LISTA_COMPS, ...TITULO_COMPS,
 };
 
 const WASH: Record<string, string> = {

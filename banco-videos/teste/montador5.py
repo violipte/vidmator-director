@@ -1654,6 +1654,52 @@ def main():
             print(f"avatar FALHOU ({e_av}) — sem ilhas de apresentador")
             avatar_ilhas = []
 
+    # ---- TÍTULO DE ABERTURA (06/08, referência do Piter): o nome do lugar em letras
+    # gigantes sangrando pelas bordas, POR CIMA do footage — entra logo depois do hook.
+    # style_card["titulo_abertura"] = {"texto": "AUSTRALIA", "sub": "...", "dur": 6.0,
+    #                                  "depois_da_ilha": true}
+    # Toma um beat de footage EXISTENTE (não gasta tempo novo): vira o fundo do título.
+    ta = _SC.get("titulo_abertura") or {}
+    if ta.get("texto"):
+        try:
+            t_ini_alvo = 0.0
+            if ta.get("depois_da_ilha", True) and avatar_ilhas:
+                t_ini_alvo = max(i["t_fim"] for i in avatar_ilhas if i["t_ini"] < 30.0)
+            dur_t = float(ta.get("dur", 6.0))
+            # o beat de footage que começa no alvo (ou o 1º depois dele) vira o fundo
+            cand = [b for b in sorted(beats_out, key=lambda x: x["t_ini"])
+                    if b["t_ini"] >= t_ini_alvo - 0.05 and b.get("src")
+                    and not b.get("componente")]
+            if not cand:
+                print("titulo_abertura: nenhum beat de footage livre — pulado")
+            else:
+                b_t = cand[0]
+                # se o beat é curto demais pro título, estende comendo o seguinte
+                fim_alvo = round(b_t["t_ini"] + dur_t, 2)
+                if b_t["t_fim"] < fim_alvo:
+                    for bx in list(sorted(beats_out, key=lambda x: x["t_ini"])):
+                        if bx is b_t or bx["t_ini"] < b_t["t_fim"] - 0.05:
+                            continue
+                        if bx["t_fim"] <= fim_alvo + 0.05:
+                            beats_out.remove(bx)          # absorvido inteiro
+                        elif bx["t_ini"] < fim_alvo:
+                            bx["t_ini"] = fim_alvo        # aparado
+                            break
+                        else:
+                            break
+                    b_t["t_fim"] = fim_alvo
+                # tipo "animacao" é o único branch do Montagem5 que compõe
+                # componente POR CIMA de bg (footage vivo por baixo do título)
+                b_t["bg"] = b_t.get("src")
+                b_t["bg_nitido"] = True
+                b_t["tipo"] = "animacao"
+                b_t["componente"] = "PlaceTitleMassive"
+                b_t["props"] = {"texto": ta["texto"], "sub": ta.get("sub", "")}
+                print(f"titulo de abertura: '{ta['texto']}' "
+                      f"{b_t['t_ini']:.1f}-{b_t['t_fim']:.1f}s sobre {Path(str(b_t.get('src'))).name}")
+        except Exception as e_t:
+            print(f"titulo_abertura FALHOU ({e_t}) — seguindo sem ele")
+
     # ---- v5 F2: PLANO DE BLOCOS + TRANSIÇÕES NATIVAS (sobreposição viva) ----
     # Seções agrupadas em blocos de ~2; corte ENTRE blocos é sempre SECO (permite
     # render por blocos + concat). Cortes de seção DENTRO do bloco ganham transição

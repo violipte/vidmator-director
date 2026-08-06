@@ -47,6 +47,33 @@ ACOES_PRESENCA = [
     "kneels at the water's edge and studies the surface for movement in the {amb}, low angle, static tripod",
     "adjusts the strap of a field bag and checks the sky before moving on through the {amb}, medium wide shot",
 ]
+# 06/08 (Piter): "o avatar aparecendo em cenas aleatórias como se fosse footage de
+# REALITY, com alguém filmando ele caminhando, fazendo trilha". Estilo de série de
+# sobrevivência — a diferença não está na ação, está na CÂMERA: ela é operada por
+# alguém que anda junto, perde e reencontra o enquadramento. (O nome do programa de
+# TV NUNCA entra no prompt — mesma política de "pessoa famosa" que derrubou takes.)
+ACOES_REALITY = [
+    "pushes through dense scrub on a rough trail across the {amb}, branches brushing "
+    "past the lens as the operator follows a few steps behind",
+    "climbs over a rocky outcrop in the {amb}, using one hand for balance, the camera "
+    "operator scrambling up behind him and catching up at the top",
+    "wades across a shallow creek in the {amb}, boots in the water, testing each step, "
+    "handheld camera following from the bank",
+    "stops on the trail, turns back toward the operator and points off into the {amb} "
+    "before continuing on, run-and-gun handheld",
+    "crouches to check a track in the dirt of the {amb}, the operator moving in close "
+    "over his shoulder for the detail then pulling back out",
+    "walks a ridgeline in the {amb} with the wind picking up, the camera lagging behind "
+    "and swinging to catch him against the sky",
+    "shoulders his pack and sets off along a dry riverbed in the {amb}, the operator "
+    "walking backwards ahead of him, frame bouncing with the pace",
+    "shelters under a rock overhang in the {amb} as light rain falls, catching his "
+    "breath, camera handheld and close in the confined space",
+]
+_CAM_REALITY = ("Shot as observational survival-series field footage: single handheld "
+                "operator on foot, natural camera shake, occasional quick reframe and "
+                "refocus, no music, no interview setup")
+
 # 05/08 (print do Piter: "Falha ao gerar áudio"): pedir o áudio por NEGAÇÃO
 # ("does not speak, no narration") derruba o gerador de áudio. Enquadramento
 # POSITIVO: descrever o que o ambiente SOA, e a ausência de fala vira consequência.
@@ -114,8 +141,12 @@ def planejar(job, plano, aplicar=False):
     livres = [str(s["i"]) for s in secoes[1:-1] if str(s["i"]) not in ilhas]
     passo = max(1, len(livres) // max(1, n_meio))
     escolhidas = livres[::passo][:n_meio]
+    # "observacional" (default, host trabalhando) | "reality" (câmera acompanha a trilha)
+    reality = (av.get("estilo_presenca") or "observacional") == "reality"
+    banco = ACOES_REALITY if reality else ACOES_PRESENCA
+    cauda = f" {_CAM_REALITY}." if reality else ""
     for k, sec in enumerate(escolhidas):
-        acao = ACOES_PRESENCA[k % len(ACOES_PRESENCA)].format(amb=amb)
+        acao = banco[k % len(banco)].format(amb=amb) + cauda
         arq = f"av_meio_{k:02d}.mp4"
         lote.append({"i": i_neg, "tipo": "video", "arquivo": arq, "avatar": True,
                      "busca_original": f"host silent presence take {k}",

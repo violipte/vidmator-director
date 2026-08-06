@@ -1,4 +1,14 @@
 import { Composition } from "remotion";
+import { PlaceTitleMassive } from "./compositions/titulo/PlaceTitleMassive";
+import { AbsoluteFill, OffthreadVideo, staticFile } from "remotion";
+
+const ProvaTitulo: React.FC = () => (
+  <AbsoluteFill style={{ background: "#0a0b0f" }}>
+    <OffthreadVideo src={staticFile("jobs/amazonia_gen_mont/assets/b000__T0__veo.mp4")} muted loop
+      style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.62)" }} />
+    <PlaceTitleMassive texto="AUSTRALIA" sub="the five deadliest" />
+  </AbsoluteFill>
+);
 import { CtaCard, ctaCardSchema } from "./compositions/CtaCard";
 import { CrossfadeTransition } from "./compositions/CrossfadeTransition";
 import { SlideHorizontalTransition } from "./compositions/SlideHorizontalTransition";
@@ -161,6 +171,7 @@ export const Root: React.FC = () => {
   return (
     <>
       {/* Transições (cena A → cena B) */}
+      <Composition id="99-ProvaTitulo" component={ProvaTitulo} durationInFrames={195} fps={FPS} width={W} height={H} />
       <Composition id="01-CrossfadeTransition" component={CrossfadeTransition} durationInFrames={SHORT} fps={FPS} width={W} height={H} />
       <Composition id="02-SlideHorizontalTransition" component={SlideHorizontalTransition} durationInFrames={SHORT} fps={FPS} width={W} height={H} />
       <Composition id="03-WhipPanTransition" component={WhipPanTransition} durationInFrames={SHORT} fps={FPS} width={W} height={H} />
