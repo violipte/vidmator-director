@@ -164,16 +164,30 @@ def dispensar_avisos(page):
         _pausa(0.2, 0.4)
     except Exception:
         pass
+    # 06/08: "Fechar"/"Close" casa TAMBÉM com a seta de VOLTAR da coleção — clicar
+    # nela devolvia a página pro projeto no meio do lote (a guarda `garantir_dentro`
+    # vinha re-entrando a cada rajada por causa disto). Botão de navegação fica de
+    # fora: só dispensa o que está dentro de um diálogo/overlay.
+    url_antes = page.url
     for pat in (r"Comece j[aá]", r"Come[cç]ar", r"Got it", r"Entendi", r"Start",
                 r"Dismiss", r"Continuar", r"Fechar", r"Close", r"^OK$"):
         try:
             b = page.get_by_role("button", name=re.compile(pat, re.I)).first
+            if pat in (r"Fechar", r"Close"):
+                # aceita só se estiver DENTRO de um dialog/alertdialog
+                em_dialogo = page.get_by_role("dialog").locator(
+                    f'button:has-text("{pat}")').count() or page.get_by_role(
+                    "alertdialog").locator(f'button:has-text("{pat}")').count()
+                if not em_dialogo:
+                    continue
             if b.is_visible(timeout=700):
                 b.click(timeout=2000)
                 print(f"  aviso do Flow dispensado (~/{pat}/)")
                 _pausa(0.3, 0.6)
         except Exception:
             pass
+    if page.url != url_antes:
+        print(f"  !! dispensar_avisos NAVEGOU ({url_antes[-30:]} -> {page.url[-30:]})")
 
 
 def modo_atual(page):

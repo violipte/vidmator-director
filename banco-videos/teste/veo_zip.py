@@ -118,7 +118,8 @@ def main():
     ap.add_argument("--aplicar", action="store_true", help="copia de fato (default: só mostra)")
     ap.add_argument("--min-sim", type=float, default=0.12)
     ap.add_argument("--desde", default="",
-                    help="AAAAMMDD: ignora arquivos gerados ANTES desta data")
+                    help="AAAAMMDD[HHMM]: ignora o que foi gerado ANTES disso "
+                         "(precisão de minuto isola 2 jobs no MESMO dia)")
     a = ap.parse_args()
 
     pasta = Path(a.zip)
@@ -131,12 +132,13 @@ def main():
     # carrega o carimbo AAAAMMDDHHMM da geração: filtrar por ele isola o job SEM
     # depender de a coleção funcionar como pasta de destino.
     if a.desde:
-        corte = str(a.desde)[:8]
+        corte = re.sub(r"\D", "", str(a.desde))[:12]
+        n_dig = len(corte)
         def _stamp(f):
             m = re.search(r"_(\d{12})(?:_\d+)?$", f.stem)
-            return m.group(1)[:8] if m else None
+            return m.group(1)[:n_dig] if m else None
         antes = len(arquivos)
-        arquivos = [f for f in arquivos if (_stamp(f) or "99999999") >= corte]
+        arquivos = [f for f in arquivos if (_stamp(f) or "9" * n_dig) >= corte]
         print(f"janela: {antes - len(arquivos)} arquivos anteriores a {corte} ignorados")
     lote = json.loads(Path(a.lote).read_text(encoding="utf-8"))
     out = Path(a.out)
