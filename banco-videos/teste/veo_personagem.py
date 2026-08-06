@@ -103,15 +103,31 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     # excelente, teto de 90 aprovado"):
     #   122 chars -> CORTA no meio | 69 -> fala inteiro mas LENTO (VEO estica
     #   pra preencher os 8s) | 89 -> ritmo natural. Faixa boa: 80-90 chars.
-    if fala and (len(fala) > 90 or len(fala.split()) > 16):
+    # JANELA DE FALA — calibrada pelo Piter em produção (05 e 06/08):
+    #   122 chars -> CORTA no meio          | 69 -> fala LENTA demais
+    #   89 -> ritmo natural (aprovado)      | teto novo: 95
+    # 06/08: "cheguei o mais próximo possível de 90~95 caracteres, se não fica MUITO
+    # lento OU fica um silêncio bosta no final do clipe" — o VEO tem 8s pra
+    # preencher; fala curta ele estica ou deixa sobra morta. Curto demais agora
+    # AVISA (o silêncio final é aparado na montagem, mas ritmo lento não tem
+    # conserto depois).
+    # o teto de PALAVRAS é derivado do de chars (inglês ~5 chars/palavra): 95 chars
+    # cabem ~19 palavras. Um teto de 17 brigava com a régua do Piter, que é em CHARS.
+    if fala and (len(fala) > 95 or len(fala.split()) > 19):
         raise ValueError(f"fala do take longa demais ({len(fala)} chars / "
-                         f"{len(fala.split())} palavras; teto 90/16): {fala[:60]!r}")
+                         f"{len(fala.split())} palavras; teto 95/19): {fala[:60]!r}")
+    if fala and len(fala) < 78:
+        print(f"  !! fala curta ({len(fala)} chars) — o VEO vai esticar ou sobrar "
+              f"silêncio; a faixa boa é 88-95: {fala[:50]!r}")
     # 06/08: o corte em 900 chars decepava o FIM — e o fim é a FALA. Com o ambiente
     # e o figurino descritos por extenso (África), o take sairia MUDO e a arquitetura
     # de duas trilhas quebraria em silêncio: o host abre o vídeo sem dizer nada.
     # A fala é reservada primeiro; quem encolhe é o ESTILO, que é decoração.
-    cauda = (f". AUDIO ONLY (spoken by him, never written on screen): {fala.strip()}"
-             if fala else "")
+    # 06/08 (Piter): "o VEO só improvisa a fala quando o prompt fica ruim — coloca a
+    # frase entre aspas pra ferramenta entender mais fácil". Sem aspas o modelo lia a
+    # linha como DESCRIÇÃO e inventava o diálogo (no take da África ele abriu falando
+    # do "outback"). Entre aspas, vira citação literal.
+    cauda = (f'. He says, word for word: "{fala.strip()}"' if fala else "")
     fixo = ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
     cabeca = f"{ficha['mencao']} {acao.strip()}"
     folga = 900 - len(cauda) - len(fixo) - len(cabeca)

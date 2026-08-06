@@ -1602,11 +1602,13 @@ def main():
                 # 05/08 (Piter): ilha pode levar CTA junto — valor vira dict:
                 #   {"clip": "x.mp4", "cta": "SubscribeBellPulse", "props": {...}}
                 cta_comp, cta_props = None, {}
-                dub_txt, antes_card, ultimo, inserir = "", False, False, False
+                dub_txt, ilha_fala = "", ""
+                antes_card, ultimo, inserir = False, False, False
                 if isinstance(arq_av, dict):
                     cta_comp = arq_av.get("cta")
                     cta_props = arq_av.get("props") or {}
                     dub_txt = (arq_av.get("dub") or "").strip()
+                    ilha_fala = (arq_av.get("fala") or "").strip()
                     antes_card = bool(arq_av.get("antes_do_card"))
                     ultimo = bool(arq_av.get("ultimo_clipe"))
                     # 06/08: "inserir" = a ilha ACRESCENTA tempo (roteiro em 2
@@ -1626,6 +1628,26 @@ def main():
                         capture_output=True, text=True, timeout=30).stdout.strip() or 8)
                 except Exception:
                     d_clip = 8.0
+                # SILÊNCIO MORTO NO FIM (06/08, Piter: "ou aumenta a quantidade de
+                # fala ou corta o silêncio do final depois no vídeo"). O VEO entrega
+                # 8s fixos; fala de 5s deixa 3s de sobra parada. Acha o último
+                # silêncio que vai até o fim do clipe e encurta a ilha até lá.
+                if dub_txt or ilha_fala:
+                    try:
+                        err = subprocess.run(
+                            ["ffmpeg", "-i", str(src_av), "-af",
+                             "silencedetect=noise=-35dB:d=0.55", "-f", "null", "-"],
+                            capture_output=True, text=True, timeout=60).stderr or ""
+                        ini = [float(m) for m in re.findall(r"silence_start:\s*([\d.]+)", err)]
+                        fim = [float(m) for m in re.findall(r"silence_end:\s*([\d.]+)", err)]
+                        if ini and (not fim or max(ini) > max(fim)):
+                            util = round(max(ini) + 0.35, 2)
+                            if 2.0 < util < d_clip - 0.25:
+                                print(f"avatar: {src_av.name} — {d_clip - util:.1f}s de "
+                                      f"silêncio final aparados ({d_clip:.1f}s -> {util:.1f}s)")
+                                d_clip = util
+                    except Exception:
+                        pass
                 # 29/07: ilha absorve QUALQUER beat consecutivo que caiba INTEIRO na
                 # janela do clipe (só livres dava ilha de 3s e cortava a fala em 8s).
                 # 1º beat precisa ser livre; parcial não entra (sem encolher animação).

@@ -85,8 +85,11 @@ def main():
                     help="segundos entre rajadas (timer puro; DOM mente)")
     ap.add_argument("--rajada", type=int, default=0,
                     help="prompts por rajada (0 = automático: 8 vídeo / 6 imagem)")
-    ap.add_argument("--colher-cards", type=int, default=5,
-                    help="lote com <= N itens colhe card a card (evita baixar o projeto)")
+    ap.add_argument("--colher-cards", type=int, default=0,
+                    help="lote com <= N itens colhe card a card (0 = desligado). "
+                         "06/08: escrito sem sondar a UI e o botão de download NÃO "
+                         "aparece no hover do card (deve estar atrás do ⋮) — voltou "
+                         "0/6 em duas rodadas. Só religar depois de sondar de verdade.")
     ap.add_argument("--rajada-min", type=int, default=3,
                     help="piso da rajada quando o Flow reclamar de ritmo")
     a = ap.parse_args()
