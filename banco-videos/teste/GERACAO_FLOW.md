@@ -134,6 +134,15 @@ jobs (apostei nisso e estava errado).
 **Ordem obrigatória:** `garantir_modo` na RAIZ → entra pela carta → envia, com
 `garantir_dentro` antes de cada rajada.
 
+## ARMADILHAS SILENCIOSAS (falham sem erro no log)
+
+| armadilha | como se manifesta | guarda |
+|---|---|---|
+| **A fala não cabe no prompt** | `montar_prompt_avatar` cortava em 900 chars pelo FIM, e o fim é a fala. Com ambiente+figurino por extenso (África) o take sairia MUDO — geração "bem-sucedida", host abrindo o vídeo em silêncio | a fala é reservada primeiro; quem encolhe é o ESTILO. Não coube ⇒ levanta erro |
+| **Perfil de outra conta** | o seletor devolve um perfil sem login pro projeto; a página vem vazia e o erro sai como "botão '+' não encontrado — UI do Flow mudou" | `projetos.json[canal].perfil` — projeto é atado à CONTA, o driver não escolhe |
+| **CTA no lugar errado** | `secoes[len//2]` acertou por acidente na Austrália (2 seções de intro) e erraria na África | achar os itens pelo `#N` do título e pegar o TERCEIRO |
+| **Take velho re-casado** | a pasta de extração acumula os downloads do dia; nota empatada em 1.00 servia a cópia VELHA e o take regerado nunca entrava (frames idênticos ao corte anterior) | desempate pelo carimbo MAIS NOVO + extração limpa por rodada |
+
 ## ROTEIRO EM DUAS TRILHAS (06/08, desenho do Piter) — o modelo a partir daqui
 
 > "É melhor que o avatar tenha fala própria e o roteiro inicie considerando essa

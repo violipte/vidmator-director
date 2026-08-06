@@ -106,13 +106,21 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     if fala and (len(fala) > 90 or len(fala.split()) > 16):
         raise ValueError(f"fala do take longa demais ({len(fala)} chars / "
                          f"{len(fala.split())} palavras; teto 90/16): {fala[:60]!r}")
-    p = f"{ficha['mencao']} {acao.strip()}"
-    if estilo:
-        p += f". {estilo.strip()}"
-    p += ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
-    if fala:
-        p += f". AUDIO ONLY (spoken by him, never written on screen): {fala.strip()}"
-    p = p[:900]
+    # 06/08: o corte em 900 chars decepava o FIM — e o fim é a FALA. Com o ambiente
+    # e o figurino descritos por extenso (África), o take sairia MUDO e a arquitetura
+    # de duas trilhas quebraria em silêncio: o host abre o vídeo sem dizer nada.
+    # A fala é reservada primeiro; quem encolhe é o ESTILO, que é decoração.
+    cauda = (f". AUDIO ONLY (spoken by him, never written on screen): {fala.strip()}"
+             if fala else "")
+    fixo = ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
+    cabeca = f"{ficha['mencao']} {acao.strip()}"
+    folga = 900 - len(cauda) - len(fixo) - len(cabeca)
+    if estilo and folga > 20:
+        cabeca += f". {estilo.strip()[:folga - 2]}"
+    p = (cabeca + fixo + cauda)[:900]
+    if fala and fala.strip()[-12:] not in p:
+        raise ValueError(f"a FALA não coube no prompt (ação/ambiente longos demais): "
+                         f"{len(cabeca)} chars de cabeça")
     # 06/08 (Piter renomeou o host pra "Travesseiro" pra fugir da política de pessoa
     # famosa): com nome COMUM o vazamento deixa de ser risco de recusa e vira erro
     # VISÍVEL — "travesseiro" solto no texto faz o gerador desenhar um travesseiro na
