@@ -1,0 +1,18 @@
+{
+ "perfis": {
+  "chrome_profile": {
+   "conta": "",
+   "plano": "ultra",
+   "dono": "flow",
+   "canais": [
+    "AMZ"
+   ]
+  },
+  "chrome_profile_conta2": {
+   "conta": "",
+   "plano": "familia",
+   "dono": "editor",
+   "canais": []
+  }
+ }
+}
