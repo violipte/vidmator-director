@@ -50,6 +50,8 @@ def main():
     ap.add_argument("--max", type=int, default=0, help="limita o nº de prompts (piloto)")
     ap.add_argument("--modo", choices=["video", "imagem", "misto"], default=None,
                     help="sobrepõe o gen_modo do style_card")
+    ap.add_argument("--alvo-video", type=float, default=0.45,
+                    help="piso da fatia de VÍDEO no misto (0.45 = ~45%%)")
     ap.add_argument("--sem-reclass", action="store_true",
                     help="não reclassifica vídeo->imagem por movimento (misto)")
     a = ap.parse_args()
@@ -91,15 +93,37 @@ def main():
     # o resto vira still (mais nítido, instantâneo, 0 créd) e ganha movimento na
     # montagem (Ken Burns semântico / parallax). Quem já tem .mp4 no assets não muda.
     if modo == "misto" and not a.sem_reclass:
-        from veo_prompt import classificar_midia
+        from veo_prompt import pontuar_movimento
         cands = [b for b in brutos if b["tipo"] == "video"
                  and not (job / "assets" / f"b{b['i']:03d}.mp4").exists()]
         if cands:
-            novas = classificar_midia(cands)
-            n_re = sum(1 for m in novas if m == "imagem")
-            for b, m in zip(cands, novas):
-                b["tipo"] = m
-            print(f"reclassificação por movimento: {n_re}/{len(cands)} viram IMAGEM")
+            notas = pontuar_movimento(cands)
+            # O LLM ORDENA; o CORTE e' nosso (06/08). A regua ~50/50 do Piter virou
+            # controle daqui porque pedir a DECISAO ao modelo deixava o desempate da
+            # rubrica mandar: 18% de video no 1o lote da Australia.
+            #   nota <=2  NUNCA vira video (diagrama/mapa/estrutura ou caos ilegivel)
+            #   nota >=8  SEMPRE video (o movimento E' a cena), mesmo passando do alvo
+            #   3..7      preenche por ordem de nota ate bater o alvo
+            alvo = max(0.0, min(1.0, a.alvo_video))
+            _ids = {id(c) for c in cands}
+            # desconta so' o que JA' e' video fora dos candidatos (mp4 no assets) —
+            # os outros nao-candidatos sao imagem e nao entram na conta
+            ja_video = sum(1 for b in brutos if b["tipo"] == "video" and id(b) not in _ids)
+            n_alvo = int(round(len(brutos) * alvo)) - ja_video
+            fixos = [b for b, n in zip(cands, notas) if n >= 8]
+            meio = sorted([(n, k) for k, (b, n) in enumerate(zip(cands, notas))
+                           if 3 <= n <= 7], key=lambda x: -x[0])
+            escolhidos = {id(b) for b in fixos}
+            for _n, k in meio:
+                if len(escolhidos) >= n_alvo:
+                    break
+                escolhidos.add(id(cands[k]))
+            for b in cands:
+                b["tipo"] = "video" if id(b) in escolhidos else "imagem"
+            n_v = sum(1 for b in brutos if b["tipo"] == "video")
+            print(f"movimento: {len(fixos)} obrigatorios (nota>=8) + "
+                  f"{len(escolhidos) - len(fixos)} por alvo | mix final "
+                  f"{n_v}/{len(brutos)} video ({n_v / len(brutos):.0%})")
 
     print(f"modo={modo} | estilo='{estilo[:60]}...' | dirigindo {len(brutos)} planos...")
     prompts = dirigir(brutos, estilo, tema=tema)

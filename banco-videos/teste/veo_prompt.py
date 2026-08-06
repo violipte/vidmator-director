@@ -109,6 +109,24 @@ def dirigir(itens, estilo, tema="", lote=10):
     return out
 
 
+PONTUA_MOV = """You are planning the GENERATED shots of a documentary. For EACH shot,
+rate 0-10 how much REAL MOTION the shot needs to work — how much of its meaning is
+carried by the subject moving, rather than by composition, texture or information.
+
+10-8  the motion IS the shot: an animal striking, hunting or moving; water flowing
+      or breaking; one person performing a clear readable action; weather turning.
+7-5   a living subject or a live environment where movement helps, but the frame
+      would still read as a photograph.
+4-3   scene, place or object where stillness loses almost nothing.
+2-0   composition/texture/detail; scientific or anatomical diagrams; explanatory
+      structures; maps; and any scene whose motion would be COMPLEX or chaotic
+      (several agents, fast interaction) — generators garble those, and a sharp
+      still with camera movement beats mushy fake action.
+
+Judge each shot on its own merit. Do NOT try to balance the batch — the mix is
+decided downstream. Reply ONLY a JSON array of integers, same order. No markdown."""
+
+
 MOVIMENTO = """You are planning the GENERATED shots of a documentary. For each shot
 below, decide the medium (rubric refined by the channel owner, 05/08):
 - "video"  when the subject's OWN motion carries the meaning AND that motion is
@@ -136,6 +154,35 @@ _VERBOS_MOV = re.compile(
 def _parece_movimento(it):
     """Fallback determinístico quando o LLM não responde."""
     return bool(_VERBOS_MOV.search((it.get("busca") or "") + " " + (it.get("texto") or "")))
+
+
+def pontuar_movimento(itens, lote=25):
+    """Nota 0-10 de movimento essencial por shot (06/08).
+
+    Substituiu o binário `classificar_midia` no misto: pedir "video|still" entregava
+    ao LLM a DECISÃO junto com o julgamento, e o desempate da rubrica ("na dúvida,
+    still") derrubou a fatia de vídeo pra 18% no lote da Austrália. Agora o LLM só
+    ORDENA por necessidade de movimento e o CORTE é nosso — a régua ~50/50 do Piter
+    vira controle do `veo_lote`, não um pedido que o modelo pode ignorar."""
+    out = []
+    for ini in range(0, len(itens), lote):
+        parte = itens[ini:ini + lote]
+        linhas = [f'{k}. "{(it.get("busca") or it.get("busca_original") or "")[:90]}"'
+                  + (f' | narration: "{(it.get("texto") or "")[:70]}"' if it.get("texto") else "")
+                  for k, it in enumerate(parte, 1)]
+        resp = _pedir(PONTUA_MOV + "\n\nSHOTS:\n" + "\n".join(linhas))
+        vals = []
+        try:
+            m = re.search(r"\[.*\]", resp or "", re.S)
+            vals = [int(x) for x in json.loads(m.group(0))] if m else []
+        except Exception:
+            vals = []
+        for k, it in enumerate(parte):
+            v = vals[k] if k < len(vals) else None
+            if v is None:
+                v = 8 if _parece_movimento(it) else 4      # fallback determinístico
+            out.append(max(0, min(10, int(v))))
+    return out
 
 
 def classificar_midia(itens, lote=25):
