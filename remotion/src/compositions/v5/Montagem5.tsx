@@ -87,9 +87,11 @@ type AudioPlan = { trilhas: { arquivo: string; t_ini: number; t_fim: number; vol
   sfx: { arquivo: string; t: number; vol: number; dur: number }[] };
 type FxOverlay = { arquivo: string; t_ini: number; t_fim: number; modo: string; op: number; dur_s: number };
 type FxTrans = { t: number; tipo: string; arquivo?: string; pico_s?: number; dur_s?: number };
+type NarrSeg = { de: number; ate: number | null; em: number };
 type Mont = { fps: number; dur_s: number; audio: string; secoes: any[]; beats: Beat[];
   estilo?: string; audio_plan?: AudioPlan; fx_overlays?: FxOverlay[]; fx_trans?: FxTrans[];
-  avatar_ilhas?: { t_ini: number; t_fim: number }[] };
+  avatar_ilhas?: { t_ini: number; t_fim: number; inserir?: boolean }[];
+  narracao_segmentos?: NarrSeg[] };
 
 const isVid = (s: string) => /\.(mp4|webm|mov)$/i.test(s);
 
@@ -459,16 +461,31 @@ export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont
           <VeilFX fx={fx} />
         </Sequence>
       ))}
-      <Audio src={staticFile(mont.audio)}
-        volume={(f) => {
-          // AVATAR v3: narração DUCKA nas ilhas de apresentador (áudio nativo do clipe)
-          for (const il of mont.avatar_ilhas || []) {
-            const a = Math.round(il.t_ini * fps) - 3;
-            const b = Math.round(il.t_fim * fps) + 3;
-            if (f >= a && f <= b) return 0.06;
-          }
-          return 1;
-        }} />
+      {/* NARRAÇÃO — 06/08 (desenho do Piter): quando a ilha do host INSERE tempo, a
+          narração é cortada no ponto e retomada depois, em vez de tocar por baixo
+          dele. `narracao_segmentos` = [{de, ate, em}] em segundos da narração
+          original. Sem inserção, cai no <Audio> único de sempre (com duck). */}
+      {mont.narracao_segmentos?.length
+        ? mont.narracao_segmentos.map((sg, i) => (
+            <Sequence key={`nr${i}`} from={Math.round(sg.em * fps)}
+              durationInFrames={sg.ate == null
+                ? Math.max(1, Math.round((mont.dur_s - sg.em) * fps))
+                : Math.max(1, Math.round((sg.ate - sg.de) * fps))}>
+              <Audio src={staticFile(mont.audio)}
+                startFrom={Math.round(sg.de * fps)}
+                endAt={sg.ate == null ? undefined : Math.round(sg.ate * fps)} />
+            </Sequence>
+          ))
+        : <Audio src={staticFile(mont.audio)}
+            volume={(f) => {
+              // narração DUCKA nas ilhas que SOBREPÕEM (modelo antigo)
+              for (const il of mont.avatar_ilhas || []) {
+                const a = Math.round(il.t_ini * fps) - 3;
+                const b = Math.round(il.t_fim * fps) + 3;
+                if (f >= a && f <= b) return 0.06;
+              }
+              return 1;
+            }} />}
       {/* ESTILO v2 [REGRAS_VDM §5.3]: trilha por momento (fade in/out, volume BAIXO) + SFX */}
       {(mont.audio_plan?.trilhas || []).map((t, i) => {
         const durT = Math.max(1, Math.round((t.t_fim - t.t_ini) * fps));

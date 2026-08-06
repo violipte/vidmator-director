@@ -134,6 +134,44 @@ jobs (apostei nisso e estava errado).
 **Ordem obrigatória:** `garantir_modo` na RAIZ → entra pela carta → envia, com
 `garantir_dentro` antes de cada rajada.
 
+## ROTEIRO EM DUAS TRILHAS (06/08, desenho do Piter) — o modelo a partir daqui
+
+> "É melhor que o avatar tenha fala própria e o roteiro inicie considerando essa
+> intro do avatar. O mesmo com o CTA: sai do roteiro e aparece SOMENTE no avatar,
+> encaixado de forma natural."
+
+**Antes:** a narração era a espinha; a ilha do host SOBREPUNHA um trecho dela (voz
+duckada, host falando o mesmo texto). Daí o remendo, o descompasso labial e a
+legenda mostrando uma coisa enquanto ele dizia outra.
+
+**Agora:** narração e host são duas vozes COMPLEMENTARES do mesmo roteiro.
+
+| trilha | conteúdo | quem gera |
+|---|---|---|
+| host | intro + CTA meio + CTA final | VEO, com áudio nativo (lábios batem) |
+| narração | o corpo, **sem** a intro e **sem** CTA | Chatterbox |
+
+A ilha **INSERE** tempo: a narração para no ponto, o host fala o que é só dele, a
+narração retoma de onde parou. `montagem.json → narracao_segmentos [{de,ate,em}]`.
+Vídeo = narração + takes do host, e ninguém repete ninguém.
+
+**Ao escrever o roteiro:** não comece pela frase que o host vai dizer, e não escreva
+CTA nenhum. O roteiro começa como se a apresentação já tivesse acontecido.
+
+**Blindagem obrigatória — `veo_gate_fala.py`** (regera sempre que houver sujeira,
+regra do Piter). Por STT, em cada take:
+- diz a frase pedida? senão **fala TROCADA** (foi assim que a fala do CTA acabou no
+  slot da abertura);
+- termina a frase? senão **TRUNCADA**;
+- sobrou palavra DEPOIS da última palavra pedida? **LIXO** — é onde o VEO enfia o
+  nome do chip ("Travis Arewa" = Travesseiro). Medir por diferença de TAMANHO não
+  funciona: o STT come palavras no meio e o saldo fecha (a 1ª versão do gate
+  aprovou os dois takes sujos).
+
+`style_card.avatar.modo = "insercao"` (padrão) | `"dublagem"` (take mudo + voz
+clonada; sem risco de nome falado, mas os lábios não batem — só pra nicho onde o
+host é presença, não apresentador).
+
 ## AVATAR — a ficha é do VÍDEO, não do canal (06/08, regra do Piter)
 
 > "Coloca ele no ambiente do qual está fazendo o vídeo, com as roupas adequadas ao

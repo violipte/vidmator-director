@@ -79,6 +79,7 @@ def planejar(job, plano, aplicar=False):
     estilo = (sc.get("gen_estilo") or "cinematic documentary, natural light")[:200]
     amb = av.get("ambiente") or "surrounding environment"
     figurino = (av.get("figurino") or "").strip()
+    modo = (av.get("modo") or "insercao").strip()
     secoes = json.loads(Path(plano).read_text(encoding="utf-8")).get("secoes", [])
     if len(secoes) < 3:
         print("plano com poucas seções — planejador precisa de secoes[]")
@@ -88,16 +89,29 @@ def planejar(job, plano, aplicar=False):
     i_neg = -50
 
     def _take(arquivo, acao, fala, secao, cta=None, antes_do_card=False, ultimo=False):
-        """Um take MUDO + a fala que a montagem vai dublar por cima."""
+        """Um take do host. Dois modos, conforme `avatar.modo`:
+
+        "insercao" (padrão a partir de 06/08, desenho do Piter) — o VEO gera COM
+          fala (lábios batem), a fala é EXCLUSIVA do host (o roteiro narrado não a
+          contém) e a ilha ACRESCENTA tempo ao vídeo. O `veo_gate_fala` confere por
+          STT que o take diz exatamente a frase e regera se sobrar sujeira.
+        "dublagem" — take mudo + voz clonada por cima. Sem risco de o VEO falar o
+          nome do chip, mas os lábios não batem. Serve pra nicho onde o host é só
+          presença; não serve pra canal onde ele apresenta de verdade.
+        """
         nonlocal i_neg
+        corpo = (f"{acao}. {('Wearing ' + figurino + '. ') if figurino else ''}"
+                 f"{_ENQUADRA}. {_ancora(amb)}. {_SEM_SET}")
+        if modo != "insercao":
+            corpo += f". {_AMBIENTE}"
         lote.append({"i": i_neg, "tipo": "video", "arquivo": arquivo, "avatar": True,
                      "busca_original": f"host take {arquivo}",
                      "prompt": montar_prompt_avatar(
-                         ficha, f"{acao}. {('Wearing ' + figurino + '. ') if figurino else ''}"
-                                f"{_ENQUADRA}. {_ancora(amb)}. {_AMBIENTE}. {_SEM_SET}",
-                         estilo=estilo, fala="")})
+                         ficha, corpo, estilo=estilo,
+                         fala=(fala if modo == "insercao" else ""))})
         i_neg -= 1
-        ilha = {"clip": arquivo, "dub": fala}
+        ilha = ({"clip": arquivo, "fala": fala, "inserir": True}
+                if modo == "insercao" else {"clip": arquivo, "dub": fala})
         if cta:
             ilha["cta"] = cta
             ilha["props"] = {}
@@ -137,11 +151,12 @@ def planejar(job, plano, aplicar=False):
 
     out = job / "_avatar_plan.json"
     out.write_text(json.dumps(lote, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{len(lote)} takes (MUDOS, dublados na montagem) -> {out.name}")
+    print(f"{len(lote)} takes [modo={modo}] -> {out.name}")
     for k, v in ilhas.items():
         marca = "ANTES DO CARD" if v.get("antes_do_card") else (
             "ÚLTIMO CLIPE" if v.get("ultimo_clipe") else "abertura")
-        print(f"  seção {k}: {v['clip']:<18} [{marca}] dub={v['dub'][:52]!r}")
+        txt = v.get("fala") or v.get("dub") or ""
+        print(f"  seção {k}: {v['clip']:<18} [{marca}] {txt[:50]!r}")
     if aplicar:
         sc["avatar"]["ilhas"] = ilhas
         (job / "style_card.json").write_text(json.dumps(sc, ensure_ascii=False, indent=1),

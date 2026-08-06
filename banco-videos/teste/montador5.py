@@ -1602,13 +1602,17 @@ def main():
                 # 05/08 (Piter): ilha pode levar CTA junto — valor vira dict:
                 #   {"clip": "x.mp4", "cta": "SubscribeBellPulse", "props": {...}}
                 cta_comp, cta_props = None, {}
-                dub_txt, antes_card, ultimo = "", False, False
+                dub_txt, antes_card, ultimo, inserir = "", False, False, False
                 if isinstance(arq_av, dict):
                     cta_comp = arq_av.get("cta")
                     cta_props = arq_av.get("props") or {}
                     dub_txt = (arq_av.get("dub") or "").strip()
                     antes_card = bool(arq_av.get("antes_do_card"))
                     ultimo = bool(arq_av.get("ultimo_clipe"))
+                    # 06/08: "inserir" = a ilha ACRESCENTA tempo (roteiro em 2
+                    # trilhas: o host tem fala própria e a narração não a repete).
+                    # Sem a flag, segue o modelo antigo de sobreposição.
+                    inserir = bool(arq_av.get("inserir"))
                     arq_av = arq_av["clip"]
                 src_av = ab / arq_av
                 s_av = next((s for s in secoes if s["i"] == int(sec_s)), None)
@@ -1639,6 +1643,36 @@ def main():
                     piso_busca = s_av["t_ini"] - d_clip - 0.3
                 else:
                     piso_busca = s_av["t_ini"] - 0.1
+                # MODO INSERÇÃO: em vez de comer beats, a ilha ABRE espaço e empurra
+                # todo o resto pra frente. O host fala o que é só dele (o roteiro já
+                # nasce sem esse texto), então nada de narração é perdido.
+                if inserir:
+                    t_ins = round(s_av["t_ini"] if not ultimo
+                                  else max(b["t_fim"] for b in beats_out), 2)
+                    d_ins = round(d_clip, 2)
+                    for bx in beats_out:
+                        if bx["t_ini"] >= t_ins - 0.01:
+                            bx["t_ini"] = round(bx["t_ini"] + d_ins, 2)
+                            bx["t_fim"] = round(bx["t_fim"] + d_ins, 2)
+                    for sx in secoes:
+                        if sx["t_ini"] >= t_ins - 0.01:
+                            sx["t_ini"] = round(sx["t_ini"] + d_ins, 2)
+                        if sx["t_fim"] > t_ins - 0.01:
+                            sx["t_fim"] = round(sx["t_fim"] + d_ins, 2)
+                    if not (dest / "avatar" / src_av.name).exists():
+                        shutil.copy2(src_av, dest / "avatar" / src_av.name)
+                    novo = {"i": 9000 + len(avatar_ilhas), "t_ini": t_ins,
+                            "t_fim": round(t_ins + d_ins, 2), "tipo": "avatar",
+                            "tier": 0, "watermark": False, "secao": int(sec_s),
+                            "src": f"jobs/{a.nome}/avatar/{src_av.name}",
+                            "componente": cta_comp, "props": cta_props}
+                    beats_out.append(novo)
+                    avatar_ilhas.append({"t_ini": t_ins, "t_fim": novo["t_fim"],
+                                         "inserir": True})
+                    print(f"avatar [{av_cfg.get('persona', '?')}]: INSERIDO em "
+                          f"{t_ins:.1f}s (+{d_ins:.1f}s) — {src_av.name}")
+                    continue
+
                 cadeia_av = []
                 for b in sorted(beats_out, key=lambda x: x["t_ini"]):
                     if b["t_ini"] < piso_busca or b.get("_seg"):
@@ -1852,6 +1886,44 @@ def main():
                 n_k5 += 1
             print(f"karaoke [v5]: {n_k5} beats legendados")
 
+    # ---- MODELO DE INSERÇÃO (06/08, desenho do Piter) ---------------------------
+    # "É melhor que o avatar tenha fala própria e o roteiro inicie considerando essa
+    #  intro do avatar. O mesmo com o CTA: sai do roteiro e aparece SOMENTE no avatar,
+    #  encaixado de forma natural."
+    #
+    # Até aqui a narração era a espinha e a ilha do host SOBREPUNHA um trecho dela
+    # (narração duckada, host falando o mesmo texto) — daí o remendo e o descompasso.
+    # Agora a ilha ACRESCENTA tempo: a narração PARA no ponto de inserção, o host
+    # fala o que é só dele, e a narração RETOMA de onde parou. Vídeo = narração +
+    # takes do host, e ninguém repete ninguém.
+    #
+    # `narracao_segmentos` diz ao Remotion: toque a narração de `de` a `ate`,
+    # posicionando em `em` na linha do tempo. Sem inserção, é um segmento só.
+    ilhas_ins = sorted([i for i in avatar_ilhas if i.get("inserir")],
+                       key=lambda x: x["t_ini"])
+    narr_segs = []
+    if ilhas_ins:
+        desloc, cursor_narr, cursor_tl = 0.0, 0.0, 0.0
+        for il in ilhas_ins:
+            t_corte = round(il["t_ini"] - desloc, 3)      # ponto NA NARRAÇÃO original
+            d_ilha = round(il["t_fim"] - il["t_ini"], 3)
+            narr_segs.append({"de": round(cursor_narr, 3), "ate": round(t_corte, 3),
+                              "em": round(cursor_tl, 3)})
+            cursor_narr = t_corte
+            cursor_tl = round(t_corte + desloc + d_ilha, 3)
+            desloc = round(desloc + d_ilha, 3)
+        # fim REAL da narração = fim da linha do tempo menos tudo que foi inserido
+        fim_narr = round(max(x["t_fim"] for x in beats_out) - desloc, 3)
+        # a cauda só existe se ainda houver narração depois do último corte — com o
+        # CTA final inserido no FIM, não há, e um segmento vazio faria o Remotion
+        # abrir um <Audio> começando além do arquivo.
+        if fim_narr - cursor_narr > 0.3:
+            narr_segs.append({"de": round(cursor_narr, 3), "ate": None,
+                              "em": round(cursor_tl, 3)})
+        narr_segs = [s for s in narr_segs if s["ate"] is None or s["ate"] - s["de"] > 0.05]
+        print(f"inserção: {len(ilhas_ins)} ilha(s) do host acrescentam "
+              f"{desloc:.1f}s — narração em {len(narr_segs)} segmento(s)")
+
     dur = max(x["t_fim"] for x in beats_out) + 0.5
     mont = {"fps": 30, "width": 1920, "height": 1080, "dur_s": round(dur, 2),
             "audio": f"jobs/{a.nome}/audio.mp3",
@@ -1867,6 +1939,8 @@ def main():
         mont["fx_trans"] = fx_trans
     if avatar_ilhas:
         mont["avatar_ilhas"] = avatar_ilhas
+    if narr_segs:
+        mont["narracao_segmentos"] = narr_segs
     if blocos_v5:
         mont["blocos"] = blocos_v5
     if trans_v5:
