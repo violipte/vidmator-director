@@ -7356,6 +7356,22 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_avatar_plan",
+      "label": "veo_avatar_plan.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_avatar_plan_planejar",
+      "label": "planejar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_ciclo",
       "label": "veo_ciclo.py",
       "file_type": "code",
@@ -7820,6 +7836,54 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_paralelo",
+      "label": "veo_paralelo.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_paralelo_perfis_livres",
+      "label": "perfis_livres()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_paralelo_fatiar",
+      "label": "fatiar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_paralelo_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L52",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_paralelo_rationale_33",
+      "label": "Todos os perfis LIVRES e logados (não só o primeiro).",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L33",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_paralelo_rationale_44",
+      "label": "Distribui em ROUND-ROBIN, não em blocos: se um perfil cair no meio, o     prejuí",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_personagem",
       "label": "veo_personagem.py",
       "file_type": "code",
@@ -7888,7 +7952,7 @@
       "label": "criar_personagem()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L97",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -7896,7 +7960,7 @@
       "label": "garantir_personagem()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L179",
+      "source_location": "L200",
       "_origin": "ast"
     },
     {
@@ -7940,19 +8004,19 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_personagem_rationale_98",
+      "id": "banco_videos_teste_veo_personagem_rationale_119",
       "label": "Cria o personagem completo (fluxo ditado pelo Piter 04/08 — ver FLOW_MAP.md):",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L98",
+      "source_location": "L119",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_personagem_rationale_180",
+      "id": "banco_videos_teste_veo_personagem_rationale_201",
       "label": "Idempotente: cria só se o canal ainda não tem personagem (escopo=canal).     es",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L180",
+      "source_location": "L201",
       "_origin": "ast"
     },
     {
@@ -8176,7 +8240,7 @@
       "label": "aplicar()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L85",
+      "source_location": "L91",
       "_origin": "ast"
     },
     {
@@ -8184,7 +8248,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L107",
+      "source_location": "L113",
       "_origin": "ast"
     },
     {
@@ -8196,11 +8260,11 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_zip_rationale_86",
+      "id": "banco_videos_teste_veo_zip_rationale_92",
       "label": "Casa os arquivos de `pasta` com os itens do lote e copia os confiáveis pra",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L86",
+      "source_location": "L92",
       "_origin": "ast"
     },
     {
@@ -15200,7 +15264,7 @@
       "label": "esperar_e_baixar()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L369",
+      "source_location": "L451",
       "_origin": "ast"
     },
     {
@@ -15208,7 +15272,7 @@
       "label": "cmd_gen()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L390",
+      "source_location": "L472",
       "_origin": "ast"
     },
     {
@@ -15216,7 +15280,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L409",
+      "source_location": "L491",
       "_origin": "ast"
     },
     {
@@ -15324,11 +15388,11 @@
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_370",
+      "id": "veo_flow_flow_driver_rationale_452",
       "label": "STUB — a CONFIRMAR na 1ª geração real.      Plano (2 sinais de conclusão a val",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L370",
+      "source_location": "L452",
       "_origin": "ast"
     },
     {
@@ -15380,11 +15444,19 @@
       "_origin": "ast"
     },
     {
+      "id": "veo_flow_perfis_clonar_do_chrome",
+      "label": "clonar_do_chrome()",
+      "file_type": "code",
+      "source_file": "veo_flow/perfis.py",
+      "source_location": "L86",
+      "_origin": "ast"
+    },
+    {
       "id": "veo_flow_perfis_criar",
       "label": "criar()",
       "file_type": "code",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L86",
+      "source_location": "L134",
       "_origin": "ast"
     },
     {
@@ -15392,12 +15464,12 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L96",
+      "source_location": "L144",
       "_origin": "ast"
     },
     {
       "id": "veo_flow_perfis_rationale_43",
-      "label": "True se um Chrome vivo está segurando o perfil.      Testa renomeando o lockfile",
+      "label": "True se um Chrome vivo está segurando o perfil.      Testa renomeando o lockfi",
       "file_type": "rationale",
       "source_file": "veo_flow/perfis.py",
       "source_location": "L43",
@@ -15421,10 +15493,18 @@
     },
     {
       "id": "veo_flow_perfis_rationale_87",
-      "label": "Clona a estrutura mínima. O LOGIN é manual (uma vez por conta):     `flow_driver",
+      "label": "Clona a SESSÃO de um perfil do Chrome do sistema pra um perfil dedicado.",
       "file_type": "rationale",
       "source_file": "veo_flow/perfis.py",
       "source_location": "L87",
+      "_origin": "ast"
+    },
+    {
+      "id": "veo_flow_perfis_rationale_135",
+      "label": "Clona a estrutura mínima. O LOGIN é manual (uma vez por conta):     `flow_drive",
+      "file_type": "rationale",
+      "source_file": "veo_flow/perfis.py",
+      "source_location": "L135",
       "_origin": "ast"
     },
     {
@@ -28736,11 +28816,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_geracao_flow_avatar_doutrina_de_identidade_05_08_paga_a_caro",
+      "label": "AVATAR — doutrina de identidade (05/08, paga a caro)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_geracao_flow_gate_no_que_foi_gerado_regen_n_default_1",
       "label": "Gate no que foi gerado (`--regen N`, default 1)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L114",
+      "source_location": "L139",
       "_origin": "ast"
     },
     {
@@ -28748,7 +28836,7 @@
       "label": "Projetos do Flow (a config de modelo persiste POR PROJETO)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L125",
+      "source_location": "L150",
       "_origin": "ast"
     },
     {
@@ -28756,7 +28844,7 @@
       "label": "O ciclo por coleção (`veo_ciclo.py`) — o fluxo ATUAL",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L137",
+      "source_location": "L162",
       "_origin": "ast"
     },
     {
@@ -28764,7 +28852,7 @@
       "label": "O encarregado (`veo_supervisor.py`) — fluxo antigo (por clipe)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L150",
+      "source_location": "L175",
       "_origin": "ast"
     },
     {
@@ -28772,7 +28860,7 @@
       "label": "Gotchas do Flow",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L161",
+      "source_location": "L186",
       "_origin": "ast"
     },
     {
@@ -50232,6 +50320,65 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "argparse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "veo_personagem",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan",
+      "target": "banco_videos_teste_veo_avatar_plan_planejar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_veo_ciclo",
       "target": "argparse",
       "relation": "imports",
@@ -50423,7 +50570,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L147",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -51439,6 +51586,131 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "argparse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "threading",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "banco_videos_teste_veo_paralelo_perfis_livres",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "banco_videos_teste_veo_paralelo_fatiar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo",
+      "target": "banco_videos_teste_veo_paralelo_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo_main",
+      "target": "banco_videos_teste_veo_paralelo_perfis_livres",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo_main",
+      "target": "banco_videos_teste_veo_paralelo_fatiar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo_rationale_33",
+      "target": "banco_videos_teste_veo_paralelo_perfis_livres",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo_rationale_44",
+      "target": "banco_videos_teste_veo_paralelo_fatiar",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_veo_personagem",
       "target": "json",
       "relation": "imports",
@@ -51557,7 +51829,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L97",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -51566,7 +51838,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L179",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -51606,7 +51878,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L104",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -51616,7 +51888,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L184",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -51626,7 +51898,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L189",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -51636,7 +51908,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L194",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -51685,21 +51957,21 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_personagem_rationale_98",
+      "source": "banco_videos_teste_veo_personagem_rationale_119",
       "target": "banco_videos_teste_veo_personagem_criar_personagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L98",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_personagem_rationale_180",
+      "source": "banco_videos_teste_veo_personagem_rationale_201",
       "target": "banco_videos_teste_veo_personagem_garantir_personagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L180",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -52265,7 +52537,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L85",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -52274,7 +52546,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L107",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -52294,7 +52566,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L92",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -52304,7 +52576,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L123",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -52317,12 +52589,12 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_zip_rationale_86",
+      "source": "banco_videos_teste_veo_zip_rationale_92",
       "target": "banco_videos_teste_veo_zip_aplicar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L86",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -70342,7 +70614,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L369",
+      "source_location": "L451",
       "weight": 1.0
     },
     {
@@ -70351,7 +70623,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L390",
+      "source_location": "L472",
       "weight": 1.0
     },
     {
@@ -70360,7 +70632,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L409",
+      "source_location": "L491",
       "weight": 1.0
     },
     {
@@ -70520,7 +70792,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L303",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -70530,7 +70802,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L391",
+      "source_location": "L473",
       "weight": 1.0
     },
     {
@@ -70540,7 +70812,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L398",
+      "source_location": "L480",
       "weight": 1.0
     },
     {
@@ -70550,7 +70822,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L399",
+      "source_location": "L481",
       "weight": 1.0
     },
     {
@@ -70560,7 +70832,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L400",
+      "source_location": "L482",
       "weight": 1.0
     },
     {
@@ -70570,7 +70842,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L401",
+      "source_location": "L483",
       "weight": 1.0
     },
     {
@@ -70580,7 +70852,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L424",
+      "source_location": "L506",
       "weight": 1.0
     },
     {
@@ -70590,7 +70862,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L426",
+      "source_location": "L508",
       "weight": 1.0
     },
     {
@@ -70711,12 +70983,12 @@
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_370",
+      "source": "veo_flow_flow_driver_rationale_452",
       "target": "veo_flow_flow_driver_esperar_e_baixar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L370",
+      "source_location": "L452",
       "weight": 1.0
     },
     {
@@ -70826,7 +71098,7 @@
     },
     {
       "source": "veo_flow_perfis",
-      "target": "veo_flow_perfis_criar",
+      "target": "veo_flow_perfis_clonar_do_chrome",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
@@ -70835,11 +71107,20 @@
     },
     {
       "source": "veo_flow_perfis",
+      "target": "veo_flow_perfis_criar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/perfis.py",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_perfis",
       "target": "veo_flow_perfis_main",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L96",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -70884,12 +71165,12 @@
     },
     {
       "source": "veo_flow_perfis_main",
-      "target": "veo_flow_perfis_criar",
+      "target": "veo_flow_perfis_clonar_do_chrome",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L104",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -70899,7 +71180,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L112",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_perfis_main",
+      "target": "veo_flow_perfis_criar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/perfis.py",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -70909,7 +71200,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
-      "source_location": "L114",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -70941,11 +71232,20 @@
     },
     {
       "source": "veo_flow_perfis_rationale_87",
-      "target": "veo_flow_perfis_criar",
+      "target": "veo_flow_perfis_clonar_do_chrome",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/perfis.py",
       "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_perfis_rationale_135",
+      "target": "veo_flow_perfis_criar",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/perfis.py",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -101297,11 +101597,20 @@
     },
     {
       "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_avatar_doutrina_de_identidade_05_08_paga_a_caro",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
       "target": "banco_videos_teste_geracao_flow_gate_no_que_foi_gerado_regen_n_default_1",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L114",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -101310,7 +101619,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L125",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -101319,7 +101628,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L137",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -101328,7 +101637,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L150",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -101337,7 +101646,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L161",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -106587,6 +106896,28 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_veo_avatar_plan_planejar",
+      "target": "banco_videos_teste_veo_personagem_personagem_do_canal",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_avatar_plan_planejar",
+      "target": "banco_videos_teste_veo_personagem_montar_prompt_avatar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_avatar_plan.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_veo_ciclo_main",
       "target": "banco_videos_teste_veo_colecao_projeto_do_canal",
       "relation": "calls",
@@ -106627,7 +106958,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L156",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -106638,7 +106969,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L176",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -106661,6 +106992,17 @@
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_lote.py",
       "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_paralelo_perfis_livres",
+      "target": "veo_flow_perfis_status",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_paralelo.py",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
