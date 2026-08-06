@@ -545,6 +545,21 @@ def main():
             # nunca vira vídeo. Sem tratar, o item fica em voo pra sempre. Devolve o
             # mais antigo em voo pra fila (até --regen tentativas) e limpa o card.
             n_falha = _cards_falha(page)
+            # PRECEDÊNCIA DO CARD CONCLUÍDO (06/08) — a causa raiz do dia inteiro.
+            # O sinal de falha do Flow aparece TRANSITORIAMENTE durante a geração e
+            # some quando a imagem fica pronta: medido no projeto de teste, onde
+            # `_cards_falha` deu >0 durante a geração e 0 depois, com 4 cards prontos
+            # no grid. O driver lia esse sinal e DESCARTAVA um item que estava
+            # gerando normalmente — "b086: card FALHOU 3x, desisto" enquanto as
+            # imagens ficavam no Flow. Custou o dia: três reescritas de prompt e uma
+            # caçada a filtro de conteúdo que nunca existiu (o prompt de controle,
+            # "a red apple on a wooden table", também "falhou" — e gerou 4 maçãs).
+            # Se apareceu card novo desde a última volta, algo CONCLUIU: o resultado
+            # manda, o sinal transitório não.
+            if n_falha and em_voo and (_cards_edit(page) - vistos):
+                print(f"  (sinal de falha ignorado: {len(_cards_edit(page) - vistos)} "
+                      f"card(s) novo(s) concluíram)", flush=True)
+                n_falha = 0
             if n_falha and em_voo:
                 # POR QUE falhou, antes de limpar o card (06/08). O driver contava
                 # "falhas=1" e mandava tentar de novo — foi assim que o b120 queimou
@@ -579,7 +594,9 @@ def main():
                 else:
                     falhas += 1
                     print(f"  {it_f['arquivo']}: falhou {it_f['_falhas']}x no Flow — "
-                          f"desisto (provável bloqueio de conteúdo no prompt)", flush=True)
+                          f"desisto. NÃO presuma bloqueio de prompt: confira o projeto no "
+                          f"Flow — a imagem pode ter gerado e só o driver não a "
+                          f"viu (--so-baixar recupera)", flush=True)
             # 2) procura cards novos concluídos
             if a.so_baixar:  # grid é lazy e o goto reseta o scroll — recarrega tudo
                 _carregar_todos_cards(page, max_rodadas=15)
