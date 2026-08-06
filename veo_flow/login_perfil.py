@@ -32,7 +32,10 @@ def logar(perfil_dir, espera_s=300, conta_esperada="", manter=False):
             user_data_dir=str(perfil_dir), channel="chrome", headless=False,
             viewport={"width": 1280, "height": 900},
             args=["--disable-blink-features=AutomationControlled",
-                  "--hide-crash-restore-bubble", "--no-first-run",
+                  "--hide-crash-restore-bubble",
+                  # ver flow_driver.abrir(): infobar do --no-sandbox (que vem do
+                  # Playwright) desloca ~40px e quebra clique por coordenada
+                  "--test-type", "--no-first-run",
                   "--no-default-browser-check"])
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         page.goto(BASE, wait_until="domcontentloaded", timeout=60000)

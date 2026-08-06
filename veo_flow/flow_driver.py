@@ -101,6 +101,13 @@ def abrir(headless=False, perfil=None):
         viewport={"width": 1920, "height": 1080},
         args=["--disable-blink-features=AutomationControlled",   # reduz sinais óbvios de automação
               "--hide-crash-restore-bubble",   # cinto/suspensório do _limpar_saida_suja
+              # infobar "sinalizador de linha de comando não suportado: --no-sandbox"
+              # (06/08, Piter viu na tela). A flag vem do PLAYWRIGHT, não daqui — nada
+              # no repo passa --no-sandbox. A barra é cosmética mas rouba ~40px do topo
+              # e DESLOCA todo clique por bounding_box, que é como o driver acha o ⋮ do
+              # card. `--disable-infobars` foi removido do Chrome anos atrás; a que
+              # ainda funciona é --test-type.
+              "--test-type",
               "--no-first-run", "--no-default-browser-check"],
     )
     page = ctx.pages[0] if ctx.pages else ctx.new_page()

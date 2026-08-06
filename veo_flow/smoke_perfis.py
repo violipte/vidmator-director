@@ -28,13 +28,17 @@ BASE = "https://labs.google/fx/pt/tools/flow"
 
 
 def variante_ui(page):
-    """Qual UI do Flow esta conta recebeu (06/08).
+    """Qual UI do Flow ESTA SESSÃO recebeu (06/08).
 
-    O Google faz rollout POR CONTA, então perfis da mesma frota abrem telas
-    diferentes — o conta3 abriu a UI nova enquanto o conta2 seguia na antiga. Isso
-    quebra a premissa de que perfil logado = perfil utilizável: o `veo_driver` fala
-    com a barra de prompt + seletor de modelo, que a UI nova não tem. O sintoma era
-    um TimeoutError cru esperando um botão inexistente.
+    O Flow sorteia a UI quando o contexto do Chrome sobe, e o bucket vale até
+    fechar: mesma conta e mesmo projeto deram UIs diferentes em sessões diferentes.
+    (Eu cheguei a escrever aqui que o rollout era por CONTA, e depois que era `goto`
+    vs clique — as duas hipóteses morreram na medição seguinte.)
+
+    A UI nova não tem o seletor de modelo com que o `veo_driver` fala, então o
+    sintoma cru é um TimeoutError esperando um botão inexistente. Leia o resultado
+    como AMOSTRA da sessão, nunca como propriedade do perfil: quem resolve de fato é
+    o driver reabrindo o navegador (`--tentativas-ui`).
 
     Só é detectável DENTRO de um projeto — na grade as duas são iguais.
     """
@@ -57,7 +61,10 @@ def testar(caminho, timeout_s=45, ver_ui=False):
             user_data_dir=str(caminho), channel="chrome", headless=False,
             viewport={"width": 1280, "height": 860},
             args=["--disable-blink-features=AutomationControlled",
-                  "--hide-crash-restore-bubble", "--no-first-run",
+                  "--hide-crash-restore-bubble",
+                  # ver flow_driver.abrir(): infobar do --no-sandbox (que vem do
+                  # Playwright) desloca ~40px e quebra clique por coordenada
+                  "--test-type", "--no-first-run",
                   "--no-default-browser-check"])
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         page.goto(BASE, timeout=timeout_s * 1000, wait_until="domcontentloaded")
