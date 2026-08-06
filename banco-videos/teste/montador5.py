@@ -1347,14 +1347,14 @@ def main():
         base = next((x.get("busca") for x in plano.get("beats", [])
                      if x.get("t_ini", 9e9) < t_fim and x.get("t_fim", -1) > t_ini
                      and x.get("busca")), "")
-        anc = (_SC.get("assunto_ancora") or "").strip()
         # a ÂNCORA entra sempre: sem ela o gerador não sabe onde a cena acontece —
         # "solitary person in vast landscape" saiu um vale ESCOCÊS num vídeo da
-        # Amazônia (02/08). É o mesmo papel que a âncora tem na busca de footage.
-        alvo = (base or falado).strip()
-        if anc and anc.split()[0].lower() not in alvo.lower():
-            alvo = f"{anc}, {alvo}"
-        return alvo.strip()[:180]
+        # Amazônia. É o mesmo papel que a âncora tem na busca de footage.
+        # A regra mora em `ancora5` porque ela também vale para a OUTRA porta de
+        # geração (curador5._fila_geracao): duas cópias foi como as duas portas
+        # divergiram, e só a de cá tinha âncora.
+        from ancora5 import ancorar
+        return ancorar(base, _SC.get("assunto_ancora") or "", falado)
 
     _gaps_gerar = []   # vira _gerar.json: o Nano Banana preenche antes do render
 

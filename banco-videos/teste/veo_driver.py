@@ -338,6 +338,9 @@ def main():
                     help="perfil Chrome; vazio = o 1º LIVRE (veo_flow/perfis.py)")
     ap.add_argument("--so-baixar", action="store_true",
                     help="não gera nada: casa os cards JÁ existentes no projeto e baixa")
+    ap.add_argument("--forcar", action="store_true",
+                    help="regera mesmo com o destino já em disco (arquiva o antigo "
+                         "em _rejeitados/) — a rota de reprovação do crítico")
     a = ap.parse_args()
 
     out = Path(a.out)
@@ -352,6 +355,25 @@ def main():
         for x, p in zip(alvo, novos):
             x["busca_original"], x["prompt"] = x["prompt"], p
         print(f"  prompts dirigidos: {len(novos)}")
+    # Destino que já existe é PULADO — é o que torna a fila retomável depois de uma
+    # queda. Mas isso também trancava a rota "o crítico reprovou, gere de novo": o
+    # b086 do job amazônico voltou um vale ESCOCÊS, e a regeração ancorada não
+    # entrava porque o arquivo errado ocupava o lugar. `--forcar` abre essa porta e
+    # ARQUIVA o reprovado em vez de sobrescrever — a imagem rejeitada é a evidência
+    # de por que o prompt mudou.
+    if a.forcar:
+        rej = out / "_rejeitados"
+        for x in lote:
+            velho = out / x["arquivo"]
+            if x["tipo"] == a.tipo and velho.exists():
+                rej.mkdir(parents=True, exist_ok=True)
+                destino = rej / velho.name
+                n = 1
+                while destino.exists():   # não perde o reprovado anterior
+                    destino = rej / f"{velho.stem}_{n}{velho.suffix}"
+                    n += 1
+                velho.replace(destino)
+                print(f"  arquivado: {velho.name} -> _rejeitados/{destino.name}")
     fila_itens = [x for x in lote if x["tipo"] == a.tipo and not (out / x["arquivo"]).exists()]
     print(f"=== veo_driver: {len(fila_itens)} {a.tipo}s a gerar | fila {a.fila} | {a.modelo} ===")
     if not fila_itens:

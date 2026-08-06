@@ -233,8 +233,15 @@ def main():
         if n >= a.rodadas:
             # o acervo já provou que não tem esse plano — gerar é mais barato que
             # continuar rodando busca (decisão do Piter: 5 tentativas e gera)
+            # ANCORADO: a busca que o crítico escreve descreve o ASSUNTO, não o
+            # cenário. Sem o tema na frente o gerador põe a cena em qualquer lugar
+            # do mundo — foi assim que "solitary person in vast landscape" voltou um
+            # vale escocês num vídeo da Amazônia. Mesma regra das outras duas portas
+            # de geração (curador5._fila_geracao, montador5._prompt_do_gap).
+            from ancora5 import ancorar
             pra_gerar.append({"i": res.get("i"),
-                              "prompt": melhor or res.get("busca") or "",
+                              "prompt": ancorar(melhor or res.get("busca") or "",
+                                                sc.get("assunto_ancora") or ""),
                               "dest": f"b{res.get('i'):03d}__T1__gen.jpg"})
         elif melhor:
             # a busca do crítico substitui a do diretor na próxima rodada

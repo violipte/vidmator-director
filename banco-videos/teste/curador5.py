@@ -291,12 +291,17 @@ def _fila_geracao(ctx, tarefas):
 
     Escreve `_gerar.json` no job; o driver do Flow consome em lote.
     """
+    from ancora5 import ancorar
     res = ctx["res"]
+    # a ÂNCORA do tema entra aqui como entra na busca de footage: sem ela o gerador
+    # não sabe ONDE a cena acontece e devolve o assunto certo no lugar errado
+    # ("solitary person in vast landscape" -> vale ESCOCÊS num vídeo da Amazônia).
+    anc = (ctx.get("style_card") or {}).get("assunto_ancora") or ctx.get("ancora") or ""
     pend = []
     for b2, _ in tarefas:
         if (res / f"b{b2['i']:03d}.json").exists():
             continue
-        q = (b2.get("busca") or "").strip()
+        q = ancorar(b2.get("busca") or "", anc)
         if q:
             pend.append({"i": b2["i"], "prompt": q,
                          "dest": f"b{b2['i']:03d}__T1__gen.jpg"})
@@ -579,6 +584,10 @@ def main():
     ctx = {"assets": job / "assets", "tmp": job / "_tmp", "res": job / "resolvido"}
     for d in ctx.values():
         d.mkdir(parents=True, exist_ok=True)
+    # SÓ depois do mkdir acima, que roda em TODO valor do ctx — chave não-Path aqui
+    # em cima viraria uma pasta com nome de tema. A âncora entra no ctx para que a
+    # fila de geração (_fila_geracao) enxergue o tema do vídeo.
+    ctx["ancora"] = ancora5
     usados_urls = set()
 
     tarefas = []
