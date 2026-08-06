@@ -103,10 +103,15 @@ def casar(arquivos, lote):
                 # host exige que o TÍTULO NOMEIE UMA PESSOA; com isso um clipe de
                 # bicho é barrado com qualquer nota, e um take legítimo do host que
                 # ficou em 0.67 ("Man_walking_in_bushland") não se perde à toa.
-                # 3 tokens em comum, no mínimo: "Man_working_in_field" casa 1.00 com
-                # QUALQUER take do host porque só sobram 2 palavras depois das STOP —
-                # cobertura alta em título curto não é evidência, é coincidência.
-                if not (tf & _PESSOA_TITULO) or cob < 0.60 or inter < 3:
+                # O DISCRIMINADOR É O VERBO, não a contagem (06/08, 2ª correção).
+                # A regra "mínimo 3 tokens" reprovou take legítimo no vídeo da África:
+                # o Flow titulou "Person_talking_in_BUSHLAND" e o prompt dizia SAVANNA,
+                # então sobravam 2 tokens e o take caía. O que separa um take do host
+                # de um "Man_working_in_field" qualquer é a AÇÃO bater: tirando as
+                # palavras de pessoa, ao menos uma palavra do título (o verbo) tem que
+                # estar no prompt. Cenário o VEO resume como quiser; ação, não.
+                acao_tit = tf - _SIN_PESSOA - _PESSOA_TITULO
+                if not (tf & _PESSOA_TITULO) or cob < 0.50 or not (acao_tit & ti):
                     continue
             # COBERTURA DO TÍTULO, não Jaccard: o título do Flow tem ~5 palavras e o
             # prompt dirigido tem ~60 (lente, luz, movimento, grading). Jaccard divide

@@ -134,6 +134,16 @@ jobs (apostei nisso e estava errado).
 **Ordem obrigatória:** `garantir_modo` na RAIZ → entra pela carta → envia, com
 `garantir_dentro` antes de cada rajada.
 
+## CHILD SAFETY NA ILUSTRAÇÃO (06/08)
+
+Seção que fala de mortalidade infantil **ilustra a PROTEÇÃO, nunca a criança**.
+Dois beats pediram crianças e nenhum gerou (o VEO recusa) — mas o ponto não é a
+recusa: "crianças brincando" na seção que diz *"most of them are children under
+five"* é enquadramento de criança vitimada, vetado em TODOS os canais.
+Troca certa, e melhor narrativamente: o mosquiteiro sobre a cama — que é o que o
+roteiro literalmente celebra (*"alive because of a piece of mesh over a bed"*).
+Ilustrar a solução em vez da vítima é o argumento do vídeo, não uma concessão.
+
 ## ARMADILHAS SILENCIOSAS (falham sem erro no log)
 
 | armadilha | como se manifesta | guarda |
