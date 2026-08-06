@@ -81,7 +81,11 @@ def main():
     ap.add_argument("--regen", type=int, default=1, help="re-gerações por reprovado no gate")
     ap.add_argument("--min-sim", type=float, default=0.6)
     ap.add_argument("--pausa-rajada", type=int, default=50,
-                    help="segundos entre rajadas de 3 (timer puro; DOM mente)")
+                    help="segundos entre rajadas (timer puro; DOM mente)")
+    ap.add_argument("--rajada", type=int, default=0,
+                    help="prompts por rajada (0 = automático: 8 vídeo / 6 imagem)")
+    ap.add_argument("--rajada-min", type=int, default=3,
+                    help="piso da rajada quando o Flow reclamar de ritmo")
     a = ap.parse_args()
 
     out = Path(a.out)
@@ -135,11 +139,23 @@ def main():
                      " Quiet vérité tone, ordinary working day."]
             envios_f = job / "_envios.json"
             envios = json.loads(envios_f.read_text(encoding="utf-8"))                 if envios_f.exists() else {}
+            # VAZÃO ADAPTATIVA (06/08, Piter): sobe pra 8 vídeo / 6 imagem e RECUA
+            # sozinha se o Flow reclamar de velocidade/volume. Recusa por POLÍTICA
+            # não conta — é assunto do prompt, e cortar a vazão por causa dela
+            # derrubaria a produção tratando o sintoma errado. O piso fica gravado
+            # em _ritmo.json pra valer nas rodadas seguintes e no próximo lote.
+            ritmo_f = job / "_ritmo.json"
+            ritmo = json.loads(ritmo_f.read_text(encoding="utf-8")) if ritmo_f.exists() else {}
+            padrao = 8 if a.tipo == "video" else 6
+            tam = int(ritmo.get(a.tipo) or a.rajada or padrao)
+            tam = max(a.rajada_min, tam)
+            _log(f"  rajada: {tam} por vez, pausa ~{a.pausa_rajada}s")
+            avisos_ritmo = 0
             enviados = 0
-            for i in range(0, len(faltam), 3):
+            for i in range(0, len(faltam), tam):
                 fd.dispensar_avisos(page)
                 garantir_dentro(page, a.canal, a.colecao, cid_col)
-                for it in faltam[i:i + 3]:
+                for it in faltam[i:i + tam]:
                     n_env = envios.get(it["arquivo"], 0)
                     sufixo = VARIA[n_env % len(VARIA)]
                     ok_env = fd.enviar_prompt(page, it["prompt"] + sufixo,
@@ -150,7 +166,17 @@ def main():
                     enviados += 1
                     fd._pausa(1.0, 2.0)
                 _log(f"  rajada: {enviados}/{len(faltam)} enviados")
-                if i + 3 < len(faltam):
+                # o Flow reclamou de RITMO? 2 avisos = corta a vazão pela metade
+                if fd.erro_de_ritmo(page):
+                    avisos_ritmo += 1
+                    _log(f"  !! aviso de ritmo #{avisos_ritmo}")
+                    if avisos_ritmo >= 2 and tam > a.rajada_min:
+                        tam = max(a.rajada_min, tam // 2)
+                        ritmo[a.tipo] = tam
+                        ritmo_f.write_text(json.dumps(ritmo), encoding="utf-8")
+                        avisos_ritmo = 0
+                        _log(f"  >> vazão REDUZIDA para {tam} por rajada (gravado)")
+                if i + tam < len(faltam):
                     fd._pausa(a.pausa_rajada * 0.8, a.pausa_rajada * 1.2)
             envios_f.write_text(json.dumps(envios), encoding="utf-8")
             _reenv = [k for k, v in envios.items() if v > 1]

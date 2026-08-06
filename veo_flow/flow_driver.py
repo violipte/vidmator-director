@@ -190,6 +190,39 @@ def dispensar_avisos(page):
         print(f"  !! dispensar_avisos NAVEGOU ({url_antes[-30:]} -> {page.url[-30:]})")
 
 
+# 06/08 (Piter): subir a vazão (8 vídeo / 6 imagem por rajada) e RECUAR sozinho se
+# o Flow reclamar de VELOCIDADE ou VOLUME — mas só disso. Recusa por política
+# ("pessoa pública", diretrizes) é assunto do prompt, não do ritmo: reduzir a vazão
+# por causa dela seria tratar o sintoma errado e derrubar a produção à toa.
+_ERRO_RITMO = re.compile(
+    r"(r[áa]pido demais|muito r[áa]pido|too fast|slow down|muitas solicita|"
+    r"too many requests|rate.?limit|limite de (taxa|solicita)|limite di[áa]rio|"
+    r"daily limit|tente novamente (em|mais tarde)|try again (later|in)|"
+    r"aguarde (um|alguns)|sobrecarregad|overloaded|at capacity|"
+    r"(quota|cota) (excedid|atingid|esgotad)|sem cr[ée]ditos)", re.I)
+_ERRO_POLITICA = re.compile(
+    r"(pol[íi]tica|policy|diretriz|guideline|pessoa p[úu]blica|public figure|"
+    r"safety|seguran[çc]a|n[ãa]o (podemos|foi poss[íi]vel) gerar|cannot generate|"
+    r"can't generate|viola|blocked|bloquead)", re.I)
+
+
+def erro_de_ritmo(page):
+    """True só quando a mensagem na tela é de VELOCIDADE/VOLUME (não de política).
+
+    Confere a vizinhança do match: se houver palavra de política a ≤160 chars, o
+    aviso é de conteúdo e NÃO conta como ritmo."""
+    try:
+        txt = (page.inner_text("body", timeout=4000) or "")[:24000]
+    except Exception:
+        return False
+    for m in _ERRO_RITMO.finditer(txt):
+        volta = txt[max(0, m.start() - 160): m.end() + 160]
+        if not _ERRO_POLITICA.search(volta):
+            print(f"  !! aviso de RITMO na tela: …{txt[max(0, m.start() - 50):m.end() + 50].strip()[:110]}…")
+            return True
+    return False
+
+
 def modo_atual(page):
     """Lê o botão do rodapé, que mostra o estado: 'Vídeo · 8s crop_16_9 x1' ou
     '🍌 Nano Banana 2 x2'. Devolve ('video'|'imagem'|'?', texto_lido)."""
