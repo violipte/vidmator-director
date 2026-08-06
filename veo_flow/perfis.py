@@ -83,6 +83,54 @@ def primeiro_livre():
     return None
 
 
+def clonar_do_chrome(origem, nome):
+    """Clona a SESSÃO de um perfil do Chrome do sistema pra um perfil dedicado.
+
+    Por que clonar em vez de apontar direto (02/08): o Playwright abre o
+    `user_data_dir` INTEIRO, e o Chrome do Piter fica com ele travado enquanto
+    estiver aberto — apontar pro `User Data` real só funcionaria com o Chrome
+    fechado, que é justamente o que queremos evitar.
+
+    Copia só o que carrega SESSÃO (cookies, prefs, storage) — não o cache, que é
+    pesado e inútil aqui. Os cookies do Chrome são cifrados por DPAPI atrelado ao
+    USUÁRIO do Windows, não ao caminho: cópia no mesmo usuário mantém o login.
+    """
+    base = Path(os.environ.get("LOCALAPPDATA", "")) / "Google/Chrome/User Data"
+    src = base / origem
+    if not src.exists():
+        return None, f"perfil de origem não existe: {src}"
+    destino = AQUI / f"{PADRAO}_{nome}"
+    alvo = destino / "Default"
+    alvo.mkdir(parents=True, exist_ok=True)
+    itens = ["Preferences", "Secure Preferences", "Login Data", "Web Data",
+             "Network/Cookies", "Network/Trust Tokens", "Local Storage",
+             "Session Storage", "IndexedDB"]
+    copiados = []
+    for it in itens:
+        o = src / it
+        d = alvo / it
+        try:
+            if o.is_dir():
+                shutil.copytree(o, d, dirs_exist_ok=True)
+                copiados.append(it)
+            elif o.exists():
+                d.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(o, d)
+                copiados.append(it)
+        except OSError:
+            pass          # arquivo travado pelo Chrome vivo: segue com o resto
+    # "Local State" fica na RAIZ do User Data e guarda a chave que decifra os
+    # cookies — sem ele o perfil clonado abre deslogado
+    try:
+        ls = base / "Local State"
+        if ls.exists():
+            shutil.copy2(ls, destino / "Local State")
+            copiados.append("Local State")
+    except OSError:
+        pass
+    return destino, copiados
+
+
 def criar(nome):
     """Clona a estrutura mínima. O LOGIN é manual (uma vez por conta):
     `flow_driver.py login` apontando pra este perfil."""
@@ -98,8 +146,20 @@ def main():
     ap.add_argument("--livre", action="store_true", help="só o caminho do 1º livre")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--novo", default="", help="cria chrome_profile_<nome>")
+    ap.add_argument("--clonar", nargs=2, metavar=("ORIGEM", "NOME"),
+                    help='clona sessão de um perfil do Chrome: --clonar "Profile 2" conta2')
     a = ap.parse_args()
 
+    if a.clonar:
+        d, r = clonar_do_chrome(a.clonar[0], a.clonar[1])
+        if d is None:
+            print(r); return
+        print(f"clonado -> {d}")
+        print(f"  itens: {', '.join(r) if r else 'NENHUM (Chrome travando?)'}")
+        st = [x for x in status() if x["caminho"] == str(d)]
+        if st:
+            print(f"  login detectado: {'sim' if st[0]['logado'] else 'NÃO — faça login manual'}")
+        return
     if a.novo:
         p, criado = criar(a.novo)
         print(f"{'criado' if criado else 'já existia'}: {p}")
