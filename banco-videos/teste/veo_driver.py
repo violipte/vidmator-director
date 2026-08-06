@@ -311,6 +311,58 @@ def _aprovado(caminho, item, tipo, tmp):
     return (not flags), flags
 
 
+def _fechar(pw, ctx):
+    """Fecha contexto e Playwright sem deixar o erro de um impedir o outro."""
+    for f in (getattr(ctx, "close", None), getattr(pw, "stop", None)):
+        try:
+            if f:
+                f()
+        except Exception:
+            pass
+
+
+def _sessao_dirigivel(page, fd, a, out):
+    """Esta SESSÃO caiu na UI que o driver sabe dirigir? (06/08)
+
+    O Flow sorteia a UI quando o contexto do Chrome sobe, e o bucket vale até
+    fechar: mesma conta e mesmo projeto deram UIs diferentes em sessões diferentes.
+    A UI nova não tem seletor de modelo, então o driver não a dirige — e como o
+    sorteio é por sessão, "escolher um perfil de UI antiga" não existe. Devolver
+    False (em vez de estourar) deixa o chamador reabrir e sortear de novo.
+
+    Precisa ENTRAR num projeto: na grade as duas UIs são idênticas.
+    """
+    try:
+        page.goto(fd.BASE, wait_until="domcontentloaded")
+        fd._pausa(1.5, 2.5)
+        if page.get_by_role("button", name=re.compile("Fazer login|Sign in", re.I)).count():
+            print("!!! chrome_profile NÃO logado — rode: flow_driver.py login !!!")
+            return None
+        proj = a.proj
+        if not proj and a.reusar:
+            # reusar também evita deixar um "Sessão sem título" vazio por lote
+            try:
+                href = page.locator('a[href*="/project/"]').first.get_attribute(
+                    "href", timeout=12000) or ""
+                proj = href.rstrip("/").split("/project/")[-1][:36] or None
+                print(f"  reusando projeto existente: {proj}")
+            except Exception:
+                print("  nenhum projeto para reusar — criando um novo")
+        fd._abrir_projeto(page, proj)
+        time.sleep(6)   # settle: SPA termina de montar a barra de prompt
+        page.screenshot(path=str(Path(out) / "_debug_projeto.png"))
+        if page.get_by_role("button").filter(
+                has_text=re.compile(r"Veo|Banana|Omni", re.I)).count():
+            return True
+        if page.get_by_text(re.compile(r"O que você quer fazer|What do you want to",
+                                       re.I)).count():
+            return False
+        return True   # nem seletor nem painel: deixa seguir e falhar com o erro real
+    except Exception as e:
+        print(f"  sessão não abriu o projeto ({type(e).__name__}) — reabrindo")
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lote", required=True)
@@ -338,6 +390,8 @@ def main():
                     help="perfil Chrome; vazio = o 1º LIVRE (veo_flow/perfis.py)")
     ap.add_argument("--so-baixar", action="store_true",
                     help="não gera nada: casa os cards JÁ existentes no projeto e baixa")
+    ap.add_argument("--tentativas-ui", type=int, default=3, dest="tentativas_ui",
+                    help="quantas sessões reabrir enquanto o Flow sortear a UI nova")
     ap.add_argument("--reusar", action="store_true",
                     help="abre o projeto EXISTENTE mais recente em vez de criar um "
                          "(evita projeto vazio e a UI nova, que o driver não dirige)")
@@ -384,56 +438,35 @@ def main():
 
     # perfil LIVRE (02/08): perfil ocupado fazia o Playwright cair em "sessão de
     # navegador existente" e o lote inteiro sair com 0 imagens, sem erro claro
-    pw, ctx, page = fd.abrir(headless=False, perfil=a.perfil or None)
-    page.set_default_timeout(45_000)   # nenhum clique espera pra sempre
-    try:
-        page.goto(fd.BASE, wait_until="domcontentloaded")
-        fd._pausa(1.5, 2.5)
-        if page.get_by_role("button", name=re.compile("Fazer login|Sign in", re.I)).count():
-            print("!!! chrome_profile NÃO logado — rode: flow_driver.py login !!!")
+    # UI NOVA (06/08): o Flow sorteia a UI quando o contexto do Chrome SOBE, e o
+    # bucket vale até fechar. A nova não tem seletor de modelo, então o driver não a
+    # dirige — e como o sorteio é por sessão, não existe "perfil de UI antiga" para
+    # escolher. O que funciona é REABRIR até cair na UI que ele sabe dirigir.
+    pw = ctx = page = None
+    for _t in range(1, max(1, a.tentativas_ui) + 1):
+        pw, ctx, page = fd.abrir(headless=False, perfil=a.perfil or None)
+        page.set_default_timeout(45_000)   # nenhum clique espera pra sempre
+        _ok = _sessao_dirigivel(page, fd, a, a.out)
+        if _ok:
+            break
+        _fechar(pw, ctx)
+        pw = ctx = page = None
+        if _ok is None:      # não é sorteio de UI: perfil deslogado, reabrir não cura
             return
-        # REUSAR o projeto existente em vez de criar um (06/08). Dois motivos, e o
-        # segundo só apareceu hoje:
-        #   1. sem isso, cada lote deixa um projeto novo na conta — o conta2 já
-        #      acumulou vários "Sessão sem título" vazios;
-        #   2. projeto NOVO no conta3 nasce na UI NOVA do Flow, que não tem o
-        #      seletor de modelo — o driver morria num TimeoutError. Projeto ANTIGO
-        #      continua servido pela UI antiga, então reusar contorna o rollout.
-        proj = a.proj
-        if not proj and a.reusar:
-            try:
-                href = page.locator('a[href*="/project/"]').first.get_attribute(
-                    "href", timeout=12000) or ""
-                proj = href.rstrip("/").split("/project/")[-1][:36] or None
-                print(f"  reusando projeto existente: {proj}")
-            except Exception:
-                print("  nenhum projeto para reusar — criando um novo")
-        fd._abrir_projeto(page, proj)
-        proj_url = page.url
-        time.sleep(6)  # settle: SPA termina de montar a barra de prompt
-        page.screenshot(path=str(Path(a.out) / "_debug_projeto.png"))
+        print(f"  UI NOVA nesta sessão ({_t}/{a.tentativas_ui}) — reabrindo o "
+              f"navegador para sortear de novo", flush=True)
+    if page is None:
+        print(f"!!! {a.tentativas_ui} sessões seguidas caíram na UI NOVA do Flow, que não "
+              f"tem seletor de modelo. Tente de novo, ou com --tentativas-ui maior.")
+        return
+    try:
+        proj_url = page.url   # o loop de download volta pra cá quando o Flow desvia
         # landing "Create with Google Flow" = sessão do perfil dedicado EXPIRADA
         if page.get_by_text(re.compile("Create with Google Flow", re.I)).count():
             print("!!! SESSÃO EXPIRADA no chrome_profile do Playwright.")
             print('!!! Rode 1x e logue na conta Ultra:  '
                   '"F:/Canal Dark/veo_venv/Scripts/python.exe" '
                   '"F:/Canal Dark/Aplicativo de Edição/veo_flow/flow_driver.py" login')
-            return
-        # UI NOVA do Flow (06/08): o Google faz rollout POR CONTA, então perfis da
-        # mesma frota abrem telas diferentes. A nova troca a barra de prompt por um
-        # painel de sessão ("O que você quer fazer?", sidebar Personagens/Cenas) e
-        # não tem o seletor de modelo que o driver procura — o sintoma era um
-        # TimeoutError cru do Playwright esperando um botão que não existe.
-        # Detectar aqui transforma 40 linhas de traceback numa frase acionável.
-        if (page.get_by_text(re.compile(r"O que você quer fazer|What do you want to",
-                                        re.I)).count()
-                and not page.get_by_role("button").filter(
-                    has_text=re.compile(r"Veo|Banana", re.I)).count()):
-            print(f"!!! UI NOVA do Flow neste perfil ({Path(a.perfil).name or 'padrão'}) — o driver "
-                  f"fala com a UI antiga (barra de prompt + seletor de modelo).")
-            print("!!! Rode este lote num perfil de UI antiga. Veja quais em:")
-            print('!!!   "F:/Canal Dark/veo_venv/Scripts/python.exe" '
-                  '"F:/Canal Dark/Aplicativo de Edição/veo_flow/smoke_perfis.py"')
             return
         # TRAVA DE MODO (04/08): confere SEMPRE, mesmo com --sem-config. A config
         # persiste por projeto, e gerar no modelo errado já custou caro duas vezes
@@ -599,8 +632,7 @@ def main():
             pass
         raise
     finally:
-        ctx.close()
-        pw.stop()
+        _fechar(pw, ctx)
 
 
 if __name__ == "__main__":

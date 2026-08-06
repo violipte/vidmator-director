@@ -98,23 +98,28 @@ painel de sessão ("O que você quer fazer?", sidebar Personagens/Cenas/Ferramen
 e **não tem o seletor de modelo** que os drivers procuram. O sintoma cru é um
 `TimeoutError` do Playwright esperando um botão que não existe mais.
 
-O detalhe que confunde o diagnóstico:
+**A UI sorteia por SESSÃO de navegador, não por conta nem por projeto.** Medições
+do mesmo dia, mesma conta (conta3), mesmo projeto:
 
-| como se chega no projeto | UI servida |
-|---|---|
-| clique no card (navegação SPA) | antiga |
-| `page.goto(.../project/<id>)`  | **nova** |
+| sessão | como abriu | UI |
+|---|---|---|
+| driver | `goto` | **NOVA** |
+| smoke #1 | clique no card | antiga |
+| smoke #2 | `goto` | antiga |
 
-É o **mesmo projeto**. Por isso um teste que abre por clique dá VERDE num perfil
-onde o driver — que navega por `goto` — morre. `smoke_perfis.py --ui` mede por
-`goto` justamente para não mentir.
+Minha primeira leitura foi "goto serve a nova, clique serve a antiga" — o smoke #2
+derrubou isso abrindo por `goto` e recebendo a antiga. É rollout A/B com sticky por
+sessão: o bucket é sorteado quando o contexto do Chrome sobe e vale até fechar.
 
-Consequência para a frota: **logado não basta**. Antes de atribuir um canal a um
-perfil, rode `smoke_perfis.py --ui` e confirme "UI antiga". E `veo_driver --reusar`
-abre projeto existente em vez de criar — além de não deixar projeto vazio na conta,
-era o contorno que eu esperava para o rollout (não resolveu: o projeto existente
-também vem novo por `goto`, mas a flag continua valendo pelo resto).
+Consequência real, e é o que importa para a frota: **não existe "perfil de UI
+antiga" estável**. Escolher perfil pelo resultado de um smoke anterior é apostar
+num sorteio já encerrado. O que funciona é o driver **detectar e reabrir** o
+contexto até cair na UI que ele sabe dirigir — `veo_driver` faz isso sozinho
+(`--tentativas-ui`, padrão 3).
 
-⚠️ O `flow_driver.py` (Claude do Flow) navega por `goto` em vários pontos e ainda
-não trata esse caso — quando a UI nova chegar no `chrome_profile`, o ciclo de
-coleções para. Vale olhar antes de virar incidente.
+`smoke_perfis.py --ui` continua útil para ver se a conta já está no experimento,
+mas leia o resultado como amostra, não como propriedade do perfil.
+
+⚠️ O `flow_driver.py` (Claude do Flow) ainda não trata esse caso — quando a sessão
+dele cair no bucket novo, o ciclo de coleções para com TimeoutError. Vale olhar
+antes de virar incidente.
