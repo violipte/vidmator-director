@@ -39,7 +39,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 import flow_driver as fd  # noqa
 import veo_driver as vd  # noqa — _normalizar_lote, _cards_falha, _aprovado
-from veo_colecao import abrir_colecao, baixar_projeto, projeto_do_canal  # noqa
+from veo_colecao import (abrir_colecao, baixar_projeto, projeto_do_canal,  # noqa
+                         garantir_dentro)
 from veo_zip import aplicar  # noqa
 from veo_supervisor import matar_tudo  # noqa
 
@@ -111,8 +112,11 @@ def main():
         try:
             page.goto(f"{fd.BASE}/project/{proj}", wait_until="domcontentloaded")
             fd._pausa(6, 9)
-            abrir_colecao(page, a.canal, a.colecao)
+            # ORDEM IMPORTA (06/08, causa raiz de "gerando fora da coleção"): o
+            # popup do `garantir_modo` EXPULSA da coleção pro projeto. Conferir o
+            # modelo AINDA NA RAIZ e só então entrar — nunca o contrário.
             fd.garantir_modo(page, a.tipo)
+            cid_col = abrir_colecao(page, a.canal, a.colecao)
 
             # 1) ENVIA em RAJADAS DE 3 (Piter 05/08): 1 em 1 com pausa era lento
             # demais pro Lower Priority, que enfileira no SERVIDOR de qualquer jeito.
@@ -134,6 +138,7 @@ def main():
             enviados = 0
             for i in range(0, len(faltam), 3):
                 fd.dispensar_avisos(page)
+                garantir_dentro(page, a.canal, a.colecao, cid_col)
                 for it in faltam[i:i + 3]:
                     n_env = envios.get(it["arquivo"], 0)
                     sufixo = VARIA[n_env % len(VARIA)]
@@ -144,13 +149,13 @@ def main():
                     envios[it["arquivo"]] = n_env + 1
                     enviados += 1
                     fd._pausa(1.0, 2.0)
+                _log(f"  rajada: {enviados}/{len(faltam)} enviados")
+                if i + 3 < len(faltam):
+                    fd._pausa(a.pausa_rajada * 0.8, a.pausa_rajada * 1.2)
             envios_f.write_text(json.dumps(envios), encoding="utf-8")
             _reenv = [k for k, v in envios.items() if v > 1]
             if _reenv:
                 _log(f"  variação aplicada em {len(_reenv)} reenviados")
-                _log(f"  rajada: {enviados}/{len(faltam)} enviados")
-                if i + 3 < len(faltam):
-                    fd._pausa(a.pausa_rajada * 0.8, a.pausa_rajada * 1.2)
             _log(f"  {enviados} prompts enviados")
 
             # 2) ESPERA a geração terminar (badges de % sumirem), com teto.

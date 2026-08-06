@@ -176,8 +176,14 @@ def abrir_colecao(page, canal, nome, criar_se_faltar=True):
         page.goto(f"{fd.BASE}/project/{reg['projeto']}/collection/{cid}",
                   wait_until="domcontentloaded")
         fd._pausa(2.0, 3.0)
-        print(f"  coleção (rota direta): {nome}")
-        return cid
+        # 06/08 (Piter: "está gerando fora da coleção"): a rota direta é REJEITADA
+        # pelo Flow — ele redireciona pra raiz do projeto — e a v1 confiava nela sem
+        # olhar, imprimindo "coleção (rota direta)" enquanto gerava no lugar errado.
+        # Só o clique no card entra de verdade. Conferir SEMPRE, cair no clique.
+        if "/collection/" in page.url:
+            print(f"  coleção (rota direta): {nome}")
+            return cid
+        print(f"  !! rota direta rejeitada (caiu em {page.url[-38:]}) — entrando pelo card")
     lab, box = _label_da_colecao(page, nome)
     if not box:
         if not criar_se_faltar:
@@ -198,6 +204,30 @@ def abrir_colecao(page, canal, nome, criar_se_faltar=True):
     registrar_colecao(canal, nome, cid)
     print(f"  dentro da coleção: {nome} ({cid[:8]}…)")
     return cid
+
+
+def dentro_da_colecao(page, cid=None):
+    """A URL tem `/collection/<id>`? Barato e suficiente pra detectar a EXPULSÃO."""
+    u = page.url or ""
+    return ("/collection/" in u) and (cid is None or cid in u)
+
+
+def garantir_dentro(page, canal, nome, cid=None):
+    """Confere que a página AINDA está na coleção e re-entra se foi expulsa.
+
+    06/08 (Piter: "o sistema consegue verificar se realmente está dentro da coleção
+    antes de gerar?"): sim — e precisa, porque a UI expulsa sozinha. O caso provado
+    foi o `garantir_modo`: o popup de modelo devolve a página pro projeto, e todos
+    os prompts seguintes geravam na RAIZ com a coleção intacta e vazia do lado.
+    Chamar isto ANTES de cada rajada custa uma leitura de URL e fecha o buraco."""
+    if dentro_da_colecao(page, cid):
+        return True
+    print(f"  !! fora da coleção ({(page.url or '')[-38:]}) — re-entrando")
+    try:
+        abrir_colecao(page, canal, nome, criar_se_faltar=False)
+    except Exception as e:
+        print(f"  !! re-entrada falhou: {e}")
+    return dentro_da_colecao(page, cid)
 
 
 def baixar_projeto(page, canal, dest_zip, timeout_ms=1_200_000):
