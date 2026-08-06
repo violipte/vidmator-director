@@ -39,7 +39,9 @@ PADRAO = "chrome_profile"
 # Perfil tem DONO, não só estado. Divisão combinada com o Piter:
 #   chrome_profile        -> Claude do FLOW (veo_ciclo/coleções, personagens @Russel)
 #   chrome_profile_conta2 -> Claude do EDITOR (gaps/ilustrações do VidMator)
-DONOS = {"chrome_profile": "flow", "chrome_profile_conta2": "editor"}
+DONOS = {"chrome_profile": "flow", "chrome_profile_conta2": "editor",
+         "chrome_profile_conta3": "editor", "chrome_profile_conta4": "editor",
+         "chrome_profile_conta5": "editor"}
 EU = os.environ.get("FLOW_DONO", "editor")   # quem sou eu nesta sessão
 
 
@@ -82,20 +84,43 @@ def _logado(perfil):
 
 
 def identidade(perfil):
-    """Qual CONTA Google está neste perfil — lido do próprio perfil, não do nome
-    da pasta (02/08). "Como sei qual perfil é qual?" é a pergunta certa: nome de
-    diretório é convenção e mente quando alguém renomeia; o `gaia` é o ID único da
-    conta no Google e não colide."""
+    """Contas Google do perfil. `email` = a ATIVA; `contas` = todas.
+
+    ⚠️ 02/08 — um perfil pode ter VÁRIAS contas logadas e o `Preferences` NÃO diz
+    com segurança qual está ativa: no Profile 6 havia 3 contas, eu li a primeira
+    (`pitermoreiraviolim3`) e reportei errado — a real era `heartbrainconnection22`,
+    e o último refresh token apontava pra uma TERCEIRA. Perfil multi-conta não se
+    auto-identifica.
+
+    Por isso a ATIVA vem da FROTA quando declarada (o operador sabe, o arquivo não)
+    e o que se lê aqui é só o conjunto de candidatas. Sem declaração e com mais de
+    uma conta, devolve vazio em vez de chutar — chute vira geração na conta errada,
+    onde o projeto e o personagem do canal não existem."""
     pref = Path(perfil) / "Default" / "Preferences"
     if not pref.exists():
-        return {"email": "", "gaia": ""}
+        return {"email": "", "gaia": "", "contas": []}
     try:
         d = json.loads(pref.read_text(encoding="utf-8", errors="ignore"))
-        ai = (d.get("account_info") or [{}])[0]
-        return {"email": ai.get("email", "") or "",
-                "gaia": str(ai.get("gaia", "") or "")}
+        contas = [{"email": a.get("email", ""), "gaia": str(a.get("gaia", ""))}
+                  for a in (d.get("account_info") or []) if a.get("email")]
     except Exception:
-        return {"email": "", "gaia": ""}
+        return {"email": "", "gaia": "", "contas": []}
+    declarada = _conta_declarada(Path(perfil).name)
+    if declarada:
+        m = next((c for c in contas if c["email"].lower() == declarada.lower()), None)
+        return {"email": declarada, "gaia": (m or {}).get("gaia", ""), "contas": contas}
+    if len(contas) == 1:
+        return {**contas[0], "contas": contas}
+    return {"email": "", "gaia": "", "contas": contas}
+
+
+def _conta_declarada(nome_perfil):
+    """A conta que a FROTA diz ser a ativa deste perfil (fonte de verdade)."""
+    try:
+        d = json.loads((AQUI / "frota.json").read_text(encoding="utf-8"))
+        return (d.get("perfis", {}).get(nome_perfil, {}).get("conta") or "").strip()
+    except Exception:
+        return ""
 
 
 def status():
@@ -104,6 +129,7 @@ def status():
         ident = identidade(p)
         out.append({"perfil": p.name, "caminho": str(p), "dono": dono(p.name),
                     "conta": ident["email"], "gaia": ident["gaia"],
+                    "contas": ident.get("contas") or [],
                     "ocupado": _preso(p), "logado": _logado(p)})
     return out
 
@@ -219,7 +245,9 @@ def main():
     for s in st:
         estado = "OCUPADO" if s["ocupado"] else "livre"
         marca = " <- eu" if s["dono"] == EU else ""
-        print(f"  {s['perfil']:<24} {s['dono']:<8} {(s['conta'] or '(sem conta)'):<38} "
+        conta = s["conta"] or (f"? {len(s.get('contas') or [])} contas — declare"
+                               if s.get("contas") else "(sem conta)")
+        print(f"  {s['perfil']:<24} {s['dono']:<8} {conta:<38} "
               f"{estado:<9} {'sim' if s['logado'] else 'NÃO':<7}{marca}")
     livre = primeiro_livre()
     print()

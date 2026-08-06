@@ -1,7 +1,7 @@
 {
  "perfis": {
   "chrome_profile": {
-   "conta": "",
+   "conta": "pitermoreiraviolim@gmail.com",
    "plano": "ultra",
    "dono": "flow",
    "canais": [
@@ -9,10 +9,28 @@
    ]
   },
   "chrome_profile_conta2": {
-   "conta": "",
+   "conta": "piterviolim.negociosdigitais@gmail.com",
    "plano": "familia",
    "dono": "editor",
    "canais": []
+  },
+  "chrome_profile_conta3": {
+   "canais": [],
+   "plano": "familia",
+   "dono": "editor",
+   "conta": "bryanwestbrook54@gmail.com"
+  },
+  "chrome_profile_conta4": {
+   "canais": [],
+   "plano": "familia",
+   "dono": "editor",
+   "conta": "heartbrainconnection22@gmail.com"
+  },
+  "chrome_profile_conta5": {
+   "canais": [],
+   "plano": "familia",
+   "dono": "editor",
+   "conta": "mariaeduarda170599@gmail.com"
   }
  }
 }
