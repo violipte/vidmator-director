@@ -30,6 +30,7 @@ import json
 import re
 import sys
 import time
+import shutil
 import zipfile
 from pathlib import Path
 
@@ -40,7 +41,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 import flow_driver as fd  # noqa
 import veo_driver as vd  # noqa — _normalizar_lote, _cards_falha, _aprovado
 from veo_colecao import (abrir_colecao, baixar_projeto, projeto_do_canal,  # noqa
-                         garantir_dentro)
+                         garantir_dentro, baixar_cards_recentes)
 from veo_zip import aplicar  # noqa
 from veo_supervisor import matar_tudo  # noqa
 
@@ -84,6 +85,8 @@ def main():
                     help="segundos entre rajadas (timer puro; DOM mente)")
     ap.add_argument("--rajada", type=int, default=0,
                     help="prompts por rajada (0 = automático: 8 vídeo / 6 imagem)")
+    ap.add_argument("--colher-cards", type=int, default=5,
+                    help="lote com <= N itens colhe card a card (evita baixar o projeto)")
     ap.add_argument("--rajada-min", type=int, default=3,
                     help="piso da rajada quando o Flow reclamar de ritmo")
     a = ap.parse_args()
@@ -203,8 +206,23 @@ def main():
 
             # 3) UM download do PROJETO inteiro (o card da coleção some na
             # virtualização do grid; o ⋮ do topo está sempre lá — plano do Piter)
-            zip_p = job / f"_colecao_{a.tipo}_r{rodada}.zip"
-            baixar_projeto(page, a.canal, zip_p)
+            # COLHEITA PROPORCIONAL AO LOTE (06/08, Piter): "Baixar projeto" traz o
+            # projeto do CANAL inteiro (2.351 arquivos e crescendo) — ótimo pra 60
+            # itens, absurdo pra 3. Lote pequeno colhe card a card no topo do grid.
+            zip_p = None
+            if len(faltam) <= a.colher_cards:
+                pasta_c = job / f"_cards_r{rodada}"
+                if pasta_c.exists():
+                    shutil.rmtree(pasta_c, ignore_errors=True)
+                try:
+                    baixar_cards_recentes(page, a.canal, a.colecao, pasta_c,
+                                          n=max(3, len(faltam) * 2))
+                    zip_p = "CARDS"
+                except Exception as e_c:
+                    _log(f"  colheita por cards falhou ({str(e_c)[:70]}) — indo de projeto")
+            if zip_p is None:
+                zip_p = job / f"_colecao_{a.tipo}_r{rodada}.zip"
+                baixar_projeto(page, a.canal, zip_p)
         except Exception as e:
             _log(f"!! rodada {rodada} caiu: {type(e).__name__}: {str(e)[:120]}")
             try:
@@ -220,10 +238,19 @@ def main():
                 pass
 
         # 4) casa por título + gate local (browser JÁ fechado — daqui é tudo local)
-        if zip_p and zip_p.exists():
+        pasta = None
+        if zip_p == "CARDS":
+            pasta = job / f"_cards_r{rodada}"
+        elif zip_p and zip_p.exists():
             pasta = job / f"_zip_r{rodada}"
+            # 06/08: a pasta acumulava os downloads do dia (6 cópias do mesmo título,
+            # uma por rodada) e o casamento podia servir a versão VELHA de um take
+            # regerado. Cada extração começa limpa.
+            if pasta.exists():
+                shutil.rmtree(pasta, ignore_errors=True)
             with zipfile.ZipFile(zip_p) as z:
                 z.extractall(pasta)
+        if pasta and pasta.exists():
             n, casados, sobra_f, sobra_i = aplicar(pasta, alvos, out, min_sim=a.min_sim)
             _log(f"  zip: {n} casados | {len(sobra_f)} sem par | {len(sobra_i)} sem arquivo")
             novos = [it for it in alvos if (out / it["arquivo"]).exists()

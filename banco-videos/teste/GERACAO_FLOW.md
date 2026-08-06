@@ -134,6 +134,27 @@ jobs (apostei nisso e estava errado).
 **Ordem obrigatória:** `garantir_modo` na RAIZ → entra pela carta → envia, com
 `garantir_dentro` antes de cada rajada.
 
+## AVATAR — a ficha é do VÍDEO, não do canal (06/08, regra do Piter)
+
+> "Coloca ele no ambiente do qual está fazendo o vídeo, com as roupas adequadas ao
+> ambiente e o local. Óbvio."
+
+O personagem é do CANAL (identidade), mas **ambiente e figurino são do VÍDEO**. O
+host da Austrália saiu de camisa de campo amazônica à beira de um rio de selva
+porque o `style_card` herdou o cenário do cadastro. Sintoma que isso produz: o VEO
+reproduz o fundo do RETRATO do personagem e ignora o cenário pedido.
+`style_card["avatar"]["ambiente"]` + `["figurino"]` por vídeo resolvem na raiz —
+tentar esconder num close trata sintoma.
+
+**Take do host é MUDO + DUBLADO.** O VEO pronuncia o nome do chip no fim da fala
+(STT: "Travis Arewa" = Travesseiro) mesmo com o nome fora do texto. Gerar sem fala
+e dublar com o clone do Chatterbox: texto exato, nome nunca falado, e a voz do host
+vira a MESMA da narração. `gerar_dub_avatar.py` + `ilhas[secao].dub`.
+
+**Onde o host aparece (formato do Piter):** abertura · CTA ANTES do card do 3º item
+· CTA final como ÚLTIMO clipe. Presenças silenciosas espalhadas pelo meio ficaram
+fora de contexto e foram cortadas.
+
 ## AVATAR — doutrina de identidade (05/08, paga a caro)
 
 1. **A única prova de identidade é o log**: take vale como "do host" SÓ se o envio

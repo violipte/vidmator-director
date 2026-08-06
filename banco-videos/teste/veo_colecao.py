@@ -273,6 +273,53 @@ def baixar_projeto(page, canal, dest_zip, timeout_ms=1_200_000):
     return Path(dest_zip)
 
 
+def baixar_cards_recentes(page, canal, nome, dest_dir, n=5, timeout_ms=180_000):
+    """Baixa os N cards MAIS RECENTES da coleção, um a um. Alternativa ao zip.
+
+    06/08 (Piter viu na tela: "pq tá fazendo download do projeto de novo??"): a
+    colheita por "Baixar projeto" foi desenhada pra lote de 60 e resolveu bem, mas
+    pra retocar 3 takes ela arrasta os 2.351 arquivos do projeto do canal — e piora
+    a cada vídeo, porque o projeto é do CANAL e só cresce. A coleção não tem
+    download próprio (menu ⋮ dela = Renomear / Ver lixeira / Excluir), então a saída
+    pra lote pequeno é o caminho antigo, card a card — que é frágil no geral, mas
+    aqui é seguro: são poucos itens e eles estão no TOPO do grid, dentro da viewport,
+    que era justamente onde o fluxo antigo quebrava.
+    """
+    fd = _fd()
+    dest_dir = Path(dest_dir)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    abrir_colecao(page, canal, nome, criar_se_faltar=False)
+    if not dentro_da_colecao(page):
+        raise RuntimeError(f"não entrei na coleção '{nome}'")
+    fd.dispensar_avisos(page)
+    fd._pausa(2.0, 3.0)
+    cards = page.locator('a[href*="/edit/"]')
+    total = min(cards.count(), n)
+    baixados = []
+    for i in range(total):
+        try:
+            c = cards.nth(i)
+            c.hover()
+            fd._pausa(0.6, 1.0)
+            bb = c.bounding_box()
+            alvo = _botao_do_card(page, bb, r"download|Baixar")
+            if alvo is None:
+                print(f"  card {i}: sem botão de download no hover")
+                continue
+            with page.expect_download(timeout=timeout_ms) as di:
+                alvo.click()
+            d = di.value
+            destino = dest_dir / (d.suggested_filename or f"card_{i}.mp4")
+            d.save_as(str(destino))
+            baixados.append(destino)
+            print(f"  card {i}: {destino.name}")
+            fd._pausa(0.8, 1.4)
+        except Exception as e:
+            print(f"  card {i}: falhou ({type(e).__name__}: {str(e)[:60]})")
+    print(f"  {len(baixados)}/{total} cards baixados")
+    return baixados
+
+
 def baixar_colecao_de_dentro(page, canal, nome, dest_zip, timeout_ms=900_000):
     """ENTRA na coleção e baixa pelo ⋮ do TÍTULO dela. Zip só deste vídeo.
 

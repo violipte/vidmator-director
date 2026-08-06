@@ -1,0 +1,7 @@
+2026/08/03-20:29:38.627 cc4c Reusing MANIFEST C:\Users\Piter Piter\AppData\Local\Google\Chrome\User Data\Profile 2\IndexedDB\https_supabase.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/08/03-20:29:38.628 cc4c Recovering log #3
+2026/08/03-20:29:38.628 cc4c Reusing old log C:\Users\Piter Piter\AppData\Local\Google\Chrome\User Data\Profile 2\IndexedDB\https_supabase.com_0.indexeddb.leveldb/000003.log 
+2026/08/03-20:29:41.771 7338 Level-0 table #5: started
+2026/08/03-20:29:41.773 7338 Level-0 table #5: 1524 bytes OK
+2026/08/03-20:29:41.775 7338 Delete type=0 #3
+2026/08/03-20:29:41.775 7338 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

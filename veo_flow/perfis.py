@@ -81,10 +81,29 @@ def _logado(perfil):
     return False
 
 
+def identidade(perfil):
+    """Qual CONTA Google está neste perfil — lido do próprio perfil, não do nome
+    da pasta (02/08). "Como sei qual perfil é qual?" é a pergunta certa: nome de
+    diretório é convenção e mente quando alguém renomeia; o `gaia` é o ID único da
+    conta no Google e não colide."""
+    pref = Path(perfil) / "Default" / "Preferences"
+    if not pref.exists():
+        return {"email": "", "gaia": ""}
+    try:
+        d = json.loads(pref.read_text(encoding="utf-8", errors="ignore"))
+        ai = (d.get("account_info") or [{}])[0]
+        return {"email": ai.get("email", "") or "",
+                "gaia": str(ai.get("gaia", "") or "")}
+    except Exception:
+        return {"email": "", "gaia": ""}
+
+
 def status():
     out = []
     for p in listar():
+        ident = identidade(p)
         out.append({"perfil": p.name, "caminho": str(p), "dono": dono(p.name),
+                    "conta": ident["email"], "gaia": ident["gaia"],
                     "ocupado": _preso(p), "logado": _logado(p)})
     return out
 
@@ -196,12 +215,12 @@ def main():
         print(json.dumps(st, ensure_ascii=False, indent=1))
         return
 
-    print(f"{'PERFIL':<28} {'DONO':<10} {'ESTADO':<10} {'LOGIN':<8}")
+    print(f"{'PERFIL':<26} {'DONO':<8} {'CONTA':<38} {'ESTADO':<9} {'SESSÃO':<7}")
     for s in st:
         estado = "OCUPADO" if s["ocupado"] else "livre"
         marca = " <- eu" if s["dono"] == EU else ""
-        print(f"  {s['perfil']:<26} {s['dono']:<10} {estado:<10} "
-              f"{'sim' if s['logado'] else 'NÃO':<8}{marca}")
+        print(f"  {s['perfil']:<24} {s['dono']:<8} {(s['conta'] or '(sem conta)'):<38} "
+              f"{estado:<9} {'sim' if s['logado'] else 'NÃO':<7}{marca}")
     livre = primeiro_livre()
     print()
     print(f"-> disponível pro driver: {Path(livre).name if livre else 'NENHUM'}")

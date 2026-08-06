@@ -71,6 +71,14 @@ def _rotulo_capitulo(texto_beat, titulo):
     que é o certo para vídeo que não é lista.
     """
     t = f"{texto_beat} {titulo}".lower()
+    # 06/08 (QA Piter, Austrália: "trouxe Chapter 02 ao invés de Number 05"): quando o
+    # marcador "Number five." cai no ÚLTIMO beat da seção anterior — que é onde ele
+    # naturalmente fica, anunciando o que vem —, a seção do item não herda ordinal
+    # nenhum e caía no contador interno. O DIRETOR já titula a seção com "#5: ...":
+    # esse "#N" é sinal direto e não depende de onde o corte de seção caiu.
+    mh = re.search(r"#\s*(\d{1,2})\b", str(titulo))
+    if mh:
+        return "Number", int(mh.group(1))
     m = re.search(r"\b(number|part|chapter|step|rule|stage|lesson)\s+"
                   r"(one|two|three|four|five|six|seven|eight|nine|ten|\d{1,2})\b", t)
     if not m:
@@ -1148,7 +1156,10 @@ def main():
                     # de documentário: música sob voz vive em 15-25%. 0.20 com o HOOK
                     # um pouco acima (a abertura carrega no clima, ainda sem informação
                     # densa competindo) e a REVELAÇÃO idem, que é onde o argumento fecha.
-                    _vol = 0.26 if idx == 0 else 0.24 if idx == n_sec - 1 else 0.20
+                    # 06/08 (QA Piter, Austrália): "a trilha sonora tá muito alta".
+                    # 0.20-0.26 competia com a narração — a régua desce um degrau e
+                    # fica em 12-16%, ainda presente no clima e fora do caminho da voz.
+                    _vol = 0.16 if idx == 0 else 0.15 if idx == n_sec - 1 else 0.12
                     audio_plan["trilhas"].append({"arquivo": rel, "t_ini": s["t_ini"],
                                                   "t_fim": s["t_fim"], "vol": _vol})
             sfx_man = json.loads((ACERVO / "sfx/manifesto.json").read_text(encoding="utf-8"))["sfx"]
@@ -1585,9 +1596,13 @@ def main():
                 # 05/08 (Piter): ilha pode levar CTA junto — valor vira dict:
                 #   {"clip": "x.mp4", "cta": "SubscribeBellPulse", "props": {...}}
                 cta_comp, cta_props = None, {}
+                dub_txt, antes_card, ultimo = "", False, False
                 if isinstance(arq_av, dict):
                     cta_comp = arq_av.get("cta")
                     cta_props = arq_av.get("props") or {}
+                    dub_txt = (arq_av.get("dub") or "").strip()
+                    antes_card = bool(arq_av.get("antes_do_card"))
+                    ultimo = bool(arq_av.get("ultimo_clipe"))
                     arq_av = arq_av["clip"]
                 src_av = ab / arq_av
                 s_av = next((s for s in secoes if s["i"] == int(sec_s)), None)
@@ -1604,9 +1619,23 @@ def main():
                 # 29/07: ilha absorve QUALQUER beat consecutivo que caiba INTEIRO na
                 # janela do clipe (só livres dava ilha de 3s e cortava a fala em 8s).
                 # 1º beat precisa ser livre; parcial não entra (sem encolher animação).
+                # 06/08 (Piter): ONDE a ilha começa depende do papel dela.
+                #   antes_do_card -> o CTA tem que entrar quando ACABA o item anterior
+                #     e ANTES do card do próximo ("depois que termina o 02, antes de
+                #     aparecer a animação do 03"). Logo a busca começa ANTES do início
+                #     da seção, e não nela — senão o card sempre chega primeiro.
+                #   ultimo_clipe  -> o CTA final é o ÚLTIMO clipe do vídeo, não um
+                #     take perto do fim: ancora no fim da linha do tempo.
+                if ultimo:
+                    fim_video = max(b["t_fim"] for b in beats_out)
+                    piso_busca = fim_video - d_clip - 0.3
+                elif antes_card:
+                    piso_busca = s_av["t_ini"] - d_clip - 0.3
+                else:
+                    piso_busca = s_av["t_ini"] - 0.1
                 cadeia_av = []
                 for b in sorted(beats_out, key=lambda x: x["t_ini"]):
-                    if b["t_ini"] < s_av["t_ini"] - 0.1 or b.get("_seg"):
+                    if b["t_ini"] < piso_busca or b.get("_seg"):
                         continue
                     livre_av = b.get("tipo") in ("stock", "footage_video") \
                         and not b.get("componente")
@@ -1647,6 +1676,19 @@ def main():
                 b0.update({"tipo": "avatar", "src": f"jobs/{a.nome}/avatar/{src_av.name}",
                            "t_fim": t1_av, "componente": cta_comp, "props": cta_props,
                            "bg": None})
+                # DUBLAGEM: o .wav gerado pelo `gerar_dub_avatar.py` mora ao lado do
+                # clipe com o mesmo nome. Sem ele a ilha volta ao áudio nativo (que é
+                # ambiente, já que o take é mudo) — nunca quebra a montagem.
+                if dub_txt:
+                    wav = ab / (Path(arq_av).stem + ".wav")
+                    if wav.exists():
+                        if not (dest / "avatar" / wav.name).exists():
+                            shutil.copy2(wav, dest / "avatar" / wav.name)
+                        b0["dub"] = f"jobs/{a.nome}/avatar/{wav.name}"
+                        print(f"avatar: dublagem {wav.name} ({dub_txt[:44]!r})")
+                    else:
+                        print(f"avatar: !! dub pedido mas {wav.name} não existe "
+                              f"— ilha fica só com ambiente")
                 avatar_ilhas.append({"t_ini": round(t0_av, 2), "t_fim": t1_av})
                 print(f"avatar [{av_cfg.get('persona', '?')}]: ilha seção {sec_s} "
                       f"{t0_av:.1f}-{t1_av:.1f}s ({src_av.name})")

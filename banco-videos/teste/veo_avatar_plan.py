@@ -1,30 +1,37 @@
 # -*- coding: utf-8 -*-
-"""PLANEJADOR DE TAKES DO AVATAR (05/08, desenho do Piter) — presença do host no vídeo.
+"""PLANEJADOR DE TAKES DO AVATAR — presença do host no vídeo.
 
-"Alguns takes do avatar sempre ficam interessantes no meio do vídeo. Às vezes ele
-andando ou fazendo alguma ação simples coerente com o ambiente, encaixado no vídeo,
-uma variação entre 5~8 takes."
+FORMATO DEFINIDO PELO PITER EM 06/08 (depois do QA do vídeo da Austrália):
+o host aparece em TRÊS lugares, e só:
 
-Gera o plano de takes do host pra QUALQUER canal com avatar:
-  • 1 HOOK falado (fala 80-90 chars — teto aprovado: 122 corta, 69 arrasta, 89 natural)
-  • takes de PRESENÇA silenciosa espalhados pelas seções: ação simples e coerente com
-    o ambiente (andar, examinar, anotar). Áudio nativo = só o AMBIENTE — sem fala.
-  • CTAs por formato (ranking: 1 no fim do 2º item mostrado + 1 no encerramento),
-    com overlay clássico de YT por baixo (SubscribeBellPulse / SubscribeMinimal).
+  1. ABERTURA        — introduz o vídeo
+  2. CTA DO MEIO     — entre o fim do capítulo 2 e o CARD do capítulo 3
+                       (tem que vir ANTES do card, não depois)
+  3. CTA FINAL       — o ÚLTIMO clipe do vídeo, se despedindo
 
-REGRAS DE POLÍTICA (aprendidas a caro em 05/08):
-  • o NOME existe SÓ no chip do @ — `montar_prompt_avatar` troca nome por pronome e
-    o driver apaga o resíduo que o "Incluir no comando" deixa no texto;
-  • recusou ("pessoa famosa")? o ciclo reenvia com variação de cauda automática.
+O que saiu: as 5-8 "presenças silenciosas" espalhadas pelo meio. Ficaram fora de
+contexto ("aparece o host andando e atravessando um galho, sem áudio nem função —
+quando sugeri ele aparecer nos clipes, não foi nesse sentido"). O resto do vídeo é
+só ilustração do assunto.
 
-style_card["avatar"] (além de escopo/nome/voz/descricao):
-  "takes_meio": 5,          # presença silenciosa (5-8; Piter)
-  "cta_ranking": true,      # CTA meio+fim no formato ranking/top-N
-  "ambiente": "rainforest riverbank"   # opcional; default derivado do gen_estilo
+⚠️ TAKES SÃO GERADOS EM SILÊNCIO E DUBLADOS (06/08, decisão do plano B).
+Prova que forçou a mudança — STT dos takes crus do 1º corte:
+    av_hook      -> "...Subscribe so you don't miss it. Travis Arewa."
+    av_cta_final -> "...subscribe and ring the bell. TraviSero."
+"Travis Arewa"/"TraviSero" = o VEO PRONUNCIANDO O NOME DO CHIP. Mesmo com o nome
+fora do texto do prompt, o gerador de áudio lê o nome do personagem em voz alta —
+renomear não resolve, só troca a palavra estranha. Além disso o casamento por
+título colocou a fala do CTA dentro do slot da abertura.
+Gerando MUDO e dublando com a voz clonada (Chatterbox, a MESMA da narração):
+nome nunca é falado, fala nunca sai trocada, texto exato, e a voz do host passa a
+ser idêntica à da narração em vez de só parecida.
+
+style_card["avatar"]:
+  "fala_hook", "fala_cta_meio", "fala_cta_final"   (texto que será DUBLADO)
+  "ambiente": "australian bushland"
+  "cta_ranking": true   (mantém os 2 CTAs; false = só a abertura)
 
 Uso: python veo_avatar_plan.py --job <dir> --plano <plano.json> [--aplicar]
-Saída: <job>/_avatar_plan.json (lote pro veo_ciclo) + mapping de ilhas
-(--aplicar grava as ilhas no style_card; sem ele, só mostra).
 """
 import argparse
 import json
@@ -35,51 +42,29 @@ sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 from veo_personagem import personagem_do_canal, montar_prompt_avatar  # noqa
 
-# ações simples e AMBIENTE-COERENTES — sem fala; o áudio nativo vira o leito ASMR.
-# {amb} = ambiente do canal. Variedade primeiro: nunca duas iguais no mesmo vídeo.
-ACOES_PRESENCA = [
-    "walks slowly along a narrow trail through the {amb}, looking around with quiet attention, gentle handheld follow",
-    "crouches low to study animal tracks pressed in soft ground, then looks up across the {amb}, static tripod",
-    "writes a few lines in a worn field notebook while standing in the {amb}, soft natural light, medium shot",
-    "examines the underside of a large leaf with one hand, turning it toward the light in the {amb}, close medium shot",
-    "stands still at the edge of the {amb}, scanning the distance, light wind moving the vegetation, wide shot",
-    "steps carefully over roots and fallen branches deeper into the {amb}, camera tracking a few paces behind",
-    "kneels at the water's edge and studies the surface for movement in the {amb}, low angle, static tripod",
-    "adjusts the strap of a field bag and checks the sky before moving on through the {amb}, medium wide shot",
-]
-# 06/08 (Piter): "o avatar aparecendo em cenas aleatórias como se fosse footage de
-# REALITY, com alguém filmando ele caminhando, fazendo trilha". Estilo de série de
-# sobrevivência — a diferença não está na ação, está na CÂMERA: ela é operada por
-# alguém que anda junto, perde e reencontra o enquadramento. (O nome do programa de
-# TV NUNCA entra no prompt — mesma política de "pessoa famosa" que derrubou takes.)
-ACOES_REALITY = [
-    "pushes through dense scrub on a rough trail across the {amb}, branches brushing "
-    "past the lens as the operator follows a few steps behind",
-    "climbs over a rocky outcrop in the {amb}, using one hand for balance, the camera "
-    "operator scrambling up behind him and catching up at the top",
-    "wades across a shallow creek in the {amb}, boots in the water, testing each step, "
-    "handheld camera following from the bank",
-    "stops on the trail, turns back toward the operator and points off into the {amb} "
-    "before continuing on, run-and-gun handheld",
-    "crouches to check a track in the dirt of the {amb}, the operator moving in close "
-    "over his shoulder for the detail then pulling back out",
-    "walks a ridgeline in the {amb} with the wind picking up, the camera lagging behind "
-    "and swinging to catch him against the sky",
-    "shoulders his pack and sets off along a dry riverbed in the {amb}, the operator "
-    "walking backwards ahead of him, frame bouncing with the pace",
-    "shelters under a rock overhang in the {amb} as light rain falls, catching his "
-    "breath, camera handheld and close in the confined space",
-]
-_CAM_REALITY = ("Shot as observational survival-series field footage: single handheld "
-                "operator on foot, natural camera shake, occasional quick reframe and "
-                "refocus, no music, no interview setup")
+# O take é MUDO: pedimos o ambiente, nunca a fala. Enquadramento POSITIVO — pedir
+# por negação ("does not speak") derruba o gerador de áudio (05/08).
+_AMBIENTE = ("Audio: only the natural ambience of the place — wind in the trees, "
+             "distant birds, quiet air")
+# 06/08 (QA do Piter): "tem uma câmera de fundo" — o VEO põe tripé/câmera em quadro
+# quando o prompt cheira a set de filmagem. Pedir explicitamente que não haja.
+_SEM_SET = ("No camera, no tripod, no microphone, no filming equipment anywhere in "
+            "frame. Just the person and the landscape")
+# 06/08 (QA): o take saiu num RIO BARRENTO DE SELVA mesmo pedindo "australian
+# bushland" — o VEO reproduz o fundo do RETRATO do personagem (criado na Amazônia)
+# quando o ambiente vem genérico. Descrever o lugar com substantivos concretos, e
+# repetir a âncora no fim do prompt, faz o cenário obedecer.
+def _ancora(amb):
+    return f"The setting is unmistakably {amb}"
 
-# 05/08 (print do Piter: "Falha ao gerar áudio"): pedir o áudio por NEGAÇÃO
-# ("does not speak, no narration") derruba o gerador de áudio. Enquadramento
-# POSITIVO: descrever o que o ambiente SOA, e a ausência de fala vira consequência.
-_SEM_FALA = ("Audio: gentle ambient sounds of the environment — birdsong, insects, "
-             "soft wind and distant water. He works in comfortable silence, "
-             "unhurried observational pacing")
+
+# 06/08 (Piter, e é óbvio quando dito): "coloca ele no ambiente do qual está fazendo
+# o vídeo, com as roupas adequadas ao ambiente e o local". O host estava de camisa de
+# campo amazônica à beira de um rio de selva num vídeo sobre a Austrália — o problema
+# nunca foi o modelo teimoso, foi a FICHA errada pro vídeo. Ambiente e FIGURINO passam
+# a vir do style_card DESTE vídeo, não do cadastro fixo do canal. (A tentativa
+# anterior — esconder tudo num close — tratava o sintoma.)
+_ENQUADRA = ("Medium shot, chest up, the location clearly readable behind him")
 
 
 def planejar(job, plano, aplicar=False):
@@ -93,7 +78,7 @@ def planejar(job, plano, aplicar=False):
         return None
     estilo = (sc.get("gen_estilo") or "cinematic documentary, natural light")[:200]
     amb = av.get("ambiente") or "surrounding environment"
-    n_meio = max(0, min(8, int(av.get("takes_meio", 5))))
+    figurino = (av.get("figurino") or "").strip()
     secoes = json.loads(Path(plano).read_text(encoding="utf-8")).get("secoes", [])
     if len(secoes) < 3:
         print("plano com poucas seções — planejador precisa de secoes[]")
@@ -102,63 +87,61 @@ def planejar(job, plano, aplicar=False):
     lote, ilhas = [], {}
     i_neg = -50
 
-    # HOOK falado (seção 0) — a fala vem do style_card ou fica pro operador ajustar
+    def _take(arquivo, acao, fala, secao, cta=None, antes_do_card=False, ultimo=False):
+        """Um take MUDO + a fala que a montagem vai dublar por cima."""
+        nonlocal i_neg
+        lote.append({"i": i_neg, "tipo": "video", "arquivo": arquivo, "avatar": True,
+                     "busca_original": f"host take {arquivo}",
+                     "prompt": montar_prompt_avatar(
+                         ficha, f"{acao}. {('Wearing ' + figurino + '. ') if figurino else ''}"
+                                f"{_ENQUADRA}. {_ancora(amb)}. {_AMBIENTE}. {_SEM_SET}",
+                         estilo=estilo, fala="")})
+        i_neg -= 1
+        ilha = {"clip": arquivo, "dub": fala}
+        if cta:
+            ilha["cta"] = cta
+            ilha["props"] = {}
+        if antes_do_card:
+            ilha["antes_do_card"] = True
+        if ultimo:
+            ilha["ultimo_clipe"] = True
+        ilhas[str(secao)] = ilha
+
+    # 1. ABERTURA
     fala_hook = (av.get("fala_hook") or "").strip()
     if fala_hook:
-        lote.append({"i": i_neg, "tipo": "video", "arquivo": "av_hook.mp4", "avatar": True,
-                     "busca_original": "host hook take",
-                     "prompt": montar_prompt_avatar(
-                         ficha, f"stands facing the lens in the {amb}, speaking naturally "
-                                f"at an easy pace, static tripod 35mm", estilo=estilo,
-                         fala=fala_hook)})
-        ilhas["0"] = "av_hook.mp4"
-        i_neg -= 1
+        _take("av_hook.mp4",
+              f"stands facing the lens in the {amb}, talking to the viewer at an easy "
+              f"pace with small natural hand gestures, static eye-level shot",
+              fala_hook, secoes[0]["i"])
 
-    # CTAs do formato ranking: meio (antes do antepenúltimo item) + encerramento
     if av.get("cta_ranking", True):
-        sec_meio = str(secoes[len(secoes) // 2]["i"])
-        sec_fim = str(secoes[-1]["i"])
-        lote.append({"i": i_neg, "tipo": "video", "arquivo": "av_cta_meio.mp4", "avatar": True,
-                     "busca_original": "host mid cta take",
-                     "prompt": montar_prompt_avatar(
-                         ficha, f"sits at rest in the {amb}, speaking warmly toward the lens, "
-                                f"static tripod", estilo=estilo,
-                         fala=av.get("fala_cta_meio") or
-                         "If this is helping you, subscribe. It genuinely matters.")})
-        ilhas[sec_meio] = {"clip": "av_cta_meio.mp4", "cta": "SubscribeBellPulse", "props": {}}
-        i_neg -= 1
-        lote.append({"i": i_neg, "tipo": "video", "arquivo": "av_cta_final.mp4", "avatar": True,
-                     "busca_original": "host closing cta take",
-                     "prompt": montar_prompt_avatar(
-                         ficha, f"pauses in late golden light in the {amb}, gives a small nod "
-                                f"toward the lens, static tripod", estilo=estilo,
-                         fala=av.get("fala_cta_final") or
-                         "If this taught you something, subscribe and ring the bell.")})
-        ilhas[sec_fim] = {"clip": "av_cta_final.mp4", "cta": "SubscribeMinimal", "props": {}}
-        i_neg -= 1
+        # 2. CTA DO MEIO — ANTES do card do 3º item (Piter: "depois que termina o 02,
+        #    antes de aparecer a animação do 03")
+        sec_meio = secoes[len(secoes) // 2]["i"]
+        _take("av_cta_meio.mp4",
+              f"sits on a rock in the {amb}, turning to the lens and speaking warmly, "
+              f"relaxed posture, static eye-level shot",
+              (av.get("fala_cta_meio") or
+               "Before the next one on our list, subscribe, like and hit the bell."),
+              sec_meio, cta="SubscribeBellPulse", antes_do_card=True)
 
-    # PRESENÇA silenciosa: distribui pelas seções que sobraram (sem hook/CTA)
-    livres = [str(s["i"]) for s in secoes[1:-1] if str(s["i"]) not in ilhas]
-    passo = max(1, len(livres) // max(1, n_meio))
-    escolhidas = livres[::passo][:n_meio]
-    # "observacional" (default, host trabalhando) | "reality" (câmera acompanha a trilha)
-    reality = (av.get("estilo_presenca") or "observacional") == "reality"
-    banco = ACOES_REALITY if reality else ACOES_PRESENCA
-    cauda = f" {_CAM_REALITY}." if reality else ""
-    for k, sec in enumerate(escolhidas):
-        acao = banco[k % len(banco)].format(amb=amb) + cauda
-        arq = f"av_meio_{k:02d}.mp4"
-        lote.append({"i": i_neg, "tipo": "video", "arquivo": arq, "avatar": True,
-                     "busca_original": f"host silent presence take {k}",
-                     "prompt": montar_prompt_avatar(
-                         ficha, f"{acao}. {_SEM_FALA}", estilo=estilo, fala="")})
-        ilhas[sec] = arq
-        i_neg -= 1
+        # 3. CTA FINAL — o ÚLTIMO clipe do vídeo
+        sec_fim = secoes[-1]["i"]
+        _take("av_cta_final.mp4",
+              f"stands in late golden light in the {amb}, gives a small nod and a "
+              f"short wave toward the lens, static eye-level shot",
+              (av.get("fala_cta_final") or
+               "Thanks for watching. Subscribe, and I'll see you next time."),
+              sec_fim, cta="SubscribeMinimal", ultimo=True)
 
     out = job / "_avatar_plan.json"
     out.write_text(json.dumps(lote, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{len(lote)} takes -> {out.name}")
-    print("ilhas:", json.dumps(ilhas, ensure_ascii=False))
+    print(f"{len(lote)} takes (MUDOS, dublados na montagem) -> {out.name}")
+    for k, v in ilhas.items():
+        marca = "ANTES DO CARD" if v.get("antes_do_card") else (
+            "ÚLTIMO CLIPE" if v.get("ultimo_clipe") else "abertura")
+        print(f"  seção {k}: {v['clip']:<18} [{marca}] dub={v['dub'][:52]!r}")
     if aplicar:
         sc["avatar"]["ilhas"] = ilhas
         (job / "style_card.json").write_text(json.dumps(sc, ensure_ascii=False, indent=1),

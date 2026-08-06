@@ -69,6 +69,7 @@ const WASH: Record<string, string> = {
 
 type Beat = { i: number; t_ini: number; t_fim: number; tipo: string; tier: number; watermark: boolean;
   secao: number; src?: string; bg?: string; bg_nitido?: boolean; componente?: string; props?: any;
+  dub?: string;
   off_s?: number; trato?: string; som?: string; trans_in?: { tipo: string };
   trans_out?: { tipo: string; dur_f: number };
   fx_img?: { tipo: string; accent?: string };
@@ -350,15 +351,19 @@ const BeatView: React.FC<{ b: Beat; estilo?: string }> = ({ b, estilo = "v1" }) 
     return <Parallax3Scene5 {...((b.props || {}) as object)} />;
   }
   if (b.tipo === "avatar" && b.src) {
-    // AVATAR v3 (29/07): apresentador do Flow — full-frame COM áudio nativo
-    // (a narração ducka nesta janela; ver volume do <Audio> principal)
-    // 05/08 (Piter): ilha de CTA — animação clássica de YT como OVERLAY por baixo
-    // do avatar falando ("fim do passo 2 / antes do passo 3" e no encerramento)
+    // AVATAR v3 (29/07): apresentador do Flow — full-frame.
+    // 05/08 (Piter): ilha de CTA — animação clássica de YT como OVERLAY por baixo.
+    // 06/08 (Piter): o take agora é MUDO e a fala vem DUBLADA (b.dub) com a voz
+    // clonada, a MESMA da narração. Motivo: o VEO pronunciava o nome do chip no
+    // fim da fala ("Travis Arewa" = Travesseiro) e o casamento por título chegou a
+    // pôr a fala do CTA dentro do slot da abertura. Com dublagem o texto é exato,
+    // o nome nunca é falado e a voz do host casa com a do narrador.
     const Cta = b.componente ? COMP_MAP[b.componente] : null;
     return (
       <AbsoluteFill style={{ background: "#000" }}>
-        <OffthreadVideo src={staticFile(b.src)}
+        <OffthreadVideo src={staticFile(b.src)} muted={!!b.dub}
           style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        {b.dub ? <Audio src={staticFile(b.dub)} /> : null}
         {Cta ? <AbsoluteFill style={{ pointerEvents: "none" }}>
           <Cta {...(b.props || {})} />
         </AbsoluteFill> : null}
@@ -423,7 +428,10 @@ export const Montagem5: React.FC<{ job?: string; mont?: Mont | null }> = ({ mont
                     sceneFrames={dur} alturaFrac={b.mascote.altura} />
                 )}
                 {/* v5 F5: karaokê word-by-word (opcional por style_card) */}
-                {b.captionWords && <Karaoke5 words={b.captionWords} accent={(b.fx_img?.accent) || "#f59e0b"} />}
+                {/* 06/08 (QA Piter): durante a ilha do host a legenda mostrava a
+                    NARRAÇÃO enquanto ele falava outra coisa — legenda fora do que se
+                    ouve. Ilha de avatar não leva karaokê. */}
+                {b.captionWords && b.tipo !== "avatar" && <Karaoke5 words={b.captionWords} accent={(b.fx_img?.accent) || "#f59e0b"} />}
               </TransInWrap>
             </TransOutWrap>
           </Sequence>

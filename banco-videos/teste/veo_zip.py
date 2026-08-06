@@ -113,7 +113,14 @@ def casar(arquivos, lote):
             # pela união e afunda todo mundo pra ~0.10 — inútil pra ranquear. O que
             # importa é: das palavras do TÍTULO, quantas o prompt contém?
             pares.append((inter / len(tf), inter, f, it))
-    pares.sort(key=lambda x: (-x[0], -x[1]))
+    # 06/08: DESEMPATE PELO MAIS NOVO. A pasta de extração acumula os downloads do
+    # dia e o mesmo título aparece com vários carimbos (o carimbo é a hora do
+    # DOWNLOAD) — com nota empatada em 1.00 o guloso pegava uma cópia VELHA, e um
+    # take regerado nunca entrava: os frames voltavam idênticos aos do corte anterior.
+    def _stamp_nome(f):
+        m = re.search(r"_(\d{12})(?:_\d+)?$", f.stem)
+        return m.group(1) if m else "0"
+    pares.sort(key=lambda x: (-x[0], -x[1], -int(_stamp_nome(x[2]) or 0)))
     usados_f, usados_i, casados = set(), set(), []
     for sim, inter, f, it in pares:
         if f.name in usados_f or it["arquivo"] in usados_i:
