@@ -58,11 +58,17 @@ def casar(arquivos, lote):
         for it in lote:
             if it.get("tipo") and it["tipo"] != kind_f:
                 continue
+            # 05/08: take de AVATAR casado a 0.5 trouxe uma ONÇA pro slot do host
+            # (tokens genéricos "through/forest"). Identidade não admite palpite:
+            # item avatar exige cobertura alta; na dúvida, fica sem e regenera.
+            LIMIAR_AVATAR = 0.72
             ti = _tokens(it.get("prompt", ""))
             if not tf or not ti:
                 continue
             inter = len(tf & ti)
             if not inter:
+                continue
+            if it.get("avatar") and inter / len(tf) < LIMIAR_AVATAR:
                 continue
             # COBERTURA DO TÍTULO, não Jaccard: o título do Flow tem ~5 palavras e o
             # prompt dirigido tem ~60 (lente, luz, movimento, grading). Jaccard divide
