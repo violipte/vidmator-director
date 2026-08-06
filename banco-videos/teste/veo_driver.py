@@ -472,8 +472,25 @@ def main():
         # persiste por projeto, e gerar no modelo errado já custou caro duas vezes
         # hoje (vídeo saindo como imagem; imagem saindo como vídeo a 10 créditos).
         # `--sem-config` agora quer dizer "não reconfigure à toa", nunca "não confira".
-        fd.garantir_modo(page, a.tipo, None if a.sem_config else a.modelo,
-                         "16:9", "8s", "1x")
+        try:
+            fd.garantir_modo(page, a.tipo, None if a.sem_config else a.modelo,
+                             "16:9", "8s", "1x")
+        except Exception as e:
+            # PROJETO REUSADO INCOMPATÍVEL (06/08): `--reusar` economiza projeto mas
+            # HERDA a configuração dele. Um projeto deixado em modo Omni ("Edite um
+            # vídeo com o Omni") não tem sequer a aba "Imagem", então trocar o modo
+            # estoura um TimeoutError esperando um tab que aquela tela não oferece.
+            # Projeto NOVO nasce limpo — é o fallback certo, e só custa o projeto
+            # vazio que o --reusar queria evitar.
+            if not (a.reusar and not a.proj):
+                raise
+            print(f"  projeto reusado não aceita modo {a.tipo} ({type(e).__name__}) — "
+                  f"criando um projeto limpo", flush=True)
+            fd._abrir_projeto(page, None)
+            time.sleep(6)
+            proj_url = page.url
+            fd.garantir_modo(page, a.tipo, None if a.sem_config else a.modelo,
+                             "16:9", "8s", "1x")
 
         if a.so_baixar:
             em_voo = list(fila_itens)   # tudo pendente de download; nada a gerar
@@ -624,7 +641,18 @@ def main():
             print(f"  ... voo={len(em_voo)} feitos={feitos} falhas={falhas} "
                   f"t={int(time.time() - t0)}s", flush=True)
         print(f"=== FIM: {feitos} ok, {falhas} falhas, {len(em_voo)} sem card ===")
-    except Exception:
+    except Exception as e:
+        # NAVEGADOR FECHADO no meio (06/08): janela fechada na mão, crash do Chrome,
+        # ou o perfil aberto por outro processo. Vinha como 25 linhas de traceback do
+        # Playwright terminando em TargetClosedError, que não diz o que fazer — e o
+        # que fazer é específico: os cards já gerados FICAM no Flow, então `--so-baixar`
+        # recupera o lote sem gastar geração de novo.
+        if "TargetClosed" in type(e).__name__ or "has been closed" in str(e):
+            print(f"!!! O navegador FECHOU no meio do lote ({feitos} ok até aqui).")
+            print("!!! Os cards já gerados continuam no Flow — recupere sem re-gerar:")
+            print(f'!!!   veo_driver.py --lote "{a.lote}" --out "{a.out}" '
+                  f'--tipo {a.tipo} --so-baixar --perfil "{a.perfil}"')
+            return
         try:
             page.screenshot(path=str(Path(a.out) / "_debug_erro.png"))
             print(f"  screenshot de erro: {Path(a.out) / '_debug_erro.png'}")
