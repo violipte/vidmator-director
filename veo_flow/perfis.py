@@ -33,6 +33,20 @@ AQUI = Path(__file__).resolve().parent
 PADRAO = "chrome_profile"
 
 
+# ---- DONO por perfil (02/08) ----
+# Sem isto o monitor só enxerga LOCK: "livre" virava "meu", e eu tomei o perfil que
+# o Claude do Flow estava usando só porque a janela dele fechou por um instante.
+# Perfil tem DONO, não só estado. Divisão combinada com o Piter:
+#   chrome_profile        -> Claude do FLOW (veo_ciclo/coleções, personagens @Russel)
+#   chrome_profile_conta2 -> Claude do EDITOR (gaps/ilustrações do VidMator)
+DONOS = {"chrome_profile": "flow", "chrome_profile_conta2": "editor"}
+EU = os.environ.get("FLOW_DONO", "editor")   # quem sou eu nesta sessão
+
+
+def dono(nome):
+    return DONOS.get(nome, "livre-pra-todos")
+
+
 def listar():
     return sorted([p for p in AQUI.iterdir()
                    if p.is_dir() and p.name.startswith(PADRAO)],
@@ -70,15 +84,20 @@ def _logado(perfil):
 def status():
     out = []
     for p in listar():
-        out.append({"perfil": p.name, "caminho": str(p),
+        out.append({"perfil": p.name, "caminho": str(p), "dono": dono(p.name),
                     "ocupado": _preso(p), "logado": _logado(p)})
     return out
 
 
-def primeiro_livre():
-    """Perfil LOGADO e não ocupado — o que o driver deve usar. None se não há."""
+def primeiro_livre(quem=None):
+    """Perfil LOGADO, não ocupado E MEU. Nunca devolve o perfil de outro dono,
+    mesmo que esteja livre — territrio alheio não é recurso disponível."""
+    quem = quem or EU
     for s in status():
-        if not s["ocupado"] and s["logado"]:
+        if s["ocupado"] or not s["logado"]:
+            continue
+        d = s["dono"]
+        if d in (quem, "livre-pra-todos"):
             return s["caminho"]
     return None
 
@@ -177,10 +196,12 @@ def main():
         print(json.dumps(st, ensure_ascii=False, indent=1))
         return
 
-    print(f"{'PERFIL':<28} {'ESTADO':<12} {'LOGIN':<10}")
+    print(f"{'PERFIL':<28} {'DONO':<10} {'ESTADO':<10} {'LOGIN':<8}")
     for s in st:
         estado = "OCUPADO" if s["ocupado"] else "livre"
-        print(f"  {s['perfil']:<26} {estado:<12} {'sim' if s['logado'] else 'NÃO'}")
+        marca = " <- eu" if s["dono"] == EU else ""
+        print(f"  {s['perfil']:<26} {s['dono']:<10} {estado:<10} "
+              f"{'sim' if s['logado'] else 'NÃO':<8}{marca}")
     livre = primeiro_livre()
     print()
     print(f"-> disponível pro driver: {Path(livre).name if livre else 'NENHUM'}")
