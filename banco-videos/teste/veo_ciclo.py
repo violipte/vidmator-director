@@ -137,7 +137,10 @@ def main():
                 for it in faltam[i:i + 3]:
                     n_env = envios.get(it["arquivo"], 0)
                     sufixo = VARIA[n_env % len(VARIA)]
-                    fd.enviar_prompt(page, it["prompt"] + sufixo)
+                    ok_env = fd.enviar_prompt(page, it["prompt"] + sufixo,
+                                              exigir_mencao=bool(it.get("avatar")))
+                    if ok_env is False:
+                        continue   # avatar sem chip: nem conta como envio
                     envios[it["arquivo"]] = n_env + 1
                     enviados += 1
                     fd._pausa(1.0, 2.0)

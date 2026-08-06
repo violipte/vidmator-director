@@ -290,7 +290,7 @@ def configurar_video(page, modelo="Veo 3.1 - Fast", aspecto="16:9", dur="8s", sa
     _pausa(0.3, 0.7)
 
 
-def enviar_prompt(page, prompt):
+def enviar_prompt(page, prompt, exigir_mencao=False):
     """Escreve o prompt e dispara a geração."""
     # 05/08 (sonda): a barra de prompt virou um CONTENTEDITABLE sem placeholder —
     # get_by_placeholder("quer criar") não acha mais nada. O contenteditable é único
@@ -371,6 +371,12 @@ def enviar_prompt(page, prompt):
             cx.click()
             page.keyboard.press("Control+A")
             page.keyboard.press("Delete")
+            if exigir_mencao:
+                # 05/08 (QA Piter: hook do v2 saiu um CARA GENÉRICO): take de AVATAR
+                # sem chip NÃO É ENVIADO — gerar sem identidade desperdiça a geração
+                # e engana o casamento. Fica pra próxima rodada tentar de novo.
+                print(f"  !! menção @{nome} não confirmada — take de avatar NÃO enviado")
+                return False
             page.keyboard.insert_text(resto)
             print(f"  !! menção @{nome} não confirmada — take SEM personagem")
         else:
@@ -378,7 +384,7 @@ def enviar_prompt(page, prompt):
         _pausa(0.4, 0.9)
         cx.press("Enter")
         print(f"  prompt enviado: {prompt[:60]}...")
-        return
+        return True
         # 04/08 (QA Piter: "não puxou o personagem"): `fill()` COLA o texto de uma vez
         # e não dispara os eventos de teclado que abrem o autocomplete de menção — o
         # "@Russel" virava texto literal e o clipe saía com outro rosto. Menção tem de
