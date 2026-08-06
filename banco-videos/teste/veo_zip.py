@@ -117,11 +117,27 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--aplicar", action="store_true", help="copia de fato (default: só mostra)")
     ap.add_argument("--min-sim", type=float, default=0.12)
+    ap.add_argument("--desde", default="",
+                    help="AAAAMMDD: ignora arquivos gerados ANTES desta data")
     a = ap.parse_args()
 
     pasta = Path(a.zip)
     arquivos = [f for f in pasta.rglob("*") if f.is_file()
                 and f.suffix.lower() in (".mp4", ".jpg", ".jpeg", ".png", ".webm", ".mov")]
+    # JANELA TEMPORAL (06/08, Piter: "está gerando fora da coleção") — o Flow deposita
+    # TODA geração na raiz do projeto mesmo com a coleção aberta, então um projeto por
+    # CANAL acumula os vídeos anteriores e o casamento por título pode puxar asset do
+    # vídeo errado (foi assim que uma onça caiu no slot do host). O nome do arquivo
+    # carrega o carimbo AAAAMMDDHHMM da geração: filtrar por ele isola o job SEM
+    # depender de a coleção funcionar como pasta de destino.
+    if a.desde:
+        corte = str(a.desde)[:8]
+        def _stamp(f):
+            m = re.search(r"_(\d{12})(?:_\d+)?$", f.stem)
+            return m.group(1)[:8] if m else None
+        antes = len(arquivos)
+        arquivos = [f for f in arquivos if (_stamp(f) or "99999999") >= corte]
+        print(f"janela: {antes - len(arquivos)} arquivos anteriores a {corte} ignorados")
     lote = json.loads(Path(a.lote).read_text(encoding="utf-8"))
     out = Path(a.out)
     print(f"{len(arquivos)} arquivos no zip | {len(lote)} itens no lote")
