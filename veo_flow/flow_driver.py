@@ -369,25 +369,68 @@ def enviar_prompt(page, prompt, exigir_mencao=False):
         _pausa(0.3, 0.6)
         page.keyboard.insert_text(resto)
         _pausa(0.5, 0.9)
-        page.keyboard.type(" @" + nome[:3], delay=140)
+        # 06/08: o prefixo FIXO de 3 letras foi calibrado no nome antigo ("Rus" ->
+        # Russel). Com o host renomeado, "Tra" não trouxe a opção e TODO take de
+        # avatar caiu. O prefixo passa a CRESCER até achar — e, se não achar, o
+        # driver DIZ o que apareceu na lista em vez de falhar mudo (a lição do dia:
+        # instrumentar em vez de adivinhar).
+        cortes = sorted({3, 6, len(nome)})
+        digitado = cortes[0]
+        page.keyboard.type(" @" + nome[:digitado], delay=140)
         _pausa(1.6, 2.4)
         ok_mencao = False
         try:
-            op = page.locator('[role="option"]').filter(
-                has_text=re.compile(re.escape(nome), re.I)).filter(
-                has_text=re.compile("Personagem|Character", re.I))
-            if not op.count():   # fallback: opção só com o nome exato
-                op = page.locator('[role="option"]').filter(
-                    has_text=re.compile(rf"^{re.escape(nome)}", re.I))
+            op = None
+            for corte in cortes:
+                if corte > digitado:
+                    page.keyboard.type(nome[digitado:corte], delay=120)
+                    digitado = corte
+                    _pausa(1.2, 1.8)
+                cand = page.locator('[role="option"]').filter(
+                    has_text=re.compile(re.escape(nome), re.I)).filter(
+                    has_text=re.compile("Personagem|Character", re.I))
+                if not cand.count():   # fallback: opção só com o nome exato
+                    cand = page.locator('[role="option"]').filter(
+                        has_text=re.compile(rf"^{re.escape(nome)}", re.I))
+                if cand.count():
+                    op = cand
+                    if corte > cortes[0]:
+                        print(f"  menção: precisou de '{nome[:corte]}' pra listar")
+                    break
+            if op is None:
+                try:
+                    vistos = [t.strip().replace("\n", " ")[:34]
+                              for t in page.locator('[role="option"]').all_inner_texts()[:6]]
+                    print(f"  !! '@{nome}' não apareceu; opções na lista: {vistos}")
+                except Exception:
+                    pass
+                op = page.locator('[role="option"]').filter(has_text="___nunca___")
             if op.count():
                 op.first.click()
                 _pausa(0.9, 1.5)
+                # 06/08 — A UI MUDOU: clicar na opção JÁ insere o chip e o botão
+                # "Incluir no comando" (que em 05/08 era o passo que faltava) não
+                # existe mais. Confirmar pela EXISTÊNCIA DO BOTÃO recusava todo take
+                # de avatar com o chip perfeito no campo. A prova certa é o CAMPO:
+                # o chip é um nó void do Slate (contenteditable=false) — sonda
+                # `veo_sonda_mencao.py` mostrou o inner_html.
                 inc = page.get_by_role("button",
                                        name=re.compile("Incluir no comando|Include", re.I))
                 if inc.count():
                     inc.first.click()
                     _pausa(0.9, 1.5)
-                    ok_mencao = not page.locator('[role="dialog"]').count()
+                if page.locator('[role="dialog"]').count():
+                    page.keyboard.press("Escape")
+                    _pausa(0.4, 0.8)
+                try:
+                    ok_mencao = cx.locator('[data-slate-void="true"]').count() > 0
+                except Exception:
+                    ok_mencao = False
+                if not ok_mencao:   # último recurso: o nome aparece no campo?
+                    try:
+                        ok_mencao = nome.lower() in (cx.inner_text(timeout=2000) or "").lower()
+                    except Exception:
+                        pass
         except Exception:
             ok_mencao = False
         if ok_mencao:
@@ -418,8 +461,11 @@ def enviar_prompt(page, prompt, exigir_mencao=False):
         # tentativas de apagar, o take NÃO vai: melhor faltar do que sair errado.
         try:
             visivel = (cx.inner_text(timeout=2000) or "")
-            sem_chip = re.sub(rf"@\s*{re.escape(nome)}", "", visivel, flags=re.I)
-            if re.search(rf"\b{re.escape(nome)}\b", sem_chip, re.I):
+            # CONTAGEM, não remoção do "@": depois do "Incluir no comando" o chip
+            # renderiza o nome SEM arroba, então tirar "@Nome" não tirava o chip e a
+            # 1ª versão desta guarda descartou TODOS os takes do host (06/08, 4 de 4).
+            # O chip vale exatamente 1 ocorrência; da 2ª em diante é texto puro.
+            if len(re.findall(re.escape(nome), visivel, re.I)) > 1:
                 print(f"  !! nome '{nome}' AINDA em texto puro — take descartado "
                       f"(geraria o objeto na cena)")
                 page.keyboard.press("Control+A")
