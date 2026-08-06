@@ -90,21 +90,21 @@ def _b(d, t, im):
         if not g:
             return None
         val, suf = g[0], g[1]
-    lab = str(_s(d, "label", "title", "description", "unit") or "")[:40]
+    lab = corte(str(_s(d, "label", "title", "description", "unit") or ""), 40)
     return {"value": val, "suffix": suf, "label": lab} if lab else None
 
 @reg("PercentageBarChart", "chart")
 def _b(d, t, im):
     g = _num(t)
     if not g or g[1] != "%" or not (0 < g[0] <= 100): return None
-    tt = str(_s(d, "title", "label") or "")[:50]
-    return {"titleText": tt, "percentage": g[0], "bottomText": str(_s(d, "bottom", "subtitle") or "")[:40]} if tt else None
+    tt = corte(str(_s(d, "title", "label") or ""), 50)
+    return {"titleText": tt, "percentage": g[0], "bottomText": corte(str(_s(d, "bottom", "subtitle") or ""), 40)} if tt else None
 
 @reg("CirclePercent", "chart")
 def _b(d, t, im):
     g = _num(t)
     if not g or g[1] != "%" or not (0 < g[0] <= 100): return None
-    tt = str(_s(d, "title", "label") or "")[:50]
+    tt = corte(str(_s(d, "title", "label") or ""), 50)
     return {"titleContent": tt, "percent": g[0]} if tt else None
 
 @reg("BarChartComparison", "chart")
@@ -133,9 +133,9 @@ def _b(d, t, im):
 def _b(d, t, im):
     g = _num(t)
     if not g or g[1] != "%": return None
-    q = str(_s(d, "title", "question", "label") or "")[:70]
-    return {"question": q, "primaryPercentage": g[0], "primaryLabel": str(_s(d, "primary", "label") or "A")[:20],
-            "secondaryLabel": str(_s(d, "secondary") or "Others")[:20]} if q else None
+    q = corte(str(_s(d, "title", "question", "label") or ""), 70)
+    return {"question": q, "primaryPercentage": g[0], "primaryLabel": corte(str(_s(d, "primary", "label") or "A"), 20),
+            "secondaryLabel": corte(str(_s(d, "secondary") or "Others"), 20)} if q else None
 
 # ===== MAPAS =====
 @reg("MultiCountryOutline", "mapa")
@@ -204,19 +204,19 @@ def _b(d, t, im):
 
 @reg("SatelliteLocationPin", "mapa")
 def _b(d, t, im):
-    nome = str(_s(d, "location", "name", "locationName", "place") or "")[:28]
+    nome = corte(str(_s(d, "location", "name", "locationName", "place") or ""), 28)
     lat, lon = _coord(_s(d, "coords", "coordinates", "coord"), d)
     if not nome or lat is None:
         return None
-    return {"locationName": nome, "locationSubTitle": str(_s(d, "year", "subtitle") or "")[:20],
+    return {"locationName": nome, "locationSubTitle": corte(str(_s(d, "year", "subtitle") or ""), 20),
             "latitude": lat, "longitude": lon}
 
 @reg("RegionLocationText", "mapa")
 def _b(d, t, im):
     pais = str(_s(d, "country", "countryName") or "")
     if not pais or not _pais_ok(pais): return None
-    return {"countryName": pais[:24], "regionName": str(_s(d, "region", "city") or "")[:24],
-            "text": str(_s(d, "text", "label") or "")[:40]}
+    return {"countryName": pais[:24], "regionName": corte(str(_s(d, "region", "city") or ""), 24),
+            "text": corte(str(_s(d, "text", "label") or ""), 40)}
 
 # ===== CTA DO YOUTUBE =====
 # 02/08: existiam desde os canais normais (não-VidMator) e nunca foram registrados
@@ -224,7 +224,7 @@ def _b(d, t, im):
 # nenhum do roteiro: são pedidos de engajamento, não ilustração do conteúdo.
 @reg("YtCta", "cta", peso=1.4)
 def _b(d, t, im):
-    return {"headline": str(_s(d, "headline", "title") or "ENJOYING THE VIDEO?")[:38]}
+    return {"headline": corte(str(_s(d, "headline", "title") or "ENJOYING THE VIDEO?"), 38)}
 
 
 @reg("SubscribeBellPulse", "cta", peso=1.0)
@@ -239,7 +239,7 @@ def _b(d, t, im):
 
 @reg("CtaBannerSlim", "cta", peso=0.8)
 def _b(d, t, im):
-    return {"text": str(_s(d, "text", "headline") or "SUBSCRIBE")[:40]}
+    return {"text": corte(str(_s(d, "text", "headline") or "SUBSCRIBE"), 40)}
 
 
 # ===== TEXTO FULL (cartão com fundo próprio) =====
@@ -268,14 +268,14 @@ def _autor_confiavel(nome):
 
 @reg("QuoteCard", "texto_full", peso=1.2)
 def _b(d, t, im):
-    q = str(_s(d, "quote", "quoteText") or "")[:180]
+    q = corte(str(_s(d, "quote", "quoteText") or ""), 180)
     autor = str(_s(d, "author") or "")
     if not q or not autor: return None
     nome, _, cargo = autor.partition(",")
     if not _autor_confiavel(nome):
         print(f"[registry] atribuição DESCARTADA (nome ausente do roteiro): {nome.strip()!r}")
         nome, cargo = "", ""
-    return {"quoteText": q, "name": nome.strip()[:30], "title": cargo.strip()[:40]}
+    return {"quoteText": q, "name": corte(nome.strip(), 30), "title": corte(cargo.strip(), 40)}
 
 @reg("ChapterTitle", "texto_full")
 def _b(d, t, im):
@@ -290,32 +290,32 @@ def _b(d, t, im):
 
 @reg("TextReveal", "texto_full")
 def _b(d, t, im):
-    mt = str(_s(d, "main", "title", "text") or "")[:30].strip()
-    sec = str(_s(d, "secondary") or t or "")[:80].strip()
-    return {"mainText": mt, "secondaryText": sec, "finalLabel": str(_s(d, "label") or "")[:24]} if mt else None
+    mt = corte(str(_s(d, "main", "title", "text") or ""), 30).strip()
+    sec = corte(str(_s(d, "secondary") or t or ""), 80).strip()
+    return {"mainText": mt, "secondaryText": sec, "finalLabel": corte(str(_s(d, "label") or ""), 24)} if mt else None
 
 @reg("DualImpactSentence", "texto_full")
 def _b(d, t, im):
     # 02/08: o diretor escreve sentence1/sentence2; o builder só olhava first/second
     # e devolvia None — 6 pedidos perdidos num job só.
-    a = str(_s(d, "first", "text", "sentence1", "linha1") or "")[:70].strip()
-    b2 = str(_s(d, "second", "sentence2", "linha2") or "")[:70].strip()
+    a = corte(str(_s(d, "first", "text", "sentence1", "linha1") or ""), 70).strip()
+    b2 = corte(str(_s(d, "second", "sentence2", "linha2") or ""), 70).strip()
     return {"firstSentence": a, "secondSentence": b2} if a and b2 else None
 
 @reg("SubjectTitleCard", "texto_full")
 def _b(d, t, im):
-    tt = str(_s(d, "name", "title") or "")[:34].strip()
-    return {"firstTitle": tt, "firstSubtitle": str(_s(d, "subtitle", "description", "title") or "")[:60]} if tt else None
+    tt = corte(str(_s(d, "name", "title") or ""), 34).strip()
+    return {"firstTitle": tt, "firstSubtitle": corte(str(_s(d, "subtitle", "description", "title") or ""), 60)} if tt else None
 
 # ===== TEXTO OVERLAY (transparente — montador põe footage do tema atrás) =====
 @reg("DisplayText", "texto_overlay")
 def _b(d, t, im):
-    tx = str(_s(d, "text") or t or "")[:80].strip()
+    tx = corte(str(_s(d, "text") or t or ""), 80).strip()
     return {"text": tx} if len(tx) > 3 else None
 
 @reg("SingleSentenceTextSlide", "texto_overlay")
 def _b(d, t, im):
-    tx = str(_s(d, "text", "sentence") or t or "")[:90].strip()
+    tx = corte(str(_s(d, "text", "sentence") or t or ""), 90).strip()
     return {"sentence": tx} if len(tx) > 3 else None
 
 @reg("OneWordCallout", "texto_overlay")
@@ -325,24 +325,24 @@ def _b(d, t, im):
 
 @reg("BulletPointOverlay", "texto_overlay")
 def _b(d, t, im):
-    pts = [str(x)[:40] for x in (_s(d, "points", "bullets") or []) if str(x).strip()]
+    pts = [corte(str(x), 40) for x in (_s(d, "points", "bullets") or []) if str(x).strip()]
     return {"bullets": pts[:5]} if len(pts) >= 2 else None
 
 @reg("CaptionTextOverlay", "texto_overlay")
 def _b(d, t, im):
-    tx = str(_s(d, "text", "caption") or t or "")[:70].strip()
+    tx = corte(str(_s(d, "text", "caption") or t or ""), 70).strip()
     return {"caption": tx} if len(tx) > 3 else None
 
 @reg("DateLocationOverlay", "texto_overlay")
 def _b(d, t, im):
-    tx = str(_s(d, "text", "date", "location") or "")[:40].strip()
+    tx = corte(str(_s(d, "text", "date", "location") or ""), 40).strip()
     return {"text": tx} if tx else None
 
 # ===== IMAGEM (slots preenchidos pelo executor com T2/T1 reais) =====
 @reg("TwoImageComparison", "imagem", needs_imgs=2)
 def _b(d, t, im):
     if len(im) < 2: return None
-    return {"titleText": str(_s(d, "title", "text") or "")[:36], "leftImage": im[0], "rightImage": im[1]}
+    return {"titleText": corte(str(_s(d, "title", "text") or ""), 36), "leftImage": im[0], "rightImage": im[1]}
 
 @reg("ThreeImageReveal", "imagem", needs_imgs=3)
 def _b(d, t, im):
@@ -355,13 +355,13 @@ def _b(d, t, im):
 @reg("FourImageCaptionGrid", "imagem", needs_imgs=4)
 def _b(d, t, im):
     if len(im) < 4: return None
-    caps = [str(x)[:24] for x in (_s(d, "captions") or [])][:4]
+    caps = [corte(str(x), 24) for x in (_s(d, "captions") or [])][:4]
     return {"images": im[:4], "captions": caps if len(caps) == 4 else [], "showText": len(caps) == 4}
 
 @reg("DualImageOnGrid", "imagem", needs_imgs=2)
 def _b(d, t, im):
     if len(im) < 2: return None
-    labs = [str(x)[:20] for x in (_s(d, "labels") or [])]
+    labs = [corte(str(x), 20) for x in (_s(d, "labels") or [])]
     return {"leftImage": im[0], "rightImage": im[1],
             "leftLabel": (labs[0] if labs else ""), "rightLabel": (labs[1] if len(labs) > 1 else "")}
 
@@ -375,21 +375,21 @@ def _b(d, t, im):
 
 @reg("ImageCallout", "imagem", needs_imgs=1)
 def _b(d, t, im):
-    tx = str(_s(d, "text", "label", "callout") or "")[:36].strip()
+    tx = corte(str(_s(d, "text", "label", "callout") or ""), 36).strip()
     return {"image": im[0], "calloutText": tx} if im and tx else None
 
 @reg("ArticleNewsCard", "imagem", needs_imgs=1)
 def _b(d, t, im):
-    tx = str(_s(d, "text") or t or "")[:120].strip()
+    tx = corte(str(_s(d, "text") or t or ""), 120).strip()
     return {"articleImage": im[0], "articleText": tx,
-            "highlightText": str(_s(d, "highlight") or "")[:40]} if im and tx else None
+            "highlightText": corte(str(_s(d, "highlight") or ""), 40)} if im and tx else None
 
 # ===== PESSOA =====
 @reg("CharacterCard", "pessoa", needs_imgs=1)
 def _b(d, t, im):
-    nome = str(_s(d, "name") or "")[:30].strip()
+    nome = corte(str(_s(d, "name") or ""), 30).strip()
     if not nome or not im: return None
-    return {"characterImage": im[0], "title": nome, "subtitle": str(_s(d, "title", "subtitle", "description") or "")[:56]}
+    return {"characterImage": im[0], "title": nome, "subtitle": corte(str(_s(d, "title", "subtitle", "description") or ""), 56)}
 
 @reg("CharacterKeyword", "pessoa", needs_imgs=1)
 def _b(d, t, im):
@@ -399,7 +399,7 @@ def _b(d, t, im):
 @reg("NodeHierarchy", "pessoa")
 def _b(d, t, im):
     top = str(_s(d, "top", "topNode") or "").strip()
-    baixo = [str(x)[:20] for x in (_s(d, "bottom", "bottomNodes", "nodes") or []) if str(x).strip()]
+    baixo = [corte(str(x), 20) for x in (_s(d, "bottom", "bottomNodes", "nodes") or []) if str(x).strip()]
     return {"topNode": top[:20], "bottomNodes": baixo[:3]} if top and len(baixo) >= 2 else None
 
 
@@ -604,7 +604,7 @@ def _graf_uni(d, t, im):   # numero_unico (number_end cobre RANGE '3-8%': headli
         return None  # R-92: 1-3 solto é ordinal/idiomático ('number one enemy'), não headline
     if v is not None and not _s(d, "title", "label"):
         d = {**d, "title": corte(_s(d, "description", "unit") or "", 44)}  # LLM manda description às vezes
-    suf = str(_s(d, "unit", "suffix") or "")[:6]
+    suf = corte(str(_s(d, "unit", "suffix") or ""), 6)
     if suf.lower() not in _SUFFIX_OK:
         # R-92 (QA tenis: '25 genera'): unidade longa NÃO é suffix — vira parte do título
         if suf and suf.lower() not in ("", "%"):
@@ -646,23 +646,23 @@ def _fnum(v):
         return None
 
 def _graf_cmp(d, t, im):   # comparacao (2 lados)
-    labs = [str(x)[:22] for x in (_s(d, "labels") or [])]
+    labs = [corte(str(x), 22) for x in (_s(d, "labels") or [])]
     vals_raw = _s(d, "values") or []
     if len(labs) < 2 or len(vals_raw) < 2: return None
     vals = [_fnum(vals_raw[0]), _fnum(vals_raw[1])]
     if None in vals: return None
     if not _anc(vals, t): return None
-    suf = str(_s(d, "suffix", "unit") or "")[:6]
+    suf = corte(str(_s(d, "suffix", "unit") or ""), 6)
     if not suf and any("%" in str(v) for v in vals_raw[:2]): suf = "%"
     return {"title": corte(_s(d, "title") or "", 44), "labels": labs[:2], "values": vals, "suffix": suf}
 
 def _graf_serie(d, t, im): # tendencia/serie/distribuicao/ranking (3+ pontos)
-    labs = [str(x)[:18] for x in (_s(d, "labels") or [])]
+    labs = [corte(str(x), 18) for x in (_s(d, "labels") or [])]
     vals = [_fnum(v) for v in (_s(d, "values") or [])]
     if len(labs) < 3 or len(vals) < 3 or len(labs) != len(vals) or None in vals: return None
     if not _anc(vals, t): return None
     return {"title": corte(_s(d, "title") or "", 44), "labels": labs[:6], "values": vals[:6],
-            "suffix": str(_s(d, "suffix", "unit") or "")[:6]}
+            "suffix": corte(str(_s(d, "suffix", "unit") or ""), 6)}
 
 for _c, _fn, _p, _mx, _md in [
         ("Graf01_CounterGlow", _graf_uni, 1.1, 2, 2.5), ("Graf02_Odometer", _graf_uni, 1.0, 2, 2.5),
@@ -727,9 +727,9 @@ SWAP_TO_OVL = {"Graf01_CounterGlow": "Graf14_OvlCounterPunch", "Graf02_Odometer"
 def _mk_img(n):
     def _b(d, t, im):
         if len(im) < n: return None
-        caps = [str(x)[:26] for x in (_s(d, "captions", "labels") or [])][:n]
+        caps = [corte(str(x), 26) for x in (_s(d, "captions", "labels") or [])][:n]
         return {"images": list(im[:n]), "captions": caps if len(caps) == n else [],
-                "title": str(_s(d, "title", "text") or "")[:40], "kicker": str(_s(d, "kicker") or "")[:24]}
+                "title": corte(str(_s(d, "title", "text") or ""), 40), "kicker": corte(str(_s(d, "kicker") or ""), 24)}
     return _b
 
 def _img14_build(d, t, im):
@@ -818,13 +818,13 @@ def _pontos_de(d):
             g = _gaz(v)
             if g: pts.append({"nome": v.split(",")[0].strip()[:20], "lat": g[0], "lon": g[1]})
     if not pts and _s(d, "lat") is not None and _s(d, "lon") is not None:
-        pts.append({"nome": str(_s(d, "location", "name") or "")[:20], "lat": float(_s(d, "lat")), "lon": float(_s(d, "lon"))})
+        pts.append({"nome": corte(str(_s(d, "location", "name") or ""), 20), "lat": float(_s(d, "lat")), "lon": float(_s(d, "lon"))})
     return pts
 
 def _map_pais1(d, t, im):
     cs = _paises_de(d)
     if not cs: return None
-    return {"paises": cs[:1], "titulo": cs[0][:30], "kicker": str(_s(d, "kicker", "label", "text") or "")[:26]}
+    return {"paises": cs[:1], "titulo": cs[0][:30], "kicker": corte(str(_s(d, "kicker", "label", "text") or ""), 26)}
 
 def _map_multi(d, t, im):
     cs = _paises_de(d)
@@ -836,40 +836,40 @@ def _map_multi(d, t, im):
         s = str(x.get("label", "")) if isinstance(x, dict) else str(x)
         dd = "".join(c for c in s if c.isdigit())
         limp.append(s[:16] if (not dd or dd in dig) else "")
-    return {"paises": cs[:5], "valores": limp if any(limp) else [], "kicker": str(_s(d, "kicker", "title") or "")[:26]}
+    return {"paises": cs[:5], "valores": limp if any(limp) else [], "kicker": corte(str(_s(d, "kicker", "title") or ""), 26)}
 
 def _map_rota(d, t, im):
     pts = _pontos_de(d)
     if len(pts) < 2: return None
-    return {"pontos": pts[:2], "kicker": str(_s(d, "kicker", "title") or "")[:26]}
+    return {"pontos": pts[:2], "kicker": corte(str(_s(d, "kicker", "title") or ""), 26)}
 
 def _map_pin(d, t, im):
     pts = _pontos_de(d)
     if not pts: return None
-    return {"pontos": pts[:1], "titulo": str(_s(d, "subtitle", "year", "text") or "")[:26],
-            "kicker": str(_s(d, "kicker", "country") or "")[:26]}
+    return {"pontos": pts[:1], "titulo": corte(str(_s(d, "subtitle", "year", "text") or ""), 26),
+            "kicker": corte(str(_s(d, "kicker", "country") or ""), 26)}
 
 def _map_stat(d, t, im):
     cs = _paises_de(d)
     g = _num(t)
     if not cs or not g: return None
     suf = g[1] if g[1] else ""
-    return {"paises": cs[:1], "valores": [f"{g[0]:g}{suf}"], "titulo": str(_s(d, "title", "label") or "")[:36],
-            "kicker": str(_s(d, "kicker") or "")[:26]}
+    return {"paises": cs[:1], "valores": [f"{g[0]:g}{suf}"], "titulo": corte(str(_s(d, "title", "label") or ""), 36),
+            "kicker": corte(str(_s(d, "kicker") or ""), 26)}
 
 def _map_radar(d, t, im):
     pts = _pontos_de(d)
     tl = (t or "").lower()
     if not pts or not any(w in tl for w in ("war", "military", "battle", "test", "zone", "combat", "operation")):
         return None
-    return {"pontos": pts[:1], "kicker": str(_s(d, "kicker", "title") or "")[:26]}
+    return {"pontos": pts[:1], "kicker": corte(str(_s(d, "kicker", "title") or ""), 26)}
 
 def _map_cine(d, t, im):
     if not im: return None
     cs, pts = _paises_de(d), _pontos_de(d)
     if not cs and not pts: return None
-    p = {"images": list(im[:1]), "titulo": str(_s(d, "subtitle", "text", "title") or "")[:30],
-         "kicker": str(_s(d, "kicker") or "")[:22]}
+    p = {"images": list(im[:1]), "titulo": corte(str(_s(d, "subtitle", "text", "title") or ""), 30),
+         "kicker": corte(str(_s(d, "kicker") or ""), 22)}
     if cs: p["paises"] = cs[:1]
     if pts: p["pontos"] = pts[:1]
     return p
@@ -889,7 +889,7 @@ def set_style(sc):
     STYLE = sc or {}
 
 def _soc_news(d, t, im):
-    tt = str(_s(d, "title", "quote", "text") or "")[:64].strip()
+    tt = corte(str(_s(d, "title", "quote", "text") or ""), 64).strip()
     if len(tt) < 8 or not im: return None
     # R-32/QA tenis 23/07: kicker era "The Motor Chronicle" HARDCODED (nicho Harley vazando
     # em vídeo de tênis) e o corpo cortava no meio ("...isn'TA"). Kicker = style_card;
@@ -898,7 +898,7 @@ def _soc_news(d, t, im):
     if not corpo.rstrip().endswith((".", "!", "?")): return None
     kicker = str(STYLE.get("jornal_ficticio") or "The Daily Chronicle")
     return {"kicker": kicker, "titulo": humanizar(tt).upper()[:64], "texto": corpo[:230],
-            "grifo": str(_s(d, "highlight") or "")[:40], "imagem": im[0]}
+            "grifo": corte(str(_s(d, "highlight") or ""), 40), "imagem": im[0]}
 
 _reg2("Soc04_Newspaper", "texto_full", needs_imgs=1, peso=0.5, max_uso=1, build=_soc_news, min_dur=4.0)
 
