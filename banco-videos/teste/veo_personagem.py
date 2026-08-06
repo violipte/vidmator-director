@@ -127,13 +127,20 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     # frase entre aspas pra ferramenta entender mais fácil". Sem aspas o modelo lia a
     # linha como DESCRIÇÃO e inventava o diálogo (no take da África ele abriu falando
     # do "outback"). Entre aspas, vira citação literal.
-    cauda = (f'. He says, word for word: "{fala.strip()}"' if fala else "")
+    # 06/08 (2ª iteração): com aspas o CTA do meio passou a obedecer, mas o HOOK
+    # continuou improvisando em 4 de 5 gerações. Diferença entre eles: a fala vinha
+    # no FIM de ~900 chars de cenário/figurino/lente. Instrução crítica no fim de
+    # prompt longo é a que o modelo mais ignora — a FALA agora vem NA FRENTE, logo
+    # após o chip, e a descrição vira contexto depois dela.
+    frente = (f' says, word for word: "{fala.strip()}". While saying it, he'
+              if fala else "")
     fixo = ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
-    cabeca = f"{ficha['mencao']} {acao.strip()}"
-    folga = 900 - len(cauda) - len(fixo) - len(cabeca)
+    cabeca = f"{ficha['mencao']}{frente} {acao.strip()}"
+    folga = 900 - len(fixo) - len(cabeca)
     if estilo and folga > 20:
         cabeca += f". {estilo.strip()[:folga - 2]}"
-    p = (cabeca + fixo + cauda)[:900]
+    p = (cabeca + fixo)[:900]
+    cauda = frente
     if fala and fala.strip()[-12:] not in p:
         raise ValueError(f"a FALA não coube no prompt (ação/ambiente longos demais): "
                          f"{len(cabeca)} chars de cabeça")

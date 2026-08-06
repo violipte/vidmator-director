@@ -86,12 +86,73 @@ def avaliar(dito, pedido):
     return True, "ok"
 
 
+def escolher(job, pasta_zip, limite=10):
+    """Escolhe o take do host PELA FALA, não pelo título (06/08).
+
+    Por que: o "Baixar projeto" re-carimba TODOS os arquivos com a hora do DOWNLOAD,
+    então dentro de um mesmo zip as gerações antiga e nova do mesmo prompt têm o
+    mesmo carimbo e se distinguem só por um sufixo `_2`, `_3` sem significado. Não
+    há como saber pelo NOME qual é a nova — e o casamento serviu duas vezes um take
+    velho, que o gate flagrou dizendo a frase ANTIGA.
+
+    A fala é a identidade real do take: transcrever os candidatos e ficar com o que
+    diz a frase pedida resolve sem depender de título nem de carimbo.
+    """
+    import shutil
+    from veo_zip import _tokens, _PESSOA_TITULO, _SIN_PESSOA
+
+    job = Path(job)
+    sc = json.loads((job / "style_card.json").read_text(encoding="utf-8"))
+    av = sc.get("avatar") or {}
+    banco = Path(av.get("banco") or (job / "assets"))
+    plano = json.loads((job / "_avatar_plan.json").read_text(encoding="utf-8"))
+    arquivos = [f for f in Path(pasta_zip).rglob("*")
+                if f.is_file() and f.suffix.lower() in (".mp4", ".webm", ".mov")]
+    achados = 0
+    for it in plano:
+        pedido = ""
+        for ilha in (av.get("ilhas") or {}).values():
+            if isinstance(ilha, dict) and ilha.get("clip") == it["arquivo"]:
+                pedido = (ilha.get("fala") or ilha.get("dub") or "").strip()
+        if not pedido:
+            continue
+        ti = _tokens(it.get("prompt", ""), pessoa=True)
+        cands = []
+        for f in arquivos:
+            tf = _tokens(f.name)
+            if not (tf & _PESSOA_TITULO):
+                continue
+            acao = tf - _SIN_PESSOA - _PESSOA_TITULO
+            if not (acao & ti):
+                continue
+            cands.append((len(tf & ti) / max(1, len(tf)), f))
+        cands.sort(key=lambda x: -x[0])
+        print(f"\n{it['arquivo']}: {len(cands)} candidato(s) — ouvindo até achar a fala")
+        for sim, f in cands[:limite]:
+            dito = transcrever_take(f)
+            ok, motivo = avaliar(dito, pedido)
+            print(f"   {'ACHEI  ' if ok else 'não    '} {f.name[:46]:<48} {motivo[:44]}")
+            if ok:
+                shutil.copy2(f, banco / it["arquivo"])
+                achados += 1
+                break
+    print(f"\n{achados}/{sum(1 for x in plano)} take(s) escolhidos pela fala")
+    return achados
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--job", required=True)
     ap.add_argument("--apagar", action="store_true",
                     help="apaga os reprovados pra o ciclo regerar")
+    ap.add_argument("--dub-fallback", action="store_true",
+                    help="reprovado NÃO é apagado: a ilha passa a ser DUBLADA (voz clonada)")
+    ap.add_argument("--escolher", default="",
+                    help="pasta do zip: escolhe o take PELA FALA entre os candidatos")
     a = ap.parse_args()
+    if a.escolher:
+        escolher(a.job, a.escolher)
+        return 0
 
     job = Path(a.job)
     sc = json.loads((job / "style_card.json").read_text(encoding="utf-8"))
@@ -113,7 +174,25 @@ def main():
         print(f"  {'PASSA ' if ok else 'REPROVA'} {ilha['clip']:<20} {motivo}")
         if not ok:
             reprovados.append(clipe)
-    if a.apagar:
+    if a.dub_fallback and reprovados:
+        # DECISÃO POR TAKE, NÃO POR VÍDEO (06/08). O VEO obedece a fala em uns slots
+        # e improvisa em outros — o CTA do meio saiu perfeito enquanto o hook errou 5
+        # vezes seguidas. Insistir é sorteio; desistir do áudio nativo no vídeo todo
+        # joga fora o que funcionou. Então: quem passou fica NATIVO (lábios batem),
+        # quem não passou vira DUBLADO (voz clonada por cima do take mudo do próprio
+        # host). O vídeo sempre fecha, com a melhor opção disponível em cada ponto.
+        sc2 = json.loads((job / "style_card.json").read_text(encoding="utf-8"))
+        nomes = {c.name for c in reprovados}
+        n = 0
+        for sec, ilha in (sc2.get("avatar", {}).get("ilhas") or {}).items():
+            if isinstance(ilha, dict) and ilha.get("clip") in nomes:
+                ilha["dub"] = ilha.get("fala") or ilha.get("dub") or ""
+                n += 1
+        (job / "style_card.json").write_text(json.dumps(sc2, ensure_ascii=False, indent=1),
+                                             encoding="utf-8")
+        print(f"{n} ilha(s) marcada(s) pra DUBLAGEM (o take fica, a voz vem do clone)")
+        print("   rode: python gerar_dub_avatar.py --job <job>")
+    elif a.apagar:
         for c in reprovados:
             c.unlink(missing_ok=True)
         print(f"{len(reprovados)} take(s) apagado(s) — o ciclo regera na próxima rodada")
