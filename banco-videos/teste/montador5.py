@@ -1688,6 +1688,19 @@ def main():
                             "tier": 0, "watermark": False, "secao": int(sec_s),
                             "src": f"jobs/{a.nome}/avatar/{src_av.name}",
                             "componente": cta_comp, "props": cta_props}
+                    # 06/08: o `continue` deste ramo pulava o trecho que aplica a
+                    # DUBLAGEM (que ficou só no caminho antigo) — na estreia a
+                    # abertura tocou o áudio NATIVO do take, com a frase velha, em
+                    # vez da voz clonada. Dublagem é aplicada aqui também.
+                    if dub_txt:
+                        wav_i = ab / (Path(arq_av).stem + ".wav")
+                        if wav_i.exists():
+                            if not (dest / "avatar" / wav_i.name).exists():
+                                shutil.copy2(wav_i, dest / "avatar" / wav_i.name)
+                            novo["dub"] = f"jobs/{a.nome}/avatar/{wav_i.name}"
+                            print(f"avatar: dublagem {wav_i.name} na ilha inserida")
+                        else:
+                            print(f"avatar: !! dub pedido mas {wav_i.name} não existe")
                     beats_out.append(novo)
                     avatar_ilhas.append({"t_ini": t_ins, "t_fim": novo["t_fim"],
                                          "inserir": True})

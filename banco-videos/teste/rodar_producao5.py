@@ -42,6 +42,17 @@ def heartbeat_antilimpeza():
     threading.Thread(target=_bater, daemon=True).start()
 
 
+def _dur_video(v):
+    """Duração do vídeo concatenado — vira o TETO do mux (o vídeo manda, não o áudio)."""
+    import subprocess as _sp
+    try:
+        return float(_sp.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                              "-of", "csv=p=0", str(v)], capture_output=True, text=True,
+                             timeout=60).stdout.strip() or 0) or 0
+    except Exception:
+        return 0
+
+
 def etapa(nome, cmd, cwd=None, timeout=7200):
     print(f"\n=== [{nome}] ===", flush=True)
     r = subprocess.run(cmd, cwd=cwd or TESTE, timeout=timeout)
@@ -132,9 +143,17 @@ def main():
     etapa("CONCAT blocos", ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
                             "-i", str(lista), "-c:v", "copy", str(video_cat)])
     origem = outdir / f"{curto}_full.mp4"
+    # 06/08: `-shortest` TRUNCA O VÍDEO no tamanho do áudio — e desde o modelo de
+    # INSERÇÃO o vídeo é legitimamente MAIOR que a narração (narração + takes do
+    # host). Na estreia isso comeu os 8,5s finais, levando junto o CTA de
+    # encerramento. Agora o VÍDEO manda: o áudio ganha silêncio no fim (`apad`) e o
+    # corte é pela duração do vídeo. No modelo antigo os dois têm o mesmo tamanho,
+    # então nada muda lá.
     etapa("MUX áudio", ["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_cat), "-i", str(wav),
-                        "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac",
-                        "-b:a", "192k", "-shortest", str(origem)])
+                        "-map", "0:v:0", "-map", "1:a:0", "-af", "apad",
+                        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                        "-fflags", "+shortest", "-max_interleave_delta", "0",
+                        "-t", str(_dur_video(video_cat)), str(origem)])
 
     destino = Path(a.saida) if a.saida else Path(a.job) / f"{curto}_final.mp4"
     if not origem.exists():
