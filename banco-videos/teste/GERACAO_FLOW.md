@@ -116,6 +116,24 @@ no ambient sound"): som de rio/insetos melhora o clipe e ATRAPALHA o clone, porq
 Chatterbox aprende o ruído junto com o timbre. Um take de 8s rende ~6-7s de fala —
 passa, mas 2-3 takes concatenados clonam melhor.
 
+## COLEÇÕES — o que dá e o que NÃO dá (sondado 06/08)
+
+| pergunta | resposta | como se sabe |
+|---|---|---|
+| dá pra entrar na coleção? | **sim**, clicando no card | URL `/collection/<id>` + cabeçalho na tela |
+| `page.goto` na URL da coleção? | **NÃO** — o Flow redireciona pra raiz | sonda v3; `abrir_colecao` confere e cai no clique |
+| dá pra GERAR dentro dela? | **sim** | a caneca de teste ficou dentro (print) |
+| o que expulsa da coleção? | `garantir_modo` (popup de modelo) e `dispensar_avisos` (clicava na seta ←) | log da guarda `garantir_dentro` |
+| dá pra BAIXAR só a coleção? | **NÃO EXISTE** | menu ⋮ dela = Renomear / Ver lixeira / Excluir |
+| então como isolar os vídeos? | pelo **casamento** | título-de-pessoa p/ avatar, ≥3 tokens, guarda de tipo |
+
+⚠️ O carimbo `AAAAMMDDHHMM` no nome do arquivo é a hora do **DOWNLOAD**, não da
+geração — o mesmo asset sai com carimbo novo a cada rodada. Não serve pra separar
+jobs (apostei nisso e estava errado).
+
+**Ordem obrigatória:** `garantir_modo` na RAIZ → entra pela carta → envia, com
+`garantir_dentro` antes de cada rajada.
+
 ## AVATAR — doutrina de identidade (05/08, paga a caro)
 
 1. **A única prova de identidade é o log**: take vale como "do host" SÓ se o envio

@@ -37,7 +37,13 @@ ESTRUTURAIS = {"ChapterTitle", "QuoteCard", "CharacterCard", "CharacterKeyword",
                "NumberCountOverlay", "MultiCountryOutline", "MapRoute", "SatelliteLocationPin",
                "RegionLocationText", "DualImpactSentence", "BulletPointOverlay", "TextReveal",
                "SingleSentenceTextSlide", "OneWordCallout", "BarChartComparison",
-               "YtCta", "SubscribeBellPulse", "SubscribeMinimal", "CtaBannerSlim"}
+               "YtCta", "SubscribeBellPulse", "SubscribeMinimal", "CtaBannerSlim",
+               # 06/08: o vocabulário do auditor tinha ficado atrás do COMP_MAP —
+               # TitleDescription está registrado na v5 desde sempre e PlaceTitleMassive
+               # entrou hoje (título de abertura full-bleed). Auditor que reprova
+               # componente que a v5 RENDERIZA é falso-vermelho e trava produção boa.
+               "TitleDescription", "PlaceTitleMassive", "CtaCard", "CtaPopupCenter",
+               "DisplayText", "CirclePercent", "GrowingBarChart"}
 PREFIXOS_OK = ("Texto", "Ovl", "Graf", "Img", "Soc", "Map", "Duo", "Lst")
 ANOTA_OVL = {"Ovl11_SpecBadge", "Ovl12_GiantStat", "Ovl13_PriceTag"}  # anotação de dado, não texto
 
