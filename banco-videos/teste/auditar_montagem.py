@@ -212,11 +212,16 @@ def main():
             V.append(("R-109", b["i"], f"texto seguido de texto: {ant} -> {c}"))
         ant = c if eh else None
 
-    # ---- A-duo [R-106]: dinamismo — min 2, máx 3 animações de PAR (2 imgs ou 2 vídeos) ----
+    # ---- A-duo [R-106]: dinamismo — min 2, máx 3 animações de PAR (2 imgs ou 2 vídeos).
+    # 05/08: com ILHAS DE AVATAR o mínimo cai pra 1 — a ilha absorve beats (inclusive
+    # duo inteiro que caiba na janela) e o dinamismo que o R-106 protege já vem das
+    # aparições do host (4 ilhas no amazonia v2). Sem ilhas, régua original. ----
+    _n_ilhas = len(mont.get("avatar_ilhas") or [])
+    _min_duos = 1 if _n_ilhas >= 2 else 2
     _DUOS = ("Img04_", "Img05_", "Img15_", "Img17_", "Duo01_", "Duo02_", "Duo03_")
     n_duos = sum(1 for b in beats if (b.get("componente") or "").startswith(_DUOS))
-    if n_duos < 2:
-        V.append(("R-106", "-", f"só {n_duos} animação(ões) de duo (mínimo 2)"))
+    if n_duos < _min_duos:
+        V.append(("R-106", "-", f"só {n_duos} animação(ões) de duo (mínimo {_min_duos})"))
     elif n_duos > 3:
         V.append(("R-106", "-", f"{n_duos} duos (máximo 3) — excesso vira ruído"))
 
