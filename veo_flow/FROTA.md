@@ -90,3 +90,31 @@ humano que o reCAPTCHA exige.
 - **Mencionar personagem de outro vídeo** num canal de regime `video`. A menção
   falha silenciosamente e o take sai com rosto aleatório.
 - **Tomar perfil livre de outro dono.** Livre ≠ disponível.
+
+## UI nova do Flow (06/08) — perfil logado ≠ perfil utilizável
+
+O Google está trocando a UI do Flow. A nova substitui a barra de prompt por um
+painel de sessão ("O que você quer fazer?", sidebar Personagens/Cenas/Ferramentas)
+e **não tem o seletor de modelo** que os drivers procuram. O sintoma cru é um
+`TimeoutError` do Playwright esperando um botão que não existe mais.
+
+O detalhe que confunde o diagnóstico:
+
+| como se chega no projeto | UI servida |
+|---|---|
+| clique no card (navegação SPA) | antiga |
+| `page.goto(.../project/<id>)`  | **nova** |
+
+É o **mesmo projeto**. Por isso um teste que abre por clique dá VERDE num perfil
+onde o driver — que navega por `goto` — morre. `smoke_perfis.py --ui` mede por
+`goto` justamente para não mentir.
+
+Consequência para a frota: **logado não basta**. Antes de atribuir um canal a um
+perfil, rode `smoke_perfis.py --ui` e confirme "UI antiga". E `veo_driver --reusar`
+abre projeto existente em vez de criar — além de não deixar projeto vazio na conta,
+era o contorno que eu esperava para o rollout (não resolveu: o projeto existente
+também vem novo por `goto`, mas a flag continua valendo pelo resto).
+
+⚠️ O `flow_driver.py` (Claude do Flow) navega por `goto` em vários pontos e ainda
+não trata esse caso — quando a UI nova chegar no `chrome_profile`, o ciclo de
+coleções para. Vale olhar antes de virar incidente.
