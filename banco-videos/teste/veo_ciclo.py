@@ -96,7 +96,14 @@ def main():
     job = out.parent
     lote = vd._normalizar_lote(json.loads(Path(a.lote).read_text(encoding="utf-8")))
     alvos = [x for x in lote if x["tipo"] == a.tipo]
-    proj = (projeto_do_canal(a.canal) or {}).get("projeto")
+    _reg = projeto_do_canal(a.canal) or {}
+    proj = _reg.get("projeto")
+    # 06/08: PROJETO É ATADO À CONTA. O seletor de perfis devolveu um perfil de OUTRA
+    # conta (conta2) e o driver abriu o projeto do AMZ nela — sem login pra ele, a
+    # página veio vazia e o erro saiu como "botão '+' não encontrado — UI do Flow
+    # mudou". Não era a UI: era a conta errada. O perfil vira parte do registro do
+    # canal e o driver não escolhe mais sozinho.
+    _perfil = _reg.get("perfil")
     if not proj:
         _log(f"!!! canal {a.canal} sem projeto registrado (veo_flow/projetos.json)")
         sys.exit(2)
@@ -115,7 +122,7 @@ def main():
         _log(f"--- rodada {rodada}: faltam {len(faltam)} (desistidos {len(desist)}) ---")
         antes = _prontos(out, alvos)
         matar_tudo()
-        pw, ctx, page = fd.abrir(headless=False)
+        pw, ctx, page = fd.abrir(headless=False, perfil=_perfil)
         try:
             page.goto(f"{fd.BASE}/project/{proj}", wait_until="domcontentloaded")
             fd._pausa(6, 9)

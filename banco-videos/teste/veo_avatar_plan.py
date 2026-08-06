@@ -130,9 +130,16 @@ def planejar(job, plano, aplicar=False):
               fala_hook, secoes[0]["i"])
 
     if av.get("cta_ranking", True):
-        # 2. CTA DO MEIO — ANTES do card do 3º item (Piter: "depois que termina o 02,
-        #    antes de aparecer a animação do 03")
-        sec_meio = secoes[len(secoes) // 2]["i"]
+        # 2. CTA DO MEIO — ANTES do card do 3º ITEM DA CONTAGEM (Piter: "depois que
+        #    termina o 02, antes de aparecer a animação do 03").
+        #    06/08: era `secoes[len//2]`, que na Austrália calhou de ser o 3º item por
+        #    acidente (2 seções de intro) e na África cairia no #2 — o meio da LISTA
+        #    DE SEÇÕES não é o meio da CONTAGEM. Achar os itens pelo "#N" do título e
+        #    pegar o TERCEIRO é a regra que o Piter descreveu, sem depender de quantas
+        #    seções de abertura o roteiro tem.
+        import re as _re
+        itens = [s for s in secoes if _re.search(r"#\s*\d", str(s.get("titulo") or ""))]
+        sec_meio = (itens[2] if len(itens) >= 3 else secoes[len(secoes) // 2])["i"]
         _take("av_cta_meio.mp4",
               f"sits on a rock in the {amb}, turning to the lens and speaking warmly, "
               f"relaxed posture, static eye-level shot",
