@@ -510,7 +510,14 @@ def main():
         # NENHUM progresso => aborta e reporta, com o que já foi baixado preservado.
         t_prog = time.time()
         n_prog = -1
-        while (feitos + falhas) < len(fila_itens) and time.time() - t0 < a.timeout_total:
+        # ALVO FIXO (06/08): contra `len(fila_itens)`, que CRESCE a cada
+        # re-enfileiramento. Um item que falha e volta pra fila fazia o alvo virar 2
+        # enquanto feitos+falhas parava em 1 — condição nunca satisfeita, e o driver
+        # girava até o watchdog de 12 min matar. Custou 12 min em cada uma das três
+        # tentativas do b086 hoje, sempre DEPOIS de já ter desistido do item.
+        # Retentativa não é item novo: o alvo é quantos itens ÚNICOS o lote pediu.
+        alvo = len(fila_itens)
+        while (feitos + falhas) < alvo and time.time() - t0 < a.timeout_total:
             if feitos + falhas != n_prog:
                 n_prog, t_prog = feitos + falhas, time.time()
             elif time.time() - t_prog > a.sem_progresso * 60:
@@ -633,7 +640,7 @@ def main():
                         continue
                 if ok:
                     feitos += 1
-                    print(f"  [{feitos}/{len(fila_itens)}] {it['arquivo']} OK")
+                    print(f"  [{feitos}/{alvo}] {it['arquivo']} OK")
                 else:
                     falhas += 1
                     print(f"  {it['arquivo']} FALHA no download")

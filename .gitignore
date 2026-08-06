@@ -72,6 +72,9 @@ remotion/motos2_SAFE.mp4
 remotion/*.mp4
 
 # VEO Flow: perfil do Chrome (Playwright), downloads e clipes gerados — mídia, não código
-veo_flow/chrome_profile/
+# TODO perfil do Chrome, não só o original: os chrome_profile_contaN
+# nasceram depois desta linha e entraram no repo PÚBLICO por não casarem
+# com ela (Local Storage/IndexedDB do Google, Login Data, Web Data).
+veo_flow/chrome_profile*/
 veo_flow/downloads/
 veo_clips/
