@@ -1672,6 +1672,27 @@ def main():
                     t_ins = round(s_av["t_ini"] if not ultimo
                                   else max(b["t_fim"] for b in beats_out), 2)
                     d_ins = round(d_clip, 2)
+                    # 07/08 (QA Piter: "tem a porra do silêncio antes do roteiro
+                    # começar"): a ilha durava o CLIPE (8s fixos do VEO) enquanto a
+                    # DUBLAGEM tem ~4,5s — sobravam 3,5s de nada antes da narração
+                    # voltar. Quando a ilha é dublada, quem manda na duração é o WAV,
+                    # não o clipe. (O corte por silencedetect olhava o áudio do
+                    # clipe, que nem é o que toca.)
+                    if dub_txt:
+                        _w = ab / (Path(arq_av).stem + ".wav")
+                        if _w.exists():
+                            try:
+                                _dw = float(subprocess.run(
+                                    ["ffprobe", "-v", "error", "-show_entries",
+                                     "format=duration", "-of", "csv=p=0", str(_w)],
+                                    capture_output=True, text=True,
+                                    timeout=30).stdout.strip() or 0)
+                                if 1.5 < _dw < d_ins:
+                                    print(f"avatar: ilha dublada dura a FALA "
+                                          f"({d_ins:.1f}s -> {_dw + 0.4:.1f}s)")
+                                    d_ins = round(_dw + 0.4, 2)
+                            except Exception:
+                                pass
                     for bx in beats_out:
                         if bx["t_ini"] >= t_ins - 0.01:
                             bx["t_ini"] = round(bx["t_ini"] + d_ins, 2)
@@ -1924,7 +1945,7 @@ def main():
 
         # ---- v5 F5: KARAOKÊ opcional (style_card {"karaoke": true}) — timing
         # proporcional por palavra dentro da janela do beat (frames locais)
-        if _SC.get("karaoke"):
+        if _SC.get("karaoke", False):
             n_k5 = 0
             for b in beats_out:
                 tx5 = ((plano_por_i.get(b["i"]) or {}).get("texto") or "").strip()

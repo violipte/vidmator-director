@@ -144,6 +144,17 @@ Troca certa, e melhor narrativamente: o mosquiteiro sobre a cama — que é o qu
 roteiro literalmente celebra (*"alive because of a piece of mesh over a bed"*).
 Ilustrar a solução em vez da vítima é o argumento do vídeo, não uma concessão.
 
+## REGRAS DO HOST — QA do Piter 07/08 (África)
+
+1. **O áudio do avatar é o NATIVO do VEO.** Foi o pedido explícito ("blindar a parte
+   do avatar falando de verdade"). Reprovou no gate ⇒ **regera** (`--apagar`).
+   `--dub-fallback` é último recurso e só com aval — apliquei por conta própria na
+   África e o host abriu dublado.
+2. **Ilha dublada dura a FALA, não o clipe.** O VEO entrega 8s fixos; a dublagem tem
+   ~4,5s. A ilha durando o clipe deixou 3,5s de silêncio antes da narração voltar.
+3. **Karaokê no rodapé: DESLIGADO** ("ta insuportável"). `style_card.karaoke` agora
+   é false por padrão.
+
 ## ARMADILHAS SILENCIOSAS (falham sem erro no log)
 
 | armadilha | como se manifesta | guarda |

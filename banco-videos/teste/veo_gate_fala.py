@@ -146,7 +146,10 @@ def main():
     ap.add_argument("--apagar", action="store_true",
                     help="apaga os reprovados pra o ciclo regerar")
     ap.add_argument("--dub-fallback", action="store_true",
-                    help="reprovado NÃO é apagado: a ilha passa a ser DUBLADA (voz clonada)")
+                    help="ÚLTIMO RECURSO, e SÓ com aval do Piter: a ilha vira DUBLADA. "
+                         "07/08 — eu apliquei isto por conta própria no vídeo da África "
+                         "e o host abriu com voz dublada quando o pedido era o VEO "
+                         "falando de verdade. O padrão é REGERAR até passar (--apagar).")
     ap.add_argument("--escolher", default="",
                     help="pasta do zip: escolhe o take PELA FALA entre os candidatos")
     a = ap.parse_args()
