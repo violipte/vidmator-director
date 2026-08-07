@@ -88,6 +88,35 @@ def _rotulo_capitulo(texto_beat, titulo):
     return m.group(1).capitalize(), n
 
 
+def _pausa_narracao(t_alvo, palavras, janela=4.5, min_gap=0.22):
+    """Pausa REAL da narração mais perto de `t_alvo` (coords da narração).
+
+    07/08 (QA Piter: "o CTA cortou o clipe da explicação antes de finalizar o
+    capítulo"): a inserção cortava o áudio na fronteira da SEÇÃO, que vem dos beats
+    e não das frases — e caiu DENTRO da palavra "surprised". O STT do vídeo final
+    entregou o flagrante: "...PRIZED number three". Corte de narração só pode cair
+    no silêncio ENTRE palavras.
+
+    Prefere pausa depois de fim de frase (. ! ?); no empate, a mais próxima do alvo.
+    Sem candidata, devolve o alvo (o comportamento antigo)."""
+    if not palavras:
+        return t_alvo
+    cands = []
+    for a, b in zip(palavras, palavras[1:]):
+        gap = float(b["t_ini"]) - float(a["t_fim"])
+        if gap < min_gap:
+            continue
+        meio = (float(a["t_fim"]) + float(b["t_ini"])) / 2
+        if abs(meio - t_alvo) > janela:
+            continue
+        fim_frase = str(a.get("palavra", "")).strip()[-1:] in ".!?"
+        cands.append((0 if fim_frase else 1, abs(meio - t_alvo), meio, gap))
+    if not cands:
+        return t_alvo
+    cands.sort()
+    return round(cands[0][2], 2)
+
+
 def _dic5(d):
     """dados do LLM podem vir como LISTA — normaliza p/ dict (31/07)."""
     if isinstance(d, (list, tuple)):
@@ -1594,6 +1623,15 @@ def main():
     # Clipes vêm APENAS do keep/ (rubric do curador VEO) — nunca da pasta bruta.
     av_cfg = _SC.get("avatar") or {}
     avatar_ilhas = []
+    _desloc_ins = 0.0
+    # alinhamento palavra-a-palavra do job: é ele que diz onde a narração respira
+    _PALAVRAS = []
+    try:
+        _pw = next(iter(sorted(job.glob("palavras*.json"))), None)
+        if _pw:
+            _PALAVRAS = json.loads(_pw.read_text(encoding="utf-8"))
+    except Exception:
+        _PALAVRAS = []
     if av_cfg.get("banco") and av_cfg.get("ilhas"):
         try:
             ab = Path(av_cfg["banco"])
@@ -1671,6 +1709,18 @@ def main():
                 if inserir:
                     t_ins = round(s_av["t_ini"] if not ultimo
                                   else max(b["t_fim"] for b in beats_out), 2)
+                    # 07/08: o corte tem que cair numa PAUSA da narração. A fronteira
+                    # de seção vem dos BEATS e caiu dentro da palavra "surprised" — o
+                    # STT do vídeo final flagrou "...PRIZED number three" depois do CTA.
+                    # a ABERTURA nunca desloca: ela É o segundo zero. Buscar pausa
+                    # ali empurrou o hook pra 3,2s e pôs narração ANTES do host falar.
+                    if not ultimo and t_ins > 0.5 and _PALAVRAS:
+                        t_narr = round(t_ins - _desloc_ins, 2)
+                        t_novo = _pausa_narracao(t_narr, _PALAVRAS)
+                        if abs(t_novo - t_narr) > 0.01:
+                            print(f"avatar: corte movido pra pausa da narração "
+                                  f"({t_narr:.2f}s -> {t_novo:.2f}s)")
+                            t_ins = round(t_novo + _desloc_ins, 2)
                     d_ins = round(d_clip, 2)
                     # 07/08 (QA Piter: "tem a porra do silêncio antes do roteiro
                     # começar"): a ilha durava o CLIPE (8s fixos do VEO) enquanto a
@@ -1693,6 +1743,11 @@ def main():
                                     d_ins = round(_dw + 0.4, 2)
                             except Exception:
                                 pass
+                    # beat que ATRAVESSA o corte é aparado (senão a ilha entra por
+                    # cima dele e o clipe da explicação some no meio)
+                    for bx in beats_out:
+                        if bx["t_ini"] < t_ins - 0.01 < bx["t_fim"]:
+                            bx["t_fim"] = t_ins
                     for bx in beats_out:
                         if bx["t_ini"] >= t_ins - 0.01:
                             bx["t_ini"] = round(bx["t_ini"] + d_ins, 2)
@@ -1725,6 +1780,7 @@ def main():
                     beats_out.append(novo)
                     avatar_ilhas.append({"t_ini": t_ins, "t_fim": novo["t_fim"],
                                          "inserir": True})
+                    _desloc_ins = round(_desloc_ins + d_ins, 2)
                     print(f"avatar [{av_cfg.get('persona', '?')}]: INSERIDO em "
                           f"{t_ins:.1f}s (+{d_ins:.1f}s) — {src_av.name}")
                     continue

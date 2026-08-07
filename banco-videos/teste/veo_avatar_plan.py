@@ -121,12 +121,19 @@ def planejar(job, plano, aplicar=False):
             ilha["ultimo_clipe"] = True
         ilhas[str(secao)] = ilha
 
-    # 1. ABERTURA
+    # 07/08 (QA Piter: "o avatar com CTA no final ficou igual da intro"): as três
+    # aparições precisam ser VISUALMENTE distintas. Escrever "stands facing the lens"
+    # na abertura e "stands in late golden light" no fecho entregava o mesmo
+    # enquadramento — o VEO não separa cenas por adjetivo de luz. O que separa é
+    # POSTURA + DISTÂNCIA + HORA DO DIA, e isso agora é explícito em cada take.
+
+    # 1. ABERTURA — de pé, plano médio, luz dura do meio-dia
     fala_hook = (av.get("fala_hook") or "").strip()
     if fala_hook:
         _take("av_hook.mp4",
-              f"stands facing the lens in the {amb}, talking to the viewer at an easy "
-              f"pace with small natural hand gestures, static eye-level shot",
+              f"stands upright in the middle of the {amb} under hard midday sun, "
+              f"medium shot from the chest up, talking straight to the lens with "
+              f"small natural hand gestures",
               fala_hook, secoes[0]["i"])
 
     if av.get("cta_ranking", True):
@@ -140,18 +147,22 @@ def planejar(job, plano, aplicar=False):
         import re as _re
         itens = [s for s in secoes if _re.search(r"#\s*\d", str(s.get("titulo") or ""))]
         sec_meio = (itens[2] if len(itens) >= 3 else secoes[len(secoes) // 2])["i"]
+        # 2. CTA MEIO — SENTADO, plano mais aberto, fim de tarde
         _take("av_cta_meio.mp4",
-              f"sits on a rock in the {amb}, turning to the lens and speaking warmly, "
-              f"relaxed posture, static eye-level shot",
+              f"sits low on a rock in the {amb} in warm late-afternoon light, wider "
+              f"shot showing the landscape around him, leaning forward with elbows on "
+              f"his knees as he turns to the lens",
               (av.get("fala_cta_meio") or
                "Before the next one on our list, subscribe, like and hit the bell."),
               sec_meio, cta="SubscribeBellPulse", antes_do_card=True)
 
         # 3. CTA FINAL — o ÚLTIMO clipe do vídeo
         sec_fim = secoes[-1]["i"]
+        # 3. CTA FINAL — CAMINHANDO em direção à câmera, close, contraluz do pôr do sol
         _take("av_cta_final.mp4",
-              f"stands in late golden light in the {amb}, gives a small nod and a "
-              f"short wave toward the lens, static eye-level shot",
+              f"walks slowly toward the camera through the {amb} at sunset, backlit "
+              f"with the low sun behind him, close shot from the shoulders up, "
+              f"raising one hand in a goodbye wave as he stops",
               (av.get("fala_cta_final") or
                "Thanks for watching. Subscribe, and I'll see you next time."),
               sec_fim, cta="SubscribeMinimal", ultimo=True)
