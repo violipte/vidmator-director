@@ -103,9 +103,12 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     # excelente, teto de 90 aprovado"):
     #   122 chars -> CORTA no meio | 69 -> fala inteiro mas LENTO (VEO estica
     #   pra preencher os 8s) | 89 -> ritmo natural. Faixa boa: 80-90 chars.
-    # JANELA DE FALA — calibrada pelo Piter em produção (05 e 06/08):
-    #   122 chars -> CORTA no meio          | 69 -> fala LENTA demais
-    #   89 -> ritmo natural (aprovado)      | teto novo: 95
+    # JANELA DE FALA — calibrada pelo Piter em produção, ouvindo os takes:
+    #   69  -> fala LENTA demais (o VEO estica pra preencher os 8s)
+    #   89  -> ritmo natural            (aprovado 05/08)
+    #   110 -> "ficou excelente"        (aprovado 07/08, testado à mão)
+    #   122 -> CORTA no meio            (reprovado 05/08)
+    # Teto em 115: entre o maior aprovado e o menor reprovado.
     # 06/08: "cheguei o mais próximo possível de 90~95 caracteres, se não fica MUITO
     # lento OU fica um silêncio bosta no final do clipe" — o VEO tem 8s pra
     # preencher; fala curta ele estica ou deixa sobra morta. Curto demais agora
@@ -113,9 +116,9 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
     # conserto depois).
     # o teto de PALAVRAS é derivado do de chars (inglês ~5 chars/palavra): 95 chars
     # cabem ~19 palavras. Um teto de 17 brigava com a régua do Piter, que é em CHARS.
-    if fala and (len(fala) > 95 or len(fala.split()) > 19):
+    if fala and (len(fala) > 115 or len(fala.split()) > 24):
         raise ValueError(f"fala do take longa demais ({len(fala)} chars / "
-                         f"{len(fala.split())} palavras; teto 95/19): {fala[:60]!r}")
+                         f"{len(fala.split())} palavras; teto 115/24): {fala[:60]!r}")
     if fala and len(fala) < 78:
         print(f"  !! fala curta ({len(fala)} chars) — o VEO vai esticar ou sobrar "
               f"silêncio; a faixa boa é 88-95: {fala[:50]!r}")
@@ -136,9 +139,15 @@ def montar_prompt_avatar(ficha, acao, estilo="", fala=""):
               if fala else "")
     fixo = ". Clean frame, no subtitles, no captions, no burned-in text, no watermark"
     cabeca = f"{ficha['mencao']}{frente} {acao.strip()}"
+    # 07/08: o estilo entrava cortado no MEIO DA PALAVRA ("filmic muted contr") quando
+    # a fala longa comia a folga dos 900. Corta em vírgula/palavra inteira — estilo é
+    # decoração, mas decoração truncada é ruído no prompt.
     folga = 900 - len(fixo) - len(cabeca)
-    if estilo and folga > 20:
-        cabeca += f". {estilo.strip()[:folga - 2]}"
+    if estilo and folga > 24:
+        est = estilo.strip()[:folga - 2]
+        if len(est) < len(estilo.strip()):
+            est = est.rsplit(",", 1)[0] if "," in est else est.rsplit(" ", 1)[0]
+        cabeca += f". {est.rstrip(' ,;')}"
     p = (cabeca + fixo)[:900]
     cauda = frente
     if fala and fala.strip()[-12:] not in p:

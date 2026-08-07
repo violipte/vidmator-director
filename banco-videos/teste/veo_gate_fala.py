@@ -34,9 +34,41 @@ sys.path.insert(0, r"F:/Canal Dark/Aplicativo de Edição/video-automator")
 sys.stdout.reconfigure(encoding="utf-8")
 
 
+# 07/08 (QA do Piter: "o problema está na SUA avaliação"): o STT escreve NÚMEROS em
+# dígito ("500") onde o roteiro tem por extenso ("five hundred"), e o comparador —
+# que casa palavra a palavra EM ORDEM — perdia o sincronismo na primeira palavra e
+# devolvia "fala TROCADA (0%)" para um take PERFEITO. O VEO acertava e eu reprovava.
+# Números viram sempre por extenso dos dois lados antes de comparar.
+_NUM = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+        7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve",
+        13: "thirteen", 14: "fourteen", 15: "fifteen", 16: "sixteen",
+        17: "seventeen", 18: "eighteen", 19: "nineteen", 20: "twenty",
+        30: "thirty", 40: "forty", 50: "fifty", 60: "sixty", 70: "seventy",
+        80: "eighty", 90: "ninety"}
+
+
+def _por_extenso(n):
+    if n in _NUM:
+        return _NUM[n]
+    if n < 100:
+        d, u = divmod(n, 10)
+        return f"{_NUM[d * 10]} {_NUM[u]}".strip()
+    if n < 1000:
+        c, r = divmod(n, 100)
+        return f"{_NUM[c]} hundred" + (f" {_por_extenso(r)}" if r else "")
+    for lim, nome in ((1_000_000_000, "billion"), (1_000_000, "million"), (1000, "thousand")):
+        if n >= lim:
+            q, r = divmod(n, lim)
+            return f"{_por_extenso(q)} {nome}" + (f" {_por_extenso(r)}" if r else "")
+    return str(n)
+
+
 def _norm(s):
-    """Compara SOM, não ortografia: minúsculas, sem pontuação, espaços colapsados."""
-    return re.sub(r"\s+", " ", re.sub(r"[^\w\s]", " ", str(s).lower())).strip()
+    """Compara SOM, não ortografia: minúsculas, sem pontuação, espaços colapsados.
+    Dígitos viram extenso ("500" -> "five hundred") — ver comentário acima."""
+    t = re.sub(r"[^\w\s]", " ", str(s).lower())
+    t = re.sub(r"\b(\d{1,12})\b", lambda m: _por_extenso(int(m.group(1))), t)
+    return re.sub(r"\s+", " ", t).strip()
 
 
 def _palavras(s):

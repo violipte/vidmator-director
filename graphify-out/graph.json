@@ -224,7 +224,7 @@
       "label": "_obj()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L55",
+      "source_location": "L67",
       "_origin": "ast"
     },
     {
@@ -232,7 +232,23 @@
       "label": "essencia()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L65",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "automodelagem_remodelador_estilo_co2",
+      "label": "estilo_co2()",
+      "file_type": "code",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L127",
+      "_origin": "ast"
+    },
+    {
+      "id": "automodelagem_remodelador_gancho_original_limpo",
+      "label": "gancho_original_limpo()",
+      "file_type": "code",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L145",
       "_origin": "ast"
     },
     {
@@ -240,15 +256,15 @@
       "label": "gancho_novo()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L106",
+      "source_location": "L169",
       "_origin": "ast"
     },
     {
-      "id": "automodelagem_remodelador_step_texto",
-      "label": "step_texto()",
+      "id": "automodelagem_remodelador_corpo_sign",
+      "label": "corpo_sign()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L121",
+      "source_location": "L184",
       "_origin": "ast"
     },
     {
@@ -256,7 +272,7 @@
       "label": "fecho()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L135",
+      "source_location": "L247",
       "_origin": "ast"
     },
     {
@@ -264,7 +280,7 @@
       "label": "processar()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L147",
+      "source_location": "L269",
       "_origin": "ast"
     },
     {
@@ -272,7 +288,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L190",
+      "source_location": "L320",
       "_origin": "ast"
     },
     {
@@ -284,11 +300,35 @@
       "_origin": "ast"
     },
     {
-      "id": "automodelagem_remodelador_rationale_66",
+      "id": "automodelagem_remodelador_rationale_78",
       "label": "Etapa 1: extrai a ESSÊNCIA e desenha o esqueleto 5-X (título, steps, emoções).",
       "file_type": "rationale",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L66",
+      "source_location": "L78",
+      "_origin": "ast"
+    },
+    {
+      "id": "automodelagem_remodelador_rationale_146",
+      "label": "DECISÃO (Piter 06/08): o gancho (~2 min) é EXTRAÍDO do original — é a máquina",
+      "file_type": "rationale",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L146",
+      "_origin": "ast"
+    },
+    {
+      "id": "automodelagem_remodelador_rationale_185",
+      "label": "Um sign no estilo Developer CO2: continuação fluida, pontes, sem lista.     Anco",
+      "file_type": "rationale",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L185",
+      "_origin": "ast"
+    },
+    {
+      "id": "automodelagem_remodelador_rationale_248",
+      "label": "Fecho estilo CO2: prece/declaração pessoal (\"I release... I step into...\") +",
+      "file_type": "rationale",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L248",
       "_origin": "ast"
     },
     {
@@ -984,6 +1024,14 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_gen_narr_africa",
+      "label": "_gen_narr_africa.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/_gen_narr_africa.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_gen_narr_amazonia",
       "label": "_gen_narr_amazonia.py",
       "file_type": "code",
@@ -1004,6 +1052,14 @@
       "label": "_gen_narr_australia.py",
       "file_type": "code",
       "source_file": "banco-videos/teste/_gen_narr_australia.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_gen_narr_tubaroes",
+      "label": "_gen_narr_tubaroes.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/_gen_narr_tubaroes.py",
       "source_location": "L1",
       "_origin": "ast"
     },
@@ -3004,6 +3060,78 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_adotar_gerados",
+      "label": "adotar_gerados.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_adotar",
+      "label": "adotar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L44",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_registro",
+      "label": "_registro()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_plano",
+      "label": "_plano()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L115",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_ler",
+      "label": "_ler()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L128",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L135",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_rationale_45",
+      "label": "(adotados, ja_ok, sem_beat) — liga cada assets/bNNN__T*__gen.* ao seu beat.",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_rationale_89",
+      "label": "O resolvido do gerado. Herda o que descreve o BEAT (tempo, seção, busca) e     t",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L89",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_adotar_gerados_rationale_116",
+      "label": "{i: beat} do plano do job, para herdar tempo/seção quando o beat era buraco.",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L116",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_alinhar_roteiro",
       "label": "alinhar_roteiro.py",
       "file_type": "code",
@@ -3160,7 +3288,15 @@
       "label": "ancorar()",
       "file_type": "code",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L32",
+      "source_location": "L41",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_ancora5_e_esquema",
+      "label": "e_esquema()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L64",
       "_origin": "ast"
     },
     {
@@ -3168,7 +3304,7 @@
       "label": "_ja_ancorado()",
       "file_type": "code",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L53",
+      "source_location": "L70",
       "_origin": "ast"
     },
     {
@@ -3176,31 +3312,39 @@
       "label": "conferir()",
       "file_type": "code",
       "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_ancora5_rationale_42",
+      "label": "Prompt de geração com o tema garantido na frente.      `busca` é o pedido do dir",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L42",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_ancora5_rationale_65",
+      "label": "O pedido é ilustração TÉCNICA, não cena? Então não leva âncora de lugar.",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_ancora5_rationale_71",
+      "label": "A âncora já está no prompt?      Compara por PALAVRA-CHAVE, não por substring: '",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/ancora5.py",
       "source_location": "L71",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_ancora5_rationale_33",
-      "label": "Prompt de geração com o tema garantido na frente.      `busca` é o pedido do dir",
-      "file_type": "rationale",
-      "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L33",
-      "_origin": "ast"
-    },
-    {
-      "id": "banco_videos_teste_ancora5_rationale_54",
-      "label": "A âncora já está no prompt?      Compara por PALAVRA-CHAVE, não por substring: '",
-      "file_type": "rationale",
-      "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L54",
-      "_origin": "ast"
-    },
-    {
-      "id": "banco_videos_teste_ancora5_rationale_72",
+      "id": "banco_videos_teste_ancora5_rationale_89",
       "label": "(ok, motivo) — o prompt saiu ancorado? Para o crítico auditar a fila ANTES de",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L72",
+      "source_location": "L89",
       "_origin": "ast"
     },
     {
@@ -6260,11 +6404,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_montador5_pausa_narracao",
+      "label": "_pausa_narracao()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L91",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_montador5_dic5",
       "label": "_dic5()",
       "file_type": "code",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L91",
+      "source_location": "L120",
       "_origin": "ast"
     },
     {
@@ -6272,7 +6424,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L98",
+      "source_location": "L127",
       "_origin": "ast"
     },
     {
@@ -6293,10 +6445,18 @@
     },
     {
       "id": "banco_videos_teste_montador5_rationale_92",
-      "label": "dados do LLM podem vir como LISTA — normaliza p/ dict (31/07).",
+      "label": "Pausa REAL da narração mais perto de `t_alvo` (coords da narração).      07/08",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/montador5.py",
       "source_location": "L92",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_montador5_rationale_121",
+      "label": "dados do LLM podem vir como LISTA — normaliza p/ dict (31/07).",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L121",
       "_origin": "ast"
     },
     {
@@ -7316,11 +7476,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_rodar_producao5_dur_video",
+      "label": "_dur_video()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/rodar_producao5.py",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_rodar_producao5_etapa",
       "label": "etapa()",
       "file_type": "code",
       "source_file": "banco-videos/teste/rodar_producao5.py",
-      "source_location": "L45",
+      "source_location": "L56",
       "_origin": "ast"
     },
     {
@@ -7328,7 +7496,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/rodar_producao5.py",
-      "source_location": "L53",
+      "source_location": "L64",
       "_origin": "ast"
     },
     {
@@ -7337,6 +7505,14 @@
       "file_type": "rationale",
       "source_file": "banco-videos/teste/rodar_producao5.py",
       "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_rodar_producao5_rationale_46",
+      "label": "Duração do vídeo concatenado — vira o TETO do mux (o vídeo manda, não o áudio).",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/rodar_producao5.py",
+      "source_location": "L46",
       "_origin": "ast"
     },
     {
@@ -8068,11 +8244,27 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_driver_fechar",
+      "label": "_fechar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L314",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_driver_sessao_dirigivel",
+      "label": "_sessao_dirigivel()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L324",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_driver_main",
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L314",
+      "source_location": "L366",
       "_origin": "ast"
     },
     {
@@ -8156,6 +8348,22 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_driver_rationale_315",
+      "label": "Fecha contexto e Playwright sem deixar o erro de um impedir o outro.",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L315",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_driver_rationale_325",
+      "label": "Esta SESSÃO caiu na UI que o driver sabe dirigir? (06/08)      O Flow sorteia",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L325",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_gate_fala",
       "label": "veo_gate_fala.py",
       "file_type": "code",
@@ -8164,11 +8372,19 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_veo_gate_fala_por_extenso",
+      "label": "_por_extenso()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_veo_gate_fala_norm",
       "label": "_norm()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L37",
+      "source_location": "L66",
       "_origin": "ast"
     },
     {
@@ -8176,7 +8392,7 @@
       "label": "_palavras()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L42",
+      "source_location": "L74",
       "_origin": "ast"
     },
     {
@@ -8184,7 +8400,7 @@
       "label": "transcrever_take()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L46",
+      "source_location": "L78",
       "_origin": "ast"
     },
     {
@@ -8192,7 +8408,15 @@
       "label": "avaliar()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L61",
+      "source_location": "L93",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_gate_fala_escolher",
+      "label": "escolher()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L121",
       "_origin": "ast"
     },
     {
@@ -8200,31 +8424,39 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L89",
+      "source_location": "L175",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_gate_fala_rationale_38",
+      "id": "banco_videos_teste_veo_gate_fala_rationale_67",
       "label": "Compara SOM, não ortografia: minúsculas, sem pontuação, espaços colapsados.",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L38",
+      "source_location": "L67",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_gate_fala_rationale_47",
+      "id": "banco_videos_teste_veo_gate_fala_rationale_79",
       "label": "STT do áudio do clipe -> texto corrido.",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L47",
+      "source_location": "L79",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_gate_fala_rationale_62",
-      "label": "(ok, motivo). Três defeitos, três diagnósticos distintos.      A CAUDA é medida",
+      "id": "banco_videos_teste_veo_gate_fala_rationale_94",
+      "label": "(ok, motivo). Três defeitos, três diagnósticos distintos.      A CAUDA é medid",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L62",
+      "source_location": "L94",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_gate_fala_rationale_122",
+      "label": "Escolhe o take do host PELA FALA, não pelo título (06/08).      Por que: o \"Ba",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L122",
       "_origin": "ast"
     },
     {
@@ -8241,6 +8473,46 @@
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_ingest.py",
       "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lab_avatar",
+      "label": "veo_lab_avatar.py",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lab_avatar_variantes",
+      "label": "_variantes()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L68",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lab_avatar_montar",
+      "label": "montar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L87",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "label": "avaliar()",
+      "file_type": "code",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L117",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_veo_lab_avatar_rationale_118",
+      "label": "Transcreve TODOS os clipes de host e atribui cada um pela FALA.      07/08 (2ª",
+      "file_type": "rationale",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -8392,7 +8664,7 @@
       "label": "criar_personagem()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L133",
+      "source_location": "L173",
       "_origin": "ast"
     },
     {
@@ -8400,7 +8672,7 @@
       "label": "garantir_personagem()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L215",
+      "source_location": "L255",
       "_origin": "ast"
     },
     {
@@ -8444,19 +8716,19 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_personagem_rationale_134",
+      "id": "banco_videos_teste_veo_personagem_rationale_174",
       "label": "Cria o personagem completo (fluxo ditado pelo Piter 04/08 — ver FLOW_MAP.md):",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L134",
+      "source_location": "L174",
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_personagem_rationale_216",
+      "id": "banco_videos_teste_veo_personagem_rationale_256",
       "label": "Idempotente: cria só se o canal ainda não tem personagem (escopo=canal).     es",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L216",
+      "source_location": "L256",
       "_origin": "ast"
     },
     {
@@ -8816,7 +9088,7 @@
       "label": "aplicar()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L136",
+      "source_location": "L141",
       "_origin": "ast"
     },
     {
@@ -8824,7 +9096,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L158",
+      "source_location": "L163",
       "_origin": "ast"
     },
     {
@@ -8844,11 +9116,11 @@
       "_origin": "ast"
     },
     {
-      "id": "banco_videos_teste_veo_zip_rationale_137",
+      "id": "banco_videos_teste_veo_zip_rationale_142",
       "label": "Casa os arquivos de `pasta` com os itens do lote e copia os confiáveis pra",
       "file_type": "rationale",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L137",
+      "source_location": "L142",
       "_origin": "ast"
     },
     {
@@ -9344,6 +9616,54 @@
       "label": "AMOSTRA",
       "file_type": "code",
       "source_file": "remotion/_render_acervo_texto.mjs",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa",
+      "label": "_render_africa.mjs",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa_bundle",
+      "label": "BUNDLE",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa_tmp",
+      "label": "TMP",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa_mont",
+      "label": "mont",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa_modoaudio",
+      "label": "modoAudio",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "remotion_render_africa_framerange",
+      "label": "frameRange",
+      "file_type": "code",
+      "source_file": "remotion/_render_africa.mjs",
       "source_location": "L18",
       "_origin": "ast"
     },
@@ -15952,7 +16272,7 @@
       "label": "_pausa()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L111",
+      "source_location": "L118",
       "_origin": "ast"
     },
     {
@@ -15960,7 +16280,7 @@
       "label": "cmd_login()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L118",
+      "source_location": "L125",
       "_origin": "ast"
     },
     {
@@ -15968,7 +16288,7 @@
       "label": "_abrir_projeto()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L130",
+      "source_location": "L137",
       "_origin": "ast"
     },
     {
@@ -15976,7 +16296,7 @@
       "label": "_seletor_modelo_btn()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L143",
+      "source_location": "L150",
       "_origin": "ast"
     },
     {
@@ -15984,7 +16304,7 @@
       "label": "dispensar_avisos()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L153",
+      "source_location": "L160",
       "_origin": "ast"
     },
     {
@@ -15992,7 +16312,7 @@
       "label": "erro_de_ritmo()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L209",
+      "source_location": "L216",
       "_origin": "ast"
     },
     {
@@ -16000,7 +16320,7 @@
       "label": "modo_atual()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L226",
+      "source_location": "L233",
       "_origin": "ast"
     },
     {
@@ -16008,7 +16328,7 @@
       "label": "garantir_modo()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L240",
+      "source_location": "L247",
       "_origin": "ast"
     },
     {
@@ -16016,7 +16336,7 @@
       "label": "configurar_imagem()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L269",
+      "source_location": "L276",
       "_origin": "ast"
     },
     {
@@ -16024,7 +16344,7 @@
       "label": "_tab()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L294",
+      "source_location": "L301",
       "_origin": "ast"
     },
     {
@@ -16032,7 +16352,7 @@
       "label": "configurar_video()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L304",
+      "source_location": "L311",
       "_origin": "ast"
     },
     {
@@ -16040,7 +16360,7 @@
       "label": "enviar_prompt()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L340",
+      "source_location": "L347",
       "_origin": "ast"
     },
     {
@@ -16048,7 +16368,7 @@
       "label": "esperar_e_baixar()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L559",
+      "source_location": "L566",
       "_origin": "ast"
     },
     {
@@ -16056,7 +16376,7 @@
       "label": "cmd_gen()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L580",
+      "source_location": "L587",
       "_origin": "ast"
     },
     {
@@ -16064,7 +16384,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L599",
+      "source_location": "L606",
       "_origin": "ast"
     },
     {
@@ -16084,107 +16404,107 @@
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_112",
-      "label": "Pacing humano leve entre ações (anti-detecção básica).",
-      "file_type": "rationale",
-      "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L112",
-      "_origin": "ast"
-    },
-    {
       "id": "veo_flow_flow_driver_rationale_119",
-      "label": "Abre o Flow p/ o usuário logar 1x. A sessão fica salva no PROFILE_DIR.",
+      "label": "Pacing humano leve entre ações (anti-detecção básica).",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
       "source_location": "L119",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_131",
+      "id": "veo_flow_flow_driver_rationale_126",
+      "label": "Abre o Flow p/ o usuário logar 1x. A sessão fica salva no PROFILE_DIR.",
+      "file_type": "rationale",
+      "source_file": "veo_flow/flow_driver.py",
+      "source_location": "L126",
+      "_origin": "ast"
+    },
+    {
+      "id": "veo_flow_flow_driver_rationale_138",
       "label": "Abre um projeto existente (proj_id) ou cria um novo.",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L131",
+      "source_location": "L138",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_144",
+      "id": "veo_flow_flow_driver_rationale_151",
       "label": "O botão da barra de prompt que abre o popup de modelo/config.",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L144",
+      "source_location": "L151",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_154",
+      "id": "veo_flow_flow_driver_rationale_161",
       "label": "Popups de ANÚNCIO do Flow (\"Tools Community Gallery is Live!\" etc.) bloqueiam",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L154",
+      "source_location": "L161",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_210",
+      "id": "veo_flow_flow_driver_rationale_217",
       "label": "True só quando a mensagem na tela é de VELOCIDADE/VOLUME (não de política).",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L210",
+      "source_location": "L217",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_227",
+      "id": "veo_flow_flow_driver_rationale_234",
       "label": "Lê o botão do rodapé, que mostra o estado: 'Vídeo · 8s crop_16_9 x1' ou     '🍌",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L227",
+      "source_location": "L234",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_241",
+      "id": "veo_flow_flow_driver_rationale_248",
       "label": "TRAVA ANTES DE GERAR (04/08, pedido do Piter). A config do modelo PERSISTE por",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L241",
+      "source_location": "L248",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_270",
+      "id": "veo_flow_flow_driver_rationale_277",
       "label": "Aba Imagem + Nano Banana (0 créditos).",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L270",
+      "source_location": "L277",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_295",
+      "id": "veo_flow_flow_driver_rationale_302",
       "label": "04/08: os tabs do Flow têm o nome do ÍCONE material colado no texto —     'vide",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L295",
+      "source_location": "L302",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_305",
+      "id": "veo_flow_flow_driver_rationale_312",
       "label": "Abre o popup e seta Vídeo + modelo + aspecto + duração + saídas.",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L305",
+      "source_location": "L312",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_341",
+      "id": "veo_flow_flow_driver_rationale_348",
       "label": "Escreve o prompt e dispara a geração.",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L341",
+      "source_location": "L348",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_flow_driver_rationale_560",
+      "id": "veo_flow_flow_driver_rationale_567",
       "label": "STUB — a CONFIRMAR na 1ª geração real.      Plano (2 sinais de conclusão a val",
       "file_type": "rationale",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L560",
+      "source_location": "L567",
       "_origin": "ast"
     },
     {
@@ -16312,7 +16632,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "veo_flow/login_perfil.py",
-      "source_location": "L75",
+      "source_location": "L78",
       "_origin": "ast"
     },
     {
@@ -16524,11 +16844,19 @@
       "_origin": "ast"
     },
     {
+      "id": "veo_flow_smoke_perfis_variante_ui",
+      "label": "variante_ui()",
+      "file_type": "code",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
       "id": "veo_flow_smoke_perfis_testar",
       "label": "testar()",
       "file_type": "code",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L29",
+      "source_location": "L54",
       "_origin": "ast"
     },
     {
@@ -16536,15 +16864,23 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L73",
+      "source_location": "L121",
       "_origin": "ast"
     },
     {
-      "id": "veo_flow_smoke_perfis_rationale_30",
+      "id": "veo_flow_smoke_perfis_rationale_31",
+      "label": "Qual UI do Flow ESTA SESSÃO recebeu (06/08).      O Flow sorteia a UI quando o",
+      "file_type": "rationale",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "veo_flow_smoke_perfis_rationale_55",
       "label": "(estado, detalhe) — abre, lê, fecha. Não gera nada.",
       "file_type": "rationale",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L30",
+      "source_location": "L55",
       "_origin": "ast"
     },
     {
@@ -29864,11 +30200,35 @@
       "_origin": "ast"
     },
     {
+      "id": "banco_videos_teste_geracao_flow_child_safety_na_ilustração_06_08",
+      "label": "CHILD SAFETY NA ILUSTRAÇÃO (06/08)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L137",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_regras_do_host_qa_do_piter_07_08_áfrica",
+      "label": "REGRAS DO HOST — QA do Piter 07/08 (África)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L147",
+      "_origin": "ast"
+    },
+    {
+      "id": "banco_videos_teste_geracao_flow_armadilhas_silenciosas_falham_sem_erro_no_log",
+      "label": "ARMADILHAS SILENCIOSAS (falham sem erro no log)",
+      "file_type": "document",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L158",
+      "_origin": "ast"
+    },
+    {
       "id": "banco_videos_teste_geracao_flow_roteiro_em_duas_trilhas_06_08_desenho_do_piter_o_modelo_a_partir_daqui",
       "label": "ROTEIRO EM DUAS TRILHAS (06/08, desenho do Piter) — o modelo a partir daqui",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L137",
+      "source_location": "L167",
       "_origin": "ast"
     },
     {
@@ -29876,7 +30236,7 @@
       "label": "AVATAR — a ficha é do VÍDEO, não do canal (06/08, regra do Piter)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L175",
+      "source_location": "L205",
       "_origin": "ast"
     },
     {
@@ -29884,7 +30244,7 @@
       "label": "AVATAR — doutrina de identidade (05/08, paga a caro)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L196",
+      "source_location": "L226",
       "_origin": "ast"
     },
     {
@@ -29892,7 +30252,7 @@
       "label": "Gate no que foi gerado (`--regen N`, default 1)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L216",
+      "source_location": "L246",
       "_origin": "ast"
     },
     {
@@ -29900,7 +30260,7 @@
       "label": "Projetos do Flow (a config de modelo persiste POR PROJETO)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L227",
+      "source_location": "L257",
       "_origin": "ast"
     },
     {
@@ -29908,7 +30268,7 @@
       "label": "O ciclo por coleção (`veo_ciclo.py`) — o fluxo ATUAL",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L239",
+      "source_location": "L269",
       "_origin": "ast"
     },
     {
@@ -29916,7 +30276,7 @@
       "label": "O encarregado (`veo_supervisor.py`) — fluxo antigo (por clipe)",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L252",
+      "source_location": "L282",
       "_origin": "ast"
     },
     {
@@ -29924,7 +30284,7 @@
       "label": "Gotchas do Flow",
       "file_type": "document",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L263",
+      "source_location": "L293",
       "_origin": "ast"
     },
     {
@@ -30565,6 +30925,14 @@
       "file_type": "document",
       "source_file": "veo_flow/FROTA.md",
       "source_location": "L83",
+      "_origin": "ast"
+    },
+    {
+      "id": "veo_flow_frota_ui_nova_do_flow_06_08_perfil_logado_perfil_utilizável",
+      "label": "UI nova do Flow (06/08) — perfil logado ≠ perfil utilizável",
+      "file_type": "document",
+      "source_file": "veo_flow/FROTA.md",
+      "source_location": "L94",
       "_origin": "ast"
     },
     {
@@ -35833,7 +36201,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L55",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -35842,7 +36210,25 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L65",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador",
+      "target": "automodelagem_remodelador_estilo_co2",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador",
+      "target": "automodelagem_remodelador_gancho_original_limpo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -35851,16 +36237,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L106",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
       "source": "automodelagem_remodelador",
-      "target": "automodelagem_remodelador_step_texto",
+      "target": "automodelagem_remodelador_corpo_sign",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L121",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -35869,7 +36255,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L135",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -35878,7 +36264,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L147",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
@@ -35887,7 +36273,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L190",
+      "source_location": "L320",
       "weight": 1.0
     },
     {
@@ -35897,7 +36283,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L91",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_gancho_original_limpo",
+      "target": "automodelagem_remodelador_limpar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -35907,17 +36303,27 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L118",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
-      "source": "automodelagem_remodelador_step_texto",
+      "source": "automodelagem_remodelador_corpo_sign",
+      "target": "automodelagem_remodelador_estilo_co2",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_corpo_sign",
       "target": "automodelagem_remodelador_limpar",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L132",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -35927,7 +36333,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L144",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -35937,27 +36343,27 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L151",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
       "source": "automodelagem_remodelador_processar",
-      "target": "automodelagem_remodelador_gancho_novo",
+      "target": "automodelagem_remodelador_gancho_original_limpo",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L162",
+      "source_location": "L291",
       "weight": 1.0
     },
     {
       "source": "automodelagem_remodelador_processar",
-      "target": "automodelagem_remodelador_step_texto",
+      "target": "automodelagem_remodelador_corpo_sign",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L166",
+      "source_location": "L296",
       "weight": 1.0
     },
     {
@@ -35967,7 +36373,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L171",
+      "source_location": "L303",
       "weight": 1.0
     },
     {
@@ -35977,7 +36383,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L205",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -35987,7 +36393,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L208",
+      "source_location": "L340",
       "weight": 1.0
     },
     {
@@ -36000,12 +36406,39 @@
       "weight": 1.0
     },
     {
-      "source": "automodelagem_remodelador_rationale_66",
+      "source": "automodelagem_remodelador_rationale_78",
       "target": "automodelagem_remodelador_essencia",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L66",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_rationale_146",
+      "target": "automodelagem_remodelador_gancho_original_limpo",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_rationale_185",
+      "target": "automodelagem_remodelador_corpo_sign",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_rationale_248",
+      "target": "automodelagem_remodelador_fecho",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -37552,6 +37985,36 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_gen_narr_africa",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_africa.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gen_narr_africa",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_africa.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gen_narr_africa",
+      "target": "narrator_chatterbox",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_africa.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_gen_narr_amazonia",
       "target": "sys",
       "relation": "imports",
@@ -37648,6 +38111,36 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/_gen_narr_australia.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gen_narr_tubaroes",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_tubaroes.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gen_narr_tubaroes",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_tubaroes.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_gen_narr_tubaroes",
+      "target": "narrator_chatterbox",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/_gen_narr_tubaroes.py",
       "source_location": "L4",
       "weight": 1.0
     },
@@ -39162,7 +39655,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
-      "source_location": "L119",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -39397,6 +39890,16 @@
     },
     {
       "source": "banco_videos_teste_acervo_registry_graf_cmp",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L649",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_graf_cmp",
       "target": "banco_videos_teste_acervo_registry_s",
       "relation": "calls",
       "context": "call",
@@ -39426,13 +39929,13 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_acervo_registry_graf_cmp",
+      "source": "banco_videos_teste_acervo_registry_graf_serie",
       "target": "banco_videos_teste_acervo_registry_corte",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
-      "source_location": "L657",
+      "source_location": "L660",
       "weight": 1.0
     },
     {
@@ -39463,16 +39966,6 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L663",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_acervo_registry_graf_serie",
-      "target": "banco_videos_teste_acervo_registry_corte",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "banco-videos/teste/acervo_registry.py",
-      "source_location": "L664",
       "weight": 1.0
     },
     {
@@ -39806,6 +40299,16 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_acervo_registry_pontos_de",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L821",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_acervo_registry_map_pais1",
       "target": "banco_videos_teste_acervo_registry_paises_de",
       "relation": "calls",
@@ -39813,6 +40316,16 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L825",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_pais1",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L827",
       "weight": 1.0
     },
     {
@@ -39846,6 +40359,16 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_acervo_registry_map_multi",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L839",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_acervo_registry_map_rota",
       "target": "banco_videos_teste_acervo_registry_pontos_de",
       "relation": "calls",
@@ -39853,6 +40376,16 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L842",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_rota",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L844",
       "weight": 1.0
     },
     {
@@ -39873,6 +40406,16 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L847",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_pin",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L849",
       "weight": 1.0
     },
     {
@@ -39907,6 +40450,16 @@
     },
     {
       "source": "banco_videos_teste_acervo_registry_map_stat",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L857",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_stat",
       "target": "banco_videos_teste_acervo_registry_s",
       "relation": "calls",
       "context": "call",
@@ -39923,6 +40476,16 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L861",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_radar",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L865",
       "weight": 1.0
     },
     {
@@ -39957,12 +40520,32 @@
     },
     {
       "source": "banco_videos_teste_acervo_registry_map_cine",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L871",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_map_cine",
       "target": "banco_videos_teste_acervo_registry_s",
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/acervo_registry.py",
       "source_location": "L871",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_acervo_registry_soc_news",
+      "target": "banco_videos_teste_acervo_registry_corte",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/acervo_registry.py",
+      "source_location": "L892",
       "weight": 1.0
     },
     {
@@ -40345,6 +40928,178 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "argparse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "banco_videos_teste_adotar_gerados_adotar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "banco_videos_teste_adotar_gerados_registro",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "banco_videos_teste_adotar_gerados_plano",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "banco_videos_teste_adotar_gerados_ler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados",
+      "target": "banco_videos_teste_adotar_gerados_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_adotar",
+      "target": "banco_videos_teste_adotar_gerados_plano",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_adotar",
+      "target": "banco_videos_teste_adotar_gerados_ler",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_adotar",
+      "target": "banco_videos_teste_adotar_gerados_registro",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_main",
+      "target": "banco_videos_teste_adotar_gerados_adotar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_rationale_45",
+      "target": "banco_videos_teste_adotar_gerados_adotar",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_rationale_89",
+      "target": "banco_videos_teste_adotar_gerados_registro",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_adotar_gerados_rationale_116",
+      "target": "banco_videos_teste_adotar_gerados_plano",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/adotar_gerados.py",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_alinhar_roteiro",
       "target": "argparse",
       "relation": "imports",
@@ -40685,7 +41440,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L32",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_ancora5",
+      "target": "banco_videos_teste_ancora5_e_esquema",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -40694,7 +41458,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L53",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -40703,7 +41467,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L71",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_ancora5_ancorar",
+      "target": "banco_videos_teste_ancora5_e_esquema",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -40713,7 +41487,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L48",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_ancora5_conferir",
+      "target": "banco_videos_teste_ancora5_e_esquema",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -40723,34 +41507,43 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L76",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_ancora5_rationale_33",
+      "source": "banco_videos_teste_ancora5_rationale_42",
       "target": "banco_videos_teste_ancora5_ancorar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L33",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_ancora5_rationale_54",
+      "source": "banco_videos_teste_ancora5_rationale_65",
+      "target": "banco_videos_teste_ancora5_e_esquema",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/ancora5.py",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_ancora5_rationale_71",
       "target": "banco_videos_teste_ancora5_ja_ancorado",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L54",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_ancora5_rationale_72",
+      "source": "banco_videos_teste_ancora5_rationale_89",
       "target": "banco_videos_teste_ancora5_conferir",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/ancora5.py",
-      "source_location": "L72",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -48736,7 +49529,7 @@
     },
     {
       "source": "banco_videos_teste_montador5",
-      "target": "banco_videos_teste_montador5_dic5",
+      "target": "banco_videos_teste_montador5_pausa_narracao",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
@@ -48745,11 +49538,20 @@
     },
     {
       "source": "banco_videos_teste_montador5",
+      "target": "banco_videos_teste_montador5_dic5",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5",
       "target": "banco_videos_teste_montador5_main",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L98",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -48759,7 +49561,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L163",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -48769,7 +49571,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L494",
+      "source_location": "L523",
       "weight": 1.0
     },
     {
@@ -48779,7 +49581,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L549",
+      "source_location": "L578",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5_main",
+      "target": "banco_videos_teste_montador5_pausa_narracao",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L1719",
       "weight": 1.0
     },
     {
@@ -48802,11 +49614,20 @@
     },
     {
       "source": "banco_videos_teste_montador5_rationale_92",
-      "target": "banco_videos_teste_montador5_dic5",
+      "target": "banco_videos_teste_montador5_pausa_narracao",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/montador5.py",
       "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_montador5_rationale_121",
+      "target": "banco_videos_teste_montador5_dic5",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/montador5.py",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -51289,7 +52110,7 @@
     },
     {
       "source": "banco_videos_teste_rodar_producao5",
-      "target": "banco_videos_teste_rodar_producao5_etapa",
+      "target": "banco_videos_teste_rodar_producao5_dur_video",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/rodar_producao5.py",
@@ -51298,11 +52119,20 @@
     },
     {
       "source": "banco_videos_teste_rodar_producao5",
+      "target": "banco_videos_teste_rodar_producao5_etapa",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/rodar_producao5.py",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_rodar_producao5",
       "target": "banco_videos_teste_rodar_producao5_main",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/rodar_producao5.py",
-      "source_location": "L53",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -51312,7 +52142,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/rodar_producao5.py",
-      "source_location": "L66",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -51322,7 +52152,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/rodar_producao5.py",
-      "source_location": "L69",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_rodar_producao5_main",
+      "target": "banco_videos_teste_rodar_producao5_dur_video",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/rodar_producao5.py",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -51332,6 +52172,15 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/rodar_producao5.py",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_rodar_producao5_rationale_46",
+      "target": "banco_videos_teste_rodar_producao5_dur_video",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/rodar_producao5.py",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -52423,7 +53272,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L101",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -52433,7 +53282,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L116",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -52443,7 +53292,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L201",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -53237,11 +54086,29 @@
     },
     {
       "source": "banco_videos_teste_veo_driver",
-      "target": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_fechar",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
       "source_location": "L314",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver",
+      "target": "banco_videos_teste_veo_driver_sessao_dirigivel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L324",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver",
+      "target": "banco_videos_teste_veo_driver_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L366",
       "weight": 1.0
     },
     {
@@ -53271,7 +54138,27 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L348",
+      "source_location": "L405",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_sessao_dirigivel",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L449",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_main",
+      "target": "banco_videos_teste_veo_driver_fechar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L452",
       "weight": 1.0
     },
     {
@@ -53281,7 +54168,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L414",
+      "source_location": "L499",
       "weight": 1.0
     },
     {
@@ -53291,7 +54178,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L418",
+      "source_location": "L503",
       "weight": 1.0
     },
     {
@@ -53301,7 +54188,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L455",
+      "source_location": "L547",
       "weight": 1.0
     },
     {
@@ -53311,7 +54198,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L457",
+      "source_location": "L577",
       "weight": 1.0
     },
     {
@@ -53321,7 +54208,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L485",
+      "source_location": "L617",
       "weight": 1.0
     },
     {
@@ -53331,7 +54218,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L493",
+      "source_location": "L625",
       "weight": 1.0
     },
     {
@@ -53341,7 +54228,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L495",
+      "source_location": "L627",
       "weight": 1.0
     },
     {
@@ -53351,7 +54238,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L499",
+      "source_location": "L631",
       "weight": 1.0
     },
     {
@@ -53361,7 +54248,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L508",
+      "source_location": "L640",
       "weight": 1.0
     },
     {
@@ -53371,7 +54258,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_driver.py",
-      "source_location": "L514",
+      "source_location": "L646",
       "weight": 1.0
     },
     {
@@ -53465,6 +54352,24 @@
       "weight": 1.0
     },
     {
+      "source": "banco_videos_teste_veo_driver_rationale_315",
+      "target": "banco_videos_teste_veo_driver_fechar",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L315",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_rationale_325",
+      "target": "banco_videos_teste_veo_driver_sessao_dirigivel",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L325",
+      "weight": 1.0
+    },
+    {
       "source": "banco_videos_teste_veo_gate_fala",
       "target": "argparse",
       "relation": "imports",
@@ -53536,11 +54441,20 @@
     },
     {
       "source": "banco_videos_teste_veo_gate_fala",
+      "target": "banco_videos_teste_veo_gate_fala_por_extenso",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala",
       "target": "banco_videos_teste_veo_gate_fala_norm",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L37",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -53549,7 +54463,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L42",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -53558,7 +54472,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L46",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -53567,7 +54481,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L61",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala",
+      "target": "banco_videos_teste_veo_gate_fala_escolher",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -53576,7 +54499,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L89",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_norm",
+      "target": "banco_videos_teste_veo_gate_fala_por_extenso",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -53586,7 +54519,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L43",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -53596,7 +54529,37 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L68",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_escolher",
+      "target": "banco_videos_teste_veo_gate_fala_transcrever_take",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L164",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_escolher",
+      "target": "banco_videos_teste_veo_gate_fala_avaliar",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L165",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_main",
+      "target": "banco_videos_teste_veo_gate_fala_escolher",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -53606,7 +54569,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L111",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -53616,34 +54579,43 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L112",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_gate_fala_rationale_38",
+      "source": "banco_videos_teste_veo_gate_fala_rationale_67",
       "target": "banco_videos_teste_veo_gate_fala_norm",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L38",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_gate_fala_rationale_47",
+      "source": "banco_videos_teste_veo_gate_fala_rationale_79",
       "target": "banco_videos_teste_veo_gate_fala_transcrever_take",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L47",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_gate_fala_rationale_62",
+      "source": "banco_videos_teste_veo_gate_fala_rationale_94",
       "target": "banco_videos_teste_veo_gate_fala_avaliar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L62",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_rationale_122",
+      "target": "banco_videos_teste_veo_gate_fala_escolher",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -53713,6 +54685,102 @@
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_ingest.py",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "argparse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "json",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "veo_personagem",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "banco_videos_teste_veo_lab_avatar_variantes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "banco_videos_teste_veo_lab_avatar_montar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar",
+      "target": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_montar",
+      "target": "banco_videos_teste_veo_lab_avatar_variantes",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_rationale_118",
+      "target": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -54046,7 +55114,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L133",
+      "source_location": "L173",
       "weight": 1.0
     },
     {
@@ -54055,7 +55123,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L215",
+      "source_location": "L255",
       "weight": 1.0
     },
     {
@@ -54095,7 +55163,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L140",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -54105,7 +55173,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L220",
+      "source_location": "L260",
       "weight": 1.0
     },
     {
@@ -54115,7 +55183,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L225",
+      "source_location": "L265",
       "weight": 1.0
     },
     {
@@ -54125,7 +55193,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L230",
+      "source_location": "L270",
       "weight": 1.0
     },
     {
@@ -54174,21 +55242,21 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_personagem_rationale_134",
+      "source": "banco_videos_teste_veo_personagem_rationale_174",
       "target": "banco_videos_teste_veo_personagem_criar_personagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L134",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_personagem_rationale_216",
+      "source": "banco_videos_teste_veo_personagem_rationale_256",
       "target": "banco_videos_teste_veo_personagem_garantir_personagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_personagem.py",
-      "source_location": "L216",
+      "source_location": "L256",
       "weight": 1.0
     },
     {
@@ -55251,7 +56319,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L136",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -55260,7 +56328,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L158",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -55290,7 +56358,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L143",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -55300,7 +56368,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L194",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -55322,12 +56390,12 @@
       "weight": 1.0
     },
     {
-      "source": "banco_videos_teste_veo_zip_rationale_137",
+      "source": "banco_videos_teste_veo_zip_rationale_142",
       "target": "banco_videos_teste_veo_zip_aplicar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/veo_zip.py",
-      "source_location": "L137",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -56353,6 +57421,91 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "remotion/_render_acervo_texto.mjs",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "ref_remotion_bundler",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "ref_remotion_renderer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "remotion_render_africa_bundle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "remotion_render_africa_tmp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "remotion_render_africa_mont",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "remotion_render_africa_modoaudio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "remotion_render_africa",
+      "target": "remotion_render_africa_framerange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "remotion/_render_africa.mjs",
       "source_location": "L18",
       "weight": 1.0
     },
@@ -73707,7 +74860,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L111",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -73716,7 +74869,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L118",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -73725,7 +74878,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L130",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -73734,7 +74887,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L143",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -73743,7 +74896,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L153",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -73752,7 +74905,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L209",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -73761,7 +74914,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L226",
+      "source_location": "L233",
       "weight": 1.0
     },
     {
@@ -73770,7 +74923,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L240",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -73779,7 +74932,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L269",
+      "source_location": "L276",
       "weight": 1.0
     },
     {
@@ -73788,7 +74941,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L294",
+      "source_location": "L301",
       "weight": 1.0
     },
     {
@@ -73797,7 +74950,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L304",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
@@ -73806,7 +74959,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L340",
+      "source_location": "L347",
       "weight": 1.0
     },
     {
@@ -73815,7 +74968,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L559",
+      "source_location": "L566",
       "weight": 1.0
     },
     {
@@ -73824,7 +74977,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L580",
+      "source_location": "L587",
       "weight": 1.0
     },
     {
@@ -73833,7 +74986,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L599",
+      "source_location": "L606",
       "weight": 1.0
     },
     {
@@ -73853,7 +75006,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L120",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -73863,7 +75016,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L136",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -73873,7 +75026,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L164",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -73883,7 +75036,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L230",
+      "source_location": "L237",
       "weight": 1.0
     },
     {
@@ -73893,7 +75046,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L250",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -73903,7 +75056,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L251",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -73913,7 +75066,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L257",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -73923,7 +75076,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L259",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -73933,7 +75086,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L271",
+      "source_location": "L278",
       "weight": 1.0
     },
     {
@@ -73943,7 +75096,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L272",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -73953,7 +75106,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L273",
+      "source_location": "L280",
       "weight": 1.0
     },
     {
@@ -73963,7 +75116,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L306",
+      "source_location": "L313",
       "weight": 1.0
     },
     {
@@ -73973,7 +75126,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L307",
+      "source_location": "L314",
       "weight": 1.0
     },
     {
@@ -73983,7 +75136,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L308",
+      "source_location": "L315",
       "weight": 1.0
     },
     {
@@ -73993,7 +75146,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L353",
+      "source_location": "L360",
       "weight": 1.0
     },
     {
@@ -74003,7 +75156,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L581",
+      "source_location": "L588",
       "weight": 1.0
     },
     {
@@ -74013,7 +75166,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L588",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -74023,7 +75176,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L589",
+      "source_location": "L596",
       "weight": 1.0
     },
     {
@@ -74033,7 +75186,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L590",
+      "source_location": "L597",
       "weight": 1.0
     },
     {
@@ -74043,7 +75196,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L591",
+      "source_location": "L598",
       "weight": 1.0
     },
     {
@@ -74053,7 +75206,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L614",
+      "source_location": "L621",
       "weight": 1.0
     },
     {
@@ -74063,7 +75216,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L616",
+      "source_location": "L623",
       "weight": 1.0
     },
     {
@@ -74085,17 +75238,8 @@
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_112",
-      "target": "veo_flow_flow_driver_pausa",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
       "source": "veo_flow_flow_driver_rationale_119",
-      "target": "veo_flow_flow_driver_cmd_login",
+      "target": "veo_flow_flow_driver_pausa",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
@@ -74103,102 +75247,111 @@
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_131",
+      "source": "veo_flow_flow_driver_rationale_126",
+      "target": "veo_flow_flow_driver_cmd_login",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/flow_driver.py",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_flow_driver_rationale_138",
       "target": "veo_flow_flow_driver_abrir_projeto",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L131",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_144",
+      "source": "veo_flow_flow_driver_rationale_151",
       "target": "veo_flow_flow_driver_seletor_modelo_btn",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L144",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_154",
+      "source": "veo_flow_flow_driver_rationale_161",
       "target": "veo_flow_flow_driver_dispensar_avisos",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L154",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_210",
+      "source": "veo_flow_flow_driver_rationale_217",
       "target": "veo_flow_flow_driver_erro_de_ritmo",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L210",
+      "source_location": "L217",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_227",
+      "source": "veo_flow_flow_driver_rationale_234",
       "target": "veo_flow_flow_driver_modo_atual",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L227",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_241",
+      "source": "veo_flow_flow_driver_rationale_248",
       "target": "veo_flow_flow_driver_garantir_modo",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L241",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_270",
+      "source": "veo_flow_flow_driver_rationale_277",
       "target": "veo_flow_flow_driver_configurar_imagem",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L270",
+      "source_location": "L277",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_295",
+      "source": "veo_flow_flow_driver_rationale_302",
       "target": "veo_flow_flow_driver_tab",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L295",
+      "source_location": "L302",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_305",
+      "source": "veo_flow_flow_driver_rationale_312",
       "target": "veo_flow_flow_driver_configurar_video",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L305",
+      "source_location": "L312",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_341",
+      "source": "veo_flow_flow_driver_rationale_348",
       "target": "veo_flow_flow_driver_enviar_prompt",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L341",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_flow_driver_rationale_560",
+      "source": "veo_flow_flow_driver_rationale_567",
       "target": "veo_flow_flow_driver_esperar_e_baixar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/flow_driver.py",
-      "source_location": "L560",
+      "source_location": "L567",
       "weight": 1.0
     },
     {
@@ -74554,7 +75707,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/login_perfil.py",
-      "source_location": "L75",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -74564,7 +75717,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/login_perfil.py",
-      "source_location": "L95",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -75016,7 +76169,7 @@
     },
     {
       "source": "veo_flow_smoke_perfis",
-      "target": "sys",
+      "target": "re",
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -75026,8 +76179,8 @@
     },
     {
       "source": "veo_flow_smoke_perfis",
-      "target": "pathlib",
-      "relation": "imports_from",
+      "target": "sys",
+      "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/smoke_perfis.py",
@@ -75036,11 +76189,30 @@
     },
     {
       "source": "veo_flow_smoke_perfis",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_smoke_perfis",
+      "target": "veo_flow_smoke_perfis_variante_ui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_smoke_perfis",
       "target": "veo_flow_smoke_perfis_testar",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L29",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -75049,7 +76221,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L73",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_smoke_perfis_testar",
+      "target": "veo_flow_smoke_perfis_variante_ui",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -75059,16 +76241,25 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L91",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
-      "source": "veo_flow_smoke_perfis_rationale_30",
+      "source": "veo_flow_smoke_perfis_rationale_31",
+      "target": "veo_flow_smoke_perfis_variante_ui",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/smoke_perfis.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_smoke_perfis_rationale_55",
       "target": "veo_flow_smoke_perfis_testar",
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L30",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -105429,7 +106620,7 @@
     },
     {
       "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
-      "target": "banco_videos_teste_geracao_flow_roteiro_em_duas_trilhas_06_08_desenho_do_piter_o_modelo_a_partir_daqui",
+      "target": "banco_videos_teste_geracao_flow_child_safety_na_ilustração_06_08",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
@@ -105438,11 +106629,38 @@
     },
     {
       "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_regras_do_host_qa_do_piter_07_08_áfrica",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_armadilhas_silenciosas_falham_sem_erro_no_log",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
+      "target": "banco_videos_teste_geracao_flow_roteiro_em_duas_trilhas_06_08_desenho_do_piter_o_modelo_a_partir_daqui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "banco-videos/teste/GERACAO_FLOW.md",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_geracao_flow_geração_no_flow_veo_3_1_nano_banana_manual_operacional",
       "target": "banco_videos_teste_geracao_flow_avatar_a_ficha_é_do_vídeo_não_do_canal_06_08_regra_do_piter",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L175",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -105451,7 +106669,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L196",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -105460,7 +106678,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L216",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -105469,7 +106687,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L227",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -105478,7 +106696,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L239",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
@@ -105487,7 +106705,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L252",
+      "source_location": "L282",
       "weight": 1.0
     },
     {
@@ -105496,7 +106714,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "banco-videos/teste/GERACAO_FLOW.md",
-      "source_location": "L263",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -106145,6 +107363,15 @@
       "confidence": "EXTRACTED",
       "source_file": "veo_flow/FROTA.md",
       "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "veo_flow_frota_frota_de_perfis_do_flow_desenho_de_escala",
+      "target": "veo_flow_frota_ui_nova_do_flow_06_08_perfil_logado_perfil_utilizável",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "veo_flow/FROTA.md",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -109945,7 +111172,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L91",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "automodelagem_remodelador_gancho_original_limpo",
+      "target": "banco_videos_teste_gemini_api_gemini_text",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "automodelagem/remodelador.py",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -109956,18 +111194,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L118",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
-      "source": "automodelagem_remodelador_step_texto",
+      "source": "automodelagem_remodelador_corpo_sign",
       "target": "banco_videos_teste_gemini_api_gemini_text",
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L132",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -109978,7 +111216,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "automodelagem/remodelador.py",
-      "source_location": "L144",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -110232,17 +111470,6 @@
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/diretor.py",
       "source_location": "L171",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_diretor_v2_pass_main",
-      "target": "banco_videos_teste_acervo_registry_escolher",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "banco-videos/teste/diretor_v2_pass.py",
-      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -110654,17 +111881,6 @@
     },
     {
       "source": "banco_videos_teste_montador_main",
-      "target": "banco_videos_teste_acervo_registry_escolher",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "banco-videos/teste/montador.py",
-      "source_location": "L427",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_montador_main",
       "target": "banco_videos_teste_diretor_v2_pass_natureza_do_beat",
       "relation": "calls",
       "context": "call",
@@ -110704,7 +111920,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L116",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -110715,7 +111931,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L185",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -110726,7 +111942,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L429",
+      "source_location": "L458",
       "weight": 1.0
     },
     {
@@ -110737,7 +111953,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L440",
+      "source_location": "L469",
       "weight": 1.0
     },
     {
@@ -110748,7 +111964,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L546",
+      "source_location": "L575",
       "weight": 1.0
     },
     {
@@ -110759,18 +111975,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L554",
-      "weight": 1.0
-    },
-    {
-      "source": "banco_videos_teste_montador5_main",
-      "target": "banco_videos_teste_acervo_registry_escolher",
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L599",
+      "source_location": "L583",
       "weight": 1.0
     },
     {
@@ -110781,7 +111986,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L609",
+      "source_location": "L638",
       "weight": 1.0
     },
     {
@@ -110792,7 +111997,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L664",
+      "source_location": "L693",
       "weight": 1.0
     },
     {
@@ -110803,7 +112008,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/montador5.py",
-      "source_location": "L664",
+      "source_location": "L693",
       "weight": 1.0
     },
     {
@@ -110924,7 +112129,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L99",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -110935,7 +112140,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L117",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -110946,7 +112151,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L126",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -110957,7 +112162,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L160",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -110968,7 +112173,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L218",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
@@ -110979,7 +112184,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L225",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -110990,7 +112195,18 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_ciclo.py",
-      "source_location": "L254",
+      "source_location": "L264",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_driver_fechar",
+      "target": "video_automator_render_worker_heartbeatthread_stop",
+      "relation": "indirect_call",
+      "context": "getattr",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_driver.py",
+      "source_location": "L316",
       "weight": 1.0
     },
     {
@@ -111001,7 +112217,62 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "banco-videos/teste/veo_gate_fala.py",
-      "source_location": "L56",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_gate_fala_escolher",
+      "target": "banco_videos_teste_veo_zip_tokens",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_gate_fala.py",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_montar",
+      "target": "banco_videos_teste_veo_personagem_personagem_do_canal",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "target": "banco_videos_teste_veo_zip_tokens",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "target": "banco_videos_teste_veo_gate_fala_transcrever_take",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L152",
+      "weight": 1.0
+    },
+    {
+      "source": "banco_videos_teste_veo_lab_avatar_avaliar",
+      "target": "banco_videos_teste_veo_gate_fala_palavras",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "banco-videos/teste/veo_lab_avatar.py",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -112365,7 +113636,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "veo_flow/login_perfil.py",
-      "source_location": "L92",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -112387,7 +113658,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "veo_flow/smoke_perfis.py",
-      "source_location": "L80",
+      "source_location": "L131",
       "weight": 1.0
     },
     {

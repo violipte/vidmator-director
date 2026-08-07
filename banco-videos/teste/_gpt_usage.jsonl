@@ -315,3 +315,6 @@
 {"model": "gpt-5", "in": 1063, "out": 1211}
 {"model": "gpt-5", "in": 2575, "out": 4423}
 {"model": "gpt-5", "in": 418, "out": 607}
+{"model": "gpt-5", "in": 6670, "out": 1291}
+{"model": "gpt-5", "in": 7247, "out": 1339}
+{"model": "gpt-5", "in": 7246, "out": 1426}

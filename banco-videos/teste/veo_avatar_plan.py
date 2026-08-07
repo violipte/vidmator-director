@@ -100,8 +100,14 @@ def planejar(job, plano, aplicar=False):
           presença; não serve pra canal onde ele apresenta de verdade.
         """
         nonlocal i_neg
+        # 07/08 (Piter: "sempre fala + cenário + roupa, mantendo a consistência").
+        # O prompt tinha acumulado sujeira que se CONTRADIZIA: um `_ENQUADRA` fixo
+        # ("Medium shot, chest up") brigando com o enquadramento do próprio take
+        # ("close shot from the shoulders up" no final), e uma âncora repetindo o
+        # ambiente que a ação já nomeia. Os dois eram remendos de ontem, quando eu
+        # tentava esconder o cenário errado em vez de corrigir a ficha. Fora.
         corpo = (f"{acao}. {('Wearing ' + figurino + '. ') if figurino else ''}"
-                 f"{_ENQUADRA}. {_ancora(amb)}. {_SEM_SET}")
+                 f"{_SEM_SET}")
         if modo != "insercao":
             corpo += f". {_AMBIENTE}"
         lote.append({"i": i_neg, "tipo": "video", "arquivo": arquivo, "avatar": True,

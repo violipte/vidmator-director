@@ -1515,8 +1515,8 @@
     "semantic_hash": ""
   },
   "veo_flow/flow_driver.py": {
-    "mtime": 1786030255.6796215,
-    "ast_hash": "c244001fa662ad5258a26dbd625b351f",
+    "mtime": 1786047235.057824,
+    "ast_hash": "d3bd398156a64cfd5de0f07a0e0721eb",
     "semantic_hash": ""
   },
   "video-automator/frontend2/src/pages/VidMator/index.jsx": {
@@ -1895,8 +1895,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/acervo_registry.py": {
-    "mtime": 1785944719.6548285,
-    "ast_hash": "414dd6763616a066af8760bd15398cfc",
+    "mtime": 1786054144.7398899,
+    "ast_hash": "4aad00a35eb9b0bc4048a18620ce67b9",
     "semantic_hash": ""
   },
   "banco-videos/teste/auditar_montagem.py": {
@@ -2120,7 +2120,7 @@
     "semantic_hash": ""
   },
   "remotion/src/tema_atual.ts": {
-    "mtime": 1786040240.4181814,
+    "mtime": 1786074116.4977207,
     "ast_hash": "13d5d75f64b4efc755c3653ca6de4069",
     "semantic_hash": ""
   },
@@ -2255,8 +2255,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_driver.py": {
-    "mtime": 1786045736.7094262,
-    "ast_hash": "be734714e812daa2ba4b62694fbe6ffc",
+    "mtime": 1786052652.1418202,
+    "ast_hash": "4557419e81598d950187d160ab9063eb",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_ingest.py": {
@@ -2330,8 +2330,8 @@
     "semantic_hash": ""
   },
   "video-automator/_esteira/worker_heartbeat.txt": {
-    "mtime": 1786045800.6370623,
-    "ast_hash": "e729b26c32e226201d3ec7f8bc091dd1",
+    "mtime": 1786113095.405807,
+    "ast_hash": "32ced65db47a0cd06181caf7ba90bdd2",
     "semantic_hash": ""
   },
   "video-automator/niche_search.py": {
@@ -2355,8 +2355,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/montador5.py": {
-    "mtime": 1786045637.8655064,
-    "ast_hash": "2d01cea358e5d2a7d4928f269b974538",
+    "mtime": 1786074116.2673883,
+    "ast_hash": "d843d8e50bb948c70187285efbbea380",
     "semantic_hash": ""
   },
   "banco-videos/teste/parallax5.py": {
@@ -2365,8 +2365,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/rodar_producao5.py": {
-    "mtime": 1785684299.0404885,
-    "ast_hash": "3b4d22dee2148c2b1bafb519cdeb74f3",
+    "mtime": 1786055381.9924521,
+    "ast_hash": "92a80936b1c31c4dfc325fca251bda38",
     "semantic_hash": ""
   },
   "remotion/_render_v5base.mjs": {
@@ -2515,8 +2515,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/GERACAO_FLOW.md": {
-    "mtime": 1786045594.7231119,
-    "ast_hash": "44589f535df8e92ecf56e83f4624943d",
+    "mtime": 1786073734.4405985,
+    "ast_hash": "d69af84fd4a0002a2b82b36b56499666",
     "semantic_hash": ""
   },
   "banco-videos/teste/_gen_narr_amazonia_gen.py": {
@@ -2535,8 +2535,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_ciclo.py": {
-    "mtime": 1786039501.710935,
-    "ast_hash": "ff93c517c20423571b698eb9e1f38983",
+    "mtime": 1786051600.4888413,
+    "ast_hash": "adc94498b71b7f9c435119c3d35caafc",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_colecao.py": {
@@ -2545,8 +2545,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_personagem.py": {
-    "mtime": 1786029076.4963562,
-    "ast_hash": "b3704b406f0d70d2dda6ddeeb4d5695e",
+    "mtime": 1786112966.6422865,
+    "ast_hash": "63d00f82cab45511ee37ebdddf7ce753",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_supervisor.py": {
@@ -2560,8 +2560,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_zip.py": {
-    "mtime": 1786038761.8466163,
-    "ast_hash": "c5109713106d679d7da40bff79cb22b2",
+    "mtime": 1786051070.138438,
+    "ast_hash": "bf36e0ffda29f876cb122d514c2df803",
     "semantic_hash": ""
   },
   "remotion/_render_amazonia_gen.mjs": {
@@ -2580,8 +2580,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_avatar_plan.py": {
-    "mtime": 1786045511.6513355,
-    "ast_hash": "369a7a0e34df064be075230847a23130",
+    "mtime": 1786113011.0958903,
+    "ast_hash": "ae6e2e3e155de99ddfde0e8a00530b8e",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_paralelo.py": {
@@ -2590,8 +2590,8 @@
     "semantic_hash": ""
   },
   "automodelagem/remodelador.py": {
-    "mtime": 1786043889.9279435,
-    "ast_hash": "e4883cc01ff6e3afb99c8f0e772da590",
+    "mtime": 1786074689.6535983,
+    "ast_hash": "377d35ad8f7f4dd971e272ec91d8ae5a",
     "semantic_hash": ""
   },
   "automodelagem/sonda.py": {
@@ -2605,8 +2605,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/ancora5.py": {
-    "mtime": 1786045594.7366307,
-    "ast_hash": "4008d1d37c6bac798dde83380ae298b6",
+    "mtime": 1786046127.1016548,
+    "ast_hash": "fa9cb9f7e4de969e0c7941e085d26571",
     "semantic_hash": ""
   },
   "banco-videos/teste/gerar_dub_avatar.py": {
@@ -2615,8 +2615,8 @@
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_gate_fala.py": {
-    "mtime": 1786045337.894219,
-    "ast_hash": "a5e104c9db13983b6e50b8cd88802ffa",
+    "mtime": 1786111943.8815048,
+    "ast_hash": "c66555301cea1fc22730507e5ac3e3d3",
     "semantic_hash": ""
   },
   "banco-videos/teste/veo_sonda_colecao.py": {
@@ -2660,8 +2660,8 @@
     "semantic_hash": ""
   },
   "veo_flow/login_perfil.py": {
-    "mtime": 1786042914.1282928,
-    "ast_hash": "b06ae34552fcee52c0c36c3257105835",
+    "mtime": 1786047243.0122285,
+    "ast_hash": "98255e4be2d57c64524ce363fe0e2063",
     "semantic_hash": ""
   },
   "veo_flow/rotear.py": {
@@ -2670,8 +2670,8 @@
     "semantic_hash": ""
   },
   "veo_flow/smoke_perfis.py": {
-    "mtime": 1786042817.7216902,
-    "ast_hash": "ae7d8d94a6c37fac13e277e7fa142977",
+    "mtime": 1786047256.5746472,
+    "ast_hash": "98c724669cbba65de0887d3b6daf8bc1",
     "semantic_hash": ""
   },
   "automodelagem/ref/LianaSoulMessage/20260731_r-WYGa9490Y_gancho.txt": {
@@ -2685,13 +2685,48 @@
     "semantic_hash": ""
   },
   "automodelagem/roteiros/20260731_r-WYGa9490Y/roteiro_en.txt": {
-    "mtime": 1786042325.48957,
-    "ast_hash": "d4700ccfe22846b828490a5fbf057c57",
+    "mtime": 1786074844.5298958,
+    "ast_hash": "d8e4f003aa41284a6fe667710445beb8",
     "semantic_hash": ""
   },
   "veo_flow/FROTA.md": {
-    "mtime": 1785986243.169939,
-    "ast_hash": "f53f333606bce00c846cabf6115a6e51",
+    "mtime": 1786046466.939184,
+    "ast_hash": "00174d043f62b0f24fdaab2771e21756",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/_gen_narr_africa.py": {
+    "mtime": 1786047114.5471046,
+    "ast_hash": "b63f8db6f4ff3e40938889249f9f8b03",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/adotar_gerados.py": {
+    "mtime": 1786047133.892741,
+    "ast_hash": "537160b72d213b03169aae5e3c021361",
+    "semantic_hash": ""
+  },
+  "remotion/_render_africa.mjs": {
+    "mtime": 1786053634.3145237,
+    "ast_hash": "9a3d9f4601ea28a5932d3b2c165cc656",
+    "semantic_hash": ""
+  },
+  "automodelagem/_co2_pipeline_dump.txt": {
+    "mtime": 1786073139.5359612,
+    "ast_hash": "eb4eed618144d4e7890a20bae2ad0d0d",
+    "semantic_hash": ""
+  },
+  "automodelagem/roteiros/20260731_r-WYGa9490Y/hook_lock.txt": {
+    "mtime": 1786074703.26379,
+    "ast_hash": "19b24eb2a7e9faf036cd367ad2780145",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/_gen_narr_tubaroes.py": {
+    "mtime": 1786109263.8690615,
+    "ast_hash": "87d633936d07eb4289757cf01b1aaa3c",
+    "semantic_hash": ""
+  },
+  "banco-videos/teste/veo_lab_avatar.py": {
+    "mtime": 1786111973.6749966,
+    "ast_hash": "c0367880b8938dab03f71a2c84e6466b",
     "semantic_hash": ""
   }
 }
